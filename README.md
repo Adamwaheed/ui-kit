@@ -1,7 +1,30 @@
-# Vue 3 + Vite
+# Pension UI Kit
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This package contain the UI components to be used in pension office.
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### Installation Instruction
+
+- Create **.npmrc** file in your root directory where you want to install the package
+- Add the following code to the **.npmrc** file
+  ```
+  @pension:registry=https://npm.pkg.github.com/
+
+  ```
+ 
+- Run the following command:
+  
+  ```
+  npm i @pension/ui-kit
+  ```
+- If you want to install a specific version, you can run:
+
+  ```
+  npm i @pension/ui-kit@0.1.0
+  ```
+  
+- Install via package.json:
+  
+  ```
+  "@pension/ui-kit": "0.1.0"
+  ```
