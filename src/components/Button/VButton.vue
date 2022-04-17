@@ -1,0 +1,12 @@
+<template>
+  <button class="py-2
+      px-4
+      font-semibold
+      rounded-lg
+      shadow-md
+      text-white
+      bg-green-500
+      hover:bg-green-700" v-bind="$attrs">
+    <slot />
+  </button>
+</template>
