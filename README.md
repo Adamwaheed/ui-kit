@@ -9,7 +9,6 @@ This package contain the UI components to be used in pension office.
 - Add the following code to the **.npmrc** file
   ```
   @pension:registry=https://npm.pkg.github.com/
-
   ```
  
 - Run the following command:
