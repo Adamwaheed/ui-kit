@@ -1,7 +1,9 @@
 {
   "name": "@pension/ui-kit",
   "version": "0.1.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/ui-kit.umd.js",
   "module": "./dist/ui-kit.es.js",
   "exports": {
@@ -26,6 +28,6 @@
     "vite": "^2.9.2"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   }
 }
