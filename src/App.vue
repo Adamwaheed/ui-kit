@@ -27,6 +27,8 @@ const people = [
 
 let count = ref(0);
 let testing = ref(3);
+
+let url = ref("https://reqbin.com/echo/post/json");
 </script>
 
 <template>
@@ -73,7 +75,7 @@ let testing = ref(3);
     </div> -->
     <TestForm></TestForm>
     <PDropMenu></PDropMenu>
-    <PForm v-slot="{ error, save }">
+    <PForm v-slot="{ error, save }" :url="url" :initial="{ time: 'ok' }">
       <button @click="save">sdfdsfsdf</button>
       sdfd sdfsdfs {{ error }}
     </PForm>
