@@ -13,7 +13,7 @@ import {
   PComboBox,
   PRadioGroup,
   PForm,
-  TestForm,
+  PNavBar,
 } from "./components";
 
 const people = [
@@ -73,12 +73,12 @@ let url = ref("https://reqbin.com/echo/post/json");
     <!-- <div class="py-12">
       <PTextField v-model="count" label="Mohamed Niyaaz" />
     </div> -->
-    <TestForm></TestForm>
     <PDropMenu></PDropMenu>
     <PForm v-slot="{ error, save }" :url="url" :initial="{ time: 'ok' }">
       <button @click="save">sdfdsfsdf</button>
       sdfd sdfsdfs {{ error }}
     </PForm>
+    <PNavBar />
   </div>
 </template>
 

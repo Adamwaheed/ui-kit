@@ -5,4 +5,5 @@ export { default as PDropMenu } from "./DropMenu/PDropMenu.vue";
 export { default as PComboBox } from "./ComboBox/PComboBox.vue";
 export { default as PRadioGroup } from "./RadioGroup/PRadioGroup.vue";
 export { default as PForm } from "./Form/PForm.vue";
-export * from "./Form/TestForm";
+export { default as PNavBar } from "./NavBar/PNavBar.vue";
+// export * from "./Form/TestForm";
