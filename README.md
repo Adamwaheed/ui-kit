@@ -14,7 +14,7 @@ This package contain the UI components to be used in pension office.
 - Run the following command:
   
   ```
- yarn add @pension/ui-kit
+  yarn add @pension/ui-kit
   ```
 - If you want to install a specific version, you can run:
 
