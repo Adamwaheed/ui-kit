@@ -14,12 +14,12 @@ This package contain the UI components to be used in pension office.
 - Run the following command:
   
   ```
-  npm i @pension/ui-kit
+ yarn add @pension/ui-kit
   ```
 - If you want to install a specific version, you can run:
 
   ```
-  npm i @pension/ui-kit@0.1.0
+  yarn add @pension/ui-kit@0.1.0
   ```
   
 - Install via package.json:
