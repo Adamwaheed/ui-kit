@@ -38,6 +38,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@pension/ui-kit@../ui-kit":
+  version "0.1.7"
+  dependencies:
+    "@headlessui/vue" "^1.5.0"
+    "@heroicons/vue" "^1.0.6"
+    axios "^0.27.2"
+    vue "^3.2.25"
+
 "@vitejs/plugin-vue@^2.3.1":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-2.3.3.tgz#fbf80cc039b82ac21a1acb0f0478de8f61fbf600"
