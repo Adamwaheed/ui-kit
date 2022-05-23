@@ -4,6 +4,7 @@
   "files": [
     "dist"
   ],
+  "license": "MIT",
   "main": "./dist/ui-kit.umd.js",
   "module": "./dist/ui-kit.es.js",
   "exports": {
