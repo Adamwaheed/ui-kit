@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
+      - run: rm -rf node_modules && yarn install --frozen-lockfile
 #       - run: npm test
 
   publish-gpr:
@@ -31,7 +31,7 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: '@pension'
-      - run: npm ci
-      - run: npm publish
+      - run: rm -rf node_modules && yarn install --frozen-lockfile
+      - run: yarn npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
