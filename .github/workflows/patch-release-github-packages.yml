@@ -35,7 +35,8 @@ jobs:
       - run: npm version patch -m "[RELEASE] %s"
       - run: git push
         env:
-          NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
+          github_token: ${{ secrets.UIKIT_TOKEN }}
+          force: true
 
   publish-gpr:
     needs: version
