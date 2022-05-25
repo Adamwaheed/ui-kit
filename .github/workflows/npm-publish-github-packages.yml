@@ -16,11 +16,28 @@ jobs:
         with:
           node-version: 16
       - run: rm -rf node_modules && yarn install --frozen-lockfile
-#       - run: yarn build
 #       - run: npm test
 
-  publish-gpr:
+  version:
     needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: git config --global user.name 'dev'
+      - run: git config --global user.email 'dev@pension.gov.mv'
+      - run: npm version minor -m "[RELEASE] %s"
+      - run: git push
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
+
+  publish-gpr:
+    needs: version
     runs-on: ubuntu-latest
     permissions:
       contents: read
