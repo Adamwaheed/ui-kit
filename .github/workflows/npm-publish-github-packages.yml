@@ -33,7 +33,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@pension'
       - run: rm -rf node_modules && yarn install --frozen-lockfile
-      - run: yarn build
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
