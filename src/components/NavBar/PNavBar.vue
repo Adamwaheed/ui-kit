@@ -3,7 +3,7 @@
     <button
       type="button"
       class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
-      @click="sidebarOpen = true"
+      @click="$emit('toggle')"
     >
       <span class="sr-only">Open sidebar</span>
       <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />

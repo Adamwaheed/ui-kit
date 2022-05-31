@@ -9,12 +9,14 @@ import {
   PButton,
   PTable,
   PTextField,
-  PDropMenu,
   PComboBox,
   PRadioGroup,
   PForm,
   PNavBar,
+  PSideBar,
 } from "./components";
+
+import useForm from "./components/Form/UseForm";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -27,8 +29,17 @@ const people = [
 
 let count = ref(0);
 let testing = ref(3);
+let showsidebar = ref(false);
+
+let forms = useForm({
+  name: "Mohamed Niyaaz",
+  text: "Testing",
+});
 
 let url = ref("https://reqbin.com/echo/post/json");
+function formSubmit() {
+  forms.submit();
+}
 </script>
 
 <template>
@@ -41,8 +52,12 @@ let url = ref("https://reqbin.com/echo/post/json");
       class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
       >My Button</PButton
     >
+    <p-button @click="forms.submit">submit</p-button>
+    <p-button class="pl-2">clear</p-button>
     <PTable></PTable>
     {{ count }}
+    <!-- <PSideBar :sidebar="showsidebar" /> -->
+    <PComboBox :items="people" v-model="testing"></PComboBox>
     <PComboBox :items="people" v-model="testing">
       <template v-slot:selected="slotProps">
         {{ slotProps.data.name }}
@@ -73,12 +88,11 @@ let url = ref("https://reqbin.com/echo/post/json");
     <!-- <div class="py-12">
       <PTextField v-model="count" label="Mohamed Niyaaz" />
     </div> -->
-    <PDropMenu></PDropMenu>
+
     <PForm v-slot="{ error, save }" :url="url" :initial="{ time: 'ok' }">
       <button @click="save">sdfdsfsdf</button>
       sdfd sdfsdfs {{ error }}
     </PForm>
-    <PNavBar />
   </div>
 </template>
 
