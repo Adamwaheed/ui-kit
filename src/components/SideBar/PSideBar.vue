@@ -17,7 +17,7 @@ import {
 } from "@heroicons/vue/outline";
 
 let sidebarOpen = ref(false);
-let props = defineProps(["sidebar", "isMini"]);
+let props = defineProps(["sidebar", "isMini", "navigation"]);
 let emit = defineEmits(["close"]);
 
 function close() {
@@ -83,16 +83,18 @@ const navigation = [
               </div>
             </TransitionChild>
             <div class="flex-shrink-0 flex items-center px-4">
-              <img
-                class="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                alt="Workflow"
-              />
+              <slot name="logo">
+                <img
+                  class="h-8 w-auto"
+                  src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                  alt="Workflow"
+                />
+              </slot>
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
               <nav class="px-2 space-y-1">
                 <a
-                  v-for="item in navigation"
+                  v-for="item in props.navigation"
                   :key="item.name"
                   :href="item.href"
                   :class="[
@@ -144,7 +146,7 @@ const navigation = [
       <div class="mt-5 flex-grow flex flex-col">
         <nav class="flex-1 px-2 pb-4 space-y-1">
           <a
-            v-for="item in navigation"
+            v-for="item in props.navigation"
             :key="item.name"
             :href="item.href"
             :class="[
@@ -164,7 +166,7 @@ const navigation = [
               ]"
               aria-hidden="true"
             />
-            <span v-if="!isMini">{{ item.name }}</span>
+            <span v-if="!isMini" class="truncate">{{ item.name }}</span>
           </a>
         </nav>
       </div>

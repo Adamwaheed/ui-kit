@@ -8,13 +8,16 @@
       <span class="sr-only">Open sidebar</span>
       <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />
     </button>
-    <div class="flex-shrink-0 md:flex items-center px-4 hidden">
-      <img
-        class="h-8 w-auto"
-        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-        alt="Workflow"
-      />
-    </div>
+    <slot name="logo">
+      <!-- <div class="flex-shrink-0 md:flex items-center px-4 hidden">
+        <img
+          class="h-8 w-auto"
+          src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+          alt="Workflow"
+        />
+      </div> -->
+    </slot>
+
     <slot>
       <div class="flex-1 px-4 flex justify-between">
         <div class="flex-1 flex">
