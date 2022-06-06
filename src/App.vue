@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 
 import { CheckIcon } from "@heroicons/vue/solid";
 
@@ -30,6 +30,9 @@ const people = [
 let count = ref(0);
 let testing = ref(3);
 let showsidebar = ref(false);
+let state = reactive({
+  isMini: true,
+});
 
 let forms = useForm({
   name: "Mohamed Niyaaz",
@@ -56,7 +59,12 @@ function formSubmit() {
     <p-button class="pl-2">clear</p-button>
     <PTable></PTable>
     {{ count }}
-    <!-- <PSideBar :sidebar="showsidebar" /> -->
+    <PNavBar @toggle="showsidebar = true" />
+    <PSideBar
+      :sidebar="showsidebar"
+      @close="showsidebar = false"
+      :is-mini="state.isMini"
+    />
     <PComboBox :items="people" v-model="testing"></PComboBox>
     <PComboBox :items="people" v-model="testing">
       <template v-slot:selected="slotProps">
@@ -88,6 +96,13 @@ function formSubmit() {
     <!-- <div class="py-12">
       <PTextField v-model="count" label="Mohamed Niyaaz" />
     </div> -->
+    <div>
+      <input
+        type="checkbox"
+        v-model="state.isMini"
+        class="absolute right-0 top-0"
+      />
+    </div>
 
     <PForm v-slot="{ error, save }" :url="url" :initial="{ time: 'ok' }">
       <button @click="save">sdfdsfsdf</button>
