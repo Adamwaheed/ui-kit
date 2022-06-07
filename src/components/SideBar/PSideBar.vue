@@ -129,7 +129,7 @@ const navigation = [
 
   <!-- Static sidebar for desktop -->
   <div
-    class="hidden md:flex md:flex-col md:fixed md:inset-y-0 transition-all"
+    class="hidden md:flex md:flex-col md:fixed md:inset-y-0 transition-all z-10"
     :class="[{ 'w-14': isMini, 'md:w-64': !isMini }]"
   >
     <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -137,11 +137,13 @@ const navigation = [
       class="flex flex-col flex-grow border-r border-gray-200 pt-5 bg-white overflow-y-auto"
     >
       <div class="flex items-center flex-shrink-0 px-4">
-        <img
-          class="h-8 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-          alt="Workflow"
-        />
+        <slot name="logo">
+          <img
+            class="h-8 w-auto"
+            src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+            alt="Workflow"
+          />
+        </slot>
       </div>
       <div class="mt-5 flex-grow flex flex-col">
         <nav class="flex-1 px-2 pb-4 space-y-1">
