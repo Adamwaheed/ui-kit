@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 
-import { CheckIcon } from "@heroicons/vue/solid";
+import { CheckIcon } from '@heroicons/vue/24/solid'
 
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup

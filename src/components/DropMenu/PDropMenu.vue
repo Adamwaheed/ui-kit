@@ -67,10 +67,5 @@
 
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { ChevronDownIcon } from "@heroicons/vue/solid";
-import ArchiveIcon from "@heroicons/vue/solid/ArchiveIcon";
-import DuplicateIcon from "@heroicons/vue/solid/DuplicateIcon";
-import MoveIcon from "@heroicons/vue/solid/MailIcon";
-import EditIcon from "@heroicons/vue/solid/PencilAltIcon";
-import DeleteIcon from "@heroicons/vue/solid/TrashIcon";
+import { ChevronDownIcon, ArchiveIcon, DuplicateIcon, MoveIcon, MoveIcon, EditIcon, DeleteIcon  } from '@heroicons/vue/24/solid';
 </script>
