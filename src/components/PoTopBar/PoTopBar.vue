@@ -18,10 +18,10 @@
                     </template>
                 </PoAppIcon>
 
-                <PoSearchBar @query="PassQueryToParent" />
+                <PoSearchBar v-if="hasSearch" @query="PassQueryToParent" />
 
                 <div class="flex items-center space-x-3">
-                    <span class="block w-6 text-slate-100 sm:hidden" role="button">
+                    <span v-if="hasSearch" class="block w-6 text-slate-100 sm:hidden" role="button">
                         <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
@@ -65,7 +65,7 @@
                             </ul>
                         </div>
                     </div>
-                    <PoAppTray />
+                    <PoAppTray :app-list="appList" />
                     <div class="relative">
                         <label for="profile-toggle" class="select-none rounded-full w-10 h-10 bg-[#2e5266] flex items-center justify-center genie-effect" role="button">
                             <span class="text-xs text-white font-semibold">AN</span>
@@ -127,6 +127,14 @@ import {
 
 defineProps({
     searchQuery: String,
+    hasSearch: {
+        type: Boolean,
+        default: true
+    },
+    appList: {
+        type: Array,
+        default: []
+    }
 });
 
 const emit = defineEmits(['query']);
