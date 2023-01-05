@@ -7,7 +7,7 @@
                 <li v-for="item in group.items">
                     <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.isActive }]">
                         <span class="shell-sidebar--icon">
-                            <component :is="heroIcons[item.icon]"  class="stroke-current w-5 h-5" />
+                            <component :is="heroIcons[item.icon]"  class="stroke-current w-4 h-4" />
                         </span>
                         <span class="shell-sidebar--label">{{ item.name }}</span>
                     </a>
