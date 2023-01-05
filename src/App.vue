@@ -3,6 +3,7 @@
     <PoTopBar
       :has-search="true"
       :app-list="allApps"
+      :notifications="notifications"
       @query="NewSearch"
       />
   </div>
@@ -46,7 +47,20 @@ let allApps = [
       }
     ]
   }
-]
+];
+
+let notifications = [
+  {
+    name: 'You are no subscribed',
+    time: 'now',
+    text: 'You have subscribed to DMS notifications for Ali Doe'
+  },
+  {
+    name: 'Contribution added',
+    time: '5 mins ago',
+    text: 'Your contribution for the month of January was added sucessfully'
+  }
+];
 
 function NewSearch(query) {
   searchQuery.value = query

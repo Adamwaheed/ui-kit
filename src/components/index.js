@@ -13,3 +13,4 @@ export { default as PoTopBar } from "./PoTopBar/PoTopBar.vue";
 export { default as PoAppIcon } from "./PoAppIcon/PoAppIcon.vue";
 export { default as PoSearchBar } from "./PoSearchBar/PoSearchBar.vue";
 export { default as PoAppTray } from "./PoAppTray/PoAppTray.vue";
+export { default as PoNotificationHub } from "./PoNotificationHub/PoNotificationHub.vue";
