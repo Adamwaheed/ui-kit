@@ -13,8 +13,8 @@
                     v-for="notification in notifications"
                 >
                     <span class="flex items-center justify-between">
-                        <p class="text-sm font-semibold text-slate-700">{{ notification.name }}</p>
-                        <span class="text-xs font-normal text-slate-400">{{ notification.time }}</span>
+                        <p class="text-sm font-semibold text-slate-700 grow flex space-x-2 items-center"><span v-if="1 === notification.status" class="w-2 h-2 rounded-full shrink-0 bg-mpao-orange"></span><span class="grow">{{ notification.name }}</span></p>
+                        <span class="text-xs font-normal text-slate-400 shrink-0">{{ notification.time }}</span>
                     </span>
                     <span class="block text-sm text-slate-500 pb-3 border-b border-slate-200">
                         {{ notification.text }}

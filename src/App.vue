@@ -53,12 +53,14 @@ let notifications = [
   {
     name: 'You are no subscribed',
     time: 'now',
-    text: 'You have subscribed to DMS notifications for Ali Doe'
+    text: 'You have subscribed to DMS notifications for Ali Doe',
+    status: 1
   },
   {
     name: 'Contribution added',
     time: '5 mins ago',
-    text: 'Your contribution for the month of January was added sucessfully'
+    text: 'Your contribution for the month of January was added sucessfully',
+    status: 0
   }
 ];
 
