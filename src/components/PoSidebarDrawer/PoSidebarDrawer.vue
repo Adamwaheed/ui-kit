@@ -5,11 +5,11 @@
             <span class="shell-sidebar--section">{{ group.groupName }}</span>
             <ul class="shell-sidebar--menu">
                 <li v-for="item in group.items">
-                    <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.isActive }]">
+                    <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.isActive }]" :title="`Go to ${item.label}`">
                         <span class="shell-sidebar--icon">
                             <component :is="heroIcons[item.icon]"  class="stroke-current w-4 h-4" />
                         </span>
-                        <span class="shell-sidebar--label">{{ item.name }}</span>
+                        <span class="shell-sidebar--label">{{ item.label }}</span>
                     </a>
                 </li>
                 

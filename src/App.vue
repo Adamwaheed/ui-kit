@@ -77,13 +77,13 @@ let notifications = [
     name: 'You are no subscribed',
     time: 'now',
     text: 'You have subscribed to DMS notifications for Ali Doe',
-    status: 1
+    seen: false
   },
   {
     name: 'Contribution added',
     time: '5 mins ago',
     text: 'Your contribution for the month of January was added sucessfully',
-    status: 0
+    seen: true
   }
 ];
 
@@ -117,16 +117,16 @@ let profileSwitcherData = {
 
 let sidebarContent = [
   {
-    groupName: 'Main',
+    groupName: 'Start',
     items: [
       {
-        name: 'Dashboard',
+        label: 'Introduction',
         url: '/dashboard',
-        icon: 'HomeIcon',
+        icon: 'PlayIcon',
         isActive: true
       },
       {
-        name: 'Another',
+        label: 'Another',
         url: '/another',
         icon: 'AcademicCapIcon',
         isActive: false
@@ -137,13 +137,13 @@ let sidebarContent = [
     groupName: 'Form',
     items: [
       {
-        name: 'Inputs',
+        label: 'Inputs',
         url: '/dashboard',
         icon: 'HomeIcon',
         isActive: false
       },
       {
-        name: 'Input groups',
+        label: 'Input groups',
         url: '/another',
         icon: 'AcademicCapIcon',
         isActive: false
