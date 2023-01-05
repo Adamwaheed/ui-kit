@@ -154,11 +154,11 @@ let sidebarContent = [
 
 let actionBarItems = [
   {
-    name: 'New Staff',
+    label: 'New Staff',
     icon: 'PlusIcon'
   },
   {
-    name: 'Experiment',
+    label: 'Experiment',
     icon: 'BeakerIcon'
   }
 ];
@@ -168,6 +168,16 @@ function NewSearch(query) {
 }
 
 function handleActionBarClick(item) {
-  console.log('action bar click on', item)
+  switch (item) {
+    case 'New Staff':
+      alert('New staff button was clicked');
+      break;
+    case 'Experiment':
+      console.log("exp")
+      break;
+    case 'back':
+      alert('back btn');
+      break;
+  }
 }
 </script>
