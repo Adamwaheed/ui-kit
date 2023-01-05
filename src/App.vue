@@ -8,7 +8,12 @@
       @query="NewSearch"
       />
   </div>
-  Searching {{searchQuery}}
+  <div class="h-full max-w-full">
+    <PoSidebarDrawer :content="sidebarContent" />
+    <main class="shell-content">
+      Searching {{searchQuery}}
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -17,6 +22,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import {
   PoTopBar,
+  PoSidebarDrawer,
 } from "./components";
 import { ref } from "vue";
 
@@ -92,6 +98,43 @@ let profileSwitcherData = {
     ],
     currentProfileUrl: '#currprofile',
   };
+
+let sidebarContent = [
+  {
+    groupName: 'Main',
+    items: [
+      {
+        name: 'Dashboard',
+        url: '/dashboard',
+        icon: 'HomeIcon',
+        isActive: true
+      },
+      {
+        name: 'Another',
+        url: '/another',
+        icon: 'AcademicCapIcon',
+        isActive: false
+      }
+    ]
+  },
+  {
+    groupName: 'Form',
+    items: [
+      {
+        name: 'Inputs',
+        url: '/dashboard',
+        icon: 'HomeIcon',
+        isActive: false
+      },
+      {
+        name: 'Input groups',
+        url: '/another',
+        icon: 'AcademicCapIcon',
+        isActive: false
+      }
+    ]
+  }
+];
 
 function NewSearch(query) {
   searchQuery.value = query
