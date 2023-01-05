@@ -1,5 +1,5 @@
 .shell-sidebar {
-    @apply block px-5 h-screen bg-white w-full absolute left-0 top-16 overflow-y-scroll transition-all duration-300 ease-in-out border-r border-slate-50 z-50
+    @apply block px-5 h-screen bg-white w-full absolute left-0 top-16 overflow-y-scroll transition-all duration-300 ease-in-out border-r border-slate-50 z-50 pt-10 sm:pt-0
 }
 
 .shell-sidebar--toggle:checked ~ .shell-sidebar {
@@ -28,6 +28,10 @@
 
 .shell-sidebar--icon {
     @apply w-4
+}
+
+.shell-content {
+    @apply h-[calc(100vh-64px)] overflow-y-scroll pl-0 transition-all duration-300 ease-in-out pt-10
 }
 
 .shell-content--action-bar {

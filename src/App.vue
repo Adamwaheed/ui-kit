@@ -17,10 +17,12 @@
         @button-click="handleActionBarClick"
         />
 
-        <div class="mt-20 px-6 lg:px-8">
+        <div class="mt-10 px-6 lg:px-8">
           <PoPageTitle label="Searching" />
           <PoCard class="mt-5 p-5">
-            <template v-slot:content>Searching {{searchQuery}}</template>
+            <template v-slot:content>
+              Searching {{searchQuery}}
+            </template>
           </PoCard>
         </div>
     </main>
