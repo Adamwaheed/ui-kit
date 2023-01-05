@@ -24,7 +24,7 @@ import * as heroIcons from '@heroicons/vue/24/outline'
 defineProps({
     items: {
         type: Array,
-        default: []
+        default: null
     },
     showBackButton: {
         type: Boolean,
