@@ -2,9 +2,7 @@
     <nav class="bg-mpao-blue fixed top-0 w-full z-50 flex">
         <div class="shrink-0 px-3 pt-3">
             <label for="sidebar-drawer-toggle" role="button" class="genie-effect flex items-center justify-center bg-[#2e5266] rounded-full w-10 h-10 select-none text-slate-100">
-                <svg class="w-6 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+                <Bars3Icon class="w-6 fill-current"  />
             </label>
         </div>
         <div class="mx-auto max-w-full px-4 grow sm:px-4">
@@ -81,6 +79,8 @@
 </template>
 
 <script setup>
+import { Bars3Icon } from '@heroicons/vue/24/outline'
+
 import {
   PoAppIcon,
   PoSearchBar,
