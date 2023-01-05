@@ -11,6 +11,11 @@
   <div class="h-full max-w-full">
     <PoSidebarDrawer :content="sidebarContent" />
     <main class="shell-content">
+      <PoActionBar
+        :items="actionBarItems"
+        :show-back-button="true"
+        @button-click="handleActionBarClick"
+        />
       Searching {{searchQuery}}
     </main>
   </div>
@@ -23,6 +28,7 @@
 import {
   PoTopBar,
   PoSidebarDrawer,
+  PoActionBar,
 } from "./components";
 import { ref } from "vue";
 
@@ -136,7 +142,22 @@ let sidebarContent = [
   }
 ];
 
+let actionBarItems = [
+  {
+    name: 'New Staff',
+    icon: 'PlusIcon'
+  },
+  {
+    name: 'Experiment',
+    icon: 'BeakerIcon'
+  }
+];
+
 function NewSearch(query) {
   searchQuery.value = query
+}
+
+function handleActionBarClick(item) {
+  console.log('action bar click on', item)
 }
 </script>
