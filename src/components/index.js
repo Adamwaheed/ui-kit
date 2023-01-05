@@ -18,3 +18,4 @@ export { default as PoProfileSwitcher } from "./PoProfileSwitcher/PoProfileSwitc
 export { default as PoSidebarDrawer } from "./PoSidebarDrawer/PoSidebarDrawer.vue";
 export { default as PoActionBar } from "./PoActionBar/PoActionBar.vue";
 export { default as PoCard } from "./PoCard/PoCard.vue";
+export { default as PoPageTitle } from "./PoPageTitle/PoPageTitle.vue";
