@@ -17,3 +17,4 @@ export { default as PoNotificationHub } from "./PoNotificationHub/PoNotification
 export { default as PoProfileSwitcher } from "./PoProfileSwitcher/PoProfileSwitcher.vue";
 export { default as PoSidebarDrawer } from "./PoSidebarDrawer/PoSidebarDrawer.vue";
 export { default as PoActionBar } from "./PoActionBar/PoActionBar.vue";
+export { default as PoCard } from "./PoCard/PoCard.vue";

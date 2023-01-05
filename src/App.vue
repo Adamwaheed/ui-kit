@@ -16,7 +16,12 @@
         :show-back-button="true"
         @button-click="handleActionBarClick"
         />
-      Searching {{searchQuery}}
+
+        <div class="pt-10  px-6 lg:px-8">
+          <PoCard class="mt-5 p-5">
+            <template v-slot:content>Searching {{searchQuery}}</template>
+          </PoCard>
+        </div>
     </main>
   </div>
 </template>
@@ -29,6 +34,7 @@ import {
   PoTopBar,
   PoSidebarDrawer,
   PoActionBar,
+  PoCard,
 } from "./components";
 import { ref } from "vue";
 
