@@ -11,8 +11,8 @@
                 <span v-if="collection.groupName.length > 0" class="text-sm font-normal text-slate-400 select-none">{{ collection.groupName }}</span>
                 <ul class="grid grid-cols-3 gap-3 py-3">
                     <li v-for="app in collection.apps">
-                        <a :href="app.url" class="flex flex-col space-y-3 justify-center items-center py-2 genie-effect">
-                            <span class="block w-10">
+                        <a :href="app.url" class="flex flex-col group space-y-3 justify-center items-center py-2 genie-effect">
+                            <span class="block w-10 rounded-md transition-shadow duration-100 ease-in-out shadow-md group-hover:shadow-xl overflow-hidden">
                                 <img :src="app.icon" :alt="`${app.name} icon`">
                             </span>
                             <span class="text-slate-600 font-normal text-sm">{{ app.name }}</span>
