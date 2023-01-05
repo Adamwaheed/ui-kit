@@ -3,6 +3,7 @@
     <PoTopBar
       :has-search="true"
       :app-list="allApps"
+      :profile-switcher-data="profileSwitcherData"
       :notifications="notifications"
       @query="NewSearch"
       />
@@ -63,6 +64,34 @@ let notifications = [
     status: 0
   }
 ];
+
+let profileSwitcherData = {
+    currProfileLabel: 'HA',
+    profiles: [
+      {
+        name: 'Self',
+        identifier: '',
+        url: '#self',
+        current: true,
+        isPersonal: true
+      },
+      {
+        name: 'Penshion Office',
+        identifier: '202301052023',
+        url: '#business',
+        current: false,
+        isPersonal: false
+      },
+      {
+        name: 'ABC Enterprises Pvt Ltd',
+        identifier: '202301052026',
+        url: '#business',
+        current: false,
+        isPersonal: false
+      }
+    ],
+    currentProfileUrl: '#currprofile',
+  };
 
 function NewSearch(query) {
   searchQuery.value = query

@@ -26,52 +26,7 @@
                     </span>
                     <PoNotificationHub :notifications="notifications" />
                     <PoAppTray :app-list="appList" />
-                    <div class="relative">
-                        <label for="profile-toggle" class="select-none rounded-full w-10 h-10 bg-[#2e5266] flex items-center justify-center genie-effect" role="button">
-                            <span class="text-xs text-white font-semibold">AN</span>
-                        </label>
-                        <input type="checkbox" name="" class="hidden peer/profile" role="none" id="profile-toggle">
-                        <div class="invisible space-y-1 z-10 absolute right-0 top-[45px] opacity-0 bg-white shadow-lg rounded-md w-96 p-4 border border-slate-200 pt-5 transition-all duration-100 ease-linear peer-checked/profile:visible peer-checked/profile:top-[54px] peer-checked/profile:opacity-100">
-                            <a href="#" class="flex items-center space-x-3 p-3 text-slate-600 rounded-lg bg-white hover:bg-slate-100" role="button">
-                                <span class="w-5 text-mpao-orange">
-                                    <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                    </svg>
-                                </span>
-                                <span class="text-sm font-normal">Self</span>
-                            </a>
-                            <a href="#" class="flex items-center space-x-3 p-3 text-slate-600 rounded-lg bg-white hover:bg-slate-100" role="button">
-                                <span class="w-5">
-                                    <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                    </svg>
-                                </span>
-                                <span class="flex flex-col space-y-1">
-                                    <span class="text-sm font-normal">ABC Company Pvt Ltd</span>
-                                    <span class="text-xs text-slate-400">Identifer 2022120916</span>
-                                </span>
-                            </a>
-                            <hr class="border-slate-200">
-                            <div class="md:grid grid-cols-2">
-                                <a href="#" class="flex items-center space-x-3 p-3 text-slate-600 rounded-lg bg-white hover:bg-slate-100" role="button">
-                                    <span class="w-5">
-                                        <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                        </svg>
-                                    </span>
-                                    <span class="text-sm font-normal">Profile</span>
-                                </a>
-                                <a href="#" class="flex items-center space-x-3 p-3 text-slate-600 rounded-lg bg-white hover:bg-slate-100" role="button">
-                                    <span class="w-5">
-                                        <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                                        </svg>
-                                    </span>
-                                    <span class="text-sm font-normal">Logout</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" />
                 </div>
             </div>
         </div>
@@ -86,6 +41,7 @@ import {
   PoSearchBar,
   PoAppTray,
   PoNotificationHub,
+  PoProfileSwitcher
 } from "../";
 
 defineProps({
@@ -101,7 +57,11 @@ defineProps({
     notifications: {
         type: Array,
         default: []
-    }
+    },
+    profileSwitcherData: {
+        type: Object,
+        default: []
+    },
 });
 
 const emit = defineEmits(['query']);
