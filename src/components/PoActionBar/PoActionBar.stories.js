@@ -10,7 +10,19 @@ export default {
   */
   title: 'Shell/Action Bar',
   component: PoActionBar,
-  argTypes: { onClick: { action: 'clicked' } },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Action bar component PoActionBar is used on views that require action other than form submissions. It emits actions performed on the buttons.'
+      }
+    },
+    backgrounds: {
+      default: 'gray',
+      values: [
+        { name: 'gray', value: '#f8fafc' },
+      ],
+    },
+  },
 };
 
 //👇 We create a “template” of how args map to rendering
