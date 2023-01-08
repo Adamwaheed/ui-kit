@@ -46,7 +46,9 @@
           </PoCard>
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
-              <PoInputField />
+              <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
+
+              <p>{{ inputModel }}</p>
             </template>
           </PoCard>
         </div>
@@ -71,6 +73,7 @@ import {
 import { ref } from "vue";
 
 let searchQuery = ref("");
+let inputModel = ref("what");
 
 let allApps = [
   {
