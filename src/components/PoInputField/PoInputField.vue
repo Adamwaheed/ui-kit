@@ -1,5 +1,9 @@
 <template>
     <div class="relative pt-5">
+        <!-- 
+            v-model update
+            @event update:modelValue
+         -->
         <input
             type="text"
             name="nid"
