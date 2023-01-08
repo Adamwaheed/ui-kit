@@ -24,6 +24,9 @@
               Searching {{searchQuery}}
             </template>
           </PoCard>
+          <PTable>
+            <template v-slot="header" :header=""></template>
+          </PTable>
         </div>
     </main>
   </div>
@@ -39,6 +42,7 @@ import {
   PoActionBar,
   PoCard,
   PoPageTitle,
+  PTable,
 } from "./components";
 import { ref } from "vue";
 
