@@ -1,6 +1,6 @@
 <template>
     <dl>
-        <div v-for="item in items" :class="['grid grid-cols-3 gap-5 py-3', { 'border-b border-slate-200' : !striped }, { 'even:bg-slate-50 px-2' : striped }]">
+        <div v-for="item in items" :class="['grid grid-cols-1 sm:grid-cols-3 sm:gap-5 py-3', { 'border-b border-slate-200' : !striped }, { 'even:bg-slate-50 px-2' : striped }]">
             <dt class="text-sm text-slate-500 col-span-1">{{ item.title }}</dt>
             <dd class="text-sm text-slate-700 col-span-2 flex">
                 <span class="grow">{{ item.description }}</span>
