@@ -24,9 +24,21 @@
               Searching {{searchQuery}}
             </template>
           </PoCard>
-          <PTable>
-            <template v-slot="header" :header=""></template>
-          </PTable>
+          <PoCard class="mt-5">
+            <template v-slot:content>
+              <PoTable :thead="tableHead" :tbody="tableBody">
+                <template #th="{ label }">
+                  {{ label }}
+                </template>
+                <template #td="{ name, nid, source, dod }">
+                  <td data-title="name">{{ name }}</td>
+                  <td data-title="NID">{{ nid }}</td>
+                  <td data-title="source">{{ source }}</td>
+                  <td data-title="dod">{{ dod }}</td>
+                </template>
+              </PoTable>
+            </template>
+          </PoCard>
         </div>
     </main>
   </div>
@@ -42,7 +54,7 @@ import {
   PoActionBar,
   PoCard,
   PoPageTitle,
-  PTable,
+  PoTable,
 } from "./components";
 import { ref } from "vue";
 
@@ -165,6 +177,18 @@ let actionBarItems = [
     label: 'Experiment',
     icon: 'BeakerIcon'
   }
+];
+
+let tableHead = [
+  { label: 'Name' },
+  { label: 'NID' },
+  { label: 'Source' },
+  { label: 'DOD' },
+];
+
+let tableBody = [
+  { name: 'Jane Gasim', nid: 'A00000', source: 'YY Clinic', dod: '2022-11-12' },
+  { name: 'Mariyam Doe', nid: 'A00000', source: 'Rashu Council', dod: '2022-11-02' },
 ];
 
 function NewSearch(query) {

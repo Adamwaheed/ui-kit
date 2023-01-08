@@ -19,3 +19,4 @@ export { default as PoSidebarDrawer } from "./PoSidebarDrawer/PoSidebarDrawer.vu
 export { default as PoActionBar } from "./PoActionBar/PoActionBar.vue";
 export { default as PoCard } from "./PoCard/PoCard.vue";
 export { default as PoPageTitle } from "./PoPageTitle/PoPageTitle.vue";
+export { default as PoTable } from "./PoTable/PoTable.vue";
