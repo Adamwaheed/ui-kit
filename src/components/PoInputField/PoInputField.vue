@@ -12,6 +12,8 @@
             class="mt-1 peer block w-full transition-colors duration-100 ease-in-out rounded-md border-slate-300 bg-white focus:border-mpao-lightblue focus:ring-0 invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm"
             :aria-describedby="`${id}-description`"
             v-bind="$attrs"
+            :required="required"
+            :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target.value)"
             >
         <label
@@ -80,6 +82,20 @@ defineProps({
     errorMessage: {
       type: String,
       default: null,
+    },
+    /**
+     * True or false if required
+     */
+    required: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * True or false if required
+     */
+    placeholder: {
+        type: String,
+        default: null
     },
 });
 </script>

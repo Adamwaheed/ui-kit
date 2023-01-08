@@ -33,23 +33,54 @@ const Template = (args) => ({
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '{{args2}}<PoCard class="mt-5 p-5 grid grid-cols-2 gap-5"> <template v-slot:content><PoInputField v-bind="args" /><PoInputField v-bind="args2" /></template></PoCard>',
+  template: '{{args2}}<PoCard class="mt-5 p-5 grid grid-cols-2 gap-5"> <template v-slot:content><PoInputField v-bind="args" /><span></span></template></PoCard>',
 });
 
 export const Normal = Template.bind({});
+export const WithInfoTooltip = Template.bind({});
+export const WithMessage = Template.bind({});
+export const WithPlaceholder = Template.bind({});
+export const ErrorState = Template.bind({});
 
 Normal.args = {
   /* 👇 The args you need here will depend on your component */
-  fullname: {
-      label: "Full name",
-      id: 'fullname-id',
-      type: 'text'
-  },
-  
+  label: "Full name",
+  id: 'fullname-id',
+  type: 'text'
 };
-Normal.args2 = {
+
+WithInfoTooltip.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Email address",
-  id: 'email-id',
-  type: 'email'
+  label: "NID",
+  id: 'nid-id',
+  type: 'text',
+  info: 'National ID Card No.'
+
+};
+
+WithMessage.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Fullname",
+  id: 'fullname2-id',
+  type: 'text',
+  message: 'Fullname with middle name.'
+
+};
+
+WithPlaceholder.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Fullname",
+  id: 'fullname2-id',
+  type: 'text',
+  placeholder: 'Fullname'
+};
+
+ErrorState.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Fullname",
+  id: 'fullname3-id',
+  type: 'text',
+  errorMessage: 'Fullname is required.',
+  required: true
+
 };
