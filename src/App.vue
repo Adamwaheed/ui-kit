@@ -17,7 +17,7 @@
         @button-click="handleActionBarClick"
         />
 
-        <div class="mt-10 px-6 lg:px-8">
+        <div class="mt-10 px-6 lg:px-8 pb-10">
           <PoPageTitle label="Searching" />
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
@@ -44,6 +44,11 @@
               <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
             </template>
           </PoCard>
+          <PoCard class="mt-5 p-5">
+            <template v-slot:content>
+              <PoInputField />
+            </template>
+          </PoCard>
         </div>
     </main>
   </div>
@@ -60,7 +65,8 @@ import {
   PoCard,
   PoPageTitle,
   PoTable,
-  PoDescriptionList
+  PoDescriptionList,
+  PoInputField
 } from "./components";
 import { ref } from "vue";
 

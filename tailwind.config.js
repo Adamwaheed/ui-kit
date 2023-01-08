@@ -47,7 +47,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
 
 // npx tailwindcss -o ./dist/build.css --minify
