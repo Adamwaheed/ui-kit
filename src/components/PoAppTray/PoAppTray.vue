@@ -26,9 +26,12 @@
 <script setup>
 import { Squares2X2Icon } from '@heroicons/vue/24/outline'
 defineProps({
+    /**
+     * Array of grouped apps. When the group name field is left blank, it will appear as a single list when displayed.
+     */
     appList: {
         type: Array,
-        default: []
+        default: null
     }
 });
 </script>
