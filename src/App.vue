@@ -41,7 +41,7 @@
           </PoCard>
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
-              <PoDescriptionList :items="descriptionListItems" @button-click="handleDescriptionListActionClick" />
+              <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
             </template>
           </PoCard>
         </div>
@@ -201,6 +201,10 @@ let descriptionListItems = [
   {
     title: 'Full name',
     description: 'Saleem Ahmed Doe'
+  },
+  {
+    title: 'Address',
+    description: 'House of Sal, Medhu St, Malé'
   },
   {
     title: 'Address',
