@@ -9,12 +9,15 @@
             name="nid"
             :id="id"
             :value="modelValue"
-            class="mt-1 peer block w-full transition-colors duration-100 ease-in-out rounded-md border-slate-300 bg-white focus:border-mpao-lightblue focus:ring-0 invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm"
-            :aria-describedby="`${id}-description`"
-            v-bind="$attrs"
-            :required="required"
             :placeholder="placeholder"
+            :disabled="disabled"
+            :required="required"
+            :aria-describedby="`${id}-description`"
+            :aria-required="required"
+            :aria-disabled="disabled"
+            v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.value)"
+            class="mt-1 peer block w-full transition-colors duration-100 ease-in-out rounded-md border-slate-300 bg-white focus:border-mpao-lightblue focus:ring-0 invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm disabled:bg-slate-50 disabled:border-slate-300 disabled:focus:border-slate-300 disabled:hover:border-slate-300 disabled:cursor-default"
             >
         <label
             :for="id"
@@ -87,6 +90,13 @@ defineProps({
      * True or false if required
      */
     required: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * True or false if disabled
+     */
+    disabled: {
         type: Boolean,
         default: false
     },

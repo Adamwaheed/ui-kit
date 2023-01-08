@@ -41,6 +41,7 @@ export const WithInfoTooltip = Template.bind({});
 export const WithMessage = Template.bind({});
 export const WithPlaceholder = Template.bind({});
 export const ErrorState = Template.bind({});
+export const DisabledState = Template.bind({});
 
 Normal.args = {
   /* 👇 The args you need here will depend on your component */
@@ -82,5 +83,14 @@ ErrorState.args = {
   type: 'text',
   errorMessage: 'Fullname is required.',
   required: true
+
+};
+
+DisabledState.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Fullname",
+  id: 'fullname5-id',
+  type: 'text',
+  disabled: true
 
 };
