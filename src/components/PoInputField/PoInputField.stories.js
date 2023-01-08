@@ -33,7 +33,7 @@ const Template = (args) => ({
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '{{args2}}<PoCard class="mt-5 p-5 grid grid-cols-2 gap-5"> <template v-slot:content><PoInputField v-bind="args" /><span></span></template></PoCard>',
+  template: '<PoCard class="mt-5 p-5 max-w-md"> <template v-slot:content><PoInputField v-bind="args" /></template></PoCard>',
 });
 
 export const Normal = Template.bind({});
