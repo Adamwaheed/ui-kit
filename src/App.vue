@@ -39,6 +39,11 @@
               </PoTable>
             </template>
           </PoCard>
+          <PoCard class="mt-5 p-5">
+            <template v-slot:content>
+              <PoDescriptionList :items="descriptionListItems" @button-click="handleDescriptionListActionClick" />
+            </template>
+          </PoCard>
         </div>
     </main>
   </div>
@@ -55,6 +60,7 @@ import {
   PoCard,
   PoPageTitle,
   PoTable,
+  PoDescriptionList
 } from "./components";
 import { ref } from "vue";
 
@@ -191,6 +197,22 @@ let tableBody = [
   { name: 'Mariyam Doe', nid: 'A00000', source: 'Rashu Council', dod: '2022-11-02' },
 ];
 
+let descriptionListItems = [
+  {
+    title: 'Full name',
+    description: 'Saleem Ahmed Doe'
+  },
+  {
+    title: 'Address',
+    description: 'House of Sal, Medhu St, Malé'
+  },
+  {
+    title: 'Dob',
+    description: '1972-02-05',
+    action: 'Update'
+  }
+];
+
 function NewSearch(query) {
   searchQuery.value = query
 }
@@ -205,6 +227,17 @@ function handleActionBarClick(item) {
       break;
     case 'back':
       alert('back btn');
+      break;
+  }
+}
+
+function handleDescriptionListActionClick(item) {
+  switch (item) {
+    case 'Update':
+      alert('Update action was clicked');
+      break;
+    default:
+      alert('action btn');
       break;
   }
 }
