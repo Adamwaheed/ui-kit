@@ -59,6 +59,8 @@
                 <PoButton type="link" label="Link" to="/home" />
                 <PoButton type="button" label="Button Disabled" :disabled="true" />
                 <PoButton type="submit" label="Submit Disabled" :disabled="true" />
+                <PoButton type="button" label="Another Button" class="py-1 px-2 bg-rose-600 hover:bg-rose-700" />
+                <PoButton type="button" label="Another Button" class="py-5 px-8 bg-cyan-600 hover:bg-cyan-700" />
               </div>
             </template>
           </PoCard>
