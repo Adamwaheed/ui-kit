@@ -34,6 +34,10 @@ const Template = (args) => ({
 export const Button = Template.bind();
 export const SubmitButton = Template.bind();
 export const Link = Template.bind();
+export const Small = Template.bind();
+export const Medium = Template.bind();
+export const Large = Template.bind();
+export const ColorChange = Template.bind();
 
 Button.args = {
     /* 👇 The args you need here will depend on your component */
@@ -53,4 +57,33 @@ Link.args = {
     type: "link",
     to: "/home",
     class: "inline-block"
+};
+
+Small.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Small",
+    type: "button",
+    size: "sm"
+};
+
+Medium.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Medium",
+    type: "button",
+    size: "md"
+};
+
+Large.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Large",
+    type: "button",
+    size: "lg"
+};
+
+ColorChange.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Rose",
+    type: "button",
+    overrideColors: true,
+    class: 'bg-rose-600 hover:bg-rose-700 text-white'
 };

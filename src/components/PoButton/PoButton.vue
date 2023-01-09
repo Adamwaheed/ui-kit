@@ -38,10 +38,16 @@ const props = defineProps({
         type: String,
         default: "#"
     },
+    /**
+     * Override colors. Mark this true and add tailwind bg-color, hover:bg-color and text-color classes to component
+     */
     overrideColors: {
         type: Boolean,
         default: false
     },
+    /**
+     * Button has three sizes. sm, md, and lg
+     */
     size: {
       type: String,
       default: "md",
