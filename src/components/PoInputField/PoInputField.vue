@@ -5,8 +5,8 @@
             @event update:modelValue
          -->
         <input
-            type="text"
-            name="nid"
+            :type="type"
+            :name="`${id}-field`"
             :id="id"
             :value="modelValue"
             :placeholder="placeholder"

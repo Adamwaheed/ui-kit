@@ -64,6 +64,13 @@
               </div>
             </template>
           </PoCard>
+          <PoCard class="mt-5 p-5">
+            <template v-slot:content>
+              <div class=" items-center space-x-5">
+                <PoSelectField label="Select input" />
+              </div>
+            </template>
+          </PoCard>
         </div>
     </main>
   </div>
@@ -82,7 +89,8 @@ import {
   PoTable,
   PoDescriptionList,
   PoInputField,
-  PoButton
+  PoButton,
+  PoSelectField
 } from "./components";
 import { ref } from "vue";
 
