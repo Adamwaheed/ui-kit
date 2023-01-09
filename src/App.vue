@@ -1,144 +1,271 @@
-<script setup>
-import { reactive, ref } from "vue";
-
-import { CheckIcon } from "@heroicons/vue/solid";
-
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import {
-  PButton,
-  PTable,
-  PTextField,
-  PComboBox,
-  PRadioGroup,
-  PForm,
-  PNavBar,
-  PSideBar,
-  PDropMenu,
-} from "./components";
-
-import useForm from "./components/Form/UseForm";
-
-const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-];
-
-let count = ref(0);
-let testing = ref(3);
-let showsidebar = ref(false);
-let state = reactive({
-  isMini: true,
-});
-
-let forms = useForm({
-  name: "Mohamed Niyaaz",
-  text: "Testing",
-});
-
-let url = ref("https://reqbin.com/echo/post/json");
-function formSubmit() {
-  forms.submit();
-}
-</script>
-
 <template>
-  <div class="max-w-5xl mx-auto">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <p>Mohamed Niyaaz</p>
-    {{ testing }}
-    <PButton
-      @click="count++"
-      class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
-      >My Button</PButton
-    >
-    <p-button @click="forms.submit">submit</p-button>
-    <p-button class="pl-2">clear</p-button>
-    <PTable></PTable>
-    {{ count }}
-    <PDropMenu
-      :items="people"
-      triggerClass="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    >
-      <template #trigger>
-        <img
-          class="h-8 w-8 rounded-full"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-          alt=""
-        />
-      </template>
-      <template v-slot:item="slotProps">
-        <div
-          :class="[
-            slotProps.active ? 'bg-violet-500 text-white' : 'text-gray-900',
-            'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-          ]"
-        >
-          {{ slotProps.item.name }}
-        </div>
-      </template>
-    </PDropMenu>
-    <!-- <PNavBar @toggle="showsidebar = true" /> -->
-    <!-- <PSideBar
-      :sidebar="showsidebar"
-      @close="showsidebar = false"
-      :is-mini="state.isMini"
-    /> -->
-    <PComboBox :items="people" v-model="testing"></PComboBox>
-    <PComboBox :items="people" v-model="testing">
-      <template v-slot:selected="slotProps">
-        {{ slotProps.data.name }}
-      </template>
-      <template v-slot:option="slotProps">
-        <li
-          :class="[
-            slotProps.active ? 'text-blue-900 bg-blue-100' : 'text-gray-900',
-            'cursor-default select-none relative py-2 pl-10 pr-4',
-          ]"
-        >
-          <span
-            :class="[
-              slotProps.selected ? 'font-medium' : 'font-normal',
-              'block truncate',
-            ]"
-            >{{ slotProps.item.name }}</span
-          >
-          <span
-            v-if="slotProps.selected"
-            class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600"
-          >
-            <CheckIcon class="w-5 h-5" aria-hidden="true" />
-          </span>
-        </li>
-      </template>
-    </PComboBox>
-    <!-- <div class="py-12">
-      <PTextField v-model="count" label="Mohamed Niyaaz" />
-    </div> -->
-    <div>
-      <input
-        type="checkbox"
-        v-model="state.isMini"
-        class="absolute right-0 top-0"
+  <div class="min-h-full pt-16">
+    <PoTopBar
+      :has-search="true"
+      :app-list="allApps"
+      :profile-switcher-data="profileSwitcherData"
+      :notifications="notifications"
+      @query="NewSearch"
+    />
+  </div>
+  <div class="h-full max-w-full">
+    <PoSidebarDrawer :content="sidebarContent" />
+    <main class="shell-content">
+      <PoActionBar
+        :items="actionBarItems"
+        :show-back-button="true"
+        @button-click="handleActionBarClick"
       />
-    </div>
 
-    <PForm v-slot="{ error, save }" :url="url" :initial="{ time: 'ok' }">
-      <button @click="save">sdfdsfsdf</button>
-      sdfd sdfsdfs {{ error }}
-    </PForm>
+      <div class="mt-10 px-6 lg:px-8 pb-10">
+        <PoPageTitle label="Searching" />
+        <PoCard class="mt-5 p-5">
+          <template v-slot:content> Searching {{ searchQuery }} </template>
+        </PoCard>
+        <PoCard class="mt-5">
+          <template v-slot:content>
+            <PoTable :thead="tableHead" :tbody="tableBody">
+              <template #th="{ label }">
+                {{ label }}
+              </template>
+              <template #td="{ name, nid, source, dod }">
+                <td data-title="name">{{ name }}</td>
+                <td data-title="NID">{{ nid }}</td>
+                <td data-title="source">{{ source }}</td>
+                <td data-title="dod">{{ dod }}</td>
+              </template>
+            </PoTable>
+          </template>
+        </PoCard>
+        <PoCard class="mt-5 p-5">
+          <template v-slot:content>
+            <PoDescriptionList
+              :items="descriptionListItems"
+              :striped="true"
+              @button-click="handleDescriptionListActionClick"
+            />
+          </template>
+        </PoCard>
+        <PoCard class="mt-5 p-5">
+          <template v-slot:content>
+            <PoInputField
+              label="Input"
+              id="input-id"
+              type="text"
+              message="This is an input"
+              info="A tooltip"
+              error-message="Hello error"
+              v-model="inputModel"
+            />
+
+            <p>{{ inputModel }}</p>
+          </template>
+        </PoCard>
+      </div>
+    </main>
   </div>
 </template>
 
-<style>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import {
+  PoTopBar,
+  PoSidebarDrawer,
+  PoActionBar,
+  PoCard,
+  PoPageTitle,
+  PoTable,
+  PoDescriptionList,
+  PoInputField,
+} from "./components";
+import { ref } from "vue";
+
+let searchQuery = ref("");
+let inputModel = ref("what");
+
+let allApps = [
+  {
+    groupName: "",
+    apps: [
+      {
+        name: "First",
+        url: "https://firstapp.example.com",
+        icon: "https://doodleipsum.com/50x50/abstract?bg=3D27F6&i=cb0515299c600124805d923f3619c1ad",
+      },
+      {
+        name: "Cool",
+        url: "https://coolapp.example.com",
+        icon: "https://doodleipsum.com/50x50/abstract?bg=EB765D&i=e2dedc7bc9f1a630e177355aa7b1a6c9",
+      },
+      {
+        name: "Coolest",
+        url: "https://coolapp.example.com",
+        icon: "https://doodleipsum.com/50x50/abstract?bg=7463D9&i=d298131eb7322b7002e6fd50e9dd8c41",
+      },
+      {
+        name: "Another",
+        url: "https://coolapp.example.com",
+        icon: "https://doodleipsum.com/50x50/abstract?bg=FF3C3C&i=5ef96019d86f8e5221c37d9733cb5492",
+      },
+    ],
+  },
+];
+
+let notifications = [
+  {
+    name: "You are no subscribed",
+    time: "now",
+    text: "You have subscribed to DMS notifications for Ali Doe",
+    seen: false,
+  },
+  {
+    name: "Contribution added",
+    time: "5 mins ago",
+    text: "Your contribution for the month of January was added sucessfully",
+    seen: true,
+  },
+];
+
+let profileSwitcherData = {
+  currProfileLabel: "HA",
+  profiles: [
+    {
+      name: "Self",
+      identifier: "",
+      url: "#self",
+      current: true,
+      isPersonal: true,
+    },
+    {
+      name: "Penshion Office",
+      identifier: "202301052023",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "ABC Enterprises Pvt Ltd",
+      identifier: "202301052026",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+  ],
+  currentProfileUrl: "#currprofile",
+};
+
+let sidebarContent = [
+  {
+    groupName: "Start",
+    items: [
+      {
+        label: "Introduction",
+        url: "/dashboard",
+        icon: "PlayIcon",
+        isActive: true,
+      },
+      {
+        label: "Another",
+        url: "/another",
+        icon: "AcademicCapIcon",
+        isActive: false,
+      },
+    ],
+  },
+  {
+    groupName: "Form",
+    items: [
+      {
+        label: "Inputs",
+        url: "/dashboard",
+        icon: "HomeIcon",
+        isActive: false,
+      },
+      {
+        label: "Input groups",
+        url: "/another",
+        icon: "AcademicCapIcon",
+        isActive: false,
+      },
+    ],
+  },
+];
+
+let actionBarItems = [
+  {
+    label: "New Staff",
+    icon: "PlusIcon",
+  },
+  {
+    label: "Experiment",
+    icon: "BeakerIcon",
+  },
+];
+
+let tableHead = [
+  { label: "Name" },
+  { label: "NID" },
+  { label: "Source" },
+  { label: "DOD" },
+];
+
+let tableBody = [
+  { name: "Jane Gasim", nid: "A00000", source: "YY Clinic", dod: "2022-11-12" },
+  {
+    name: "Mariyam Doe",
+    nid: "A00000",
+    source: "Rashu Council",
+    dod: "2022-11-02",
+  },
+];
+
+let descriptionListItems = [
+  {
+    title: "Full name",
+    description: "Saleem Ahmed Doe",
+  },
+  {
+    title: "Address",
+    description: "House of Sal, Medhu St, Malé",
+  },
+  {
+    title: "Address",
+    description: "House of Sal, Medhu St, Malé",
+  },
+  {
+    title: "Dob",
+    description: "1972-02-05",
+    action: "Update",
+  },
+];
+
+function NewSearch(query) {
+  searchQuery.value = query;
 }
-</style>
+
+function handleActionBarClick(item) {
+  switch (item) {
+    case "New Staff":
+      alert("New staff button was clicked");
+      break;
+    case "Experiment":
+      console.log("exp");
+      break;
+    case "back":
+      alert("back btn");
+      break;
+  }
+}
+
+function handleDescriptionListActionClick(item) {
+  switch (item) {
+    case "Update":
+      alert("Update action was clicked");
+      break;
+    default:
+      alert("action btn");
+      break;
+  }
+}
+</script>

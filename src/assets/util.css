@@ -1,0 +1,6 @@
+.genie-effect {
+    @apply transition-transform duration-100 ease-linear origin-center
+}
+.genie-effect:hover {
+    @apply scale-110;
+}

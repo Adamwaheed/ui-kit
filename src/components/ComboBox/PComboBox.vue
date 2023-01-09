@@ -8,7 +8,7 @@
             <span
               class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
             >
-              <SelectorIcon class="w-5 h-5 text-gray-400" aria-hidden="true" />
+              <ChevronDownIcon class="w-5 h-5 text-gray-400" aria-hidden="true" />
             </span>
           </slot>
         </ListboxButton>
@@ -70,7 +70,7 @@ import {
   ListboxOptions,
   ListboxOption,
 } from "@headlessui/vue";
-import { CheckIcon, SelectorIcon } from "@heroicons/vue/solid";
+import { CheckIcon, ChevronDownIcon } from '@heroicons/vue/24/solid';
 
 const props = defineProps({
   ListBoxButtonClass: {

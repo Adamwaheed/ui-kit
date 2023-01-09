@@ -6,7 +6,7 @@
       @click="$emit('toggle')"
     >
       <span class="sr-only">Open sidebar</span>
-      <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />
+      <Bars4Icon class="h-6 w-6" aria-hidden="true" />
     </button>
     <slot name="logo">
       <!-- <div class="flex-shrink-0 md:flex items-center px-4 hidden">
@@ -29,7 +29,7 @@
               <div
                 class="absolute inset-y-0 left-0 flex items-center pointer-events-none"
               >
-                <SearchIcon class="h-5 w-5" aria-hidden="true" />
+                <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
               </div>
               <input
                 id="search-field"
@@ -100,8 +100,8 @@
 <script setup>
 import { ref } from "vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { BellIcon, MenuAlt2Icon } from "@heroicons/vue/outline";
-import { SearchIcon } from "@heroicons/vue/solid";
+import { BellIcon, Bars4Icon } from '@heroicons/vue/24/outline';
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 const sidebarOpen = ref(false);
 const userNavigation = [
   { name: "Your Profile", href: "#" },

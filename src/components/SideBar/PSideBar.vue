@@ -13,8 +13,8 @@ import {
   InboxIcon,
   UsersIcon,
   HomeIcon,
-  XIcon,
-} from "@heroicons/vue/outline";
+  XMarkIcon,
+} from '@heroicons/vue/24/outline';
 
 let sidebarOpen = ref(false);
 let props = defineProps(["sidebar", "isMini", "navigation"]);
@@ -78,7 +78,7 @@ const navigation = [
                   @click="close()"
                 >
                   <span class="sr-only">Close sidebar</span>
-                  <XIcon class="h-6 w-6 text-white" aria-hidden="true" />
+                  <XMarkIcon class="h-6 w-6 text-white" aria-hidden="true" />
                 </button>
               </div>
             </TransitionChild>

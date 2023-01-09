@@ -14,7 +14,7 @@ import {
   UsersIcon,
   HomeIcon,
   XIcon,
-} from "@heroicons/vue/outline";
+} from '@heroicons/vue/24/outline';
 
 let sidebarOpen = ref(false);
 let props = defineProps(["sidebar"]);
