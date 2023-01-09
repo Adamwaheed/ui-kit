@@ -1,13 +1,15 @@
 <template>
-    <button v-if="'button' == type" :class="buttonClass" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">{{ label }}</button>
-    <input v-if="'submit' == type" type="submit" :class="buttonClass" :value="label" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
-    <nuxt-link v-if="'link' == type" :to="to" :class="buttonClass" v-bind="$attrs">{{ label }}</nuxt-link>
+    <button v-if="'button' == type" :class="[buttonClassess, buttonSize, buttonColor]" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">{{ label }}</button>
+    <input v-if="'submit' == type" type="submit" :class="[buttonClassess, buttonSize, buttonColor]" :value="label" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
+    <a v-if="'link' == type" :href="to" :class="[buttonClassess, buttonSize, buttonColor]" v-bind="$attrs">{{ label }}</a>
 </template>
 
 <script setup>
-const buttonClass = "bg-slate-600 hover:bg-mpao-lightblue focus:bg-mpao-lightblue transition-colors duration-100 ease-in-out cursor-pointer text-slate-50 px-4 py-2 rounded-md text-sm disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400";
+import { computed, reactive } from 'vue'
 
-defineProps({
+const buttonClassess = 'rounded-md transition-colors duration-100 ease-in-out cursor-pointer disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400';
+
+const props = defineProps({
     /**
      * Type of button. It can be 'button', 'submit', or 'link'.
      */
@@ -36,5 +38,30 @@ defineProps({
         type: String,
         default: "#"
     },
+    overrideColors: {
+        type: Boolean,
+        default: false
+    },
+    size: {
+      type: String,
+      default: "md",
+    }
+});
+
+const buttonSize = computed(() => {
+    switch (props.size) {
+        case 'sm':
+            return 'px-2 py-1 text-xs'
+            break;
+        case 'md':
+            return 'px-4 py-2 text-sm'
+            break;
+        case 'lg':
+            return 'px-5 py-3 text-normal'
+            break;
+    }
+});
+const buttonColor = computed(() => {
+    return props.overrideColors ? '' : 'bg-slate-600 hover:bg-mpao-lightblue focus:bg-mpao-lightblue text-slate-50';
 });
 </script>
