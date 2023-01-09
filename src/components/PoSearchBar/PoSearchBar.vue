@@ -5,7 +5,7 @@
             type="text"
             id="main-search"
             :placeholder="placeholder"
-            class="peer/search bg-transparent border border-transparent text-slate-100 text-sm rounded-md ring-0 transition-colors ease-linear duration-100 block w-full pl-10 p-2.5 appearance-none hover:outline hover:outline-slate-600 focus:outline-slate-400 focus:outline"
+            class="peer/search bg-transparent border border-transparent text-slate-100 text-sm rounded-md ring-0 outline-none focus:outline-none focus:ring-0 transition-colors ease-linear duration-100 block w-full pl-10 p-2.5 appearance-none focus:border-slate-400 hover:border-slate-600"
             >
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none transition-all ease-linear duration-100 text-slate-400 origin-center peer-hover/search:scale-105 peer-focus/search:text-slate-100">
             <MagnifyingGlassIcon class="w-5 h-5 stroke-current" />
