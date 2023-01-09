@@ -22,3 +22,4 @@ export { default as PoPageTitle } from "./PoPageTitle/PoPageTitle.vue";
 export { default as PoTable } from "./PoTable/PoTable.vue";
 export { default as PoDescriptionList } from "./PoDescriptionList/PoDescriptionList.vue";
 export { default as PoInputField } from "./PoInputField/PoInputField.vue";
+export { default as PoButton } from "./PoButton/PoButton.vue";
