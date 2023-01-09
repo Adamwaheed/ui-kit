@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
       - run: rm -rf node_modules && yarn install --frozen-lockfile
-#       - run: npm test
+  #       - run: npm test
 
   publish-gpr:
     needs: build
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-          scope: '@pension'
+          scope: "@pension"
       - run: rm -rf node_modules && yarn install --frozen-lockfile
       - run: yarn publish
         env:

@@ -14,6 +14,7 @@ import {
   PForm,
   PNavBar,
   PSideBar,
+  PDropMenu,
 } from "./components";
 
 import useForm from "./components/Form/UseForm";
@@ -59,12 +60,34 @@ function formSubmit() {
     <p-button class="pl-2">clear</p-button>
     <PTable></PTable>
     {{ count }}
-    <PNavBar @toggle="showsidebar = true" />
-    <PSideBar
+    <PDropMenu
+      :items="people"
+      triggerClass="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
+      <template #trigger>
+        <img
+          class="h-8 w-8 rounded-full"
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+          alt=""
+        />
+      </template>
+      <template v-slot:item="slotProps">
+        <div
+          :class="[
+            slotProps.active ? 'bg-violet-500 text-white' : 'text-gray-900',
+            'group flex w-full items-center rounded-md px-2 py-2 text-sm',
+          ]"
+        >
+          {{ slotProps.item.name }}
+        </div>
+      </template>
+    </PDropMenu>
+    <!-- <PNavBar @toggle="showsidebar = true" /> -->
+    <!-- <PSideBar
       :sidebar="showsidebar"
       @close="showsidebar = false"
       :is-mini="state.isMini"
-    />
+    /> -->
     <PComboBox :items="people" v-model="testing"></PComboBox>
     <PComboBox :items="people" v-model="testing">
       <template v-slot:selected="slotProps">
