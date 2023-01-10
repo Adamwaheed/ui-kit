@@ -4,8 +4,13 @@
     <a v-if="'link' == type" :href="to" :class="[buttonClassess, buttonSize, buttonColor]" v-bind="$attrs">{{ label }}</a>
 </template>
 
+<script>
+export default {
+  name: 'PoButton',
+}
+</script>
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 
 const buttonClassess = 'rounded-md transition-colors duration-100 ease-in-out cursor-pointer disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400';
 

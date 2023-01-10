@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "POCard",
+  name: "PoCard",
 };
 </script>
 <script setup></script>
