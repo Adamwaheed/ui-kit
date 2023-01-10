@@ -1,6 +1,6 @@
 <template>
-    <div class="relative pt-5">
-        <!-- 
+  <div class="relative pt-5">
+    <!-- 
             v-model update
             @event update:modelValue
          -->
@@ -33,79 +33,84 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "POInputField",
+};
+</script>
 <script setup>
-import { InformationCircleIcon } from '@heroicons/vue/24/solid'
+import { InformationCircleIcon } from "@heroicons/vue/24/solid";
 
 defineProps({
-    /**
-     * Model value
-     */
-    modelValue: {
-      type: [String, Number],
-      default: "",
-    },
-    /**
-     * Input label text
-     */
-     label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Input type
-     */
-    type: {
-      type: String,
-      default: "text",
-    },
-    /**
-     * Input id text
-     */
-    id: {
-      type: String,
-      default: "",
-    },
-    /**
-     * A tool tip, helper information
-     */
-    info: {
-        type: String,
-        default: null
-    },
-    /**
-     * Tip, description, information for the input
-     */
-    message: {
-      type: String,
-      default: null,
-    },
-    /**
-     * Error message
-     */
-    errorMessage: {
-      type: String,
-      default: null,
-    },
-    /**
-     * True or false if required
-     */
-    required: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * True or false if disabled
-     */
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * True or false if required
-     */
-    placeholder: {
-        type: String,
-        default: null
-    },
+  /**
+   * Model value
+   */
+  modelValue: {
+    type: [String, Number],
+    default: "",
+  },
+  /**
+   * Input label text
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Input type
+   */
+  type: {
+    type: String,
+    default: "text",
+  },
+  /**
+   * Input id text
+   */
+  id: {
+    type: String,
+    default: "",
+  },
+  /**
+   * A tool tip, helper information
+   */
+  info: {
+    type: String,
+    default: null,
+  },
+  /**
+   * Tip, description, information for the input
+   */
+  message: {
+    type: String,
+    default: null,
+  },
+  /**
+   * Error message
+   */
+  errorMessage: {
+    type: String,
+    default: null,
+  },
+  /**
+   * True or false if required
+   */
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * True or false if disabled
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * True or false if required
+   */
+  placeholder: {
+    type: String,
+    default: null,
+  },
 });
 </script>

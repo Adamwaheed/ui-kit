@@ -3,6 +3,7 @@ import { reactive } from "vue";
 import axios from "axios";
 
 export default {
+  name: "PForm",
   props: {
     url: {
       type: String,
