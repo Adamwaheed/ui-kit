@@ -1,0 +1,89 @@
+// YourComponent.stories.js
+
+import PoButton from './PoButton.vue';
+
+//👇 This default export determines where your story goes in the story list
+export default {
+  /* 👇 The title prop is optional.
+  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * to learn how to generate automatic titles
+  */
+  title: 'Components/Button',
+  component: PoButton,
+  parameters: {
+    docs: {
+      description: {
+          component: 'Button component. Button styles like padding and background color can be overitten by giving it tailwind utility classes.'
+      }
+    },
+    backgrounds: {
+      default: 'gray',
+      values: [
+        { name: 'gray', value: '#f8fafc' },
+      ],
+    },
+  },
+};
+
+//👇 We create a “template” of how args map to rendering
+const Template = (args) => ({
+  components: { PoButton },
+  template: '<PoButton v-bind="args" />',
+});
+
+export const Button = Template.bind();
+export const SubmitButton = Template.bind();
+export const Link = Template.bind();
+export const Small = Template.bind();
+export const Medium = Template.bind();
+export const Large = Template.bind();
+export const ColorChange = Template.bind();
+
+Button.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Button",
+    type: "button"
+};
+
+SubmitButton.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Submit",
+    type: "submit"
+};
+
+Link.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Link button",
+    type: "link",
+    to: "/home",
+    class: "inline-block"
+};
+
+Small.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Small",
+    type: "button",
+    size: "sm"
+};
+
+Medium.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Medium",
+    type: "button",
+    size: "md"
+};
+
+Large.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Large",
+    type: "button",
+    size: "lg"
+};
+
+ColorChange.args = {
+    /* 👇 The args you need here will depend on your component */
+    label: "Rose",
+    type: "button",
+    overrideColors: true,
+    class: 'bg-rose-600 hover:bg-rose-700 text-white'
+};

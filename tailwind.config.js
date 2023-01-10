@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./index.html", "./src/App.vue", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   // safelist: [
   //   "bg-blue-600",
   //   "hover:bg-blue-500",

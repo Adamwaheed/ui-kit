@@ -61,6 +61,39 @@
             <p>{{ inputModel }}</p>
           </template>
         </PoCard>
+        <PoCard class="mt-5 p-5">
+          <template v-slot:content>
+            <div class="flex items-center space-x-5">
+              <PoButton type="button" label="Button" />
+              <PoButton type="submit" label="Submit" />
+              <PoButton type="link" label="Link" to="/home" />
+              <PoButton
+                type="button"
+                label="Button Disabled"
+                :disabled="true"
+              />
+              <PoButton
+                type="submit"
+                label="Submit Disabled"
+                :disabled="true"
+              />
+              <PoButton
+                type="button"
+                label="Button"
+                :override-colors="true"
+                size="sm"
+                class="bg-cyan-600 hover:bg-cyan-700 text-white"
+              />
+              <PoButton
+                type="button"
+                label="Button"
+                :override-colors="true"
+                size="lg"
+                class="bg-rose-600 hover:bg-rose-700 text-white"
+              />
+            </div>
+          </template>
+        </PoCard>
       </div>
     </main>
   </div>
@@ -78,6 +111,7 @@ import {
   PoTable,
   PoDescriptionList,
   PoInputField,
+  PoButton,
 } from "./components";
 import { ref } from "vue";
 
