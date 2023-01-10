@@ -19,7 +19,7 @@
           @input="$emit('update:modelValue', $event.target.value)"
           class="mt-1 peer block w-full text-left transition-colors duration-100 ease-in-out rounded-md border-slate-300 bg-white focus:border-mpao-lightblue focus:ring-0 invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm"
           >
-          a
+          {{ selectedValue }}
         </button>
       <label
           :for="id"
@@ -33,9 +33,10 @@
       <span class="absolute top-[2.2rem] right-3 origin-center peer-focus:rotate-180 transition-transform duration-100 ease-in-out">
         <ChevronDownIcon class="w-4 fill-slate-500" />
       </span>
-      <div class="absolute hidden top-13 bg-white rounded-md overflow-hidden shadow-md peer-focus:block w-full divide-y divide-slate-300">
-        <span class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option one</span>
-        <span class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option one</span>
+      <div class="absolute hidden top-13 bg-white rounded-md overflow-hidden shadow-md peer-focus:block w-full divide-y divide-slate-200">
+        <span @click="setSelectedValue('Option one')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option one</span>
+        <span @click="setSelectedValue('Option two')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option two</span>
+        <span @click="setSelectedValue('Option three')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option three</span>
       </div>
       <p class="mt-2 text-sm text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
       <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
@@ -44,7 +45,14 @@
 
 <script setup>
 import { InformationCircleIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
+import { ref } from 'vue'
 
+let selectedValue = ref('Hello')
+
+function setSelectedValue(val) {
+  console.log('aaa', val)
+  this.selectedValue.value = val
+}
 
 defineProps({
     /**

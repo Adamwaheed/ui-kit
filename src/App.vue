@@ -44,13 +44,22 @@
               <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
             </template>
           </PoCard>
-          <PoCard class="mt-5 p-5">
-            <template v-slot:content>
-              <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
-
-              <p>{{ inputModel }}</p>
-            </template>
-          </PoCard>
+          <div class="grid grid-cols-2 gap-5">
+            <PoCard class="mt-5 p-5">
+              <template v-slot:content>
+                <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
+  
+                <p>{{ inputModel }}</p>
+              </template>
+            </PoCard>
+            <PoCard class="mt-5 p-5">
+              <template v-slot:content>
+                <div class=" items-center space-x-5">
+                  <PoSelectField label="Select input" />
+                </div>
+              </template>
+            </PoCard>
+          </div>
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
               <div class="flex items-center space-x-5">
@@ -61,13 +70,6 @@
                 <PoButton type="submit" label="Submit Disabled" :disabled="true" />
                 <PoButton type="button" label="Button" :override-colors="true" size="sm" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
                 <PoButton type="button" label="Button" :override-colors="true" size="lg" class="bg-rose-600 hover:bg-rose-700 text-white" />
-              </div>
-            </template>
-          </PoCard>
-          <PoCard class="mt-5 p-5">
-            <template v-slot:content>
-              <div class=" items-center space-x-5">
-                <PoSelectField label="Select input" />
               </div>
             </template>
           </PoCard>
