@@ -39,6 +39,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoProfileSwitcher",
+};
+</script>
 <script setup>
 import { UserIcon, BriefcaseIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline'
 defineProps({

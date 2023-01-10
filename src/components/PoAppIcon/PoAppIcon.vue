@@ -10,6 +10,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoAppIcon",
+};
+</script>
 <script setup>
 defineProps({
     /**

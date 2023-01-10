@@ -26,6 +26,11 @@
     </section>
 </template>
 
+<script>
+export default {
+  name: "PoActionBar",
+};
+</script>
 <script setup>
 import * as heroIcons from '@heroicons/vue/24/outline'
 

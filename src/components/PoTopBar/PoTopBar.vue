@@ -69,6 +69,11 @@
   </nav>
 </template>
 
+<script>
+export default {
+  name: "PoTopBar",
+};
+</script>
 <script setup>
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 

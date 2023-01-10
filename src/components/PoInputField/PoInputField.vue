@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "POInputField",
+  name: "PoInputField",
 };
 </script>
 <script setup>

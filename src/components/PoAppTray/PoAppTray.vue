@@ -23,6 +23,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoAppTray",
+};
+</script>
 <script setup>
 import { Squares2X2Icon } from '@heroicons/vue/24/outline'
 defineProps({

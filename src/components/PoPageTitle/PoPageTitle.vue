@@ -21,6 +21,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoPageTitle",
+};
+</script>
 <script setup>
 defineProps({
     /**

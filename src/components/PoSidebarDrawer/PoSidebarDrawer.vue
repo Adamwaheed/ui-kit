@@ -19,6 +19,11 @@
     </aside>
 </template>
 
+<script>
+export default {
+  name: "PoSidebarDrawer",
+};
+</script>
 <script setup>
 import * as heroIcons from '@heroicons/vue/24/outline'
 

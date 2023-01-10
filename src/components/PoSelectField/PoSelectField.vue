@@ -43,6 +43,11 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "PoSelectField",
+};
+</script>
 <script setup>
 import { InformationCircleIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
 import { ref } from 'vue'

@@ -14,6 +14,11 @@
     </dl>
 </template>
 
+<script>
+export default {
+  name: "PoDescriptionList",
+};
+</script>
 <script setup>
 defineProps({
     /**

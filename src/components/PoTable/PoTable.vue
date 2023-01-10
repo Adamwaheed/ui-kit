@@ -24,6 +24,11 @@
     </table>
 </template>
 
+<script>
+export default {
+  name: "PoTable",
+};
+</script>
 <script setup>
 defineProps({
     /**

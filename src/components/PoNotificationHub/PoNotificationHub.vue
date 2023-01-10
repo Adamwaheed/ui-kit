@@ -23,6 +23,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoNotificationHub",
+};
+</script>
 <script setup>
 import { BellIcon } from '@heroicons/vue/24/outline'
 defineProps({
