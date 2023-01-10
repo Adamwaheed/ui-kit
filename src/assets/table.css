@@ -40,7 +40,19 @@
 }
 
 .table-responsive td {
-    @apply text-xs py-3 border-b border-gray-200 text-gray-600 capitalize;
+    @apply text-xs py-3 border-b border-gray-200 text-gray-600;
+}
+
+.table-responsive.comfy th {
+    @apply py-5
+}
+
+.table-responsive.comfy td {
+    @apply py-4
+}
+
+.table-responsive td:not(.normal-case) {
+    @apply capitalize;
 }
 
 .table-responsive tbody tr {
