@@ -7,7 +7,7 @@
                 <li v-for="item in group.items">
                     <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
                         <span class="shell-sidebar--icon">
-                            <component :is="heroIcons[item.icon]"  class="stroke-current w-4 h-4" />
+                            <component :is="item.icon"  class="stroke-current w-4 h-4" />
                         </span>
                         <span class="shell-sidebar--label">{{ item.label }}</span>
                     </a>
@@ -25,7 +25,6 @@ export default {
 };
 </script>
 <script setup>
-import * as heroIcons from '@heroicons/vue/24/outline'
 
 defineProps({
     /**

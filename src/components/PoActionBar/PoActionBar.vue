@@ -10,7 +10,7 @@
                 @click="$emit('button-click', item.label)"
                 class="action-bar__nav_link cursor-pointer"
             >
-                <component :is="heroIcons[item.icon]"  class="stroke-current w-5 h-5" />
+                <component :is="item.icon"  class="stroke-current w-5 h-5" />
                 <span class="action-bar__nav_label">{{ item.label }}</span>
             </span>
         </nav>
@@ -20,7 +20,7 @@
                 @event button-click
             -->
             <span @click="$emit('button-click', 'back')" class="action-bar__nav_link cursor-pointer">
-                <component :is="heroIcons['ArrowUturnLeftIcon']"  class="stroke-current w-5 h-5" />
+                <component :is="ArrowUturnLeftIcon"  class="stroke-current w-5 h-5" />
             </span>
         </nav>
     </section>
@@ -32,7 +32,7 @@ export default {
 };
 </script>
 <script setup>
-import * as heroIcons from '@heroicons/vue/24/outline'
+import { ArrowUturnLeftIcon }  from '@heroicons/vue/24/outline'
 
 defineProps({
     /**

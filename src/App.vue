@@ -103,6 +103,8 @@ import {
 } from "./components";
 import { ref } from "vue";
 
+import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon } from "@heroicons/vue/24/outline";
+
 let searchQuery = ref("");
 let inputModel = ref("what");
 
@@ -184,12 +186,12 @@ let sidebarContent = [
       {
         label: "Introduction",
         url: "/",
-        icon: "PlayIcon",
+        icon: PlayIcon,
       },
       {
         label: "Another",
         url: "/another",
-        icon: "AcademicCapIcon",
+        icon: AcademicCapIcon,
       },
     ],
   },
@@ -199,12 +201,12 @@ let sidebarContent = [
       {
         label: "Inputs",
         url: "/dashboard",
-        icon: "HomeIcon",
+        icon: HomeIcon,
       },
       {
         label: "Input groups",
         url: "/another",
-        icon: "AcademicCapIcon",
+        icon: AcademicCapIcon,
       },
     ],
   },
@@ -213,11 +215,11 @@ let sidebarContent = [
 let actionBarItems = [
   {
     label: "New Staff",
-    icon: "PlusIcon",
+    icon: PlusIcon,
   },
   {
     label: "Experiment",
-    icon: "BeakerIcon",
+    icon: BeakerIcon,
   },
 ];
 

@@ -23,6 +23,11 @@
     </div>
 </template>
 
+<script>
+export default {
+  name: "PoCardSearch",
+};
+</script>
 <script setup>
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
