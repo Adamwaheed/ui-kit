@@ -1,5 +1,6 @@
 <template>
   <div class="shadow-md rounded-md bg-white overflow-hidden">
+    <h3 v-if="title.length > 0" class="text-base font-medium text-slate-600">{{ title }}</h3>
     <!--
             @slot Content of the card goes here.
         -->
@@ -12,4 +13,15 @@ export default {
   name: "PoCard",
 };
 </script>
-<script setup></script>
+<script setup>
+defineProps({
+    /**
+     * Card title
+     */
+    title: {
+        type: String,
+        default: ""
+    },
+    striped: false,
+});
+</script>
