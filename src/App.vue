@@ -183,15 +183,13 @@ let sidebarContent = [
     items: [
       {
         label: "Introduction",
-        url: "/dashboard",
+        url: "/",
         icon: "PlayIcon",
-        isActive: true,
       },
       {
         label: "Another",
         url: "/another",
         icon: "AcademicCapIcon",
-        isActive: false,
       },
     ],
   },
@@ -202,13 +200,11 @@ let sidebarContent = [
         label: "Inputs",
         url: "/dashboard",
         icon: "HomeIcon",
-        isActive: false,
       },
       {
         label: "Input groups",
         url: "/another",
         icon: "AcademicCapIcon",
-        isActive: false,
       },
     ],
   },

@@ -5,7 +5,7 @@
             <span class="shell-sidebar--section">{{ group.groupName }}</span>
             <ul class="shell-sidebar--menu">
                 <li v-for="item in group.items">
-                    <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.isActive }]" :title="`Go to ${item.label}`">
+                    <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
                         <span class="shell-sidebar--icon">
                             <component :is="heroIcons[item.icon]"  class="stroke-current w-4 h-4" />
                         </span>
@@ -28,9 +28,20 @@ export default {
 import * as heroIcons from '@heroicons/vue/24/outline'
 
 defineProps({
+    /**
+     * Array of  sidebar menu items
+     */
     content: {
         type: Array,
         default: []
     },
+    /**
+     * Current route path
+     */
+    currRoute: {
+        type: String,
+        default: "/"
+    }
 });
+
 </script>
