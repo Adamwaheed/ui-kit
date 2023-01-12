@@ -49,7 +49,7 @@ import { UserIcon, BriefcaseIcon, ArrowRightOnRectangleIcon } from '@heroicons/v
 defineProps({
     profileSwitcherData: {
         type: Object,
-        default: {}
+        default: null
     },
 });
 </script>

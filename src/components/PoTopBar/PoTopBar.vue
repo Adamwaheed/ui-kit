@@ -87,21 +87,21 @@ defineProps({
    */
   appList: {
     type: Array,
-    default: [],
+    default: null,
   },
   /**
    * List of notifications for notifications hub
    */
   notifications: {
     type: Array,
-    default: [],
+    default: null,
   },
   /**
    * Profile switcher object
    */
   profileSwitcherData: {
     type: Object,
-    default: [],
+    default: null,
   },
   /**
    * SVG Icon

@@ -33,7 +33,7 @@ import { BellIcon } from '@heroicons/vue/24/outline'
 defineProps({
   notifications: {
     type: Array,
-    default: []
+    default: null
   }
 });
 </script>

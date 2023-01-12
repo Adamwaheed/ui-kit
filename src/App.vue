@@ -29,7 +29,8 @@
           <PoPageTitle label="Searching" />
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
-              Searching {{searchQuery}}
+              Searching {{searchQuery}}<br />
+              <PoModal open-btn-label="Open Modal" />
             </template>
           </PoCard>
           <PoCard class="mt-5">
@@ -99,7 +100,8 @@ import {
   PoDescriptionList,
   PoInputField,
   PoButton,
-  PoSelectField
+  PoSelectField,
+  PoModal,
 } from "./components";
 import { ref } from "vue";
 

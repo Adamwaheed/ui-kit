@@ -32,7 +32,7 @@ defineProps({
      */
     content: {
         type: Array,
-        default: []
+        default: null
     },
     /**
      * Current route path
