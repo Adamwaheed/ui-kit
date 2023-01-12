@@ -1,8 +1,8 @@
 <template>
     <div>
-    <PoButton v-if="openBtnLabel.length > 0" :label="openBtnLabel" @click="open = true" />
-    <TransitionRoot as="template" :show="open">
-      <Dialog as="div" class="relative z-50" @close="open = false">
+    <PoButton v-if="openBtnLabel.length > 0" :label="openBtnLabel" @click="isShowing = true" />
+    <TransitionRoot as="template" :show="isShowing">
+      <Dialog as="div" class="relative z-50" @close="isShowing = false">
         <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
           <div class="fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity" />
         </TransitionChild>
@@ -16,7 +16,7 @@
                 <div class="flex items-center bg-slate-50 p-5">
                     <h3 class="grow text-md font-bold text-slate-700">{{ modalTitle }}</h3>
                     <div class="shrink-0">
-                        <span role="button" class="block" @click="open = false"><XMarkIcon class="w-5 stroke-slate-600 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" /></span>
+                        <span role="button" class="block" @click="isShowing = false"><XMarkIcon class="w-5 stroke-slate-600 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" /></span>
                     </div>
                 </div>
                 <div class="p-5">
@@ -41,13 +41,11 @@ export default {
 };
 </script>
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, toRefs, watch } from 'vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { XMarkIcon } from '@heroicons/vue/24/outline';
 
 import { PoButton } from "../../components";
-
-const open = ref(false)
 
 const props = defineProps({
     /**
@@ -67,13 +65,20 @@ const props = defineProps({
     /**
      * Pass model Open/Close to the component
      */
-    modalState: {
+    show: {
         type: Boolean,
         default: false
     }
 });
 
-onMounted(() => {
-    open.value = props.modalState
-});
+const { show } = toRefs(props)
+const isShowing = ref(false)
+
+watch(show, () => {
+  isShowing.value = false
+
+  setTimeout(() => {
+    isShowing.value = true
+  }, 100)
+})
 </script>
