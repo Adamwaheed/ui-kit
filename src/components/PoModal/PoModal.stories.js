@@ -28,7 +28,7 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoModal },
-  template: '<PoModal v-bind="args"><template v-slot:content>This is a modal window.</template></PoModal>',
+  template: '<PoModal open-btn-label="Open modal" v-bind="args"><template v-slot:content>This is a modal window.</template></PoModal>',
 });
 
 export const Modal = Template.bind();

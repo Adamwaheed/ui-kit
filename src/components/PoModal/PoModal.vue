@@ -1,6 +1,6 @@
 <template>
     <div>
-    <PoButton :label="openBtnLabel" @click="open = true" />
+    <PoButton v-if="openBtnLabel.length > 0" :label="openBtnLabel" @click="open = true" />
     <TransitionRoot as="template" :show="open">
       <Dialog as="div" class="relative z-50" @close="open = false">
         <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
@@ -41,7 +41,7 @@ export default {
 };
 </script>
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { XMarkIcon } from '@heroicons/vue/24/outline';
 
@@ -49,13 +49,13 @@ import { PoButton } from "../../components";
 
 const open = ref(false)
 
-defineProps({
+const props = defineProps({
     /**
      * Modal open button label
      */
     openBtnLabel: {
       type: String,
-      default: "Opens",
+      default: "",
     },
     /**
      * Modal Title
@@ -64,5 +64,16 @@ defineProps({
       type: String,
       default: "Modal windows",
     },
+    /**
+     * Pass model Open/Close to the component
+     */
+    modalState: {
+        type: Boolean,
+        default: false
+    }
+});
+
+onMounted(() => {
+    open.value = props.modalState
 });
 </script>
