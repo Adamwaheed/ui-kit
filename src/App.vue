@@ -31,10 +31,12 @@
             <template v-slot:content>
               Searching {{searchQuery}}<br />
               <PoModal open-btn-label="Open Modal" />
-              <br>
+              <br />
               <PoToggle label="Toggle me" v-model="toggleState" />
-
               {{ toggleState }}
+              <br />
+              <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
+              {{ checkboxState }}
             </template>
           </PoCard>
           <PoCard class="mt-5">
@@ -107,6 +109,7 @@ import {
   PoSelectField,
   PoModal,
   PoToggle,
+  PoCheckbox
 } from "./components";
 import { ref } from "vue";
 
@@ -114,6 +117,7 @@ import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon } from "@hero
 
 let searchQuery = ref("");
 let toggleState = ref(false);
+let checkboxState = ref(false);
 let inputModel = ref("what");
 
 let allApps = [
