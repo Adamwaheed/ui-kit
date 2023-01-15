@@ -31,6 +31,10 @@
             <template v-slot:content>
               Searching {{searchQuery}}<br />
               <PoModal open-btn-label="Open Modal" />
+              <br>
+              <PoToggle label="Toggle me" v-model="toggleState" />
+
+              {{ toggleState }}
             </template>
           </PoCard>
           <PoCard class="mt-5">
@@ -102,12 +106,14 @@ import {
   PoButton,
   PoSelectField,
   PoModal,
+  PoToggle,
 } from "./components";
 import { ref } from "vue";
 
 import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon } from "@heroicons/vue/24/outline";
 
 let searchQuery = ref("");
+let toggleState = ref(false);
 let inputModel = ref("what");
 
 let allApps = [

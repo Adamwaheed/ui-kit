@@ -27,3 +27,4 @@ export { default as PoInputFile } from "./PoInputFile/PoInputFile.vue";
 export { default as PoSelectField } from "./PoSelectField/PoSelectField.vue";
 export { default as PoButton } from "./PoButton/PoButton.vue";
 export { default as PoModal } from "./PoModal/PoModal.vue";
+export { default as PoToggle } from "./PoToggle/PoToggle.vue";
