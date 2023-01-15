@@ -37,6 +37,8 @@
               <br />
               <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
               {{ checkboxState }}
+              <br />
+              
             </template>
           </PoCard>
           <PoCard class="mt-5">
@@ -70,7 +72,10 @@
             <PoCard class="mt-5 p-5">
               <template v-slot:content>
                 <div class=" items-center space-x-5">
-                  <PoSelectField label="Select input" />
+                  <PoSelectField label="App name" :list="selectFieldList" :pre-selected="selectFieldPreSelected" v-model="selectFieldSelected" />
+                  Pre {{ selectFieldPreSelected }}
+                  <br />
+                  Selected {{ selectFieldSelected }}
                 </div>
               </template>
             </PoCard>
@@ -109,7 +114,7 @@ import {
   PoSelectField,
   PoModal,
   PoToggle,
-  PoCheckbox
+  PoCheckbox,
 } from "./components";
 import { ref } from "vue";
 
@@ -300,4 +305,14 @@ function handleDescriptionListActionClick(item) {
       break;
   }
 }
+
+const selectFieldList = [
+  { id: 1, name: 'Koshaaru' },
+  { id: 2, name: 'HelpDesk' },
+  { id: 3, name: 'Another' },
+];
+
+const selectFieldPreSelected = ref(selectFieldList[1]);
+const selectFieldSelected = ref(null);
+
 </script>

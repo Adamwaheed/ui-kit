@@ -1,46 +1,27 @@
 <template>
-  <div class="relative pt-5">
-      <!-- 
-          v-model update
-          @event update:modelValue
-        -->
-      <button
-          type="text"
-          :name="`${id}-field`"
-          :id="id"
-          :value="modelValue"
-          :placeholder="placeholder"
-          :disabled="disabled"
-          :required="required"
-          :aria-describedby="`${id}-description`"
-          :aria-required="required"
-          :aria-disabled="disabled"
-          v-bind="$attrs"
-          @input="$emit('update:modelValue', $event.target.value)"
-          class="mt-1 peer block w-full text-left transition-colors duration-100 ease-in-out rounded-md border-slate-300 bg-white focus:border-mpao-lightblue focus:ring-0 invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm"
-          >
-          {{ selectedValue }}
-        </button>
-      <label
-          :for="id"
-          class="absolute top-0 text-sm font-medium text-slate-700 peer-focus:text-mpao-lightblue peer-invalid:text-red-500 peer-invalid:peer-focus:text-red-600 flex items-center space-x-1"
-          >
-          <span>{{ label }}</span>
-          <abbr v-if="null !== info" :title="info" class="w-4 text-slate-500">
-              <InformationCircleIcon />
-          </abbr>
-      </label>
-      <span class="absolute top-[2.2rem] right-3 origin-center peer-focus:rotate-180 transition-transform duration-100 ease-in-out">
-        <ChevronDownIcon class="w-4 fill-slate-500" />
-      </span>
-      <div class="absolute hidden top-13 bg-white rounded-md overflow-hidden shadow-md peer-focus:block w-full divide-y divide-slate-200">
-        <span @click="setSelectedValue('Option one')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option one</span>
-        <span @click="setSelectedValue('Option two')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option two</span>
-        <span @click="setSelectedValue('Option three')" class="block p-3 text-sm text-slate-600 hover:cursor-pointer hover:bg-slate-50 transition-colors duration-100 ease-in-out">Option three</span>
-      </div>
-      <p class="mt-2 text-sm text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
-      <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
-  </div>
+  <Combobox as="div" v-model="selectedItem">
+    <ComboboxLabel class="block text-sm font-medium text-slate-700">{{ label }}</ComboboxLabel>
+    <div class="relative mt-1">
+      <ComboboxInput class="w-full rounded-md border border-slate-300 bg-white py-2 pl-3 pr-10 focus:border-mpao-lightblue focus:outline-none focus:ring-0 sm:text-sm" @change="query = $event.target.value" :display-value="(item) => item?.name" />
+      <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+        <ChevronUpDownIcon class="h-5 w-5 text-slate-400" aria-hidden="true" />
+      </ComboboxButton>
+
+      <ComboboxOptions v-if="filteredItems.length > 0" class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+        <ComboboxOption v-for="item in filteredItems" :key="item.id" :value="item" as="template" v-slot="{ active, selected }">
+          <li :class="['relative cursor-default select-none py-2 pl-3 pr-9', active ? 'bg-mpao-lightblue text-white' : 'text-slate-900']">
+            <span :class="['block truncate', selected && 'font-semibold']">
+              {{ item.name }}
+            </span>
+
+            <span v-if="selected" :class="['absolute inset-y-0 right-0 flex items-center pr-4', active ? 'text-white' : 'text-mpao-lightblue']">
+              <CheckIcon class="h-5 w-5" aria-hidden="true" />
+            </span>
+          </li>
+        </ComboboxOption>
+      </ComboboxOptions>
+    </div>
+  </Combobox>
 </template>
 
 <script>
@@ -49,79 +30,62 @@ export default {
 };
 </script>
 <script setup>
-import { InformationCircleIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import {
+  Combobox,
+  ComboboxButton,
+  ComboboxInput,
+  ComboboxLabel,
+  ComboboxOption,
+  ComboboxOptions,
+} from '@headlessui/vue'
 
-let selectedValue = ref('Hello')
-
-function setSelectedValue(val) {
-  console.log('aaa', val)
-  this.selectedValue.value = val
-}
-
-defineProps({
+const props = defineProps({
+  /**
+   * Model value
+   */
+   modelValue: {
+    type: [String, Number],
+    default: "",
+  },
     /**
-     * Model value
+     * Pre selected value if any
      */
-    modelValue: {
-      type: [String, Number],
-      default: "",
-    },
-    /**
-     * Input label text
-     */
-     label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Input id text
-     */
-    id: {
-      type: String,
-      default: "",
-    },
-    /**
-     * A tool tip, helper information
-     */
-    info: {
-        type: String,
-        default: null
-    },
-    /**
-     * Tip, description, information for the input
-     */
-    message: {
-      type: String,
+     preSelected: {
+      type: Object,
       default: null,
     },
     /**
-     * Error message
+     * Label text
      */
-    errorMessage: {
-      type: String,
-      default: null,
-    },
-    /**
-     * True or false if required
-     */
-    required: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * True or false if disabled
-     */
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * True or false if required
-     */
-    placeholder: {
+    label: {
         type: String,
-        default: null
+        default: "",
+    },
+    /**
+     * List of options
+     */
+    list: {
+        type: Array,
+        default: null,
     },
 });
+
+const query = ref('')
+const selectedItem = ref(props.preSelected)
+
+const filteredItems = computed(() =>
+  query.value === ''
+    ? props.list
+    : props.list.filter((item) => {
+        return item.name.toLowerCase().includes(query.value.toLowerCase())
+      })
+)
+
+const emit = defineEmits(['selected', 'unSelected'])
+
+watch(selectedItem, () => {
+  emit('update:modelValue', selectedItem.value)
+})
 </script>
