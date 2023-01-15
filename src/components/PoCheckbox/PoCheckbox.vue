@@ -12,12 +12,12 @@
             v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.checked)"
             type="checkbox"
-            class="h-4 w-4 rounded border-gray-300 text-mpao-lightblue focus:ring-mpao-lightblue"
+            class="h-4 w-4 rounded border-slate-300 text-mpao-lightblue focus:ring-mpao-lightblue"
         />
       </div>
       <div class="ml-3 text-sm">
-        <label :for="id" class="font-medium text-gray-700">{{ label }}</label>
-        <span v-if="message" :id="`${id}-description`" class="text-gray-500"><span class="sr-only">{{ label }} </span> {{ message }}</span>
+        <label :for="id" class="font-medium text-slate-600 cursor-pointer select-none">{{ label }}</label>
+        <span v-if="message" :id="`${id}-description`" class="text-slate-400 cursor-default"><span class="sr-only">{{ label }} </span> {{ message }}</span>
       </div>
       <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
     </div>
