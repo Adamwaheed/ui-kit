@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <label for="profile-toggle" class="select-none rounded-full w-10 h-10 bg-[#2e5266] flex items-center justify-center genie-effect" role="button">
+        <label for="profile-toggle" class="select-none rounded-full w-10 h-10 bg-[#2e5266] flex items-center justify-center genie-effect z-50" role="button">
             <span class="text-xs text-white font-semibold">{{ profileSwitcherData.currProfileLabel }}</span>
         </label>
         <input type="checkbox" name="" class="hidden peer/profile" role="none" id="profile-toggle">

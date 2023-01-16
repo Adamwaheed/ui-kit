@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <label for="notifications-menu-toggle" class="block w-6 text-slate-100 genie-effect relative" role="button">
+        <label for="notifications-menu-toggle" class="block w-6 text-slate-100 genie-effect relative z-50" role="button">
             <span v-if="hasNewNotifications" class="absolute right-0 w-3 h-3 bg-mpao-orange rounded-full border-2 border-mpao-blue"></span>
             <BellIcon class="stroke-current" />
         </label>

@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <label for="apps-menu-toggle" class="block w-6 text-slate-100 genie-effect" role="button">
+        <label for="apps-menu-toggle" class="block w-6 text-slate-100 genie-effect z-50" role="button">
             <Squares2X2Icon />
         </label>
         <input type="checkbox" name="" class="hidden peer/apps" role="none" id="apps-menu-toggle">
