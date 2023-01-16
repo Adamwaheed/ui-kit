@@ -38,7 +38,7 @@
           >
           <MagnifyingGlassIcon class="stroke-current" />
           </span>
-          <PoNotificationHub :notifications="notifications" />
+          <PoNotificationHub :notifications="notifications" :has-new-notifications="hasNewNotifications" />
           <PoAppTray :app-list="appList" />
           <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" />
         </div>
@@ -95,6 +95,13 @@ defineProps({
   notifications: {
     type: Array,
     default: null,
+  },
+  /**
+   * Toggle new notification indicator
+   */
+  hasNewNotifications: {
+    type: Boolean,
+    default: false
   },
   /**
    * Profile switcher object
