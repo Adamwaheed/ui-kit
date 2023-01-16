@@ -16,17 +16,21 @@
       </template>
     </PoTopBar>
   </div>
+
+  
   <div class="h-full max-w-full">
     <PoSidebarDrawer :content="sidebarContent" />
     <main class="shell-content">
       <PoActionBar
-        :items="actionBarItems"
-        :show-back-button="true"
-        @button-click="handleActionBarClick"
+      :items="actionBarItems"
+      :show-back-button="true"
+      @button-click="handleActionBarClick"
       />
-
-        <div class="mt-10 px-6 lg:px-8 pb-10">
-          <PoPageTitle label="Searching" />
+      
+      <div class="mt-10 px-6 lg:px-8 pb-10">
+          <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
+          <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
+          <PoPageTitle class="mt-5" label="Searching" />
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
               Searching {{searchQuery}}<br />
@@ -122,6 +126,7 @@ import {
   PoToggle,
   PoCheckbox,
   PoFooter,
+  PoFormStatusMessage,
 } from "./components";
 import { ref } from "vue";
 
