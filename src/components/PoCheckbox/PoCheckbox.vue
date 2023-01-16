@@ -17,7 +17,7 @@
       </div>
       <div class="ml-3 text-sm">
         <label :for="id" class="font-medium text-slate-600 cursor-pointer select-none">{{ label }}</label>
-        <span v-if="message" :id="`${id}-description`" class="text-slate-400 cursor-default"><span class="sr-only">{{ label }} </span> {{ message }}</span>
+        <span v-if="message" :id="`${id}-description`" class="text-slate-500 cursor-default"><span class="sr-only">{{ label }} </span> {{ message }}</span>
       </div>
       <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
     </div>
