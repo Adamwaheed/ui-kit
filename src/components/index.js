@@ -32,3 +32,4 @@ export { default as PoSectionMenu } from "./PoSectionMenu/PoSectionMenu.vue";
 export { default as PoCheckbox } from "./PoCheckbox/PoCheckbox.vue";
 export { default as PoTextarea } from "./PoTextarea/PoTextarea.vue";
 export { default as PoFooter } from "./PoFooter/PoFooter.vue";
+export { default as PoFormStatusMessage } from "./PoFormStatusMessage/PoFormStatusMessage.vue";
