@@ -7,7 +7,7 @@ export default create({
   
     // UI
     appBg: '#282f53',
-    appContentBg: '#f1f5f9',
+    appContentBg: '#343e6c',
     appBorderColor: '#94a3b8',
     appBorderRadius: 4,
   
@@ -25,9 +25,9 @@ export default create({
     barBg: '#282f53',
   
     // Form colors
-    inputBg: 'white',
-    inputBorder: 'gray',
-    inputTextColor: 'black',
+    inputBg: '#576195',
+    inputBorder: '#818fcc',
+    inputTextColor: '#f1f5f9',
     inputBorderRadius: 4,
 
     base: 'light',

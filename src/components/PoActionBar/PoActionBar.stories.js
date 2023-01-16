@@ -19,9 +19,9 @@ export default {
       }
     },
     backgrounds: {
-      default: 'gray',
+      default: 'mpao',
       values: [
-        { name: 'gray', value: '#f8fafc' },
+        { name: 'mpao', value: '#282f53' },
       ],
     },
   },
