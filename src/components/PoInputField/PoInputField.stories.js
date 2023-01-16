@@ -82,7 +82,7 @@ ErrorState.args = {
   id: 'fullname3-id',
   type: 'text',
   errorMessage: 'Fullname is required.',
-  required: true
+  hasError: true
 
 };
 

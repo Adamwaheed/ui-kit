@@ -64,9 +64,13 @@
           <div class="grid grid-cols-2 gap-5">
             <PoCard class="mt-5 p-5">
               <template v-slot:content>
-                <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
+                <div class="space-y-5">
+                  <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
+                  
+                  <p>{{ inputModel }}</p>
   
-                <p>{{ inputModel }}</p>
+                  <PoInputField label="Input Error" id="input-id2" :has-error="true" type="text" error-message="Hello error" />
+                </div>
               </template>
             </PoCard>
             <PoCard class="mt-5 p-5">
