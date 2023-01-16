@@ -16,13 +16,6 @@
             </ul>
 
         </div>
-        <div class="absolute bottom-0 left-0 right-0 z-10 p-5 pb-3">
-            <img class="h-10" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo">
-            <div class="grid grid-cols-2 gap-2 mt-5">
-                <img class="" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt="">
-                <img class="" src="https://pension.gov.mv/asset/image/en-ccc-2020-issa.png" alt="">
-            </div>
-        </div>
     </aside>
 </template>
 

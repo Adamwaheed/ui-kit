@@ -94,6 +94,8 @@
             </template>
           </PoCard>
         </div>
+
+        <PoFooter />
     </main>
   </div>
 </template>
@@ -115,6 +117,7 @@ import {
   PoModal,
   PoToggle,
   PoCheckbox,
+  PoFooter,
 } from "./components";
 import { ref } from "vue";
 
