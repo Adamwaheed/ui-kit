@@ -2,6 +2,8 @@
 
 import PoActionBar from './PoActionBar.vue';
 
+import { PlusIcon, BeakerIcon } from '@heroicons/vue/24/outline';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -42,11 +44,11 @@ ActionBar.args = {
   items: [
     {
       label: 'New Staff',
-      icon: 'PlusIcon'
+      icon: PlusIcon
     },
     {
       label: 'Experiment',
-      icon: 'BeakerIcon'
+      icon: BeakerIcon
     }
   ],
   showBackButton: true

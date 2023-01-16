@@ -22,6 +22,5 @@ defineProps({
         type: String,
         default: ""
     },
-    striped: false,
 });
 </script>

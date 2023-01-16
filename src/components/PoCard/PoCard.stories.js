@@ -28,7 +28,12 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoCard },
-  template: '<PoCard class="p-5"><template v-slot:content>Bliss</template></PoCard>',
+  template: '<PoCard class="p-5 space-y-5"><template v-slot:content><span class="block text-sm text-slate-600">Content</span></template></PoCard>',
 });
 
-export const Card = Template.bind();
+export const Basic = Template.bind();
+export const WithTitle = Template.bind();
+
+WithTitle.args = {
+  title: 'Card title'
+};
