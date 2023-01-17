@@ -1,6 +1,6 @@
 # Action bar component
 
-import { Story, ArgsTable, Description, Source } from "@storybook/addon-docs";
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
 
 import PoButton from './PoButton.vue';
 
@@ -8,15 +8,15 @@ import dedent from 'ts-dedent';
 
 <Description of={PoButton} />
 
-
-<div className="flex space-x-3 items-center">
-<Story id="components-button--button" />
-<Story id="components-button--small" />
-<Story id="components-button--medium" />
-<Story id="components-button--large" />
-<Story id="components-button--color-change" />
-</div>
-
+<Canvas withToolbar>
+    <div className="flex space-x-3 items-center">
+    <Story id="components-button--button" />
+    <Story id="components-button--small" />
+    <Story id="components-button--medium" />
+    <Story id="components-button--large" />
+    <Story id="components-button--color-change" />
+    </div>
+</Canvas>
 
 <Source
   language='js'
