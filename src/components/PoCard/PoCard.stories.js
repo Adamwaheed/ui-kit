@@ -2,6 +2,8 @@
 
 import PoCard from './PoCard.vue';
 
+import PoCardDocs from './PoCardDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoCard,
   parameters: {
     docs: {
+      page: PoCardDocs,
       description: {
           component: 'This is the wrapper for every card. It adds basic style of the card and leaves out padding and margins.'
       }
