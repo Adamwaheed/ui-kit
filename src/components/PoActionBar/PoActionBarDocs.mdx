@@ -1,6 +1,6 @@
 # Action bar component
 
-import { Story, ArgsTable, Description, Source } from "@storybook/addon-docs";
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
 
 import PoActionBar from './PoActionBar.vue';
 
@@ -8,9 +8,9 @@ import dedent from 'ts-dedent';
 
 <Description of={PoActionBar} />
 
-
-<Story id="shell-action-bar--action-bar" />
-
+<Canvas withToolbar>
+  <Story id="shell-action-bar--action-bar" />
+</Canvas>
 
 <Source
   language='js'
