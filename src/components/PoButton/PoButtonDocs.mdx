@@ -1,0 +1,38 @@
+# Action bar component
+
+import { Story, ArgsTable, Description, Source } from "@storybook/addon-docs";
+
+import PoButton from './PoButton.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoButton} />
+
+
+<div className="flex space-x-3 items-center">
+<Story id="components-button--button" />
+<Story id="components-button--small" />
+<Story id="components-button--medium" />
+<Story id="components-button--large" />
+<Story id="components-button--color-change" />
+</div>
+
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoButton type="button" label="Button" />
+    <PoButton type="submit" label="Submit" />
+    <PoButton type="link" label="Link" to="/home" />
+    <PoButton type="button" label="Button Disabled" :disabled="true" />
+    <PoButton type="submit" label="Submit Disabled" :disabled="true" />
+    <PoButton type="button" label="Button" :override-colors="true" size="sm" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
+    <PoButton type="button" label="Button" :override-colors="true" size="lg" class="bg-rose-600 hover:bg-rose-700 text-white" />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoButton} />

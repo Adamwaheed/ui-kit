@@ -2,6 +2,8 @@
 
 import PoButton from './PoButton.vue';
 
+import PoButtonDocs from './PoButtonDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoButton,
   parameters: {
     docs: {
+      page: PoButtonDocs,
       description: {
           component: 'Button component. Button styles like padding and background color can be overitten by giving it tailwind utility classes.'
       }
@@ -70,7 +73,8 @@ Medium.args = {
     /* 👇 The args you need here will depend on your component */
     label: "Medium",
     type: "button",
-    size: "md"
+    size: "md",
+    disabled: "disabled"
 };
 
 Large.args = {
