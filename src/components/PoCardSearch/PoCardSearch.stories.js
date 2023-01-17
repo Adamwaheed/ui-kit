@@ -3,6 +3,8 @@
 import PoCard from '../PoCard/PoCard.vue';
 import PoCardSearch from './PoCardSearch.vue';
 
+import PoCardSearchDocs from './PoCardSearchDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -13,6 +15,7 @@ export default {
   component: PoCardSearch,
   parameters: {
     docs: {
+      page: PoCardSearchDocs,
       description: {
           component: 'Search bar displayed at the top of a card.'
       }
@@ -32,4 +35,4 @@ const Template = (args) => ({
   template: '<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" /><div class="p-5">Bliss</div></template></PoCard>',
 });
 
-export const Search = Template.bind();
+export const CardSearch = Template.bind();

@@ -1,0 +1,31 @@
+# Card Search component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoCardSearch from './PoCardSearch.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoCardSearch} />
+
+<Canvas withToolbar>
+    <Story id="components-card-search--card-search" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoCard class="mt-5">
+        <template v-slot:content>
+            <PoCardSearch placeholder="Search card.." v-model="searchQuery" />
+            ...
+        </template>
+    </PoCard>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoCardSearch} />
