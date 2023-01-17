@@ -1,6 +1,6 @@
 <template>
     <RadioGroup v-model="selectedOption">
-        <RadioGroupLabel class="text-sm font-medium flex items-center space-x-1 text-slate-700">Select a mailing list</RadioGroupLabel>
+        <RadioGroupLabel class="text-sm font-medium flex items-center space-x-1 text-slate-700">{{ label }}</RadioGroupLabel>
 
         <div v-if="null !== options" class="mt-1 flex space-x-3">
         <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option" v-slot="{ checked, active }">
