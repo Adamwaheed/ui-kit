@@ -42,6 +42,11 @@
               <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
               {{ checkboxState }}
               <br />
+              <div class="mt-5 grid grid-cols-2 gap-5">
+                <PoInputField label="Input" id="input-idssss" type="text" />
+                <PoRadioInput :options="radioOptions" :pre-selected="radioOptionSelected" v-model="radioOptionSelected" />
+                {{ radioOptionSelected }}
+              </div>
               
             </template>
           </PoCard>
@@ -127,6 +132,7 @@ import {
   PoCheckbox,
   PoFooter,
   PoFormStatusMessage,
+  PoRadioInput,
 } from "./components";
 import { ref } from "vue";
 
@@ -326,5 +332,16 @@ const selectFieldList = [
 
 const selectFieldPreSelected = ref(selectFieldList[1]);
 const selectFieldSelected = ref(null);
+
+const radioOptions = [
+  {
+    id: 1, title: 'Option one'
+  },
+  {
+    id: 2, title: 'Option two'
+  },
+];
+
+const radioOptionSelected = ref(radioOptions[0]);
 
 </script>
