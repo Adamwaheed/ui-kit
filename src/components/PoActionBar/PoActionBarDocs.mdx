@@ -1,0 +1,63 @@
+# Action bar component
+
+import { Story, ArgsTable, Description, Source } from "@storybook/addon-docs";
+
+import PoActionBar from './PoActionBar.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoActionBar} />
+
+
+<Story id="shell-action-bar--action-bar" />
+
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoActionBar
+        :items="actionBarItems"
+        :show-back-button="true"
+        @button-click="handleActionBarClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoActionBar} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+    let actionBarItems = [
+        {
+            label: "New Staff",
+            icon: PlusIcon,
+        },
+        {
+            label: "Experiment",
+            icon: BeakerIcon,
+        },
+    ];
+    function handleActionBarClick(item) {
+        switch (item) {
+            case "New Staff":
+                router.push('/staff/create');
+                break;
+            case "Experiment":
+                console.log("exp");
+                break;
+            case "back":
+                router.go(-1);
+                break;
+        }
+    }
+  `}
+/>

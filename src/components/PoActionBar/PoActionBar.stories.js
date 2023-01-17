@@ -4,6 +4,8 @@ import PoActionBar from './PoActionBar.vue';
 
 import { PlusIcon, BeakerIcon } from '@heroicons/vue/24/outline';
 
+import PoActionBarDocs from './PoActionBarDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -14,6 +16,7 @@ export default {
   component: PoActionBar,
   parameters: {
     docs: {
+      page: PoActionBarDocs,
       description: {
         component: 'Action bar component PoActionBar is used on views that require action other than form submissions. It emits actions performed on the buttons.'
       }
