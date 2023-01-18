@@ -73,6 +73,6 @@ const buttonSize = computed(() => {
     }
 });
 const buttonColor = computed(() => {
-    return props.overrideColors ? '' : 'bg-slate-600 hover:bg-mpao-lightblue focus:bg-mpao-lightblue text-slate-50';
+    return props.overrideColors ? '' : 'bg-mpao-lightblue hover:bg-mpao-blue focus:bg-mpao-blue text-slate-50';
 });
 </script>
