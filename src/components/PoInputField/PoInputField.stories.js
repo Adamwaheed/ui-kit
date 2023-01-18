@@ -1,7 +1,8 @@
 // YourComponent.stories.js
 
 import PoInputField from './PoInputField.vue';
-import PoCard from '../PoCard/PoCard.vue';
+
+import PoInputFieldDocs from './PoInputFieldDocs.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -13,6 +14,7 @@ export default {
   component: PoInputField,
   parameters: {
     docs: {
+      page: PoInputFieldDocs,
       description: {
         component: 'Form input field.'
       }
@@ -28,12 +30,12 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-  components: { PoInputField, PoCard },
+  components: { PoInputField },
   setup() {
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '<PoCard class="mt-5 p-5 max-w-md"> <template v-slot:content><PoInputField v-bind="args" /></template></PoCard>',
+  template: '<PoInputField v-bind="args" />',
 });
 
 export const Normal = Template.bind({});
@@ -61,7 +63,7 @@ WithInfoTooltip.args = {
 
 WithMessage.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Fullname",
+  label: "Street name",
   id: 'fullname2-id',
   type: 'text',
   message: 'Fullname with middle name.'
@@ -70,27 +72,27 @@ WithMessage.args = {
 
 WithPlaceholder.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Fullname",
+  label: "Phone number",
   id: 'fullname2-id',
-  type: 'text',
+  type: 'tel',
   placeholder: 'Fullname'
 };
 
 ErrorState.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Fullname",
+  label: "Email address",
   id: 'fullname3-id',
-  type: 'text',
-  errorMessage: 'Fullname is required.',
+  type: 'email',
+  errorMessage: 'Email address is required.',
   hasError: true
 
 };
 
 DisabledState.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Fullname",
+  label: "Password",
   id: 'fullname5-id',
-  type: 'text',
+  type: 'password',
   disabled: true
 
 };

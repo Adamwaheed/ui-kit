@@ -1,0 +1,119 @@
+# Form status component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoInputField from './PoInputField.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoInputField} />
+
+<Canvas withToolbar>
+<div class="grid grid-cols-2 gap-5 bg-white p-5 rounded-md shadow-md">
+    <Story inline={true} id="form-input-field--normal" />
+    <Story inline={true} id="form-input-field--with-info-tooltip" />
+    <Story inline={true} id="form-input-field--with-message" />
+    <Story inline={true} id="form-input-field--with-placeholder" />
+    <Story inline={true} id="form-input-field--error-state" />
+    <Story inline={true} id="form-input-field--disabled-state" />
+</div>
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+        info="Name of the person"
+        message="Write your name including middle names"
+        error-message="Fullname is required"
+        placeholder="Fullname..."
+        :has-error="false"
+        :required="false"
+        :disabled="false"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoInputField} />
+
+### Normal (base)
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+    />
+  `}
+/>
+
+### With message
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+        message="Write your name including middle names"
+    />
+  `}
+/>
+
+### Has Error
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+        error-message="Fullname is required"
+        :has-error="true"
+    />
+  `}
+/>
+
+### With Info tooltip
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+        info="Name of the person"
+    />
+  `}
+/>
+
+### Disabled
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Fullname"
+        type="text"
+        id="form-fullname"
+        :disabled="true"
+    />
+  `}
+/>
