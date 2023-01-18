@@ -1,0 +1,56 @@
+import { Meta, ColorPalette, ColorItem, Source } from '@storybook/addon-docs';
+
+import dedent from 'ts-dedent';
+
+<Meta title="UI Colors" />
+
+# Colors
+
+These Pension Office brand colors are used in addition to the default colors available in tailwind. These are Pension Office brand colors.
+
+<ColorPalette>
+  <ColorItem
+    title="Pension Blue"
+    subtitle="Primary"
+    colors={{ mpaoBlue: '#282f53', mpaoLightblue: '#3f54c0' }}
+  />
+<ColorItem 
+    title="Pension Orange" 
+    subtitle="Secondary (Highlight)" 
+    colors={{ mpaoOrange: '#ec6d25' }} 
+  />
+</ColorPalette>
+
+### Usage example
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <div class="border border-mpao-lightblue ..">
+        <p class="text-mpao-blue">...</p>
+    </div>
+  `}
+/>
+
+### Don't use gray colors from tailwind
+
+Instead of using **grays** as blacks, we use **slate** for text, borders, backgrounds, etc.
+
+<ColorPalette>
+  <ColorItem
+    title="[]-slate-50"
+    subtitle="Slate is the New Black"
+    colors={{
+        50: '#f8fffc',
+        100: '#f1f5f9',
+        200: '#e2e8f0',
+        300: '#cbd5e1',
+        400: '#94a3b8',
+        500: '#64748b',
+        600: '#475569',
+        700: '#334155',
+    }}
+  />
+
+</ColorPalette>
