@@ -75,7 +75,6 @@ WithPlaceholder.args = {
   label: "Phone number",
   id: 'fullname2-id',
   type: 'tel',
-  placeholder: 'Fullname'
 };
 
 ErrorState.args = {
@@ -84,6 +83,7 @@ ErrorState.args = {
   id: 'fullname3-id',
   type: 'email',
   errorMessage: 'Email address is required.',
+  placeholder: 'doe@example.com',
   hasError: true
 
 };
