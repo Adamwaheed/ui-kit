@@ -1,0 +1,47 @@
+# Radio input component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoRadioInput from './PoRadioInput.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoRadioInput} />
+
+<Canvas withToolbar>
+    <Story id="form-radio--radio" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoRadioInput
+        :options="radioOptions"
+        :pre-selected="radioOptionSelected"
+        v-model="radioOptionSelected"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoRadioInput} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const radioOptions = [
+        {
+            id: 1, title: 'Option one'
+        },
+        {
+            id: 2, title: 'Option two'
+        },
+    ];
+    const radioOptionSelected = ref(radioOptions[0]);
+  `}
+/>
