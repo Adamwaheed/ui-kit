@@ -2,6 +2,8 @@
 
 import PoFormStatusMessage from './PoFormStatusMessage.vue';
 
+import PoFormStatusMessageDocs from './PoFormStatusMessageDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoFormStatusMessage,
   parameters: {
     docs: {
+      page: PoFormStatusMessageDocs,
       description: {
           component: 'Display form errors and success using this component'
       }
@@ -31,8 +34,8 @@ const Template = (args) => ({
   template: '<PoFormStatusMessage v-bind="args" />',
 });
 
-export const Error = Template.bind();
 export const Success = Template.bind();
+export const Error = Template.bind();
 
 Error.args = {
     /* 👇 The args you need here will depend on your component */
