@@ -1,0 +1,32 @@
+# Checkbox component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoCheckbox from './PoCheckbox.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoCheckbox} />
+
+<Canvas withToolbar>
+    <Story id="components-checkbox--basic" />
+    <Story id="components-checkbox--with-message" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoCheckbox
+        v-model="checkboxState"
+        label="Check me"
+        id="checkbox-one"
+        message="A short descriptive message"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoCheckbox} />
