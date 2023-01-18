@@ -72,18 +72,18 @@ WithMessage.args = {
 
 WithPlaceholder.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Phone number",
+  label: "Email address",
   id: 'fullname2-id',
+  placeholder: 'doe@example.com',
   type: 'tel',
 };
 
 ErrorState.args = {
   /* 👇 The args you need here will depend on your component */
-  label: "Email address",
+  label: "Phone number",
   id: 'fullname3-id',
   type: 'email',
   errorMessage: 'Email address is required.',
-  placeholder: 'doe@example.com',
   hasError: true
 
 };
