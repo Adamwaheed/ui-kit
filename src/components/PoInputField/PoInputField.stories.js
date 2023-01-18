@@ -9,7 +9,7 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Input Field',
+  title: 'Form/Input Field',
   component: PoInputField,
   parameters: {
     docs: {

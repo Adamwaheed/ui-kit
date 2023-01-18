@@ -10,7 +10,7 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Checkbox',
+  title: 'Form/Checkbox',
   component: PoCheckbox,
   parameters: {
     docs: {
