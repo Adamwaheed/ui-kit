@@ -3,6 +3,8 @@
 import PoDescriptionList from './PoDescriptionList.vue';
 import PoCard from '../PoCard/PoCard.vue';
 
+import PoDescriptionListDocs from './PoDescriptionListDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -13,6 +15,7 @@ export default {
   component: PoDescriptionList,
   parameters: {
     docs: {
+      page: PoDescriptionListDocs,
       description: {
         component: 'Description list component is useful when displaying content in an easy to read way.'
       }
@@ -44,17 +47,17 @@ List.args = {
   /* 👇 The args you need here will depend on your component */
   items: [
     {
-      title: 'Full name',
-      description: 'Saleem Ahmed Doe',
-      action: ''
+      title: "Full name",
+      description: "Saleem Ahmed Doe",
     },
     {
-      title: 'Address',
-      description: 'House of Sal, Medhu St, Malé'
+        title: "Address",
+        description: "House of Sal, Medhu St, Malé",
     },
     {
-      title: 'Dob',
-      description: '1972-02-05'
+        title: "Dob",
+        description: "1972-02-05",
+        action: "Update",
     }
     ]
 };

@@ -1,0 +1,60 @@
+# Description List component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoDescriptionList from './PoDescriptionList.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoDescriptionList} />
+
+<Canvas withToolbar>
+    <Story id="components-description-list--list" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoDescriptionList
+        :items="descriptionListItems"
+        :striped="true"
+        @button-click="handleDescriptionListActionClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoDescriptionList} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let descriptionListItems = [
+        {
+            title: "Full name",
+            description: "Saleem Ahmed Doe",
+        },
+        {
+            title: "Address",
+            description: "House of Sal, Medhu St, Malé",
+        },
+        {
+            title: "Dob",
+            description: "1972-02-05",
+            action: "Update",
+        },
+    ];
+    function handleDescriptionListActionClick(item) {
+        switch (item) {
+            case "Update":
+            alert("Update action was clicked");
+            break;
+        }
+    }
+  `}
+/>
