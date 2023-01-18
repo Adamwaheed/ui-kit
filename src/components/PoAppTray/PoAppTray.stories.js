@@ -2,6 +2,8 @@
 
 import PoAppTray from './PoAppTray.vue';
 
+import PoAppTrayDocs from './PoAppTrayDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoAppTray,
   parameters: {
     docs: {
+        page: PoAppTrayDocs,
         description: {
             component: 'This component lives inside PoTopBar component. You can populate it by passing data through PoTopBar component from the main App view.'
         }

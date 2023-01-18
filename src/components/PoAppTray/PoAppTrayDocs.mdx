@@ -1,0 +1,60 @@
+# Action bar component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoAppTray from './PoAppTray.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoAppTray} />
+
+You will not be directly using `<PoAppTray />` component. It is a child component that comes with `<PoTopBar />` component.
+
+<Story inline={false} id="shell-app-tray--app-tray" />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoAppTray :app-list="appList" />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoAppTray} />
+
+
+Populating App Tray through Top bar.
+
+<Source
+  language='vue'
+  dark
+  format={true}
+  code={dedent`
+    <PoTopBar
+      :app-list="allApps"
+    >
+  `}
+/>
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let allApps = [
+        {
+            groupName: "",
+            apps: [
+                {
+                    name: "App name",
+                    url: "https://firstapp.example.com",
+                    icon: "https://doodleipsum.com/50x50/abstract?bg=3D27F6&i=cb0515299c600124805d923f3619c1ad",
+                },
+                ...
+            ],
+        },
+    ];
+  `}
+/>
