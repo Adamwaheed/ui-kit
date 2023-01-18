@@ -25,6 +25,32 @@ import dedent from 'ts-dedent';
   `}
 />
 
+### Adding content via slot
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoDescriptionList>
+      <template v-slot:content>
+        <div>
+          <dt>Title</dt>
+          <dd>Description</dd>
+        </div>
+        <div>
+          <dt>Title 2</dt>
+          <dd>Description 2</dd>
+        </div>
+        <div>
+          <dt>Title 3</dt>
+          <dd>Description 3</dd>
+        </div>
+      </template>
+    </PoDescriptionList>
+  `}
+/>
+
 ### Explanation
 
 <ArgsTable of={PoDescriptionList} />

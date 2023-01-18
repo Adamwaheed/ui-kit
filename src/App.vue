@@ -65,9 +65,28 @@
               </PoTable>
             </template>
           </PoCard>
-          <PoCard class="mt-5 p-5">
+          <PoCard class="mt-5 p-5" title="Description list">
             <template v-slot:content>
+              <PoDescriptionList :items="descriptionListItems" />
+              <span class="text-sm text-slate-600 block my-10 font-bold">Striped</span>
               <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
+              <span class="text-sm text-slate-600 block my-10 font-bold">Slot</span>
+              <PoDescriptionList>
+                <template v-slot:content>
+                  <div>
+                    <dt>Title</dt>
+                    <dd>Description</dd>
+                  </div>
+                  <div>
+                    <dt>Title 2</dt>
+                    <dd>Description 2</dd>
+                  </div>
+                  <div>
+                    <dt>Title 3</dt>
+                    <dd>Description 3</dd>
+                  </div>
+                </template>
+              </PoDescriptionList>
             </template>
           </PoCard>
           <div class="grid grid-cols-2 gap-5">
