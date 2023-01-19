@@ -28,6 +28,7 @@
       />
       
       <div class="mt-10 px-6 lg:px-8 pb-10">
+          <PoStatsBlock :items="statsBlockItems" />
           <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
           <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
           <PoPageTitle class="mt-5" label="Searching" />
@@ -152,10 +153,11 @@ import {
   PoFooter,
   PoFormStatusMessage,
   PoRadioInput,
+  PoStatsBlock,
 } from "./components";
 import { ref } from "vue";
 
-import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon } from "@heroicons/vue/24/outline";
+import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon, SparklesIcon, FunnelIcon, BanknotesIcon } from "@heroicons/vue/24/outline";
 
 let searchQuery = ref("");
 let toggleState = ref(false);
@@ -362,5 +364,29 @@ const radioOptions = [
 ];
 
 const radioOptionSelected = ref(radioOptions[0]);
+
+const statsBlockItems = [
+    {
+        label: 'Number of Maturities',
+        value: '20',
+        bgColor: 'bg-orange-50',
+        iconColor: 'text-orange-700',
+        icon: SparklesIcon
+    },
+    {
+        label: 'Principal Frequency',
+        value: 'Semi-Annual',
+        bgColor: 'bg-sky-50',
+        iconColor: 'text-sky-700',
+        icon: FunnelIcon
+    },
+    {
+        label: 'Purchase Value',
+        value: '80,000,000.00',
+        bgColor: 'bg-green-50',
+        iconColor: 'text-green-700',
+        icon: BanknotesIcon
+    },
+];
 
 </script>
