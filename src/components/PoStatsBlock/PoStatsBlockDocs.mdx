@@ -1,0 +1,57 @@
+# Stats block component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoStatsBlock from './PoStatsBlock.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoStatsBlock} />
+
+<Canvas withToolbar>
+  <Story id="components-stats-block--stats-block" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoStatsBlock :items="statsBlockItems" />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoStatsBlock} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const statsBlockItems = [
+        {
+            label: 'Number of Maturities',
+            value: '20',
+            bgColor: 'bg-orange-50',
+            iconColor: 'text-orange-700',
+            icon: SparklesIcon
+        },
+        {
+            label: 'Principal Frequency',
+            value: 'Semi-Annual',
+            bgColor: 'bg-sky-50',
+            iconColor: 'text-sky-700',
+            icon: FunnelIcon
+        },
+        {
+            label: 'Purchase Value',
+            value: '80,000,000.00',
+            bgColor: 'bg-green-50',
+            iconColor: 'text-green-700',
+            icon: BanknotesIcon
+        },
+    ];
+  `}
+/>
