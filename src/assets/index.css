@@ -3,4 +3,5 @@
 @import "./shell.css";
 @import "./util.css";
 @import "./table.css";
+@import "./po-description-list.css";
 @import "tailwindcss/utilities";

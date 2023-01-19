@@ -19,21 +19,6 @@
     </dl>
 </template>
 
-<style>
-    .po-description-list div {
-        @apply grid grid-cols-1 sm:grid-cols-3 sm:gap-5 py-3
-    }
-    .po-description-list.striped div {
-        @apply even:bg-slate-50 px-2
-    }
-    .po-description-list dt {
-        @apply text-sm text-slate-500 col-span-1
-    }
-    .po-description-list dd {
-        @apply text-sm text-slate-700 col-span-2 flex
-    }
-</style>
-
 <script>
 export default {
   name: "PoDescriptionList",
