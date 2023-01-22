@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center space-x-1">
         <h1 class="text-xl font-semibold text-slate-800 grow">{{ label }}</h1>
-        <button v-if="showFilter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="[' p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out', { 'text-mpao-orange' : filterOn }, { 'text-slate-600' : !filterOn }]">
+        <button v-if="showFilter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="[' p-2 rounded-md hover:bg-slate-200 transition-colors duration-75 ease-in-out', { 'text-mpao-orange hover:text-mpao-orange' : filterOn }, { 'text-slate-600 hover:text-mpao-blue' : !filterOn }]">
             <FunnelIcon class="w-4 stroke-current" />
         </button>
         <button v-if="showPrint" @click="$emit('button-click', 'print')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
