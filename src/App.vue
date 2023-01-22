@@ -64,6 +64,9 @@
                   <td data-title="dod">{{ dod }}</td>
                 </template>
               </PoTable>
+              <div class="p-5">
+                <PoPagination :pagination="pagination" />
+              </div>
             </template>
           </PoCard>
           <PoCard class="mt-5 p-5" title="Description list">
@@ -154,6 +157,7 @@ import {
   PoFormStatusMessage,
   PoRadioInput,
   PoStatsBlock,
+  PoPagination,
 } from "./components";
 import { ref } from "vue";
 

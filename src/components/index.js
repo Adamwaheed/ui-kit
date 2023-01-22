@@ -20,6 +20,7 @@ export { default as PoActionBar } from "./PoActionBar/PoActionBar.vue";
 export { default as PoCard } from "./PoCard/PoCard.vue";
 export { default as PoCardSearch } from "./PoCardSearch/PoCardSearch.vue";
 export { default as PoPageTitle } from "./PoPageTitle/PoPageTitle.vue";
+export { default as PoPagination } from "./PoPagination/PoPagination.vue";
 export { default as PoTable } from "./PoTable/PoTable.vue";
 export { default as PoDescriptionList } from "./PoDescriptionList/PoDescriptionList.vue";
 export { default as PoInputField } from "./PoInputField/PoInputField.vue";
