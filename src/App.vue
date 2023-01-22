@@ -31,7 +31,7 @@
           <PoStatsBlock :items="statsBlockItems" />
           <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
           <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
-          <PoPageTitle class="mt-5" label="Searching" />
+          <PoPageTitle class="mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-print="true" :pagination="pagination" />
           <PoCard class="mt-5 p-5">
             <template v-slot:content>
               Searching {{searchQuery}}<br />
@@ -388,5 +388,11 @@ const statsBlockItems = [
         icon: BanknotesIcon
     },
 ];
+
+let pagination = {
+  label: 'Page 2 of 20',
+  nextLink: '/users/1',
+  prevLink: '/users/3',
+}
 
 </script>

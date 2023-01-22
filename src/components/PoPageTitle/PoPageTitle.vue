@@ -1,23 +1,27 @@
 <template>
-    <div class="flex items-center">
+    <div class="flex items-center space-x-1">
         <h1 class="text-xl font-semibold text-slate-800 grow">{{ label }}</h1>
+        <a v-if="showFilter" href="pagination.prevLink" @click="$emit('button-click', 'filter')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+            <FunnelIcon class="w-4 stroke-current" />
+        </a>
+        <a v-if="showPrint" href="#" @click="$emit('button-click', 'print')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+            <PrinterIcon class="w-4 stroke-current" />
+        </a>
+        <span v-if="showFilter || showPrint" class="border-l border-slate-400 h-3 w-3">&nbsp;</span>
         <div v-if="showPagination" class="flex items-center">
             <span class="text-xs font-normal text-slate-500 pr-2">{{ pagination.label }}</span>
             <!--
-                Emits 'next' or 'prev' when nav buttons are clicked
+                Emits 'next' or 'prev' when nav buttons are clicked, Emits 'print' when print btn is clicked and 'filter' when filter btn is clicked
                 @event button-click
             -->
             <a :href="pagination.nextLink" @click="$emit('button-click', 'next')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-                <svg class="w-4 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
+                <ChevronLeftIcon class="w-4 stroke-current" />
             </a>
             <a :href="pagination.prevLink" @click="$emit('button-click', 'prev')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-                <svg class="w-4 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
+                <ChevronRightIcon class="w-4 stroke-current" />
             </a>
         </div>
+        
     </div>
 </template>
 
@@ -27,6 +31,8 @@ export default {
 };
 </script>
 <script setup>
+import { ChevronLeftIcon, ChevronRightIcon, FunnelIcon, PrinterIcon } from '@heroicons/vue/24/outline';
+
 defineProps({
     /**
      * Page title
@@ -39,6 +45,20 @@ defineProps({
      * True or False show pagination
      */
     showPagination: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * True or False show filter button
+     */
+    showFilter: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * True or False show print button
+     */
+    showPrint: {
         type: Boolean,
         default: false
     },
