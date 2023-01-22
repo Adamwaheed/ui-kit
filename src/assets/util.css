@@ -4,3 +4,7 @@
 .genie-effect:hover {
     @apply scale-110;
 }
+
+* {
+    backface-visibility: hidden;
+}

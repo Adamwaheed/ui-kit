@@ -5,10 +5,10 @@
             Emits 'next' or 'prev' when nav buttons are clicked
             @event button-click
         -->
-        <a :href="pagination.nextLink" @click="$emit('button-click', 'next')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+        <a v-if="null !== pagination.nextLink" :href="pagination.nextLink" title="Previous" @click="$emit('button-click', 'prev')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
             <ChevronLeftIcon class="w-4 stroke-current" />
         </a>
-        <a :href="pagination.prevLink" @click="$emit('button-click', 'prev')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+        <a v-if="null !== pagination.prevLink" :href="pagination.prevLink" title="Next" @click="$emit('button-click', 'next')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
             <ChevronRightIcon class="w-4 stroke-current" />
         </a>
     </div>

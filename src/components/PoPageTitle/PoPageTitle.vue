@@ -2,16 +2,16 @@
     <div class="flex items-center space-x-1">
         <h1 class="text-xl font-semibold text-slate-800 grow">{{ label }}</h1>
         <!--
-            If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'print' when print btn is clicked and 'filter' when filter btn is clicked
+            If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
             @event button-click
         -->
-        <button v-if="showFilter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="[' p-2 rounded-md hover:bg-slate-200 transition-colors duration-75 ease-in-out', { 'text-mpao-orange hover:text-mpao-orange' : filterOn }, { 'text-slate-600 hover:text-mpao-blue' : !filterOn }]">
+        <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="[' p-2 rounded-md hover:bg-slate-200 transition-colors duration-75 ease-in-out', { 'text-mpao-orange hover:text-mpao-orange' : filterOn }, { 'text-slate-600 hover:text-mpao-blue' : !filterOn }]">
             <FunnelIcon class="w-4 stroke-current" />
         </button>
-        <button v-if="showPrint" @click="$emit('button-click', 'print')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-            <PrinterIcon class="w-4 stroke-current" />
+        <button v-if="showDownload" title="Download" @click="$emit('button-click', 'download')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+            <ArrowDownTrayIcon class="w-4 stroke-current" />
         </button>
-        <span v-if="showFilter && showPagination || showPrint && showPagination" class="border-l border-slate-400 h-3 w-3 ml-1">&nbsp;</span>
+        <span v-if="showFilter && showPagination || showDownload && showPagination" class="border-l border-slate-400 h-3 w-3 ml-1">&nbsp;</span>
         <PoPagination v-if="showPagination" :pagination="pagination" />
         
     </div>
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon, FunnelIcon, PrinterIcon } from '@heroicons/vue/24/outline';
+import { ChevronLeftIcon, ChevronRightIcon, FunnelIcon, ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
 
 import PoPagination from '../PoPagination/PoPagination.vue';
 
@@ -52,9 +52,9 @@ defineProps({
         default: false
     },
     /**
-     * True or False show print button
+     * True or False show download button
      */
-    showPrint: {
+    showDownload: {
         type: Boolean,
         default: false
     },
