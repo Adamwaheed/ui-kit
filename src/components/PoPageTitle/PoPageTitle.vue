@@ -1,13 +1,13 @@
 <template>
     <div class="flex items-center space-x-1">
         <h1 class="text-xl font-semibold text-slate-800 grow">{{ label }}</h1>
-        <a v-if="showFilter" href="pagination.prevLink" @click="$emit('button-click', 'filter')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+        <button v-if="showFilter" @click="$emit('button-click', 'filter')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
             <FunnelIcon class="w-4 stroke-current" />
-        </a>
-        <a v-if="showPrint" href="#" @click="$emit('button-click', 'print')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
+        </button>
+        <button v-if="showPrint" @click="$emit('button-click', 'print')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
             <PrinterIcon class="w-4 stroke-current" />
-        </a>
-        <span v-if="showFilter || showPrint" class="border-l border-slate-400 h-3 w-3">&nbsp;</span>
+        </button>
+        <span v-if="showFilter || showPrint" class="border-l border-slate-400 h-3 w-3 ml-1">&nbsp;</span>
         <div v-if="showPagination" class="flex items-center">
             <span class="text-xs font-normal text-slate-500 pr-2">{{ pagination.label }}</span>
             <!--
