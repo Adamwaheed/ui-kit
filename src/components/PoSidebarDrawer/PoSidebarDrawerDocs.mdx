@@ -1,0 +1,68 @@
+# Form status component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoSidebarDrawer from './PoSidebarDrawer.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoSidebarDrawer} />
+
+<Canvas withToolbar>
+<Story id="components-sidebar-drawer--sidebar-drawer" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoSidebarDrawer
+        :content="sidebarContent"
+        :curr-route="currRoute"
+        @button-click="handleSidebarButtonClick"
+        />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoSidebarDrawer} />
+
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    import { ref, onUpdated, onMounted } from 'vue';
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+    const currRoute = ref("");
+    onMounted(() => {
+        getCurrRoute();
+    })
+    onUpdated(() => {
+        getCurrRoute();
+    })
+    async function getCurrRoute() {
+        await router.isReady()
+        currRoute.value = router.currentRoute.value.path
+    }
+    let allApps = [
+        {
+            groupName: "",
+            apps: [
+                {
+                    name: "First",
+                    url: "https://firstapp.example.com",
+                    icon: "https://doodleipsum.com/50x50/abstract?bg=3D27F6&i=cb0515299c600124805d923f3619c1ad",
+                },
+            ]
+        }
+      ];
+    function handleSidebarButtonClick(link) {
+        router.push(link);
+    }
+  `}
+/>

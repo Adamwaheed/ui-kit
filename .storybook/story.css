@@ -1,6 +1,7 @@
 /* Overrride some styles for storybook */
 
-.shell-content--action-bar {
+.shell-content--action-bar,
+.shell-sidebar {
     position: relative !important;
     top: 0 !important;
 }

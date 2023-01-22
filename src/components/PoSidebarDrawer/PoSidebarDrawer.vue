@@ -5,12 +5,16 @@
             <span class="shell-sidebar--section">{{ group.groupName }}</span>
             <ul class="shell-sidebar--menu">
                 <li v-for="item in group.items">
-                    <a :href="item.url" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
+                    <!--
+                        Emits the button url when it’s clicked
+                        @event button-click
+                    -->
+                    <button @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
                         <span class="shell-sidebar--icon">
                             <component :is="item.icon"  class="stroke-current w-4 h-4" />
                         </span>
                         <span class="shell-sidebar--label">{{ item.label }}</span>
-                    </a>
+                    </button>
                 </li>
                 
             </ul>

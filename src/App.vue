@@ -19,7 +19,7 @@
 
   
   <div class="h-full max-w-full">
-    <PoSidebarDrawer :content="sidebarContent" />
+    <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" />
     <main class="shell-content">
       <PoActionBar
       :items="actionBarItems"
@@ -397,6 +397,10 @@ let pagination = {
   label: 'Page 2 of 20',
   nextLink: '/users/1',
   prevLink: '/users/3',
+}
+
+function handleSidebarButtonClick(link) {
+  console.log('sidebar click ', link)
 }
 
 </script>

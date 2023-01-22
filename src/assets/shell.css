@@ -7,7 +7,7 @@
 }
 
 .shell-sidebar--item {
-    @apply flex items-center space-x-2 px-2 py-3 text-slate-600 transition-colors duration-100 ease-in-out hover:bg-slate-100 rounded-lg
+    @apply flex items-center w-full space-x-2 px-2 py-3 text-slate-600 transition-colors duration-100 ease-in-out hover:bg-slate-100 rounded-lg outline-none ring-0
 }
 
 .shell-sidebar--item.active {
