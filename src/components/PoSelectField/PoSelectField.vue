@@ -1,6 +1,11 @@
 <template>
   <Combobox as="div" v-model="selectedItem">
-    <ComboboxLabel class="block text-sm font-medium text-slate-700">{{ label }}</ComboboxLabel>
+    <ComboboxLabel class="text-sm font-medium text-slate-700 flex items-center space-x-1">
+      <span>{{ label }}</span>
+      <abbr v-if="null !== info" :title="info" class="w-4 text-slate-500">
+          <InformationCircleIcon class="fill-current" />
+      </abbr>
+    </ComboboxLabel>
     <div class="relative mt-1">
       <ComboboxInput class="w-full rounded-md border border-slate-300 bg-white py-2 pl-3 pr-10 focus:border-mpao-lightblue focus:outline-none focus:ring-0 sm:text-sm" @change="query = $event.target.value" :display-value="(item) => item?.name" />
       <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
@@ -31,7 +36,7 @@ export default {
 </script>
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import { CheckIcon, ChevronUpDownIcon, InformationCircleIcon } from '@heroicons/vue/20/solid'
 import {
   Combobox,
   ComboboxButton,
@@ -62,6 +67,13 @@ const props = defineProps({
     label: {
         type: String,
         default: "",
+    },
+    /**
+     * A tool tip, helper information
+     */
+    info: {
+      type: String,
+      default: null,
     },
     /**
      * List of options
