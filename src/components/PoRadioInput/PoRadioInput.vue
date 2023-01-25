@@ -2,9 +2,9 @@
     <RadioGroup v-model="selectedOption">
         <RadioGroupLabel class="text-sm font-medium flex items-center space-x-1 text-slate-700">{{ label }}</RadioGroupLabel>
 
-        <div v-if="null !== options" class="mt-1 flex space-x-3">
+        <div v-if="null !== options" class="mt-1 flex space-x-3 flex-wrap">
         <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option" v-slot="{ checked, active }">
-            <div :class="[checked ? 'border-transparent' : 'border-gray-300', active ? 'border-mpao-lightblue ring-1 ring-mpao-lightblue' : '', 'relative flex cursor-pointer rounded-lg border bg-white px-3 py-2 shadow-sm focus:outline-none']">
+            <div :class="[checked ? 'border-transparent' : 'border-gray-300', active ? 'border-mpao-lightblue ring-1 ring-mpao-lightblue' : '', 'mb-3 relative flex cursor-pointer rounded-lg border bg-white px-3 py-2 shadow-sm focus:outline-none']">
                 <span class="flex flex-1">
                     <span class="flex flex-col">
                     <RadioGroupLabel as="span" class="block text-sm font-medium text-gray-900">{{ option.title }}</RadioGroupLabel>

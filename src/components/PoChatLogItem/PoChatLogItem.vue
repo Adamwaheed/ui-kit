@@ -23,8 +23,9 @@
                 </div>
             </div>
         </div>
-        <div v-if="'message' === item.userType" class="flex justify-center items-center w-full flex-col space-y-1">
+        <div v-if="'message' === item.userType" class="flex justify-center items-center w-full">
             <time :datetime="item.time" class="text-xs text-slate-400">{{ item.time_human }}</time>
+            <span class="text-lg text-slate-300 px-3">&mdash;</span>
             <p v-for="msg in item.message" class="text-center text-sm italic text-slate-500">{{ msg }}</p>
         </div>
     </li>
