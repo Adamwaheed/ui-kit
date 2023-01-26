@@ -1,7 +1,7 @@
 <template>
     <li :class="['flex px-5', { 'justify-end items-end flex-col': 'first' === item.type }]">
         <div v-if="'message' !== item.type" class="flex space-x-3 items-start">
-            <div v-if="'first' !== item.type" class="shrink-0 w-8 h-8 rounded-full p-1 bg-contain bg-slate-100" :style="{'background-image': `url(${item.avatar})`}"></div>
+            <div v-if="'first' !== item.type && '' !== item.avatar" class="shrink-0 w-8 h-8 rounded-full p-1 bg-contain bg-slate-100" :style="{'background-image': `url(${item.avatar})`}"></div>
             <div :class="[{ 'pt-1' : 'first' !== item.type }, { 'flex justify-end items-end flex-col' : 'first' === item.type }]">
                 <span class="flex items-center space-x-2">
                     <time v-if="'first' === item.type" :datetime="item.time" class="text-xs text-slate-400">{{ item.time_human }}</time>
@@ -31,10 +31,8 @@
                 </div>
             </div>
         </div>
-        <div v-if="'message' === item.type" class="flex justify-center items-center w-full">
-            <time :datetime="item.time" class="text-xs text-slate-400">{{ item.time_human }}</time>
-            <span class="text-lg text-slate-300 px-3">&mdash;</span>
-            <p v-for="msg in item.message" class="text-center text-sm italic text-slate-500">{{ msg }}</p>
+        <div v-if="'message' === item.type" class="w-full text-center">
+            <p v-for="msg in item.message" class="inline-block text-sm italic text-slate-500">{{ msg }} <span class="text-lg text-slate-300 px-3inline-block">&mdash;</span> <time :datetime="item.time" class="text-xs text-slate-400 inline-block">{{ item.time_human }}</time></p>
         </div>
     </li>
 </template>
