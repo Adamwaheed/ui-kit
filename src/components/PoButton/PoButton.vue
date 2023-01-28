@@ -12,7 +12,7 @@ export default {
 <script setup>
 import { computed } from 'vue'
 
-const buttonClassess = 'rounded-md transition-colors duration-100 ease-in-out cursor-pointer disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400';
+const buttonClassess = 'rounded-lg transition-colors duration-100 ease-in-out cursor-pointer disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400';
 
 const props = defineProps({
     /**
