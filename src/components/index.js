@@ -37,3 +37,4 @@ export { default as PoFormStatusMessage } from "./PoFormStatusMessage/PoFormStat
 export { default as PoRadioInput } from "./PoRadioInput/PoRadioInput.vue";
 export { default as PoStatsBlock } from "./PoStatsBlock/PoStatsBlock.vue";
 export { default as PoChatLogItem } from "./PoChatLogItem/PoChatLogItem.vue";
+export { default as PoNotification } from "./PoNotification/PoNotification.vue";
