@@ -1,0 +1,57 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--build-arg=GH_PAT=$_GH_PAT'
+      - '--no-cache'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:latest'
+      - .
+      - '-f'
+      - Dockerfile
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+    id: Push
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - '--service-account=$_SERVICE_ACCOUNT'
+      - '--vpc-connector=$_VPC_CONNECTOR'
+      - '--set-cloudsql-instances=$_CLOUD_SQL'
+      - '--port=6006'
+      - '--allow-unauthenticated'
+      - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+timeout: 1200s
+images:
+  - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME'
+options:
+  substitutionOption: ALLOW_LOOSE
+substitutions:
+  _SERVICE_ACCOUNT: cloudrun-dev@mpao-dev.iam.gserviceaccount.com
+  _CLOUD_SQL: staging-278118:asia-northeast1:staging-sql
+  _DEPLOY_REGION: asia-northeast1
+  _GCR_HOSTNAME: asia.gcr.io
+  _VPC_CONNECTOR: dev-vpc-default-1
+  _LABELS: gcb-trigger-id=eb474724-5f4e-4f9f-8aa5-efda2daaa516
+  _TRIGGER_ID: eb474724-5f4e-4f9f-8aa5-efda2daaa516
+  _PLATFORM: managed
+  _SERVICE_NAME: ui-kit
+  _GH_PAT: build-arg-gh_pat
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - storybook
