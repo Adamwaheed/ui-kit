@@ -13,6 +13,8 @@ RUN yarn add -D @storybook/cli
 # Install app dependencies
 RUN yarn --frozen-lockfile
 
+RUN rm -rf node_modules/.cache/storybook
+
 # Make port 8086 available
 EXPOSE 6006
 
