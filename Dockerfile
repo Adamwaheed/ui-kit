@@ -1,27 +1,18 @@
-FROM node:18-alpine3.16
+# Select reference image
+FROM node:18-alpine
 
 
+# Create app directory
 WORKDIR /usr/src/app
 
-# COPY . .
+# Copy project files into the docker image
+COPY . .
 
-# RUN chmod 400 ~/.ssh/id_rsa && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+# Install app dependencies
+RUN yarn --frozen-lockfile
 
-
-# COPY yarn.lock /usr/src/app/
-# RUN yarn global add nuxt && rm -rf node_modules && \
-#   NODE_ENV=production yarn install \
-#   --prefer-offline \
-RUN yarn
-#   yarn install --prefer-offline \
-#   --pure-lockfile \
-#   --non-interactive \
-#   --production=true
-
-COPY . /usr/src/app
-
-ENV HOST 0.0.0.0
+# Make port 8086 available
 EXPOSE 6006
 
-CMD yarn storybook
-#CMD [ "yarn", "$build" ]
+# run storybook app
+CMD ["yarn", "storybook"]
