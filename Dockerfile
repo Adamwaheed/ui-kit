@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 # Copy project files into the docker image
 COPY . .
 
+RUN yarn add -D @storybook/cli
+
 # Install app dependencies
 RUN yarn --frozen-lockfile
 
