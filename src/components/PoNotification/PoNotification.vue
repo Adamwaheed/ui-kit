@@ -14,7 +14,11 @@
                 <p class="text-sm font-medium text-sky-100">{{ label }}</p>
                 <p class="mt-1 text-sm text-sky-300">{{ text }}</p>
                 <div class="mt-3 flex space-x-4">
-                    <button type="button" class="rounded-md bg-mpao-lightblue text-sm font-medium text-sky-100 hover:text-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2">{{ buttonLabel }}</button>
+                    <!--
+                        Emits the button label when it’s clicked
+                        @event button-click
+                    -->
+                    <button @click="$emit('button-click', buttonLabel)" type="button" class="rounded-md bg-mpao-lightblue text-sm font-medium text-sky-100 hover:text-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2">{{ buttonLabel }}</button>
                     <button @click="isShowing = false" type="button" class="rounded-md bg-mpao-lightblue text-sm font-medium text-sky-300 hover:text-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2">Dismiss</button>
                 </div>
             </div>
