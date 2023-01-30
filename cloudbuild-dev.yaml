@@ -26,7 +26,7 @@ steps:
       - '--service-account=$_SERVICE_ACCOUNT'
       - '--vpc-connector=$_VPC_CONNECTOR'
       - '--set-cloudsql-instances=$_CLOUD_SQL'
-      - '--port=8080'
+      - '--port=6006'
       - '--allow-unauthenticated'
       - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
       - >-

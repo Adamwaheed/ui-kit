@@ -8,17 +8,17 @@ WORKDIR /usr/src/app
 # Copy project files into the docker image
 COPY . .
 
-RUN yarn add -D @storybook/cli http-server
+RUN yarn add -D @storybook/cli
 
 # Install app dependencies
 RUN yarn --frozen-lockfile
 
 RUN rm -rf node_modules/.cache/storybook
 
-RUN yarn build-storybook
+RUN yarn storybook
 
 # Make port 8086 available
-EXPOSE 8080
+EXPOSE 6006
 
 # run storybook app
-CMD ["npx","http-server", "storybook"]
+CMD ["yarn", "storybook"]
