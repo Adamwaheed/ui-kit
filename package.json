@@ -17,7 +17,7 @@
     "dev": "vite",
     "build": "vite build && npx tailwindcss ./src/assets/index.css -o ./dist/build.css --minify",
     "preview": "vite preview",
-    "storybook": "start-storybook -p 6006 NODE_OPTIONS=--openssl-legacy-provider",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
