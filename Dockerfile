@@ -21,4 +21,4 @@ RUN yarn storybook
 EXPOSE 6006
 
 # run storybook app
-CMD ["yarn", "storybook"]
+CMD ["yarn", "build-storybook"]
