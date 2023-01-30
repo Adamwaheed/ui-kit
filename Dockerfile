@@ -21,4 +21,4 @@ RUN yarn build-storybook
 EXPOSE 8080
 
 # run storybook app
-CMD ["yarn", "storybook"]
+CMD ["npx","http-server", "storybook"]
