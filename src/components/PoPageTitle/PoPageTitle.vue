@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon, FunnelIcon, ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
+import { FunnelIcon, ArrowDownTrayIcon } from '@heroicons/vue/24/outline';
 
 import PoPagination from '../PoPagination/PoPagination.vue';
 

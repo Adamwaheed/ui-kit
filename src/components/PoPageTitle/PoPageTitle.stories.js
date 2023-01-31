@@ -33,8 +33,8 @@ const Template = (args) => ({
 
 export const PageTitle = Template.bind();
 export const WithPagination = Template.bind();
-export const WithPaginationFilterAndPrint = Template.bind();
-export const WithFilterAndPrint = Template.bind();
+export const WithPaginationFilterAndDownload = Template.bind();
+export const WithFilterAndDownload = Template.bind();
 
 WithPagination.args = {
   /* 👇 The args you need here will depend on your component */
@@ -46,11 +46,11 @@ WithPagination.args = {
   }
 };
 
-WithPaginationFilterAndPrint.args = {
+WithPaginationFilterAndDownload.args = {
   /* 👇 The args you need here will depend on your component */
   showPagination: true,
   showFilter: true,
-  showPrint: true,
+  showDownload: true,
   pagination: {
     label: 'Page 2 of 20',
     nextLink: '/users/1',
@@ -58,8 +58,8 @@ WithPaginationFilterAndPrint.args = {
   }
 };
 
-WithFilterAndPrint.args = {
+WithFilterAndDownload.args = {
   /* 👇 The args you need here will depend on your component */
   showFilter: true,
-  showPrint: true,
+  showDownload: true,
 };
