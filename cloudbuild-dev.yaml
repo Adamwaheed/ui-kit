@@ -2,42 +2,42 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - build
-      - '--build-arg=GH_PAT=$_GH_PAT'
-      - '--no-cache'
-      - '-t'
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
-      - '-t'
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:latest'
+      - "--build-arg=GH_PAT=$_GH_PAT"
+      - "--no-cache"
+      - "-t"
+      - "$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"
+      - "-t"
+      - "$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:latest"
       - .
-      - '-f'
+      - "-f"
       - Dockerfile
     id: Build
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - "$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"
     id: Push
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - run
       - deploy
       - $_SERVICE_NAME
-      - '--platform=managed'
-      - '--service-account=$_SERVICE_ACCOUNT'
-      - '--vpc-connector=$_VPC_CONNECTOR'
-      - '--set-cloudsql-instances=$_CLOUD_SQL'
-      - '--port=6006'
-      - '--allow-unauthenticated'
-      - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - "--platform=managed"
+      - "--service-account=$_SERVICE_ACCOUNT"
+      - "--vpc-connector=$_VPC_CONNECTOR"
+      - "--set-cloudsql-instances=$_CLOUD_SQL"
+      - "--port=80"
+      - "--allow-unauthenticated"
+      - "--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
-      - '--region=$_DEPLOY_REGION'
-      - '--quiet'
+      - "--region=$_DEPLOY_REGION"
+      - "--quiet"
     id: Deploy
     entrypoint: gcloud
 timeout: 1200s
 images:
-  - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME'
+  - "$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME"
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:

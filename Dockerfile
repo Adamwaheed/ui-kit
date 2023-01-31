@@ -1,5 +1,5 @@
 # Select reference image
-FROM node:18-alpine3.16
+FROM node:18-alpine3.16 as production
 
 
 # Create app directory
@@ -13,12 +13,12 @@ RUN yarn add -D @storybook/cli
 # Install app dependencies
 RUN yarn --frozen-lockfile
 
-RUN rm -rf node_modules/.cache/storybook
+# RUN rm -rf node_modules/.cache/storybook
 
-RUN yarn storybook
+RUN yarn build-storybook
 
-# Make port 8086 available
-EXPOSE 6006
+# RUN yarn global add http-server
 
-# run storybook app
-CMD ["yarn", "build-storybook"]
+FROM nginx
+
+COPY --from=production /usr/src/app/storybook-static /usr/share/nginx/html
