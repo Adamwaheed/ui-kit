@@ -27,13 +27,15 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{secrets.GH_TOKEN}}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Version and Commit
         if: github.event_name == 'push'
         run: |
-          git config --global user.name 'mdev'
+          git config --global user.name 'dev'
           git config --global user.email 'dev@pension.gov.mv'
           npm version patch -m "[RELEASE] %s"
           git push
