@@ -36,9 +36,6 @@ jobs:
           git config --global user.name 'mdev'
           git config --global user.email 'dev@pension.gov.mv'
           npm version patch -m "[RELEASE] %s"
-          git status
-          git commit -a -m "[RELEASE] %s"
-          git status
           git push
         env:
           NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
