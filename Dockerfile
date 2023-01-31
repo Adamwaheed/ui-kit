@@ -21,21 +21,4 @@ RUN yarn build-storybook
 
 FROM nginx
 
-
-#WORKDIR /build
-
-#COPY --from=production /usr/src/app/storybook-static .
 COPY --from=production /usr/src/app/storybook-static /usr/share/nginx/html
-
-#EXPOSE 8000
-# We now should have a directory called public
-# With only static files (HTML, JS, CSS, Media assets)
-
-# Default Command - This is never used
-#CMD [""]
-
-# Make port 8086 available
-# EXPOSE 8080
-
-# # run storybook app
-# CMD ["npx", "http-server storybook-static/"]
