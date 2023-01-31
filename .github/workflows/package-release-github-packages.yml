@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    if: "!contains(github.event.head_commit.message, '[RELEASE]')"
+    if: "contains(github.event.head_commit.message, '[RELEASE]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,25 +20,20 @@ jobs:
       - run: rm -rf node_modules && yarn install --frozen-lockfile
 #       - run: npm test
 
-  version:
-    needs: build
+  publish-gpr:
+    needs: version
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{secrets.GH_TOKEN}}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Version and Commit
-        if: github.event_name == 'push'
-        run: |
-          git config --global user.name 'dev'
-          git config --global user.email 'dev@pension.gov.mv'
-          npm version patch -m "[RELEASE] %s"
-          git push
+          registry-url: https://npm.pkg.github.com/
+          scope: '@pension'
+      - run: rm -rf node_modules && yarn install --frozen-lockfile
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
