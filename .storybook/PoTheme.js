@@ -33,6 +33,6 @@ export default create({
     base: 'light',
     brandTitle: 'Pension UI',
     brandUrl: 'https://pension.gov.mv',
-    brandImage: '../public/pension-ui-logo.png',
+    brandImage: '',
     brandTarget: '_self',
 });
