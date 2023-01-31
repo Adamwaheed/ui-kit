@@ -27,11 +27,12 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+          token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           token: ${{ secrets.GH_TOKEN }}
-      - run: git config --global user.name 'mpaodev'
+      - run: git config --global user.name 'dev'
       - run: git config --global user.email 'dev@pension.gov.mv'
       - run: npm version patch -m "[RELEASE] %s"
       - run: git push
