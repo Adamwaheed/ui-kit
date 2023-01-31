@@ -35,7 +35,7 @@ jobs:
       - name: Version and Commit
         if: github.event_name == 'push'
         run: |
-          git config --global user.name 'dev'
+          git config --global user.name 'mdev'
           git config --global user.email 'dev@pension.gov.mv'
           npm version patch -m "[RELEASE] %s"
           git commit -a -m "[RELEASE] %s"
