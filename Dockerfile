@@ -13,7 +13,7 @@ RUN yarn add -D @storybook/cli
 # Install app dependencies
 RUN yarn --frozen-lockfile
 
-## RUN rm -rf node_modules/.cache/storybook
+# RUN rm -rf node_modules/.cache/storybook
 
 RUN yarn build-storybook
 
