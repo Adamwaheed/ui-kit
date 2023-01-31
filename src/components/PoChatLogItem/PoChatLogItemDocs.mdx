@@ -1,0 +1,118 @@
+# Card component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoChatLogItem from './PoChatLogItem.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoChatLogItem} />
+
+<Canvas withToolbar>
+    <div class="flex flex-col space-y-5">
+        <Story id="components-chat-log-item--chat-log-item-first" />
+        <Story id="components-chat-log-item--chat-log-item-second" />
+        <Story id="components-chat-log-item--chat-log-item-multiple-messages" />
+    </div>
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoChatLogItem
+        v-for="item in chatLog"
+        :item="item"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoChatLogItem} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <ul role="list" class="grow py-5 space-y-5 md:max-h-[calc(100vh-350px)] overflow-y-scroll">
+        <PoChatLogItem as="li" v-for="item in chatLog" :item="item" />
+    </ul>
+    const chatLog = [
+        {
+            type: 'second',
+            name: 'Sia Thakuru',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: '2 hours ago',
+            message: [
+            'Hello there! What brings you here today?'
+            ]
+        },
+        {
+            type: 'first',
+            name: 'You',
+            avatar: '',
+            time: '2022-01-25 01:10:00',
+            time_human: '1 hour ago',
+            message: [
+            "Where do I start? Can you explain to me how to?"
+            ]
+        },
+        {
+            type: 'second',
+            name: 'Sia Thakuru',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: '30 mins ago',
+            message: [
+            'Let me transfer you to someone who can explain'
+            ]
+        },
+        {
+            type: 'message',
+            name: '',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: '12 mins ago',
+            message: [
+            'Your chat has been transferred to another Agent'
+            ]
+        },
+        {
+            type: 'second',
+            name: 'Sia Thakuru',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: 'A few seconds ago',
+            message: [
+            'Hello',
+            'What was it you wanted to know?',
+            ]
+        },
+        {
+            type: 'first',
+            name: 'You',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: '30 mins ago',
+            message: [
+            'Do you need help with anything else?',
+            'Say what'
+            ]
+        },
+        {
+            type: 'second',
+            name: 'Sia Thakuru',
+            avatar: '',
+            time: '2022-01-25 01:02:03',
+            time_human: 'A few seconds ago',
+            message: [
+            'Hello'
+            ]
+        },
+    ];
+  `}
+/>
