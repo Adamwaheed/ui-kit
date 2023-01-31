@@ -32,11 +32,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          token: ${{ secrets.GH_TOKEN }}
-      - run: git config --global user.name 'dev'
-      - run: git config --global user.email 'dev@pension.gov.mv'
-      - run: npm version patch -m "[RELEASE] %s"
-      - run: git push
+      - name: Version and Commit
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name 'dev'
+          git config --global user.email 'dev@pension.gov.mv'
+          npm version patch -m "[RELEASE] %s"
+          git commit -a -m "[RELEASE] %s"
+          git push
         env:
           NODE_AUTH_TOKEN: ${{secrets.UIKIT_TOKEN}}
 
