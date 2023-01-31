@@ -2,6 +2,8 @@
 
 import PoModal from './PoModal.vue';
 
+import PoModalDocs from './PoModalDocs.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoModal,
   parameters: {
     docs: {
+      page: PoModalDocs,
       description: {
           component: 'Modal component.'
       }

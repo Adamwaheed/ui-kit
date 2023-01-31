@@ -1,0 +1,45 @@
+# Card component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoModal from './PoModal.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoModal} />
+
+<Canvas withToolbar>
+    <Story id="components-modal--modal" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoModal open-btn-label="Open Modal" modal-title="Modal window" />
+  `}
+/>
+
+When openBtnLabel is empty, modal open button is not displayed. You can use a custom button to open it.
+
+### Explanation
+
+<ArgsTable of={PoModal} />
+
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const showNotificationBodyModal = ref(false);
+    <PoModal :show="showNotificationBodyModal" modal-title="Email" id="investment-notification-status">
+        <template v-slot:content>
+          <div class="p-5">
+            ...
+          </div>
+        </template>
+    </PoModal>
+  `}
+/>
