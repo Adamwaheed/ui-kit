@@ -13,10 +13,10 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
               <DialogPanel class="relative inline-block align-bottom bg-white rounded-xl text-left shadow-xl transform transition-all sm:align-middle sm:max-w-xl w-full">
-                <div class="flex items-center bg-mpao-lightblue rounded-t-xl p-5">
-                    <h3 class="grow text-md font-bold text-slate-100">{{ modalTitle }}</h3>
+                <div class="flex items-center bg-slate-50 rounded-t-xl p-5">
+                    <h3 class="grow text-md font-bold text-slate-600">{{ modalTitle }}</h3>
                     <div class="shrink-0">
-                        <span role="button" class="block" @click="isShowing = false"><XMarkIcon class="w-5 stroke-slate-100 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" /></span>
+                        <span role="button" class="block" @click="isShowing = false"><XMarkIcon class="w-5 stroke-slate-400 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" /></span>
                     </div>
                 </div>
                 <div class="p-5">
