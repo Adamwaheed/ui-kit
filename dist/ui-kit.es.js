@@ -2845,7 +2845,7 @@ const Vo = ["title"], Mo = { class: "relative mt-1" }, Ho = {
 }), Ko = /* @__PURE__ */ s("div", { class: "fixed inset-0 bg-gradient-to-br from-mpao-orange via-mpao-lightblue to-mpao-blue opacity-60 transition-opacity" }, null, -1), Yo = { class: "fixed z-10 inset-0 overflow-y-auto" }, Qo = { class: "flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" }, Jo = /* @__PURE__ */ s("span", {
   class: "hidden sm:inline-block sm:align-middle sm:h-screen",
   "aria-hidden": "true"
-}, "​", -1), Xo = { class: "flex items-center bg-mpao-lightblue rounded-t-xl p-5" }, Zo = { class: "grow text-md font-bold text-slate-100" }, er = { class: "shrink-0" }, tr = { class: "p-5" }, lr = {
+}, "​", -1), Xo = { class: "flex items-center bg-slate-50 rounded-t-xl p-5" }, Zo = { class: "grow text-md font-bold text-slate-600" }, er = { class: "shrink-0" }, tr = { class: "p-5" }, lr = {
   name: "PoModal"
 }, Es = /* @__PURE__ */ Object.assign(lr, {
   props: {
@@ -2931,7 +2931,7 @@ const Vo = ["title"], Mo = { class: "relative mt-1" }, Ho = {
                                 class: "block",
                                 onClick: o[1] || (o[1] = (r) => l.value = !1)
                               }, [
-                                R(y(fl), { class: "w-5 stroke-slate-100 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" })
+                                R(y(fl), { class: "w-5 stroke-slate-400 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" })
                               ])
                             ])
                           ]),

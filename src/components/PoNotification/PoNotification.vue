@@ -42,7 +42,7 @@ export default {
 </script>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, toRefs, watch } from 'vue'
   import { XMarkIcon } from '@heroicons/vue/20/solid'
   
   const props = defineProps({

@@ -1,0 +1,55 @@
+# Modal component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoNotification from './PoNotification.vue';
+
+import dedent from 'ts-dedent';
+
+import { ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/outline';
+
+<Description of={PoNotification} />
+
+<Canvas withToolbar>
+    <Story id="components-notification--notification" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoNotification
+      label="Aishath Jackson replied..."
+      text="I submited all that but still"
+      button-label="Respond"
+      :show="showNotificationOne"
+      @button-click="handleNotificationClick('Chat')"
+    >
+    <template v-slot:icon>
+        <ChatBubbleOvalLeftIcon class="w-5 h-5 stroke-mpao-orange" />
+    </template>
+    </PoNotification>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoNotification} />
+
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const showNotificationOne = ref(false);
+    function handleNotificationClick(item) {
+      switch (item) {
+        case "Chat":
+          router.push('/callcenter/inbox/details')
+          break;
+      }
+    }
+  `}
+/>
