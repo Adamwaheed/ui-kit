@@ -3369,7 +3369,7 @@ const js = /* @__PURE__ */ Sr(_r, [["render", Cr]]), Er = {
           }, {
             default: G(({ checked: u, active: c }) => [
               s("div", {
-                class: W([u ? "border-transparent" : "border-gray-300", c ? "border-mpao-lightblue ring-1 ring-mpao-lightblue" : "", "mb-3 relative flex cursor-pointer rounded-lg border bg-white px-3 py-2 shadow-sm focus:outline-none"])
+                class: W([" transition-colors duration-100 ease-out", u ? "border-transparent" : "border-gray-300 hover:border-mpao-lightblue", c ? "border-mpao-lightblue ring-1 ring-mpao-lightblue" : "", "mb-3 relative flex cursor-pointer rounded-lg border bg-white px-3 py-2 shadow-sm focus:outline-none"])
               }, [
                 s("span", Ir, [
                   s("span", Nr, [
