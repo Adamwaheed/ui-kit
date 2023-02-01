@@ -43,10 +43,11 @@
 }
 
 .action-bar__nav_link {
-    @apply text-slate-600 p-3 rounded-md hover:bg-slate-100 hover:text-mpao-blue transition-colors duration-75 ease-in-out flex items-center space-x-2
+    @apply text-slate-600 p-3 rounded-md hover:bg-slate-100 hover:text-mpao-blue transition-colors duration-75 ease-in-out flex items-center space-x-2 cursor-pointer
 }
 
-.action-bar__nav_link:hover {
+.action-bar__nav_link:hover,
+.action-bar__nav_link.active {
     @apply bg-white text-mpao-blue
 }
 

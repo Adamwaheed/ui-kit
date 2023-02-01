@@ -670,6 +670,13 @@ const vl = { class: "bg-mpao-blue fixed top-0 w-full z-50 flex" }, ml = { class:
     showBackButton: {
       type: Boolean,
       default: !0
+    },
+    /**
+     * Current route name to highlight current page when used as tabs.
+     */
+    currPageRoute: {
+      type: String,
+      default: ""
     }
   },
   setup(e) {
@@ -677,7 +684,7 @@ const vl = { class: "bg-mpao-blue fixed top-0 w-full z-50 flex" }, ml = { class:
       s("nav", ja, [
         (i(!0), d(F, null, Y(e.items, (l) => (i(), d("span", {
           onClick: (n) => t.$emit("button-click", l.label),
-          class: "action-bar__nav_link cursor-pointer"
+          class: "action-bar__nav_link"
         }, [
           (i(), K(Ce(l.icon), { class: "stroke-current w-5 h-5" })),
           s("span", Da, S(l.label), 1)
@@ -686,7 +693,7 @@ const vl = { class: "bg-mpao-blue fixed top-0 w-full z-50 flex" }, ml = { class:
       e.showBackButton ? (i(), d("nav", Fa, [
         s("span", {
           onClick: a[0] || (a[0] = (l) => t.$emit("button-click", "back")),
-          class: "action-bar__nav_link cursor-pointer"
+          class: "action-bar__nav_link"
         }, [
           (i(), K(Ce(y(ll)), { class: "stroke-current w-5 h-5" }))
         ])

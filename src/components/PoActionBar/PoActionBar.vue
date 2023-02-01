@@ -8,7 +8,7 @@
             <span
                 v-for="item in items"
                 @click="$emit('button-click', item.label)"
-                class="action-bar__nav_link cursor-pointer"
+                class="action-bar__nav_link"
             >
                 <component :is="item.icon"  class="stroke-current w-5 h-5" />
                 <span class="action-bar__nav_label">{{ item.label }}</span>
@@ -19,7 +19,7 @@
                 Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
                 @event button-click
             -->
-            <span @click="$emit('button-click', 'back')" class="action-bar__nav_link cursor-pointer">
+            <span @click="$emit('button-click', 'back')" class="action-bar__nav_link">
                 <component :is="ArrowUturnLeftIcon"  class="stroke-current w-5 h-5" />
             </span>
         </nav>
@@ -49,6 +49,13 @@ defineProps({
     showBackButton: {
         type: Boolean,
         default: true
-    }
+    },
+    /**
+     * Current route name to highlight current page when used as tabs.
+     */
+     currPageRoute: {
+        type: String,
+        default: ""
+    },
 });
 </script>
