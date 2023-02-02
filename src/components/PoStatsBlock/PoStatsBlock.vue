@@ -9,7 +9,10 @@
                </span>
             </div>
             <div>
-                <span class="block text-2xl font-light text-slate-600">{{ item.value }}</span>
+               <div class="flex items-start space-x-1">
+                  <span class="block text-2xl font-light text-slate-600">{{ item.value }}</span>
+                  <span v-if="item.diff" class="text-sm text-green-500 font-medium pt-1">{{ item.diff }}</span>
+               </div>
                 <h4 class=" text-sm tracking-wide text-slate-500">{{ item.label }}</h4>
             </div>
          </div>
