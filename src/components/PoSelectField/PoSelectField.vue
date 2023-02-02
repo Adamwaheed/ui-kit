@@ -1,26 +1,26 @@
 <template>
   <Combobox as="div" v-model="selectedItem">
-    <ComboboxLabel class="text-sm font-medium text-slate-700 flex items-center space-x-1">
+    <ComboboxLabel class="po-text-sm po-font-medium po-text-slate-700 po-flex po-items-center po-space-x-1">
       <span>{{ label }}</span>
-      <abbr v-if="null !== info" :title="info" class="w-4 text-slate-500">
-          <InformationCircleIcon class="fill-current" />
+      <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
+          <InformationCircleIcon class="po-fill-current" />
       </abbr>
     </ComboboxLabel>
-    <div class="relative mt-1">
-      <ComboboxInput class="w-full rounded-md border border-slate-300 bg-white py-2 pl-3 pr-10 focus:border-mpao-lightblue focus:outline-none focus:ring-0 sm:text-sm" @change="query = $event.target.value" :display-value="(item) => item?.name" />
-      <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-        <ChevronUpDownIcon class="h-5 w-5 text-slate-400" aria-hidden="true" />
+    <div class="po-relative po-mt-1">
+      <ComboboxInput class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm" @change="query = $event.target.value" :display-value="(item) => item?.name" />
+      <ComboboxButton class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none">
+        <ChevronUpDownIcon class="po-h-5 po-w-5 po-text-slate-400" aria-hidden="true" />
       </ComboboxButton>
 
-      <ComboboxOptions v-if="filteredItems.length > 0" class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+      <ComboboxOptions v-if="filteredItems.length > 0" class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm">
         <ComboboxOption v-for="item in filteredItems" :key="item.id" :value="item" as="template" v-slot="{ active, selected }">
-          <li :class="['relative cursor-default select-none py-2 pl-3 pr-9', active ? 'bg-mpao-lightblue text-white' : 'text-slate-900']">
-            <span :class="['block truncate', selected && 'font-semibold']">
+          <li :class="['po-relative po-cursor-default po-select-none po-py-2 po-pl-3 po-pr-9', active ? 'po-bg-mpao-lightblue po-text-white' : 'po-text-slate-900']">
+            <span :class="['po-block po-truncate', selected && 'po-font-semibold']">
               {{ item.name }}
             </span>
 
-            <span v-if="selected" :class="['absolute inset-y-0 right-0 flex items-center pr-4', active ? 'text-white' : 'text-mpao-lightblue']">
-              <CheckIcon class="h-5 w-5" aria-hidden="true" />
+            <span v-if="selected" :class="['po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-pr-4', active ? 'po-text-white' : 'po-text-mpao-lightblue']">
+              <CheckIcon class="po-h-5 po-w-5" aria-hidden="true" />
             </span>
           </li>
         </ComboboxOption>

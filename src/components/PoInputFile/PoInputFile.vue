@@ -1,27 +1,27 @@
 <template>
-    <div class="relative pt-5">
+    <div class="po-relative po-pt-5">
         <!-- 
             v-model update
             @event update:modelValue
         -->
-        <span class="text-sm font-medium text-slate-700 peer-focus:text-mpao-lightblue peer-invalid:text-red-500 peer-invalid:peer-focus:text-red-600 flex items-center space-x-1">{{ label }}</span>
+        <span class="po-text-sm po-font-medium po-text-slate-700 peer-focus:po-text-mpao-lightblue peer-invalid:po-text-red-500 peer-invalid:peer-focus:po-text-red-600 po-flex po-items-center po-space-x-1">{{ label }}</span>
         <input
             :name="`${id}-upload`"
             :id="`${id}-fileupload`"
             :value="modelValue"
             type="file"
             @input="$emit('update:modelValue', $event.target.value)"
-            class="sr-only peer"
+            class="po-sr-only po-peer"
         >
-        <label :for="`${id}-fileupload`" class="mt-1 block w-full border cursor-pointer rounded-md border-slate-300 bg-white peer-focus:border-mpao-lightblue invalid:border-red-400 invalid:focus:border-red-600 invalid:focus:ring-red-600 sm:text-sm p-2">
-            <div class="flex items-center space-x-1">
-                <PaperClipIcon class="w-4 stroke-slate-500" />
-                <span class="text-sm">Choose file</span>
+        <label :for="`${id}-fileupload`" class="po-mt-1 po-block po-w-full po-border po-cursor-pointer po-rounded-md po-border-slate-300 po-bg-white peer-focus:po-border-mpao-lightblue invalid:po-border-red-400 invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm po-p-2">
+            <div class="po-flex po-items-center po-space-x-1">
+                <PaperClipIcon class="po-w-4 po-stroke-slate-500" />
+                <span class="po-text-sm">Choose file</span>
             </div>
         </label>
 
-        <p class="mt-2 text-sm text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
-        <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
+        <p class="po-mt-2 po-text-sm po-text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
+        <p class="po-mt-2 po-text-sm po-text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
       </div>
   </template>
   

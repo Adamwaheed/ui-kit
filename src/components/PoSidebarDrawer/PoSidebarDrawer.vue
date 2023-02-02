@@ -1,5 +1,5 @@
 <template>
-    <input type="checkbox" name="" class="hidden shell-sidebar--toggle" role="none" id="sidebar-drawer-toggle" checked aria-checked="true">
+    <input type="checkbox" name="" class="po-hidden shell-sidebar--toggle" role="none" id="sidebar-drawer-toggle" checked aria-checked="true">
     <aside class="shell-sidebar">
         <div v-for="group in content">
             <span class="shell-sidebar--section">{{ group.groupName }}</span>
@@ -11,7 +11,7 @@
                     -->
                     <button @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
                         <span class="shell-sidebar--icon">
-                            <component :is="item.icon"  class="stroke-current w-4 h-4" />
+                            <component :is="item.icon"  class="po-stroke-current po-w-4 po-h-4" />
                         </span>
                         <span class="shell-sidebar--label">{{ item.label }}</span>
                     </button>

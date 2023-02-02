@@ -1,27 +1,27 @@
 <template>
-  <nav class="bg-mpao-blue fixed top-0 w-full z-50 flex">
-    <div class="shrink-0 px-3 pt-3">
+  <nav class="po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex">
+    <div class="po-shrink-0 po-px-3 po-pt-3">
       <label
         for="sidebar-drawer-toggle"
         role="button"
         class="
           genie-effect
-          flex
-          items-center
-          justify-center
-          bg-[#2e5266]
-          rounded-full
-          w-10
-          h-10
-          select-none
-          text-slate-100
+          po-flex
+          po-items-center
+          po-justify-center
+          po-bg-[#2e5266]
+          po-rounded-full
+          po-w-10
+          po-h-10
+          po-select-none
+          po-text-slate-100
         "
       >
-        <Bars3Icon class="w-6 fill-current" />
+        <Bars3Icon class="po-w-6 po-fill-current" />
       </label>
     </div>
-    <div class="mx-auto max-w-full px-4 grow sm:px-4">
-      <div class="flex h-16 items-center justify-between space-x-12">
+    <div class="po-mx-auto po-max-w-full po-px-4 po-grow sm:po-px-4">
+      <div class="po-flex po-h-16 po-items-center po-justify-between po-space-x-12">
         <PoAppIcon :app-name="appName">
           <template v-slot:icon>
             <slot name="appIcon"></slot>
@@ -30,13 +30,13 @@
 
         <PoSearchBar v-if="hasSearch" @query="PassQueryToParent" />
 
-        <div class="flex items-center space-x-3">
+        <div class="po-flex po-items-center po-space-x-3">
           <span
             v-if="hasSearch"
-            class="block w-6 text-slate-100 sm:hidden"
+            class="po-block po-w-6 po-text-slate-100 sm:po-hidden"
             role="button"
           >
-          <MagnifyingGlassIcon class="stroke-current" />
+          <MagnifyingGlassIcon class="po-stroke-current" />
           </span>
           <PoNotificationHub :notifications="notifications" :has-new-notifications="hasNewNotifications" />
           <PoAppTray :app-list="appList" />

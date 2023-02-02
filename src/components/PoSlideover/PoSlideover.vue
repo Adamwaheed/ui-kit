@@ -1,29 +1,29 @@
 <template>
 <TransitionRoot as="template" :show="isShowing">
-    <Dialog as="div" class="relative z-50" @close="isShowing = false">
-      <div class="fixed inset-0" />
+    <Dialog as="div" class="po-relative po-z-50" @close="isShowing = false">
+      <div class="po-fixed po-inset-0" />
 
-      <div class="fixed inset-0 overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700" enter-from="translate-x-full" enter-to="translate-x-0" leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0" leave-to="translate-x-full">
-              <DialogPanel class="pointer-events-auto w-screen max-w-lg">
-                <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                  <div class="bg-slate-50 py-6 px-4 sm:px-6">
-                    <div class="flex items-center justify-between">
-                      <DialogTitle class="text-lg font-medium text-slate-600">{{ label }}</DialogTitle>
-                      <div class="ml-3 flex h-7 items-center">
-                        <button type="button" class="rounded-md text-slate-500 hover:text-mpao-lightblue focus:outline-none focus:ring-2 focus:ring-white" @click="isShowing = false">
-                          <span class="sr-only">Close panel</span>
-                          <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+      <div class="po-fixed po-inset-0 po-overflow-hidden">
+        <div class="po-absolute po-inset-0 po-overflow-hidden">
+          <div class="po-pointer-events-none po-fixed po-inset-y-0 po-right-0 po-flex po-max-w-full po-pl-10">
+            <TransitionChild as="template" enter="po-transform po-transition po-ease-in-out po-duration-500 sm:po-duration-700" enter-from="po-translate-x-full" enter-to="po-translate-x-0" leave="po-transform po-transition po-ease-in-out po-duration-500 sm:po-duration-700" leave-from="po-translate-x-0" leave-to="po-translate-x-full">
+              <DialogPanel class="po-pointer-events-auto po-w-screen po-max-w-lg">
+                <div class="po-flex po-h-full po-flex-col po-overflow-y-scroll po-bg-white po-shadow-xl">
+                  <div class="po-bg-slate-50 po-py-6 po-px-4 sm:po-px-6">
+                    <div class="po-flex po-items-center po-justify-between">
+                      <DialogTitle class="po-text-lg po-font-medium po-text-slate-600">{{ label }}</DialogTitle>
+                      <div class="po-ml-3 po-flex po-h-7 po-items-center">
+                        <button type="button" class="po-rounded-md po-text-slate-500 hover:po-text-mpao-lightblue focus:po-outline-none focus:po-ring-2 focus:po-ring-white" @click="isShowing = false">
+                          <span class="po-sr-only">Close panel</span>
+                          <XMarkIcon class="po-h-6 po-w-6" aria-hidden="true" />
                         </button>
                       </div>
                     </div>
-                    <div v-if="description" class="mt-1">
-                      <p class="text-sm text-slate-500">{{ description }}</p>
+                    <div v-if="description" class="po-mt-1">
+                      <p class="po-text-sm po-text-slate-500">{{ description }}</p>
                     </div>
                   </div>
-                  <div class="relative flex-1 py-6 px-4 sm:px-6">
+                  <div class="po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6">
                     <!-- 
                         Slideover body content
                         @slot content

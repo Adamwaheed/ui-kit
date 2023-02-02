@@ -1,12 +1,12 @@
 <template>
-    <ul class="pt-1 space-y-1 border-r-2 border-slate-200 relative">
+    <ul class="po-pt-1 po-space-y-1 po-border-r-2 po-border-slate-200 po-relative">
         <li v-for="item in menuItems">
             <!--
                 Emits the route of the clicked button
                 @event link-click
             -->
-            <span @click="$emit('link-click', item.link)" role="button" :class="['relative cursor-pointer -right-[0.15rem] py-1 border-r-2 hover:border-mpao-lightblue transition-colors duration-200 ease-in-out flex items-center space-x-2', { 'border-mpao-lightblue text-sm text-mpao-lightblue' : item.link == currPageRoute }, { 'border-slate-200 text-sm text-slate-600' : item.link !== currPageRoute }]">
-                <component :is="item.icon" class="w-4 h-4 stroke-current" />
+            <span @click="$emit('link-click', item.link)" role="button" :class="['po-relative po-cursor-pointer -po-right-[0.15rem] po-py-1 po-border-r-2 hover:po-border-mpao-lightblue po-transition-colors po-duration-200 po-ease-in-out po-flex po-items-center po-space-x-2', { 'po-border-mpao-lightblue po-text-sm po-text-mpao-lightblue' : item.link == currPageRoute }, { 'po-border-slate-200 po-text-sm po-text-slate-600' : item.link !== currPageRoute }]">
+                <component :is="item.icon" class="po-w-4 po-h-4 po-stroke-current" />
                 <span>{{ item.label }}</span>
             </span>
         </li>

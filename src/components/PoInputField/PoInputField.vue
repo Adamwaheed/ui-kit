@@ -1,5 +1,5 @@
 <template>
-  <div class="relative pt-5">
+  <div class="po-relative po-pt-5">
     <!-- 
             v-model update
             @event update:modelValue
@@ -17,20 +17,20 @@
             :aria-disabled="disabled"
             v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.value)"
-            :class="['mt-1 peer block w-full transition-colors duration-100 ease-in-out rounded-md bg-white focus:ring-0 sm:text-sm disabled:bg-slate-50 disabled:border-slate-300 disabled:focus:border-slate-300 disabled:hover:border-slate-300 disabled:cursor-default', { 'border-red-400 focus:border-red-600 focus:ring-red-600': hasError}, { 'border-slate-300 focus:border-mpao-lightblue': !hasError}]"
+            :class="['po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default', { 'po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600': hasError}, { 'po-border-slate-300 focus:po-border-mpao-lightblue': !hasError}]"
             >
         <label
             :for="id"
-            :class="['absolute top-0 text-sm font-medium flex items-center space-x-1', { 'text-red-500 peer-focus:text-red-600': hasError}, { 'text-slate-700 peer-focus:text-mpao-lightblue': !hasError}]"
+            :class="['po-absolute po-top-0 po-text-sm po-font-medium po-flex po-items-center po-space-x-1', { 'po-text-red-500 peer-focus:po-text-red-600': hasError}, { 'po-text-slate-700 peer-focus:po-text-mpao-lightblue': !hasError}]"
             >
             <span>{{ label }}</span>
-            <abbr v-if="null !== info" :title="info" class="w-4 text-slate-500">
-                <InformationCircleIcon class="fill-current" />
+            <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
+                <InformationCircleIcon class="po-fill-current" />
             </abbr>
         </label>
-        <p class="mt-2 text-sm text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
-        <p class="mt-2 text-sm text-red-600 flex items-center space-x-1" :id="`${id}-error`" v-if="hasError && null !== errorMessage">
-          <ExclamationTriangleIcon class="fill-current w-4" />
+        <p class="po-mt-2 po-text-sm po-text-slate-500" :id="`${id}-description`" v-if="null !== message">{{ message }}</p>
+        <p class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-center po-space-x-1" :id="`${id}-error`" v-if="hasError && null !== errorMessage">
+          <ExclamationTriangleIcon class="po-fill-current po-w-4" />
           <span>{{ errorMessage }}</span>
         </p>
     </div>

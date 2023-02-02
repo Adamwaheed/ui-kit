@@ -1,122 +1,122 @@
 .shell-sidebar {
-    @apply block px-5 h-[calc(100vh-64px)] bg-white w-full absolute left-0 top-16 overflow-y-scroll transition-all duration-300 ease-in-out border-r border-slate-50 z-50 pt-10 sm:pt-0
+    @apply po-block po-px-5 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-scroll po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-50 po-pt-10 sm:po-pt-0
 }
 
 .shell-sidebar--toggle:checked ~ .shell-sidebar {
-    @apply hidden left-0
+    @apply po-hidden po-left-0
 }
 
 .shell-sidebar--item {
-    @apply flex items-center w-full space-x-2 px-2 py-3 text-slate-600 transition-colors duration-100 ease-in-out hover:bg-slate-100 rounded-lg outline-none ring-0
+    @apply po-flex po-items-center po-w-full po-space-x-2 po-px-2 po-py-3 po-text-slate-600 po-transition-colors po-duration-100 po-ease-in-out hover:po-bg-slate-100 po-rounded-lg po-outline-none po-ring-0
 }
 
 .shell-sidebar--item.active {
-    @apply text-mpao-blue hover:bg-slate-100 bg-slate-200
+    @apply po-text-mpao-blue hover:po-bg-slate-100 po-bg-slate-200
 }
 
 .shell-sidebar--label {
-    @apply text-sm leading-none font-normal;
+    @apply po-text-sm po-leading-none po-font-normal;
 }
 
 .shell-sidebar--section {
-    @apply uppercase select-none text-xs font-semibold text-slate-400 ml-2 block
+    @apply po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-ml-2 po-block
 }
 
 .shell-sidebar--menu {
-    @apply mt-2 mb-10
+    @apply po-mt-2 po-mb-10
 }
 
 .shell-sidebar--icon {
-    @apply w-4
+    @apply po-w-4
 }
 
 .shell-content {
-    @apply h-[calc(100vh-64px)] overflow-y-scroll pl-0 transition-all duration-300 ease-in-out pt-10
+    @apply po-h-[calc(100vh-64px)] po-overflow-y-scroll po-pl-0 po-transition-all po-duration-300 po-ease-in-out po-pt-10
 }
 
 .shell-content--action-bar {
-    @apply bg-slate-50 px-6 py-1 flex items-center fixed top-16 w-full z-40 border-b border-slate-200
+    @apply po-bg-slate-50 po-px-6 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-border-slate-200
 }
 
 .action-bar__nav {
-    @apply grow flex space-x-1
+    @apply po-grow po-flex po-space-x-1
 }
 
 .action-bar__nav_link {
-    @apply text-slate-600 p-3 rounded-md hover:bg-slate-100 hover:text-mpao-blue transition-colors duration-75 ease-in-out flex items-center space-x-2 cursor-pointer
+    @apply po-text-slate-600 po-p-3 po-rounded-md hover:po-bg-slate-100 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out po-flex po-items-center po-space-x-2 po-cursor-pointer
 }
 
 .action-bar__nav_link:hover,
 .action-bar__nav_link.active {
-    @apply bg-white text-mpao-blue
+    @apply po-bg-white po-text-mpao-blue
 }
 
 .action-bar__nav_label {
-    @apply text-xs hidden
+    @apply po-text-xs po-hidden
 }
 
 /* sm */
 @media (min-width: 640px) {
     .shell-sidebar {
-        @apply px-6
+        @apply po-px-6
     }
     .shell-content--action-bar {
-        @apply border-b-0 bg-slate-100
+        @apply po-border-b-0 po-bg-slate-100
     }
 }
 
 /* md */
 @media (min-width: 768px) {
     .shell-sidebar {
-        @apply w-[256px] left-[-192px] p-1 border-slate-300 fixed
+        @apply po-w-[256px] po-left-[-192px] po-p-1 po-border-slate-300 po-fixed
     }
 
     .shell-sidebar .shell-sidebar--item {
-        @apply justify-end pr-[19px]
+        @apply po-justify-end po-pr-[19px]
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--item {
-        @apply justify-start
+        @apply po-justify-start
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar {
-        @apply block p-5 border-slate-50
+        @apply po-block po-p-5 po-border-slate-50
     }
 
     .shell-sidebar--label {
-        @apply hidden;
+        @apply po-hidden;
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--label {
-        @apply block
+        @apply po-block
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--section {
-        @apply block
+        @apply po-block
     }
 
     .shell-sidebar--menu {
-        @apply mb-0
+        @apply po-mb-0
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--menu {
-        @apply mb-10
+        @apply po-mb-10
     }
 
     .shell-sidebar--icon {
-        @apply w-4
+        @apply po-w-4
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--icon {
-        @apply w-4
+        @apply po-w-4
     }
 
     .shell-content {
-        @apply pl-[64px]
+        @apply po-pl-[64px]
     }
 
     .shell-sidebar--toggle:checked ~ .shell-content {
-        @apply pl-[256px]
+        @apply po-pl-[256px]
     }
 
     .shell-content--action-bar {
@@ -128,6 +128,6 @@
     }
 
     .action-bar__nav_label {
-        @apply block
+        @apply po-block
     }
 }

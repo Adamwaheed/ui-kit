@@ -1,5 +1,6 @@
 module.exports = {
   content: ["./index.html", "./src/App.vue", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  prefix: 'po-',
   // safelist: [
   //   "bg-blue-600",
   //   "hover:bg-blue-500",

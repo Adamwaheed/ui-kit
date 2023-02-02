@@ -1,8 +1,8 @@
 .genie-effect {
-    @apply transition-transform duration-100 ease-linear origin-center
+    @apply po-transition-transform po-duration-100 po-ease-linear po-origin-center
 }
 .genie-effect:hover {
-    @apply scale-110;
+    @apply po-scale-110;
 }
 
 * {

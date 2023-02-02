@@ -18,7 +18,7 @@ export default {
 <script setup>
 import { computed } from 'vue'
 
-const buttonClassess = 'rounded-lg transition-colors duration-100 ease-in-out cursor-pointer disabled:bg-slate-400 disabled:cursor-default disabled:hover:bg-slate-400';
+const buttonClassess = 'po-rounded-lg po-transition-colors po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400';
 
 const props = defineProps({
     /**
@@ -68,17 +68,17 @@ const props = defineProps({
 const buttonSize = computed(() => {
     switch (props.size) {
         case 'sm':
-            return 'px-2 py-1 text-xs'
+            return 'po-px-2 po-py-1 po-text-xs'
             break;
         case 'md':
-            return 'px-4 py-2 text-sm'
+            return 'po-px-4 po-py-2 po-text-sm'
             break;
         case 'lg':
-            return 'px-5 py-3 text-normal'
+            return 'po-px-5 po-py-3 po-text-normal'
             break;
     }
 });
 const buttonColor = computed(() => {
-    return props.overrideColors ? '' : 'bg-mpao-lightblue hover:bg-mpao-blue focus:bg-mpao-blue text-slate-50';
+    return props.overrideColors ? '' : 'po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50';
 });
 </script>

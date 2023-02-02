@@ -1,17 +1,17 @@
 <template>
-    <div class="flex items-center space-x-1">
-        <h1 class="text-xl font-semibold text-slate-800 grow">{{ label }}</h1>
+    <div class="po-flex po-items-center po-space-x-1">
+        <h1 class="po-text-xl po-font-semibold po-text-slate-800 po-grow">{{ label }}</h1>
         <!--
             If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
             @event button-click
         -->
-        <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="[' p-2 rounded-md hover:bg-slate-200 transition-colors duration-75 ease-in-out', { 'text-mpao-orange hover:text-mpao-orange' : filterOn }, { 'text-slate-600 hover:text-mpao-blue' : !filterOn }]">
-            <FunnelIcon class="w-4 stroke-current" />
+        <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="['po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out', { 'po-text-mpao-orange hover:po-text-mpao-orange' : filterOn }, { 'tpo-ext-slate-600 hover:po-text-mpao-blue' : !filterOn }]">
+            <FunnelIcon class="po-w-4 po-stroke-current" />
         </button>
-        <button v-if="showDownload" title="Download" @click="$emit('button-click', 'download')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-            <ArrowDownTrayIcon class="w-4 stroke-current" />
+        <button v-if="showDownload" title="Download" @click="$emit('button-click', 'download')" class="po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out">
+            <ArrowDownTrayIcon class="po-w-4 po-stroke-current" />
         </button>
-        <span v-if="showFilter && showPagination || showDownload && showPagination" class="border-l border-slate-400 h-3 w-3 ml-1">&nbsp;</span>
+        <span v-if="showFilter && showPagination || showDownload && showPagination" class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1">&nbsp;</span>
         <PoPagination v-if="showPagination" :pagination="pagination" />
         
     </div>

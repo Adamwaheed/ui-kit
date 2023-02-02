@@ -1,18 +1,18 @@
 <template>
     <RadioGroup v-model="selectedOption">
-        <RadioGroupLabel class="text-sm font-medium flex items-center space-x-1 text-slate-700">{{ label }}</RadioGroupLabel>
+        <RadioGroupLabel class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700">{{ label }}</RadioGroupLabel>
 
-        <div v-if="null !== options" class="mt-1 flex space-x-3 flex-wrap">
+        <div v-if="null !== options" class="po-mt-1 po-flex po-space-x-3 po-flex-wrap">
         <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option" v-slot="{ checked, active }">
-            <div :class="[' transition-colors duration-100 ease-out', checked ? 'border-transparent' : 'border-gray-300 hover:border-mpao-lightblue', active ? 'border-mpao-lightblue ring-1 ring-mpao-lightblue' : '', 'mb-3 relative flex cursor-pointer rounded-lg border bg-white px-3 py-2 shadow-sm focus:outline-none']">
-                <span class="flex flex-1">
-                    <span class="flex flex-col">
-                    <RadioGroupLabel as="span" class="block text-sm font-medium text-gray-900">{{ option.title }}</RadioGroupLabel>
-                    <RadioGroupDescription v-if="option.description" as="span" class="mt-1 flex items-center text-sm text-gray-500">{{ option.description }}</RadioGroupDescription>
+            <div :class="['po-transition-colors po-duration-100 po-ease-out', checked ? 'po-border-transparent' : 'po-border-gray-300 hover:po-border-mpao-lightblue', active ? 'po-border-mpao-lightblue po-ring-1 po-ring-mpao-lightblue' : '', 'po-mb-3 po-relative po-flex po-cursor-pointer po-rounded-lg po-border po-bg-white po-px-3 po-py-2 po-shadow-sm focus:po-outline-none']">
+                <span class="po-flex po-flex-1">
+                    <span class="po-flex po-flex-col">
+                    <RadioGroupLabel as="span" class="po-block po-text-sm po-font-medium po-text-gray-900">{{ option.title }}</RadioGroupLabel>
+                    <RadioGroupDescription v-if="option.description" as="span" class="po-mt-1 po-flex po-items-center po-text-sm po-text-gray-500">{{ option.description }}</RadioGroupDescription>
                     </span>
                 </span>
-                <CheckCircleIcon :class="[!checked ? 'invisible' : '', 'h-5 w-5 ml-2 text-mpao-lightblue']" aria-hidden="true" />
-                <span :class="[active ? 'border' : 'border', checked ? 'border-mpao-lightblue' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-lg']" aria-hidden="true" />
+                <CheckCircleIcon :class="[!checked ? 'po-invisible' : '', 'po-h-5 po-w-5 po-ml-2 po-text-mpao-lightblue']" aria-hidden="true" />
+                <span :class="[active ? 'po-border' : 'po-border', checked ? 'po-border-mpao-lightblue' : 'po-border-transparent', 'po-pointer-events-none po-absolute -po-inset-px po-rounded-lg']" aria-hidden="true" />
             </div>
         </RadioGroupOption>
         </div>

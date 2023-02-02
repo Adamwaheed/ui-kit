@@ -1,5 +1,5 @@
 <template>
-    <table class="table-responsive w-full">
+    <table class="table-responsive po-w-full">
         <thead>
             <tr>
                 <th v-for="th in thead">
@@ -18,7 +18,7 @@
                 <slot name="td" v-bind="td"></slot>
             </tr>
             <tr v-if="null == tbody || null !== tbody && 0 == tbody.length">
-                <td :colspan="thead.length + 1" class="text-center"><span class="py-10 block normal-case">{{ emptyMessage }}</span></td>
+                <td :colspan="thead.length + 1" class="po-text-center"><span class="po-py-10 po-block po-normal-case">{{ emptyMessage }}</span></td>
             </tr>
         </tbody>
     </table>

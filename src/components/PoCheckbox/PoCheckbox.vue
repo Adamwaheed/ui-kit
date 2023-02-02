@@ -1,6 +1,6 @@
 <template>
-    <div class="relative flex items-start">
-      <div class="flex h-5 items-center">
+    <div class="po-relative po-flex po-items-start">
+      <div class="po-flex po-h-5 po-items-center">
         <input
             :name="`${id}-field`"
             :id="id"
@@ -12,14 +12,14 @@
             v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.checked)"
             type="checkbox"
-            class="h-4 w-4 rounded border-slate-300 text-mpao-lightblue focus:ring-mpao-lightblue"
+            class="po-h-4 po-w-4 po-rounded po-border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
         />
       </div>
-      <div class="ml-3 text-sm">
-        <label :for="id" class="font-medium text-slate-600 cursor-pointer select-none">{{ label }}</label>
-        <span v-if="message" :id="`${id}-description`" class="text-slate-500 cursor-default"><span class="sr-only">{{ label }} </span> {{ message }}</span>
+      <div class="po-ml-3 po-text-sm">
+        <label :for="id" class="po-font-medium po-text-slate-600 po-cursor-pointer po-select-none">{{ label }}</label>
+        <span v-if="message" :id="`${id}-description`" class="po-text-slate-500 po-cursor-default"><span class="po-sr-only">{{ label }} </span> {{ message }}</span>
       </div>
-      <p class="mt-2 text-sm text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
+      <p class="po-mt-2 po-text-sm po-text-red-600" :id="`${id}-error`" v-if="null !== errorMessage">{{ errorMessage }}</p>
     </div>
 </template>
 

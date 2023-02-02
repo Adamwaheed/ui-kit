@@ -1,21 +1,21 @@
 @media screen and (max-width:768px){
     .table-responsive td, .table-responsive th {
-        @apply px-5;
+        @apply po-px-5;
     }
     .table-responsive thead{
-        @apply hidden;
+        @apply po-hidden;
     }
     .table-responsive td,.table-responsive tr{
-        @apply block;
+        @apply po-block;
     }
     .table-responsive tr {
-        @apply border-b border-slate-200;
+        @apply po-border-b po-border-slate-200;
     }
     .table-responsive tr:last-child{
-        @apply border-b-0;
+        @apply po-border-b-0;
     }
     .table-responsive td[data-title]:before{
-        @apply inline-block text-slate-800 font-semibold w-1/3;
+        @apply po-inline-block po-text-slate-800 po-font-semibold po-w-1/3;
         content:attr(data-title);
     }
 
@@ -27,42 +27,42 @@
 
 .table-responsive tr > th:first-child,
 .table-responsive tr > td:first-child {
-    @apply pl-5;
+    @apply po-pl-5;
 }
 
 .table-responsive tr > th:last-child,
 .table-responsive tr > td:last-child {
-    @apply pr-5;
+    @apply po-pr-5;
 }
 
 .table-responsive th {
-    @apply font-bold text-xs py-4 text-slate-700 border-b text-left;
+    @apply po-font-bold po-text-xs po-py-4 po-text-slate-700 po-border-b po-text-left;
 }
 
 .table-responsive td {
-    @apply text-xs py-3 border-b border-slate-200 text-slate-600;
+    @apply po-text-xs po-py-3 po-border-b po-border-slate-200 po-text-slate-600;
 }
 
 .table-responsive.comfy th {
-    @apply py-5
+    @apply po-py-5
 }
 
 .table-responsive.comfy td {
-    @apply py-4
+    @apply po-py-4
 }
 
 .table-responsive td:not(.normal-case) {
-    @apply capitalize;
+    @apply po-capitalize;
 }
 
 .table-responsive tbody tr {
-    @apply transition-colors duration-200 ease-in-out;
+    @apply po-transition-colors po-duration-200 po-ease-in-out;
 }
 
 .table-hover tbody tr:hover {
-    @apply cursor-pointer bg-slate-50;
+    @apply po-cursor-pointer po-bg-slate-50;
 }
 
 .table-responsive tbody tr:hover td {
-    @apply text-slate-700;
+    @apply po-text-slate-700;
 }

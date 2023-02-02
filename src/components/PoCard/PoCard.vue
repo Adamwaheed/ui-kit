@@ -1,6 +1,6 @@
 <template>
-  <div class="shadow-md rounded-xl bg-white">
-    <h3 v-if="title.length > 0" class="text-base font-medium text-slate-600">{{ title }}</h3>
+  <div class="po-shadow-md po-rounded-xl po-bg-white">
+    <h3 v-if="title.length > 0" class="po-text-base po-font-medium po-text-slate-600">{{ title }}</h3>
     <!--
             @slot Content of the card goes here.
         -->

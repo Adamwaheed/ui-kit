@@ -1,15 +1,15 @@
 <template>
-    <div v-if="null !== pagination" class="flex items-center">
-        <span class="text-xs font-normal text-slate-500 pr-2">{{ pagination.label }}</span>
+    <div v-if="null !== pagination" class="po-flex po-items-center">
+        <span class="po-text-xs po-font-normal po-text-slate-500 po-pr-2">{{ pagination.label }}</span>
         <!--
             Emits 'next' or 'prev' when nav buttons are clicked
             @event button-click
         -->
-        <a v-if="null !== pagination.nextLink" :href="pagination.nextLink" title="Previous" @click="$emit('button-click', 'prev')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-            <ChevronLeftIcon class="w-4 stroke-current" />
+        <a v-if="null !== pagination.nextLink" :href="pagination.nextLink" title="Previous" @click="$emit('button-click', 'prev')" class="po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out">
+            <ChevronLeftIcon class="po-w-4 po-stroke-current" />
         </a>
-        <a v-if="null !== pagination.prevLink" :href="pagination.prevLink" title="Next" @click="$emit('button-click', 'next')" class="text-slate-600 p-2 rounded-md hover:bg-slate-200 hover:text-mpao-blue transition-colors duration-75 ease-in-out">
-            <ChevronRightIcon class="w-4 stroke-current" />
+        <a v-if="null !== pagination.prevLink" :href="pagination.prevLink" title="Next" @click="$emit('button-click', 'next')" class="po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out">
+            <ChevronRightIcon class="po-w-4 po-stroke-current" />
         </a>
     </div>
 </template>

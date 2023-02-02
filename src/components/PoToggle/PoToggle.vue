@@ -1,10 +1,10 @@
 <template>
-    <SwitchGroup as="div" class="flex items-center">
-      <Switch v-model="enabled" @click="$emit('update:modelValue', !enabled)" :class="[enabled ? 'bg-mpao-lightblue' : 'bg-slate-200', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-mpao-lightblue focus:ring-offset-2']">
-        <span aria-hidden="true" :class="[enabled ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+    <SwitchGroup as="div" class="po-flex po-items-center">
+      <Switch v-model="enabled" @click="$emit('update:modelValue', !enabled)" :class="[enabled ? 'po-bg-mpao-lightblue' : 'po-bg-slate-200', 'po-relative po-inline-flex po-h-6 po-w-11 po-flex-shrink-0 po-cursor-pointer po-rounded-full po-border-2 po-border-transparent po-transition-colors po-duration-200 po-ease-in-out focus:po-outline-none focus:po-ring-2 focus:po-ring-mpao-lightblue focus:po-ring-offset-2']">
+        <span aria-hidden="true" :class="[enabled ? 'po-translate-x-5' : 'po-translate-x-0', 'po-pointer-events-none po-inline-block po-h-5 po-w-5 po-transform po-rounded-full po-bg-white po-shadow po-ring-0 po-transition po-duration-200 po-ease-in-out']" />
       </Switch>
-      <SwitchLabel as="span" class="ml-3">
-        <span class="text-sm font-medium text-slate-700 cursor-pointer select-none">{{ label }}</span>
+      <SwitchLabel as="span" class="po-ml-3">
+        <span class="po-text-sm po-font-medium po-text-slate-700 po-cursor-pointer po-select-none">{{ label }}</span>
       </SwitchLabel>
     </SwitchGroup>
   </template>

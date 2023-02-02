@@ -1,14 +1,14 @@
 <template>
-    <div class="flex-grow hidden relative sm:block">
+    <div class="po-flex-grow po-hidden po-relative sm:po-block">
         <input
             v-model="query"
             type="text"
             id="main-search"
             :placeholder="placeholder"
-            class="peer/search bg-transparent border border-transparent text-slate-100 text-sm rounded-md ring-0 outline-none focus:outline-none focus:ring-0 transition-colors ease-linear duration-100 block w-full pl-10 p-2.5 appearance-none focus:border-slate-400 hover:border-slate-600"
+            class="peer/search po-bg-transparent po-border po-border-transparent po-text-slate-100 po-text-sm po-rounded-md po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none focus:po-border-slate-400 hover:po-border-slate-600"
             >
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none transition-all ease-linear duration-100 text-slate-400 origin-center peer-hover/search:scale-105 peer-focus/search:text-slate-100">
-            <MagnifyingGlassIcon class="w-5 h-5 stroke-current" />
+        <div class="po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-pointer-events-none po-transition-all po-ease-linear po-duration-100 po-text-slate-400 po-origin-center peer-hover/search:po-scale-105 peer-focus/search:po-text-slate-100">
+            <MagnifyingGlassIcon class="po-w-5 po-h-5 po-stroke-current" />
         </div>
     </div>
 </template>

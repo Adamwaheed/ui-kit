@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full pt-16">
+  <div class="po-min-h-full po-pt-16">
     <PoTopBar
       :has-search="true"
       :app-list="allApps"
@@ -12,13 +12,13 @@
         @slot appIcon takes the SVG img icon of the app
        -->
       <template v-slot:appIcon>
-        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.25 5.337c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.036 1.007-1.875 2.25-1.875S15 2.34 15 3.375c0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959 0 .332.278.598.61.578 1.91-.114 3.79-.342 5.632-.676a.75.75 0 01.878.645 49.17 49.17 0 01.376 5.452.657.657 0 01-.66.664c-.354 0-.675-.186-.958-.401a1.647 1.647 0 00-1.003-.349c-1.035 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401.31 0 .557.262.534.571a48.774 48.774 0 01-.595 4.845.75.75 0 01-.61.61c-1.82.317-3.673.533-5.555.642a.58.58 0 01-.611-.581c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.035-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959a.641.641 0 01-.658.643 49.118 49.118 0 01-4.708-.36.75.75 0 01-.645-.878c.293-1.614.504-3.257.629-4.924A.53.53 0 005.337 15c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.036 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.369 0 .713.128 1.003.349.283.215.604.401.959.401a.656.656 0 00.659-.663 47.703 47.703 0 00-.31-4.82.75.75 0 01.83-.832c1.343.155 2.703.254 4.077.294a.64.64 0 00.657-.642z" /></svg>
+        <svg class="po-fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.25 5.337c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.036 1.007-1.875 2.25-1.875S15 2.34 15 3.375c0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959 0 .332.278.598.61.578 1.91-.114 3.79-.342 5.632-.676a.75.75 0 01.878.645 49.17 49.17 0 01.376 5.452.657.657 0 01-.66.664c-.354 0-.675-.186-.958-.401a1.647 1.647 0 00-1.003-.349c-1.035 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401.31 0 .557.262.534.571a48.774 48.774 0 01-.595 4.845.75.75 0 01-.61.61c-1.82.317-3.673.533-5.555.642a.58.58 0 01-.611-.581c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.035-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959a.641.641 0 01-.658.643 49.118 49.118 0 01-4.708-.36.75.75 0 01-.645-.878c.293-1.614.504-3.257.629-4.924A.53.53 0 005.337 15c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.036 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.369 0 .713.128 1.003.349.283.215.604.401.959.401a.656.656 0 00.659-.663 47.703 47.703 0 00-.31-4.82.75.75 0 01.83-.832c1.343.155 2.703.254 4.077.294a.64.64 0 00.657-.642z" /></svg>
       </template>
     </PoTopBar>
   </div>
 
   
-  <div class="h-full max-w-full">
+  <div class="po-h-full po-max-w-full">
     <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" />
     <main class="shell-content">
       <PoActionBar
@@ -27,12 +27,12 @@
       @button-click="handleActionBarClick"
       />
       
-      <div class="mt-10 px-6 lg:px-8 pb-10">
+      <div class="po-mt-10 po-px-6 lg:po-px-8 po-pb-10">
           <PoStatsBlock :items="statsBlockItems" />
           <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
           <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
-          <PoPageTitle class="mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" />
-          <PoCard class="mt-5 p-5">
+          <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" />
+          <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
               Searching {{searchQuery}}<br />
               <PoModal open-btn-label="Open Modal" />
@@ -43,7 +43,7 @@
               <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
               {{ checkboxState }}
               <br />
-              <div class="mt-5 grid grid-cols-2 gap-5">
+              <div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
                 <PoInputField label="Input" id="input-idssss" type="text" />
                 <PoRadioInput :options="radioOptions" :pre-selected="radioOptionSelected" v-model="radioOptionSelected" />
                 {{ radioOptionSelected }}
@@ -51,7 +51,7 @@
               
             </template>
           </PoCard>
-          <PoCard class="mt-5">
+          <PoCard class="po-mt-5">
             <template v-slot:content>
               <PoTable :thead="tableHead" :tbody="tableBody">
                 <template #th="{ label }">
@@ -64,17 +64,17 @@
                   <td data-title="dod">{{ dod }}</td>
                 </template>
               </PoTable>
-              <div class="p-5">
+              <div class="po-p-5">
                 <PoPagination :pagination="pagination" />
               </div>
             </template>
           </PoCard>
-          <PoCard class="mt-5 p-5" title="Description list">
+          <PoCard class="po-mt-5 po-p-5" title="Description list">
             <template v-slot:content>
               <PoDescriptionList :items="descriptionListItems" />
-              <span class="text-sm text-slate-600 block my-10 font-bold">Striped</span>
+              <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Striped</span>
               <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
-              <span class="text-sm text-slate-600 block my-10 font-bold">Slot</span>
+              <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Slot</span>
               <PoDescriptionList>
                 <template v-slot:content>
                   <div>
@@ -93,8 +93,8 @@
               </PoDescriptionList>
             </template>
           </PoCard>
-          <div class="grid grid-cols-2 gap-5">
-            <PoCard class="mt-5 p-5">
+          <div class="po-grid po-grid-cols-2 po-gap-5">
+            <PoCard class="po-mt-5 po-p-5">
               <template v-slot:content>
                 <div class="space-y-5">
                   <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
@@ -105,7 +105,7 @@
                 </div>
               </template>
             </PoCard>
-            <PoCard class="mt-5 p-5">
+            <PoCard class="po-mt-5 po-p-5">
               <template v-slot:content>
                 <div class=" items-center space-x-5">
                   <PoSelectField label="App name" :list="selectFieldList" :pre-selected="selectFieldPreSelected" v-model="selectFieldSelected" />
@@ -116,16 +116,16 @@
               </template>
             </PoCard>
           </div>
-          <PoCard class="mt-5 p-5">
+          <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
-              <div class="flex items-center space-x-5">
+              <div class="po-flex po-items-center po-space-x-5">
                 <PoButton type="button" label="Button" />
                 <PoButton type="submit" label="Submit" />
                 <PoButton type="link" label="Link" to="/home" />
                 <PoButton type="button" label="Button Disabled" :disabled="true" />
                 <PoButton type="submit" label="Submit Disabled" :disabled="true" />
-                <PoButton type="button" label="Button" :override-colors="true" size="sm" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
-                <PoButton type="button" label="Button" :override-colors="true" size="lg" class="bg-rose-600 hover:bg-rose-700 text-white" />
+                <PoButton type="button" label="Button" :override-colors="true" size="sm" class="po-bg-cyan-600 hover:po-bg-cyan-700 po-text-white" />
+                <PoButton type="button" label="Button" :override-colors="true" size="lg" class="po-bg-rose-600 hover:po-bg-rose-700 po-text-white" />
               </div>
             </template>
           </PoCard>

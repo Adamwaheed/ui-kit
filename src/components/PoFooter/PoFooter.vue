@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div class="p-10 pb-5">
-            <div class="flex space-x-2 mt-5 justify-end">
-                <img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10 mr-2" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo">
-                <img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt="">
-                <img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/en-ccc-2020-issa.png" alt="">
+        <div class="po-p-10 po-pb-5">
+            <div class="po-flex po-space-x-2 po-mt-5 po-justify-end">
+                <img class="po-opacity-30 hover:po-opacity-100 po-transition-opacity po-duration-200 po-ease-in-out po-h-10 po-mr-2" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo">
+                <img class="po-opacity-30 hover:po-opacity-100 po-transition-opacity po-duration-200 po-ease-in-out po-h-10" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt="">
+                <img class="po-opacity-30 hover:po-opacity-100 po-transition-opacity po-duration-200 po-ease-in-out po-h-10" src="https://pension.gov.mv/asset/image/en-ccc-2020-issa.png" alt="">
             </div>
         </div>
-        <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-start px-4 py-6 sm:p-6 z-50">
-          <div class="flex w-full flex-col items-end space-y-4 sm:items-end pt-[55px]" id="po-notifications-alert">
+        <div aria-live="assertive" class="po-pointer-events-none po-fixed po-inset-0 po-flex po-items-start po-px-4 po-py-6 sm:po-p-6 po-z-50">
+          <div class="po-flex po-w-full po-flex-col po-items-end po-space-y-4 sm:po-items-end po-pt-[55px]" id="po-notifications-alert">
           </div>
         </div>
     </div>

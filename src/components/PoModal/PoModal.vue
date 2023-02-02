@@ -2,24 +2,24 @@
     <div>
     <PoButton v-if="openBtnLabel.length > 0" :label="openBtnLabel" @click="isShowing = true" />
     <TransitionRoot as="template" :show="isShowing">
-      <Dialog as="div" class="relative z-50" @close="isShowing = false">
-        <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-          <div class="fixed inset-0 bg-gradient-to-br from-mpao-orange via-mpao-lightblue to-mpao-blue opacity-60 transition-opacity" />
+      <Dialog as="div" class="po-relative po-z-50" @close="isShowing = false">
+        <TransitionChild as="template" enter="po-ease-out po-duration-300" enter-from="po-opacity-0" enter-to="po-opacity-100" leave="po-ease-in po-duration-200" leave-from="po-opacity-100" leave-to="po-opacity-0">
+          <div class="po-fixed po-inset-0 po-bg-gradient-to-br po-from-mpao-orange po-via-mpao-lightblue po-to-mpao-blue po-opacity-60 po-transition-opacity" />
         </TransitionChild>
   
-        <div class="fixed z-10 inset-0 overflow-y-auto">
-          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="po-fixed po-z-10 po-inset-0 po-overflow-y-auto">
+          <div class="po-flex po-items-center po-justify-center po-min-h-screen po-pt-4 po-px-4 po-pb-20 po-text-center sm:po-block sm:po-p-0">
             <!-- This element is to trick the browser into centering the modal contents. -->
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-              <DialogPanel class="relative inline-block align-bottom bg-white rounded-xl text-left shadow-xl transform transition-all sm:align-middle sm:max-w-xl w-full">
-                <div class="flex items-center bg-mpao-lightblue rounded-t-xl p-5">
-                    <h3 class="grow text-md font-bold text-sky-50">{{ modalTitle }}</h3>
-                    <div class="shrink-0">
-                        <span role="button" class="block" @click="isShowing = false"><XMarkIcon class="w-5 stroke-sky-200 hover:stroke-mpao-orange transition-colors duration-150 ease-in-out" /></span>
+            <span class="po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen" aria-hidden="true">&#8203;</span>
+            <TransitionChild as="template" enter="po-ease-out po-duration-300" enter-from="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95" enter-to="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave="po-ease-in po-duration-200" leave-from="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave-to="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95">
+              <DialogPanel class="po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-middle sm:po-max-w-xl po-w-full">
+                <div class="po-flex po-items-center po-bg-mpao-lightblue po-rounded-t-xl po-p-5">
+                    <h3 class="po-grow po-text-md po-font-bold po-text-sky-50">{{ modalTitle }}</h3>
+                    <div class="po-shrink-0">
+                        <span role="button" class="po-block" @click="isShowing = false"><XMarkIcon class="po-w-5 po-stroke-sky-200 hover:po-stroke-mpao-orange po-transition-colors po-duration-150 po-ease-in-out" /></span>
                     </div>
                 </div>
-                <div class="p-5">
+                <div class="po-p-5">
                     <!-- 
                         Modal body content
                         @slot content
