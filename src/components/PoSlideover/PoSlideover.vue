@@ -1,6 +1,6 @@
 <template>
-<TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
+<TransitionRoot as="template" :show="show">
+    <Dialog as="div" class="relative z-10" @close="show = false">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">
@@ -13,7 +13,7 @@
                     <div class="flex items-center justify-between">
                       <DialogTitle class="text-lg font-medium text-white">{{ label }}</DialogTitle>
                       <div class="ml-3 flex h-7 items-center">
-                        <button type="button" class="rounded-md bg-mpao-lightblue text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white" @click="open = false">
+                        <button type="button" class="rounded-md bg-mpao-lightblue text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white" @click="show = false">
                           <span class="sr-only">Close panel</span>
                           <XMarkIcon class="h-6 w-6" aria-hidden="true" />
                         </button>
@@ -24,11 +24,11 @@
                     </div>
                   </div>
                   <div class="relative flex-1 py-6 px-4 sm:px-6">
-                    <!-- Replace with your content -->
-                    <div class="absolute inset-0 py-6 px-4 sm:px-6">
-                      <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true" />
-                    </div>
-                    <!-- /End replace -->
+                    <!-- 
+                        Slideover body content
+                        @slot content
+                     -->
+                     <slot name="content"></slot>
                   </div>
                 </div>
               </DialogPanel>
@@ -46,12 +46,9 @@ export default {
 };
 </script>
 <script setup>
-import { ref } from 'vue'
+import { ref, toRefs, watch } from 'vue';
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-
-const open = ref(true)
-
 
 defineProps({
     /**
@@ -68,5 +65,24 @@ defineProps({
         type: String,
         default: null
     },
+    /**
+     * Pass model Open/Close to the component
+     */
+     show: {
+        type: Boolean,
+        default: false
+    }
 });
+
+
+const { show } = toRefs(props)
+const isShowing = ref(false)
+
+watch(show, () => {
+  isShowing.value = false
+
+  setTimeout(() => {
+    isShowing.value = true
+  }, 100)
+})
 </script>
