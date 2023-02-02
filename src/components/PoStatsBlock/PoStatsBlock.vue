@@ -1,5 +1,5 @@
 <template>
-<div class="rounded-md bg-slate-200 overflow-hidden divide-y divide-slate-200 sm:divide-y-0 grid sm:grid-cols-1 lg:grid-cols-3 gap-px">
+<div :class="['rounded-md bg-slate-200 overflow-hidden divide-y divide-slate-200 sm:divide-y-0 grid gap-px', numberOfCols]">
    <div v-for="item in items" class="bg-white relative group focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
       <span class="block p-4 transition-colors duration-75 ease-linear">
          <div class="flex items-start space-x-2">
@@ -21,6 +21,11 @@
 </div>
 </template>
 
+<script>
+export default {
+  name: "PoStatsBlock",
+};
+</script>
 <script setup>
 
 const props = defineProps({
@@ -31,5 +36,12 @@ const props = defineProps({
         type: Array,
         default: null,
     },
+    /**
+     * tailwind grid cols default: grid-cols-1 lg:grid-cols-3
+     */
+    numberOfCols: {
+      type: String,
+      default: 'grid-cols-1 lg:grid-cols-3'
+    }
 });
 </script>

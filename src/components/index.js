@@ -38,3 +38,4 @@ export { default as PoRadioInput } from "./PoRadioInput/PoRadioInput.vue";
 export { default as PoStatsBlock } from "./PoStatsBlock/PoStatsBlock.vue";
 export { default as PoChatLogItem } from "./PoChatLogItem/PoChatLogItem.vue";
 export { default as PoNotification } from "./PoNotification/PoNotification.vue";
+export { default as PoSlideover } from "./PoSlideover/PoSlideover.vue";
