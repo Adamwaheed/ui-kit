@@ -2851,7 +2851,7 @@ const Mo = ["title"], zo = { class: "relative mt-1" }, Ho = {
       }, o.$attrs), x(e.label), 17, Go)) : C("", !0)
     ], 64));
   }
-}), Yo = /* @__PURE__ */ r("div", { class: "fixed inset-0 bg-gradient-to-br from-mpao-orange via-mpao-lightblue to-mpao-blue opacity-60 transition-opacity" }, null, -1), Qo = { class: "fixed z-10 inset-0 overflow-y-auto" }, Jo = { class: "flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" }, Xo = /* @__PURE__ */ r("span", {
+}), Yo = /* @__PURE__ */ r("div", { class: "fixed inset-0 bg-gradient-to-br from-mpao-orange via-mpao-lightblue to-mpao-blue opacity-60 transition-opacity" }, null, -1), Qo = { class: "fixed z-10 inset-0 overflow-y-auto" }, Jo = { class: "flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" }, Xo = /* @__PURE__ */ r("span", {
   class: "hidden sm:inline-block sm:align-middle sm:h-screen",
   "aria-hidden": "true"
 }, "​", -1), Zo = { class: "flex items-center bg-mpao-lightblue rounded-t-xl p-5" }, es = { class: "grow text-md font-bold text-sky-50" }, ts = { class: "shrink-0" }, ls = { class: "p-5" }, as = {
@@ -3264,7 +3264,7 @@ const Mo = ["title"], zo = { class: "relative mt-1" }, Ho = {
   return a;
 }, Ps = {
   name: "PoFooter"
-}, Os = /* @__PURE__ */ el('<div class="p-10 pb-5"><div class="flex space-x-2 mt-5 justify-end"><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10 mr-2" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo"><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt=""><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/en-ccc-2020-issa.png" alt=""></div></div><div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50"><div class="flex w-full flex-col items-center space-y-4 sm:items-end pt-[55px]" id="po-notifications-alert"></div></div>', 2), Cs = [
+}, Os = /* @__PURE__ */ el('<div class="p-10 pb-5"><div class="flex space-x-2 mt-5 justify-end"><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10 mr-2" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo"><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt=""><img class="opacity-30 hover:opacity-100 transition-opacity duration-200 ease-in-out h-10" src="https://pension.gov.mv/asset/image/en-ccc-2020-issa.png" alt=""></div></div><div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-start px-4 py-6 sm:p-6 z-50"><div class="flex w-full flex-col items-end space-y-4 sm:items-end pt-[55px]" id="po-notifications-alert"></div></div>', 2), Cs = [
   Os
 ];
 function Es(e, t, a, l, n, o) {
