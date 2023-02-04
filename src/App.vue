@@ -17,7 +17,7 @@
     </PoTopBar>
   </div>
 
-  
+  <PoCommandPalette />
   <div class="po-h-full po-max-w-full">
     <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" />
     <main class="shell-content">
@@ -158,6 +158,7 @@ import {
   PoRadioInput,
   PoStatsBlock,
   PoPagination,
+  PoCommandPalette
 } from "./components";
 import { ref } from "vue";
 
