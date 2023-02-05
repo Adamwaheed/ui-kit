@@ -1,0 +1,50 @@
+# Alert component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoAlert from './PoAlert.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoAlert} />
+
+<Canvas withToolbar>
+  <Story id="components-alert--alert" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+   <PoAlert
+        cancel-btn=label="Dismiss"
+        ok-btn-label="Confirm"
+        alert-title="I am an alert"
+        alert-description="It's an alert! I repeat, an alert!!"
+        @button-click="handleAlertOkClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoAlert} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let showAlert = ref(false);
+    function openAlertClick() {
+        showAlert.value = true;
+        setTimeout(() => {
+            showAlert.value = false
+        }, 100)
+    }
+    function handleAlertOkClick() {
+        console.log('alert ok')
+    }
+  `}
+/>

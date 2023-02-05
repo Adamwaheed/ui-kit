@@ -16,7 +16,11 @@
       </template>
     </PoTopBar>
   </div>
-
+  <PoAlert
+    :show="showAlert"
+    alert-description="This is an alert! I repeat, this is an alert."
+    @button-click="handleAlertOkClick"
+  />
   <PoCommandPalette />
   <div class="po-h-full po-max-w-full">
     <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" />
@@ -35,7 +39,11 @@
           <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
               Searching {{searchQuery}}<br />
-              <PoModal open-btn-label="Open Modal" />
+              <div class="po-flex po-space-x-3 po-mt-3">
+                <PoModal open-btn-label="Open Modal" />
+                <PoButton @click="openAlertClick" label="Open Alert" />
+              </div>
+
               <br />
               <PoToggle label="Toggle me" v-model="toggleState" />
               {{ toggleState }}
@@ -158,7 +166,8 @@ import {
   PoRadioInput,
   PoStatsBlock,
   PoPagination,
-  PoCommandPalette
+  PoCommandPalette,
+  PoAlert
 } from "./components";
 import { ref } from "vue";
 
@@ -167,6 +176,7 @@ import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon, SparklesIcon
 let searchQuery = ref("");
 let toggleState = ref(false);
 let checkboxState = ref(false);
+let showAlert = ref(false);
 let inputModel = ref("what");
 
 let allApps = [
@@ -348,6 +358,18 @@ function handleDescriptionListActionClick(item) {
       alert("action btn");
       break;
   }
+}
+
+function openAlertClick() {
+  showAlert.value = true;
+
+  setTimeout(() => {
+    showAlert.value = false
+  }, 100)
+}
+
+function handleAlertOkClick() {
+  console.log('alert ok')
 }
 
 const selectFieldList = [
