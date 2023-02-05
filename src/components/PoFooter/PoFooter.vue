@@ -1,5 +1,5 @@
 <template>
-  <section class="po-grid po-gap-5 po-grid-cols-1 md:po-grid-cols-2 po-px-6 lg:po-px-8 po-mt-10 po-pb-10">
+  <section class="po-grid po-gap-5 po-grid-cols-1 md:po-grid-cols-2 po-px-6 lg:po-px-8 po-mt-10 po-pb-10 po-opacity-60 hover:po-opacity-100 po-transition-opacity po-duration-150 po-ease-out">
     <div>
       <img class="po-h-10 po-mr-2" src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg" alt="Pension Office logo">
       <p class="po-mt-3 po-text-xs po-text-slate-500">8th Floor, Allied Building , Chaandhanee Magu, Malé, 20156, Maldives</p>
