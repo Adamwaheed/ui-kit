@@ -1,5 +1,5 @@
 <template>
-<div :class="['po-rounded-md po-bg-slate-200 po-overflow-hidden po-divide-y po-divide-slate-200 sm:po-divide-y-0 po-grid po-gap-px', numberOfCols]">
+<div :class="['po-rounded-lg po-bg-slate-200 po-overflow-hidden po-divide-y po-divide-slate-200 sm:po-divide-y-0 po-grid po-gap-px', numberOfCols]">
    <div v-for="item in items" class="po-bg-white po-relative po-group focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500">
       <span class="po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear">
          <div class="po-flex po-items-start po-space-x-2">
