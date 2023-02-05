@@ -5,18 +5,18 @@
       <p class="po-mt-3 po-text-xs po-text-slate-500">8th Floor, Allied Building , Chaandhanee Magu, Malé, 20156, Maldives</p>
       <p class="po-mt-1 po-text-xs po-text-slate-500">&copy; Pension Office, All Rights Reserved.</p>
       <p class="po-mt-1 po-text-xs po-text-slate-500 po-flex po-space-x-4">
-        <span class="po-flex po-space-x-1 po-items-center">
+        <a href="https://www.pension.gov.mv" target="_blank" class="po-flex po-space-x-1 po-items-center hover:po-text-mpao-lightblue">
           <GlobeAltIcon class="po-w-3 po-h-3 po-fill-current" />
           <span>www.pension.gov.mv</span>
-        </span>
-        <span class="po-flex po-space-x-1 po-items-center">
+        </a>
+        <a href="mailto:info@pension.gov.mv" target="_blank" class="po-flex po-space-x-1 po-items-center hover:po-text-mpao-lightblue">
           <EnvelopeIcon class="po-w-3 po-h-3 po-fill-current" />
           <span>info@pension.gov.mv</span>
-        </span>
-        <span class="po-flex po-space-x-1 po-items-center">
+        </a>
+        <a href="tel:1441" target="_blank" class="po-flex po-space-x-1 po-items-center hover:po-text-mpao-lightblue">
           <PhoneIcon class="po-w-3 po-h-3 po-fill-current" />
           <span>1441</span>
-        </span>
+        </a>
       </p>
 
     </div>
