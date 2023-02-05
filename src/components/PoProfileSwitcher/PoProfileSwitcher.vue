@@ -3,7 +3,7 @@
         <label for="profile-toggle" class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50" role="button">
             <span class="po-text-xs po-text-white po-font-semibold">{{ profileSwitcherData.currProfileLabel }}</span>
         </label>
-        <input type="checkbox" name="" class="po-hidden peer/profile" role="none" id="profile-toggle">
+        <input type="checkbox" name="" class="po-hidden po-peer/profile" role="none" id="profile-toggle">
         <div class="po-invisible po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[45px] po-opacity-0 po-bg-white po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear peer-checked/profile:po-visible peer-checked/profile:po-top-[54px] peer-checked/profile:po-opacity-100">
             <a
                 v-for="profile in profileSwitcherData.profiles"
