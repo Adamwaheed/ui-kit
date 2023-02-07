@@ -24,7 +24,7 @@
       <div class="po-flex po-h-16 po-items-center po-justify-between po-space-x-12">
         <PoAppIcon :app-name="appName">
           <template v-slot:icon>
-            <slot name="appIcon"></slot>
+            <slot name="appIcon"><component v-if="appIcon" :is="appIcon"></component></slot>
           </template>
         </PoAppIcon>
 
@@ -111,12 +111,9 @@ defineProps({
     default: null,
   },
   /**
-   * SVG Icon
+   * App Icon
    */
-  svgIcon: {
-    type: String,
-    default: ""
-  }
+   appIcon: null
 });
 
 const emit = defineEmits(['query', 'profileSwitcherClick']);
