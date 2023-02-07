@@ -121,6 +121,7 @@
                   <br />
                   Selected {{ selectFieldSelected }}
                 </div>
+                <PoLogs :items="logItems" />
               </template>
             </PoCard>
           </div>
@@ -184,7 +185,8 @@ import {
   PoStatsBlock,
   PoPagination,
   PoCommandPalette,
-  PoAlert
+  PoAlert,
+  PoLogs
 } from "./components";
 import { ref } from "vue";
 
@@ -457,5 +459,26 @@ function handleSidebarButtonClick(link) {
 function handleButtonClick(to) {
   alert(to);
 }
+
+const logItems = [
+  {
+    label: 'Remarks',
+    date: 'Dec 29, 2022',
+    by: 'Jane Singhe',
+    description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum'
+  },
+  {
+    label: 'Approved',
+    date: 'Dec 29, 2022',
+    by: 'Suzanne Ali',
+    description: ''
+  },
+  {
+    label: 'Reported',
+    date: 'Dec 28, 2022',
+    by: '',
+    description: ''
+  },
+];
 
 </script>
