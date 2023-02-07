@@ -256,10 +256,9 @@ let notifications = [
 ];
 
 let profileSwitcherData = {
-  currProfileLabel: "HA",
   profiles: [
     {
-      name: "Hussian Doe",
+      name: "Hussian Jackson Doe",
       identifier: "",
       url: "#self",
       current: true,

@@ -4,7 +4,7 @@
             :class="open ? '' : 'text-opacity-90'"
             class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
         >
-            <span class="po-text-xs po-text-white po-font-semibold">{{ profileSwitcherData.currProfileLabel }}</span>
+            <span class="po-text-xs po-text-white po-font-semibold">{{ currentProfileLabel }}</span>
         </PopoverButton>
         <transition
             enter-active-class="po-transition po-duration-200 po-ease-out"
@@ -74,11 +74,16 @@ export default {
 <script setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { UserIcon, BriefcaseIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline'
-defineProps({
+import { computed } from 'vue';
+const props = defineProps({
     profileSwitcherData: {
-        type: Object,
+        type: Array,
         default: null
     },
+});
+
+const currentProfileLabel = computed(() => {
+  return props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0].name.split(' ').map(word => word[0]).join('').substr(0, 2);
 });
 
 </script>
