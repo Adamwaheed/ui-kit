@@ -35,7 +35,7 @@ const Template = (args) => ({
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '<PoAppTray v-bind="args" />',
+  template: '<div class="po-relative po-flex po-items-center po-space-x-3 po-w-full po-justify-end"><PoAppTray v-bind="args" /></div>',
 });
 
 export const AppTray = Template.bind({});
