@@ -42,3 +42,4 @@ export { default as PoSlideover } from "./PoSlideover/PoSlideover.vue";
 export { default as PoCommandPalette } from "./PoCommandPalette/PoCommandPalette.vue";
 export { default as PoAlert } from "./PoAlert/PoAlert.vue";
 export { default as PoLogs } from "./PoLogs/PoLogs.vue";
+export { default as PoDownloadFileList } from "./PoDownloadFileList/PoDownloadFileList.vue";

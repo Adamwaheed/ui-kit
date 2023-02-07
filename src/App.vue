@@ -123,6 +123,7 @@
                   Selected {{ selectFieldSelected }}
                 </div>
                 <PoLogs :items="logItems" />
+                <PoDownloadFileList :files="downloadableFiles" @button-click="handleDownloadClick" />
               </template>
             </PoCard>
           </div>
@@ -187,7 +188,8 @@ import {
   PoPagination,
   PoCommandPalette,
   PoAlert,
-  PoLogs
+  PoLogs,
+  PoDownloadFileList
 } from "./components";
 import { ref } from "vue";
 
@@ -488,5 +490,21 @@ const logItems = [
     description: ''
   },
 ];
+
+const downloadableFiles = [
+  {
+    label: 'resume_back_end_developer.pdf'
+  },
+  {
+    label: 'another_files.pdf'
+  },
+  {
+    label: 'one_more_file.pdf'
+  },
+];
+
+function handleDownloadClick(label) {
+  console.log('downloadclick', label)
+}
 
 </script>

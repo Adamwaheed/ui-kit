@@ -1,0 +1,57 @@
+# Download File List component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoDownloadFileList from './PoDownloadFileList.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoDownloadFileList} />
+
+#### Empty
+<Canvas withToolbar>
+    <Story inline={true} id="components-download-file-list--empty" />
+</Canvas>
+
+#### Files
+<Canvas withToolbar>
+    <Story inline={true} id="components-download-file-list--files" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoDownloadFileList
+        :files="downloadableFiles"
+        @button-click="handleDownloadClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoDownloadFileList} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const downloadableFiles = [
+        {
+            label: 'resume_back_end_developer.pdf'
+        },
+        {
+            label: 'another_files.pdf'
+        },
+        {
+            label: 'one_more_file.pdf'
+        },
+    ];
+    function handleDownloadClick(label) {
+    ...
+    }
+  `}
+/>

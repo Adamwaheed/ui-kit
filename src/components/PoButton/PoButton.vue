@@ -74,6 +74,8 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['button-click']);
+
 const buttonSize = computed(() => {
     switch (props.size) {
         case 'sm':
