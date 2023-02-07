@@ -3113,7 +3113,7 @@ const Un = ["title"], Gn = { class: "po-relative po-mt-1" }, Kn = {
       ]))), 256))
     ]));
   }
-}), cs = { class: "po-relative po-flex po-items-start" }, fs = { class: "po-flex po-h-5 po-items-center" }, vs = ["name", "id", "checked", "placeholder", "disabled", "required", "aria-describedby"], ms = { class: "po-ml-3 po-text-sm" }, hs = ["for"], bs = ["id"], gs = { class: "po-sr-only" }, xs = ["id"], ys = {
+}), cs = { class: "po-relative po-flex po-items-start" }, fs = { class: "po-flex po-h-5 po-items-center" }, vs = ["name", "id", "checked", "disabled", "aria-describedby"], ms = { class: "po-ml-3 po-text-sm" }, hs = ["for"], bs = ["id"], gs = { class: "po-sr-only" }, xs = ["id"], ys = {
   name: "PoCheckbox"
 }, yi = /* @__PURE__ */ Object.assign(ys, {
   props: {
@@ -3165,6 +3165,13 @@ const Un = ["title"], Gn = { class: "po-relative po-mt-1" }, Kn = {
     errorMessage: {
       type: String,
       default: null
+    },
+    /**
+     * True or false if disabled
+     */
+    disabled: {
+      type: Boolean,
+      default: !1
     }
   },
   setup(e) {
@@ -3174,9 +3181,7 @@ const Un = ["title"], Gn = { class: "po-relative po-mt-1" }, Kn = {
           name: `${e.id}-field`,
           id: e.id,
           checked: e.modelValue,
-          placeholder: t.placeholder,
-          disabled: t.disabled,
-          required: t.required,
+          disabled: e.disabled,
           "aria-describedby": `${e.id}-description`
         }, t.$attrs, {
           onInput: a[0] || (a[0] = (o) => t.$emit("update:modelValue", o.target.checked)),

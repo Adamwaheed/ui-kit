@@ -5,9 +5,7 @@
             :name="`${id}-field`"
             :id="id"
             :checked="modelValue"
-            :placeholder="placeholder"
             :disabled="disabled"
-            :required="required"
             :aria-describedby="`${id}-description`"
             v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.checked)"
@@ -79,6 +77,13 @@ defineProps({
   errorMessage: {
     type: String,
     default: null,
+  },
+  /**
+   * True or false if disabled
+   */
+   disabled: {
+    type: Boolean,
+    default: false,
   },
 
 });
