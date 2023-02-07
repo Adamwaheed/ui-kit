@@ -76,6 +76,8 @@ export default {
   },
 });
 
+const emit = defineEmits(['button-click']);
+
 const { show } = toRefs(props)
 const isShowing = ref(false)
 
