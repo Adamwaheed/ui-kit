@@ -1,0 +1,71 @@
+# Logs component
+
+import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+
+import PoLogs from './PoLogs.vue';
+
+import dedent from 'ts-dedent';
+
+<Description of={PoLogs} />
+
+#### Empty
+Empty state displays a default message "No logs to display." unless you pass ``empty-label="Custom message"`` prop.
+<Canvas withToolbar>
+    <Story inline={true} id="components-logs--empty" />
+</Canvas>
+
+#### Full
+<Canvas withToolbar>
+    <Story inline={true} id="components-logs--full" />
+</Canvas>
+
+#### Without Description
+<Canvas withToolbar>
+    <Story inline={true} id="components-logs--without-description" />
+</Canvas>
+
+#### Without By (auhor)
+<Canvas withToolbar>
+    <Story inline={true} id="components-logs--without-by" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoLogs :items="logItems" empty-label="Nothing to show" />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoLogs} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+  const logItems = [
+    {
+      label: 'Remarks',
+      date: 'Dec 29, 2022',
+      by: 'Jane Singhe',
+      description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum'
+    },
+    {
+      label: 'Approved',
+      date: 'Dec 29, 2022',
+      by: 'Suzanne Ali',
+      description: ''
+    },
+    {
+      label: 'Reported',
+      date: 'Dec 28, 2022',
+      by: '',
+      description: ''
+    },
+  ];
+  `}
+/>
