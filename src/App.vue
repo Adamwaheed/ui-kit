@@ -259,7 +259,7 @@ let profileSwitcherData = {
   currProfileLabel: "HA",
   profiles: [
     {
-      name: "Self",
+      name: "Hussian Doe",
       identifier: "",
       url: "#self",
       current: true,

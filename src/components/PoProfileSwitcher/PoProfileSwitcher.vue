@@ -15,7 +15,7 @@
             leave-to-class="po-translate-y-1 po-opacity-0"
         >
             <PopoverPanel
-            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[55px] po-opacity-0 po-bg-white po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear"
+            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[55px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear"
             >
                 <!--
                     Emits url value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
@@ -25,7 +25,7 @@
                     v-for="profile in profileSwitcherData.profiles"
                     href="#"
                     @click.prevent="$emit('button-click', profile.url)"
-                    class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100"
+                    class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100 po-border po-border-slate-100"
                     role="button"
                     >
                     <span class="po-w-5">
@@ -37,12 +37,11 @@
                         <span v-if="0 !== profile.identifier.length" class="po-text-xs po-text-slate-400">{{ profile.identifier }}</span>
                     </span>
                 </a>
-                <hr class="po-border-slate-200">
-                <div class="md:po-grid po-grid-cols-2">
+                <div class="md:po-grid po-grid-cols-2 po-space-x-1">
                     <a
                         href="#"
                         @click.prevent="$emit('button-click', 'current-profile')"
-                        class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100"
+                        class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100 po-border po-border-slate-100"
                         role="button"
                     >
                         <span class="po-w-5">
@@ -53,7 +52,7 @@
                     <a
                         href="#"
                         @click.prevent="$emit('button-click', 'logout')"
-                        class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100"
+                        class="po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-bg-white hover:po-bg-slate-100 po-border po-border-slate-100"
                         role="button"
                     >
                         <span class="po-w-5">

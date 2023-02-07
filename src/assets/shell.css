@@ -35,7 +35,7 @@
 }
 
 .shell-content--action-bar {
-    @apply po-bg-slate-50 po-px-6 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-border-slate-200
+    @apply po-px-6 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-bg-slate-100 po-border-slate-200 po-bg-opacity-50 po-backdrop-blur po-backdrop-filter
 }
 
 .action-bar__nav {
@@ -61,7 +61,7 @@
         @apply po-px-6
     }
     .shell-content--action-bar {
-        @apply po-border-b-0 po-bg-slate-100
+        @apply po-border-b-0
     }
 }
 

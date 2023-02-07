@@ -16,18 +16,24 @@
             leave-to-class="po-translate-y-1 po-opacity-0"
         >
             <PopoverPanel
-            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear"
+            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear"
             >
                 <ul class="po-space-y-2 po-p-2">
+                    <!--
+                        Emits name when clicked
+                        @event button-click
+                    -->
                     <li
-                        class="po-space-y-2 po-p-2"
+                        role="button"
+                        class="po-space-y-2 po-p-2 po-rounded-lg po-bg-white hover:po-bg-slate-100 po-border po-border-slate-100"
                         v-for="notification in notifications"
+                        @click.prevent="$emit('button-click', notification.name)"
                     >
                         <span class="po-flex po-items-center po-justify-between">
                             <p class="po-text-sm po-font-semibold po-text-slate-700 po-grow po-flex po-space-x-2 po-items-center"><span v-if="!notification.seen" class="po-w-2 po-h-2 po-rounded-full po-shrink-0 po-bg-mpao-orange"></span><span class="po-grow">{{ notification.name }}</span></p>
                             <span class="po-text-xs po-font-normal po-text-slate-400 po-shrink-0">{{ notification.time }}</span>
                         </span>
-                        <span class="po-block po-text-sm po-text-slate-500 po-pb-3 po-border-b po-border-slate-200">
+                        <span class="po-block po-text-sm po-text-slate-500 po-pb-3">
                             {{ notification.text }}
                         </span>
                     </li>
@@ -61,4 +67,6 @@ defineProps({
         default: false
     },
 });
+
+const emit = defineEmits(['button-click']);
 </script>
