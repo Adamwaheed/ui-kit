@@ -23,10 +23,10 @@ import dedent from 'ts-dedent';
   dark
   format={true}
   code={dedent`
-    <PoButton type="button" label="Button" />
+    <PoButton type="button" label="Button" @click="handleButtonClick" />
     <PoButton type="submit" label="Submit" />
     <PoButton type="link" label="Link" to="/home" />
-    <PoButton type="simple" label="I am a button" to="/home" />
+    <PoButton type="simple" label="I am a button" to="/home" @click="handleButtonClick" />
     <PoButton type="button" label="Button Disabled" :disabled="true" />
     <PoButton type="submit" label="Submit Disabled" :disabled="true" />
     <PoButton type="button" label="Button" :override-colors="true" size="sm" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
@@ -40,7 +40,7 @@ Using icons. Default button 'type button' and types link and simple can have cus
   dark
   format={true}
   code={dedent`
-    <PoButton @click="handleDialClick">
+    <PoButton @click="handleButtonClick">
         <template v-slot:label>
           <span class="flex items-center space-x-2">
             <PhoneIcon class="w-4 h-4 fill-current" />
@@ -48,7 +48,7 @@ Using icons. Default button 'type button' and types link and simple can have cus
           </span>
         </template>
     </PoButton>
-    <PoButton type="link" to="/home">
+    <PoButton @click="handleButtonClick" type="link" to="/home">
       <template v-slot:label>
         <span class="po-flex po-items-center po-space-x-1">
           <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
@@ -56,7 +56,7 @@ Using icons. Default button 'type button' and types link and simple can have cus
         </span>
       </template>
     </PoButton>
-    <PoButton type="simple" to="/home">
+    <PoButton @click="handleButtonClick" type="simple" to="/home">
       <template v-slot:label>
         <span class="po-flex po-items-center po-space-x-1">
           <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
@@ -70,3 +70,14 @@ Using icons. Default button 'type button' and types link and simple can have cus
 ### Explanation
 
 <ArgsTable of={PoButton} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    function handleButtonClick(to) {
+      ...
+    }
+  `}
+/>

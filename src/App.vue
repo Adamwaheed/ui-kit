@@ -143,7 +143,7 @@
                   </template>
                 </PoButton>
                 <PoButton type="simple" label="I am a button" to="/home" />
-                <PoButton type="simple" to="/home">
+                <PoButton type="simple" to="/home" @button-click="handleButtonClick">
                   <template v-slot:label>
                     <span class="po-flex po-items-center po-space-x-1">
                       <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
@@ -452,6 +452,10 @@ let pagination = {
 
 function handleSidebarButtonClick(link) {
   console.log('sidebar click ', link)
+}
+
+function handleButtonClick(to) {
+  alert(to);
 }
 
 </script>
