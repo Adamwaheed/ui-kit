@@ -35,8 +35,8 @@ const props = defineProps({
      * Model value
      */
     modelValue: {
-        type: [String, Number],
-        default: "",
+        type: Object,
+        default: null,
     },
     /**
      * List of options for raido

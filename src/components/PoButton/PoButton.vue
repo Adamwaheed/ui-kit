@@ -1,5 +1,5 @@
 <template>
-    <button v-if="'button' == type" @click.prevent="$emit('button-click', action)" :class="[buttonClassess, buttonSize, buttonColor]" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
+    <button v-if="'button' == type" @click.prevent="$emit('button-click', to)" :class="[buttonClassess, buttonSize, buttonColor]" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
         <!-- 
         Label slot
         @slot label

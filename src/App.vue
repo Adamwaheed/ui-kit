@@ -5,6 +5,7 @@
       :app-list="allApps"
       :profile-switcher-data="profileSwitcherData"
       :notifications="notifications"
+      @profile-switcher-click="handleProfileSwitcherClick"
       app-name="Pension UI Kit"
       @query="NewSearch"
     >
@@ -135,7 +136,7 @@
                 <PoButton type="submit" label="Submit Disabled" :disabled="true" />
                 <PoButton type="button" label="Button" :override-colors="true" size="sm" class="po-bg-cyan-600 hover:po-bg-cyan-700 po-text-white" />
                 <PoButton type="button" label="Button" :override-colors="true" size="lg" class="po-bg-rose-600 hover:po-bg-rose-700 po-text-white" />
-                <PoButton @click="handleDialClick">
+                <PoButton @click="handleDialClick" to="a">
                   <template v-slot:label>
                     <span class="po-flex po-items-center po-space-x-2">
                       <PhoneIcon class="po-w-4 po-h-4 po-fill-current" />
@@ -277,8 +278,11 @@ let profileSwitcherData = {
       isPersonal: false,
     },
   ],
-  currentProfileUrl: "#currprofile",
 };
+
+function handleProfileSwitcherClick(item) {
+  console.log('profileswitcherclick', item)
+}
 
 let sidebarContent = [
   {
@@ -458,6 +462,10 @@ function handleSidebarButtonClick(link) {
 
 function handleButtonClick(to) {
   alert(to);
+}
+
+function handleDialClick(to) {
+  console.log(to);
 }
 
 const logItems = [

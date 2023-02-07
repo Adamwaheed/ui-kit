@@ -40,7 +40,7 @@
           </span>
           <PoNotificationHub :notifications="notifications" :has-new-notifications="hasNewNotifications" />
           <PoAppTray :app-list="appList" />
-          <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" />
+          <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" @button-click="handleProfileSwitcherClick" />
         </div>
       </div>
     </div>
@@ -119,7 +119,11 @@ defineProps({
   }
 });
 
-const emit = defineEmits(["query"]);
+const emit = defineEmits(['query', 'profileSwitcherClick']);
+
+function handleProfileSwitcherClick(item) {
+  emit('profileSwitcherClick', item);
+}
 
 function PassQueryToParent(value) {
   const newVal = value;
