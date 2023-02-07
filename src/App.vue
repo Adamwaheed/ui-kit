@@ -126,7 +126,7 @@
           </div>
           <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
-              <div class="po-flex po-items-center po-space-x-5">
+              <div class="po-flex po-items-center po-space-x-5 po-space-y-5 po-flex-wrap">
                 <PoButton type="button" label="Button" />
                 <PoButton type="submit" label="Submit" />
                 <PoButton type="link" label="Link" to="/home" />
@@ -134,6 +134,23 @@
                 <PoButton type="submit" label="Submit Disabled" :disabled="true" />
                 <PoButton type="button" label="Button" :override-colors="true" size="sm" class="po-bg-cyan-600 hover:po-bg-cyan-700 po-text-white" />
                 <PoButton type="button" label="Button" :override-colors="true" size="lg" class="po-bg-rose-600 hover:po-bg-rose-700 po-text-white" />
+                <PoButton @click="handleDialClick">
+                  <template v-slot:label>
+                    <span class="po-flex po-items-center po-space-x-2">
+                      <PhoneIcon class="po-w-4 po-h-4 po-fill-current" />
+                      <span>Dial</span>
+                    </span>
+                  </template>
+                </PoButton>
+                <PoButton type="simple" label="I am a button" to="/home" />
+                <PoButton type="simple" to="/home">
+                  <template v-slot:label>
+                    <span class="po-flex po-items-center po-space-x-1">
+                      <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
+                      <span>File a dispute.</span>
+                    </span>
+                  </template>
+                </PoButton>
               </div>
             </template>
           </PoCard>
@@ -171,7 +188,18 @@ import {
 } from "./components";
 import { ref } from "vue";
 
-import { PlayIcon, AcademicCapIcon, HomeIcon, PlusIcon, BeakerIcon, SparklesIcon, FunnelIcon, BanknotesIcon } from "@heroicons/vue/24/outline";
+import {
+  PlayIcon,
+  AcademicCapIcon,
+  HomeIcon,
+  PlusIcon,
+  BeakerIcon,
+  SparklesIcon,
+  FunnelIcon,
+  BanknotesIcon,
+  PhoneIcon,
+  BoltIcon
+} from "@heroicons/vue/24/outline";
 
 let searchQuery = ref("");
 let toggleState = ref(false);

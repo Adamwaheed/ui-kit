@@ -1,5 +1,5 @@
 <template>
-    <button v-if="'button' == type" :class="[buttonClassess, buttonSize, buttonColor]" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
+    <button v-if="'button' == type" @click.prevent="$emit('button-click', action)" :class="[buttonClassess, buttonSize, buttonColor]" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
         <!-- 
         Label slot
         @slot label
@@ -7,7 +7,16 @@
         <slot name="label">{{ label }}</slot>
     </button>
     <input v-if="'submit' == type" type="submit" :class="[buttonClassess, buttonSize, buttonColor]" :value="label" :disabled="disabled" :aria-disabled="disabled" v-bind="$attrs">
-    <a v-if="'link' == type" :href="to" :class="[buttonClassess, buttonSize, buttonColor]" v-bind="$attrs">{{ label }}</a>
+    <!--
+        Emits to value when type is link or simple. emits action when type is button (default)
+        @event button-click
+    -->
+    <a v-if="'link' == type" href="#" @click.prevent="$emit('button-click', to)" :class="[buttonClassess, buttonSize, buttonColor]" v-bind="$attrs">
+        <slot name="label">{{ label }}</slot>
+    </a>
+    <a v-if="'simple' == type" href="#" @click.prevent="$emit('button-click', to)"  class="po-text-sm po-text-mpao-lightblue hover:po-text-mpao-blue po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1">
+        <slot name="label">{{ label }}</slot>
+    </a>
 </template>
 
 <script>

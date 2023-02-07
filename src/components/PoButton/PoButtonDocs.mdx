@@ -9,7 +9,7 @@ import dedent from 'ts-dedent';
 <Description of={PoButton} />
 
 <Canvas withToolbar>
-    <div className="flex space-x-3 items-center">
+    <div className="po-flex po-space-x-3 po-items-center">
     <Story id="components-button--button" />
     <Story id="components-button--small" />
     <Story id="components-button--medium" />
@@ -26,10 +26,44 @@ import dedent from 'ts-dedent';
     <PoButton type="button" label="Button" />
     <PoButton type="submit" label="Submit" />
     <PoButton type="link" label="Link" to="/home" />
+    <PoButton type="simple" label="I am a button" to="/home" />
     <PoButton type="button" label="Button Disabled" :disabled="true" />
     <PoButton type="submit" label="Submit Disabled" :disabled="true" />
     <PoButton type="button" label="Button" :override-colors="true" size="sm" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
     <PoButton type="button" label="Button" :override-colors="true" size="lg" class="bg-rose-600 hover:bg-rose-700 text-white" />
+  `}
+/>
+
+Using icons. Default button 'type button' and types link and simple can have custom labels using slots, so you can add icons, etc.
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoButton @click="handleDialClick">
+        <template v-slot:label>
+          <span class="flex items-center space-x-2">
+            <PhoneIcon class="w-4 h-4 fill-current" />
+            <span>Dial</span>
+          </span>
+        </template>
+    </PoButton>
+    <PoButton type="link" to="/home">
+      <template v-slot:label>
+        <span class="po-flex po-items-center po-space-x-1">
+          <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
+          <span>File a dispute.</span>
+        </span>
+      </template>
+    </PoButton>
+    <PoButton type="simple" to="/home">
+      <template v-slot:label>
+        <span class="po-flex po-items-center po-space-x-1">
+          <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
+          <span>File a dispute.</span>
+        </span>
+      </template>
+    </PoButton>
   `}
 />
 
