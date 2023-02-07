@@ -8,3 +8,14 @@
 * {
     backface-visibility: hidden;
 }
+
+.log-item {
+    @apply -po-mt-[0.6rem]
+}
+.log-item > span {
+    @apply po-text-xs po-text-slate-500
+}
+
+.log-item > span > span {
+    @apply po-text-slate-600
+}

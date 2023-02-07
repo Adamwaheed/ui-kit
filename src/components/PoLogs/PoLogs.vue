@@ -18,23 +18,6 @@
     </div>
 </template>
 
-<style scoped>
-.log-item {
-    margin-top: -0.6rem;
-}
-.log-item > span {
-    font-size: 0.75rem;
-    line-height: 1rem;
-    --tw-text-opacity: 1;
-    color: rgb(100 116 139 / var(--tw-text-opacity));
-}
-
-.log-item > span > span {
-    --tw-text-opacity: 1;
-    color: rgb(71 85 105 / var(--tw-text-opacity));
-}
-</style>
-
 <script>
 export default {
   name: "PoLogs",
