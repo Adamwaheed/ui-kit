@@ -43,3 +43,4 @@ export { default as PoCommandPalette } from "./PoCommandPalette/PoCommandPalette
 export { default as PoAlert } from "./PoAlert/PoAlert.vue";
 export { default as PoLogs } from "./PoLogs/PoLogs.vue";
 export { default as PoDownloadFileList } from "./PoDownloadFileList/PoDownloadFileList.vue";
+export { default as PoContentArea } from "./PoContentArea/PoContentArea.vue";

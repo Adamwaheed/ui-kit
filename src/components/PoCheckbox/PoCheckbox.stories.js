@@ -2,7 +2,7 @@
 
 import PoCheckbox from './PoCheckbox.vue';
 
-import PoCheckboxDocs from './PoCheckboxDocs.mdx';
+import PoCheckboxDocs from './PoCheckboxDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

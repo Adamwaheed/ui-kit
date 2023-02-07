@@ -2,7 +2,7 @@
 
 import PoInputField from './PoInputField.vue';
 
-import PoInputFieldDocs from './PoInputFieldDocs.mdx';
+import PoInputFieldDocs from './PoInputFieldDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

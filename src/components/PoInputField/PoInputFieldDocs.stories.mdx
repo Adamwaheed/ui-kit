@@ -1,15 +1,17 @@
-# Form status component
+# Input field component
 
-import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
 
 import PoInputField from './PoInputField.vue';
 
 import dedent from 'ts-dedent';
 
+<Meta title="Form/Input Field" component={PoInputField} />
+
 <Description of={PoInputField} />
 
 <Canvas withToolbar>
-<div class="grid grid-cols-2 gap-5 bg-white p-5 rounded-md shadow-md">
+<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
     <Story inline={true} id="form-input-field--normal" />
     <Story inline={true} id="form-input-field--with-info-tooltip" />
     <Story inline={true} id="form-input-field--with-message" />

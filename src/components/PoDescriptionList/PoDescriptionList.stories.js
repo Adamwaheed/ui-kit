@@ -3,7 +3,7 @@
 import PoDescriptionList from './PoDescriptionList.vue';
 import PoCard from '../PoCard/PoCard.vue';
 
-import PoDescriptionListDocs from './PoDescriptionListDocs.mdx';
+import PoDescriptionListDocs from './PoDescriptionListDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -36,7 +36,7 @@ const Template = (args) => ({
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '<PoCard class="mt-5 p-5"> <template v-slot:content> <PoDescriptionList v-bind="args" /></template></PoCard>',
+  template: '<PoCard class="po-mt-5 po-p-5"> <template v-slot:content> <PoDescriptionList v-bind="args" /></template></PoCard>',
 });
 
 export const List = Template.bind({});

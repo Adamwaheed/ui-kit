@@ -4,7 +4,7 @@ import PoStatsBlock from './PoStatsBlock.vue';
 
 import { BanknotesIcon, SparklesIcon, FunnelIcon } from '@heroicons/vue/24/outline';
 
-import PoStatsBlockDocs from './PoStatsBlockDocs.mdx';
+import PoStatsBlockDocs from './PoStatsBlockDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

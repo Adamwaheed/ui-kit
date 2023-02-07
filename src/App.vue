@@ -31,135 +31,134 @@
       :show-back-button="true"
       @button-click="handleActionBarClick"
       />
-      
-      <div class="po-mt-10 po-px-6 lg:po-px-8 po-pb-10">
-          <PoStatsBlock :items="statsBlockItems" />
-          <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
-          <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
-          <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" />
-          <PoCard class="po-mt-5 po-p-5">
-            <template v-slot:content>
-              Searching {{searchQuery}}<br />
-              <div class="po-flex po-space-x-3 po-mt-3">
-                <PoModal open-btn-label="Open Modal" />
-                <PoButton @click="openAlertClick" label="Open Alert" />
-              </div>
-
-              <br />
-              <PoToggle label="Toggle me" v-model="toggleState" />
-              {{ toggleState }}
-              <br />
-              <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
-              {{ checkboxState }}
-              <br />
-              <div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
-                <PoInputField label="Input" id="input-idssss" type="text" />
-                <PoRadioInput :options="radioOptions" :pre-selected="radioOptionSelected" v-model="radioOptionSelected" />
-                {{ radioOptionSelected }}
-              </div>
-              
-            </template>
-          </PoCard>
-          <PoCard class="po-mt-5">
-            <template v-slot:content>
-              <PoTable :thead="tableHead" :tbody="tableBody">
-                <template #th="{ label }">
-                  {{ label }}
-                </template>
-                <template #td="{ name, nid, source, dod }">
-                  <td data-title="name">{{ name }}</td>
-                  <td data-title="NID">{{ nid }}</td>
-                  <td data-title="source">{{ source }}</td>
-                  <td data-title="dod">{{ dod }}</td>
-                </template>
-              </PoTable>
-              <div class="po-p-5">
-                <PoPagination :pagination="pagination" />
-              </div>
-            </template>
-          </PoCard>
-          <PoCard class="po-mt-5 po-p-5" title="Description list">
-            <template v-slot:content>
-              <PoDescriptionList :items="descriptionListItems" />
-              <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Striped</span>
-              <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
-              <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Slot</span>
-              <PoDescriptionList>
-                <template v-slot:content>
-                  <div>
-                    <dt>Title</dt>
-                    <dd>Description</dd>
-                  </div>
-                  <div>
-                    <dt>Title 2</dt>
-                    <dd>Description 2</dd>
-                  </div>
-                  <div>
-                    <dt>Title 3</dt>
-                    <dd>Description 3</dd>
-                  </div>
-                </template>
-              </PoDescriptionList>
-            </template>
-          </PoCard>
-          <div class="po-grid po-grid-cols-2 po-gap-5">
-            <PoCard class="po-mt-5 po-p-5">
-              <template v-slot:content>
-                <div class="space-y-5">
-                  <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
-                  
-                  <p>{{ inputModel }}</p>
+      <PoContentArea>
+        <PoStatsBlock :items="statsBlockItems" />
+        <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
+        <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
+        <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" />
+        <PoCard class="po-mt-5 po-p-5">
+          <template v-slot:content>
+            Searching {{searchQuery}}<br />
+            <div class="po-flex po-space-x-3 po-mt-3">
+              <PoModal open-btn-label="Open Modal" />
+              <PoButton @click="openAlertClick" label="Open Alert" />
+            </div>
   
-                  <PoInputField label="Input Error" id="input-id2" :has-error="true" type="text" error-message="Hello error" />
-                </div>
+            <br />
+            <PoToggle label="Toggle me" v-model="toggleState" />
+            {{ toggleState }}
+            <br />
+            <PoCheckbox v-model="checkboxState" label="Check me" id="checkbox-one" message="if you can" />
+            {{ checkboxState }}
+            <br />
+            <div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
+              <PoInputField label="Input" id="input-idssss" type="text" />
+              <PoRadioInput :options="radioOptions" :pre-selected="radioOptionSelected" v-model="radioOptionSelected" />
+              {{ radioOptionSelected }}
+            </div>
+            
+          </template>
+        </PoCard>
+        <PoCard class="po-mt-5">
+          <template v-slot:content>
+            <PoTable :thead="tableHead" :tbody="tableBody">
+              <template #th="{ label }">
+                {{ label }}
               </template>
-            </PoCard>
-            <PoCard class="po-mt-5 po-p-5">
+              <template #td="{ name, nid, source, dod }">
+                <td data-title="name">{{ name }}</td>
+                <td data-title="NID">{{ nid }}</td>
+                <td data-title="source">{{ source }}</td>
+                <td data-title="dod">{{ dod }}</td>
+              </template>
+            </PoTable>
+            <div class="po-p-5">
+              <PoPagination :pagination="pagination" />
+            </div>
+          </template>
+        </PoCard>
+        <PoCard class="po-mt-5 po-p-5" title="Description list">
+          <template v-slot:content>
+            <PoDescriptionList :items="descriptionListItems" />
+            <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Striped</span>
+            <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
+            <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Slot</span>
+            <PoDescriptionList>
               <template v-slot:content>
-                <div class=" items-center space-x-5">
-                  <PoSelectField label="App name" :list="selectFieldList" :pre-selected="selectFieldPreSelected" v-model="selectFieldSelected" />
-                  Pre {{ selectFieldPreSelected }}
-                  <br />
-                  Selected {{ selectFieldSelected }}
+                <div>
+                  <dt>Title</dt>
+                  <dd>Description</dd>
                 </div>
-                <PoLogs :items="logItems" />
-                <PoDownloadFileList :files="downloadableFiles" @button-click="handleDownloadClick" />
+                <div>
+                  <dt>Title 2</dt>
+                  <dd>Description 2</dd>
+                </div>
+                <div>
+                  <dt>Title 3</dt>
+                  <dd>Description 3</dd>
+                </div>
               </template>
-            </PoCard>
-          </div>
+            </PoDescriptionList>
+          </template>
+        </PoCard>
+        <div class="po-grid po-grid-cols-2 po-gap-5">
           <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
-              <div class="po-flex po-items-center po-space-x-5 po-space-y-5 po-flex-wrap">
-                <PoButton type="button" label="Button" />
-                <PoButton type="submit" label="Submit" />
-                <PoButton type="link" label="Link" to="/home" />
-                <PoButton type="button" label="Button Disabled" :disabled="true" />
-                <PoButton type="submit" label="Submit Disabled" :disabled="true" />
-                <PoButton type="button" label="Button" :override-colors="true" size="sm" class="po-bg-cyan-600 hover:po-bg-cyan-700 po-text-white" />
-                <PoButton type="button" label="Button" :override-colors="true" size="lg" class="po-bg-rose-600 hover:po-bg-rose-700 po-text-white" />
-                <PoButton @click="handleDialClick" to="a">
-                  <template v-slot:label>
-                    <span class="po-flex po-items-center po-space-x-2">
-                      <PhoneIcon class="po-w-4 po-h-4 po-fill-current" />
-                      <span>Dial</span>
-                    </span>
-                  </template>
-                </PoButton>
-                <PoButton type="simple" label="I am a button" to="/home" />
-                <PoButton type="simple" to="/home" @button-click="handleButtonClick">
-                  <template v-slot:label>
-                    <span class="po-flex po-items-center po-space-x-1">
-                      <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
-                      <span>File a dispute.</span>
-                    </span>
-                  </template>
-                </PoButton>
+              <div class="space-y-5">
+                <PoInputField label="Input" id="input-id" type="text" message="This is an input" info="A tooltip" error-message="Hello error" v-model="inputModel" />
+                
+                <p>{{ inputModel }}</p>
+  
+                <PoInputField label="Input Error" id="input-id2" :has-error="true" type="text" error-message="Hello error" />
               </div>
+            </template>
+          </PoCard>
+          <PoCard class="po-mt-5 po-p-5">
+            <template v-slot:content>
+              <div class=" items-center space-x-5">
+                <PoSelectField label="App name" :list="selectFieldList" :pre-selected="selectFieldPreSelected" v-model="selectFieldSelected" />
+                Pre {{ selectFieldPreSelected }}
+                <br />
+                Selected {{ selectFieldSelected }}
+              </div>
+              <PoLogs :items="logItems" />
+              <PoDownloadFileList :files="downloadableFiles" @button-click="handleDownloadClick" />
             </template>
           </PoCard>
         </div>
+        <PoCard class="po-mt-5 po-p-5">
+          <template v-slot:content>
+            <div class="po-flex po-items-center po-space-x-5 po-space-y-5 po-flex-wrap">
+              <PoButton type="button" label="Button" />
+              <PoButton type="submit" label="Submit" />
+              <PoButton type="link" label="Link" to="/home" />
+              <PoButton type="button" label="Button Disabled" :disabled="true" />
+              <PoButton type="submit" label="Submit Disabled" :disabled="true" />
+              <PoButton type="button" label="Button" :override-colors="true" size="sm" class="po-bg-cyan-600 hover:po-bg-cyan-700 po-text-white" />
+              <PoButton type="button" label="Button" :override-colors="true" size="lg" class="po-bg-rose-600 hover:po-bg-rose-700 po-text-white" />
+              <PoButton @click="handleDialClick" to="a">
+                <template v-slot:label>
+                  <span class="po-flex po-items-center po-space-x-2">
+                    <PhoneIcon class="po-w-4 po-h-4 po-fill-current" />
+                    <span>Dial</span>
+                  </span>
+                </template>
+              </PoButton>
+              <PoButton type="simple" label="I am a button" to="/home" />
+              <PoButton type="simple" to="/home" @button-click="handleButtonClick">
+                <template v-slot:label>
+                  <span class="po-flex po-items-center po-space-x-1">
+                    <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
+                    <span>File a dispute.</span>
+                  </span>
+                </template>
+              </PoButton>
+            </div>
+          </template>
+        </PoCard>
+      </PoContentArea>
 
-        <PoFooter />
+      <PoFooter />
     </main>
   </div>
 </template>
@@ -189,7 +188,8 @@ import {
   PoCommandPalette,
   PoAlert,
   PoLogs,
-  PoDownloadFileList
+  PoDownloadFileList,
+  PoContentArea,
 } from "./components";
 import { ref } from "vue";
 

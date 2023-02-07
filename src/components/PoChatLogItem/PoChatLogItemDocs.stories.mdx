@@ -1,15 +1,17 @@
 # ChatLogItem component
 
-import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
 
 import PoChatLogItem from './PoChatLogItem.vue';
 
 import dedent from 'ts-dedent';
 
+<Meta title="Components/Chat Log Item" component={PoChatLogItem} />
+
 <Description of={PoChatLogItem} />
 
 <Canvas withToolbar>
-    <div class="flex flex-col space-y-5">
+    <div class="po-flex po-flex-col po-space-y-5">
         <Story id="components-chat-log-item--chat-log-item-first" />
         <Story id="components-chat-log-item--chat-log-item-second" />
         <Story id="components-chat-log-item--chat-log-item-multiple-messages" />

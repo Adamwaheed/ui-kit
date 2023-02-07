@@ -2,7 +2,7 @@
 
 import PoSelectField from './PoSelectField.vue';
 
-import PoSelectFieldDocs from './PoSelectFieldDocs.mdx';
+import PoSelectFieldDocs from './PoSelectFieldDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

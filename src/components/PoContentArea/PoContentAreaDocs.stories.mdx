@@ -1,0 +1,24 @@
+# Content Area component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoContentArea from './PoContentArea.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Components/Content Area" component={PoContentArea} />
+
+<Description of={PoContentArea} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoContentArea>...</PoContentArea>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoContentArea} />

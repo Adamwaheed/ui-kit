@@ -33,7 +33,7 @@ const Template = (args) => ({
     //👇 The args will now be passed down to the template
     return { args };
   },
-  template: '<PoCard class="mt-5"> <template v-slot:content> <PoTable v-bind="args"> <template #th="{ label }"> {{ label }} </template> <template #td="{ name, nid, source, dod }"> <td data-title="name">{{ name }}</td> <td data-title="NID">{{ nid }}</td> <td data-title="source">{{ source }}</td> <td data-title="dod">{{ dod }}</td> </template> </PoTable> </template> </PoCard>',
+  template: '<PoCard class="po-mt-5"> <template v-slot:content> <PoTable v-bind="args"> <template #th="{ label }"> {{ label }} </template> <template #td="{ name, nid, source, dod }"> <td data-title="name">{{ name }}</td> <td data-title="NID">{{ nid }}</td> <td data-title="source">{{ source }}</td> <td data-title="dod">{{ dod }}</td> </template> </PoTable> </template> </PoCard>',
 });
 
 export const WithContent = Template.bind();

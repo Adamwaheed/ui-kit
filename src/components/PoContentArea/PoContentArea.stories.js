@@ -1,8 +1,8 @@
 // YourComponent.stories.js
 
-import PoAlert from './PoAlert.vue';
+import PoContentArea from './PoContentArea.vue';
 
-import PoAlertDocs from './PoAlertDocs.stories.mdx';
+import PoContentAreaDocs from './PoContentAreaDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -10,13 +10,13 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Alert',
-  component: PoAlert,
+  title: 'Components/Content Area',
+  component: PoContentArea,
   parameters: {
     docs: {
-      page: PoAlertDocs,
+      page: PoContentAreaDocs,
       description: {
-          component: 'Alert component.'
+          component: 'This is the wrapper for every page.'
       }
     },
     backgrounds: {
@@ -30,17 +30,8 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-  components: { PoAlert },
-  template: '<PoAlert v-bind="args"/>',
+  components: { PoContentArea },
+  template: '<PoContentArea>...</PoContentArea>',
 });
 
-export const Alert = Template.bind();
-
-Alert.args = {
-    /* 👇 The args you need here will depend on your component */
-    show: false,
-    cancelBtnLabel: "Dismiss",
-    okBtnLabel: "Confirm",
-    alertTitle: "I am an alert",
-    alertDescription: "It's an alert! I repeat, an alert!!",
-};
+export const ContentArea = Template.bind();

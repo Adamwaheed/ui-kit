@@ -4,7 +4,7 @@ import PoActionBar from './PoActionBar.vue';
 
 import { PlusIcon, BeakerIcon } from '@heroicons/vue/24/outline';
 
-import PoActionBarDocs from './PoActionBarDocs.mdx';
+import PoActionBarDocs from './PoActionBarDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

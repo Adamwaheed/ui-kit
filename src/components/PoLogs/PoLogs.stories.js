@@ -2,7 +2,7 @@
 
 import PoLogs from '../PoLogs/PoLogs.vue';
 
-import PoLogsDocs from './PoLogsDocs.mdx';
+import PoLogsDocs from './PoLogsDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

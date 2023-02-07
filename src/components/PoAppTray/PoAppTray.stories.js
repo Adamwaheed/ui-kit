@@ -2,7 +2,7 @@
 
 import PoAppTray from './PoAppTray.vue';
 
-import PoAppTrayDocs from './PoAppTrayDocs.mdx';
+import PoAppTrayDocs from './PoAppTrayDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

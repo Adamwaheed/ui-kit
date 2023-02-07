@@ -2,7 +2,7 @@
 
 import PoButton from './PoButton.vue';
 
-import PoButtonDocs from './PoButtonDocs.mdx';
+import PoButtonDocs from './PoButtonDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

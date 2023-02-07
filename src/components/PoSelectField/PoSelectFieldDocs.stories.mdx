@@ -1,15 +1,17 @@
-# Select Input component
+# Select Field component
 
-import { Story, ArgsTable, Description, Source, Canvas } from "@storybook/addon-docs";
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
 
 import PoSelectField from './PoSelectField.vue';
 
 import dedent from 'ts-dedent';
 
+<Meta title="Form/Select Field" component={PoSelectField} />
+
 <Description of={PoSelectField} />
 
 <Canvas withToolbar>
-<div class="grid grid-cols-2 gap-5 bg-white p-5 rounded-md shadow-md">
+<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
     <Story inline={true} id="form-select-field--select-field" />
     <br />
     <br />

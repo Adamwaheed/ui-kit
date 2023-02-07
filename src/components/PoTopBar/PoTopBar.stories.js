@@ -4,7 +4,7 @@ import PoTopBar from '../PoTopBar/PoTopBar.vue';
 
 import { BugAntIcon } from '@heroicons/vue/24/solid';
 
-import PoTopBarDocs from './PoTopBarDocs.mdx';
+import PoTopBarDocs from './PoTopBarDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

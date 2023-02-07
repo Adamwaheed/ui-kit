@@ -3,7 +3,7 @@
 import PoCard from '../PoCard/PoCard.vue';
 import PoCardSearch from './PoCardSearch.vue';
 
-import PoCardSearchDocs from './PoCardSearchDocs.mdx';
+import PoCardSearchDocs from './PoCardSearchDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -32,7 +32,7 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoCardSearch, PoCard },
-  template: '<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" /><div class="p-5">Bliss</div></template></PoCard>',
+  template: '<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" /><div class="po-p-5">Bliss</div></template></PoCard>',
 });
 
 export const CardSearch = Template.bind();

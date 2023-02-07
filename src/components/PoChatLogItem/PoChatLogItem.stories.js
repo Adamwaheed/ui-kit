@@ -2,7 +2,7 @@
 
 import PoChatLogItem from './PoChatLogItem.vue';
 
-import PoChatLogItemDocs from './PoChatLogItemDocs.mdx';
+import PoChatLogItemDocs from './PoChatLogItemDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

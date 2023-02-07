@@ -2,7 +2,7 @@
 
 import PoProfileSwitcher from '../PoProfileSwitcher/PoProfileSwitcher.vue';
 
-import PoProfileSwitcherDocs from './PoProfileSwitcherDocs.mdx';
+import PoProfileSwitcherDocs from './PoProfileSwitcherDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

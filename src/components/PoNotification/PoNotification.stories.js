@@ -2,7 +2,7 @@
 
 import PoNotification from './PoNotification.vue';
 
-import PoNotificationDocs from './PoNotificationDocs.mdx';
+import PoNotificationDocs from './PoNotificationDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -31,7 +31,7 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoNotification },
-  template: '<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50"><div class="flex w-full flex-col items-center space-y-4 sm:items-end pt-[55px]" id="po-notifications-alert"></div></div><PoNotification v-bind="args" />',
+  template: '<div aria-live="assertive" class="po-pointer-events-none po-fixed po-inset-0 po-flex po-items-end po-px-4 po-py-6 sm:po-items-start sm:po-p-6 po-z-50"><div class="po-flex po-w-full po-flex-col po-items-center po-space-y-4 sm:po-items-end po-pt-[55px]" id="po-notifications-alert"></div></div><PoNotification v-bind="args" />',
 });
 
 export const Notification = Template.bind();

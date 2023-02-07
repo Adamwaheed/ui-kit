@@ -38,6 +38,14 @@
     @apply po-px-6 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-bg-slate-100 po-border-slate-200 po-bg-opacity-50 po-backdrop-blur po-backdrop-filter
 }
 
+.shell-content--area {
+    @apply po-px-6 lg:po-px-5 po-pb-10 po-space-y-5
+}
+
+.shell-content--action-bar + .shell-content--area {
+    @apply po-mt-10
+}
+
 .action-bar__nav {
     @apply po-grow po-flex po-space-x-1
 }

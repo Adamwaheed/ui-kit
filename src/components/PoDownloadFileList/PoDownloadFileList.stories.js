@@ -2,7 +2,7 @@
 
 import PoDownloadFileList from '../PoDownloadFileList/PoDownloadFileList.vue';
 
-import PoDownloadFileListDocs from './PoDownloadFileListDocs.mdx';
+import PoDownloadFileListDocs from './PoDownloadFileListDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

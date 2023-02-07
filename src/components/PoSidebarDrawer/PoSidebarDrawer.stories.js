@@ -1,7 +1,7 @@
 // YourComponent.stories.js
 
 import PoSidebarDrawer from './PoSidebarDrawer.vue';
-import PoSidebarDrawerDocs from './PoSidebarDrawerDocs.mdx';
+import PoSidebarDrawerDocs from './PoSidebarDrawerDocs.stories.mdx';
 
 import { AcademicCapIcon,
     ShieldCheckIcon,

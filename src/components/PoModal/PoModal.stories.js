@@ -2,7 +2,7 @@
 
 import PoModal from './PoModal.vue';
 
-import PoModalDocs from './PoModalDocs.mdx';
+import PoModalDocs from './PoModalDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

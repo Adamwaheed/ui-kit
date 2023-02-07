@@ -2,7 +2,7 @@
 
 import PoFormStatusMessage from './PoFormStatusMessage.vue';
 
-import PoFormStatusMessageDocs from './PoFormStatusMessageDocs.mdx';
+import PoFormStatusMessageDocs from './PoFormStatusMessageDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {

@@ -2,7 +2,7 @@
 
 import PoCard from './PoCard.vue';
 
-import PoCardDocs from './PoCardDocs.mdx';
+import PoCardDocs from './PoCardDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -31,7 +31,7 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoCard },
-  template: '<PoCard class="p-5 space-y-5"><template v-slot:content><span class="block text-sm text-slate-600">Content</span></template></PoCard>',
+  template: '<PoCard class="po-p-5 po-space-y-5"><template v-slot:content><span class="po-block po-text-sm po-text-slate-600">Content</span></template></PoCard>',
 });
 
 export const Basic = Template.bind();

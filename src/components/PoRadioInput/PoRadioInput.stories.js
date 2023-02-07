@@ -3,7 +3,7 @@
 import PoRadioInput from './PoRadioInput.vue';
 import PoCard from '../PoCard/PoCard.vue';
 
-import PoRadioInputDocs from './PoRadioInputDocs.mdx';
+import PoRadioInputDocs from './PoRadioInputDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
