@@ -625,23 +625,24 @@ const xo = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
       default: "/"
     }
   },
-  setup(e) {
-    return (t, a) => (i(), p(F, null, [
+  emits: ["button-click"],
+  setup(e, { emit: t }) {
+    return (a, o) => (i(), p(F, null, [
       Tl,
       r("aside", jl, [
-        (i(!0), p(F, null, Y(e.content, (o) => (i(), p("div", null, [
-          r("span", Ll, g(o.groupName), 1),
+        (i(!0), p(F, null, Y(e.content, (n) => (i(), p("div", null, [
+          r("span", Ll, g(n.groupName), 1),
           r("ul", Rl, [
-            (i(!0), p(F, null, Y(o.items, (n) => (i(), p("li", null, [
+            (i(!0), p(F, null, Y(n.items, (l) => (i(), p("li", null, [
               r("button", {
-                onClick: (l) => t.$emit("button-click", n.url),
-                class: G(["shell-sidebar--item", { active: n.url == e.currRoute }]),
-                title: `Go to ${n.label}`
+                onClick: (s) => a.$emit("button-click", l.url),
+                class: G(["shell-sidebar--item", { active: l.url == e.currRoute }]),
+                title: `Go to ${l.label}`
               }, [
                 r("span", Dl, [
-                  (i(), K(Ee(n.icon), { class: "po-stroke-current po-w-4 po-h-4" }))
+                  (i(), K(Ee(l.icon), { class: "po-stroke-current po-w-4 po-h-4" }))
                 ]),
-                r("span", Ml, g(n.label), 1)
+                r("span", Ml, g(l.label), 1)
               ], 10, Bl)
             ]))), 256))
           ])

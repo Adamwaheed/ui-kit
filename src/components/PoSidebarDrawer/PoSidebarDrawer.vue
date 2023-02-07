@@ -47,4 +47,6 @@ defineProps({
     }
 });
 
+const emit = defineEmits(['button-click']);
+
 </script>
