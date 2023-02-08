@@ -2,6 +2,8 @@
 
 import PoAppIcon from './PoAppIcon.vue';
 
+import PoAppIconDocs from './PoAppIconDocs.stories.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,9 +14,10 @@ export default {
   component: PoAppIcon,
   parameters: {
     docs: {
-        description: {
-            component: 'This component lives inside PoTopBar component'
-        }
+      page: PoAppIconDocs,
+      description: {
+          component: 'This component lives inside PoTopBar component'
+      }
     },
     backgrounds: {
       default: 'mpao',
