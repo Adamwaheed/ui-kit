@@ -1,19 +1,37 @@
 <template>
-    <div class="po-flex po-items-center po-space-x-1">
-        <h1 class="po-text-xl po-font-semibold po-text-slate-800 po-grow">{{ label }}</h1>
-        <!--
-            If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
-            @event button-click
-        -->
-        <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="['po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out', { 'po-text-mpao-orange hover:po-text-mpao-orange' : filterOn }, { 'tpo-ext-slate-600 hover:po-text-mpao-blue' : !filterOn }]">
-            <FunnelIcon class="po-w-4 po-stroke-current" />
-        </button>
-        <button v-if="showDownload" title="Download" @click="$emit('button-click', 'download')" class="po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out">
-            <ArrowDownTrayIcon class="po-w-4 po-stroke-current" />
-        </button>
-        <span v-if="showFilter && showPagination || showDownload && showPagination" class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1">&nbsp;</span>
-        <PoPagination v-if="showPagination" :pagination="pagination" />
-        
+    <div>
+        <div class="po-flex po-items-center po-space-x-1">
+            <h1 class="po-text-xl po-font-semibold po-text-slate-800 po-grow">{{ label }}</h1>
+            <!--
+                If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
+                @event button-click
+            -->
+            <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="['po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out', { 'po-text-mpao-orange hover:po-text-mpao-orange' : filterOn }, { 'tpo-ext-slate-600 hover:po-text-mpao-blue' : !filterOn }]">
+                <FunnelIcon class="po-w-4 po-stroke-current" />
+            </button>
+            <button v-if="showDownload" title="Download" @click="$emit('button-click', 'download')" class="po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out">
+                <ArrowDownTrayIcon class="po-w-4 po-stroke-current" />
+            </button>
+            <span v-if="showFilter && showPagination || showDownload && showPagination" class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1">&nbsp;</span>
+            <PoPagination v-if="showPagination" :pagination="pagination" />
+            
+        </div>
+        <transition
+            enter-active-class="po-transition po-duration-100 po-ease-out"
+            enter-from-class="po-transform po-scale-95 po-opacity-0"
+            enter-to-class="po-transform po-scale-100 po-opacity-100"
+            leave-active-class="po-transition po-duration-75 po-ease-out"
+            leave-from-class="po-transform po-scale-100 po-opacity-100"
+            leave-to-class="po-transform po-scale-95 po-opacity-0"
+        >
+            <div v-if="filterOn" class="po-bg-slate-50 po-p-5 po-mt-5 po-rounded-md po-grid po-grid-cols-1 md:po-grid-cols-3 po-gap-5">
+                <!-- 
+                Filter options goes here
+                @slot filters
+                -->
+                <slot name="filters"></slot>
+            </div>
+        </transition>
     </div>
 </template>
 
