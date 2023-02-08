@@ -11,7 +11,7 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Card Search',
+  title: 'Layout/Card Search',
   component: PoCardSearch,
   parameters: {
     docs: {

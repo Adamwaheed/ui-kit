@@ -11,7 +11,7 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Description List',
+  title: 'Content/Description List',
   component: PoDescriptionList,
   parameters: {
     docs: {

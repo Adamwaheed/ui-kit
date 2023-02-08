@@ -6,6 +6,21 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      method: '',
+      order: [
+        'Introduction',
+        'UI Colors',
+        'Layout',
+        'Content',
+        'Form',
+        'Components',
+        'Shell'
+      ], 
+      locales: '', 
+    },
+  },
 }
 
 import "../dist/build.css";

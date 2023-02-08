@@ -6,12 +6,18 @@ import PoTable from './PoTable.vue';
 
 import dedent from 'ts-dedent';
 
-<Meta title="Components/Table" component={PoTable} />
+<Meta title="Content/Table" component={PoTable} />
 
 <Description of={PoTable} />
 
+### With content
 <Canvas withToolbar>
-  <Story id="components-table--with-content" />
+  <Story id="content-table--with-content" />
+</Canvas>
+
+### Empty
+<Canvas withToolbar>
+  <Story id="content-table--empty" />
 </Canvas>
 
 PoTable uses `data-title=""` attribute to display titles on resposive (mobile) view.
