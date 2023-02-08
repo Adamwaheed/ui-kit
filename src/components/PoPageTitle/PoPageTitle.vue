@@ -3,7 +3,7 @@
         <div class="po-flex po-items-center po-space-x-1">
             <h1 class="po-text-xl po-font-semibold po-text-slate-800 po-grow">{{ label }}</h1>
             <!--
-                If pagination is on Emits 'next' or 'prev' when nav buttons are clicked, Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
+                Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
                 @event button-click
             -->
             <button v-if="showFilter" title="Filter" @click="$emit('button-click', 'filter'); filterOn = !filterOn" :class="['po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out', { 'po-text-mpao-orange hover:po-text-mpao-orange' : filterOn }, { 'tpo-ext-slate-600 hover:po-text-mpao-blue' : !filterOn }]">
@@ -13,7 +13,7 @@
                 <ArrowDownTrayIcon class="po-w-4 po-stroke-current" />
             </button>
             <span v-if="showFilter && showPagination || showDownload && showPagination" class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1">&nbsp;</span>
-            <PoPagination v-if="showPagination" :pagination="pagination" />
+            <PoPagination v-if="showPagination" :pagination="pagination" @button-click="handlePaginationClick" />
             
         </div>
         <transition
@@ -29,7 +29,9 @@
                 Filter options goes here
                 @slot filters
                 -->
-                <slot name="filters"></slot>
+                <slot name="filters">
+                    <span class="po-text-xs po-text-slate-500 po-py-5">No filters available at the moment.</span>
+                </slot>
             </div>
         </transition>
     </div>
@@ -85,5 +87,16 @@ defineProps({
     }
 });
 
+const emit = defineEmits(['button-click', 'pagination-click']);
+
 const filterOn = ref(false);
+
+function handlePaginationClick(item) {
+    /**
+     * @event pagination-click
+     * Emits 'prev' or 'next' depending on the button clicked
+     */
+    emit('pagination-click', item);
+}
+
 </script>

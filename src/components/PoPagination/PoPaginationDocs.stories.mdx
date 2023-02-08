@@ -1,0 +1,57 @@
+# Pagination component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoPagination from './PoPagination.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Components/Pagination" component={PoPagination} />
+
+<Description of={PoPagination} />
+
+Always display this component on the right side of the page.
+
+<Canvas>
+    <div class="po-flex po-justify-end">
+        <Story id="components-pagination--pagination" />
+    </div>
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoPagination :pagination="pagination" @button-click="handlePaginationClick" />
+  `}
+/>
+
+Pagination also lives inside PoPageTitle component.
+
+### Explanation
+
+<ArgsTable of={PoPagination} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let pagination = {
+        label: 'Page 2 of 20',
+        nextLink: '/users/1',
+        prevLink: '/users/3',
+    }
+    function handlePaginationClick(item) {
+      switch (item) {
+        case "prev":
+            ...
+            break;
+        case "next":
+            ...
+            break;
+      }
+    }
+  `}
+/>

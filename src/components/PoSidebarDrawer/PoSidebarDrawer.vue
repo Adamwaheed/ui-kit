@@ -24,7 +24,7 @@
                                 Emits the button url when it’s clicked
                                 @event button-click
                             -->
-                            <button @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
+                            <button v-if="!item.disabled" @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
                                 <span class="shell-sidebar--icon">
                                     <component :is="item.icon"  class="po-stroke-current po-w-4 po-h-4" />
                                 </span>

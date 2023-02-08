@@ -2,6 +2,8 @@
 
 import PoPageTitle from './PoPageTitle.vue';
 
+import PoPageTitleDocs from './PoPageTitleDocs.stories.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoPageTitle,
   parameters: {
     docs: {
+      page: PoPageTitleDocs,
       description: {
           component: 'Page title component.'
       }
@@ -28,7 +31,7 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoPageTitle },
-  template: '<PoPageTitle label="Page title" />',
+  template: '<PoPageTitle label="Page title"></PoPageTitle>',
 });
 
 export const PageTitle = Template.bind();

@@ -1,0 +1,101 @@
+# Page title component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoPageTitle from './PoPageTitle.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Components/Page Title" component={PoPageTitle} />
+
+<Description of={PoPageTitle} />
+
+#### Page title
+<Canvas>
+    <Story id="components-page-title--page-title" />
+</Canvas>
+
+#### With Pagination
+<Canvas>
+    <Story id="components-page-title--with-pagination" />
+</Canvas>
+
+#### With Pagination Filter And Download
+<Canvas>
+    <Story id="components-page-title--with-pagination-filter-and-download" />
+</Canvas>
+
+#### With Filter And Download
+<Canvas>
+    <Story id="components-page-title--with-filter-and-download" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoPageTitle label="All Investments" />
+  `}
+/>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoPageTitle
+        label="All Investments"
+        :show-pagination="true"
+        :show-filter="true"
+        :show-download="true"
+        :pagination="pagination"
+        @button-click="handlePageTitlteClick"
+        @pagination-click="handlePaginationClick"
+      >
+      <template v-slot:filters>
+        <PoInputField label="Date from" id="date-from" type="date" />
+        <PoInputField label="Date to" id="date-to" type="date" />
+        <div class="flex items-end pb-[0.05rem]">
+          <PoButton label="Filter" type="submit" />
+        </div>
+      </template>
+      </PoPageTitle>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoPageTitle} />
+
+**** `pagination-click` Emits 'prev' or 'next' depending on the button clicked
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let pagination = {
+        label: 'Page 2 of 20',
+        nextLink: '/users/1',
+        prevLink: '/users/3',
+    }
+    function handlePageTitleClick(item) {
+        switch (item) {
+            case "download":
+            alert('download')
+            break;
+        }
+    }
+    function handlePaginationClick(item) {
+        switch (item) {
+            case "prev":
+                ...
+                break;
+            case "next":
+                ...
+                break;
+        }
+    }
+  `}
+/>

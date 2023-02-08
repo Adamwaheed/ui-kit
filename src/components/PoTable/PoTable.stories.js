@@ -3,6 +3,8 @@
 import PoTable from './PoTable.vue';
 import PoCard from '../PoCard/PoCard.vue';
 
+import PoTableDocs from './PoTableDocs.stories.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -13,6 +15,7 @@ export default {
   component: PoTable,
   parameters: {
     docs: {
+      page: PoTableDocs,
       description: {
           component: 'Resposive table component.'
       }

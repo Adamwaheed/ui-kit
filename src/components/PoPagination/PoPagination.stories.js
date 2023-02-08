@@ -2,6 +2,8 @@
 
 import PoPagination from './PoPagination.vue';
 
+import PoPaginationDocs from './PoPaginationDocs.stories.mdx';
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -12,6 +14,7 @@ export default {
   component: PoPagination,
   parameters: {
     docs: {
+      page: PoPaginationDocs,
       description: {
           component: 'Pagination component.'
       }

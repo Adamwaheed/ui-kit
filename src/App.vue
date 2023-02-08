@@ -35,7 +35,7 @@
         <PoStatsBlock :items="statsBlockItems" />
         <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
         <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
-        <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" />
+        <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" @pagination-click="handlePaginationClick" @button-click="handlePageTitleClick" />
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
             Searching {{searchQuery}}<br />
@@ -73,7 +73,7 @@
               </template>
             </PoTable>
             <div class="po-p-5">
-              <PoPagination :pagination="pagination" />
+              <PoPagination :pagination="pagination" @button-click="handlePaginationClick" />
             </div>
           </template>
         </PoCard>
@@ -308,6 +308,7 @@ let sidebarContent = [
         label: "Inputs",
         url: "/dashboard",
         icon: HomeIcon,
+        disabled: true
       },
       {
         label: "Input groups",
@@ -455,6 +456,18 @@ let pagination = {
   label: 'Page 2 of 20',
   nextLink: '/users/1',
   prevLink: '/users/3',
+}
+
+function handlePaginationClick(item) {
+  console.log('pagination click', item)
+}
+
+function handlePageTitleClick(item) {
+    switch (item) {
+        case "download":
+        alert('download')
+        break;
+    }
 }
 
 function handleSidebarButtonClick(link) {

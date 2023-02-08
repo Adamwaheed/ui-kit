@@ -1,0 +1,62 @@
+# Table component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoTable from './PoTable.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Components/Table" component={PoTable} />
+
+<Description of={PoTable} />
+
+<Canvas withToolbar>
+  <Story id="components-table--with-content" />
+</Canvas>
+
+PoTable uses `data-title=""` attribute to display titles on resposive (mobile) view.
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody">
+        <template #th="{ label }">
+        {{ label }}
+        </template>
+        <template #td="{ name, nid, source, dod }">
+        <td data-title="name">{{ name }}</td>
+        <td data-title="NID">{{ nid }}</td>
+        <td data-title="source">{{ source }}</td>
+        <td data-title="dod">{{ dod }}</td>
+        </template>
+    </PoTable>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoTable} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    let tableHead = [
+        { label: "Name" },
+        { label: "NID" },
+        { label: "Source" },
+        { label: "DOD" },
+    ];
+    let tableBody = [
+        { name: "Jane Gasim", nid: "A00000", source: "YY Clinic", dod: "2022-11-12" },
+        {
+            name: "Mariyam Doe",
+            nid: "A00000",
+            source: "Rashu Council",
+            dod: "2022-11-02",
+        },
+    ];
+  `}
+/>

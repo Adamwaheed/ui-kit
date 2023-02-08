@@ -107,7 +107,7 @@ defineProps({
    * Profile switcher object
    */
   profileSwitcherData: {
-    type: Array,
+    type: Object,
     default: null,
   },
   /**
