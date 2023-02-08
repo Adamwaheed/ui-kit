@@ -16,7 +16,7 @@
             leave-to-class="po-translate-y-1 po-opacity-0"
         >
             <PopoverPanel
-            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear"
+            class="po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll"
             >
                 <ul class="po-space-y-2 po-p-2">
                     <!--
