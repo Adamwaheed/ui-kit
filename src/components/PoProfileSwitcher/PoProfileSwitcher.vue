@@ -83,7 +83,10 @@ const props = defineProps({
 });
 
 const currentProfileLabel = computed(() => {
-  return props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0].name.split(' ').map(word => word[0]).join('').substr(0, 2);
+    const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
+    return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : 'NA';
+//   return props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0].name.split(' ').map(word => word[0]).join('').substr(0, 2);
+
 });
 
 </script>
