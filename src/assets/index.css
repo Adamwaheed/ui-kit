@@ -4,4 +4,5 @@
 @import "./util.css";
 @import "./table.css";
 @import "./po-description-list.css";
+@import "./po-loading.css";
 @import "tailwindcss/utilities";

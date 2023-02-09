@@ -17,7 +17,7 @@
       </template>
     </PoTopBar>
   </div>
-  <PoLoading :show="false" label="" />
+  <PoLoading :show="true" label="" />
   <PoAlert
     :show="showAlert"
     alert-description="This is an alert! I repeat, this is an alert."
