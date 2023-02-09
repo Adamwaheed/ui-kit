@@ -17,7 +17,7 @@
       </template>
     </PoTopBar>
   </div>
-  <PoLoading :show="false" label="" />
+  <PoLoading :show="true" label="" />
   <PoAlert
     :show="showAlert"
     alert-description="This is an alert! I repeat, this is an alert."
@@ -37,7 +37,7 @@
         <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
         <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
         <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" @pagination-click="handlePaginationClick" @button-click="handlePageTitleClick" />
-        <PoCard class="po-mt-5 po-p-5">
+        <PoCard class="po-mt-5 po-p-5" :is-loading="true">
           <template v-slot:content>
             Searching {{searchQuery}}<br />
             <div class="po-flex po-space-x-3 po-mt-3">
