@@ -83,11 +83,11 @@ const props = defineProps({
 });
 
 const currentProfileLabel = computed(() => {
-    console.log("aaaa")
-    return 'NA';
-    // const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
-    // console.log(currProfile);
-    // return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : 'NA';
+    // console.log("aaaa")
+    // return 'NA';
+    const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
+    console.log(currProfile);
+    return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : 'NA';
 //   return props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0].name.split(' ').map(word => word[0]).join('').substr(0, 2);
 
 });
