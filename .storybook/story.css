@@ -5,3 +5,7 @@
     position: relative !important;
     top: 0 !important;
 }
+
+.po-fixed {
+    position:initial;
+}

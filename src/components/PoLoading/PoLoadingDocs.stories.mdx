@@ -1,0 +1,45 @@
+# Loading component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoLoading from './PoLoading.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Components/Loading" component={PoLoading} />
+
+<Description of={PoLoading} />
+
+### Loading
+<Canvas withToolbar>
+    <Story id="components-loading--loading" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoLoading :show="true" />
+  `}
+/>
+
+### With Label
+<Canvas withToolbar>
+    <Story id="components-loading--with-label" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoLoading :show="true" label="Loading" />
+  `}
+/>
+
+Loading has an optional label
+
+### Explanation
+
+<ArgsTable of={PoLoading} />

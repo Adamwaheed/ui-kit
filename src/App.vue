@@ -17,6 +17,7 @@
       </template>
     </PoTopBar>
   </div>
+  <PoLoading :show="false" label="Loading" />
   <PoAlert
     :show="showAlert"
     alert-description="This is an alert! I repeat, this is an alert."
@@ -190,6 +191,7 @@ import {
   PoLogs,
   PoDownloadFileList,
   PoContentArea,
+  PoLoading,
 } from "./components";
 import { ref } from "vue";
 
@@ -331,6 +333,7 @@ let profileSwitcherData = {
 };
 
 function handleProfileSwitcherClick(item) {
+  
   console.log('profileswitcherclick', item)
 }
 

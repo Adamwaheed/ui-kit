@@ -25,3 +25,8 @@ export const parameters = {
 
 import "../dist/build.css";
 import "./story.css";
+import { withSource } from './withSource'
+
+export const decorators = [
+  withSource
+]

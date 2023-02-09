@@ -2,9 +2,9 @@
     <RadioGroup v-model="selectedOption">
         <RadioGroupLabel class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700">{{ label }}</RadioGroupLabel>
 
-        <div v-if="null !== options" class="po-mt-1 po-flex po-space-x-3 po-flex-wrap">
+        <div v-if="null !== options" class="po-mt-1 po-flex -po-mb-3 po-flex-wrap">
         <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option" v-slot="{ checked, active }">
-            <div :class="['po-transition-colors po-duration-100 po-ease-out', checked ? 'po-border-transparent' : 'po-border-gray-300 hover:po-border-mpao-lightblue', active ? 'po-border-mpao-lightblue po-ring-1 po-ring-mpao-lightblue' : '', 'po-mb-3 po-relative po-flex po-cursor-pointer po-rounded-lg po-border po-bg-white po-px-3 po-py-2 po-shadow-sm focus:po-outline-none']">
+            <div :class="['po-transition-colors po-duration-100 po-ease-out po-mr-3', checked ? 'po-border-transparent' : 'po-border-gray-300 hover:po-border-mpao-lightblue', active ? 'po-border-mpao-lightblue po-ring-1 po-ring-mpao-lightblue' : '', 'po-mb-3 po-relative po-flex po-cursor-pointer po-rounded-lg po-border po-bg-white po-px-3 po-py-2 po-shadow-sm focus:po-outline-none']">
                 <span class="po-flex po-flex-1">
                     <span class="po-flex po-flex-col">
                     <RadioGroupLabel as="span" class="po-block po-text-sm po-font-medium po-text-gray-900">{{ option.title }}</RadioGroupLabel>

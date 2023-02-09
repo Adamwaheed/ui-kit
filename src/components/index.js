@@ -44,3 +44,4 @@ export { default as PoAlert } from "./PoAlert/PoAlert.vue";
 export { default as PoLogs } from "./PoLogs/PoLogs.vue";
 export { default as PoDownloadFileList } from "./PoDownloadFileList/PoDownloadFileList.vue";
 export { default as PoContentArea } from "./PoContentArea/PoContentArea.vue";
+export { default as PoLoading } from "./PoLoading/PoLoading.vue";
