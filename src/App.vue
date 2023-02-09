@@ -37,7 +37,7 @@
         <PoFormStatusMessage message="Thank you! The record has been created successfully!" />
         <PoFormStatusMessage :is-error="true" message="Could not complete your request." :error-list="['NID no is required', 'Date of birth is required']" />
         <PoPageTitle class="po-mt-5" label="Page title" :show-pagination="true" :show-filter="true" :show-download="true" :pagination="pagination" @pagination-click="handlePaginationClick" @button-click="handlePageTitleClick" />
-        <PoCard class="po-mt-5 po-p-5" :is-loading="true">
+        <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
             Searching {{searchQuery}}<br />
             <div class="po-flex po-space-x-3 po-mt-3">
@@ -78,7 +78,7 @@
             </div>
           </template>
         </PoCard>
-        <PoCard class="po-mt-5 po-p-5" title="Description list">
+        <PoCard class="po-mt-5 po-p-5" title="Description list" :is-loading="true">
           <template v-slot:content>
             <PoDescriptionList :items="descriptionListItems" />
             <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Striped</span>
@@ -263,9 +263,72 @@ let profileSwitcherData = {
       name: "Hussian Jackson Doe",
       identifier: "",
       url: "#self",
+      current: true,
       isPersonal: true,
     },
-    
+    {
+      name: "Penshion Office",
+      identifier: "202301052023",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "ABC Enterprises Pvt Ltd",
+      identifier: "202301052026",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "Hussian Jackson Doe",
+      identifier: "",
+      url: "#self",
+      current: false,
+      isPersonal: true,
+    },
+    {
+      name: "Penshion Office",
+      identifier: "202301052023",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "ABC Enterprises Pvt Ltd",
+      identifier: "202301052026",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "ABC Enterprises Pvt Ltd",
+      identifier: "202301052026",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "Hussian Jackson Doe",
+      identifier: "",
+      url: "#self",
+      current: false,
+      isPersonal: true,
+    },
+    {
+      name: "Penshion Office",
+      identifier: "202301052023",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
+    {
+      name: "ABC Enterprises Pvt Ltd",
+      identifier: "202301052026",
+      url: "#business",
+      current: false,
+      isPersonal: false,
+    },
   ],
 };
 

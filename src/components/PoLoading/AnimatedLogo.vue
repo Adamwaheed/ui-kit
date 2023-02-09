@@ -1,8 +1,7 @@
 <template>
     <div>
         <svg
-        id="logo"
-        class="po-stroke-mpao-blue"
+        class="po-stroke-mpao-blue animated-logo"
         viewBox="0 0 62 55"
         fill="none"
         stroke="currentColor"
@@ -49,63 +48,3 @@ export default {
   name: "AnimatedLogo",
 };
 </script>
-
- 
-<style scoped>
-#logo path:nth-child(1) {
-stroke-dasharray: 59;
-stroke-dashoffset: 59;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(2) {
-stroke-dasharray: 59;
-stroke-dashoffset: 59;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(3) {
-stroke-dasharray: 59;
-stroke-dashoffset: 59;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(4) {
-stroke-dasharray: 59;
-stroke-dashoffset: 59;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(5) {
-stroke-dasharray: 135;
-stroke-dashoffset: 135;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(6) {
-stroke-dasharray: 22;
-stroke-dashoffset: 22;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(7) {
-stroke-dasharray: 137;
-stroke-dashoffset: 137;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(8) {
-stroke-dasharray: 22;
-stroke-dashoffset: 22;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(9) {
-stroke-dasharray: 219;
-stroke-dashoffset: 219;
-animation: line_anim 2.5s ease forwards infinite;
-}
-#logo path:nth-child(10) {
-stroke-dasharray: 219;
-stroke-dashoffset: 219;
-animation: line_anim 2.5s ease forwards infinite;
-}
-
-@keyframes line_anim {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-</style>

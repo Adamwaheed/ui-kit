@@ -19,3 +19,99 @@
 .log-item > span > span {
     @apply po-text-slate-600
 }
+
+/* loading dots and logo */
+.loading-dots div:nth-child(1) {
+    animation: loading-dots1 0.6s infinite;
+  }
+  .loading-dots div:nth-child(2) {
+    animation: loading-dots2 0.6s infinite;
+  }
+  .loading-dots div:nth-child(3) {
+    animation: loading-dots2 0.6s infinite;
+  }
+  .loading-dots div:nth-child(4) {
+    animation: loading-dots3 0.6s infinite;
+  }
+  @keyframes loading-dots1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes loading-dots3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes loading-dots2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(9px, 0);
+    }
+  }
+
+
+.animated-logo path:nth-child(1) {
+    stroke-dasharray: 59;
+    stroke-dashoffset: 59;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(2) {
+    stroke-dasharray: 59;
+    stroke-dashoffset: 59;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(3) {
+    stroke-dasharray: 59;
+    stroke-dashoffset: 59;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(4) {
+    stroke-dasharray: 59;
+    stroke-dashoffset: 59;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(5) {
+    stroke-dasharray: 135;
+    stroke-dashoffset: 135;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(6) {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 22;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(7) {
+    stroke-dasharray: 137;
+    stroke-dashoffset: 137;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(8) {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 22;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(9) {
+    stroke-dasharray: 219;
+    stroke-dashoffset: 219;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    .animated-logo path:nth-child(10) {
+    stroke-dasharray: 219;
+    stroke-dashoffset: 219;
+    animation: line_anim 2.5s ease forwards infinite;
+    }
+    
+    @keyframes line_anim {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }

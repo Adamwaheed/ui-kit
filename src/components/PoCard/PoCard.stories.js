@@ -36,7 +36,9 @@ const Template = (args) => ({
 
 export const Basic = Template.bind();
 export const WithTitle = Template.bind();
+export const WithLoading = Template.bind();
 
-WithTitle.args = {
-  title: 'Card title'
+WithLoading.args = {
+  title: 'Card title',
+  isLoading: true
 };
