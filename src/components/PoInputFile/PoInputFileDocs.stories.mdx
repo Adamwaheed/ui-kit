@@ -1,0 +1,75 @@
+# Input file component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoInputFile from './PoInputFile.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Form/Input File" component={PoInputFile} />
+
+<Description of={PoInputFile} />
+
+### Normal
+<Canvas withToolbar>
+    <Story id="form-input-file--normal" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputFile v-model="fileAttachment" label="Choose file" id="documents" />
+  `}
+/>
+
+### With message
+<Canvas withToolbar>
+    <Story id="form-input-file--with-message" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputFile
+        label="Choose file"
+        message="This is a helpful message."
+        id="documents"
+    />
+  `}
+/>
+
+### With Error
+<Canvas withToolbar>
+    <Story id="form-input-file--error-state" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoInputFile
+        label="Choose file"
+        errorMessage="Attachment is required."
+        id="documents"
+        required="true"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoInputFile} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const fileAttachment = ref();
+  `}
+/>

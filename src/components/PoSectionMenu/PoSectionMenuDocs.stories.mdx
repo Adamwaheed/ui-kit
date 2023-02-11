@@ -1,0 +1,71 @@
+# Section menu component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoSectionMenu from './PoSectionMenu.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Layout/Section Menu" component={PoSectionMenu} />
+
+<Description of={PoSectionMenu} />
+
+<Canvas withToolbar>
+    <Story id="layout-section-menu--section-menu" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoSectionMenu
+        curr-page-route="/users"
+        :menu-items="menuItems"
+        @link-click="handleSectionMenuClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoSectionMenu} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    import { UsersIcon, PuzzlePieceIcon, KeyIcon, RectangleStackIcon, BriefcaseIcon } from '@heroicons/vue/24/outline';
+    const menuItems = [
+        {
+            label: 'Staff',
+            icon: BriefcaseIcon,
+            link: '/users/staff'
+        },
+        {
+            label: 'Users',
+            icon: UsersIcon,
+            link: '/users'
+        },
+        {
+            label: 'Roles',
+            icon: PuzzlePieceIcon,
+            link: '/users/roles'
+        },
+        {
+            label: 'Apps',
+            icon: RectangleStackIcon,
+            link: '/users/apps'
+        },
+        {
+            label: 'Permissions',
+            icon: KeyIcon,
+            link: '/users/permissions'
+        },
+    ];
+    function handleSectionMenuClick(link) {
+        console.log('consentlink', link)
+    }
+  `}
+/>

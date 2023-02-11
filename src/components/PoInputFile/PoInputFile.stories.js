@@ -52,7 +52,7 @@ WithMessage.args = {
   label: "Attache files",
   id: 'attachment2-id',
   type: 'text',
-  message: 'Attachment message.'
+  message: 'This is a helpful message.'
 
 };
 
