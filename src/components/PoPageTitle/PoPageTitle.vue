@@ -49,7 +49,7 @@ import PoPagination from '../PoPagination/PoPagination.vue';
 
 import { ref } from 'vue';
 
-defineProps({
+const props = defineProps({
     /**
      * Page title
      */
@@ -84,12 +84,19 @@ defineProps({
     pagination: {
         type: Object,
         default: null
-    }
+    },
+    /**
+     * 
+     */
+     filterOn: {
+        type: Boolean,
+        default: false
+     }
 });
 
 const emit = defineEmits(['button-click', 'pagination-click']);
 
-const filterOn = ref(false);
+const filterOn = (props.filterOn) ? ref(true) : ref(false);
 
 function handlePaginationClick(item) {
     /**

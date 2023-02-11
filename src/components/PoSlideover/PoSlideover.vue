@@ -7,7 +7,7 @@
         <div class="po-absolute po-inset-0 po-overflow-hidden">
           <div class="po-pointer-events-none po-fixed po-inset-y-0 po-right-0 po-flex po-max-w-full po-pl-10">
             <TransitionChild as="template" enter="po-transform po-transition po-ease-in-out po-duration-500 sm:po-duration-700" enter-from="po-translate-x-full" enter-to="po-translate-x-0" leave="po-transform po-transition po-ease-in-out po-duration-500 sm:po-duration-700" leave-from="po-translate-x-0" leave-to="po-translate-x-full">
-              <DialogPanel class="po-pointer-events-auto po-w-screen po-max-w-lg">
+              <DialogPanel :class="maxWidth" class="po-pointer-events-auto po-w-screen">
                 <div class="po-flex po-h-full po-flex-col po-overflow-y-scroll po-bg-white po-shadow-xl">
                   <div class="po-bg-slate-50 po-py-6 po-px-4 sm:po-px-6">
                     <div class="po-flex po-items-center po-justify-between">
@@ -71,6 +71,13 @@ const props = defineProps({
      show: {
         type: Boolean,
         default: false
+    },
+    /**
+     * Set width of the slideover. default:max-w-lg
+     */
+    maxWidth: {
+      type: String,
+      default: "po-max-w-lg"
     }
 });
 
