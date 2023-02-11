@@ -1,8 +1,7 @@
 // YourComponent.stories.js
 
-import PoPagination from './PoPagination.vue';
+import PoConsent from './PoConsent.vue';
 
-import PoPaginationDocs from './PoPaginationDocs.stories.mdx';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -10,13 +9,12 @@ export default {
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Components/Pagination',
-  component: PoPagination,
+  title: 'Form/Consent',
+  component: PoConsent,
   parameters: {
     docs: {
-      page: PoPaginationDocs,
       description: {
-          component: 'Pagination component.'
+          component: 'This component is to be used in forms when a user consent is required.'
       }
     },
     backgrounds: {
@@ -30,21 +28,21 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-    components: { PoPagination },
-    setup() {
+  setup() {
       //👇 The args will now be passed down to the template
       return { args };
-    },
-    template: '<PoPagination v-bind="args" />',
-  });
-  
-  export const Pagination = Template.bind();
-  
-  Pagination.args = {
-      /* 👇 The args you need here will depend on your component */
-      pagination: {
-        label: 'Page 2 of 20',
-        nextLink: '/users/1',
-        prevLink: '/users/3',
-      }
-  };
+  },
+  components: { PoConsent },
+  template: '<PoConsent v-bind="args" />',
+});
+
+export const Consent = Template.bind();
+
+Consent.args = {
+    id: 'iam-a-consent',
+    label: 'I agree to the terms outlined in this consent statement and grant permission for my information to be published on this platform.',
+    links: [
+        { label: 'Concent statement', url: 'consent-statement' },
+        { label: 'Terms of use', url: 'terms-conditions' },
+    ]
+};

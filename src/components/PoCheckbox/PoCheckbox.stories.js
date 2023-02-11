@@ -30,6 +30,10 @@ export default {
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
+  setup() {
+    //👇 The args will now be passed down to the template
+    return { args };
+  },
   components: { PoCheckbox },
   template: '<PoCheckbox v-bind="args" />',
 });

@@ -1,0 +1,49 @@
+# Consent check component
+
+import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+
+import PoConsent from './PoConsent.vue';
+
+import dedent from 'ts-dedent';
+
+<Meta title="Form/Consent" component={PoConsent} />
+
+<Description of={PoConsent} />
+
+<Canvas withToolbar>
+    <Story id="form-consent--consent" />
+</Canvas>
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    <PoConsent
+        v-model="hasConcent"
+        id="death-report-consent"
+        label="I agree to the terms outlined in this consent statement and grant permission for my information to be published on this platform."
+        :links="[
+            { label: 'Concent statement', url: 'consent-statement' },
+            { label: 'Terms of use', url: 'terms-conditions' },
+        ]"
+        @button-click="handleConcentLinkClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoConsent} />
+
+<Source
+  language='js'
+  dark
+  format={true}
+  code={dedent`
+    const hasConcent = ref(false);
+    function handleConcentLinkClick(link) {
+        console.log('consentlink', link)
+    }
+  `}
+/>

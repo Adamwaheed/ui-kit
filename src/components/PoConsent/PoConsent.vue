@@ -7,10 +7,10 @@
             :aria-describedby="`${id}-description`"
             v-bind="$attrs"
             @input="$emit('update:modelValue', $event.target.checked)"
-            class="shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
+            class="po-shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
         >
-        <div class="grow -mt-[0.26rem]">
-            <label class="po-block po-select-none po-text-sm text-slate-600 po-cursor-pointer" :for="id">{{ label }}</label>
+        <div class="po-grow -po-mt-[0.26rem]">
+            <label class="po-block po-select-none po-text-sm po-text-slate-600 po-cursor-pointer" :for="id">{{ label }}</label>
             <div class="po-mt-2 po-flex po-space-x-3">
                 <!--
                     Emits the value of link
@@ -20,7 +20,7 @@
                     v-for="link in links"
                     :href="link.url"
                     @click.prevent="$emit('button-click', link.url)"
-                    class="po-text-sm text-mpao-lightblue hover:text-mpao-blue"
+                    class="po-text-sm po-text-mpao-lightblue hover:po-text-mpao-blue"
                 >{{ link.label }}</a>
             </div>
         </div>
@@ -32,9 +32,7 @@ export default {
   name: "PoConsent",
 };
 </script>
-
 <script setup>
-
 defineProps({
   /**
    * Model value

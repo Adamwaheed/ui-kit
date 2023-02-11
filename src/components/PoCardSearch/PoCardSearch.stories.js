@@ -32,6 +32,10 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoCardSearch, PoCard },
+  setup() {
+    //👇 The args will now be passed down to the template
+    return { args };
+  },
   template: '<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" /><div class="po-p-5">Bliss</div></template></PoCard>',
 });
 

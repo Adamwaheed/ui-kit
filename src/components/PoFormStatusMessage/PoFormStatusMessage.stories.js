@@ -31,6 +31,10 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
   components: { PoFormStatusMessage },
+  setup() {
+    //👇 The args will now be passed down to the template
+    return { args };
+  },
   template: '<PoFormStatusMessage v-bind="args" />',
 });
 

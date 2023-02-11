@@ -4720,7 +4720,7 @@ const Wi = /* @__PURE__ */ wt(qi, [["render", Ki]]), Zi = {
       ])
     ])) : A("", !0);
   }
-}), eu = { class: "po-py-5 po-flex po-items-start po-space-x-5" }, tu = ["name", "id", "checked", "aria-describedby"], ou = { class: "grow -mt-[0.26rem]" }, lu = ["for"], au = { class: "po-mt-2 po-flex po-space-x-3" }, nu = ["href", "onClick"], su = {
+}), eu = { class: "po-py-5 po-flex po-items-start po-space-x-5" }, tu = ["name", "id", "checked", "aria-describedby"], ou = { class: "po-grow -po-mt-[0.26rem]" }, lu = ["for"], au = { class: "po-mt-2 po-flex po-space-x-3" }, nu = ["href", "onClick"], su = {
   name: "PoConsent"
 }, Ru = /* @__PURE__ */ Object.assign(su, {
   props: {
@@ -4760,18 +4760,18 @@ const Wi = /* @__PURE__ */ wt(qi, [["render", Ki]]), Zi = {
         "aria-describedby": `${e.id}-description`
       }, t.$attrs, {
         onInput: n[0] || (n[0] = (a) => t.$emit("update:modelValue", a.target.checked)),
-        class: "shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
+        class: "po-shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
       }), null, 16, tu),
       r("div", ou, [
         r("label", {
-          class: "po-block po-select-none po-text-sm text-slate-600 po-cursor-pointer",
+          class: "po-block po-select-none po-text-sm po-text-slate-600 po-cursor-pointer",
           for: e.id
         }, C(e.label), 9, lu),
         r("div", au, [
           (u(!0), d(H, null, Y(e.links, (a) => (u(), d("a", {
             href: a.url,
             onClick: me((o) => t.$emit("button-click", a.url), ["prevent"]),
-            class: "po-text-sm text-mpao-lightblue hover:text-mpao-blue"
+            class: "po-text-sm po-text-mpao-lightblue hover:po-text-mpao-blue"
           }, C(a.label), 9, nu))), 256))
         ])
       ])
