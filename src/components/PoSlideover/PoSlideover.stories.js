@@ -31,13 +31,17 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
     components: { PoSlideover },
-    template: '<PoSlideover v-bind="args"><template v-slot:content>...</template></PoSlideover>',
+    setup() {
+      //👇 The args will now be passed down to the template
+      return { args };
+    },
+    template: '<PoSlideover v-bind="args"><template v-slot:content>o...asdsd</template></PoSlideover>',
   });
   
   export const Slideover = Template.bind();
   
   Slideover.args = {
-    show: true,
+    show: false,
     label: 'Slideover',
     description: 'This is a description'
   };
