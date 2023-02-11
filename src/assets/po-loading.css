@@ -1,15 +1,12 @@
 
 .po-loading-rotate {
-    width: 6.2rem;
-    height:6.2rem;
-    background: conic-gradient(#3f54c0 20deg, #ec6d25 60deg, transparent 120deg);
+    background: conic-gradient(transparent 212deg,#ec6d25 273deg,#3f54c0 336deg);
     animation: loading_rotate 3s infinite;
-    @apply po-absolute po-rounded-full;
 }
 
 @keyframes loading_rotate {
     to {
-        transform: rotate(-360deg);
+        transform: rotate(360deg);
     }
 }
 

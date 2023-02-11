@@ -4695,7 +4695,9 @@ function Ki(e, t, n, a, o, l) {
 const Wi = /* @__PURE__ */ wt(qi, [["render", Ki]]), Zi = {
   key: 0,
   class: "po-fixed po-z-[999] po-top-0 po-bottom-0 po-left-0 po-right-0 po-flex po-items-center po-justify-center"
-}, Yi = /* @__PURE__ */ r("div", { class: "po-loading-rotate" }, null, -1), Qi = { class: "relative po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-w-24 po-h-24 po-flex po-items-center po-justify-center po-rounded-full po-z-10 po-shadow-xl" }, Ji = {
+}, Yi = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[6.2rem] po-h-[6.2rem] po-bg-transparent po-overflow-hidden po-rounded-xl" }, [
+  /* @__PURE__ */ r("div", { class: "po-loading-rotate po-absolute -po-top-8 -po-left-8 po-w-[10rem] po-h-[10rem]" })
+], -1), Qi = { class: "relative po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-w-24 po-h-24 po-flex po-items-center po-justify-center po-rounded-xl po-z-10 po-shadow-xl" }, Ji = {
   key: 0,
   class: "po-absolute po-left-0 po-right-0 po-text-center po-py-1 po-text-xs po-text-mpao-blue po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter"
 }, Xi = {
