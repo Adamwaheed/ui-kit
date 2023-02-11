@@ -54,6 +54,10 @@ Search box can be disabled by passing false to ``has-search`` `:has-search="fals
 
 <ArgsTable of={PoTopBar} />
 
+From `profileSwitcherClick` event you can get:
+* Profile object when a profile is clicked. The object from `profileSwitcherData.profile`.
+* `current-profile` when Profile button is clicked.
+* `logout` when Logout button is clicked.
 
 <Source
   language='js'
@@ -126,8 +130,8 @@ Search box can be disabled by passing false to ``has-search`` `:has-search="fals
         },
     ],
     };
-    function handleProfileSwitcherClick(item) {
-    ...
+    function handleProfileSwitcherClick(profileObject) {
+     // you get profileSwitcherData.profile object
     }
     let searchQuery = ref("");
     function NewSearch(query) {
