@@ -4395,7 +4395,7 @@ const ds = ["title"], cs = { class: "po-relative po-mt-1" }, fs = {
                               ])) : E("", !0)
                             ]),
                             r("div", {
-                              class: U([o.bgcolor, "po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6"])
+                              class: U([e.bgColor, "po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6"])
                             }, [
                               le(o.$slots, "content")
                             ], 2)

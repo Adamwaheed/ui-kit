@@ -23,7 +23,7 @@
                       <p class="po-text-sm po-text-slate-500">{{ description }}</p>
                     </div>
                   </div>
-                  <div :class="bgcolor" class="po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6">
+                  <div :class="bgColor" class="po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6">
                     <!-- 
                         Slideover body content
                         @slot content
