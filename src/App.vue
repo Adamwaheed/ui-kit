@@ -80,6 +80,7 @@
         </PoCard>
         <PoCard class="po-mt-5 po-p-5" title="Description list" :is-loading="true">
           <template v-slot:content>
+            <br />
             <PoDescriptionList :items="descriptionListItems" />
             <span class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold">Striped</span>
             <PoDescriptionList :items="descriptionListItems" :striped="true" @button-click="handleDescriptionListActionClick" />
