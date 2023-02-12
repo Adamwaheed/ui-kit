@@ -46,3 +46,4 @@ export { default as PoDownloadFileList } from "./PoDownloadFileList/PoDownloadFi
 export { default as PoContentArea } from "./PoContentArea/PoContentArea.vue";
 export { default as PoLoading } from "./PoLoading/PoLoading.vue";
 export { default as PoConsent } from "./PoConsent/PoConsent.vue";
+export { default as PoCallLog } from "./PoCallLog/PoCallLog.vue";
