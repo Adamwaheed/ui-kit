@@ -2,7 +2,7 @@
 
 import PoActionBar from './PoActionBar.vue';
 
-import { PlusIcon, BeakerIcon } from '@heroicons/vue/24/outline';
+import { PlusIcon, BeakerIcon, CheckIcon } from '@heroicons/vue/24/outline';
 
 import PoActionBarDocs from './PoActionBarDocs.stories.mdx';
 
@@ -41,6 +41,7 @@ const Template = (args) => ({
 });
 
 export const ActionBar = Template.bind({});
+export const WithHighlight = Template.bind({});
 
 ActionBar.args = {
   /* 👇 The args you need here will depend on your component */
@@ -55,4 +56,19 @@ ActionBar.args = {
     }
   ],
   showBackButton: true
+};
+
+WithHighlight.args = {
+  /* 👇 The args you need here will depend on your component */
+  items: [
+    {
+      label: 'Mark as done',
+      icon: CheckIcon,
+      highlighted: true
+    },
+    {
+      label: 'Experiment',
+      icon: BeakerIcon
+    }
+  ]
 };

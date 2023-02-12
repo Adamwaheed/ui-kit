@@ -51,12 +51,25 @@
 }
 
 .action-bar__nav_link {
-    @apply po-text-slate-600 po-p-3 po-rounded-md hover:po-bg-slate-100 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out po-flex po-items-center po-space-x-2 po-cursor-pointer
+    @apply po-p-3 po-rounded-md po-transition-all po-duration-75 po-ease-in-out po-flex po-items-center po-space-x-2 po-cursor-pointer
 }
 
-.action-bar__nav_link:hover,
-.action-bar__nav_link.active {
+.action-bar__nav_link:not(.action-bar__nav_highlighted) {
+    @apply po-text-slate-600
+}
+
+.action-bar__nav_link:not(.action-bar__nav_highlighted):hover,
+.action-bar__nav_link:not(.action-bar__nav_highlighted).active {
     @apply po-bg-white po-text-mpao-blue
+}
+
+.action-bar__nav_highlighted {
+    @apply po-text-mpao-lightblue po-font-medium po-border po-border-blue-100
+}
+
+.action-bar__nav_highlighted:hover,
+.action-bar__nav_highlighted.active {
+    @apply po-bg-white po-border-blue-300
 }
 
 .action-bar__nav_label {

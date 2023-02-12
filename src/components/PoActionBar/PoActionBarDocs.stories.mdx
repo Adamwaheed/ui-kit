@@ -10,8 +10,15 @@ import dedent from 'ts-dedent';
 
 <Description of={PoActionBar} />
 
+### Action bar
 <Canvas withToolbar>
   <Story id="layout-action-bar--action-bar" />
+</Canvas>
+
+### With highlights
+You can pass an optional `highlighted: true` to `items` to highlight the button. This is useful in cases where important action buttons are added to action bar.
+<Canvas withToolbar>
+  <Story id="layout-action-bar--with-highlight" />
 </Canvas>
 
 <Source
@@ -42,6 +49,7 @@ import dedent from 'ts-dedent';
         {
             label: "New Staff",
             icon: PlusIcon,
+            highlighted: true
         },
         {
             label: "Experiment",

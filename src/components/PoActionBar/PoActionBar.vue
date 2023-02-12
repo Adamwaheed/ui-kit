@@ -8,6 +8,7 @@
             <span
                 v-for="item in items"
                 @click="$emit('button-click', item.label)"
+                :class="[{ 'action-bar__nav_highlighted' : item.highlighted }]"
                 class="action-bar__nav_link"
             >
                 <component :is="item.icon"  class="po-stroke-current po-w-5 po-h-5" />

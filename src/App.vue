@@ -375,6 +375,7 @@ let actionBarItems = [
   {
     label: "New Staff",
     icon: PlusIcon,
+    highlighted: true,
   },
   {
     label: "Experiment",
