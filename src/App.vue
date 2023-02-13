@@ -267,7 +267,7 @@ let notifications = [
 let profileSwitcherData = {
   profiles: [
     {
-      name: "Hussian Jackson Doe",
+      name: "Ministry of Pension",
       identifier: "",
       url: "#self",
       current: true,

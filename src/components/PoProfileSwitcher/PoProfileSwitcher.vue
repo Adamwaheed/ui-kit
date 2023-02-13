@@ -8,7 +8,7 @@
         :class="open ? '' : 'text-opacity-90'"
         class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
             >
-            <span class="po-text-xs po-text-white po-font-semibold po-capitalize">{{ currentProfileLabel }}</span>
+            <span class="po-text-xs po-text-white po-font-semibold">{{ currentProfileLabel }}</span>
         </div>
         </PopoverButton>
         <transition
@@ -92,7 +92,7 @@ const currentProfileFullLabel = ref('');
 const currentProfileLabel = computed(() => {
     const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
     currentProfileFullLabel.value = (currProfile) ? currProfile.name : '';
-    return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : '';
+    return (currProfile) ? currProfile.name.match(/\b[A-Z]/g).join('').substr(0, 2) : '';
 
 });
 
