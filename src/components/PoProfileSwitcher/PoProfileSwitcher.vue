@@ -91,7 +91,7 @@ const currentProfileFullLabel = ref('');
 
 const currentProfileLabel = computed(() => {
     const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
-    currentProfileFullLabel.value = currProfile.name;
+    currentProfileFullLabel.value = (currProfile) ? currProfile.name : '';
     return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : '';
 
 });

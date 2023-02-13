@@ -2342,7 +2342,7 @@ const ia = {
   setup(e) {
     const t = e, n = w(""), a = $(() => {
       const o = t.profileSwitcherData.profiles.filter((l) => l.current === !0)[0];
-      return n.value = o.name, o ? o.name.split(" ").map((l) => l[0]).join("").substr(0, 2) : "";
+      return n.value = o ? o.name : "", o ? o.name.split(" ").map((l) => l[0]).join("").substr(0, 2) : "";
     });
     return (o, l) => (u(), U(v(Ge), { class: "po-relative" }, {
       default: D(({ open: s }) => [
