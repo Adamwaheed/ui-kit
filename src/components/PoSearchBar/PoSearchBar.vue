@@ -1,5 +1,5 @@
 <template>
-    <div class="po-flex-grow po-hidden po-relative sm:po-block">
+    <div class="po-flex-grow po-hidden po-relative md:po-block">
         <input
             v-model="query"
             type="text"

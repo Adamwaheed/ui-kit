@@ -33,7 +33,7 @@
         <div class="po-flex po-items-center po-space-x-3">
           <span
             v-if="hasSearch"
-            class="po-block po-w-6 po-text-slate-100 sm:po-hidden"
+            class="po-block po-w-6 po-text-slate-100 md:po-hidden"
             role="button"
           >
           <MagnifyingGlassIcon class="po-stroke-current" />
