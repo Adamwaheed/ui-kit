@@ -118,7 +118,13 @@
           <PoCard class="po-mt-5 po-p-5">
             <template v-slot:content>
               <div class=" items-center space-x-5">
-                <PoSelectField label="App name" :list="selectFieldList" :pre-selected="selectFieldPreSelected" v-model="selectFieldSelected" />
+                <PoSelectField
+                  label="App name"
+                  @selected="handleSelectFieldClick"
+                  :list="selectFieldList"
+                  :pre-selected="selectFieldPreSelected"
+                  v-model="selectFieldSelected"
+                />
                 Pre {{ selectFieldPreSelected }}
                 <br />
                 Selected {{ selectFieldSelected }}
@@ -573,4 +579,7 @@ function handleDownloadClick(label) {
   console.log('downloadclick', label)
 }
 
+function handleSelectFieldClick(val) {
+  console.log('handleSelectFieldClick', val)
+}
 </script>

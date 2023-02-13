@@ -13,7 +13,14 @@
       </ComboboxButton>
 
       <ComboboxOptions v-if="filteredItems.length > 0" class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm">
-        <ComboboxOption v-for="item in filteredItems" :key="item.id" :value="item" as="template" v-slot="{ active, selected }">
+        <ComboboxOption
+          v-for="item in filteredItems"
+          :key="item.id"
+          :value="item"
+          @click="$emit('selected', selectedItem)"
+          as="template"
+          v-slot="{ active, selected }"
+        >
           <li :class="['po-relative po-cursor-default po-select-none po-py-2 po-pl-3 po-pr-9', active ? 'po-bg-mpao-lightblue po-text-white' : 'po-text-slate-900']">
             <span :class="['po-block po-truncate', selected && 'po-font-semibold']">
               {{ item.name }}
@@ -51,8 +58,8 @@ const props = defineProps({
    * Model value
    */
    modelValue: {
-    type: [String, Number],
-    default: "",
+    type: [Object],
+    default: null,
   },
     /**
      * Pre selected value if any
@@ -95,7 +102,7 @@ const filteredItems = computed(() =>
       })
 )
 
-const emit = defineEmits(['selected', 'unSelected'])
+const emit = defineEmits(['update:modelValue', 'selected'])
 
 watch(selectedItem, () => {
   emit('update:modelValue', selectedItem.value)

@@ -33,6 +33,7 @@ import dedent from 'ts-dedent';
         label="Select something"
         :list="selectFieldList"
         :pre-selected="selectFieldPreSelected"
+        @selected="handleSelectFieldClick"
         v-model="selectFieldSelected"
     />
   `}
@@ -54,6 +55,9 @@ import dedent from 'ts-dedent';
         { id: 3, name: 'Another' },
     ];
     const selectFieldPreSelected = ref(selectFieldList[1]);
+    function handleSelectFieldClick(val) {
+      console.log('handleSelectFieldClick', val)
+    }
   `}
 />
 />
