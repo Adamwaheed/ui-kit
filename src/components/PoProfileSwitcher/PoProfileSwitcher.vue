@@ -8,7 +8,7 @@
         :class="open ? '' : 'text-opacity-90'"
         class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
             >
-            <span class="po-text-xs po-text-white po-font-semibold">{{ currentProfileLabel }}</span>
+            <span class="po-text-xs po-text-white po-font-semibold po-capitalize">{{ currentProfileLabel }}</span>
         </div>
         </PopoverButton>
         <transition
