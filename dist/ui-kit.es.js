@@ -4000,7 +4000,7 @@ const fs = ["title"], vs = { class: "po-relative po-mt-1" }, ms = {
       default: ""
     }
   },
-  emits: ["selected", "unSelected"],
+  emits: ["selected", "unSelected", "update:modelValue"],
   setup(e, { emit: t }) {
     const a = w(e.preSelected);
     return ae(a, () => {

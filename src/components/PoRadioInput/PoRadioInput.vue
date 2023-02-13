@@ -63,7 +63,7 @@ const props = defineProps({
 
 const selectedOption = ref(props.preSelected)
 
-const emit = defineEmits(['selected', 'unSelected'])
+const emit = defineEmits(['selected', 'unSelected', 'update:modelValue'])
 
 watch(selectedOption, () => {
   emit('update:modelValue', selectedOption.value)
