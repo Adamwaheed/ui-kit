@@ -1,10 +1,15 @@
 <template>
     <Popover v-slot="{ open }" class="po-relative">
         <PopoverButton
-            :class="open ? '' : 'text-opacity-90'"
-            class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
+            class="po-flex po-items-center po-outline-none"
         >
+        <span class="po-text-white">aaa</span>
+        <div
+        :class="open ? '' : 'text-opacity-90'"
+        class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
+            >
             <span class="po-text-xs po-text-white po-font-semibold">{{ currentProfileLabel }}</span>
+        </div>
         </PopoverButton>
         <transition
             enter-active-class="po-transition po-duration-200 po-ease-out"

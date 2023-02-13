@@ -2,7 +2,7 @@
     <Popover v-slot="{ open }" class="po-relative">
         <PopoverButton
             :class="open ? '' : 'text-opacity-90'"
-            class="po-block po-w-6 po-text-slate-100 genie-effect po-relative po-z-50"
+            class="po-block po-w-6 po-text-slate-100 genie-effect po-relative po-z-50 po-outline-none"
         >
             <span v-if="hasNewNotifications" class="po-absolute po-right-0 po-w-3 po-h-3 po-bg-mpao-orange po-rounded-full po-border-2 po-border-mpao-blue"></span>
             <BellIcon class="po-stroke-current" />
