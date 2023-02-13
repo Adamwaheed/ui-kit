@@ -3452,7 +3452,7 @@ const fs = ["title"], vs = { class: "po-relative po-mt-1" }, ms = {
 }), Vs = /* @__PURE__ */ r("div", { class: "po-fixed po-inset-0 po-bg-gradient-to-br po-from-mpao-orange po-via-mpao-lightblue po-to-mpao-blue po-opacity-60 po-transition-opacity" }, null, -1), xs = { class: "po-fixed po-z-10 po-inset-0 po-overflow-y-auto" }, ws = { class: "po-flex po-items-center po-justify-center po-min-h-screen po-pt-4 po-px-4 po-pb-20 po-text-center sm:po-block sm:po-p-0" }, $s = /* @__PURE__ */ r("span", {
   class: "po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen",
   "aria-hidden": "true"
-}, "​", -1), ks = { class: "po-flex po-items-center po-bg-mpao-lightblue po-rounded-t-xl po-p-5" }, Cs = { class: "po-grow po-text-md po-font-bold po-text-sky-50" }, _s = { class: "po-shrink-0" }, Ss = { class: "po-p-5" }, Ps = {
+}, "​", -1), ks = { class: "po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5" }, Cs = { class: "po-grow po-text-md po-font-bold po-text-slate-600" }, _s = { class: "po-shrink-0" }, Ss = { class: "po-p-5" }, Ps = {
   name: "PoModal"
 }, qu = /* @__PURE__ */ Object.assign(Ps, {
   props: {
@@ -3538,7 +3538,7 @@ const fs = ["title"], vs = { class: "po-relative po-mt-1" }, ms = {
                                 class: "po-block",
                                 onClick: l[1] || (l[1] = (s) => a.value = !1)
                               }, [
-                                C(v(Tt), { class: "po-w-5 po-stroke-sky-200 hover:po-stroke-mpao-orange po-transition-colors po-duration-150 po-ease-in-out" })
+                                C(v(Tt), { class: "po-w-5 po-stroke-slate-500 hover:po-stroke-mpao-orange po-transition-colors po-duration-150 po-ease-in-out" })
                               ])
                             ])
                           ]),

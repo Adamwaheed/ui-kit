@@ -13,10 +13,10 @@
             <span class="po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen" aria-hidden="true">&#8203;</span>
             <TransitionChild as="template" enter="po-ease-out po-duration-300" enter-from="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95" enter-to="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave="po-ease-in po-duration-200" leave-from="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave-to="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95">
               <DialogPanel class="po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-middle sm:po-max-w-xl po-w-full">
-                <div class="po-flex po-items-center po-bg-mpao-lightblue po-rounded-t-xl po-p-5">
-                    <h3 class="po-grow po-text-md po-font-bold po-text-sky-50">{{ modalTitle }}</h3>
+                <div class="po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5">
+                    <h3 class="po-grow po-text-md po-font-bold po-text-slate-600">{{ modalTitle }}</h3>
                     <div class="po-shrink-0">
-                        <span role="button" class="po-block" @click="isShowing = false"><XMarkIcon class="po-w-5 po-stroke-sky-200 hover:po-stroke-mpao-orange po-transition-colors po-duration-150 po-ease-in-out" /></span>
+                        <span role="button" class="po-block" @click="isShowing = false"><XMarkIcon class="po-w-5 po-stroke-slate-500 hover:po-stroke-mpao-orange po-transition-colors po-duration-150 po-ease-in-out" /></span>
                     </div>
                 </div>
                 <div class="po-p-5">
