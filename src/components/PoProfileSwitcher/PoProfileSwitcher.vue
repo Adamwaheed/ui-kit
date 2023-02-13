@@ -3,7 +3,7 @@
         <PopoverButton
             class="po-flex po-items-center po-outline-none"
         >
-        <span class="po-text-white">aaa</span>
+        <span class="po-hidden lg:po-block po-text-sky-50 po-text-sm po-shrink-0 po-pr-3 po-truncate po-max-w-[140px] po-overflow-hidden">{{ currentProfileFullLabel }}</span>
         <div
         :class="open ? '' : 'text-opacity-90'"
         class="po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
@@ -79,7 +79,7 @@ export default {
 <script setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { UserIcon, BriefcaseIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline'
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 const props = defineProps({
     profileSwitcherData: {
         type: Object,
@@ -87,8 +87,11 @@ const props = defineProps({
     },
 });
 
+const currentProfileFullLabel = ref('');
+
 const currentProfileLabel = computed(() => {
     const currProfile = props.profileSwitcherData.profiles.filter(profile => profile.current === true)[0];
+    currentProfileFullLabel.value = currProfile.name;
     return (currProfile) ? currProfile.name.split(' ').map(word => word[0]).join('').substr(0, 2) : '';
 
 });
