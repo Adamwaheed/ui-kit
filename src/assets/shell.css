@@ -1,5 +1,5 @@
 .shell-sidebar {
-    @apply po-block po-px-5 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-scroll po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-50 po-pt-10 sm:po-pt-0
+    @apply po-flex po-flex-col po-px-5 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-scroll po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-50 po-pt-10 sm:po-pt-0
 }
 
 .shell-sidebar--toggle:checked ~ .shell-sidebar {
@@ -101,7 +101,7 @@
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar {
-        @apply po-block po-p-5 po-border-slate-50
+        @apply po-flex po-flex-col po-p-5 po-border-slate-50
     }
 
     .shell-sidebar--label {
@@ -120,7 +120,7 @@
         @apply po-mb-0
     }
 
-    .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--menu {
+    .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--menu:not(.po-mb-0) {
         @apply po-mb-10
     }
 

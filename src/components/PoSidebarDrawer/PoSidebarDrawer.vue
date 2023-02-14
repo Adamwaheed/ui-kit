@@ -1,42 +1,54 @@
 <template>
     <input type="checkbox" name="" class="po-hidden shell-sidebar--toggle" role="none" id="sidebar-drawer-toggle" checked aria-checked="true">
     <aside class="shell-sidebar">
-        <div v-for="group in content">
-            <Disclosure v-slot="{ open }" :defaultOpen="true">
-                <DisclosureButton
-                :class="open ? '' : 'po-mb-3'"
-                class="shell-sidebar--section po-w-full po-text-left"
-                >
-                {{ group.groupName }}
-                </DisclosureButton>
-                <transition
-                    enter-active-class="po-transition po-duration-100 po-ease-out"
-                    enter-from-class="po-transform po-scale-95 po-opacity-0"
-                    enter-to-class="po-transform po-scale-100 po-opacity-100"
-                    leave-active-class="po-transition po-duration-75 po-ease-out"
-                    leave-from-class="po-transform po-scale-100 po-opacity-100"
-                    leave-to-class="po-transform po-scale-95 po-opacity-0"
-                >
-                    <DisclosurePanel>
-                    <ul class="shell-sidebar--menu">
-                        <li v-for="item in group.items">
-                            <!--
-                                Emits the button url when it’s clicked
-                                @event button-click
-                            -->
-                            <button v-if="!item.disabled" @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
-                                <span class="shell-sidebar--icon">
-                                    <component :is="item.icon"  class="po-stroke-current po-w-4 po-h-4" />
-                                </span>
-                                <span class="shell-sidebar--label">{{ item.label }}</span>
-                            </button>
-                        </li>
-                        
-                    </ul>
-                    </DisclosurePanel>
-                </transition>
-            </Disclosure>
+        <div class="po-grow">
+            <div v-for="group in content">
+                <Disclosure v-slot="{ open }" :defaultOpen="true">
+                    <DisclosureButton
+                    :class="open ? '' : 'po-mb-3'"
+                    class="shell-sidebar--section po-w-full po-text-left"
+                    >
+                    {{ group.groupName }}
+                    </DisclosureButton>
+                    <transition
+                        enter-active-class="po-transition po-duration-100 po-ease-out"
+                        enter-from-class="po-transform po-scale-95 po-opacity-0"
+                        enter-to-class="po-transform po-scale-100 po-opacity-100"
+                        leave-active-class="po-transition po-duration-75 po-ease-out"
+                        leave-from-class="po-transform po-scale-100 po-opacity-100"
+                        leave-to-class="po-transform po-scale-95 po-opacity-0"
+                    >
+                        <DisclosurePanel>
+                        <ul class="shell-sidebar--menu">
+                            <li v-for="item in group.items">
+                                <!--
+                                    Emits the button url when it’s clicked
+                                    @event button-click
+                                -->
+                                <button v-if="!item.disabled" @click="$emit('button-click', item.url)" :class="['shell-sidebar--item', { 'active' : item.url == currRoute }]" :title="`Go to ${item.label}`">
+                                    <span class="shell-sidebar--icon">
+                                        <component :is="item.icon"  class="po-stroke-current po-w-4 po-h-4" />
+                                    </span>
+                                    <span class="shell-sidebar--label">{{ item.label }}</span>
+                                </button>
+                            </li>
+                            
+                        </ul>
+                        </DisclosurePanel>
+                    </transition>
+                </Disclosure>
+            </div>
         </div>
+        <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
+            <li>
+                <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback">
+                    <span class="shell-sidebar--icon">
+                        <ChatBubbleBottomCenterIcon  class="po-stroke-current po-w-4 po-h-4" />
+                    </span>
+                    <span class="shell-sidebar--label">Feedback</span>
+                </button>
+            </li>
+        </ul>
     </aside>
 </template>
 
@@ -47,6 +59,8 @@ export default {
 </script>
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { ChatBubbleBottomCenterIcon } from '@heroicons/vue/24/outline';
+
 
 defineProps({
     /**
@@ -62,6 +76,10 @@ defineProps({
     currRoute: {
         type: String,
         default: "/"
+    },
+    hasFeedback: {
+        type: Boolean,
+        default: false
     }
 });
 
