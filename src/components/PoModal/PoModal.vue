@@ -8,11 +8,11 @@
         </TransitionChild>
   
         <div class="po-fixed po-z-10 po-inset-0 po-overflow-y-auto">
-          <div class="po-flex po-items-center po-justify-center po-min-h-screen po-pt-4 po-px-4 po-pb-20 po-text-center sm:po-block sm:po-p-0">
+          <div class="po-flex po-justify-center po-items-start po-min-h-screen po-px-4 po-pt-10 po-pb-20 po-text-center sm:po-block">
             <!-- This element is to trick the browser into centering the modal contents. -->
             <span class="po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen" aria-hidden="true">&#8203;</span>
             <TransitionChild as="template" enter="po-ease-out po-duration-300" enter-from="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95" enter-to="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave="po-ease-in po-duration-200" leave-from="po-opacity-100 po-translate-y-0 sm:po-scale-100" leave-to="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95">
-              <DialogPanel class="po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-middle sm:po-max-w-xl po-w-full">
+              <DialogPanel class="po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-top sm:po-max-w-xl po-w-full">
                 <div class="po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5">
                     <h3 class="po-grow po-text-md po-font-bold po-text-slate-600">{{ modalTitle }}</h3>
                     <div class="po-shrink-0">
