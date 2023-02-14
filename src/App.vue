@@ -25,7 +25,7 @@
   />
   <PoCommandPalette />
   <div class="po-h-full po-max-w-full">
-    <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" />
+    <PoSidebarDrawer :content="sidebarContent" @button-click="handleSidebarButtonClick" :has-feedback="true" />
     <main class="shell-content">
       <PoActionBar
       :items="actionBarItems"

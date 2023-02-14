@@ -26,7 +26,7 @@
                      -->
                     <slot name="content"></slot>
                 </div>
-                <div class="mt-5 bg-slate-50 rounded-b-xl">
+                <div class="po-mt-5 po-bg-slate-50 po-rounded-b-xl">
                   <!-- 
                     Modal footer
                     @slot footer

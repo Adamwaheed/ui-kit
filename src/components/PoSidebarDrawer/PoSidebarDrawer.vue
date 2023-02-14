@@ -41,7 +41,8 @@
         </div>
         <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
             <li>
-                <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback">
+                <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
+                <button @click.prevent="clickFeedbackModalButton" class="shell-sidebar--item" title="Go to feedback">
                     <span class="shell-sidebar--icon">
                         <ChatBubbleBottomCenterIcon  class="po-stroke-current po-w-4 po-h-4" />
                     </span>
@@ -49,6 +50,25 @@
                 </button>
             </li>
         </ul>
+        <PoModal :show="showFeedbackModal" modal-title="Feedback">
+            <template v-slot:content>
+              <form action="">
+                    <PoRadioInput
+                        label="Type"
+                        :options="radioOptions"
+                        :pre-selected="radioOptionSelected"
+                        v-model="radioOptionSelected"
+                    />
+                    <br>
+                    <PoTextarea cols="6" rows="6" label="Description" message="" />
+              </form>
+          </template>
+          <template v-slot:footer>
+            <div class="po-p-5">
+              <PoButton label="Send" type="button" />
+            </div>
+          </template>
+        </PoModal>
     </aside>
 </template>
 
@@ -60,7 +80,11 @@ export default {
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { ChatBubbleBottomCenterIcon } from '@heroicons/vue/24/outline';
-
+import { ref } from 'vue';
+import PoButton from '../PoButton/PoButton.vue';
+import PoModal from '../PoModal/PoModal.vue';
+import PoRadioInput from '../PoRadioInput/PoRadioInput.vue';
+import PoTextarea from '../PoTextarea/PoTextarea.vue';
 
 defineProps({
     /**
@@ -84,5 +108,28 @@ defineProps({
 });
 
 const emit = defineEmits(['button-click']);
+
+const showFeedbackModal = ref(false);
+
+function clickFeedbackModalButton() {
+    showFeedbackModal.value = true
+
+    setTimeout(() => {
+    showFeedbackModal.value = false
+    }, 100)
+}
+
+const radioOptions = [
+    {
+        id: 1, title: 'Suggestion'
+    },
+    {
+        id: 2, title: 'Feature request'
+    },
+    {
+        id: 2, title: 'Other'
+    },
+];
+const radioOptionSelected = ref(radioOptions[0]);
 
 </script>
