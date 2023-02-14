@@ -14,7 +14,13 @@
     <a v-if="'link' == type" href="#" @click.prevent="$emit('button-click', to)" :class="[buttonClassess, buttonSize, buttonColor]" v-bind="$attrs">
         <slot name="label">{{ label }}</slot>
     </a>
-    <a v-if="'simple' == type" href="#" @click.prevent="$emit('button-click', to)"  class="po-text-sm po-text-mpao-lightblue hover:po-text-mpao-blue po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1">
+    <a
+        v-if="'simple' == type"
+        href="#"
+        @click.prevent="$emit('button-click', to)"
+        class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
+        :class="[{'po-text-mpao-lightblue hover:po-text-mpao-blue': !overrideColors}]"
+    >
         <slot name="label">{{ label }}</slot>
     </a>
 </template>

@@ -25,9 +25,9 @@
       </div>
       <div class="po-flex lg:po-items-end po-flex-col">
         <nav class="-po-mt-1 po-text-xs po-text-slate-500 po-flex po-space-x-4">
+          <a href="#" @click.prevent="$emit('button-click', 'changelog-button')"  class="hover:po-text-mpao-lightblue">Change logs</a>
           <a href="" class="hover:po-text-mpao-lightblue">Terms &amp; Conditions</a>
           <a href="" class="hover:po-text-mpao-lightblue">Privacy Policy</a>
-          <a href="" class="hover:po-text-mpao-lightblue">Cookie Policy</a>
         </nav>
         <div class="po-flex po-space-x-2 po-mt-3 lg:po-justify-end">
           <img class="po-h-6" src="https://pension.gov.mv/asset/image/iso_logo.jpg" alt="">
@@ -50,4 +50,6 @@ export default {
 </script>
 <script setup>
 import { GlobeAltIcon, EnvelopeIcon, PhoneIcon }  from '@heroicons/vue/24/solid'
+
+const emit = defineEmits(['button-click']);
 </script>
