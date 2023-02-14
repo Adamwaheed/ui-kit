@@ -20,11 +20,12 @@ import dedent from 'ts-dedent';
   format={true}
   code={dedent`
    <PoAlert
-        cancel-btn=label="Dismiss"
+        cancel-btn-label="Dismiss"
         ok-btn-label="Confirm"
         alert-title="I am an alert"
         alert-description="It's an alert! I repeat, an alert!!"
         @button-click="handleAlertOkClick"
+        :show="showAlert"
     />
   `}
 />

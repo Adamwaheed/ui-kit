@@ -26,6 +26,13 @@
                      -->
                     <slot name="content"></slot>
                 </div>
+                <div class="mt-5 bg-slate-50 rounded-b-xl">
+                  <!-- 
+                    Modal footer
+                    @slot footer
+                  -->
+                  <slot name="footer"></slot>
+                </div>
               </DialogPanel>
             </TransitionChild>
           </div>
