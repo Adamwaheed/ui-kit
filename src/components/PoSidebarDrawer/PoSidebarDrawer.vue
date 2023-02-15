@@ -5,6 +5,7 @@
             <div v-for="group in content">
                 <Disclosure v-slot="{ open }" :defaultOpen="true">
                     <DisclosureButton
+                    v-if="group.groupName"
                     :class="open ? '' : 'po-mb-3'"
                     class="shell-sidebar--section po-w-full po-text-left"
                     >

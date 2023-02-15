@@ -121,7 +121,7 @@
     }
 
     .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--menu:not(.po-mb-0) {
-        @apply po-mb-10
+        @apply po-mb-5
     }
 
     .shell-sidebar--icon {
