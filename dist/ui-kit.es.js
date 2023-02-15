@@ -3241,7 +3241,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
 function ts(e, t) {
   return u(), p("div", Zn, es);
 }
-const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-md po-rounded-xl po-bg-white po-relative" }, as = {
+const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm po-rounded-xl po-bg-white po-relative" }, as = {
   key: 0,
   class: "po-absolute po-right-2 po-top-2 po-p-2 po-rounded-lg"
 }, ns = {

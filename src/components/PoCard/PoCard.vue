@@ -1,5 +1,5 @@
 <template>
-  <div class="po-shadow-md po-rounded-xl po-bg-white po-relative">
+  <div class="po-shadow-sm po-rounded-xl po-bg-white po-relative">
     <div v-if="isLoading" class="po-absolute po-right-2 po-top-2 po-p-2 po-rounded-lg">
       <LoadingDots />
     </div>
