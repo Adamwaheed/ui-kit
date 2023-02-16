@@ -1,5 +1,8 @@
 <template>
-  <section class="shell-content--action-bar">
+  <section
+    v-if="items.length > 0 || showBackButton"
+    class="shell-content--action-bar"
+  >
     <nav class="action-bar__nav">
       <!--
                 Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
