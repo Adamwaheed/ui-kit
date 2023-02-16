@@ -20,7 +20,8 @@
             8th Floor, Allied Building , Chaandhanee Magu, Malé, 20156, Maldives
           </p>
           <p class="po-mt-1 po-text-xs po-text-slate-500">
-            &copy; Pension Office, All Rights Reserved.
+            &copy; {{ new Date().getFullYear() }} Pension Office, All Rights
+            Reserved.
           </p>
           <p class="po-mt-1 po-text-xs po-text-slate-500 po-flex po-space-x-4">
             <a
