@@ -3548,7 +3548,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
       ], 2)
     ]));
   }
-}), js = { class: "po-relative po-pt-5" }, Ts = ["type", "name", "id", "value", "placeholder", "disabled", "required", "aria-describedby", "aria-required", "aria-disabled"], Ds = ["for"], Rs = ["title"], Is = ["id"], Ms = ["id"], Fs = {
+}), js = { class: "po-relative" }, Ts = ["for"], Ds = ["title"], Rs = ["type", "name", "id", "value", "placeholder", "disabled", "required", "aria-describedby", "aria-required", "aria-disabled"], Is = ["id"], Ms = ["id"], Fs = {
   name: "PoInputField"
 }, ap = /* @__PURE__ */ Object.assign(Fs, {
   props: {
@@ -3632,6 +3632,19 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
   },
   setup(e) {
     return (t, n) => (u(), p("div", js, [
+      s("label", {
+        for: e.id,
+        class: z(["po-text-sm po-font-medium po-flex po-items-center po-space-x-1", { "po-text-red-500": e.hasError }, { "po-text-slate-700": !e.hasError }])
+      }, [
+        s("span", null, x(e.label), 1),
+        e.info !== null ? (u(), p("abbr", {
+          key: 0,
+          title: e.info,
+          class: "po-w-4 po-text-slate-500"
+        }, [
+          k(m(vo), { class: "po-fill-current" })
+        ], 8, Ds)) : L("", !0)
+      ], 10, Ts),
       s("input", $e({
         type: e.type,
         name: `${e.id}-field`,
@@ -3646,20 +3659,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
       }, t.$attrs, {
         onInput: n[0] || (n[0] = (a) => t.$emit("update:modelValue", a.target.value)),
         class: ["po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default", { "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600": e.hasError }, { "po-border-slate-300 focus:po-border-mpao-lightblue": !e.hasError }]
-      }), null, 16, Ts),
-      s("label", {
-        for: e.id,
-        class: z(["po-absolute po-top-0 po-text-sm po-font-medium po-flex po-items-center po-space-x-1", { "po-text-red-500 peer-focus:po-text-red-600": e.hasError }, { "po-text-slate-700 peer-focus:po-text-mpao-lightblue": !e.hasError }])
-      }, [
-        s("span", null, x(e.label), 1),
-        e.info !== null ? (u(), p("abbr", {
-          key: 0,
-          title: e.info,
-          class: "po-w-4 po-text-slate-500"
-        }, [
-          k(m(vo), { class: "po-fill-current" })
-        ], 8, Rs)) : L("", !0)
-      ], 10, Ds),
+      }), null, 16, Rs),
       e.message !== null ? (u(), p("p", {
         key: 0,
         class: "po-mt-2 po-text-sm po-text-slate-500",
