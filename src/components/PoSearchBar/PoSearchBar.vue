@@ -1,16 +1,53 @@
 <template>
-    <div class="po-flex-grow po-hidden po-relative md:po-block">
-        <input
-            v-model="query"
-            type="text"
-            id="main-search"
-            :placeholder="placeholder"
-            class="peer/search po-bg-transparent po-border po-border-transparent po-text-slate-100 po-text-sm po-rounded-md po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none focus:po-border-slate-400 hover:po-border-slate-600"
-            >
-        <div class="po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-pointer-events-none po-transition-all po-ease-linear po-duration-100 po-text-slate-400 po-origin-center peer-hover/search:po-scale-105 peer-focus/search:po-text-slate-100">
-            <MagnifyingGlassIcon class="po-w-5 po-h-5 po-stroke-current" />
-        </div>
+  <div class="po-flex-grow po-hidden po-relative md:po-block">
+    <input
+      v-model="query"
+      type="text"
+      id="main-search"
+      :placeholder="placeholder"
+      class="
+        peer/search
+        po-bg-transparent
+        po-border
+        po-border-transparent
+        po-text-slate-100
+        po-text-sm
+        po-rounded-md
+        po-ring-0
+        po-outline-none
+        focus:po-outline-none focus:po-ring-0
+        po-transition-colors
+        po-ease-linear
+        po-duration-100
+        po-block
+        po-w-full
+        po-pl-10
+        po-p-2.5
+        po-appearance-none
+        focus:po-border-slate-400
+        hover:po-border-slate-600
+      "
+    />
+    <div
+      class="
+        po-absolute
+        po-inset-y-0
+        po-left-0
+        po-flex
+        po-items-center
+        po-pl-3
+        po-pointer-events-none
+        po-transition-all
+        po-ease-linear
+        po-duration-100
+        po-text-slate-400
+        po-origin-center
+        peer-hover/search:po-scale-105 peer-focus/search:po-text-slate-100
+      "
+    >
+      <MagnifyingGlassIcon class="po-w-5 po-h-5 po-stroke-current" />
     </div>
+  </div>
 </template>
 
 <script>
@@ -20,28 +57,27 @@ export default {
 </script>
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
+import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
 defineProps({
   placeholder: {
     type: String,
-    default: 'Search'
-  }
+    default: "Search",
+  },
 });
 
-
-const emit = defineEmits(['query']);
+const emit = defineEmits(["query"]);
 let query = ref("");
 
 const searchOnEnter = (e) => {
-    if (e.key === 'Enter' && 0 < query.value.length ) {
-        emit("query", query.value);
-    }
+  if (e.key === "Enter" && 0 < query.value.length) {
+    emit("query", query.value);
+  }
 };
 
-onMounted(() => document.addEventListener('keydown', searchOnEnter));
+onMounted(() => document.addEventListener("keydown", searchOnEnter));
 
 onUnmounted(() => {
-    document.removeEventListener('keydown', searchOnEnter);
+  document.removeEventListener("keydown", searchOnEnter);
 });
 </script>

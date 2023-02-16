@@ -21,10 +21,14 @@
       </label>
     </div>
     <div class="po-mx-auto po-max-w-full po-px-4 po-grow sm:po-px-4">
-      <div class="po-flex po-h-16 po-items-center po-justify-between po-space-x-12">
+      <div
+        class="po-flex po-h-16 po-items-center po-justify-between po-space-x-12"
+      >
         <PoAppIcon :app-name="appName">
           <template v-slot:icon>
-            <slot name="appIcon"><component v-if="appIcon" :is="appIcon"></component></slot>
+            <slot name="appIcon"
+              ><component v-if="appIcon" :is="appIcon"></component
+            ></slot>
           </template>
         </PoAppIcon>
 
@@ -36,11 +40,17 @@
             class="po-block po-w-6 po-text-slate-100 md:po-hidden"
             role="button"
           >
-          <MagnifyingGlassIcon class="po-stroke-current" />
+            <MagnifyingGlassIcon class="po-stroke-current" />
           </span>
-          <PoNotificationHub :notifications="notifications" :has-new-notifications="hasNewNotifications" />
+          <PoNotificationHub
+            :notifications="notifications"
+            :has-new-notifications="hasNewNotifications"
+          />
           <PoAppTray :app-list="appList" />
-          <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" @button-click="handleProfileSwitcherClick" />
+          <PoProfileSwitcher
+            :profile-switcher-data="profileSwitcherData"
+            @button-click="handleProfileSwitcherClick"
+          />
         </div>
       </div>
     </div>
@@ -101,7 +111,7 @@ defineProps({
    */
   hasNewNotifications: {
     type: Boolean,
-    default: false
+    default: false,
   },
   /**
    * Profile switcher object
@@ -113,13 +123,13 @@ defineProps({
   /**
    * App Icon
    */
-   appIcon: null
+  appIcon: null,
 });
 
-const emit = defineEmits(['query', 'profileSwitcherClick']);
+const emit = defineEmits(["query", "profileSwitcherClick"]);
 
 function handleProfileSwitcherClick(item) {
-  emit('profileSwitcherClick', item);
+  emit("profileSwitcherClick", item);
 }
 
 function PassQueryToParent(value) {
