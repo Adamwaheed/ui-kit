@@ -3675,7 +3675,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
       ], 8, Ms)) : L("", !0)
     ]));
   }
-}), Ns = { class: "po-relative po-pt-5" }, zs = { class: "po-text-sm po-font-medium po-text-slate-700 peer-focus:po-text-mpao-lightblue peer-invalid:po-text-red-500 peer-invalid:peer-focus:po-text-red-600 po-flex po-items-center po-space-x-1" }, Hs = ["name", "id", "value"], qs = ["for"], Us = { class: "po-flex po-items-center po-space-x-1" }, Gs = /* @__PURE__ */ s("span", { class: "po-text-sm" }, "Choose file", -1), Ks = ["id"], Ws = ["id"], Zs = {
+}), Ns = { class: "po-relative" }, zs = { class: "po-text-sm po-font-medium po-text-slate-700 peer-focus:po-text-mpao-lightblue peer-invalid:po-text-red-500 peer-invalid:peer-focus:po-text-red-600 po-flex po-items-center po-space-x-1" }, Hs = ["name", "id", "value"], qs = ["for"], Us = { class: "po-flex po-items-center po-space-x-1" }, Gs = /* @__PURE__ */ s("span", { class: "po-text-sm" }, "Choose file", -1), Ks = ["id"], Ws = ["id"], Zs = {
   name: "PoInputFile"
 }, np = /* @__PURE__ */ Object.assign(Zs, {
   props: {
