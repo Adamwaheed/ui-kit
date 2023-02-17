@@ -47,3 +47,4 @@ export { default as PoContentArea } from "./PoContentArea/PoContentArea.vue";
 export { default as PoLoading } from "./PoLoading/PoLoading.vue";
 export { default as PoConsent } from "./PoConsent/PoConsent.vue";
 export { default as PoCallLog } from "./PoCallLog/PoCallLog.vue";
+export { default as PoCardTabs } from "./PoCardTabs/PoCardTabs.vue";
