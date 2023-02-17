@@ -1,6 +1,6 @@
 <template>
   <div v-if="null !== pagination" class="po-flex po-items-center">
-    <span class="po-text-xs po-font-normal po-text-slate-500 po-pr-2">{{
+    <span class="po-text-xs po-font-medium po-text-slate-500 po-pr-2">{{
       pagination.label
     }}</span>
     <!--
@@ -17,7 +17,7 @@
         po-transition-colors po-duration-75 po-ease-in-out
       "
     >
-      <ChevronLeftIcon class="po-w-4 po-stroke-current" />
+      <ChevronLeftIcon class="po-w-4 po-stroke-current po-stroke-2" />
     </button>
     <button
       v-if="null !== pagination.prevLink"
@@ -29,7 +29,7 @@
         po-transition-colors po-duration-75 po-ease-in-out
       "
     >
-      <ChevronRightIcon class="po-w-4 po-stroke-current" />
+      <ChevronRightIcon class="po-w-4 po-stroke-current po-stroke-2" />
     </button>
   </div>
 </template>

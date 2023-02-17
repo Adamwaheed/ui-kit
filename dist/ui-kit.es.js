@@ -3374,7 +3374,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
         onClick: n[0] || (n[0] = (a) => t.$emit("button-click", "prev")),
         class: "po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out"
       }, [
-        k(m(jo), { class: "po-w-4 po-stroke-current" })
+        k(m(jo), { class: "po-w-4 po-stroke-current po-stroke-2" })
       ])) : O("", !0),
       e.pagination.prevLink !== null ? (u(), p("button", {
         key: 1,
@@ -3382,7 +3382,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
         onClick: n[1] || (n[1] = (a) => t.$emit("button-click", "next")),
         class: "po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out"
       }, [
-        k(m(Do), { class: "po-w-4 po-stroke-current" })
+        k(m(Do), { class: "po-w-4 po-stroke-current po-stroke-2" })
       ])) : O("", !0)
     ])) : O("", !0);
   }
