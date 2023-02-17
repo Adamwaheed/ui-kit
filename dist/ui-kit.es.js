@@ -3235,7 +3235,7 @@ const yn = { class: "po-relative po-pt-5" }, xn = ["name", "id", "value", "place
     }
   },
   setup(e) {
-    return (o, n) => e.items.length > 0 || e.showBackButton ? (i(), u("section", zn, [
+    return (o, n) => e.items !== null && e.items.length > 0 || e.showBackButton ? (i(), u("section", zn, [
       s("nav", Hn, [
         (i(!0), u(I, null, W(e.items, (a) => (i(), u("span", {
           onClick: (t) => o.$emit("button-click", a.label),

@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="items.length > 0 || showBackButton"
+    v-if="(items !== null && items.length > 0) || showBackButton"
     class="shell-content--action-bar"
   >
     <nav class="action-bar__nav">
