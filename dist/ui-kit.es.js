@@ -3048,10 +3048,10 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
   id: "sidebar-drawer-toggle",
   checked: "",
   "aria-checked": "true"
-}, null, -1), Pn = { class: "shell-sidebar" }, On = { class: "po-grow" }, Ln = { class: "shell-sidebar--menu" }, En = ["onClick", "title"], Bn = { class: "shell-sidebar--icon" }, An = { class: "shell-sidebar--label" }, jn = {
+}, null, -1), Pn = { class: "shell-sidebar" }, On = { class: "po-grow" }, Ln = { class: "shell-sidebar--menu" }, En = ["onClick", "title"], Bn = { class: "shell-sidebar--icon" }, An = { class: "shell-sidebar--label po-font-medium" }, jn = {
   key: 0,
   class: "shell-sidebar--menu po-shrink-0 po-mb-0"
-}, Dn = ["onClick"], Tn = { class: "shell-sidebar--icon" }, Rn = /* @__PURE__ */ s("span", { class: "shell-sidebar--label" }, "Feedback", -1), In = { action: "" }, Mn = /* @__PURE__ */ s("br", null, null, -1), Fn = { class: "po-p-5" }, Nn = {
+}, Dn = ["onClick"], Tn = { class: "shell-sidebar--icon" }, Rn = /* @__PURE__ */ s("span", { class: "shell-sidebar--label po-font-medium" }, "Feedback", -1), In = { action: "" }, Mn = /* @__PURE__ */ s("br", null, null, -1), Fn = { class: "po-p-5" }, Nn = {
   name: "PoSidebarDrawer"
 }, Qu = /* @__PURE__ */ Object.assign(Nn, {
   props: {
@@ -3135,7 +3135,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
                               title: `Go to ${v.label}`
                             }, [
                               s("span", Bn, [
-                                (u(), U(Pe(v.icon), { class: "po-stroke-current po-w-4 po-h-4" }))
+                                (u(), U(Pe(v.icon), { class: "po-stroke-current po-w-5 po-h-5 po-stroke-2" }))
                               ]),
                               s("span", An, x(v.label), 1)
                             ], 10, En))
@@ -3160,7 +3160,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
               title: "Go to feedback"
             }, [
               s("span", Tn, [
-                k(m(Eo), { class: "po-stroke-current po-w-4 po-h-4" })
+                k(m(Eo), { class: "po-stroke-current po-w-5 po-h-5 po-stroke-2" })
               ]),
               Rn
             ], 8, Dn)

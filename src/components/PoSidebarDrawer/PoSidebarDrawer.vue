@@ -46,10 +46,12 @@
                     <span class="shell-sidebar--icon">
                       <component
                         :is="item.icon"
-                        class="po-stroke-current po-w-4 po-h-4"
+                        class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
                       />
                     </span>
-                    <span class="shell-sidebar--label">{{ item.label }}</span>
+                    <span class="shell-sidebar--label po-font-medium">{{
+                      item.label
+                    }}</span>
                   </button>
                 </li>
               </ul>
@@ -68,10 +70,10 @@
         >
           <span class="shell-sidebar--icon">
             <ChatBubbleBottomCenterIcon
-              class="po-stroke-current po-w-4 po-h-4"
+              class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
             />
           </span>
-          <span class="shell-sidebar--label">Feedback</span>
+          <span class="shell-sidebar--label po-font-medium">Feedback</span>
         </button>
       </li>
     </ul>
