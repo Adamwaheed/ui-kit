@@ -5273,7 +5273,7 @@ const $p = /* @__PURE__ */ wt(yp, [["render", wp]]), kp = {
   name: "tabs",
   class: "po-block po-w-full po-rounded-md po-border-gray-300 focus:po-border-indigo-500 focus:po-ring-indigo-500"
 }, fu = ["selected"], vu = { class: "po-hidden sm:po-block" }, mu = {
-  class: "po-flex po-space-x-4 bg-slate-50 po-rounded-xl po-pt-2",
+  class: "po-flex po-space-x-4 po-pt-2",
   "aria-label": "Tabs"
 }, hu = ["aria-current"], bu = {
   name: "PoTabs"

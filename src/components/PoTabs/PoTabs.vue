@@ -15,10 +15,7 @@
     </select>
   </div>
   <div class="po-hidden sm:po-block">
-    <nav
-      class="po-flex po-space-x-4 bg-slate-50 po-rounded-xl po-pt-2"
-      aria-label="Tabs"
-    >
+    <nav class="po-flex po-space-x-4 po-pt-2" aria-label="Tabs">
       <span
         role="button"
         v-for="tab in tabs"
