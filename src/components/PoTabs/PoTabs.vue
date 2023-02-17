@@ -16,11 +16,7 @@
   </div>
   <div class="po-hidden sm:po-block">
     <nav
-      class="
-        po-flex po-space-x-4
-        bg-slate-50
-        po-rounded-t-xl po-px-4 po-pt-2 po-overflow-hidden
-      "
+      class="po-flex po-space-x-4 bg-slate-50 po-rounded-xl po-pt-2"
       aria-label="Tabs"
     >
       <span
@@ -29,9 +25,9 @@
         :key="tab.name"
         :class="[
           tab.current
-            ? 'po-bg-white po-text-slate-600 po-shadow-lg'
+            ? 'po-bg-white po-text-slate-600 po-shadow-md'
             : 'po-text-slate-600 hover:po-text-mpao-blue',
-          'po-px-4 po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-t-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2',
+          'po-px-4 po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2',
         ]"
         :aria-current="tab.current ? 'page' : undefined"
       >
@@ -48,7 +44,7 @@
 
 <script>
 export default {
-  name: "PoCardTabs",
+  name: "PoTabs",
 };
 </script>
 <script setup>

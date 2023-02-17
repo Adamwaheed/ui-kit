@@ -127,6 +127,7 @@
             </div>
           </template>
         </PoCard>
+        <PoTabs :tabs="tabs" />
         <PoCard
           class="po-mt-5 po-p-5"
           title="Description list"
@@ -311,6 +312,7 @@ import {
   PoDownloadFileList,
   PoContentArea,
   PoLoading,
+  PoTabs,
 } from "./components";
 import { ref } from "vue";
 
@@ -325,6 +327,8 @@ import {
   BanknotesIcon,
   PhoneIcon,
   BoltIcon,
+  UsersIcon,
+  UserGroupIcon,
 } from "@heroicons/vue/24/outline";
 
 let searchQuery = ref("");
@@ -332,6 +336,19 @@ let toggleState = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
 let inputModel = ref("what");
+
+const tabs = [
+  {
+    name: "Employements",
+    icon: UsersIcon,
+    current: true,
+  },
+  {
+    name: "Teams",
+    icon: UserGroupIcon,
+    current: false,
+  },
+];
 
 let allApps = [
   {
