@@ -35,7 +35,7 @@
 }
 
 .shell-content--action-bar {
-  @apply po-px-6 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-bg-slate-100 po-border-slate-200 po-bg-opacity-50 po-backdrop-blur po-backdrop-filter;
+  @apply po-px-5 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-bg-slate-100 po-border-slate-200 po-bg-opacity-50 po-backdrop-blur po-backdrop-filter;
 }
 
 .shell-content--area {

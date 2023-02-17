@@ -49,3 +49,4 @@ export { default as PoConsent } from "./PoConsent/PoConsent.vue";
 export { default as PoCallLog } from "./PoCallLog/PoCallLog.vue";
 export { default as PoCardTabs } from "./PoCardTabs/PoCardTabs.vue";
 export { default as PoTabs } from "./PoTabs/PoTabs.vue";
+export { default as PoEmpty } from "./PoEmpty/PoEmpty.vue";

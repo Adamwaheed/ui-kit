@@ -15,8 +15,13 @@
     </select>
   </div>
   <div class="po-hidden sm:po-block">
+    <!--
+        Emits tab object when tab is clicked
+        @event button-click
+    -->
     <nav class="po-flex po-space-x-4 po-pt-2" aria-label="Tabs">
       <span
+        @click="$emit('button-click', tab)"
         role="button"
         v-for="tab in tabs"
         :key="tab.name"
