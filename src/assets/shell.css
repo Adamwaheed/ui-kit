@@ -73,7 +73,7 @@
 }
 
 .action-bar__nav_label {
-  @apply po-text-xs po-hidden;
+  @apply po-text-sm po-hidden;
 }
 
 /* sm */

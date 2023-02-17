@@ -1,6 +1,6 @@
 <template>
   <div v-if="null !== pagination" class="po-flex po-items-center">
-    <span class="po-text-xs po-font-medium po-text-slate-500 po-pr-2">{{
+    <span class="po-text-sm po-font-medium po-text-slate-500 po-pr-2">{{
       pagination.label
     }}</span>
     <!--

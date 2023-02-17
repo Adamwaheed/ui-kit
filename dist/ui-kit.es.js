@@ -3353,7 +3353,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
 }), vs = {
   key: 0,
   class: "po-flex po-items-center"
-}, ms = { class: "po-text-xs po-font-medium po-text-slate-500 po-pr-2" }, hs = {
+}, ms = { class: "po-text-sm po-font-medium po-text-slate-500 po-pr-2" }, hs = {
   name: "PoPagination"
 }, bs = /* @__PURE__ */ Object.assign(hs, {
   props: {
