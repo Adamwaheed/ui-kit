@@ -6,9 +6,10 @@
              -->
       <slot name="icon" />
     </div>
-    <span class="po-font-light po-text-lg po-text-slate-100">{{
-      appName
-    }}</span>
+    <span
+      class="po-font-light po-text-lg po-text-slate-100 po-hidden md:po-block"
+      >{{ appName }}</span
+    >
   </div>
 </template>
 

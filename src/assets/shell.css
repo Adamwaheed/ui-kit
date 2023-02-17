@@ -101,7 +101,7 @@
   }
 
   .shell-sidebar--toggle:checked ~ .shell-sidebar {
-    @apply po-flex po-flex-col po-p-5 po-border-slate-50;
+    @apply po-flex po-flex-col po-p-4 po-border-slate-50;
   }
 
   .shell-sidebar--label {

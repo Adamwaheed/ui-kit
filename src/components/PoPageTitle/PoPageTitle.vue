@@ -21,7 +21,7 @@
           { 'tpo-ext-slate-600 hover:po-text-mpao-blue': !filterOn },
         ]"
       >
-        <FunnelIcon class="po-w-4 po-stroke-current" />
+        <FunnelIcon class="po-w-4 po-stroke-current po-stroke-2" />
       </button>
       <button
         v-if="showDownload"
@@ -33,7 +33,7 @@
           po-transition-colors po-duration-75 po-ease-in-out
         "
       >
-        <ArrowDownTrayIcon class="po-w-4 po-stroke-current" />
+        <ArrowDownTrayIcon class="po-w-4 po-stroke-current po-stroke-2" />
       </button>
       <span
         v-if="

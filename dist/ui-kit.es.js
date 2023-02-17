@@ -444,7 +444,7 @@ const zo = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
       ])
     ]));
   }
-}), Yo = { class: "po-flex po-items-center po-space-x-3" }, Qo = { class: "po-w-7 po-text-slate-100" }, Jo = { class: "po-font-light po-text-lg po-text-slate-100" }, Xo = {
+}), Yo = { class: "po-flex po-items-center po-space-x-3" }, Qo = { class: "po-w-7 po-text-slate-100" }, Jo = { class: "po-font-light po-text-lg po-text-slate-100 po-hidden md:po-block" }, Xo = {
   name: "PoAppIcon"
 }, el = /* @__PURE__ */ Object.assign(Xo, {
   props: {
@@ -3353,7 +3353,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
 }), vs = {
   key: 0,
   class: "po-flex po-items-center"
-}, ms = { class: "po-text-xs po-font-normal po-text-slate-500 po-pr-2" }, hs = {
+}, ms = { class: "po-text-xs po-font-medium po-text-slate-500 po-pr-2" }, hs = {
   name: "PoPagination"
 }, bs = /* @__PURE__ */ Object.assign(hs, {
   props: {
@@ -3460,7 +3460,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
             { "tpo-ext-slate-600 hover:po-text-mpao-blue": !m(a) }
           ])
         }, [
-          k(m(Io), { class: "po-w-4 po-stroke-current" })
+          k(m(Io), { class: "po-w-4 po-stroke-current po-stroke-2" })
         ], 2)) : O("", !0),
         e.showDownload ? (u(), p("button", {
           key: 1,
@@ -3468,7 +3468,7 @@ const os = /* @__PURE__ */ wt(Wn, [["render", ts]]), ls = { class: "po-shadow-sm
           onClick: r[1] || (r[1] = (i) => l.$emit("button-click", "download")),
           class: "po-text-slate-600 po-p-2 po-rounded-md hover:po-bg-slate-200 hover:po-text-mpao-blue po-transition-colors po-duration-75 po-ease-in-out"
         }, [
-          k(m(Co), { class: "po-w-4 po-stroke-current" })
+          k(m(Co), { class: "po-w-4 po-stroke-current po-stroke-2" })
         ])) : O("", !0),
         e.showFilter && e.showPagination || e.showDownload && e.showPagination ? (u(), p("span", Vs, " ")) : O("", !0),
         e.showPagination ? (u(), U(bs, {
