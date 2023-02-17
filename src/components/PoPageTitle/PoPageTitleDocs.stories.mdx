@@ -47,6 +47,12 @@ import dedent from "ts-dedent";
   <Story id="layout-page-title--with-with-description" />
 </Canvas>
 
+#### With Stats
+
+<Canvas>
+  <Story id="layout-page-title--with-stats" />
+</Canvas>
+
 <Source
   language="js"
   dark
@@ -64,6 +70,7 @@ import dedent from "ts-dedent";
     <PoPageTitle
         label="All Investments"
         description="This is a page description that goes on to explain what is in the page."
+        :stats="[{ value: "32", label: "Employees" }, { value: "10", label: "Flights" }]"
         :show-pagination="true"
         :show-filter="true"
         :show-download="true"

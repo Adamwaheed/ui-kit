@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="po-flex po-items-start po-space-x-1">
-      <div class="po-grow">
+    <div class="po-grid po-grid-cols-1 lg:po-grid-cols-2 po-gap-5">
+      <div>
         <h1
           class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800"
         >
@@ -16,7 +16,30 @@
         >
       </div>
       <div>
-        <div class="po-flex po-items-center po-space-x-1">
+        <div v-if="stats !== null" class="po-flex md:po-justify-end po-mb-5">
+          <div
+            class="
+              po-bg-slate-200
+              po-rounded-xl
+              po-py-5
+              po-px-2
+              po-divide-x
+              po-divide-slate-300
+              po-flex
+            "
+          >
+            <div v-for="stat in stats" class="po-px-5">
+              <span
+                class="po-text-xl po-font-medium po-text-slate-600 po-block"
+                >{{ stat.value }}</span
+              >
+              <span class="po-text-sm po-text-slate-500 po-block">{{
+                stat.label
+              }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="po-flex po-items-center po-space-x-1 md:po-justify-end">
           <button
             v-if="showFilter"
             title="Filter"
@@ -119,6 +142,13 @@ const props = defineProps({
   description: {
     type: String,
     default: "",
+  },
+  /**
+   * Page stats
+   */
+  stats: {
+    type: Array,
+    default: null,
   },
   /**
    * True or False show pagination

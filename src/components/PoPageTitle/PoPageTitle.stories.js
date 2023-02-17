@@ -41,6 +41,7 @@ export const WithPagination = Template.bind();
 export const WithPaginationFilterAndDownload = Template.bind();
 export const WithFilterAndDownload = Template.bind();
 export const WithWithDescription = Template.bind();
+export const WithStats = Template.bind();
 
 WithPagination.args = {
   /* 👇 The args you need here will depend on your component */
@@ -74,4 +75,12 @@ WithWithDescription.args = {
   /* 👇 The args you need here will depend on your component */
   description:
     "This is a page description that goes on to explain what is in the page.",
+};
+
+WithStats.args = {
+  /* 👇 The args you need here will depend on your component */
+  stats: [
+    { value: "32", label: "Employees" },
+    { value: "10", label: "Flights" },
+  ],
 };
