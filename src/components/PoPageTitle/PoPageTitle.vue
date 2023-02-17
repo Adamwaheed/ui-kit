@@ -1,52 +1,67 @@
 <template>
   <div>
-    <div class="po-flex po-items-center po-space-x-1">
-      <h1 class="po-text-xl po-font-semibold po-text-slate-800 po-grow">
-        {{ label }}
-      </h1>
-      <!--
-                Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
-                @event button-click
-            -->
-      <button
-        v-if="showFilter"
-        title="Filter"
-        @click="
-          $emit('button-click', 'filter');
-          filterOn = !filterOn;
-        "
-        :class="[
-          'po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out',
-          { 'po-text-mpao-orange hover:po-text-mpao-orange': filterOn },
-          { 'tpo-ext-slate-600 hover:po-text-mpao-blue': !filterOn },
-        ]"
-      >
-        <FunnelIcon class="po-w-4 po-stroke-current po-stroke-2" />
-      </button>
-      <button
-        v-if="showDownload"
-        title="Download"
-        @click="$emit('button-click', 'download')"
-        class="
-          po-text-slate-600 po-p-2 po-rounded-md
-          hover:po-bg-slate-200 hover:po-text-mpao-blue
-          po-transition-colors po-duration-75 po-ease-in-out
-        "
-      >
-        <ArrowDownTrayIcon class="po-w-4 po-stroke-current po-stroke-2" />
-      </button>
-      <span
-        v-if="
-          (showFilter && showPagination) || (showDownload && showPagination)
-        "
-        class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1"
-        >&nbsp;</span
-      >
-      <PoPagination
-        v-if="showPagination"
-        :pagination="pagination"
-        @button-click="handlePaginationClick"
-      />
+    <div class="po-flex po-items-start po-space-x-1">
+      <div class="po-grow">
+        <h1
+          class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800"
+        >
+          {{ label }}
+        </h1>
+        <span
+          v-if="description !== ''"
+          class="
+            po-text-base po-mt-4 po-max-w-md po-pb-5 po-block po-text-slate-500
+          "
+          >{{ description }}</span
+        >
+      </div>
+      <div>
+        <div class="po-flex po-items-center po-space-x-1">
+          <button
+            v-if="showFilter"
+            title="Filter"
+            @click="
+              $emit('button-click', 'filter');
+              filterOn = !filterOn;
+            "
+            :class="[
+              'po-p-2 po-rounded-md hover:po-bg-slate-200 po-transition-colors po-duration-75 po-ease-in-out',
+              { 'po-text-mpao-orange hover:po-text-mpao-orange': filterOn },
+              { 'tpo-ext-slate-600 hover:po-text-mpao-blue': !filterOn },
+            ]"
+          >
+            <FunnelIcon class="po-w-4 po-stroke-current po-stroke-2" />
+          </button>
+          <!--
+              Emits 'download' when download btn is clicked and 'filter' when filter btn is clicked
+              @event button-click
+          -->
+          <button
+            v-if="showDownload"
+            title="Download"
+            @click="$emit('button-click', 'download')"
+            class="
+              po-text-slate-600 po-p-2 po-rounded-md
+              hover:po-bg-slate-200 hover:po-text-mpao-blue
+              po-transition-colors po-duration-75 po-ease-in-out
+            "
+          >
+            <ArrowDownTrayIcon class="po-w-4 po-stroke-current po-stroke-2" />
+          </button>
+          <span
+            v-if="
+              (showFilter && showPagination) || (showDownload && showPagination)
+            "
+            class="po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1"
+            >&nbsp;</span
+          >
+          <PoPagination
+            v-if="showPagination"
+            :pagination="pagination"
+            @button-click="handlePaginationClick"
+          />
+        </div>
+      </div>
     </div>
     <transition
       enter-active-class="po-transition po-duration-100 po-ease-out"
@@ -95,6 +110,13 @@ const props = defineProps({
    * Page title
    */
   label: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Page description
+   */
+  description: {
     type: String,
     default: "",
   },

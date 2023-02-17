@@ -1,37 +1,54 @@
 # Page title component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoPageTitle from './PoPageTitle.vue';
+import PoPageTitle from "./PoPageTitle.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Page Title" component={PoPageTitle} />
 
 <Description of={PoPageTitle} />
 
 #### Page title
+
 <Canvas>
-    <Story id="layout-page-title--page-title" />
+  <Story id="layout-page-title--page-title" />
 </Canvas>
 
 #### With Pagination
+
 <Canvas>
-    <Story id="layout-page-title--with-pagination" />
+  <Story id="layout-page-title--with-pagination" />
 </Canvas>
 
 #### With Pagination Filter And Download
+
 <Canvas>
-    <Story id="layout-page-title--with-pagination-filter-and-download" />
+  <Story id="layout-page-title--with-pagination-filter-and-download" />
 </Canvas>
 
 #### With Filter And Download
+
 <Canvas>
-    <Story id="layout-page-title--with-filter-and-download" />
+  <Story id="layout-page-title--with-filter-and-download" />
+</Canvas>
+
+#### With Description
+
+<Canvas>
+  <Story id="layout-page-title--with-with-description" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -40,12 +57,13 @@ import dedent from 'ts-dedent';
 />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoPageTitle
         label="All Investments"
+        description="This is a page description that goes on to explain what is in the page."
         :show-pagination="true"
         :show-filter="true"
         :show-download="true"
@@ -68,10 +86,10 @@ import dedent from 'ts-dedent';
 
 <ArgsTable of={PoPageTitle} />
 
-**** `pagination-click` Emits 'prev' or 'next' depending on the button clicked
+\*\*\*\* `pagination-click` Emits 'prev' or 'next' depending on the button clicked
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
