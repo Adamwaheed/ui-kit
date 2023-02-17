@@ -3204,7 +3204,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
 }), zn = {
   key: 0,
   class: "shell-content--action-bar"
-}, Hn = { class: "action-bar__nav" }, qn = ["onClick"], Un = { class: "action-bar__nav_label" }, Gn = {
+}, Hn = { class: "action-bar__nav" }, qn = ["onClick"], Un = { class: "action-bar__nav_label po-font-medium" }, Gn = {
   key: 0,
   class: "po-shrink-0 po-flex po-space-x-1"
 }, Kn = {
@@ -3241,7 +3241,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
           onClick: (o) => t.$emit("button-click", a.label),
           class: z([[{ "action-bar__nav_highlighted": a.highlighted }], "action-bar__nav_link"])
         }, [
-          (u(), U(Pe(a.icon), { class: "po-stroke-current po-w-5 po-h-5" })),
+          (u(), U(Pe(a.icon), { class: "po-stroke-current po-w-5 po-h-5 po-stroke-2" })),
           s("span", Un, x(a.label), 1)
         ], 10, qn))), 256))
       ]),
@@ -3250,7 +3250,7 @@ const yn = { class: "po-relative po-pt-5" }, Vn = ["name", "id", "value", "place
           onClick: n[0] || (n[0] = (a) => t.$emit("button-click", "back")),
           class: "action-bar__nav_link"
         }, [
-          (u(), U(Pe(m(So)), { class: "po-stroke-current po-w-5 po-h-5" }))
+          (u(), U(Pe(m(So)), { class: "po-stroke-current po-w-5 po-h-5 po-stroke-2" }))
         ])
       ])) : O("", !0)
     ])) : O("", !0);

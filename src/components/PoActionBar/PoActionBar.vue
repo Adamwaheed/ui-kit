@@ -14,8 +14,13 @@
         :class="[{ 'action-bar__nav_highlighted': item.highlighted }]"
         class="action-bar__nav_link"
       >
-        <component :is="item.icon" class="po-stroke-current po-w-5 po-h-5" />
-        <span class="action-bar__nav_label">{{ item.label }}</span>
+        <component
+          :is="item.icon"
+          class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
+        />
+        <span class="action-bar__nav_label po-font-medium">{{
+          item.label
+        }}</span>
       </span>
     </nav>
     <nav v-if="showBackButton" class="po-shrink-0 po-flex po-space-x-1">
@@ -26,7 +31,7 @@
       <span @click="$emit('button-click', 'back')" class="action-bar__nav_link">
         <component
           :is="ArrowUturnLeftIcon"
-          class="po-stroke-current po-w-5 po-h-5"
+          class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
         />
       </span>
     </nav>
