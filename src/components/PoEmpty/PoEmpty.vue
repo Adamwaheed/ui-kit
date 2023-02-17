@@ -1,11 +1,31 @@
 <template>
   <div
-    class="mt-5 flex flex-col items-center justify-center px-5 py-8 space-y-3"
+    class="
+      po-mt-5
+      po-flex
+      po-flex-col
+      po-items-center
+      po-justify-center
+      po-px-5
+      po-py-8
+      po-space-y-3
+    "
   >
-    <component v-if="icon" :is="icon" class="w-10 h-10 stroke-slate-300" />
-    <span class="text-sm font-medium text-slate-500 text-center">{{
-      description
-    }}</span>
+    <component
+      v-if="icon"
+      :is="icon"
+      class="po-w-10 po-h-10 po-stroke-slate-300"
+    />
+    <span
+      v-if="label !== ''"
+      class="po-text-base po-font-medium po-text-slate-600 po-text-center"
+      >{{ label }}</span
+    >
+    <span
+      v-if="description !== ''"
+      class="po-text-sm po-text-slate-500 po-text-center"
+      >{{ description }}</span
+    >
     <!-- 
     Empty state action button
     @slot action
@@ -22,11 +42,18 @@ export default {
 <script setup>
 defineProps({
   /**
+   * State label
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+  /**
    * State description
    */
   description: {
     type: String,
-    default: "Nothing to display",
+    default: "",
   },
   /**
    * Heroicon
