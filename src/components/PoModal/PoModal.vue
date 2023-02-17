@@ -106,7 +106,7 @@
                      -->
                   <slot name="content"></slot>
                 </div>
-                <div class="po-mt-5 po-bg-slate-50 po-rounded-b-xl">
+                <div class="po-bg-slate-50 po-rounded-b-xl">
                   <!-- 
                     Modal footer
                     @slot footer

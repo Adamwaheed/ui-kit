@@ -19,12 +19,13 @@
         <div v-if="stats !== null" class="po-flex md:po-justify-end po-mb-5">
           <div
             class="
-              po-bg-slate-200
+              po-bg-slate-50
+              po-shadow-sm
               po-rounded-xl
               po-py-5
               po-px-2
               po-divide-x
-              po-divide-slate-300
+              po-divide-slate-200
               po-flex
             "
           >
