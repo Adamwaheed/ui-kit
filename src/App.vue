@@ -38,6 +38,7 @@
       :content="sidebarContent"
       @button-click="handleSidebarButtonClick"
       :has-feedback="true"
+      :apps="[{ name: 'app' }]"
     />
     <main class="shell-content">
       <PoActionBar
