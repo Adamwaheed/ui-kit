@@ -194,6 +194,10 @@
                   type="text"
                   error-message="Hello error"
                 />
+                <br />
+                <PoInputFile label="File input" />
+                <br />
+                <PoTextarea label="Textarea" />
               </div>
             </template>
           </PoCard>
@@ -219,6 +223,29 @@
             </template>
           </PoCard>
         </div>
+        <PoCard class="po-mt-5 po-p-5">
+          <template v-slot:content>
+            <div class="lg:po-divide-y lg:po-divide-slate-200">
+              <div class="po-pt-4 lg:po-py-5">
+                <PoInputField label="Label" display="horizontal" type="text" />
+              </div>
+              <div class="po-pt-4 lg:po-py-5">
+                <PoInputFile label="File input" display="horizontal" />
+              </div>
+              <div class="po-pt-4 lg:po-py-5">
+                <PoTextarea label="Textarea" display="horizontal" />
+              </div>
+              <div class="po-pt-4 lg:po-py-5">
+                <PoSelectField
+                  display="horizontal"
+                  label="Select"
+                  :list="selectFieldList"
+                  :pre-selected="selectFieldPreSelected"
+                />
+              </div>
+            </div>
+          </template>
+        </PoCard>
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
             <div
@@ -313,6 +340,8 @@ import {
   PoContentArea,
   PoLoading,
   PoTabs,
+  PoInputFile,
+  PoTextarea,
 } from "./components";
 import { ref } from "vue";
 

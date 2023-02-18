@@ -1,5 +1,9 @@
 <template>
-  <Combobox as="div" v-model="selectedItem">
+  <Combobox
+    as="div"
+    v-model="selectedItem"
+    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+  >
     <ComboboxLabel
       class="
         po-text-sm
@@ -165,6 +169,13 @@ const props = defineProps({
   list: {
     type: Array,
     default: null,
+  },
+  /**
+   * Input display vertifal (default) or horizontal
+   */
+  display: {
+    type: String,
+    default: "vertical",
   },
 });
 

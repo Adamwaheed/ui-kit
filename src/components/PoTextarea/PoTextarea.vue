@@ -1,5 +1,24 @@
 <template>
-  <div class="po-relative po-pt-5">
+  <div
+    class="po-relative"
+    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+  >
+    <label
+      :for="id"
+      class="
+        po-text-sm
+        po-font-medium
+        po-text-slate-700
+        po-flex
+        po-items-center
+        po-space-x-1
+      "
+    >
+      <span>{{ label }}</span>
+      <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
+        <InformationCircleIcon />
+      </abbr>
+    </label>
     <!-- 
               v-model update
               @event update:modelValue
@@ -39,21 +58,6 @@
         disabled:po-cursor-default
       "
     ></textarea>
-    <label
-      :for="id"
-      class="
-        po-absolute po-top-0 po-text-sm po-font-medium po-text-slate-700
-        peer-focus:po-text-mpao-lightblue
-        peer-invalid:po-text-red-500
-        peer-invalid:po-peer-focus:text-red-600
-        po-flex po-items-center po-space-x-1
-      "
-    >
-      <span>{{ label }}</span>
-      <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-        <InformationCircleIcon />
-      </abbr>
-    </label>
     <p
       class="po-mt-2 po-text-sm po-text-slate-500"
       :id="`${id}-description`"
@@ -149,6 +153,13 @@ defineProps({
   placeholder: {
     type: String,
     default: null,
+  },
+  /**
+   * Input display vertifal (default) or horizontal
+   */
+  display: {
+    type: String,
+    default: "vertical",
   },
 });
 </script>

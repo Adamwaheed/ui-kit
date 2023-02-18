@@ -1,5 +1,8 @@
 <template>
-  <div class="po-relative">
+  <div
+    class="po-relative"
+    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+  >
     <!-- 
             v-model update
             @event update:modelValue
@@ -113,6 +116,13 @@ defineProps({
   errorMessage: {
     type: String,
     default: null,
+  },
+  /**
+   * Input display vertifal (default) or horizontal
+   */
+  display: {
+    type: String,
+    default: "vertical",
   },
 });
 </script>
