@@ -60,27 +60,38 @@
         </Disclosure>
       </div>
     </div>
-    <ul v-if="apps !== null" class="shell-sidebar--menu po-shrink-0 po-mb-0">
-      <li>
-        <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
-        <button
-          v-for="(app, index) in appList"
-          @click="
-            $emit('app-click', app.name);
-            setCurrent(index);
-          "
-          class="shell-sidebar--item"
-          title="Go to feedback"
-        >
-          <span class="shell-sidebar--icon">
-            <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
-          </span>
-          <span class="shell-sidebar--label po-font-medium">{{
-            app.name
-          }}</span>
-        </button>
-      </li>
-    </ul>
+    <div class="">
+      <h3 class="shell-sidebar--section po-w-full po-text-left">
+        {{ appsLabel }}
+      </h3>
+      <ul
+        v-if="apps !== null"
+        class="
+          shell-sidebar--menu
+          po-shrink-0 po-mb-0 po-border-b po-border-slate-200 po-pb-3
+        "
+      >
+        <li v-for="(app, index) in appList">
+          <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
+          <button
+            @click="
+              $emit('app-click', app.name);
+              setCurrent(index);
+            "
+            class="shell-sidebar--item"
+            :class="[{ active: app.current }]"
+            title="Go to feedback"
+          >
+            <span class="shell-sidebar--icon">
+              <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
+            </span>
+            <span class="shell-sidebar--label po-font-medium">{{
+              app.name
+            }}</span>
+          </button>
+        </li>
+      </ul>
+    </div>
 
     <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
       <li>
@@ -150,10 +161,23 @@ const props = defineProps({
     type: String,
     default: "/",
   },
+  /**
+   * Show/hide feedback button
+   */
   hasFeedback: {
     type: Boolean,
     default: false,
   },
+  /**
+   * Related apps label. default Related apps
+   */
+  appsLabel: {
+    type: String,
+    default: "Related apps",
+  },
+  /**
+   * List of related apps
+   */
   apps: {
     type: Array,
     default: null,
