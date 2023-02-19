@@ -339,7 +339,7 @@ const zo = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
   for: "sidebar-drawer-toggle",
   role: "button",
   class: "genie-effect po-flex po-items-center po-justify-center po-bg-[#2e5266] po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
-}, Go = { class: "po-mx-auto po-max-w-full po-px-4 po-grow sm:po-px-4" }, Uo = { class: "po-flex po-h-16 po-items-center po-justify-between po-space-x-12" }, Ko = { class: "po-flex po-items-center po-space-x-3" }, Wo = {
+}, Go = { class: "po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4" }, Uo = { class: "po-flex po-h-16 po-items-center po-justify-between po-space-x-12" }, Ko = { class: "po-flex po-items-center po-space-x-3" }, Wo = {
   key: 0,
   class: "po-block po-w-6 po-text-slate-100 md:po-hidden",
   role: "button"
@@ -444,7 +444,7 @@ const zo = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
       ])
     ]));
   }
-}), Yo = { class: "po-flex po-items-center po-space-x-3" }, Qo = { class: "po-w-7 po-text-slate-100" }, Jo = { class: "po-font-light po-text-lg po-text-slate-100 po-hidden md:po-block" }, Xo = {
+}), Yo = { class: "po-flex po-items-center po-justify-center po-space-x-3" }, Qo = { class: "po-w-8 po-text-slate-100" }, Jo = { class: "po-font-light po-text-lg po-text-slate-100 po-hidden md:po-block" }, Xo = {
   name: "PoAppIcon"
 }, el = /* @__PURE__ */ Object.assign(Xo, {
   props: {

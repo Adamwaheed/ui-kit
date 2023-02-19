@@ -20,7 +20,7 @@
         <Bars3Icon class="po-w-6 po-fill-current" />
       </label>
     </div>
-    <div class="po-mx-auto po-max-w-full po-px-4 po-grow sm:po-px-4">
+    <div class="po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4">
       <div
         class="po-flex po-h-16 po-items-center po-justify-between po-space-x-12"
       >
