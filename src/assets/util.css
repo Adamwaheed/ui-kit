@@ -1,21 +1,27 @@
 .genie-effect {
-    @apply po-transition-transform po-duration-100 po-ease-linear po-origin-center
+  @apply po-transition-transform po-duration-100 po-ease-linear po-origin-center;
 }
 .genie-effect:hover {
-    @apply po-scale-110;
+  @apply po-scale-110;
 }
 
 * {
-    backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .log-item {
-    @apply -po-mt-[0.6rem]
+  @apply -po-mt-[0.6rem];
 }
 .log-item > span {
-    @apply po-text-xs po-text-slate-500
+  @apply po-text-xs po-text-slate-500;
 }
 
 .log-item > span > span {
-    @apply po-text-slate-600
+  @apply po-text-slate-600;
+}
+
+.app-icon svg,
+.app-icon path,
+.app-icon circle {
+  fill: #fff;
 }

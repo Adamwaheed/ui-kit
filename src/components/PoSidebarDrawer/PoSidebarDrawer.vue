@@ -77,22 +77,51 @@
         @event app-click
       -->
       <li
-        v-for="app in apps"
-        @click="$emit('app-click', app.name)"
-        :title="`Go to ${app.name} App`"
-        class="
-          po-bg-slate-50 po-w-8 po-h-8 po-rounded-md
-          genie-effect
-          po-cursor-pointer
-          po-overflow-hidden
-          po-flex
-          po-items-center
-          po-justify-center
-          po-mr-2
-          po-mb-2
+        v-for="(app, index) in appList"
+        @click="
+          $emit('app-click', app.name);
+          setCurrent(index);
         "
+        class="po-group po-relative"
       >
-        <span v-html="app.icon" class="po-text-slate-600 po-w-5 po-h-5"></span>
+        <span
+          class="
+            po-scale-0 po-transform
+            group-hover:po-scale-100
+            po-transition-transform
+            po-duration-150
+            po-ease-out
+            po-absolute
+            po-bg-mpao-blue
+            po-rounded-xl
+            po-px-2
+            po-py-1
+            -po-top-[28px]
+            po-whitespace-nowrap po-text-white po-text-xs po-z-50
+          "
+          >{{ app.name }}</span
+        >
+        <div
+          class="
+            po-bg-slate-50 po-w-8 po-h-8 po-rounded-full
+            genie-effect
+            po-cursor-pointer
+            po-flex
+            po-items-center
+            po-justify-center
+            po-mr-2
+            po-mb-2
+            po-relative
+            group-hover:po-shadow-lg
+            po-border
+          "
+          :class="[
+            { 'po-border-white': !app.current },
+            { 'po-border-mpao-lightblue': app.current },
+          ]"
+        >
+          <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
+        </div>
       </li>
     </ul>
     <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
@@ -148,7 +177,7 @@ import PoModal from "../PoModal/PoModal.vue";
 import PoRadioInput from "../PoRadioInput/PoRadioInput.vue";
 import PoTextarea from "../PoTextarea/PoTextarea.vue";
 
-defineProps({
+const props = defineProps({
   /**
    * Array of  sidebar menu items
    */
@@ -173,9 +202,20 @@ defineProps({
   },
 });
 
-const emit = defineEmits(["button-click"]);
+const appList = ref(props.apps);
+
+const emit = defineEmits(["button-click", "app-click"]);
 
 const showFeedbackModal = ref(false);
+
+function setCurrent(index) {
+  for (let i = 0; i < appList.value.length; i++) {
+    if (appList.value[i].current) {
+      appList.value[i].current = false;
+    }
+  }
+  appList.value[index].current = true;
+}
 
 function clickFeedbackModalButton() {
   showFeedbackModal.value = true;

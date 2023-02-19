@@ -1,6 +1,6 @@
 <template>
   <div class="po-flex po-items-center po-justify-center po-space-x-3">
-    <div class="po-w-8 po-text-slate-100">
+    <div class="po-w-8 po-text-slate-100 app-icon">
       <!-- 
                 @slot You can use icon slot to add App Icon. This can be an SVG direcly embedded.
              -->
