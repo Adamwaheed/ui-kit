@@ -377,8 +377,6 @@ import { ref } from "vue";
 
 import {
   PlayIcon,
-  AcademicCapIcon,
-  HomeIcon,
   PlusIcon,
   BeakerIcon,
   SparklesIcon,
@@ -388,6 +386,12 @@ import {
   BoltIcon,
   UsersIcon,
   UserGroupIcon,
+  MegaphoneIcon,
+  PresentationChartLineIcon,
+  CursorArrowRaysIcon,
+  Square2StackIcon,
+  WalletIcon,
+  RectangleStackIcon,
 } from "@heroicons/vue/24/outline";
 
 let searchQuery = ref("");
@@ -535,33 +539,37 @@ console.log("icon", PlayIcon);
 
 let sidebarContent = [
   {
-    groupName: "Start",
+    groupName: "",
     items: [
       {
-        label: "Introduction",
+        label: "Dashboard",
         url: "/",
-        icon: PlayIcon,
-      },
-      {
-        label: "Another",
-        url: "/another",
-        icon: AcademicCapIcon,
+        icon: PresentationChartLineIcon,
       },
     ],
   },
   {
-    groupName: "Form",
+    groupName: "Groups",
     items: [
       {
-        label: "Inputs",
-        url: "/dashboard",
-        icon: HomeIcon,
-        disabled: true,
+        label: "Content Sections",
+        url: "/cs",
+        icon: RectangleStackIcon,
       },
       {
-        label: "Input groups",
+        label: "Form layouts",
         url: "/another",
-        icon: AcademicCapIcon,
+        icon: Square2StackIcon,
+      },
+      {
+        label: "Dialogs & Alerts",
+        url: "/another",
+        icon: MegaphoneIcon,
+      },
+      {
+        label: "Buttons",
+        url: "/another",
+        icon: CursorArrowRaysIcon,
       },
     ],
   },

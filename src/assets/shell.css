@@ -130,8 +130,16 @@
     @apply po-w-4;
   }
 
+  .shell-sidebar--icon svg {
+    margin-left: -2.4px;
+  }
+
   .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--icon {
     @apply po-w-4;
+  }
+
+  .shell-sidebar--toggle:checked ~ .shell-sidebar .shell-sidebar--icon svg {
+    @apply po-ml-0;
   }
 
   .shell-content {
