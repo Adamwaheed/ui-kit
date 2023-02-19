@@ -251,17 +251,14 @@
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
             <PoDRStatus
+              @dispute-click="handleDisputeClick"
               :member="{
                 name: 'Mohamed Ashraf Majdhee',
                 identifier: 'A166592',
                 dob: '1989-09-07T00:00:00.000Z',
               }"
-              :request="{
-                id: 17,
-                type: 'New',
-                type_id: 1,
-                state: 'Pending',
-                state_id: 1,
+              :record="{
+                id: 3,
                 institution: 'Maldives Pension Administration Office',
                 date_of_death: '2023-02-14T00:00:00.000Z',
               }"
@@ -817,4 +814,8 @@ const appsList = [
     menu: [],
   },
 ];
+
+function handleDisputeClick() {
+  console.log("clllk dispute");
+}
 </script>

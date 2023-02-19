@@ -48,7 +48,12 @@
         </h3>
         <p class="po-text-sm po-text-slate-600">
           The following {{ request.type }} was reported:
-          <span class="po-font-medium">{{ request.dispute_type }}</span>
+          <span class="po-font-medium"
+            >{{ request.dispute_type
+            }}<span v-if="request.date_of_death">
+              (New date: {{ request.date_of_death }})</span
+            ></span
+          >
         </p>
       </div>
     </div>
@@ -73,7 +78,7 @@
       </template>
     </PoDescriptionList>
     <span v-if="null === request" class="po-pt-5">
-      <PoButton type="simple" to="/deathreporting/dispute">
+      <PoButton type="simple" @button-click="handleButtonClick">
         <template v-slot:label>
           <span class="po-flex po-items-center po-space-x-1">
             <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
@@ -119,4 +124,10 @@ defineProps({
     default: null,
   },
 });
+
+const emit = defineEmits(["dispute-click"]);
+
+function handleButtonClick() {
+  emit("dispute-click", "clicked");
+}
 </script>

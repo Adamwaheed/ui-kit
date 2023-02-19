@@ -1,0 +1,155 @@
+# Empty component
+
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
+
+import PoDRStatus from "./PoDRStatus.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="DRS/DRStatus" component={PoDRStatus} />
+
+<Description of={PoDRStatus} />
+
+### Wrong Death
+
+<Canvas withToolbar>
+  <Story id="drs-drstatus--wrong-death" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+   <PoDRStatus
+    :member="{
+        name: 'Mohamed Ashraf Majdhee',
+        identifier: 'A166592',
+        dob: '1989-09-07T00:00:00.000Z',
+    }"
+    :record="{
+        id: 3,
+        institution: 'Maldives Pension Administration Office',
+        date_of_death: '2023-02-14T00:00:00.000Z',
+    }"
+    :request="{
+        id: 17,
+        type: 'Dispute',
+        type_id: 2,
+        state: 'Pending',
+        state_id: 1,
+        dispute_type: 'Wrong Date',
+        dispute_type_id: 1,
+        institution: 'Maldives Pension Administration Office',
+        date_of_death: '2023-02-16T00:00:00.000Z',
+    }"
+    />
+  `}
+/>
+
+### Not Dead
+
+<Canvas withToolbar>
+  <Story id="drs-drstatus--not-dead" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+   <PoDRStatus
+    :member="{
+        name: 'Mohamed Ashraf Majdhee',
+        identifier: 'A166592',
+        dob: '1989-09-07T00:00:00.000Z',
+    }"
+    :record="{
+        id: 3,
+        institution: 'Maldives Pension Administration Office',
+        date_of_death: '2023-02-14T00:00:00.000Z',
+    }"
+    :request="{
+        id: 16,
+        type: 'Dispute',
+        type_id: 2,
+        state: 'Pending',
+        state_id: 1,
+        dispute_type: 'Not Dead',
+        dispute_type_id: 1,
+        institution: 'Maldives Pension Administration Office',
+    }"
+/>
+  `}
+/>
+
+### Request
+
+<Canvas withToolbar>
+  <Story id="drs-drstatus--request" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+   <PoDRStatus
+        :member="{
+            name: 'Mohamed Ashraf Majdhee',
+            identifier: 'A166592',
+            dob: '1989-09-07T00:00:00.000Z',
+        }"
+        :request="{
+            id: 17,
+            type: 'New',
+            type_id: 1,
+            state: 'Pending',
+            state_id: 1,
+            institution: 'Maldives Pension Administration Office',
+            date_of_death: '2023-02-14T00:00:00.000Z',
+        }"
+    />
+  `}
+/>
+
+### Record
+
+<Canvas withToolbar>
+  <Story id="drs-drstatus--record" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoDRStatus
+        @dispute-click="handleDisputeClick"
+        :member="{
+            name: 'Mohamed Ashraf Majdhee',
+            identifier: 'A166592',
+            dob: '1989-09-07T00:00:00.000Z',
+        }"
+        :record="{
+            id: 3,
+            institution: 'Maldives Pension Administration Office',
+            date_of_death: '2023-02-14T00:00:00.000Z',
+        }"
+    />
+/>
+  `}
+/>
+
+File dispute button click fires an event: `@dispute-click`
+
+### Explanation
+
+<ArgsTable of={PoDRStatus} />
