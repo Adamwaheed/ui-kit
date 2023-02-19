@@ -1,20 +1,78 @@
 <template>
-  <span class="po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-1">
-    <span class="po-font-bold po-text-lime-700">Pending Verification</span>
-    <span>Death was reported by RedSquare Hospital</span>
-    <span class="po-space-x-1 po-pt-4"
-      ><span
-        class="po-font-medium po-border-l-2 po-border-lime-600 po-pl-2 po-py-1"
-        >Reported Date of death:</span
-      ><span>10th December 2022</span></span
+  <span class="po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-5">
+    <h2
+      v-if="null !== record"
+      class="po-text-base po-font-medium po-text-slate-700"
     >
-    <span class="po-space-x-1"
-      ><span
-        class="po-font-medium po-border-l-2 po-border-lime-600 po-pl-2 po-py-1"
-        >Source:</span
-      ><span>RedSquare Hospital</span></span
+      Death was reported by {{ record.institution }}
+    </h2>
+    <div
+      v-if="null !== request && 1 === request.type_id"
+      class="
+        po-border
+        po-border-orange-300
+        po-bg-orange-50
+        po-rounded-lg
+        po-p-5
+        po-flex
+        po-items-center
+        po-space-x-3
+      "
     >
-    <span class="po-pt-5">
+      <ExclamationTriangleIcon
+        class="po-shrink-0 po-w-6 po-stroke-orange-600"
+      />
+      <span class="po-grow po-text-sm po-text-slate-600">
+        This is a {{ request.type }} request and is in
+        {{ request.state }} state.
+      </span>
+    </div>
+    <div
+      v-if="null !== request && 1 !== request.type_id"
+      class="
+        po-border
+        po-border-red-300
+        po-bg-red-50
+        po-rounded-lg
+        po-p-5
+        po-flex
+        po-space-x-4
+      "
+    >
+      <ExclamationTriangleIcon
+        class="po-shrink-0 po-w-6 po-h-6 po-stroke-red-600 po-stroke-2"
+      />
+      <div class="po-grow">
+        <h3 class="po-text-base po-text-slate-700 po-font-medium">
+          {{ request.type }}
+        </h3>
+        <p class="po-text-sm po-text-slate-600">
+          The following {{ request.type }} was reported:
+          <span class="po-font-medium">{{ request.dispute_type }}</span>
+        </p>
+      </div>
+    </div>
+    <PoDescriptionList>
+      <template v-slot:content>
+        <div v-if="null !== member">
+          <dt>Name</dt>
+          <dd>{{ member.name }}</dd>
+        </div>
+        <div v-if="null !== member">
+          <dt>Identifer</dt>
+          <dd>{{ member.identifier }}</dd>
+        </div>
+        <div v-if="null !== member">
+          <dt>Date of birth</dt>
+          <dd>{{ member.dob }}</dd>
+        </div>
+        <div v-if="null !== record">
+          <dt>Reported Date of death</dt>
+          <dd>{{ record.date_of_death }}</dd>
+        </div>
+      </template>
+    </PoDescriptionList>
+    <span v-if="null === request" class="po-pt-5">
       <PoButton type="simple" to="/deathreporting/dispute">
         <template v-slot:label>
           <span class="po-flex po-items-center po-space-x-1">
@@ -33,6 +91,11 @@ export default {
 };
 </script>
 <script setup>
+import { BoltIcon, ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
+import { baseCompile } from "@vue/compiler-core";
+import PoButton from "../PoButton/PoButton.vue";
+import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
+
 defineProps({
   /**
    * Member Object { name, identifier, dob }
