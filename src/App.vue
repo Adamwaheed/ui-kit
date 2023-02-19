@@ -255,6 +255,15 @@
         </PoCard>
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
+            <PoEmpty
+              label="Nothing to show"
+              description="No show for sho, Write a helpful message. Maybe suggest something to do when it's empty."
+              :icon="BeakerIcon"
+            />
+          </template>
+        </PoCard>
+        <PoCard class="po-mt-5 po-p-5">
+          <template v-slot:content>
             <div
               class="
                 po-flex po-items-center po-space-x-5 po-space-y-5 po-flex-wrap
@@ -350,6 +359,7 @@ import {
   PoInputFile,
   PoTextarea,
   PoDRStatus,
+  PoEmpty,
 } from "./components";
 import { ref } from "vue";
 
