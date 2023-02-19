@@ -31,9 +31,9 @@
               <ul class="shell-sidebar--menu">
                 <li v-for="item in group.items">
                   <!--
-                                    Emits the button url when it’s clicked
-                                    @event button-click
-                                -->
+                      Emits the button url when it’s clicked
+                      @event button-click
+                  -->
                   <button
                     v-if="!item.disabled"
                     @click="$emit('button-click', item.url)"
@@ -72,9 +72,16 @@
         po-border-slate-200
       "
     >
+      <!--
+        Emits the app name when clicked
+        @event app-click
+      -->
       <li
+        v-for="app in apps"
+        @click="$emit('app-click', app.name)"
+        :title="`Go to ${app.name} App`"
         class="
-          po-bg-purple-500 po-w-8 po-h-8 po-rounded-md
+          po-bg-slate-50 po-w-8 po-h-8 po-rounded-md
           genie-effect
           po-cursor-pointer
           po-overflow-hidden
@@ -85,55 +92,8 @@
           po-mb-2
         "
       >
-        <svg
-          class="po-w-5 po-h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="#fff"
-            fill-rule="nonzero"
-            d="M19.248 7.504a2.752 2.752 0 0 0 0-5.504H4.75a2.752 2.752 0 1 0 0 5.504h14.498Zm-2 7a2.752 2.752 0 1 0 0-5.504H6.75a2.752 2.752 0 0 0 0 5.504h10.498ZM17 18.752a2.752 2.752 0 0 1-2.752 2.752H9.75a2.752 2.752 0 1 1 0-5.504h4.498A2.752 2.752 0 0 1 17 18.752Z"
-          />
-        </svg>
+        <span v-html="app.icon" class="po-text-slate-600 po-w-5 po-h-5"></span>
       </li>
-      <li
-        class="
-          po-bg-red-500 po-w-8 po-h-8 po-rounded-md
-          genie-effect
-          po-cursor-pointer
-          po-overflow-hidden
-          po-flex
-          po-items-center
-          po-justify-center
-          po-mr-2
-          po-mb-2
-        "
-      >
-        <svg
-          class="po-w-5 po-h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 -64 640 640"
-        >
-          <path
-            fill="#fff"
-            d="M32 224h32v192H32a31.962 31.962 0 0 1-32-32V256a31.962 31.962 0 0 1 32-32Zm512-48v272a64.063 64.063 0 0 1-64 64H160a64.063 64.063 0 0 1-64-64V176a79.974 79.974 0 0 1 80-80h112V32a32 32 0 0 1 64 0v64h112a79.974 79.974 0 0 1 80 80Zm-280 80a40 40 0 1 0-40 40 39.997 39.997 0 0 0 40-40Zm-8 128h-64v32h64Zm96 0h-64v32h64Zm104-128a40 40 0 1 0-40 40 39.997 39.997 0 0 0 40-40Zm-8 128h-64v32h64Zm192-128v128a31.962 31.962 0 0 1-32 32h-32V224h32a31.962 31.962 0 0 1 32 32Z"
-          />
-        </svg>
-      </li>
-      <li
-        class="
-          po-bg-purple-500 po-w-8 po-h-8 po-rounded-md
-          genie-effect
-          po-cursor-pointer
-          po-overflow-hidden
-          po-flex
-          po-items-center
-          po-justify-center
-          po-mr-2
-          po-mb-2
-        "
-      ></li>
     </ul>
     <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
       <li>
