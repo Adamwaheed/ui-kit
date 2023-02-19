@@ -60,70 +60,28 @@
         </Disclosure>
       </div>
     </div>
-    <ul
-      v-if="apps !== null"
-      class="
-        po-shrink-0
-        po-pb-1
-        po-flex
-        po-justify-center
-        po-flex-wrap
-        po-border-b
-        po-border-slate-200
-      "
-    >
-      <!--
-        Emits the app name when clicked
-        @event app-click
-      -->
-      <li
-        v-for="(app, index) in appList"
-        @click="
-          $emit('app-click', app.name);
-          setCurrent(index);
-        "
-        class="po-group po-relative"
-      >
-        <span
-          class="
-            po-scale-0 po-transform
-            group-hover:po-scale-100
-            po-transition-transform
-            po-duration-150
-            po-ease-out
-            po-absolute
-            po-bg-mpao-blue
-            po-rounded-xl
-            po-px-2
-            po-py-1
-            -po-top-[28px]
-            po-whitespace-nowrap po-text-white po-text-xs po-z-50
+    <ul v-if="apps !== null" class="shell-sidebar--menu po-shrink-0 po-mb-0">
+      <li>
+        <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
+        <button
+          v-for="(app, index) in appList"
+          @click="
+            $emit('app-click', app.name);
+            setCurrent(index);
           "
-          >{{ app.name }}</span
+          class="shell-sidebar--item"
+          title="Go to feedback"
         >
-        <div
-          class="
-            po-bg-slate-50 po-w-8 po-h-8 po-rounded-full
-            genie-effect
-            po-cursor-pointer
-            po-flex
-            po-items-center
-            po-justify-center
-            po-mr-2
-            po-mb-2
-            po-relative
-            group-hover:po-shadow-lg
-            po-border
-          "
-          :class="[
-            { 'po-border-white': !app.current },
-            { 'po-border-mpao-lightblue': app.current },
-          ]"
-        >
-          <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
-        </div>
+          <span class="shell-sidebar--icon">
+            <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
+          </span>
+          <span class="shell-sidebar--label po-font-medium">{{
+            app.name
+          }}</span>
+        </button>
       </li>
     </ul>
+
     <ul v-if="hasFeedback" class="shell-sidebar--menu po-shrink-0 po-mb-0">
       <li>
         <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
