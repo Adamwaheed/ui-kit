@@ -1,14 +1,11 @@
 <template>
   <Popover v-slot="{ open }" class="po-relative">
     <PopoverButton
-      :class="open ? '' : 'text-opacity-90'"
+      :class="open ? '' : 'po-text-opacity-90'"
       class="
-        po-block
-        po-w-6
-        po-text-slate-100
-        po-genie-effect
-        po-z-50
-        po-outline-none
+        po-block po-w-6 po-text-slate-100
+        genie-effect
+        po-z-50 po-outline-none
       "
     >
       <Squares2X2Icon />

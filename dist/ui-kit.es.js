@@ -2237,7 +2237,7 @@ const Wn = {
     return (t, n) => (p(), M(g(at), { class: "po-relative" }, {
       default: T(({ open: l }) => [
         k(g(Bt), {
-          class: R([l ? "" : "text-opacity-90", "po-block po-w-6 po-text-slate-100 po-genie-effect po-z-50 po-outline-none"])
+          class: R([l ? "" : "po-text-opacity-90", "po-block po-w-6 po-text-slate-100 genie-effect po-z-50 po-outline-none"])
         }, {
           default: T(() => [
             k(g(kl))
