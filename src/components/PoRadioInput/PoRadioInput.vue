@@ -1,5 +1,8 @@
 <template>
-  <RadioGroup v-model="selectedOption">
+  <RadioGroup
+    v-model="selectedOption"
+    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+  >
     <RadioGroupLabel
       class="
         po-text-sm
@@ -113,6 +116,13 @@ const props = defineProps({
   label: {
     type: String,
     default: "",
+  },
+  /**
+   * Input display vertifal (default) or horizontal
+   */
+  display: {
+    type: String,
+    default: "vertical",
   },
 });
 

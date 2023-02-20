@@ -2796,6 +2796,13 @@ const Ka = {
     label: {
       type: String,
       default: ""
+    },
+    /**
+     * Input display vertifal (default) or horizontal
+     */
+    display: {
+      type: String,
+      default: "vertical"
     }
   },
   emits: ["selected", "unSelected", "update:modelValue"],
@@ -2805,7 +2812,8 @@ const Ka = {
       t("update:modelValue", l.value);
     }), (o, a) => (p(), z(g(Tn), {
       modelValue: l.value,
-      "onUpdate:modelValue": a[0] || (a[0] = (r) => l.value = r)
+      "onUpdate:modelValue": a[0] || (a[0] = (r) => l.value = r),
+      class: I([{ "lg:po-grid lg:po-grid-cols-2": e.display === "horizontal" }])
     }, {
       default: T(() => [
         $(g(Xt), { class: "po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700" }, {
@@ -2874,7 +2882,7 @@ const Ka = {
         ])) : _("", !0)
       ]),
       _: 1
-    }, 8, ["modelValue"]));
+    }, 8, ["modelValue", "class"]));
   }
 });
 function Xa(e, t) {
