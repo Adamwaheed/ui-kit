@@ -32,6 +32,7 @@
                 @event button-click
             -->
       <span @click="$emit('button-click', 'back')" class="action-bar__nav_link">
+        <span class="action-bar__nav_label po-font-medium">Go Back</span>
         <component
           :is="ArrowUturnLeftIcon"
           class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
