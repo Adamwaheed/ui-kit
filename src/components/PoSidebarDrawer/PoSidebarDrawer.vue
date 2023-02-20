@@ -68,6 +68,7 @@
         v-if="apps !== null"
         class="
           shell-sidebar--menu
+          sidebar-apps
           po-shrink-0 po-mb-0 po-border-b po-border-slate-200 po-pb-3
         "
       >

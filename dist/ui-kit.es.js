@@ -3075,7 +3075,7 @@ const os = ["for"], ls = ["title"], ns = ["name", "id", "value", "placeholder", 
   "aria-checked": "true"
 }, null, -1), us = { class: "shell-sidebar" }, cs = { class: "po-grow" }, ds = { class: "shell-sidebar--menu" }, fs = ["onClick", "title"], vs = { class: "shell-sidebar--icon" }, ms = { class: "shell-sidebar--label po-font-medium" }, hs = { class: "" }, bs = { class: "shell-sidebar--section po-w-full po-text-left" }, gs = {
   key: 0,
-  class: "shell-sidebar--menu po-shrink-0 po-mb-0 po-border-b po-border-slate-200 po-pb-3"
+  class: "shell-sidebar--menu sidebar-apps po-shrink-0 po-mb-0 po-border-b po-border-slate-200 po-pb-3"
 }, ys = ["onClick"], Vs = { class: "shell-sidebar--icon" }, xs = ["innerHTML"], ws = { class: "shell-sidebar--label po-font-medium" }, $s = {
   key: 0,
   class: "shell-sidebar--menu po-shrink-0 po-mb-0"

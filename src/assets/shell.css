@@ -7,11 +7,27 @@
 }
 
 .shell-sidebar--item {
-  @apply po-flex po-items-center po-w-full po-space-x-4 po-px-2 po-py-3 po-text-slate-600 po-transition-colors po-duration-100 po-ease-in-out hover:po-bg-slate-100 po-rounded-lg po-outline-none po-ring-0;
+  @apply po-flex po-items-center po-w-full po-space-x-4 po-px-2 po-py-3 po-text-slate-600 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0;
 }
 
+.shell-sidebar--item:hover,
 .shell-sidebar--item.active {
-  @apply po-text-mpao-blue hover:po-bg-slate-100 po-bg-slate-200;
+  @apply po-text-mpao-lightblue po-bg-slate-100;
+}
+
+.shell-sidebar--menu:not(.sidebar-apps)
+  .shell-sidebar--item.active
+  .shell-sidebar--icon
+  svg,
+.shell-sidebar--menu:not(.sidebar-apps)
+  .shell-sidebar--item:hover
+  .shell-sidebar--icon
+  svg {
+  @apply po-stroke-mpao-orange;
+}
+
+.shell-sidebar--item.active:hover {
+  @apply po-bg-slate-100;
 }
 
 .shell-sidebar--label {
