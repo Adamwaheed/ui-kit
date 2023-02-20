@@ -57,7 +57,7 @@
           po-overflow-y-scroll
         "
       >
-        <ul class="po-space-y-2 po-p-2">
+        <ul class="po-space-y-2">
           <!--
                         Emits name when clicked
                         @event button-click

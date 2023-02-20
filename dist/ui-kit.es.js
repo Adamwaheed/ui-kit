@@ -2287,7 +2287,7 @@ const Wn = {
 }), oa = {
   key: 0,
   class: "po-absolute po-right-0 po-w-3 po-h-3 po-bg-mpao-orange po-rounded-full po-border-2 po-border-mpao-blue"
-}, la = { class: "po-space-y-2 po-p-2" }, na = ["onClick"], aa = { class: "po-flex po-items-center po-justify-between" }, sa = { class: "po-text-sm po-font-semibold po-text-slate-700 po-grow po-flex po-space-x-2 po-items-center" }, ra = {
+}, la = { class: "po-space-y-2" }, na = ["onClick"], aa = { class: "po-flex po-items-center po-justify-between" }, sa = { class: "po-text-sm po-font-semibold po-text-slate-700 po-grow po-flex po-space-x-2 po-items-center" }, ra = {
   key: 0,
   class: "po-w-2 po-h-2 po-rounded-full po-shrink-0 po-bg-mpao-orange"
 }, ia = { class: "po-grow" }, pa = { class: "po-text-xs po-font-normal po-text-slate-400 po-shrink-0" }, ua = { class: "po-block po-text-sm po-text-slate-500 po-pb-3" }, ca = {
