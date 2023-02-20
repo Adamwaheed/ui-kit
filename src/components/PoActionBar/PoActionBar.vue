@@ -11,7 +11,10 @@
       <span
         v-for="item in items"
         @click="$emit('button-click', item.label)"
-        :class="[{ 'action-bar__nav_highlighted': item.highlighted }]"
+        :class="[
+          { 'action-bar__nav_highlighted': item.highlighted },
+          { 'action-bar__nav_danger': item.danger },
+        ]"
         class="action-bar__nav_link"
       >
         <component

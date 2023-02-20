@@ -1,6 +1,6 @@
 module.exports = {
   content: ["./index.html", "./src/App.vue", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  prefix: 'po-',
+  prefix: "po-",
   // safelist: [
   //   "bg-blue-600",
   //   "hover:bg-blue-500",
@@ -37,19 +37,20 @@ module.exports = {
     extend: {
       colors: {
         mpao: {
-          orange: '#ec6d25',
-          blue: '#282f53',
-          lightblue: '#3f54c0'
-        }
-      }
+          orange: "#ec6d25",
+          // blue: "#282f53",
+          blue: "#242d59",
+          lightblue: "#3f54c0",
+        },
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/container-queries'),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/container-queries"),
   ],
 };
 

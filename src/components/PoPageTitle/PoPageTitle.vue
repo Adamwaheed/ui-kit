@@ -31,9 +31,25 @@
           >
             <div v-for="stat in stats" class="po-px-5">
               <span
-                class="po-text-xl po-font-medium po-text-slate-600 po-block"
-                >{{ stat.value }}</span
+                class="
+                  po-text-xl
+                  po-font-medium
+                  po-text-slate-600
+                  po-flex
+                  po-items-center
+                  po-space-x-1
+                "
               >
+                <span class="po-text-xl po-font-medium po-text-slate-600">{{
+                  stat.value
+                }}</span>
+                <span
+                  v-if="stat.icon"
+                  class="po-w-5 po-h-5"
+                  :class="statIconColor(stat)"
+                  ><component :is="stat.icon"
+                /></span>
+              </span>
               <span class="po-text-sm po-text-slate-500 po-block">{{
                 stat.label
               }}</span>
@@ -198,5 +214,9 @@ function handlePaginationClick(item) {
    * Emits 'prev' or 'next' depending on the button clicked
    */
   emit("pagination-click", item);
+}
+
+function statIconColor(stat) {
+  return stat.iconColor ? stat.iconColor : "po-slate-600";
 }
 </script>

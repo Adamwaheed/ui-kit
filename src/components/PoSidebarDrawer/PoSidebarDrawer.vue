@@ -60,12 +60,11 @@
         </Disclosure>
       </div>
     </div>
-    <div class="">
+    <div v-if="apps !== null">
       <h3 class="shell-sidebar--section po-w-full po-text-left">
         {{ appsLabel }}
       </h3>
       <ul
-        v-if="apps !== null"
         class="
           shell-sidebar--menu
           sidebar-apps
