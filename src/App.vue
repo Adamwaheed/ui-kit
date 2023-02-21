@@ -441,20 +441,7 @@ let allApps = [
   },
 ];
 
-let notifications = [
-  {
-    name: "You are no subscribed",
-    time: "now",
-    text: "You have subscribed to DMS notifications for Ali Doe",
-    seen: false,
-  },
-  {
-    name: "Contribution added",
-    time: "5 mins ago",
-    text: "Your contribution for the month of January was added sucessfully",
-    seen: true,
-  },
-];
+let notifications = [];
 
 let profileSwitcherData = {
   profiles: [

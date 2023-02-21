@@ -57,7 +57,10 @@
           po-overflow-y-scroll
         "
       >
-        <ul class="po-space-y-2">
+        <ul
+          v-if="notifications !== null && notifications.length > 0"
+          class="po-space-y-2"
+        >
           <!--
                         Emits name when clicked
                         @event button-click
@@ -102,6 +105,12 @@
             </span>
           </li>
         </ul>
+        <span
+          v-else
+          class="po-text-sm po-text-slate-500 po-py-10 po-text-center po-block"
+        >
+          No notifications to show at the moment. We'll keep you informed.</span
+        >
       </PopoverPanel>
     </transition>
   </Popover>
