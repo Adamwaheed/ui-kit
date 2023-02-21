@@ -3479,7 +3479,7 @@ const Ks = /* @__PURE__ */ zt(Is, [["render", Gs]]), Ws = { class: "po-shadow-sm
 }, dr = {
   key: 0,
   class: "po-flex md:po-justify-end po-mb-5"
-}, fr = { class: "po-bg-slate-50 po-shadow-sm po-rounded-xl po-py-5 po-px-2 po-divide-x po-divide-slate-200 po-flex" }, vr = ["onClick"], mr = { class: "po-text-xl po-font-medium po-text-slate-600 po-flex po-items-center po-space-x-1" }, hr = { class: "po-text-xl po-font-medium po-text-slate-600" }, br = { class: "po-text-sm po-text-slate-500 po-block" }, gr = { class: "po-flex po-items-center po-space-x-1 md:po-justify-end" }, yr = {
+}, fr = { class: "po-bg-slate-50 po-shadow-sm po-rounded-xl po-py-5 po-px-2 po-divide-x po-divide-slate-200 po-flex" }, vr = ["onClick"], mr = { class: "po-text-xl po-font-medium po-text-slate-600 po-flex po-items-center po-space-x-1" }, hr = { class: "po-text-xl po-font-medium po-text-slate-600 group-hover:po-text-mpao-lightblue" }, br = { class: "po-text-sm po-text-slate-500 po-block group-hover:po-text-mpao-lightblue" }, gr = { class: "po-flex po-items-center po-space-x-1 md:po-justify-end" }, yr = {
   key: 2,
   class: "po-border-l po-border-slate-400 po-h-3 po-w-3 po-ml-1"
 }, Vr = {
@@ -3565,10 +3565,8 @@ const Ks = /* @__PURE__ */ zt(Is, [["render", Gs]]), Ws = { class: "po-shadow-sm
           e.stats !== null ? (p(), c("div", dr, [
             s("div", fr, [
               (p(!0), c(I, null, K(e.stats, (u) => (p(), c("div", {
-                class: "po-px-5 po-cursor-pointer",
-                onClick: (d) => {
-                  r.$emit("stat-click", u), l.value = !g(l);
-                }
+                class: "po-px-5 po-cursor-pointer po-group genie-effect",
+                onClick: (d) => r.$emit("stat-click", u)
               }, [
                 s("span", mr, [
                   s("span", hr, y(u.value), 1),

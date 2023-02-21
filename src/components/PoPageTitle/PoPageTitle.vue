@@ -35,11 +35,8 @@
           -->
             <div
               v-for="stat in stats"
-              class="po-px-5 po-cursor-pointer"
-              @click="
-                $emit('stat-click', stat);
-                filterOn = !filterOn;
-              "
+              class="po-px-5 po-cursor-pointer po-group genie-effect"
+              @click="$emit('stat-click', stat)"
             >
               <span
                 class="
@@ -51,9 +48,13 @@
                   po-space-x-1
                 "
               >
-                <span class="po-text-xl po-font-medium po-text-slate-600">{{
-                  stat.value
-                }}</span>
+                <span
+                  class="
+                    po-text-xl po-font-medium po-text-slate-600
+                    group-hover:po-text-mpao-lightblue
+                  "
+                  >{{ stat.value }}</span
+                >
                 <span
                   v-if="stat.icon"
                   class="po-w-5 po-h-5"
@@ -61,9 +62,13 @@
                   ><component :is="stat.icon"
                 /></span>
               </span>
-              <span class="po-text-sm po-text-slate-500 po-block">{{
-                stat.label
-              }}</span>
+              <span
+                class="
+                  po-text-sm po-text-slate-500 po-block
+                  group-hover:po-text-mpao-lightblue
+                "
+                >{{ stat.label }}</span
+              >
             </div>
           </div>
         </div>
