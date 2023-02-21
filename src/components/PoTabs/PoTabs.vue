@@ -36,7 +36,8 @@
         <component
           v-if="tab.icon"
           :is="tab.icon"
-          class="po-w-5 po-h-5 po-stroke-2 po-stroke-current"
+          class="po-w-5 po-h-5"
+          :class="[setIconColor(tab)]"
         />
         <span>{{ tab.name }}</span>
       </span>
@@ -61,4 +62,8 @@ defineProps({
 });
 
 const emit = defineEmits(["button-click"]);
+
+function setIconColor(tabObj) {
+  return tabObj.iconColor ? tabObj.iconColor : "po-fill-current";
+}
 </script>

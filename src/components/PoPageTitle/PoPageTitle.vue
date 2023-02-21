@@ -29,7 +29,18 @@
               po-flex
             "
           >
-            <div v-for="stat in stats" class="po-px-5">
+            <!--
+              Emits stat object when a stat is clicked
+              @event stat-click
+          -->
+            <div
+              v-for="stat in stats"
+              class="po-px-5 po-cursor-pointer"
+              @click="
+                $emit('stat-click', stat);
+                filterOn = !filterOn;
+              "
+            >
               <span
                 class="
                   po-text-xl
@@ -204,7 +215,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["button-click", "pagination-click"]);
+const emit = defineEmits(["button-click", "pagination-click", "stat-click"]);
 
 const filterOn = props.filterOn ? ref(true) : ref(false);
 
