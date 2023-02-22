@@ -115,11 +115,106 @@
               <template #th="{ label }">
                 {{ label }}
               </template>
-              <template #td="{ name, nid, source, dod }">
+              <template #td="{ name, nid, source, dod, action }">
                 <td data-title="name">{{ name }}</td>
                 <td data-title="NID">{{ nid }}</td>
                 <td data-title="source">{{ source }}</td>
                 <td data-title="dod">{{ dod }}</td>
+                <td data-title="action">
+                  <div
+                    class="po-flex po-items-center po-space-x-5 po-justify-end"
+                    v-if="action === 'text'"
+                  >
+                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
+                      >Edit</a
+                    >
+                    <a href="" class="po-text-red-600 hover:po-text-red-900"
+                      >Delete</a
+                    >
+                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
+                      >View</a
+                    >
+                  </div>
+                  <div
+                    class="po-flex po-items-center po-space-x-2 po-justify-end"
+                    v-if="action === 'icon'"
+                  >
+                    <span
+                      class="
+                        po-w-6 po-h-6 po-rounded-lg po-bg-white
+                        genie-effect
+                        po-flex po-items-center po-justify-center
+                        hover:po-bg-slate-50
+                        po-cursor-pointer
+                      "
+                    >
+                      <PencilIcon
+                        class="po-w-4 po-stroke-2 po-stroke-blue-400"
+                      />
+                    </span>
+                    <span
+                      class="
+                        po-w-6 po-h-6 po-rounded-lg po-bg-white
+                        genie-effect
+                        po-flex po-items-center po-justify-center
+                        hover:po-bg-slate-50
+                        po-cursor-pointer
+                      "
+                    >
+                      <TrashIcon class="po-w-5 po-stroke-2 po-stroke-red-400" />
+                    </span>
+                    <span
+                      class="
+                        po-w-6 po-h-6 po-rounded-lg po-bg-white
+                        genie-effect
+                        po-flex po-items-center po-justify-center
+                        hover:po-bg-slate-50
+                        po-cursor-pointer
+                      "
+                    >
+                      <EyeIcon
+                        class="po-w-5 po-stroke-2 po-stroke-emerald-400"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="po-flex po-items-center po-space-x-3 po-justify-end"
+                    v-if="action === 'both'"
+                  >
+                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
+                      >Approve</a
+                    >
+                    <a href="" class="po-text-red-600 hover:po-text-red-900"
+                      >Reject</a
+                    >
+                    <span
+                      class="
+                        po-w-6 po-h-6 po-rounded-lg po-bg-white
+                        genie-effect
+                        po-flex po-items-center po-justify-center
+                        hover:po-bg-slate-50
+                        po-cursor-pointer
+                      "
+                    >
+                      <PencilIcon
+                        class="po-w-4 po-stroke-2 po-stroke-blue-400"
+                      />
+                    </span>
+                    <span
+                      class="
+                        po-w-6 po-h-6 po-rounded-lg po-bg-white
+                        genie-effect
+                        po-flex po-items-center po-justify-center
+                        hover:po-bg-slate-50
+                        po-cursor-pointer
+                      "
+                    >
+                      <EyeIcon
+                        class="po-w-5 po-stroke-2 po-stroke-emerald-400"
+                      />
+                    </span>
+                  </div>
+                </td>
               </template>
             </PoTable>
             <div class="po-p-5">
@@ -394,6 +489,9 @@ import {
   Square2StackIcon,
   WalletIcon,
   RectangleStackIcon,
+  PencilIcon,
+  TrashIcon,
+  EyeIcon,
 } from "@heroicons/vue/24/outline";
 import {
   BanknotesIcon as BanknotesIconSolid,
@@ -604,15 +702,30 @@ let tableHead = [
   { label: "NID" },
   { label: "Source" },
   { label: "DOD" },
+  { label: "Action" },
 ];
 
 let tableBody = [
-  { name: "Jane Gasim", nid: "A00000", source: "YY Clinic", dod: "2022-11-12" },
+  {
+    name: "Jane Gasim",
+    nid: "A00000",
+    source: "YY Clinic",
+    dod: "2022-11-12",
+    action: "text",
+  },
   {
     name: "Mariyam Doe",
     nid: "A00000",
     source: "Rashu Council",
     dod: "2022-11-02",
+    action: "icon",
+  },
+  {
+    name: "Don Hussain",
+    nid: "A00000",
+    source: "Farumathi",
+    dod: "2022-11-02",
+    action: "both",
   },
 ];
 
