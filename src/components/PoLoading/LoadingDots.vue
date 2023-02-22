@@ -6,7 +6,7 @@
         po-w-[5px]
         po-h-[5px]
         po-rounded-full
-        po-bg-slate-500
+        po-bg-mpao-lightblue
         po-ease-[cubic-bezier(0,
         1, 1,
         0)]
@@ -19,7 +19,7 @@
         po-w-[5px]
         po-h-[5px]
         po-rounded-full
-        po-bg-slate-500
+        po-bg-mpao-lightblue
         po-ease-[cubic-bezier(0,
         1, 1,
         0)]
@@ -32,7 +32,7 @@
         po-w-[5px]
         po-h-[5px]
         po-rounded-full
-        po-bg-slate-500
+        po-bg-mpao-lightblue
         po-ease-[cubic-bezier(0,
         1, 1,
         0)]
@@ -45,7 +45,7 @@
         po-w-[5px]
         po-h-[5px]
         po-rounded-full
-        po-bg-slate-500
+        po-bg-mpao-lightblue
         po-ease-[cubic-bezier(0,
         1, 1,
         0)]

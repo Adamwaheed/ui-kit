@@ -1,42 +1,78 @@
 # Card component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoCard from './PoCard.vue';
+import PoCard from "./PoCard.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Card" component={PoCard} />
 
 <Description of={PoCard} />
 
 ### Card
-<Canvas withToolbar>
-    <div class="po-flex po-flex-col po-space-y-5">
-        <Story id="layout-card--basic" />
-    </div>
-</Canvas>
 
-### With title
 <Canvas withToolbar>
-    <div class="po-flex po-flex-col po-space-y-5">
-        <Story id="layout-card--with-title" />
-    </div>
-</Canvas>
-
-### With loading
-<Canvas withToolbar>
-    <div class="po-flex po-flex-col po-space-y-5">
-        <Story id="layout-card--with-loading" />
-    </div>
+  <div class="po-p-5 po-bg-slate-100">
+    <Story id="layout-card--basic" />
+  </div>
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoCard class="p-5">
+        <template v-slot:content>
+        Content
+        </template>
+    </PoCard>
+  `}
+/>
+
+### With title
+
+<Canvas withToolbar>
+  <div class="po-p-5 po-bg-slate-100">
+    <Story id="layout-card--with-title" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoCard title="Card title" class="p-5">
+        <template v-slot:content>
+        Content
+        </template>
+    </PoCard>
+  `}
+/>
+
+### With loading
+
+<Canvas withToolbar>
+  <div class="po-p-5 po-bg-slate-100">
+    <Story id="layout-card--with-loading" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoCard title="Card title" class="p-5" :is-loading="true">
         <template v-slot:content>
         Content
         </template>
