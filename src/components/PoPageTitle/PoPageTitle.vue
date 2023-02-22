@@ -15,7 +15,7 @@
           >{{ description }}</span
         >
       </div>
-      <div>
+      <div class="po-flex po-items-end po-justify-end po-flex-col">
         <div v-if="stats !== null" class="po-flex md:po-justify-end po-mb-5">
           <div
             class="
