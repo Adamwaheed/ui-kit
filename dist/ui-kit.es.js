@@ -3307,7 +3307,7 @@ const ls = ["for"], ns = ["title"], as = ["name", "id", "value", "placeholder", 
      */
     showBackButton: {
       type: Boolean,
-      default: !0
+      default: !1
     },
     /**
      * Current route name to highlight current page when used as tabs.
@@ -3347,7 +3347,7 @@ const ls = ["for"], ns = ["title"], as = ["name", "id", "value", "placeholder", 
   for (const [o, l] of t)
     a[o] = l;
   return a;
-}, Is = {}, Fs = { class: "loading-dots po-inline-block po-relative po-w-[40px] po-h-[10px]" }, Ms = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-slate-500 po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[8px]" }, null, -1), zs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-slate-500 po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[8px]" }, null, -1), Hs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-slate-500 po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[17px]" }, null, -1), qs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-slate-500 po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[26px]" }, null, -1), Us = [
+}, Is = {}, Fs = { class: "loading-dots po-inline-block po-relative po-w-[40px] po-h-[10px]" }, Ms = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-mpao-lightblue po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[8px]" }, null, -1), zs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-mpao-lightblue po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[8px]" }, null, -1), Hs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-mpao-lightblue po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[17px]" }, null, -1), qs = /* @__PURE__ */ r("div", { class: "po-absolute po-w-[5px] po-h-[5px] po-rounded-full po-bg-mpao-lightblue po-ease-[cubic-bezier(0, 1, 1, 0)] po-left-[26px]" }, null, -1), Us = [
   Ms,
   zs,
   Hs,

@@ -1,28 +1,30 @@
 # Action bar component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoActionBar from './PoActionBar.vue';
+import PoActionBar from "./PoActionBar.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Action Bar" component={PoActionBar} />
 
 <Description of={PoActionBar} />
 
 ### Action bar
+
 <Canvas withToolbar>
   <Story id="layout-action-bar--action-bar" />
 </Canvas>
 
-### With highlights
-You can pass an optional `highlighted: true` to `items` to highlight the button. This is useful in cases where important action buttons are added to action bar.
-<Canvas withToolbar>
-  <Story id="layout-action-bar--with-highlight" />
-</Canvas>
-
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -31,6 +33,78 @@ You can pass an optional `highlighted: true` to `items` to highlight the button.
         :show-back-button="true"
         @button-click="handleActionBarClick"
     />
+    let actionBarItems = [
+      {
+        label: "New Staff",
+        icon: PlusIcon,
+      },
+      {
+        label: "Experiment",
+        icon: BeakerIcon,
+      },
+    ];
+  `}
+/>
+
+### With highlights
+
+You can pass an optional `highlighted: true` to `items` to highlight the button. This is useful in cases where important action buttons are added to action bar.
+
+<Canvas withToolbar>
+  <Story id="layout-action-bar--with-highlight" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoActionBar
+        :items="actionBarItems"
+        @button-click="handleActionBarClick"
+    />
+    let actionBarItems = [
+      {
+        label: "New Staff",
+        icon: PlusIcon,
+        highlighted: true,
+      },
+      {
+        label: "Experiment",
+        icon: BeakerIcon,
+      },
+    ];
+  `}
+/>
+
+### With danger
+
+You can pass an optional `danger: true` to `items`. This is useful for delete action and related actions.
+
+<Canvas withToolbar>
+  <Story id="layout-action-bar--with-danger" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoActionBar
+        :items="actionBarItems"
+        @button-click="handleActionBarClick"
+    />
+    let actionBarItems = [
+      {
+        label: "Delete it",
+        icon: TrashIcon,
+        danger: true,
+      },
+      {
+        label: "Experiment",
+        icon: BeakerIcon,
+      },
+    ];
   `}
 />
 
@@ -39,7 +113,7 @@ You can pass an optional `highlighted: true` to `items` to highlight the button.
 <ArgsTable of={PoActionBar} />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -50,6 +124,11 @@ You can pass an optional `highlighted: true` to `items` to highlight the button.
             label: "New Staff",
             icon: PlusIcon,
             highlighted: true
+        },
+        {
+          label: "Delete it",
+          icon: TrashIcon,
+          danger: true,
         },
         {
             label: "Experiment",

@@ -64,7 +64,7 @@ defineProps({
    */
   showBackButton: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   /**
    * Current route name to highlight current page when used as tabs.
