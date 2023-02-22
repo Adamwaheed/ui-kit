@@ -70,13 +70,14 @@ import dedent from "ts-dedent";
     <PoPageTitle
         label="All Investments"
         description="This is a page description that goes on to explain what is in the page."
-        :stats="[{ value: "32", label: "Employees" }, { value: "10", label: "Flights" }]"
+        :stats="stats"
         :show-pagination="true"
         :show-filter="true"
         :show-download="true"
         :pagination="pagination"
         @button-click="handlePageTitlteClick"
         @pagination-click="handlePaginationClick"
+        @stat-click="handeStatClick"
       >
       <template v-slot:filters>
         <PoInputField label="Date from" id="date-from" type="date" />
@@ -122,5 +123,28 @@ import dedent from "ts-dedent";
                 break;
         }
     }
+    let stats = [
+        {
+          value: "32",
+          label: "Active",
+          icon: CheckBadgeIcon,
+          iconColor: "text-green-400",
+        },
+        {
+          value: "1",
+          label: "Draft",
+          icon: TagIcon,
+          iconColor: "text-sky-400",
+        },
+        {
+          value: "5",
+          label: "Terminated",
+          icon: BoltIcon,
+          iconColor: "text-red-400",
+        },
+      ];
+      function handleStatClick(statObj) {
+        ...do something
+      }
   `}
 />

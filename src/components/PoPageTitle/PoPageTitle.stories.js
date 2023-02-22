@@ -4,6 +4,8 @@ import PoPageTitle from "./PoPageTitle.vue";
 
 import PoPageTitleDocs from "./PoPageTitleDocs.stories.mdx";
 
+import { CheckBadgeIcon, TagIcon, BoltIcon } from "@heroicons/vue/20/solid";
+
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
@@ -80,7 +82,23 @@ WithWithDescription.args = {
 WithStats.args = {
   /* 👇 The args you need here will depend on your component */
   stats: [
-    { value: "32", label: "Employees" },
-    { value: "10", label: "Flights" },
+    {
+      value: "32",
+      label: "Active",
+      icon: CheckBadgeIcon,
+      iconColor: "po-text-green-400",
+    },
+    {
+      value: "1",
+      label: "Draft",
+      icon: TagIcon,
+      iconColor: "po-text-sky-400",
+    },
+    {
+      value: "5",
+      label: "Terminated",
+      icon: BoltIcon,
+      iconColor: "po-text-red-400",
+    },
   ],
 };
