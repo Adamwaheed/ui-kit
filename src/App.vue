@@ -122,97 +122,38 @@
                 <td data-title="dod">{{ dod }}</td>
                 <td data-title="action">
                   <div
-                    class="po-flex po-items-center po-space-x-5 po-justify-end"
+                    class="po-flex po-items-center po-space-x-3 po-justify-end"
                     v-if="action === 'text'"
                   >
-                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
-                      >Edit</a
-                    >
-                    <a href="" class="po-text-red-600 hover:po-text-red-900"
-                      >Delete</a
-                    >
-                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
-                      >View</a
-                    >
+                    <PoTableAction label="Edit" text-color="po-text-sky-600" />
+                    <PoTableAction
+                      label="Delete"
+                      text-color="po-text-red-600"
+                    />
+                    <PoTableAction label="View" text-color="po-text-sky-600" />
                   </div>
                   <div
-                    class="po-flex po-items-center po-space-x-2 po-justify-end"
+                    class="po-flex po-items-center po-space-x-3 po-justify-end"
                     v-if="action === 'icon'"
                   >
-                    <span
-                      class="
-                        po-w-6 po-h-6 po-rounded-lg po-bg-white
-                        genie-effect
-                        po-flex po-items-center po-justify-center
-                        hover:po-bg-slate-50
-                        po-cursor-pointer
-                      "
-                    >
-                      <PencilIcon
-                        class="po-w-4 po-stroke-2 po-stroke-blue-400"
-                      />
-                    </span>
-                    <span
-                      class="
-                        po-w-6 po-h-6 po-rounded-lg po-bg-white
-                        genie-effect
-                        po-flex po-items-center po-justify-center
-                        hover:po-bg-slate-50
-                        po-cursor-pointer
-                      "
-                    >
-                      <TrashIcon class="po-w-5 po-stroke-2 po-stroke-red-400" />
-                    </span>
-                    <span
-                      class="
-                        po-w-6 po-h-6 po-rounded-lg po-bg-white
-                        genie-effect
-                        po-flex po-items-center po-justify-center
-                        hover:po-bg-slate-50
-                        po-cursor-pointer
-                      "
-                    >
-                      <EyeIcon
-                        class="po-w-5 po-stroke-2 po-stroke-emerald-400"
-                      />
-                    </span>
+                    <PoTableAction btn-type="edit" />
+                    <PoTableAction btn-type="delete" />
+                    <PoTableAction btn-type="view" />
                   </div>
                   <div
                     class="po-flex po-items-center po-space-x-3 po-justify-end"
                     v-if="action === 'both'"
                   >
-                    <a href="" class="po-text-sky-600 hover:po-text-sky-900"
-                      >Approve</a
-                    >
-                    <a href="" class="po-text-red-600 hover:po-text-red-900"
-                      >Reject</a
-                    >
-                    <span
-                      class="
-                        po-w-6 po-h-6 po-rounded-lg po-bg-white
-                        genie-effect
-                        po-flex po-items-center po-justify-center
-                        hover:po-bg-slate-50
-                        po-cursor-pointer
-                      "
-                    >
-                      <PencilIcon
-                        class="po-w-4 po-stroke-2 po-stroke-blue-400"
-                      />
-                    </span>
-                    <span
-                      class="
-                        po-w-6 po-h-6 po-rounded-lg po-bg-white
-                        genie-effect
-                        po-flex po-items-center po-justify-center
-                        hover:po-bg-slate-50
-                        po-cursor-pointer
-                      "
-                    >
-                      <EyeIcon
-                        class="po-w-5 po-stroke-2 po-stroke-emerald-400"
-                      />
-                    </span>
+                    <PoTableAction
+                      label="Approve"
+                      text-color="po-text-sky-600"
+                    />
+                    <PoTableAction
+                      label="Reject"
+                      text-color="po-text-red-600"
+                    />
+                    <PoTableAction btn-type="edit" />
+                    <PoTableAction btn-type="view" />
                   </div>
                 </td>
               </template>
@@ -469,6 +410,7 @@ import {
   PoDRStatus,
   PoEmpty,
   PoCardTabs,
+  PoTableAction,
 } from "./components";
 import { ref } from "vue";
 
@@ -499,6 +441,7 @@ import {
   MapPinIcon,
   ScissorsIcon,
 } from "@heroicons/vue/20/solid";
+import { findLastIndex } from "lodash";
 
 let searchQuery = ref("");
 let toggleState = ref(false);
