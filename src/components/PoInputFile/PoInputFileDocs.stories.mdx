@@ -1,22 +1,30 @@
 # Input file component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoInputFile from './PoInputFile.vue';
+import PoInputFile from "./PoInputFile.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Form/Input File" component={PoInputFile} />
 
 <Description of={PoInputFile} />
 
 ### Normal
+
 <Canvas withToolbar>
-    <Story id="form-input-file--normal" />
+  <Story id="form-input-file--normal" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -25,12 +33,13 @@ import dedent from 'ts-dedent';
 />
 
 ### With message
+
 <Canvas withToolbar>
-    <Story id="form-input-file--with-message" />
+  <Story id="form-input-file--with-message" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -43,12 +52,13 @@ import dedent from 'ts-dedent';
 />
 
 ### With Error
+
 <Canvas withToolbar>
-    <Story id="form-input-file--error-state" />
+  <Story id="form-input-file--error-state" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -61,12 +71,31 @@ import dedent from 'ts-dedent';
   `}
 />
 
+### Horizontal
+
+<Canvas withToolbar>
+  <Story id="form-input-file--horizontal" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputFile
+        label="Choose file"
+        id="documents"
+        display="Horizontal"
+    />
+  `}
+/>
+
 ### Explanation
 
 <ArgsTable of={PoInputFile} />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
