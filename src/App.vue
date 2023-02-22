@@ -110,6 +110,7 @@
         />
         <PoCard class="po-mt-5">
           <template v-slot:content>
+            <PoCardTabs :tabs="tabs" />
             <PoTable :thead="tableHead" :tbody="tableBody">
               <template #th="{ label }">
                 {{ label }}
@@ -372,6 +373,7 @@ import {
   PoTextarea,
   PoDRStatus,
   PoEmpty,
+  PoCardTabs,
 } from "./components";
 import { ref } from "vue";
 
@@ -393,22 +395,45 @@ import {
   WalletIcon,
   RectangleStackIcon,
 } from "@heroicons/vue/24/outline";
+import {
+  BanknotesIcon as BanknotesIconSolid,
+  BriefcaseIcon,
+  MapPinIcon,
+  ScissorsIcon,
+} from "@heroicons/vue/20/solid";
 
 let searchQuery = ref("");
 let toggleState = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
 let inputModel = ref("what");
-
 const tabs = [
   {
-    name: "Employements",
-    icon: UsersIcon,
+    name: "Wage Changes",
+    icon: BanknotesIconSolid,
+    iconColor: "po-fill-green-400",
+    href: "#",
     current: true,
   },
   {
-    name: "Teams",
-    icon: UserGroupIcon,
+    name: "Terminations",
+    icon: ScissorsIcon,
+    iconColor: "po-fill-red-400",
+    href: "#",
+    current: false,
+  },
+  {
+    name: "Location Changes",
+    icon: MapPinIcon,
+    iconColor: "po-fill-orange-400",
+    href: "#",
+    current: false,
+  },
+  {
+    name: "Designation Changes",
+    icon: BriefcaseIcon,
+    iconColor: "po-fill-cyan-400",
+    href: "#",
     current: false,
   },
 ];
