@@ -1,25 +1,46 @@
 # Content Area component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoContentArea from './PoContentArea.vue';
+import PoContentArea from "./PoContentArea.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Content Area" component={PoContentArea} />
 
 <Description of={PoContentArea} />
+
+Content area component should be the root of every component. It should be the only child of `<template>`, unless you have `<PoActionBar>` in the page. In this case `<PoActionBar>` and `<PoContentArea>` should be siblings. See below.
 
 <Canvas withToolbar>
   <Story id="layout-content-area--content-area" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoContentArea>...</PoContentArea>
+  `}
+/>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <template>
+       <PoActionBar />
+       <PoContentArea> EVERYTHING GOES HERE </PoContentArea>
+    </template>
   `}
 />
 
