@@ -1,42 +1,172 @@
 # Input field component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoInputField from './PoInputField.vue';
+import PoInputField from "./PoInputField.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Form/Input Field" component={PoInputField} />
 
 <Description of={PoInputField} />
 
+By default the type is set to `text`. You can use `v-model` bindings in `PoInputField`.
+
+### Normal
+
 <Canvas withToolbar>
-<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+  <div class="po-max-w-sm">
     <Story inline={true} id="form-input-field--normal" />
-    <Story inline={true} id="form-input-field--with-info-tooltip" />
-    <Story inline={true} id="form-input-field--with-message" />
-    <Story inline={true} id="form-input-field--with-placeholder" />
-    <Story inline={true} id="form-input-field--error-state" />
-    <Story inline={true} id="form-input-field--disabled-state" />
-</div>
+  </div>
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoInputField
         label="Fullname"
-        type="text"
         id="form-fullname"
-        info="Name of the person"
-        message="Write your name including middle names"
-        error-message="Fullname is required"
-        placeholder="Fullname..."
-        :has-error="false"
-        :required="false"
-        :disabled="false"
+        v-model="form.fullname"
+    />
+  `}
+/>
+
+### With tooltip
+
+<Canvas withToolbar>
+  <div class="po-max-w-sm">
+    <Story inline={true} id="form-input-field--with-info-tooltip" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="NID"
+        type="text"
+        id="form-nid"
+        info="National ID card no."
+    />
+  `}
+/>
+
+### With message
+
+<Canvas withToolbar>
+  <div class="po-max-w-sm">
+    <Story inline={true} id="form-input-field--with-message" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Street name"
+        type="text"
+        id="form-streetname"
+        message="Name of the house, street, village"
+    />
+  `}
+/>
+
+### With Placeholder
+
+<Canvas withToolbar>
+  <div class="po-max-w-sm">
+    <Story inline={true} id="form-input-field--with-placeholder" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Email address"
+        type="email"
+        id="form-email"
+        placeholder="doe@example.com"
+    />
+  `}
+/>
+
+### Error
+
+<Canvas withToolbar>
+  <div class="po-max-w-sm">
+    <Story inline={true} id="form-input-field--error-state" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Phone number"
+        type="text"
+        id="form-phone"
+        error-message="Phone number is required"
+        :has-error="true"
+    />
+  `}
+/>
+
+### Disabled
+
+<Canvas withToolbar>
+  <div class="po-max-w-sm">
+    <Story inline={true} id="form-input-field--disabled-state" />
+  </div>
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Password"
+        type="password"
+        id="form-password"
+        :disabled="true"
+    />
+  `}
+/>
+
+### Horizontal
+
+<Canvas withToolbar>
+  <Story inline={true} id="form-input-field--horizontal" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoInputField
+        label="Short name"
+        type="text"
+        id="form-shortname"
+        display="horizontal"
     />
   `}
 />
@@ -44,78 +174,3 @@ import dedent from 'ts-dedent';
 ### Explanation
 
 <ArgsTable of={PoInputField} />
-
-### Normal (base)
-<Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
-    <PoInputField
-        label="Fullname"
-        type="text"
-        id="form-fullname"
-    />
-  `}
-/>
-
-### With message
-<Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
-    <PoInputField
-        label="Fullname"
-        type="text"
-        id="form-fullname"
-        message="Write your name including middle names"
-    />
-  `}
-/>
-
-### Has Error
-<Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
-    <PoInputField
-        label="Fullname"
-        type="text"
-        id="form-fullname"
-        error-message="Fullname is required"
-        :has-error="true"
-    />
-  `}
-/>
-
-### With Info tooltip
-<Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
-    <PoInputField
-        label="Fullname"
-        type="text"
-        id="form-fullname"
-        info="Name of the person"
-    />
-  `}
-/>
-
-### Disabled
-<Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
-    <PoInputField
-        label="Fullname"
-        type="text"
-        id="form-fullname"
-        :disabled="true"
-    />
-  `}
-/>
