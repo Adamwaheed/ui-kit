@@ -52,3 +52,4 @@ export { default as PoTabs } from "./PoTabs/PoTabs.vue";
 export { default as PoEmpty } from "./PoEmpty/PoEmpty.vue";
 export { default as PoDRStatus } from "./PoDRStatus/PoDRStatus.vue";
 export { default as PoTableAction } from "./PoTableAction/PoTableAction.vue";
+export { default as Rufiyaa } from "./Rufiyaa/Rufiyaa.vue";

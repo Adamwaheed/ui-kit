@@ -1,0 +1,33 @@
+# Rufyiaa component
+
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
+
+import Rufiyaa from "./Rufiyaa.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Content/Rufiyaa" component={Rufiyaa} />
+
+<Description of={Rufiyaa} />
+
+Rufiyaa Symbol.
+
+<Canvas withToolbar>
+  <Story id="content-rufiyaa--icon" />
+</Canvas>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <Rufiyaa class="w-4" />
+  `}
+/>
