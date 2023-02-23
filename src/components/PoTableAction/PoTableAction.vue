@@ -47,7 +47,7 @@ const props = defineProps({
   /**
    * Heroicon outline 24. Not needed for 'text', 'view', 'edit', or 'delete' types.
    */
-  icon: null,
+  btnIcon: Function,
   /**
    * Button type. By default it's set to 'text'. You can have 'text', 'icon', 'view', 'edit', or 'delete' types.
    */
@@ -87,10 +87,10 @@ if ("view" === props.btnType) {
   currIcon.value = PencilIcon;
 } else if ("delete" === props.btnType) {
   currIcon.value = TrashIcon;
-} else if (null === props.icon) {
-  // currIcon.value = TrashIcon;
-} else {
-  currIcon.value = props.icon;
+} else if ("icon" === props.btnType) {
+  if (props.btnIcon) {
+    currIcon.value = props.btnIcon;
+  }
 }
 
 if ("view" === props.btnType) {
@@ -99,8 +99,6 @@ if ("view" === props.btnType) {
   currIconColor.value = "po-stroke-blue-400";
 } else if ("delete" === props.btnType) {
   currIconColor.value = "po-stroke-red-400";
-} else if (null === props.icon) {
-  // currIconColor.value = TrashIcon;
 } else {
   currIconColor.value = props.iconColor;
 }

@@ -6486,7 +6486,7 @@ const td = { class: "po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-
     /**
      * Heroicon outline 24. Not needed for 'text', 'view', 'edit', or 'delete' types.
      */
-    icon: null,
+    btnIcon: Function,
     /**
      * Button type. By default it's set to 'text'. You can have 'text', 'icon', 'view', 'edit', or 'delete' types.
      */
@@ -6518,7 +6518,7 @@ const td = { class: "po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-
   },
   setup(e) {
     const t = e, n = w(), o = w();
-    return t.btnType === "view" ? n.value = Vl : t.btnType === "edit" ? n.value = $l : t.btnType === "delete" ? n.value = Sl : t.icon === null || (n.value = t.icon), t.btnType === "view" ? o.value = "po-stroke-emerald-400" : t.btnType === "edit" ? o.value = "po-stroke-blue-400" : t.btnType === "delete" ? o.value = "po-stroke-red-400" : t.icon === null || (o.value = t.iconColor), (l, a) => (p(), c("span", null, [
+    return t.btnType === "view" ? n.value = Vl : t.btnType === "edit" ? n.value = $l : t.btnType === "delete" ? n.value = Sl : t.btnType === "icon" && t.btnIcon && (n.value = t.btnIcon), t.btnType === "view" ? o.value = "po-stroke-emerald-400" : t.btnType === "edit" ? o.value = "po-stroke-blue-400" : t.btnType === "delete" ? o.value = "po-stroke-red-400" : o.value = t.iconColor, (l, a) => (p(), c("span", null, [
       e.btnType === "icon" || e.btnType === "delete" || e.btnType === "edit" || e.btnType === "view" ? (p(), c("span", $d, [
         (p(), F(me(n.value), {
           class: j(["po-w-4 po-stroke-2", o.value])
