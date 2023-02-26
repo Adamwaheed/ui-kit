@@ -35,11 +35,7 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :class="[
         'po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
-        {
-          'po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600':
-            hasError,
-        },
-        { 'po-border-slate-300 focus:po-border-mpao-lightblue': !hasError },
+        getBorderColor(),
       ]"
     />
     <p
@@ -73,7 +69,7 @@ import {
   ExclamationTriangleIcon,
 } from "@heroicons/vue/24/solid";
 
-defineProps({
+const props = defineProps({
   /**
    * Model value
    */
@@ -158,5 +154,18 @@ defineProps({
     type: String,
     default: null,
   },
+  /**
+   * True or false if required
+   */
+  borderColor: {
+    type: String,
+    default: "po-border-slate-300 focus:po-border-mpao-lightblue",
+  },
 });
+
+function getBorderColor() {
+  return props.hasError
+    ? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
+    : props.borderColor;
+}
 </script>

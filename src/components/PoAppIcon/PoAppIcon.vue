@@ -6,10 +6,10 @@
              -->
       <slot name="icon" />
     </div>
-    <span
-      class="po-font-light po-text-lg po-text-slate-100 po-hidden md:po-block"
-      >{{ appName }}</span
-    >
+    <span class="po-font-light po-text-lg po-text-slate-100">
+      <span class="po-hidden md:po-block">{{ appName }}</span>
+      <span class="po-block md:po-hidden">{{ appShortName }}</span>
+    </span>
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
 };
 </script>
 <script setup>
-defineProps({
+import { computed } from "vue";
+const props = defineProps({
   /**
    * Name of the app
    */
@@ -27,5 +28,9 @@ defineProps({
     type: String,
     default: "App Name",
   },
+});
+
+const appShortName = computed(() => {
+  return props.appName.match(/\b[A-Z]/g).join("");
 });
 </script>
