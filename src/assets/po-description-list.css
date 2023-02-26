@@ -1,12 +1,12 @@
 .po-description-list div {
-    @apply po-grid po-grid-cols-1 sm:po-grid-cols-3 sm:po-gap-5 po-py-3 @4xl:po-py-2
+  @apply po-grid po-grid-cols-1 sm:po-grid-cols-3 xl:po-grid-cols-4 sm:po-gap-5 po-py-3;
 }
 .po-description-list.striped div {
-    @apply even:po-bg-slate-50 po-px-2
+  @apply even:po-bg-slate-50 po-px-2;
 }
 .po-description-list dt {
-    @apply po-text-sm po-text-slate-500 po-col-span-1 @4xl:po-text-slate-600 @4xl:po-font-medium
+  @apply po-text-sm po-text-slate-500 po-col-span-1;
 }
 .po-description-list dd {
-    @apply po-text-sm po-text-slate-700 po-col-span-2 po-flex @4xl:po-text-slate-500
+  @apply po-text-sm po-text-slate-700 po-col-span-2 xl:po-col-span-3 po-flex;
 }

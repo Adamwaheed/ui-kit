@@ -1,9 +1,9 @@
 <template>
-  <div class="po-@container">
+  <div>
     <dl
       :class="[
-        'po-description-list @4xl:po-grid @4xl:po-grid-cols-2 @6xl:po-grid-cols-3',
-        { 'po-divide-y po-divide-slate-200 @4xl:po-divide-y-0': !striped },
+        'po-description-list',
+        { 'po-divide-y po-divide-slate-200': !striped },
         { striped: striped },
       ]"
     >
