@@ -12,6 +12,7 @@
     <span
       role="button"
       v-for="tab in tabs"
+      @click="$emit('button-click', tab)"
       :key="tab.name"
       :class="[
         tab.current
