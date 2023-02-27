@@ -28,6 +28,11 @@
         </td>
       </tr>
     </tbody>
+    <tfoot v-if="$slots.tfoot">
+      <tr>
+        <slot name="tfoot"></slot>
+      </tr>
+    </tfoot>
   </table>
 </template>
 
