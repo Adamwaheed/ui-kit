@@ -106,7 +106,10 @@
                      -->
                   <slot name="content"></slot>
                 </div>
-                <div class="po-bg-slate-50 po-rounded-b-xl">
+                <div
+                  v-if="$slots.footer"
+                  class="po-bg-slate-50 po-rounded-b-xl"
+                >
                   <!-- 
                     Modal footer
                     @slot footer
