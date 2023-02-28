@@ -1,5 +1,17 @@
 <template>
-  <div>
+  <div v-if="isInline">
+    <h1 class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800">
+      {{ label }}
+    </h1>
+    <span
+      v-if="description !== ''"
+      class="
+        po-text-base po-mt-4 po-max-w-md po-pb-5 po-block po-text-slate-500
+      "
+      >{{ description }}</span
+    >
+  </div>
+  <div v-else>
     <div class="po-grid po-grid-cols-1 lg:po-grid-cols-2 po-gap-5">
       <div>
         <h1
@@ -212,9 +224,16 @@ const props = defineProps({
     default: null,
   },
   /**
-   *
+   * Turn on and off filters ... show on load
    */
   filterOn: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   *
+   */
+  isInline: {
     type: Boolean,
     default: false,
   },
