@@ -15,7 +15,10 @@
         peer-invalid:peer-focus:po-text-red-600
         po-flex po-items-center po-space-x-1
       "
-      >{{ label }}</span
+      ><span>{{ label }}</span>
+      <span v-if="required" class="po-text-xs po-text-red-400 po-italic"
+        >Required</span
+      ></span
     >
     <input
       :name="`${id}-upload`"
@@ -123,6 +126,13 @@ defineProps({
   display: {
     type: String,
     default: "vertical",
+  },
+  /**
+   * True or false if required
+   */
+  required: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>

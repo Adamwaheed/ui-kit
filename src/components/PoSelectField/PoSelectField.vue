@@ -15,6 +15,9 @@
       "
     >
       <span>{{ label }}</span>
+      <span v-if="required" class="po-text-xs po-text-red-400 po-italic"
+        >Required</span
+      >
       <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
         <InformationCircleIcon class="po-fill-current" />
       </abbr>
@@ -176,6 +179,13 @@ const props = defineProps({
   display: {
     type: String,
     default: "vertical",
+  },
+  /**
+   * True or false if required
+   */
+  required: {
+    type: Boolean,
+    default: false,
   },
 });
 

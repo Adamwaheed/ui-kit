@@ -12,7 +12,10 @@
         po-space-x-1
         po-text-slate-700
       "
-      >{{ label }}</RadioGroupLabel
+      ><span>{{ label }}</span>
+      <span v-if="required" class="po-text-xs po-text-red-400 po-italic"
+        >Required</span
+      ></RadioGroupLabel
     >
 
     <div v-if="null !== options" class="po-mt-1 po-flex -po-mb-3 po-flex-wrap">
@@ -123,6 +126,13 @@ const props = defineProps({
   display: {
     type: String,
     default: "vertical",
+  },
+  /**
+   * True or false if required
+   */
+  required: {
+    type: Boolean,
+    default: false,
   },
 });
 
