@@ -3611,7 +3611,7 @@ const Xs = /* @__PURE__ */ rt(qs, [["render", Js]]), Qs = { class: "po-shadow-sm
     /**
      *
      */
-    isInline: {
+    standAlone: {
       type: Boolean,
       default: !1
     }
@@ -3625,7 +3625,7 @@ const Xs = /* @__PURE__ */ rt(qs, [["render", Js]]), Qs = { class: "po-shadow-sm
     function a(r) {
       return r.iconColor ? r.iconColor : "po-slate-600";
     }
-    return (r, i) => e.isInline ? (p(), c("div", vr, [
+    return (r, i) => e.standAlone ? (p(), c("div", vr, [
       s("h1", mr, y(e.label), 1),
       e.description !== "" ? (p(), c("span", hr, y(e.description), 1)) : w("", !0)
     ])) : (p(), c("div", br, [

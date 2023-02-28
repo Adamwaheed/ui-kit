@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isInline">
+  <div v-if="standAlone">
     <h1 class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800">
       {{ label }}
     </h1>
@@ -233,7 +233,7 @@ const props = defineProps({
   /**
    *
    */
-  isInline: {
+  standAlone: {
     type: Boolean,
     default: false,
   },
