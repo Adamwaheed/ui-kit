@@ -1,6 +1,16 @@
 <template>
+  <span
+    v-if="isLoading"
+    :class="[buttonClassess, buttonSize]"
+    class="po-bg-slate-200 hover:po-bg-slate-200 focus:po-bg-slate-200"
+  >
+    <LoadingDots
+      dot-color="po-bg-slate-500"
+      class="po-relative -po-bottom-[0.2rem]"
+    />
+  </span>
   <button
-    v-if="'button' == type"
+    v-if="'button' == type && !isLoading"
     @click.prevent="$emit('button-click', to)"
     :class="[buttonClassess, buttonSize, buttonColor]"
     :disabled="disabled"
@@ -14,7 +24,7 @@
     <slot name="label">{{ label }}</slot>
   </button>
   <input
-    v-if="'submit' == type"
+    v-if="'submit' == type && !isLoading"
     type="submit"
     :class="[buttonClassess, buttonSize, buttonColor]"
     :value="label"
@@ -27,7 +37,7 @@
         @event button-click
     -->
   <a
-    v-if="'link' == type"
+    v-if="'link' == type && !isLoading"
     href="#"
     @click.prevent="$emit('button-click', to)"
     :class="[buttonClassess, buttonSize, buttonColor]"
@@ -36,7 +46,7 @@
     <slot name="label">{{ label }}</slot>
   </a>
   <a
-    v-if="'simple' == type"
+    v-if="'simple' == type && !isLoading"
     href="#"
     @click.prevent="$emit('button-click', to)"
     class="
@@ -63,6 +73,7 @@ export default {
 </script>
 <script setup>
 import { computed } from "vue";
+import LoadingDots from "../PoLoading/LoadingDots.vue";
 
 const buttonClassess =
   "po-rounded-lg po-transition-colors po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
@@ -109,6 +120,13 @@ const props = defineProps({
   size: {
     type: String,
     default: "md",
+  },
+  /**
+   * Button is loading
+   */
+  isLoading: {
+    type: Boolean,
+    default: false,
   },
 });
 

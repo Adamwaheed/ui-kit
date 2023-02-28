@@ -328,11 +328,8 @@
         </PoCard>
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
-            <div
-              class="
-                po-flex po-items-center po-space-x-5 po-space-y-5 po-flex-wrap
-              "
-            >
+            <div class="po-flex po-items-center po-space-x-5 po-flex-wrap">
+              <PoButton :is-loading="true" type="button" label="Button" />
               <PoButton type="button" label="Button" />
               <PoButton type="submit" label="Submit" />
               <PoButton type="link" label="Link" to="/home" />
