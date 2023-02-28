@@ -6,12 +6,17 @@
     >
       <LoadingDots />
     </div>
-    <h3
-      v-if="title.length > 0"
-      class="po-text-base po-font-medium po-text-slate-600"
-    >
-      {{ title }}
-    </h3>
+    <div class="po-flex po-items-center">
+      <h3
+        v-if="title.length > 0"
+        class="po-grow po-text-base po-font-medium po-text-slate-600"
+      >
+        {{ title }}
+      </h3>
+      <div v-if="$slots.action" class="po-shrink-0">
+        <slot name="action"></slot>
+      </div>
+    </div>
     <!--
             @slot Content of the card goes here.
         -->
