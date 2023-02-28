@@ -72,7 +72,22 @@
             Searching {{ searchQuery }}<br />
             <div class="po-flex po-space-x-3 po-mt-3">
               <PoModal open-btn-label="Open Modal" />
+
               <PoButton @click="openAlertClick" label="Open Alert" />
+              <PoButton
+                @click="openModalClick"
+                label="Open Modal Custom Button"
+              />
+              <PoModal
+                :show="openModal"
+                @modal-closed="openModal = false"
+                modal-title="Email"
+                id="investment-notification-status"
+              >
+                <template v-slot:content>
+                  <div class="p-5">...</div>
+                </template>
+              </PoModal>
             </div>
 
             <br />
@@ -727,6 +742,16 @@ function openAlertClick() {
   setTimeout(() => {
     showAlert.value = false;
   }, 100);
+}
+
+const openModal = ref(false);
+function openModalClick() {
+  openModal.value = true;
+
+  setTimeout(() => {
+    // openModal.value = false;
+    console.log("closing");
+  }, 1000);
 }
 
 function handleAlertOkClick() {

@@ -1,21 +1,28 @@
 # Modal component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoModal from './PoModal.vue';
+import PoModal from "./PoModal.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Components/Modal" component={PoModal} />
 
 <Description of={PoModal} />
 
 <Canvas withToolbar>
-    <Story id="components-modal--modal" />
+  <Story id="components-modal--modal" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -29,14 +36,13 @@ When openBtnLabel is empty, modal open button is not displayed. You can use a cu
 
 <ArgsTable of={PoModal} />
 
-
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     const showNotificationBodyModal = ref(false);
-    <PoModal :show="showNotificationBodyModal" modal-title="Email" id="investment-notification-status">
+    <PoModal :show="showNotificationBodyModal" @modal-closed="showNotificationBodyModal = false" modal-title="Email" id="investment-notification-status">
         <template v-slot:content>
           <div class="p-5">
             ...
@@ -45,3 +51,5 @@ When openBtnLabel is empty, modal open button is not displayed. You can use a cu
     </PoModal>
   `}
 />
+
+Remember to always use @modal-closed event to reset the show prop variable.
