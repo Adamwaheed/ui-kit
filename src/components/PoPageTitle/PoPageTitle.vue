@@ -1,6 +1,9 @@
 <template>
   <div v-if="standAlone">
-    <h1 class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800">
+    <h1
+      class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800"
+      id="po-page-title"
+    >
       {{ label }}
     </h1>
     <span
@@ -16,6 +19,7 @@
       <div>
         <h1
           class="po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800"
+          id="po-page-title"
         >
           {{ label }}
         </h1>
