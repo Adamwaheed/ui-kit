@@ -1,9 +1,13 @@
 <template>
   <TransitionRoot as="template" :show="isShowing">
-    <Dialog as="div" class="po-relative po-z-50" @close="isShowing = false">
+    <Dialog as="div" class="po-relative po-z-50" @close="closeModal">
       <div class="po-fixed po-inset-0" />
 
-      <div class="po-fixed po-inset-0 po-overflow-hidden">
+      <div
+        class="
+          po-fixed po-inset-0 po-overflow-hidden po-bg-black po-bg-opacity-10
+        "
+      >
         <div class="po-absolute po-inset-0 po-overflow-hidden">
           <div
             class="
@@ -55,7 +59,7 @@
                             focus:po-ring-2
                             focus:po-ring-white
                           "
-                          @click="isShowing = false"
+                          @click="closeModal"
                         >
                           <span class="po-sr-only">Close panel</span>
                           <XMarkIcon class="po-h-6 po-w-6" aria-hidden="true" />
@@ -70,13 +74,23 @@
                   </div>
                   <div
                     :class="bgColor"
-                    class="po-relative po-flex-1 po-py-6 po-px-4 sm:po-px-6"
+                    class="po-relative po-grow po-pt-6 po-px-4 sm:po-px-6"
                   >
                     <!-- 
                         Slideover body content
                         @slot content
                      -->
                     <slot name="content"></slot>
+                  </div>
+                  <div
+                    v-if="$slots.footer"
+                    class="po-bg-slate-50 po-rounded-b-xl po-shrink-0"
+                  >
+                    <!-- 
+                      Slideover footer
+                      @slot footer
+                    -->
+                    <slot name="footer"></slot>
                   </div>
                 </div>
               </DialogPanel>
@@ -146,10 +160,13 @@ const { show } = toRefs(props);
 const isShowing = ref(false);
 
 watch(show, () => {
-  isShowing.value = false;
-
-  setTimeout(() => {
-    isShowing.value = true;
-  }, 100);
+  isShowing.value = show.value;
 });
+
+const emit = defineEmits(["slideover-closed"]);
+
+function closeModal() {
+  isShowing.value = false;
+  emit("slideover-closed", true);
+}
 </script>
