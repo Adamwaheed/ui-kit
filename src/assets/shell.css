@@ -51,7 +51,7 @@
 }
 
 .shell-content--action-bar {
-  @apply po-px-5 po-py-1 po-flex po-items-center po-fixed po-top-16 po-w-full po-z-40 po-border-b po-bg-slate-100 po-border-slate-200 po-bg-opacity-50 po-backdrop-blur po-backdrop-filter;
+  @apply po-px-5 po-flex po-items-center po-fixed po-top-16 po-z-40;
 }
 
 .shell-content--area {
@@ -71,29 +71,29 @@
 }
 
 .action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger) {
-  @apply po-text-slate-600;
+  @apply po-text-slate-400;
 }
 
 .action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger):hover,
 .action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger).active {
-  @apply po-bg-white po-text-mpao-blue;
+  @apply po-bg-[#464e77] po-text-white;
 }
 
 .action-bar__nav_highlighted {
-  @apply po-text-mpao-lightblue po-font-medium po-border po-border-blue-100;
+  @apply po-text-white po-bg-mpao-lightblue po-font-medium;
 }
 
 .action-bar__nav_highlighted:hover,
 .action-bar__nav_highlighted.active {
-  @apply po-bg-white po-border-blue-300;
+  @apply po-bg-[#464e77];
 }
 
 .action-bar__nav_danger {
-  @apply po-text-red-700;
+  @apply po-text-red-400;
 }
 
 .action-bar__nav_danger:hover {
-  @apply po-bg-white po-text-red-600;
+  @apply po-bg-[#464e77] po-text-white;
 }
 
 .action-bar__nav_label {

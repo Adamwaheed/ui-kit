@@ -647,6 +647,11 @@ let actionBarItems = [
     highlighted: true,
   },
   {
+    label: "Destroy",
+    icon: TrashIcon,
+    danger: true,
+  },
+  {
     label: "Experiment",
     icon: BeakerIcon,
   },

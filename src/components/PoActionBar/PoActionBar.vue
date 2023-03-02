@@ -1,44 +1,59 @@
 <template>
   <section
     v-if="(items !== null && items.length > 0) || showBackButton"
-    class="shell-content--action-bar"
+    class="shell-content--action-bar po-pt-1"
   >
-    <nav class="action-bar__nav">
-      <!--
-                Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
-                @event button-click
-            -->
-      <span
-        v-for="item in items"
-        @click="$emit('button-click', item.label)"
-        :class="[
-          { 'action-bar__nav_highlighted': item.highlighted },
-          { 'action-bar__nav_danger': item.danger },
-        ]"
-        class="action-bar__nav_link"
-      >
-        <component
-          :is="item.icon"
-          class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
-        />
-        <span class="action-bar__nav_label po-font-medium">{{
-          item.label
-        }}</span>
-      </span>
-    </nav>
-    <nav v-if="showBackButton" class="po-shrink-0 po-flex po-space-x-1">
-      <!--
-                Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
-                @event button-click
-            -->
-      <span @click="$emit('button-click', 'back')" class="action-bar__nav_link">
-        <span class="action-bar__nav_label po-font-medium">Go Back</span>
-        <component
-          :is="ArrowUturnLeftIcon"
-          class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
-        />
-      </span>
-    </nav>
+    <div
+      class="
+        po-bg-[#202749]
+        po-rounded-xl
+        po-shadow-md
+        po-bg-opacity-90
+        po-grow
+        po-flex
+        po-p-2
+      "
+    >
+      <nav class="action-bar__nav">
+        <!--
+                  Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
+                  @event button-click
+              -->
+        <span
+          v-for="item in items"
+          @click="$emit('button-click', item.label)"
+          :class="[
+            { 'action-bar__nav_highlighted': item.highlighted },
+            { 'action-bar__nav_danger': item.danger },
+          ]"
+          class="action-bar__nav_link"
+        >
+          <component
+            :is="item.icon"
+            class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
+          />
+          <span class="action-bar__nav_label po-font-medium">{{
+            item.label
+          }}</span>
+        </span>
+      </nav>
+      <nav v-if="showBackButton" class="po-shrink-0 po-flex po-space-x-1">
+        <!--
+                  Emits the button label when it’s clicked, You can listen to it and switch accordingly. For the back button it always emmits the string ‘back’
+                  @event button-click
+              -->
+        <span
+          @click="$emit('button-click', 'back')"
+          class="action-bar__nav_link"
+        >
+          <span class="action-bar__nav_label po-font-medium">Go Back</span>
+          <component
+            :is="ArrowUturnLeftIcon"
+            class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
+          />
+        </span>
+      </nav>
+    </div>
   </section>
 </template>
 
@@ -49,6 +64,7 @@ export default {
 </script>
 <script setup>
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
+import { onBeforeUnmount, onMounted } from "vue";
 
 defineProps({
   /**
@@ -74,4 +90,8 @@ defineProps({
     default: "",
   },
 });
+
+function onScroll(e) {
+  console.log("aa", document.getElementById("shell-content-root"));
+}
 </script>
