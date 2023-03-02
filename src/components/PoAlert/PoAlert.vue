@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="isShowing">
-    <Dialog as="div" class="po-relative po-z-50" @close="isShowing = false">
+    <Dialog as="div" class="po-relative po-z-50" @close="closeModal">
       <TransitionChild
         as="template"
         enter="po-ease-out po-duration-300"
@@ -81,7 +81,7 @@
                 "
               >
                 <button
-                  @click="isShowing = false"
+                  @click="closeModal"
                   class="
                     po-text-sm po-bg-white po-text-slate-500
                     hover:po-bg-slate-50
@@ -104,7 +104,7 @@
                 <button
                   @click="
                     $emit('button-click', 'ok');
-                    isShowing = false;
+                    closeModal();
                   "
                   class="
                     po-text-sm po-bg-white po-text-mpao-lightblue
@@ -187,10 +187,13 @@ const { show } = toRefs(props);
 const isShowing = ref(false);
 
 watch(show, () => {
-  isShowing.value = false;
-
-  setTimeout(() => {
-    isShowing.value = true;
-  }, 100);
+  isShowing.value = show.value;
 });
+
+const emit = defineEmits(["alert-closed"]);
+
+function closeModal() {
+  isShowing.value = false;
+  emit("alert-closed", true);
+}
 </script>

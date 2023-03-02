@@ -1,10 +1,17 @@
 # Alert component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoAlert from './PoAlert.vue';
+import PoAlert from "./PoAlert.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Components/Alert" component={PoAlert} />
 
@@ -15,7 +22,7 @@ import dedent from 'ts-dedent';
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -26,6 +33,7 @@ import dedent from 'ts-dedent';
         alert-description="It's an alert! I repeat, an alert!!"
         @button-click="handleAlertOkClick"
         :show="showAlert"
+        @alert-closed="() => (showAlert = false)"
     />
   `}
 />
@@ -35,7 +43,7 @@ import dedent from 'ts-dedent';
 <ArgsTable of={PoAlert} />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`

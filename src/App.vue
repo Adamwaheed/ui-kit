@@ -30,6 +30,7 @@
   <PoLoading :show="false" label="" />
   <PoAlert
     :show="showAlert"
+    @alert-closed="() => (showAlert = false)"
     alert-description="This is an alert! I repeat, this is an alert."
     @button-click="handleAlertOkClick"
   />
@@ -740,10 +741,6 @@ function handleDescriptionListActionClick(item) {
 
 function openAlertClick() {
   showAlert.value = true;
-
-  setTimeout(() => {
-    showAlert.value = false;
-  }, 100);
 }
 
 const openModal = ref(false);
