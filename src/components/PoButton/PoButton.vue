@@ -76,7 +76,7 @@ import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
 const buttonClassess =
-  "po-rounded-lg po-transition-colors po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
+  "po-rounded-lg po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
 
 const props = defineProps({
   /**
@@ -85,6 +85,13 @@ const props = defineProps({
   type: {
     type: String,
     default: "button",
+  },
+  /**
+   * Action type of button. It can be 'default', 'danger', or 'ghost'.
+   */
+  actionType: {
+    type: String,
+    default: "default",
   },
   /**
    * Label of the button
@@ -146,8 +153,20 @@ const buttonSize = computed(() => {
   }
 });
 const buttonColor = computed(() => {
-  return props.overrideColors
-    ? ""
-    : "po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50";
+  if (props.overrideColors) {
+    return "";
+  } else {
+    switch (props.actionType) {
+      case "default":
+        return "po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50 po-border-mpao-lightblue hover:po-border-mpao-blue focus:border-mpao-blue";
+        break;
+      case "danger":
+        return "po-bg-rose-600 hover:po-bg-rose-700 focus:po-bg-rose-600 po-text-white po-border-rose-600 hover:po-border-rose-700 focus:po-border-rose-700";
+        break;
+      case "ghost":
+        return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-400 hover:po-border-slate-500 focus:po-border-slate-500";
+        break;
+    }
+  }
 });
 </script>

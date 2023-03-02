@@ -379,6 +379,8 @@
                   </span>
                 </template>
               </PoButton>
+              <PoButton type="button" label="Danger" action-type="danger" />
+              <PoButton type="button" label="Ghost" action-type="ghost" />
             </div>
           </template>
         </PoCard>

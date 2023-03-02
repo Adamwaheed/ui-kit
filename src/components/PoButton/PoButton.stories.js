@@ -45,6 +45,8 @@ export const Medium = Template.bind();
 export const Large = Template.bind();
 export const ColorChange = Template.bind();
 export const Loading = Template.bind();
+export const Danger = Template.bind();
+export const Ghost = Template.bind();
 
 Button.args = {
   /* 👇 The args you need here will depend on your component */
@@ -101,4 +103,18 @@ ColorChange.args = {
   type: "button",
   overrideColors: true,
   class: "bg-rose-600 hover:bg-rose-700 text-white",
+};
+
+Danger.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Danger",
+  type: "button",
+  actionType: "danger",
+};
+
+Ghost.args = {
+  /* 👇 The args you need here will depend on your component */
+  label: "Ghost",
+  type: "button",
+  actionType: "ghost",
 };

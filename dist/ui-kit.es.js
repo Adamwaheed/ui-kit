@@ -2565,6 +2565,13 @@ const ea = {
       default: "button"
     },
     /**
+     * Action type of button. It can be 'default', 'danger', or 'ghost'.
+     */
+    actionType: {
+      type: String,
+      default: "default"
+    },
+    /**
      * Label of the button
      */
     label: {
@@ -2609,7 +2616,7 @@ const ea = {
   },
   emits: ["button-click"],
   setup(e, { emit: t }) {
-    const n = e, l = "po-rounded-lg po-transition-colors po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400", o = C(() => {
+    const n = e, l = "po-rounded-lg po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400", o = C(() => {
       switch (n.size) {
         case "sm":
           return "po-px-2 po-py-1 po-text-xs";
@@ -2618,7 +2625,18 @@ const ea = {
         case "lg":
           return "po-px-5 po-py-3 po-text-normal";
       }
-    }), a = C(() => n.overrideColors ? "" : "po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50");
+    }), a = C(() => {
+      if (n.overrideColors)
+        return "";
+      switch (n.actionType) {
+        case "default":
+          return "po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50 po-border-mpao-lightblue hover:po-border-mpao-blue focus:border-mpao-blue";
+        case "danger":
+          return "po-bg-rose-600 hover:po-bg-rose-700 focus:po-bg-rose-600 po-text-white po-border-rose-600 hover:po-border-rose-700 focus:po-border-rose-700";
+        case "ghost":
+          return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-400 hover:po-border-slate-500 focus:po-border-slate-500";
+      }
+    });
     return (r, i) => (p(), u(M, null, [
       e.isLoading ? (p(), u("span", {
         key: 0,
