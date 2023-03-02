@@ -60,30 +60,50 @@
         </Disclosure>
       </div>
       <div v-if="apps !== null">
-        <h3 class="shell-sidebar--section po-w-full po-text-left">
-          {{ appsLabel }}
-        </h3>
-        <ul class="shell-sidebar--menu sidebar-apps po-shrink-0 po-mb-0">
-          <li v-for="(app, index) in appList">
-            <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
-            <button
-              @click="
-                $emit('app-click', app.name);
-                setCurrent(index);
-              "
-              class="shell-sidebar--item"
-              :class="[{ active: app.current }]"
-              title="Go to feedback"
-            >
-              <span class="shell-sidebar--icon">
-                <span v-html="app.icon" class="po-text-slate-600 po-w-5"></span>
-              </span>
-              <span class="shell-sidebar--label po-font-medium">{{
-                app.name
-              }}</span>
-            </button>
-          </li>
-        </ul>
+        <Disclosure v-slot="{ open }" :defaultOpen="true">
+          <DisclosureButton
+            v-if="appsLabel"
+            :class="open ? '' : 'po-mb-3'"
+            class="shell-sidebar--section po-w-full po-text-left"
+          >
+            {{ appsLabel }}
+          </DisclosureButton>
+          <transition
+            enter-active-class="po-transition po-duration-100 po-ease-out"
+            enter-from-class="po-transform po-scale-95 po-opacity-0"
+            enter-to-class="po-transform po-scale-100 po-opacity-100"
+            leave-active-class="po-transition po-duration-75 po-ease-out"
+            leave-from-class="po-transform po-scale-100 po-opacity-100"
+            leave-to-class="po-transform po-scale-95 po-opacity-0"
+          >
+            <DisclosurePanel>
+              <ul class="shell-sidebar--menu sidebar-apps po-shrink-0 po-mb-0">
+                <li v-for="(app, index) in appList">
+                  <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
+                  <button
+                    @click="
+                      $emit('app-click', app.name);
+                      setCurrent(index);
+                    "
+                    class="shell-sidebar--item"
+                    :class="[{ active: app.current }]"
+                    title="Go to feedback"
+                  >
+                    <span class="shell-sidebar--icon">
+                      <span
+                        v-html="app.icon"
+                        class="po-text-slate-600 po-w-5"
+                      ></span>
+                    </span>
+                    <span class="shell-sidebar--label po-font-medium">{{
+                      app.name
+                    }}</span>
+                  </button>
+                </li>
+              </ul>
+            </DisclosurePanel>
+          </transition>
+        </Disclosure>
       </div>
     </div>
 
