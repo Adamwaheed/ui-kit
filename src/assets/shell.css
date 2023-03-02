@@ -47,7 +47,7 @@
 }
 
 .shell-content {
-  @apply po-h-[calc(100vh-64px)] po-overflow-y-scroll po-pl-0 po-transition-all po-duration-300 po-ease-in-out po-pt-7 po-flex po-flex-col;
+  @apply po-h-[calc(100vh-64px)] po-overflow-y-scroll po-pl-0 po-transition-all po-duration-300 po-ease-in-out po-pt-8 po-flex po-flex-col;
 }
 
 .shell-content--action-bar {

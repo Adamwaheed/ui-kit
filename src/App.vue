@@ -458,6 +458,8 @@ import {
 } from "@heroicons/vue/20/solid";
 import { findLastIndex } from "lodash";
 
+import { watch } from "vue";
+
 let searchQuery = ref("");
 let toggleState = ref(false);
 let checkboxState = ref(false);

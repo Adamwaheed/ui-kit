@@ -2634,7 +2634,7 @@ const ea = {
         case "danger":
           return "po-bg-rose-600 hover:po-bg-rose-700 focus:po-bg-rose-600 po-text-white po-border-rose-600 hover:po-border-rose-700 focus:po-border-rose-700";
         case "ghost":
-          return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-400 hover:po-border-slate-500 focus:po-border-slate-500";
+          return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-300 hover:po-border-slate-400 focus:po-border-slate-400";
       }
     });
     return (r, i) => (p(), u(M, null, [
@@ -3635,7 +3635,7 @@ const cs = ["for"], ds = ["title"], fs = ["name", "id", "value", "placeholder", 
   id: "po-page-title"
 }, ur = {
   key: 0,
-  class: "po-text-base po-mt-2 po-max-w-md po-pb-5 po-block po-text-slate-500"
+  class: "po-text-base po-mt-2 po-max-w-md po-block po-text-slate-500"
 }, cr = { key: 1 }, dr = { class: "po-grid po-grid-cols-1 lg:po-grid-cols-2 po-gap-5" }, fr = {
   class: "po-text-xl md:po-text-2xl po-font-semibold po-text-slate-800",
   id: "po-page-title"

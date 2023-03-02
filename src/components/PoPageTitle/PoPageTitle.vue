@@ -8,9 +8,7 @@
     </h1>
     <span
       v-if="description !== ''"
-      class="
-        po-text-base po-mt-2 po-max-w-md po-pb-5 po-block po-text-slate-500
-      "
+      class="po-text-base po-mt-2 po-max-w-md po-block po-text-slate-500"
       >{{ description }}</span
     >
   </div>

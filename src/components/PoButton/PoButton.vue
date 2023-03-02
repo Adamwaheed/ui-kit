@@ -164,7 +164,7 @@ const buttonColor = computed(() => {
         return "po-bg-rose-600 hover:po-bg-rose-700 focus:po-bg-rose-600 po-text-white po-border-rose-600 hover:po-border-rose-700 focus:po-border-rose-700";
         break;
       case "ghost":
-        return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-400 hover:po-border-slate-500 focus:po-border-slate-500";
+        return "po-bg-white hover:po-bg-slate-100 focus:po-bg-slate-100 po-text-slate-600 po-border-slate-300 hover:po-border-slate-400 focus:po-border-slate-400";
         break;
     }
   }
