@@ -117,7 +117,7 @@
       <li>
         <!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
         <button
-          @click.prevent="clickFeedbackModalButton"
+          @click.prevent="() => (showFeedbackModal = true)"
           class="shell-sidebar--item"
           title="Go to feedback"
         >
@@ -130,7 +130,11 @@
         </button>
       </li>
     </ul>
-    <PoModal :show="showFeedbackModal" modal-title="Feedback">
+    <PoModal
+      :show="showFeedbackModal"
+      @modal-closed="() => (showFeedbackModal = false)"
+      modal-title="Feedback"
+    >
       <template v-slot:content>
         <form action="">
           <PoRadioInput
@@ -217,14 +221,6 @@ function setCurrent(index) {
     }
   }
   appList.value[index].current = true;
-}
-
-function clickFeedbackModalButton() {
-  showFeedbackModal.value = true;
-
-  setTimeout(() => {
-    showFeedbackModal.value = false;
-  }, 100);
 }
 
 const radioOptions = [

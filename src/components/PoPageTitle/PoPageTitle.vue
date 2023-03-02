@@ -9,7 +9,7 @@
     <span
       v-if="description !== ''"
       class="
-        po-text-base po-mt-4 po-max-w-md po-pb-5 po-block po-text-slate-500
+        po-text-base po-mt-2 po-max-w-md po-pb-5 po-block po-text-slate-500
       "
       >{{ description }}</span
     >
