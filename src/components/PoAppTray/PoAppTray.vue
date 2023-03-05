@@ -50,7 +50,7 @@
             class="po-text-sm po-font-normal po-text-slate-400 po-select-none"
             >{{ collection.groupName }}</span
           >
-          <ul class="po-grid po-grid-cols-3 po-gap-3 po-py-3">
+          <ul class="po-grid po-grid-cols-3 po-gap-2 po-py-2">
             <li v-for="app in collection.apps">
               <a
                 :href="app.url"
@@ -58,31 +58,37 @@
                   po-flex
                   po-flex-col
                   po-group
-                  po-space-y-3
+                  po-space-y-2
                   po-justify-center
                   po-items-center
-                  po-py-2
+                  po-py-1
                   genie-effect
                 "
               >
                 <span
                   class="
-                    po-block
-                    po-w-10
-                    po-rounded-md
+                    po-flex
+                    po-w-14
+                    po-h-14
+                    po-items-center
+                    po-justify-center
+                    po-rounded-full
                     po-transition-shadow
                     po-duration-100
                     po-ease-in-out
                     po-shadow-md
                     group-hover:po-shadow-xl
-                    po-overflow-hidden
+                    po-overflow-hidden po-bg-white
                   "
                 >
-                  <img :src="app.icon" :alt="`${app.name} icon`" />
+                  <span class="po-w-6" v-html="app.icon"></span>
                 </span>
-                <span class="po-text-slate-600 po-font-normal po-text-sm">{{
-                  app.name
-                }}</span>
+                <span
+                  class="
+                    po-text-slate-600 po-font-normal po-text-sm po-text-center
+                  "
+                  >{{ app.name }}</span
+                >
               </a>
             </li>
           </ul>

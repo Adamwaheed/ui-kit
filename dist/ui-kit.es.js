@@ -2278,7 +2278,7 @@ let Uo = ie.RenderStrategy, Ce = H({ props: { as: { type: [Object, String], defa
 const ea = {
   key: 0,
   class: "po-text-sm po-font-normal po-text-slate-400 po-select-none"
-}, ta = { class: "po-grid po-grid-cols-3 po-gap-3 po-py-3" }, oa = ["href"], la = { class: "po-block po-w-10 po-rounded-md po-transition-shadow po-duration-100 po-ease-in-out po-shadow-md group-hover:po-shadow-xl po-overflow-hidden" }, na = ["src", "alt"], aa = { class: "po-text-slate-600 po-font-normal po-text-sm" }, sa = {
+}, ta = { class: "po-grid po-grid-cols-3 po-gap-2 po-py-2" }, oa = ["href"], la = { class: "po-flex po-w-14 po-h-14 po-items-center po-justify-center po-rounded-full po-transition-shadow po-duration-100 po-ease-in-out po-shadow-md group-hover:po-shadow-xl po-overflow-hidden po-bg-white" }, na = ["innerHTML"], aa = { class: "po-text-slate-600 po-font-normal po-text-sm po-text-center" }, sa = {
   name: "PoAppTray"
 }, ra = /* @__PURE__ */ Object.assign(sa, {
   props: {
@@ -2318,12 +2318,12 @@ const ea = {
                     (p(!0), u(M, null, W(o.apps, (a) => (p(), u("li", null, [
                       s("a", {
                         href: a.url,
-                        class: "po-flex po-flex-col po-group po-space-y-3 po-justify-center po-items-center po-py-2 genie-effect"
+                        class: "po-flex po-flex-col po-group po-space-y-2 po-justify-center po-items-center po-py-1 genie-effect"
                       }, [
                         s("span", la, [
-                          s("img", {
-                            src: a.icon,
-                            alt: `${a.name} icon`
+                          s("span", {
+                            class: "po-w-6",
+                            innerHTML: a.icon
                           }, null, 8, na)
                         ]),
                         s("span", aa, y(a.name), 1)
