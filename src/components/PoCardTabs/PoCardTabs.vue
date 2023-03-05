@@ -28,7 +28,9 @@
         class="po-w-5 po-h-5"
         :class="[setIconColor(tab)]"
       />
-      <span>{{ tab.name }}</span>
+      <span
+        >{{ tab.name }}<span v-if="tab.count"> ({{ tab.count }})</span></span
+      >
     </span>
   </nav>
 </template>
