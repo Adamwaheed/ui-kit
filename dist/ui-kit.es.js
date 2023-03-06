@@ -2963,7 +2963,7 @@ const es = {
                   "po-transition-colors po-duration-100 po-ease-out po-mr-3",
                   "",
                   "",
-                  "po-mb-3 po-pt-2 po-relative po-flex po-cursor-pointer focus:po-outline-none"
+                  "po-mb-3 po-pt-[0.13rem] po-relative po-flex po-cursor-pointer focus:po-outline-none"
                 ])
               }, [
                 s("span", {
