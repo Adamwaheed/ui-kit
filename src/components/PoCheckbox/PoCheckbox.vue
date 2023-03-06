@@ -31,7 +31,7 @@
         ><span>{{ label }}</span
         ><span
           v-if="required"
-          class="po-text-lg po-text-red-400 po-font-semibold"
+          class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
           >&#42;</span
         ></label
       >

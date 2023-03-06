@@ -3077,7 +3077,7 @@ function ps(e, t) {
 }
 const us = ["for"], cs = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, ds = ["title"], fs = ["name", "id", "value", "placeholder", "disabled", "required", "aria-describedby", "aria-required", "aria-disabled"], vs = ["id"], ms = ["id"], hs = {
   name: "PoTextarea"
 }, bs = /* @__PURE__ */ Object.assign(hs, {
@@ -3891,7 +3891,7 @@ const us = ["for"], cs = {
   }
 }), Rr = ["for"], Ir = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, Mr = ["title"], Fr = ["type", "name", "id", "value", "placeholder", "disabled", "required", "aria-describedby", "aria-required", "aria-disabled"], zr = ["id"], Hr = ["id"], qr = {
   name: "PoInputField"
 }, Ud = /* @__PURE__ */ Object.assign(qr, {
@@ -4049,7 +4049,7 @@ const us = ["for"], cs = {
   }
 }), Ur = { class: "po-text-sm po-font-medium po-text-slate-700 peer-focus:po-text-mpao-lightblue peer-invalid:po-text-red-500 peer-invalid:peer-focus:po-text-red-600 po-flex po-items-center po-space-x-1" }, Gr = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, Kr = ["name", "id", "value"], Wr = ["for"], Zr = { class: "po-flex po-items-center po-space-x-1" }, Yr = /* @__PURE__ */ s("span", { class: "po-text-sm" }, "Choose file", -1), Jr = ["id"], Xr = ["id"], Qr = {
   name: "PoInputFile"
 }, Gd = /* @__PURE__ */ Object.assign(Qr, {
@@ -4150,7 +4150,7 @@ const us = ["for"], cs = {
   }
 }), ei = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, ti = ["title"], oi = { class: "po-relative po-mt-1" }, li = {
   name: "PoSelectField"
 }, Kd = /* @__PURE__ */ Object.assign(li, {
@@ -4295,7 +4295,7 @@ const us = ["for"], cs = {
   }
 }), ni = { class: "po-text-sm po-font-medium po-text-slate-700 po-cursor-pointer po-select-none po-flex po-items-center po-space-x-1" }, ai = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, si = {
   name: "PoToggle"
 }, Wd = /* @__PURE__ */ Object.assign(si, {
@@ -4408,7 +4408,7 @@ const us = ["for"], cs = {
   }
 }), ui = { class: "po-relative po-flex po-items-start" }, ci = { class: "po-flex po-h-5 po-items-center" }, di = ["name", "id", "checked", "disabled", "aria-describedby"], fi = { class: "po-ml-3 po-text-sm" }, vi = ["for"], mi = {
   key: 0,
-  class: "po-text-lg po-text-red-400 po-font-semibold"
+  class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, hi = ["id"], bi = { class: "po-sr-only" }, gi = ["id"], yi = {
   name: "PoCheckbox"
 }, Yd = /* @__PURE__ */ Object.assign(yi, {
