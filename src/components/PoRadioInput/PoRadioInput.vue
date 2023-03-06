@@ -29,15 +29,35 @@
         <div
           :class="[
             'po-transition-colors po-duration-100 po-ease-out po-mr-3',
-            checked
-              ? 'po-border-transparent'
-              : 'po-border-gray-300 hover:po-border-mpao-lightblue',
-            active
-              ? 'po-border-mpao-lightblue po-ring-1 po-ring-mpao-lightblue'
-              : '',
-            'po-mb-3 po-relative po-flex po-cursor-pointer po-rounded-lg po-border po-bg-white po-px-3 po-py-2 po-shadow-sm focus:po-outline-none',
+            checked ? '' : '',
+            active ? '' : '',
+            'po-mb-3 po-pt-2 po-relative po-flex po-cursor-pointer focus:po-outline-none',
           ]"
         >
+          <span
+            class="
+              po-w-5
+              po-h-5
+              po-rounded-full
+              po-border
+              po-mr-2
+              po-flex
+              po-items-center
+              po-justify-center
+            "
+            :class="[
+              active ? '' : '',
+              checked ? 'po-border-mpao-lightblue' : 'po-border-slate-400',
+            ]"
+          >
+            <span
+              class="po-w-3 po-h-3 po-rounded-full"
+              :class="[
+                active ? '' : '',
+                checked ? 'po-bg-mpao-lightblue' : 'po-bg-transparent',
+              ]"
+            ></span>
+          </span>
           <span class="po-flex po-flex-1">
             <span class="po-flex po-flex-col">
               <RadioGroupLabel
@@ -55,21 +75,6 @@
               >
             </span>
           </span>
-          <CheckCircleIcon
-            :class="[
-              !checked ? 'po-invisible' : '',
-              'po-h-5 po-w-5 po-ml-2 po-text-mpao-lightblue',
-            ]"
-            aria-hidden="true"
-          />
-          <span
-            :class="[
-              active ? 'po-border' : 'po-border',
-              checked ? 'po-border-mpao-lightblue' : 'po-border-transparent',
-              'po-pointer-events-none po-absolute -po-inset-px po-rounded-lg',
-            ]"
-            aria-hidden="true"
-          />
         </div>
       </RadioGroupOption>
     </div>

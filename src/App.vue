@@ -106,6 +106,7 @@
             <div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
               <PoInputField label="Input" id="input-idssss" type="text" />
               <PoRadioInput
+                label="Radio"
                 :options="radioOptions"
                 :pre-selected="radioOptionSelected"
                 v-model="radioOptionSelected"
