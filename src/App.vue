@@ -92,21 +92,32 @@
             </div>
 
             <br />
-            <PoToggle label="Toggle me" v-model="toggleState" />
+            <PoToggle
+              label="Toggle me"
+              v-model="toggleState"
+              :required="true"
+            />
             {{ toggleState }}
             <br />
             <PoCheckbox
               v-model="checkboxState"
               label="Check me"
+              :required="true"
               id="checkbox-one"
               message="if you can"
             />
             {{ checkboxState }}
             <br />
             <div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
-              <PoInputField label="Input" id="input-idssss" type="text" />
+              <PoInputField
+                :required="true"
+                label="Input"
+                id="input-idssss"
+                type="text"
+              />
               <PoRadioInput
                 label="Radio"
+                :required="true"
                 :options="radioOptions"
                 :pre-selected="radioOptionSelected"
                 v-model="radioOptionSelected"

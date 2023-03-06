@@ -24,8 +24,16 @@
           po-text-slate-700
           po-cursor-pointer
           po-select-none
+          po-flex
+          po-items-center
+          po-space-x-1
         "
-        >{{ label }}</span
+        ><span>{{ label }}</span
+        ><span
+          v-if="required"
+          class="po-text-lg po-text-red-400 po-font-semibold"
+          >&#42;</span
+        ></span
       >
     </SwitchLabel>
   </SwitchGroup>
@@ -54,6 +62,13 @@ const props = defineProps({
   label: {
     type: String,
     default: "",
+  },
+  /**
+   * True or false if required
+   */
+  required: {
+    type: Boolean,
+    default: false,
   },
 });
 

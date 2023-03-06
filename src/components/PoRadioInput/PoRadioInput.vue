@@ -13,8 +13,8 @@
         po-text-slate-700
       "
       ><span>{{ label }}</span>
-      <span v-if="required" class="po-text-xs po-text-red-400 po-italic"
-        >Required</span
+      <span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
+        >&#42;</span
       ></RadioGroupLabel
     >
 

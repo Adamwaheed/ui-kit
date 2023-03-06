@@ -20,9 +20,20 @@
       <label
         :for="id"
         class="
-          po-font-medium po-text-slate-600 po-cursor-pointer po-select-none
+          po-font-medium
+          po-text-slate-600
+          po-cursor-pointer
+          po-select-none
+          po-flex
+          po-items-center
+          po-space-x-1
         "
-        >{{ label }}</label
+        ><span>{{ label }}</span
+        ><span
+          v-if="required"
+          class="po-text-lg po-text-red-400 po-font-semibold"
+          >&#42;</span
+        ></label
       >
       <span
         v-if="message"
@@ -101,6 +112,13 @@ defineProps({
    * True or false if disabled
    */
   disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * True or false if required
+   */
+  required: {
     type: Boolean,
     default: false,
   },
