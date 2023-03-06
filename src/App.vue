@@ -484,6 +484,7 @@ const tabs = [
     iconColor: "po-fill-green-400",
     href: "#",
     current: true,
+    count: 20,
   },
   {
     name: "Terminations",
@@ -491,6 +492,7 @@ const tabs = [
     iconColor: "po-fill-red-400",
     href: "#",
     current: false,
+    count: 999,
   },
   {
     name: "Location Changes",
@@ -498,6 +500,7 @@ const tabs = [
     iconColor: "po-fill-orange-400",
     href: "#",
     current: false,
+    count: 9,
   },
   {
     name: "Designation Changes",

@@ -29,7 +29,7 @@
           tab.current
             ? 'po-bg-white po-text-slate-600 po-shadow-md'
             : 'po-text-slate-600 hover:po-text-mpao-blue',
-          'po-px-4 po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2',
+          'po-px-4 po-relative po-group po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2',
         ]"
         :aria-current="tab.current ? 'page' : undefined"
       >
@@ -39,7 +39,23 @@
           class="po-w-5 po-h-5"
           :class="[setIconColor(tab)]"
         />
-        <span>{{ tab.name }}</span>
+        <span
+          ><span>{{ tab.name }}</span
+          ><span
+            v-if="tab.count && tab.count > 0"
+            class="
+              po-absolute po-py-1 po-px-2 po-rounded-full po-text-xs
+              -po-top-3 -po-right-2
+              po-shadow-md po-flex po-items-center po-justify-center
+            "
+            :class="[
+              tab.current
+                ? 'po-bg-mpao-orange po-text-white'
+                : 'po-bg-slate-400 po-text-white group-hover:po-bg-mpao-orange group-hover:po-text-white',
+            ]"
+            ><span>{{ tab.count }}</span></span
+          ></span
+        >
       </span>
     </nav>
   </div>
