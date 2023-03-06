@@ -4150,7 +4150,7 @@ const us = ["for"], cs = {
   }
 }), ei = {
   key: 0,
-  class: "po-text-xs po-text-red-400 po-italic"
+  class: "po-text-lg po-text-red-400 po-font-semibold"
 }, ti = ["title"], oi = { class: "po-relative po-mt-1" }, li = {
   name: "PoSelectField"
 }, Kd = /* @__PURE__ */ Object.assign(li, {
@@ -4222,7 +4222,7 @@ const us = ["for"], cs = {
         $(b(mn), { class: "po-text-sm po-font-medium po-text-slate-700 po-flex po-items-center po-space-x-1" }, {
           default: L(() => [
             s("span", null, y(e.label), 1),
-            e.required ? (p(), u("span", ei, "Required")) : x("", !0),
+            e.required ? (p(), u("span", ei, "*")) : x("", !0),
             e.info !== null ? (p(), u("abbr", {
               key: 1,
               title: e.info,
