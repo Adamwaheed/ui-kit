@@ -15,7 +15,7 @@
         { 'po-text-slate-700': !hasError },
       ]"
     >
-      <span>{{ label }}</span>
+      <span class="po-capitalize">{{ label }}</span>
       <span
         v-if="required"
         class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"

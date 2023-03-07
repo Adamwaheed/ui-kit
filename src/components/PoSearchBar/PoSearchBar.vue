@@ -56,7 +56,7 @@ export default {
 };
 </script>
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
@@ -76,7 +76,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["query"]);
+const emit = defineEmits(["query", "onClear"]);
 let query = ref("");
 
 const searchOnEnter = (e) => {
@@ -92,5 +92,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", searchOnEnter);
+});
+
+watch(query, async (newQuestion, oldQuestion) => {
+  if ("" === newQuestion) {
+    emit("onClear", true);
+  }
 });
 </script>

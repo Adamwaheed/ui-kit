@@ -9,6 +9,7 @@
       app-name="Pension UI Kit"
       @query="NewSearch"
       :current-query="currQuery"
+      @onSearchClear="onSearchClear"
     >
       <!-- 
         @slot appIcon takes the SVG img icon of the app
@@ -949,5 +950,9 @@ const appsList = [
 
 function handleDisputeClick() {
   console.log("clllk dispute");
+}
+
+function onSearchClear() {
+  console.log("clearrr");
 }
 </script>

@@ -13,7 +13,7 @@
         peer-focus:po-text-mpao-lightblue
         peer-invalid:po-text-red-500
         peer-invalid:peer-focus:po-text-red-600
-        po-flex po-items-center po-space-x-1
+        po-flex po-items-center po-space-x-1 po-capitalize
       "
       ><span>{{ label }}</span>
       <span

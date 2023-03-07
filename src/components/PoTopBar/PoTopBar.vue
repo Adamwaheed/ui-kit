@@ -35,6 +35,7 @@
         <PoSearchBar
           v-if="hasSearch"
           @query="PassQueryToParent"
+          @onClear="PassSearchClearToParent"
           :current-query="currentQuery"
         />
 
@@ -133,7 +134,7 @@ defineProps({
   appIcon: null,
 });
 
-const emit = defineEmits(["query", "profileSwitcherClick"]);
+const emit = defineEmits(["query", "profileSwitcherClick", "onSearchClear"]);
 
 function handleProfileSwitcherClick(item) {
   emit("profileSwitcherClick", item);
@@ -142,5 +143,9 @@ function handleProfileSwitcherClick(item) {
 function PassQueryToParent(value) {
   const newVal = value;
   emit("query", newVal);
+}
+function PassSearchClearToParent(value) {
+  const newVal = value;
+  emit("onSearchClear", newVal);
 }
 </script>
