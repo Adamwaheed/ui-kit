@@ -1,27 +1,33 @@
 # Radio input component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoRadioInput from './PoRadioInput.vue';
+import PoRadioInput from "./PoRadioInput.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Form/Radio" component={PoRadioInput} />
 
 <Description of={PoRadioInput} />
 
 <Canvas withToolbar>
-    <Story id="form-radio--radio" />
+  <Story id="form-radio--radio" />
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoRadioInput
         :options="radioOptions"
-        :pre-selected="radioOptionSelected"
         v-model="radioOptionSelected"
     />
   `}
@@ -32,7 +38,7 @@ import dedent from 'ts-dedent';
 <ArgsTable of={PoRadioInput} />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -44,6 +50,6 @@ import dedent from 'ts-dedent';
             id: 2, title: 'Option two'
         },
     ];
-    const radioOptionSelected = ref(radioOptions[0]);
+    const radioOptionSelected = ref(1); // id
   `}
 />

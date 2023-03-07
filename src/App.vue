@@ -121,7 +121,6 @@
                 label="Radio"
                 :required="true"
                 :options="radioOptions"
-                :pre-selected="radioOptionSelected"
                 v-model="radioOptionSelected"
               />
               {{ radioOptionSelected }}
@@ -810,7 +809,7 @@ const radioOptions = [
   },
 ];
 
-const radioOptionSelected = ref(radioOptions[0]);
+const radioOptionSelected = ref(1);
 
 const statsBlockItems = [
   {

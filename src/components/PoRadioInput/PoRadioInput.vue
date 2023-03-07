@@ -23,7 +23,7 @@
         as="template"
         v-for="option in options"
         :key="option.id"
-        :value="option"
+        :value="option.id"
         v-slot="{ checked, active }"
       >
         <div
@@ -87,35 +87,27 @@ export default {
 };
 </script>
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onUpdated } from "vue";
 import {
   RadioGroup,
   RadioGroupDescription,
   RadioGroupLabel,
   RadioGroupOption,
 } from "@headlessui/vue";
-import { CheckCircleIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
   /**
    * Model value
    */
   modelValue: {
-    type: Object,
-    default: null,
+    type: [String, Number],
+    requred: true,
   },
   /**
    * List of options for raido
    */
   options: {
     type: Array,
-    default: null,
-  },
-  /**
-   * Pre selected value if any
-   */
-  preSelected: {
-    type: Object,
     default: null,
   },
   /**
@@ -141,7 +133,13 @@ const props = defineProps({
   },
 });
 
-const selectedOption = ref(props.preSelected);
+const selectedOption = ref();
+
+selectedOption.value = props.modelValue;
+
+onUpdated(() => {
+  selectedOption.value = props.modelValue;
+});
 
 const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
