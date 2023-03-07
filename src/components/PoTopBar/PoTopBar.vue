@@ -32,7 +32,11 @@
           </template>
         </PoAppIcon>
 
-        <PoSearchBar v-if="hasSearch" @query="PassQueryToParent" />
+        <PoSearchBar
+          v-if="hasSearch"
+          @query="PassQueryToParent"
+          :current-query="currentQuery"
+        />
 
         <div class="po-flex po-items-center po-space-x-3">
           <span
@@ -77,7 +81,10 @@ defineProps({
   /**
    * Search Query
    */
-  searchQuery: String,
+  currentQuery: {
+    type: String,
+    default: "",
+  },
   /**
    * Name of the app
    */

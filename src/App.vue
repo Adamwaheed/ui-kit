@@ -8,6 +8,7 @@
       @profile-switcher-click="handleProfileSwitcherClick"
       app-name="Pension UI Kit"
       @query="NewSearch"
+      :current-query="currQuery"
     >
       <!-- 
         @slot appIcon takes the SVG img icon of the app
@@ -477,6 +478,7 @@ let toggleState = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
 let inputModel = ref("what");
+let currQuery = ref("search this bro");
 const tabs = [
   {
     name: "Wage Changes",

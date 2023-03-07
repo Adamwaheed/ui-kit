@@ -59,10 +59,20 @@ export default {
 import { ref, onMounted, onUnmounted } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-defineProps({
+const props = defineProps({
+  /**
+   * Placeholder text
+   */
   placeholder: {
     type: String,
     default: "Search",
+  },
+  /**
+   * Search Query
+   */
+  currentQuery: {
+    type: String,
+    default: "",
   },
 });
 
@@ -75,7 +85,10 @@ const searchOnEnter = (e) => {
   }
 };
 
-onMounted(() => document.addEventListener("keydown", searchOnEnter));
+onMounted(() => {
+  document.addEventListener("keydown", searchOnEnter);
+  query.value = props.currentQuery;
+});
 
 onUnmounted(() => {
   document.removeEventListener("keydown", searchOnEnter);
