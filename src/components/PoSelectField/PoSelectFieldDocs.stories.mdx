@@ -1,17 +1,24 @@
 # Select Field component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoSelectField from './PoSelectField.vue';
+import PoSelectField from "./PoSelectField.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Form/Select Field" component={PoSelectField} />
 
 <Description of={PoSelectField} />
 
 <Canvas withToolbar>
-<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+  <div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
     <Story inline={true} id="form-select-field--select-field" />
     <br />
     <br />
@@ -21,19 +28,17 @@ import dedent from 'ts-dedent';
     <br />
     <br />
     &nbsp;
-</div>
+  </div>
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     <PoSelectField
         label="Select something"
         :list="selectFieldList"
-        :pre-selected="selectFieldPreSelected"
-        @selected="handleSelectFieldClick"
         v-model="selectFieldSelected"
     />
   `}
@@ -44,7 +49,7 @@ import dedent from 'ts-dedent';
 <ArgsTable of={PoSelectField} />
 
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -54,9 +59,6 @@ import dedent from 'ts-dedent';
         { id: 2, name: 'HelpDesk' },
         { id: 3, name: 'Another' },
     ];
-    const selectFieldPreSelected = ref(selectFieldList[1]);
-    function handleSelectFieldClick(val) {
-      console.log('handleSelectFieldClick', val)
-    }
+    selectFieldSelected.value = 2;
   `}
 />

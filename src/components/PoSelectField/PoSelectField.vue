@@ -39,7 +39,7 @@
           sm:po-text-sm
         "
         @change="query = $event.target.value"
-        :display-value="(item) => item?.name"
+        :display-value="getSelectedName"
       />
       <ComboboxButton
         class="
@@ -83,8 +83,7 @@
         <ComboboxOption
           v-for="item in filteredItems"
           :key="item.id"
-          :value="item"
-          @click="$emit('selected', selectedItem)"
+          :value="item.id"
           as="template"
           v-slot="{ active, selected }"
         >
@@ -144,14 +143,7 @@ const props = defineProps({
    * Model value
    */
   modelValue: {
-    type: [Object],
-    default: null,
-  },
-  /**
-   * Pre selected value if any
-   */
-  preSelected: {
-    type: Object,
+    type: [String, Number],
     default: null,
   },
   /**
@@ -192,7 +184,7 @@ const props = defineProps({
 });
 
 const query = ref("");
-const selectedItem = ref(props.preSelected);
+const selectedItem = ref();
 
 const filteredItems = computed(() =>
   query.value === ""
@@ -201,8 +193,20 @@ const filteredItems = computed(() =>
         return item.name.toLowerCase().includes(query.value.toLowerCase());
       })
 );
+function getSelectedName(itemId) {
+  if (filteredItems.value) {
+    let itemSelected = filteredItems.value.find((item) => item.id === itemId);
+    return itemSelected?.name;
+  }
+}
 
-const emit = defineEmits(["update:modelValue", "selected"]);
+selectedItem.value = props.modelValue;
+
+onUpdated(() => {
+  selectedItem.value = props.modelValue;
+});
+
+const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedItem, () => {
   emit("update:modelValue", selectedItem.value);
