@@ -1,16 +1,15 @@
 <template>
-  <div v-if="null !== pagination" class="po-flex po-items-center">
+  <div class="po-flex po-items-center">
     <span class="po-text-sm po-font-medium po-text-slate-500 po-pr-2">{{
-      pagination.label
+      label
     }}</span>
     <!--
             Emits 'next' or 'prev' when nav buttons are clicked
             @event button-click
         -->
     <button
-      v-if="null !== pagination.nextLink"
       title="Previous"
-      @click="$emit('button-click', 'prev')"
+      @click="prevClick"
       class="
         po-text-slate-600 po-p-2 po-rounded-md
         hover:po-bg-slate-200 hover:po-text-mpao-blue
@@ -20,9 +19,8 @@
       <ChevronLeftIcon class="po-w-4 po-stroke-current po-stroke-2" />
     </button>
     <button
-      v-if="null !== pagination.prevLink"
       title="Next"
-      @click="$emit('button-click', 'next')"
+      @click="nextClick"
       class="
         po-text-slate-600 po-p-2 po-rounded-md
         hover:po-bg-slate-200 hover:po-text-mpao-blue
@@ -41,14 +39,49 @@ export default {
 </script>
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
+import { computed } from "vue";
 
-defineProps({
+const props = defineProps({
   /**
-   * Pagination Object { label: 'Page 1 of 2', nextLink: './next', prevLink: './prev' }
+   * Pagination Object { label: 'Page 1 of 2' } ... NO LONGER RECOMMENDED
    */
   pagination: {
     type: Object,
     default: null,
   },
+  /**
+   * Total number of pages
+   */
+  totalPages: {
+    type: [String, Number],
+    default: null,
+  },
+  /**
+   * Current page
+   */
+  currentPage: {
+    type: [String, Number],
+    default: null,
+  },
+});
+
+const emit = defineEmits(["button-click", "next-click", "prev-click"]);
+
+function prevClick() {
+  emit("button-click", "prev");
+  emit("prev-click", true);
+}
+
+function nextClick() {
+  emit("button-click", "next");
+  emit("next-click", true);
+}
+
+const label = computed(() => {
+  return props.totalPages
+    ? `Page ${props.currentPage} of ${props.totalPages}`
+    : props.pagination
+    ? props.pagination.label
+    : "";
 });
 </script>

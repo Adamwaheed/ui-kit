@@ -1,10 +1,17 @@
 # Pagination component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+  Story,
+  ArgsTable,
+  Description,
+  Source,
+  Canvas,
+  Meta,
+} from "@storybook/addon-docs";
 
-import PoPagination from './PoPagination.vue';
+import PoPagination from "./PoPagination.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Components/Pagination" component={PoPagination} />
 
@@ -13,13 +20,46 @@ import dedent from 'ts-dedent';
 Always display this component on the right side of the page.
 
 <Canvas>
-    <div class="po-flex po-justify-end">
-        <Story id="components-pagination--pagination" />
-    </div>
+  <div class="po-flex po-justify-end">
+    <Story id="components-pagination--pagination" />
+  </div>
 </Canvas>
 
 <Source
-  language='js'
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    <PoPagination
+      :totalPages="2"
+      :currentPage="1"
+      @next-click="handleNextlick"
+      @prev-click="handlePrevClick"
+      />
+  `}
+/>
+
+<Source
+  language="js"
+  dark
+  format={true}
+  code={dedent`
+    let pagination = {
+        label: 'Page 2 of 20',
+    }
+    function handleNextlick() {
+      ... do something
+    }
+    function handlePrevlick() {
+      ... do something
+    }
+  `}
+/>
+
+This way of doing it is no longer reccomended.
+
+<Source
+  language="js"
   dark
   format={true}
   code={dedent`
@@ -27,21 +67,13 @@ Always display this component on the right side of the page.
   `}
 />
 
-Pagination also lives inside PoPageTitle component.
-
-### Explanation
-
-<ArgsTable of={PoPagination} />
-
 <Source
-  language='js'
+  language="js"
   dark
   format={true}
   code={dedent`
     let pagination = {
         label: 'Page 2 of 20',
-        nextLink: '/users/1',
-        prevLink: '/users/3',
     }
     function handlePaginationClick(item) {
       switch (item) {
@@ -55,3 +87,9 @@ Pagination also lives inside PoPageTitle component.
     }
   `}
 />
+
+Pagination also lives inside PoPageTitle component.
+
+### Explanation
+
+<ArgsTable of={PoPagination} />
