@@ -1,12 +1,31 @@
 .po-description-list div {
-  @apply po-grid po-grid-cols-1 sm:po-grid-cols-3 xl:po-grid-cols-4 sm:po-gap-5 po-py-3;
+  @apply po-grid po-grid-cols-1 sm:po-grid-cols-3 xl:po-grid-cols-4 sm:po-gap-5 po-py-3 po-relative;
 }
 .po-description-list.striped div {
   @apply even:po-bg-slate-50 po-px-2;
 }
+
 .po-description-list dt {
-  @apply po-text-sm po-text-slate-500 po-col-span-1;
+  @apply po-text-sm po-text-slate-500 po-col-span-1 po-break-words;
 }
 .po-description-list dd {
-  @apply po-text-sm po-text-slate-700 po-col-span-2 xl:po-col-span-3 po-flex;
+  @apply po-text-sm po-text-slate-700 po-col-span-2 xl:po-col-span-3 po-flex po-break-words;
+}
+
+.po-description-list div.link {
+  @apply po-cursor-pointer;
+}
+
+.po-description-list div.link:hover dt,
+.po-description-list div.link:hover dd {
+  @apply po-text-mpao-lightblue;
+}
+
+.po-description-list div.link dd:after {
+  content: "";
+  @apply po-absolute po-w-2 po-h-2 po-border-r-2 po-border-t-2 po-border-slate-300 po-right-4 po-top-4 po-rotate-45 po-transition-all po-duration-150 po-ease-out;
+}
+
+.po-description-list div.link:hover dd:after {
+  @apply po-right-3;
 }

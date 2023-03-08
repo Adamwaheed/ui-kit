@@ -331,15 +331,41 @@
             />
           </template>
         </PoCard>
-        <PoCard class="po-mt-5 po-p-5">
-          <template v-slot:content>
-            <PoEmpty
-              label="Nothing to show"
-              description="No show for sho, Write a helpful message. Maybe suggest something to do when it's empty."
-              :icon="BeakerIcon"
-            />
-          </template>
-        </PoCard>
+        <div class="po-grid po-grid-cols-2 po-gap-5">
+          <div>
+            <PoCard class="po-p-5">
+              <template v-slot:content>
+                <PoEmpty
+                  label="Nothing to show"
+                  description="No show for sho, Write a helpful message. Maybe suggest something to do when it's empty."
+                  :icon="BeakerIcon"
+                />
+              </template>
+            </PoCard>
+          </div>
+          <div>
+            <PoCard class="po-p-5" title="Card">
+              <template v-slot:content>
+                <PoDescriptionList>
+                  <template v-slot:content>
+                    <div class="link">
+                      <dt>Title</dt>
+                      <dd>Description</dd>
+                    </div>
+                    <div>
+                      <dt>Title</dt>
+                      <dd>Descriptions</dd>
+                    </div>
+                    <div class="link">
+                      <dt>Title 3</dt>
+                      <dd>Description 3</dd>
+                    </div>
+                  </template>
+                </PoDescriptionList>
+              </template>
+            </PoCard>
+          </div>
+        </div>
         <PoCard class="po-mt-5 po-p-5">
           <template v-slot:content>
             <div class="po-flex po-items-center po-space-x-5 po-flex-wrap">

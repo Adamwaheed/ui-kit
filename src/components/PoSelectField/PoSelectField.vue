@@ -123,7 +123,7 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, onUpdated } from "vue";
 import {
   CheckIcon,
   ChevronUpDownIcon,
