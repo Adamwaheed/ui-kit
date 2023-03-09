@@ -33,7 +33,14 @@
           getBorderColor(),
         ]"
       >
-        <div class="po-shrink-0 po-pr-1 po-flex po-flex-wrap po-w-full -mt-2">
+        <div
+          class="
+            po-shrink-0 po-pr-1 po-flex po-flex-wrap po-w-full
+            -mt-2
+            po-max-h-44
+          "
+          v-if="selectedItems.length > 0"
+        >
           <span
             class="
               po-px-2
@@ -51,7 +58,7 @@
             v-for="(item, index) in selectedItems"
             ><span>{{ item.name }}</span>
             <span
-              @click="removeItem(index)"
+              @click="() => removeItem(index)"
               class="
                 po-rounded-full
                 po-bg-white
@@ -94,7 +101,26 @@
           sm:po-text-sm
         "
       >
-        <li>aa</li>
+        <li
+          v-for="item in filteredItems"
+          @click="() => clickItemOnDropDown(item)"
+          :key="item.id"
+          :value="item.id"
+          :class="[
+            'po-relative po-select-none po-py-2 hover:po-bg-mpao-lightblue hover:po-text-white po-cursor-pointer po-pl-3 po-pr-9',
+          ]"
+        >
+          <span :class="['po-block po-truncate']">
+            {{ item.name }}
+          </span>
+          <!-- <span
+            :class="[
+              'po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-pr-4',
+            ]"
+          >
+            <CheckIcon class="po-h-5 po-w-5" aria-hidden="true" />
+          </span> -->
+        </li>
       </ul>
     </div>
     <p
@@ -114,17 +140,17 @@
       <ExclamationTriangleIcon class="po-fill-current po-w-4" />
       <span>{{ errorMessage }}</span>
     </p>
-    {{ selectedItemIds }}
   </div>
 </template>
 
 <script>
 export default {
   name: "PoMultiSelect",
+  components: { CheckIcon },
 };
 </script>
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 import {
   InformationCircleIcon,
@@ -132,14 +158,15 @@ import {
 } from "@heroicons/vue/24/solid";
 
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
+import { CheckIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
   /**
    * Model value
    */
   modelValue: {
-    type: [String, Number],
-    default: "",
+    type: Array,
+    default: null,
   },
   /**
    * Input label text
@@ -225,6 +252,10 @@ const props = defineProps({
     type: String,
     default: "po-border-slate-300 focus:po-border-mpao-lightblue",
   },
+  items: {
+    type: Array,
+    default: null,
+  },
 });
 
 function getBorderColor() {
@@ -232,25 +263,6 @@ function getBorderColor() {
     ? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
     : props.borderColor;
 }
-
-const listOfItems = [
-  {
-    id: 1,
-    name: "One",
-  },
-  {
-    id: 2,
-    name: "Two",
-  },
-  {
-    id: 3,
-    name: "Three",
-  },
-  {
-    id: 4,
-    name: "Four",
-  },
-];
 
 const inputFieldValue = ref("");
 const selectedItems = ref([]);
@@ -266,7 +278,7 @@ function addItems(e) {
   if (e.key === "Enter" && 0 < inputFieldValue.value.length) {
     names.forEach((name) => {
       // Loop through each name
-      let match = listOfItems.find(
+      let match = props.items.find(
         (obj) => obj.name.toLowerCase() === name.trim().toLowerCase()
       ); // Search for a match in the array
 
@@ -301,8 +313,8 @@ onUnmounted(() => {
 const showDropdown = ref(false);
 const filteredItems = computed(() =>
   inputFieldValue.value === ""
-    ? listOfItems
-    : listOfItems.filter((item) => {
+    ? props.items
+    : props.items.filter((item) => {
         return item.name
           .toLowerCase()
           .includes(inputFieldValue.value.toLowerCase());
@@ -313,5 +325,17 @@ let multiSelectComponentRef = ref();
 
 useDetectOutsideClick(multiSelectComponentRef, () => {
   showDropdown.value = false;
+});
+
+function clickItemOnDropDown(item) {
+  selectedItems.value.push(item);
+  inputFieldValue.value = "";
+  updateSelectedItemIds();
+}
+
+const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
+
+watch(selectedItemIds, () => {
+  emit("update:modelValue", selectedItemIds.value);
 });
 </script>

@@ -117,7 +117,12 @@
                 id="input-idssss"
                 type="text"
               />
-              <PoMultiSelect label="Mutiselect" />
+              <PoMultiSelect
+                label="Mutiselect"
+                :items="multiselectItems"
+                v-model="selectedmultiselectItems"
+              />
+              {{ selectedmultiselectItems }}
               <PoRadioInput
                 label="Radio"
                 :required="true"
@@ -989,4 +994,25 @@ function handleDisputeClick() {
 function onSearchClear() {
   console.log("clearrr");
 }
+
+const selectedmultiselectItems = ref([]);
+
+const multiselectItems = [
+  {
+    id: 1,
+    name: "One",
+  },
+  {
+    id: 2,
+    name: "Two",
+  },
+  {
+    id: 3,
+    name: "Three",
+  },
+  {
+    id: 4,
+    name: "Four",
+  },
+];
 </script>
