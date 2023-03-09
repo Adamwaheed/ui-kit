@@ -1,14 +1,9 @@
 <template>
-  <div
-    :class="[
-      'po-rounded-lg po-bg-slate-200 po-overflow-hidden po-divide-y po-divide-slate-200 sm:po-divide-y-0 po-grid po-gap-px',
-      numberOfCols,
-    ]"
-  >
+  <div :class="['po-grid po-gap-5', numberOfCols]">
     <div
       v-for="item in items"
       class="
-        po-bg-white po-relative po-group
+        po-bg-white po-relative po-group po-rounded-xl
         focus-within:po-ring-2
         focus-within:po-ring-inset
         focus-within:po-ring-indigo-500

@@ -54,3 +54,4 @@ export { default as PoDRStatus } from "./PoDRStatus/PoDRStatus.vue";
 export { default as PoTableAction } from "./PoTableAction/PoTableAction.vue";
 export { default as Rufiyaa } from "./Rufiyaa/Rufiyaa.vue";
 export { default as PoHeading } from "./PoHeading/PoHeading.vue";
+export { default as PoMultiSelect } from "./PoMultiSelect/PoMultiSelect.vue";

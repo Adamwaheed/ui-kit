@@ -4685,7 +4685,7 @@ const oi = {
       ])
     ]));
   }
-}), Zi = { class: "po-bg-white po-relative po-group focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500" }, Yi = { class: "po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear" }, Qi = { class: "po-flex po-items-start po-space-x-2" }, Ji = { class: "po-flex po-items-start po-space-x-1" }, Xi = { class: "po-block po-text-2xl po-font-light po-text-slate-600" }, ep = {
+}), Zi = { class: "po-bg-white po-relative po-group po-rounded-xl focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500" }, Yi = { class: "po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear" }, Qi = { class: "po-flex po-items-start po-space-x-2" }, Ji = { class: "po-flex po-items-start po-space-x-1" }, Xi = { class: "po-block po-text-2xl po-font-light po-text-slate-600" }, ep = {
   key: 0,
   class: "po-text-sm po-text-green-500 po-font-medium po-pt-1"
 }, tp = { class: "po-text-sm po-tracking-wide po-text-slate-500" }, op = {
@@ -4709,10 +4709,7 @@ const oi = {
   },
   setup(e) {
     return (t, a) => (p(), u("div", {
-      class: B([
-        "po-rounded-lg po-bg-slate-200 po-overflow-hidden po-divide-y po-divide-slate-200 sm:po-divide-y-0 po-grid po-gap-px",
-        e.numberOfCols
-      ])
+      class: B(["po-grid po-gap-5", e.numberOfCols])
     }, [
       (p(!0), u(M, null, W(e.items, (o) => (p(), u("div", Zi, [
         s("span", Yi, [

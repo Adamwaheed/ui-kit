@@ -117,6 +117,7 @@
                 id="input-idssss"
                 type="text"
               />
+              <PoMultiSelect label="Mutiselect" />
               <PoRadioInput
                 label="Radio"
                 :required="true"
@@ -266,6 +267,8 @@
                 <PoInputFile label="File input" />
                 <br />
                 <PoTextarea label="Textarea" />
+                <br />
+                <PoMultiSelect label="Mutiselect" />
               </div>
             </template>
           </PoCard>
@@ -276,11 +279,10 @@
                   label="App name"
                   @selected="handleSelectFieldClick"
                   :list="selectFieldList"
-                  :pre-selected="selectFieldPreSelected"
                   v-model="selectFieldSelected"
                 />
-                Pre {{ selectFieldPreSelected }}
                 <br />
+                {{ selectFieldList }}
                 Selected {{ selectFieldSelected }}
               </div>
               <PoLogs :items="logItems" />
@@ -465,6 +467,7 @@ import {
   PoEmpty,
   PoCardTabs,
   PoTableAction,
+  PoMultiSelect,
 } from "./components";
 import { ref } from "vue";
 
@@ -815,14 +818,20 @@ function handleAlertOkClick() {
   console.log("alert ok");
 }
 
-const selectFieldList = [
-  { id: 1, name: "Koshaaru" },
-  { id: 2, name: "HelpDesk" },
-  { id: 3, name: "Another" },
-];
+const selectFieldList = ref([]);
 
 const selectFieldPreSelected = ref(selectFieldList[1]);
 const selectFieldSelected = ref(null);
+
+selectFieldSelected.value = 2;
+setTimeout(() => {
+  selectFieldList.value = [
+    { id: 1, name: "Koshaaru" },
+    { id: 2, name: "HelpDesk" },
+    { id: 3, name: "Another" },
+  ];
+}, 12000);
+setTimeout(() => {}, 5000);
 
 const radioOptions = [
   {
