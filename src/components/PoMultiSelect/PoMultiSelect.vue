@@ -276,6 +276,7 @@ function addItems(e) {
   let names = inputFieldValue.value.split(","); // Split the string by comma
 
   if (e.key === "Enter" && 0 < inputFieldValue.value.length) {
+    e.preventDefault();
     names.forEach((name) => {
       // Loop through each name
       let match = props.items.find(
