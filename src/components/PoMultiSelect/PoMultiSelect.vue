@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="multiSelectComponentRef"
     class="po-relative"
     :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
   >
@@ -25,48 +26,76 @@
         <InformationCircleIcon class="po-fill-current" />
       </abbr>
     </label>
-    <div
-      :class="[
-        'po-mt-1 po-border po-p-1 po-h-[2.38rem] po-flex po-items-center focus-within:po-border-mpao-lightblue po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white sm:po-text-sm',
-        getBorderColor(),
-      ]"
-    >
-      <div class="po-shrink-0 po-pr-1 po-flex po-space-x-1">
-        <span
-          class="
-            po-px-2
-            po-py-1
-            po-rounded-md
-            po-text-sm
-            po-text-white
-            po-flex
-            po-space-x-2
-            po-items-center
-            po-bg-mpao-lightblue
-          "
-          v-for="(item, index) in selectedItems"
-          ><span>{{ item.name }}</span>
+    <div class="po-relative po-mt-1">
+      <div
+        :class="[
+          'po-border po-p-1 po-min-h-[2.38rem] po-flex po-flex-wrap po-items-center focus-within:po-border-mpao-lightblue po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white sm:po-text-sm',
+          getBorderColor(),
+        ]"
+      >
+        <div class="po-shrink-0 po-pr-1 po-flex po-flex-wrap po-w-full -mt-2">
           <span
-            @click="removeItem(index)"
             class="
-              po-rounded-full
-              po-bg-white
+              po-px-2
+              po-py-1
+              po-mb-1
+              po-mr-1
+              po-rounded-md
+              po-text-sm
+              po-text-white
               po-flex
+              po-space-x-2
               po-items-center
-              po-justify-center
-              po-w-4
-              po-h-4
-              po-cursor-pointer
+              po-bg-mpao-lightblue
             "
-            ><XMarkIcon class="po-w-3 po-fill-mpao-lightblue"
-          /></span>
-        </span>
+            v-for="(item, index) in selectedItems"
+            ><span>{{ item.name }}</span>
+            <span
+              @click="removeItem(index)"
+              class="
+                po-rounded-full
+                po-bg-white
+                po-flex
+                po-items-center
+                po-justify-center
+                po-w-4
+                po-h-4
+                po-cursor-pointer
+              "
+              ><XMarkIcon class="po-w-3 po-fill-mpao-lightblue"
+            /></span>
+          </span>
+        </div>
+        <input
+          :id="id"
+          v-model="inputFieldValue"
+          @focus="() => (showDropdown = true)"
+          class="po-border-0 po-outline-none po-ring-0 po-grow"
+        />
       </div>
-      <input
-        :id="id"
-        v-model="inputFieldValue"
-        class="po-border-0 po-outline-none po-ring-0 po-grow"
-      />
+      <ul
+        v-if="showDropdown"
+        class="
+          po-absolute
+          po-z-10
+          po-mt-1
+          po-max-h-60
+          po-w-full
+          po-overflow-auto
+          po-rounded-md
+          po-bg-white
+          po-py-1
+          po-text-base
+          po-shadow-lg
+          po-ring-1
+          po-ring-black
+          po-ring-opacity-5
+          focus:po-outline-none
+          sm:po-text-sm
+        "
+      >
+        <li>aa</li>
+      </ul>
     </div>
     <p
       class="po-mt-2 po-text-sm po-text-slate-500"
@@ -95,12 +124,14 @@ export default {
 };
 </script>
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/vue/24/solid";
+
+import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 
 const props = defineProps({
   /**
@@ -223,7 +254,6 @@ const listOfItems = [
 
 const inputFieldValue = ref("");
 const selectedItems = ref([]);
-const selectedItemIds = ref([]);
 
 function removeItem(index) {
   selectedItems.value.splice(index, 1);
@@ -254,6 +284,8 @@ function addItems(e) {
   updateSelectedItemIds();
 }
 
+const selectedItemIds = ref([]);
+
 function updateSelectedItemIds() {
   selectedItemIds.value = selectedItems.value.map((item) => item.id);
 }
@@ -264,5 +296,22 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", addItems);
+});
+
+const showDropdown = ref(false);
+const filteredItems = computed(() =>
+  inputFieldValue.value === ""
+    ? listOfItems
+    : listOfItems.filter((item) => {
+        return item.name
+          .toLowerCase()
+          .includes(inputFieldValue.value.toLowerCase());
+      })
+);
+
+let multiSelectComponentRef = ref();
+
+useDetectOutsideClick(multiSelectComponentRef, () => {
+  showDropdown.value = false;
 });
 </script>
