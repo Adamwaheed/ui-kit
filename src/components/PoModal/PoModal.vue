@@ -74,9 +74,10 @@
                     po-shadow-xl
                     po-transform
                     po-transition-all
-                    sm:po-align-top sm:po-max-w-xl
+                    sm:po-align-top
                     po-w-full
                   "
+                  :class="modalWidth"
                 >
                   <div
                     class="
@@ -164,6 +165,10 @@ const props = defineProps({
   show: {
     type: Boolean,
     default: false,
+  },
+  modalWidth: {
+    type: String,
+    default: "sm:po-max-w-xl",
   },
 });
 

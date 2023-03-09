@@ -2759,6 +2759,10 @@ const na = {
     show: {
       type: Boolean,
       default: !1
+    },
+    modalWidth: {
+      type: String,
+      default: "sm:po-max-w-xl"
     }
   },
   emits: ["modal-closed"],
@@ -2815,7 +2819,9 @@ const na = {
                       "leave-to": "po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95"
                     }, {
                       default: L(() => [
-                        k(g(lt), { class: "po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-top sm:po-max-w-xl po-w-full" }, {
+                        k(g(lt), {
+                          class: B(["po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-top po-w-full", e.modalWidth])
+                        }, {
                           default: L(() => [
                             s("div", Ga, [
                               s("h3", Ka, y(e.modalTitle), 1),
@@ -2837,7 +2843,7 @@ const na = {
                             ])) : V("", !0)
                           ]),
                           _: 3
-                        })
+                        }, 8, ["class"])
                       ]),
                       _: 3
                     })
