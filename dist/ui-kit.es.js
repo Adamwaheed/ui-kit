@@ -3469,12 +3469,12 @@ const is = ["for"], ps = {
 }), Hs = { class: "po-shadow-sm po-rounded-xl po-bg-white po-relative po-max-w-[1370px]" }, qs = {
   key: 0,
   class: "po-absolute po-right-2 po-top-2 po-p-2 po-rounded-lg"
-}, Us = { class: "po-flex po-items-center" }, Gs = {
+}, Us = { class: "po-grid po-grid-cols-1 lg:po-grid-cols-3 po-gap-3" }, Gs = {
   key: 0,
-  class: "po-grow po-text-base po-font-medium po-text-slate-600"
+  class: "po-text-base po-font-medium po-text-slate-600"
 }, Ks = {
   key: 1,
-  class: "po-shrink-0"
+  class: "lg:po-col-span-2 lg:po-flex lg:po-justify-end po-space-x-3"
 }, Ws = {
   name: "PoCard"
 }, s1 = /* @__PURE__ */ Object.assign(Ws, {
