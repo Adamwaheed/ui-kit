@@ -14,8 +14,11 @@
           class="
             po-fixed
             po-inset-0
-            po-bg-gray-500
-            po-bg-opacity-75
+            po-bg-gradient-to-br
+            po-from-mpao-orange
+            po-via-mpao-lightblue
+            po-to-mpao-blue
+            po-opacity-60
             po-transition-opacity
           "
         />
@@ -56,16 +59,17 @@
               "
             >
               <div class="po-p-5">
-                <div class="po-text-center">
+                <div class="po-text-center po-space-y-3">
                   <DialogTitle
+                    v-if="'' !== alertTitle"
                     as="h3"
                     class="
                       po-text-lg po-font-medium po-leading-6 po-text-gray-900
                     "
                     >{{ alertTitle }}</DialogTitle
                   >
-                  <div v-if="alertDescription !== ''" class="po-mt-2">
-                    <p class="po-text-sm po-text-gray-500">
+                  <div v-if="alertDescription !== ''">
+                    <p class="po-text-sm po-text-gray-600">
                       {{ alertDescription }}
                     </p>
                   </div>
@@ -147,28 +151,28 @@ import {
 
 const props = defineProps({
   /**
-   * Modal cancel button label
+   * Alert cancel button label
    */
   cancelBtnLabel: {
     type: String,
     default: "Cancel",
   },
   /**
-   * Modal cancel button label
+   * Alert ok button label
    */
   okBtnLabel: {
     type: String,
     default: "Ok",
   },
   /**
-   * Modal Title
+   * Alert Title
    */
   alertTitle: {
     type: String,
-    default: "Alert",
+    default: "",
   },
   /**
-   * Modal Title
+   * Alert description text
    */
   alertDescription: {
     type: String,
