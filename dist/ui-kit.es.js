@@ -3466,7 +3466,7 @@ const is = ["for"], ps = {
       ])) : x("", !0)
     ])) : x("", !0);
   }
-}), Hs = { class: "po-shadow-sm po-rounded-xl po-bg-white po-relative po-max-w-[1370px]" }, qs = {
+}), Hs = { class: "po-shadow-sm po-rounded-xl po-bg-white po-relative" }, qs = {
   key: 0,
   class: "po-absolute po-right-2 po-top-2 po-p-2 po-rounded-lg"
 }, Us = { class: "po-grid po-grid-cols-1 lg:po-grid-cols-3 po-gap-3" }, Gs = {
@@ -5458,7 +5458,7 @@ const li = {
   return n;
 }, xu = {
   name: "PoContentArea"
-}, Vu = { class: "shell-content--area" };
+}, Vu = { class: "shell-content--area po-max-w-[1370px]" };
 function wu(e, t, n, l, o, a) {
   return p(), u("section", Vu, [
     Q(e.$slots, "default")
