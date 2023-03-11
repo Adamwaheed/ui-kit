@@ -28,7 +28,7 @@
 				:class="[
 					tab.current
 						? 'po-bg-white po-text-slate-600 po-shadow-md'
-						: 'po-text-slate-600 hover:po-text-mpao-blue',
+						: 'po-bg-slate-50 po-text-slate-600 hover:po-text-mpao-blue',
 					'po-px-4 po-relative po-group po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2',
 				]"
 				:aria-current="tab.current ? 'page' : undefined"

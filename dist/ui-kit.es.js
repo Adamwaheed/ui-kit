@@ -5735,7 +5735,7 @@ const Su = /* @__PURE__ */ el(ku, [["render", Cu]]), Eu = {
             role: "button",
             key: i.name,
             class: B([
-              i.current ? "po-bg-white po-text-slate-600 po-shadow-md" : "po-text-slate-600 hover:po-text-mpao-blue",
+              i.current ? "po-bg-white po-text-slate-600 po-shadow-md" : "po-bg-slate-50 po-text-slate-600 hover:po-text-mpao-blue",
               "po-px-4 po-relative po-group po-py-3 po-font-medium po-text-sm po-cursor-pointer po-rounded-xl genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-space-x-2"
             ]),
             "aria-current": i.current ? "page" : void 0
@@ -6820,10 +6820,17 @@ const cd = { class: "po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-
       default: "po-w-3"
     },
     /**
+     * Rufiyaa symbol fill-color
+     */
+    symbolFillColor: {
+      type: String,
+      default: "po-fill-current"
+    },
+    /**
      * Amount
      */
     amount: {
-      type: Number,
+      type: [Number, String],
       default: null
     }
   },
@@ -6837,7 +6844,7 @@ const cd = { class: "po-flex po-text-sm po-text-gray-700 po-flex-col po-space-y-
     }
     return (n, l) => (p(), u("span", null, [
       (p(), u("svg", {
-        class: B(["po-fill-current po-inline-block po-relative -po-bottom-1", e.symbolWidth]),
+        class: B(["po-inline-block po-relative -po-bottom-1", [e.symbolWidth, e.symbolFillColor]]),
         viewBox: "0 0 855 545",
         xmlns: "http://www.w3.org/2000/svg",
         "xml:space": "preserve"
