@@ -17,7 +17,7 @@
 			</h3>
 			<div
 				v-if="$slots.action"
-				class="lg:po-col-span-2 lg:po-flex lg:po-justify-end po-space-x-3"
+				class="lg:po-col-span-2 lg:po-flex lg:po-justify-end po-space-x-2"
 			>
 				<slot name="action"></slot>
 			</div>

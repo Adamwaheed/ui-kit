@@ -3474,7 +3474,7 @@ const is = ["for"], ps = {
   class: "po-text-base po-font-medium po-text-slate-600"
 }, Ks = {
   key: 1,
-  class: "lg:po-col-span-2 lg:po-flex lg:po-justify-end po-space-x-3"
+  class: "lg:po-col-span-2 lg:po-flex lg:po-justify-end po-space-x-2"
 }, Ws = {
   name: "PoCard"
 }, s1 = /* @__PURE__ */ Object.assign(Ws, {
