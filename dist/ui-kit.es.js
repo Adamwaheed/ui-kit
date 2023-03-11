@@ -4598,12 +4598,12 @@ const li = {
   class: "hover:po-text-mpao-lightblue"
 }, "Privacy Policy", -1), Ri = /* @__PURE__ */ s("div", { class: "po-flex po-space-x-2 po-mt-3 lg:po-justify-end" }, [
   /* @__PURE__ */ s("img", {
-    class: "po-h-6",
+    class: "po-h-8",
     src: "https://pension.gov.mv/asset/image/iso_logo.jpg",
     alt: ""
   }),
   /* @__PURE__ */ s("img", {
-    class: "po-h-6",
+    class: "po-h-8",
     src: "https://pension.gov.mv/asset/image/en-ccc-2020-issa.png",
     alt: ""
   })
