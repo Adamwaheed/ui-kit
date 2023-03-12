@@ -103,6 +103,16 @@
 									</div>
 									<div
 										class="
+											po-h-[1px]
+											po-w-full
+											po-bg-gradient-to-l
+											po-from-orange-200
+											po-via-blue-300
+											po-to-blue-200
+										"
+									></div>
+									<div
+										class="
 											po-p-5 po-max-h-[calc(100vh-230px)] po-overflow-y-scroll
 										"
 									>
