@@ -2729,10 +2729,10 @@ const na = {
       ], 2)) : x("", !0)
     ], 64));
   }
-}), za = /* @__PURE__ */ s("div", { class: "po-fixed po-inset-0 po-bg-gradient-to-br po-from-mpao-orange po-via-mpao-lightblue po-to-mpao-blue po-opacity-60 po-transition-opacity" }, null, -1), Ha = { class: "po-fixed po-z-10 po-inset-0 po-overflow-y-auto" }, qa = { class: "po-flex po-justify-center po-items-start po-min-h-screen po-px-4 po-pt-10 po-pb-20 po-text-center sm:po-block" }, Ua = /* @__PURE__ */ s("span", {
+}), za = /* @__PURE__ */ s("div", { class: "po-fixed po-inset-0 po-bg-gradient-to-br po-from-mpao-orange po-via-mpao-lightblue po-to-mpao-blue po-opacity-60 po-transition-opacity" }, null, -1), Ha = { class: "po-fixed po-z-10 po-inset-0" }, qa = { class: "po-flex po-justify-center po-items-start po-min-h-screen po-px-4 po-pt-10 po-pb-20 po-text-center sm:po-block po-max-h-screen po-overflow-y-hidden" }, Ua = /* @__PURE__ */ s("span", {
   class: "po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen",
   "aria-hidden": "true"
-}, "​", -1), Ga = { class: "po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5" }, Ka = { class: "po-grow po-text-md po-font-bold po-text-slate-600" }, Wa = { class: "po-shrink-0" }, Za = { class: "po-p-5" }, Ya = {
+}, "​", -1), Ga = { class: "po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5" }, Ka = { class: "po-grow po-text-md po-font-bold po-text-slate-600" }, Wa = { class: "po-shrink-0" }, Za = { class: "po-p-5 po-max-h-[calc(100vh-230px)] po-overflow-y-scroll" }, Ya = {
   key: 0,
   class: "po-bg-slate-50 po-rounded-b-xl"
 }, Qa = {
