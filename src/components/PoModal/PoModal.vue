@@ -111,11 +111,8 @@
 											po-to-blue-200
 										"
 									></div>
-									<div
-										class="
-											po-p-5 po-max-h-[calc(100vh-230px)] po-overflow-y-scroll
-										"
-									>
+									<!-- po-max-h-[calc(100vh-230px)] po-overflow-y-scroll -->
+									<div class="po-p-5">
 										<!-- 
                           Modal body content
                           @slot content
