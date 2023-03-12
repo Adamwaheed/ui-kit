@@ -424,7 +424,7 @@ const Al = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
   for: "sidebar-drawer-toggle",
   role: "button",
   class: "genie-effect po-flex po-items-center po-justify-center po-bg-[#2e5266] po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
-}, Rl = { class: "po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4" }, Ml = { class: "po-flex po-h-16 po-items-center po-justify-between po-space-x-12" }, Fl = { class: "po-flex po-items-center po-space-x-3" }, zl = {
+}, Rl = { class: "po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4" }, Ml = { class: "po-flex po-relative po-h-16 po-items-center po-justify-between po-space-x-12" }, Fl = { class: "po-flex po-items-center po-space-x-3" }, zl = {
   key: 0,
   class: "po-block po-w-6 po-text-slate-100 md:po-hidden",
   role: "button"
@@ -2330,7 +2330,7 @@ const na = {
     }
   },
   setup(e) {
-    return (t, n) => (p(), R(g(at), { class: "po-relative" }, {
+    return (t, n) => (p(), R(g(at), null, {
       default: L(({ open: l }) => [
         $(g(jt), {
           class: B([l ? "" : "po-text-opacity-90", "po-block po-w-6 po-text-slate-100 genie-effect po-z-50 po-outline-none"])
@@ -2349,7 +2349,7 @@ const na = {
           "leave-to-class": "po-translate-y-1 po-opacity-0"
         }, {
           default: L(() => [
-            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
+            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-16 po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
               default: L(() => [
                 (p(!0), u(M, null, K(e.appList, (o) => (p(), u("div", null, [
                   o.groupName.length > 0 ? (p(), u("span", na, y(o.groupName), 1)) : x("", !0),
@@ -2413,7 +2413,7 @@ const na = {
   },
   emits: ["button-click"],
   setup(e, { emit: t }) {
-    return (n, l) => (p(), R(g(at), { class: "po-relative" }, {
+    return (n, l) => (p(), R(g(at), null, {
       default: L(({ open: o }) => [
         $(g(jt), {
           class: B([o ? "" : "text-opacity-90", "po-block po-w-6 po-text-slate-100 genie-effect po-relative po-z-50 po-outline-none"])
@@ -2433,7 +2433,7 @@ const na = {
           "leave-to-class": "po-translate-y-1 po-opacity-0"
         }, {
           default: L(() => [
-            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[47px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
+            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-16 po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
               default: L(() => [
                 e.notifications !== null && e.notifications.length > 0 ? (p(), u("ul", fa, [
                   (p(!0), u(M, null, K(e.notifications, (a) => (p(), u("li", {
@@ -2480,7 +2480,7 @@ const na = {
       )[0];
       return n.value = o ? o.name : "", o ? o.name.match(/\b[A-Z]/g).join("").substr(0, 2) : "";
     });
-    return (o, a) => (p(), R(g(at), { class: "po-relative" }, {
+    return (o, a) => (p(), R(g(at), null, {
       default: L(({ open: r }) => [
         $(g(jt), { class: "po-flex po-items-center po-outline-none" }, {
           default: L(() => [
@@ -2502,7 +2502,7 @@ const na = {
           "leave-to-class": "po-translate-y-1 po-opacity-0"
         }, {
           default: L(() => [
-            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-[55px] po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
+            $(g(It), { class: "po-space-y-1 po-z-10 po-absolute po-right-0 po-top-16 po-opacity-0 po-bg-white po-bg-opacity-50 po-backdrop-blur po-backdrop-filter po-shadow-lg po-rounded-md po-w-96 po-p-4 po-border po-border-slate-200 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-scroll" }, {
               default: L(() => [
                 (p(!0), u(M, null, K(e.profileSwitcherData.profiles, (i) => (p(), u("a", {
                   href: "#",
