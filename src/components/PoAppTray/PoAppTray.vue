@@ -51,12 +51,22 @@
 						>{{ collection.groupName }}</span
 					>
 					<ul class="po-grid po-grid-cols-3 po-gap-2 po-py-2">
-						<li v-for="app in collection.apps">
+						<li
+							v-for="app in collection.apps"
+							class="
+								po-bg-white
+								hover:po-bg-slate-200
+								po-rounded-xl
+								po-p-2
+								po-transition-colors
+								po-duration-150
+								po-ease-in
+							"
+						>
 							<a
 								:href="app.url"
 								class="
 									po-flex po-flex-col po-group po-justify-center po-items-center
-									genie-effect
 								"
 							>
 								<span
