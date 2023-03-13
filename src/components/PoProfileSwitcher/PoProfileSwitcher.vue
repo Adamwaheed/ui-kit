@@ -2,6 +2,7 @@
 	<Popover v-slot="{ open }">
 		<PopoverButton class="po-flex po-items-center po-outline-none">
 			<span
+				v-if="'' === currentProfileLogo"
 				class="
 					po-hidden
 					lg:po-block
@@ -15,9 +16,16 @@
 				"
 				>{{ currentProfileFullLabel }}</span
 			>
+			<span
+				v-if="'' !== currentProfileLogo"
+				class="po-px-3 po-bg-slate-50 po-py-1 po-rounded-l-md"
+			>
+				<img class="po-h-8" :src="currentProfileLogo" alt="" />
+			</span>
 			<div
 				:class="open ? '' : 'text-opacity-90'"
 				class="
+					po-shrink-0
 					po-select-none
 					po-rounded-full
 					po-w-10
@@ -192,7 +200,13 @@
 						>
 					</span>
 				</a>
-				<div class="md:po-grid po-grid-cols-2 po-space-x-1">
+				 -->
+				<div
+					class="
+						md:po-grid
+						po-grid-cols-2 po-space-x-1 po-pt-2 po-border-t po-border-slate-200
+					"
+				>
 					<a
 						href="#"
 						@click.prevent="$emit('button-click', 'current-profile')"
@@ -235,7 +249,7 @@
 						</span>
 						<span class="po-text-sm po-font-normal">Logout</span>
 					</a>
-				</div> -->
+				</div>
 			</PopoverPanel>
 		</transition>
 	</Popover>
@@ -262,12 +276,18 @@ const props = defineProps({
 });
 
 const currentProfileFullLabel = ref("");
+const currentProfileLogo = ref("");
 
 const currentProfileLabel = computed(() => {
 	const currProfile = props.profileSwitcherData.profiles.filter(
 		(profile) => profile.current === true
 	)[0];
 	currentProfileFullLabel.value = currProfile ? currProfile.name : "";
+	currentProfileLogo.value = currProfile
+		? currProfile.logo
+			? currProfile.logo
+			: ""
+		: "";
 	return currProfile
 		? currProfile.name
 				.match(/\b[A-Z]/g)

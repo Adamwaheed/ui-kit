@@ -606,14 +606,15 @@ let profileSwitcherData = {
 			name: "Ministry of Pension",
 			identifier: "",
 			url: "#self",
-			current: true,
+			current: false,
 			isPersonal: true,
 		},
 		{
 			name: "Penshion Office",
 			identifier: "202301052023",
+			logo: "https://www.google.com/u/0/ac/images/logo.gif?uid=114348054356345091228&service=google_gsuite",
 			url: "#business",
-			current: false,
+			current: true,
 			isPersonal: false,
 		},
 		{
@@ -956,7 +957,7 @@ function handleDownloadClick(label) {
 }
 
 function handleSelectFieldClick(val) {
-	console.log("handleSelectFieldClick", val);
+	console.log("handleSelectFieldClick 222", val);
 }
 
 const appsList = [
