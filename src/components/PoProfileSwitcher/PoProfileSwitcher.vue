@@ -87,6 +87,9 @@
 						class="po-text-sm po-text-slate-600 po-font-medium po-block po-mt-4"
 						>Claire Hussain</span
 					>
+					<span class="po-block po-text-xs po-text-slate-500 po-italic"
+						>Manager at Jacobs Cement Pvt Ltd</span
+					>
 				</div>
 				<!--
                     Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
