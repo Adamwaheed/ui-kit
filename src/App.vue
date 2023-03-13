@@ -292,7 +292,7 @@
 						<template v-slot:content>
 							<div class="items-center space-x-5">
 								<PoSelectField
-									label="App name"
+									label="App names"
 									@selected="handleSelectFieldClick"
 									:list="selectFieldList"
 									v-model="selectFieldSelected"

@@ -55,7 +55,7 @@
 					po-shadow-lg
 					po-rounded-b-xl
 					po-rounded-t-0
-					po-w-96
+					po-w-[366px]
 					po-p-4
 					po-border
 					po-border-t-0
@@ -84,10 +84,12 @@
 						alt=""
 					/>
 					<span
-						class="po-text-sm po-text-slate-600 po-font-medium po-block po-mt-4"
+						class="
+							po-text-base po-text-slate-600 po-font-medium po-block po-mt-4
+						"
 						>Claire Hussain</span
 					>
-					<span class="po-block po-text-xs po-text-slate-500 po-italic"
+					<span class="po-block po-text-sm po-text-slate-500 po-italic"
 						>Manager at Jacobs Cement Pvt Ltd</span
 					>
 				</div>
