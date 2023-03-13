@@ -52,28 +52,47 @@
 					po-top-16
 					po-opacity-0
 					po-bg-white
-					po-bg-opacity-50
-					po-backdrop-blur
-					po-backdrop-filter
 					po-shadow-lg
-					po-rounded-xl
+					po-rounded-b-xl
+					po-rounded-t-0
 					po-w-96
 					po-p-4
 					po-border
-					po-border-slate-200
+					po-border-t-0
+					po-border-slate-300
 					po-pt-5
 					po-transition-all
 					po-duration-100
 					po-ease-linear
 					po-max-h-[calc(100vh-85px)]
 					po-overflow-y-scroll
+					po-text-center
 				"
 			>
+				<div>
+					<img
+						class="
+							po-w-20
+							po-h-20
+							po-mx-auto
+							po-rounded-full
+							po-overflow-hidden
+							po-saturate-50
+							po-opacity-90
+						"
+						src="https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80"
+						alt=""
+					/>
+					<span
+						class="po-text-sm po-text-slate-600 po-font-medium po-block po-mt-4"
+						>Claire Hussain</span
+					>
+				</div>
 				<!--
                     Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
                     @event button-click
                 -->
-				<a
+				<!-- <a
 					v-for="profile in profileSwitcherData.profiles"
 					href="#"
 					@click.prevent="$emit('button-click', profile)"
@@ -158,7 +177,7 @@
 						</span>
 						<span class="po-text-sm po-font-normal">Logout</span>
 					</a>
-				</div>
+				</div> -->
 			</PopoverPanel>
 		</transition>
 	</Popover>
