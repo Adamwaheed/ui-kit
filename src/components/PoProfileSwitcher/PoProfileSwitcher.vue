@@ -69,7 +69,7 @@
 					po-text-center
 				"
 			>
-				<div>
+				<div class="po-pb-5">
 					<img
 						class="
 							po-w-20
@@ -90,6 +90,59 @@
 					<span class="po-block po-text-xs po-text-slate-500 po-italic"
 						>Manager at Jacobs Cement Pvt Ltd</span
 					>
+				</div>
+				<div
+					class="
+						po-space-y-2
+						po-pt-2
+						po-border-t
+						po-border-slate-200
+						po-max-h-[190px]
+						po-overflow-y-scroll
+					"
+				>
+					<a
+						v-for="profile in profileSwitcherData.profiles"
+						href="#"
+						@click.prevent="$emit('button-click', profile)"
+						class="
+							po-flex
+							po-items-center
+							po-space-x-3
+							po-p-3
+							po-text-slate-600
+							po-rounded-lg
+							po-bg-white
+							hover:po-bg-slate-100
+							po-border po-border-slate-100
+						"
+						role="button"
+					>
+						<span class="po-w-5">
+							<UserIcon
+								v-if="profile.isPersonal"
+								:class="[
+									'po-stroke-current',
+									{ 'po-stroke-mpao-orange': profile.current },
+								]"
+							/>
+							<BriefcaseIcon
+								v-if="!profile.isPersonal"
+								:class="[
+									'po-stroke-current',
+									{ 'po-stroke-mpao-orange': profile.current },
+								]"
+							/>
+						</span>
+						<span class="po-flex po-flex-col po-space-y-1">
+							<span class="po-text-sm po-font-normal">{{ profile.name }}</span>
+							<span
+								v-if="0 !== profile.identifier.length"
+								class="po-text-xs po-text-slate-400"
+								>{{ profile.identifier }}</span
+							>
+						</span>
+					</a>
 				</div>
 				<!--
                     Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
