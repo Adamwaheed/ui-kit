@@ -250,6 +250,14 @@
 						<span class="po-text-sm po-font-normal">Logout</span>
 					</a>
 				</div>
+				<div class="po-text-xs po-space-x-3 po-text-center po-pt-3">
+					<a href="" class="po-text-slate-500 hover:po-text-mpao-lightblue"
+						>Privacy Policy</a
+					>
+					<a href="" class="po-text-slate-500 hover:po-text-mpao-lightblue"
+						>Terms of Service</a
+					>
+				</div>
 			</PopoverPanel>
 		</transition>
 	</Popover>
@@ -295,4 +303,6 @@ const currentProfileLabel = computed(() => {
 				.substr(0, 2)
 		: "";
 });
+
+const emit = defineEmits(["button-click"]);
 </script>

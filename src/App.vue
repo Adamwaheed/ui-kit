@@ -518,6 +518,7 @@ import {
 import { findLastIndex } from "lodash";
 
 import { watch } from "vue";
+import { assertArrowFunctionExpression } from "@babel/types";
 
 let searchQuery = ref("");
 let toggleState = ref(false);
@@ -600,7 +601,7 @@ let allApps = [
 
 let notifications = [];
 
-let profileSwitcherData = {
+let profileSwitcherData = ref({
 	profiles: [
 		{
 			name: "Ministry of Pension",
@@ -674,10 +675,10 @@ let profileSwitcherData = {
 			isPersonal: false,
 		},
 	],
-};
+});
 
-function handleProfileSwitcherClick(item) {
-	console.log("profileswitcherclick", item);
+function handleProfileSwitcherClick(obj) {
+	console.log("profileswitcherclick", obj);
 }
 
 console.log("icon", PlayIcon);
