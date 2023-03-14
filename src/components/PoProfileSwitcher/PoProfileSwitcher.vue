@@ -60,9 +60,11 @@
 						po-z-50
 					"
 				>
-					<span class="po-text-xs po-text-white po-font-semibold">{{
-						currentProfileLabel
-					}}</span>
+					<img
+						class="po-rounded-full po-border po-border-white"
+						src="https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80"
+						:alt="currentProfileLabel"
+					/>
 				</div>
 			</div>
 		</PopoverButton>
@@ -119,9 +121,11 @@
 						"
 						>Claire Hussain</span
 					>
-					<span class="po-block po-text-sm po-text-slate-500 po-italic"
-						>Manager at Jacobs Cement Pvt Ltd</span
-					>
+					<span class="po-block po-text-sm po-text-slate-400 po-italic">{{
+						currentProfileFullLabel === "Claire Hussain"
+							? "claire@example.com"
+							: `Adminstrator at ${currentProfileFullLabel}`
+					}}</span>
 				</div>
 				<div
 					class="
