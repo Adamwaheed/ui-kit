@@ -74,7 +74,47 @@
 					<template v-slot:content>
 						Searching {{ searchQuery }}<br />
 						<div class="po-flex po-space-x-3 po-mt-3">
-							<PoModal open-btn-label="Open Modal" />
+							<PoModal open-btn-label="Open Modal">
+								<template v-slot:content>
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+									adsd<br />
+								</template>
+							</PoModal>
 
 							<PoButton @click="openAlertClick" label="Open Alert" />
 							<PoButton
@@ -518,7 +558,6 @@ import {
 import { findLastIndex } from "lodash";
 
 import { watch } from "vue";
-import { assertArrowFunctionExpression } from "@babel/types";
 
 let searchQuery = ref("");
 let toggleState = ref(false);

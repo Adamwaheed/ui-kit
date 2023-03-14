@@ -9,7 +9,6 @@ export default defineConfig({
 			entry: [
 				path.resolve(__dirname, "src/components/index.js"),
 				path.resolve(__dirname, "src/shared/helper/index.js"),
-				path.resolve(__dirname, "src/shared/auth/index.js"),
 			],
 			name: "UiKit",
 			fileName: (format) => `ui-kit.${format}.js`,
