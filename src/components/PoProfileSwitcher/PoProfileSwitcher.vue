@@ -20,27 +20,37 @@
 				v-if="'' !== currentProfileLogo"
 				class="po-px-3 po-bg-slate-50 po-py-1 po-rounded-l-md"
 			>
-				<img class="po-h-8" :src="currentProfileLogo" alt="" />
+				<img class="po-h-8 po-max-w-[90px]" :src="currentProfileLogo" alt="" />
 			</span>
 			<div
-				:class="open ? '' : 'text-opacity-90'"
-				class="
-					po-shrink-0
-					po-select-none
-					po-rounded-full
-					po-w-10
-					po-h-10
-					po-bg-[#2e5266]
-					po-flex
-					po-items-center
-					po-justify-center
-					genie-effect
-					po-z-50
-				"
+				:class="[
+					{
+						'po-bg-slate-50 po-p-1 po-rounded-r-md': '' !== currentProfileLogo,
+					},
+				]"
 			>
-				<span class="po-text-xs po-text-white po-font-semibold">{{
-					currentProfileLabel
-				}}</span>
+				<div
+					:class="[
+						{ 'text-opacity-90': open },
+						{ 'po-w-10 po-h-10': '' === currentProfileLogo },
+						{ 'po-w-8 po-h-8': '' !== currentProfileLogo },
+					]"
+					class="
+						po-shrink-0
+						po-select-none
+						po-rounded-full
+						po-bg-[#2e5266]
+						po-flex
+						po-items-center
+						po-justify-center
+						genie-effect
+						po-z-50
+					"
+				>
+					<span class="po-text-xs po-text-white po-font-semibold">{{
+						currentProfileLabel
+					}}</span>
+				</div>
 			</div>
 		</PopoverButton>
 		<transition

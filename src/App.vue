@@ -643,7 +643,7 @@ let notifications = [];
 let profileSwitcherData = ref({
 	profiles: [
 		{
-			name: "Ministry of Pension",
+			name: "Claire Hussain",
 			identifier: "",
 			url: "#self",
 			current: false,
@@ -652,62 +652,29 @@ let profileSwitcherData = ref({
 		{
 			name: "Penshion Office",
 			identifier: "202301052023",
-			logo: "https://www.google.com/u/0/ac/images/logo.gif?uid=114348054356345091228&service=google_gsuite",
+			logo: "http://uidocs.test/logo-1.png",
 			url: "#business",
 			current: true,
 			isPersonal: false,
 		},
 		{
-			name: "ABC Enterprises Pvt Ltd",
-			identifier: "202301052026",
-			url: "#business",
-			current: false,
-			isPersonal: false,
-		},
-		{
-			name: "Hussian Jackson Doe",
-			identifier: "",
-			url: "#self",
-			current: false,
-			isPersonal: true,
-		},
-		{
-			name: "Penshion Office",
+			name: "Garden Office",
 			identifier: "202301052023",
+			logo: "http://uidocs.test/logo-5.png",
 			url: "#business",
 			current: false,
 			isPersonal: false,
 		},
 		{
-			name: "ABC Enterprises Pvt Ltd",
+			name: "Production Pvt Ltd",
 			identifier: "202301052026",
+			logo: "http://uidocs.test/logo-2.png",
 			url: "#business",
 			current: false,
 			isPersonal: false,
 		},
 		{
-			name: "ABC Enterprises Pvt Ltd",
-			identifier: "202301052026",
-			url: "#business",
-			current: false,
-			isPersonal: false,
-		},
-		{
-			name: "Hussian Jackson Doe",
-			identifier: "",
-			url: "#self",
-			current: false,
-			isPersonal: true,
-		},
-		{
-			name: "Penshion Office",
-			identifier: "202301052023",
-			url: "#business",
-			current: false,
-			isPersonal: false,
-		},
-		{
-			name: "ABC Enterprises Pvt Ltd",
+			name: "Classic Pvt Ltd",
 			identifier: "202301052026",
 			url: "#business",
 			current: false,
@@ -718,6 +685,22 @@ let profileSwitcherData = ref({
 
 function handleProfileSwitcherClick(obj) {
 	console.log("profileswitcherclick", obj);
+
+	const clickedIndex = profileSwitcherData.value.profiles.findIndex(
+		(item) => item.name === obj.name
+	);
+
+	for (
+		let index = 0;
+		index < profileSwitcherData.value.profiles.length;
+		index++
+	) {
+		if (clickedIndex === index) {
+			profileSwitcherData.value.profiles[index].current = true;
+		} else {
+			profileSwitcherData.value.profiles[index].current = false;
+		}
+	}
 }
 
 console.log("icon", PlayIcon);

@@ -2511,15 +2511,27 @@ const ia = {
             o.value === "" ? (p(), u("span", Pa, b(l.value), 1)) : x("", !0),
             o.value !== "" ? (p(), u("span", Oa, [
               s("img", {
-                class: "po-h-8",
+                class: "po-h-8 po-max-w-[90px]",
                 src: o.value,
                 alt: ""
               }, null, 8, La)
             ])) : x("", !0),
             s("div", {
-              class: A([c ? "" : "text-opacity-90", "po-shrink-0 po-select-none po-rounded-full po-w-10 po-h-10 po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"])
+              class: A([
+                {
+                  "po-bg-slate-50 po-p-1 po-rounded-r-md": o.value !== ""
+                }
+              ])
             }, [
-              s("span", Na, b(g(a)), 1)
+              s("div", {
+                class: A([[
+                  { "text-opacity-90": c },
+                  { "po-w-10 po-h-10": o.value === "" },
+                  { "po-w-8 po-h-8": o.value !== "" }
+                ], "po-shrink-0 po-select-none po-rounded-full po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"])
+              }, [
+                s("span", Na, b(g(a)), 1)
+              ], 2)
             ], 2)
           ]),
           _: 2
