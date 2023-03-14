@@ -18,14 +18,27 @@
 			>
 			<span
 				v-if="'' !== currentProfileLogo"
-				class="po-px-3 po-bg-slate-50 po-py-1 po-rounded-l-md"
+				class="
+					po-px-3
+					po-bg-gradient-to-br
+					po-from-slate-50
+					po-to-blue-100
+					po-py-1
+					po-rounded-l-md
+					po-w-[100px]
+					po-flex
+					po-items-center
+					po-justify-center
+					po-text-center
+				"
 			>
-				<img class="po-h-8 po-max-w-[90px]" :src="currentProfileLogo" alt="" />
+				<img class="po-h-8" :src="currentProfileLogo" alt="" />
 			</span>
 			<div
 				:class="[
 					{
-						'po-bg-slate-50 po-p-1 po-rounded-r-md': '' !== currentProfileLogo,
+						'po-bg-gradient-to-br po-from-slate-50 po-to-blue-100 po-p-1 po-rounded-r-md':
+							'' !== currentProfileLogo,
 					},
 				]"
 			>
