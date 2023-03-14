@@ -76,7 +76,6 @@
 		>
 			<PopoverPanel
 				class="
-					po-space-y-1
 					po-z-10
 					po-absolute
 					po-right-0
@@ -126,12 +125,9 @@
 				</div>
 				<div
 					class="
-						po-space-y-2
-						po-pt-2
-						po-border-t
-						po-border-slate-200
-						po-max-h-[190px]
-						po-overflow-y-scroll
+						po-space-y-2 po-py-2 po-border-t po-border-b po-border-slate-200
+						-po-mx-5
+						po-px-5 po-max-h-[250px] po-overflow-y-scroll
 					"
 				>
 					<a
@@ -145,10 +141,25 @@
 							po-p-3
 							po-text-slate-600
 							po-rounded-lg
-							po-bg-white
+							po-shadow-sm
+							po-transition-all
+							po-duration-150
+							po-ease-out
 							hover:po-bg-slate-100
-							po-border po-border-slate-100
+							hover:po-bg-gradient-to-bl
+							hover:po-from-white
+							hover:po-via-slate-50
+							hover:po-to-slate-100
+							hover:po-shadow-md
 						"
+						:class="[
+							{
+								' po-bg-white': !profile.current,
+							},
+							{
+								' po-bg-blue-50 po-shadow-sm': profile.current,
+							},
+						]"
 						role="button"
 					>
 						<span class="po-w-5">
@@ -156,14 +167,14 @@
 								v-if="profile.isPersonal"
 								:class="[
 									'po-stroke-current',
-									{ 'po-stroke-mpao-orange': profile.current },
+									{ 'po-stroke-mpao-lightblue': profile.current },
 								]"
 							/>
 							<BriefcaseIcon
 								v-if="!profile.isPersonal"
 								:class="[
 									'po-stroke-current',
-									{ 'po-stroke-mpao-orange': profile.current },
+									{ 'po-stroke-mpao-lightblue': profile.current },
 								]"
 							/>
 						</span>
@@ -181,55 +192,7 @@
                     Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
                     @event button-click
                 -->
-				<!-- <a
-					v-for="profile in profileSwitcherData.profiles"
-					href="#"
-					@click.prevent="$emit('button-click', profile)"
-					class="
-						po-flex
-						po-items-center
-						po-space-x-3
-						po-p-3
-						po-text-slate-600
-						po-rounded-lg
-						po-bg-white
-						hover:po-bg-slate-100
-						po-border po-border-slate-100
-					"
-					role="button"
-				>
-					<span class="po-w-5">
-						<UserIcon
-							v-if="profile.isPersonal"
-							:class="[
-								'po-stroke-current',
-								{ 'po-stroke-mpao-orange': profile.current },
-							]"
-						/>
-						<BriefcaseIcon
-							v-if="!profile.isPersonal"
-							:class="[
-								'po-stroke-current',
-								{ 'po-stroke-mpao-orange': profile.current },
-							]"
-						/>
-					</span>
-					<span class="po-flex po-flex-col po-space-y-1">
-						<span class="po-text-sm po-font-normal">{{ profile.name }}</span>
-						<span
-							v-if="0 !== profile.identifier.length"
-							class="po-text-xs po-text-slate-400"
-							>{{ profile.identifier }}</span
-						>
-					</span>
-				</a>
-				 -->
-				<div
-					class="
-						md:po-grid
-						po-grid-cols-2 po-space-x-1 po-pt-2 po-border-t po-border-slate-200
-					"
-				>
+				<div class="md:po-grid po-grid-cols-2 po-space-x-1 po-pt-2">
 					<a
 						href="#"
 						@click.prevent="$emit('button-click', 'current-profile')"
@@ -241,8 +204,8 @@
 							po-text-slate-600
 							po-rounded-lg
 							po-bg-white
-							hover:po-bg-slate-100
-							po-border po-border-slate-100
+							hover:po-bg-slate-50
+							po-transition-all po-duration-150 po-ease-out
 						"
 						role="button"
 					>
@@ -262,8 +225,8 @@
 							po-text-slate-600
 							po-rounded-lg
 							po-bg-white
-							hover:po-bg-slate-100
-							po-border po-border-slate-100
+							hover:po-bg-slate-50
+							po-transition-all po-duration-150 po-ease-out
 						"
 						role="button"
 					>
