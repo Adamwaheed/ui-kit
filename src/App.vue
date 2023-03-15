@@ -478,6 +478,7 @@
 							</PoButton>
 							<PoButton type="button" label="Danger" action-type="danger" />
 							<PoButton type="button" label="Ghost" action-type="ghost" />
+							<PoButton type="button" label="Success" action-type="success" />
 						</div>
 					</template>
 				</PoCard>
