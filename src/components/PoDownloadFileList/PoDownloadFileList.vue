@@ -116,5 +116,5 @@ const props = defineProps({
 	},
 });
 
-const emit = defineEmits(["button-click"]);
+const emit = defineEmits(["button-click", "view-click"]);
 </script>
