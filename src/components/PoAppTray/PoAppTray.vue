@@ -20,28 +20,27 @@
 		>
 			<PopoverPanel
 				class="
-					po-space-y-1
 					po-z-10
 					po-absolute
 					po-right-0
 					po-top-16
 					po-opacity-0
 					po-bg-white
-					po-bg-opacity-50
-					po-backdrop-blur
-					po-backdrop-filter
 					po-shadow-lg
-					po-rounded-xl
-					po-w-96
+					po-rounded-b-xl
+					po-rounded-t-0
+					po-w-[366px]
 					po-p-4
 					po-border
-					po-border-slate-200
+					po-border-t-0
+					po-border-slate-300
 					po-pt-5
 					po-transition-all
 					po-duration-100
 					po-ease-linear
 					po-max-h-[calc(100vh-85px)]
 					po-overflow-y-scroll
+					po-text-center
 				"
 			>
 				<div v-for="collection in appList">
@@ -81,11 +80,11 @@
 										po-overflow-hidden
 									"
 								>
-									<span class="po-w-8" v-html="app.icon"></span>
+									<span class="po-w-9" v-html="app.icon"></span>
 								</span>
 								<span
 									class="
-										po-text-slate-600 po-font-normal po-text-sm po-text-center
+										po-text-slate-500 po-font-normal po-text-sm po-text-center
 									"
 									>{{ app.name }}</span
 								>
