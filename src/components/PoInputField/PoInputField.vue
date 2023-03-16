@@ -75,7 +75,7 @@ import {
 	InformationCircleIcon,
 	ExclamationTriangleIcon,
 } from "@heroicons/vue/20/solid";
-import { watch, ref } from "vue";
+import { watch, ref, toRefs } from "vue";
 
 const props = defineProps({
 	/**
@@ -178,8 +178,6 @@ function getBorderColor() {
 }
 
 const { errorMessage } = toRefs(props);
-
-console.log("errmsg", errorMessage);
 
 const formHasError = ref(null !== errorMessage.value ? true : props.hasError);
 
