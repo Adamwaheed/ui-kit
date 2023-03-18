@@ -1,16 +1,9 @@
-function i(o) {
-  const t = new Date(o), n = {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  };
-  return t.toLocaleDateString("en-US", n);
-}
-const d = async (o, t) => {
-  const n = useCookie("token"), a = {
+import { f as l } from "./FormatDate-ac18ec36.mjs";
+const d = async (o, s) => {
+  const a = useCookie("token"), r = {
     key: o,
     async onRequest({ options: e }) {
-      e.headers = e.headers || {}, e.headers["Content-Type"] = "application/json", n.value && (e.headers.Authorization = `Bearer ${n.value}`);
+      e.headers = e.headers || {}, e.headers["Content-Type"] = "application/json", a.value && (e.headers.Authorization = `Bearer ${a.value}`);
     },
     async onRequestError({ error: e }) {
       console.log(e.message);
@@ -18,16 +11,16 @@ const d = async (o, t) => {
     async onResponseError({ response: e }) {
       console.log(e._data.message);
     },
-    ...t
-  }, { data: r, pending: s, error: c, execute: u } = await useFetch(o, a);
+    ...s
+  }, { data: t, pending: n, error: c, execute: u } = await useFetch(o, r);
   return {
-    data: r,
-    pending: s,
+    data: t,
+    pending: n,
     error: c,
     execute: u
   };
 };
 export {
-  i as formatDate,
+  l as formatDate,
   d as useHttp
 };

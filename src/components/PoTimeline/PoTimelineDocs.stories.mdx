@@ -1,0 +1,84 @@
+# Timeline component
+
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
+
+import PoTimeline from "./PoTimeline.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Content/Timeline" component={PoTimeline} />
+
+<Description of={PoTimeline} />
+
+#### Many
+
+<Canvas withToolbar>
+	<Story inline={true} id="content-timeline--many" />
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTimeline :timeline="locationHistory" />
+    const locationHistory = [
+      {
+        label: "Main Office",
+        date: "2022-09-02 10:20:25",
+        description:
+          "Moved from Velaana Customer Centre to Main Office, Male City, Kaafu",
+        current: true,
+      },
+      {
+        label: "Velaana Customer Centre",
+        date: "10-23-2022",
+        description:
+          "Moved from Vilingili Office to Velaana Customer Centre, Male City, Kaafu",
+      },
+      {
+        label: "Vilingili Office",
+        date: "Apr 17, 2020",
+        description: "Moved from Main Office to Vilingili Office, Vilingili, Kaafu",
+      },
+      {
+        label: "Main Office",
+        date: "Jan 10, 2020",
+        description: "Started working at Main Office, Male City, Kaafu",
+      },
+    ];
+  `}
+/>
+
+#### One
+
+<Canvas withToolbar>
+	<Story inline={true} id="content-timeline--one" />
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTimeline :timeline="locationHistory" />
+    const locationHistory = [
+      {
+        label: "Main Office",
+        date: "Jan 10, 2020",
+        description: "Started working at Main Office, Male City, Kaafu",
+      },
+    ];
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoTimeline} />
