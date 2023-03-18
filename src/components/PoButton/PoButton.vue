@@ -76,7 +76,7 @@ import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
 const buttonClassess =
-	"po-rounded-lg po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
+	"po-rounded-full po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
 
 const props = defineProps({
 	/**

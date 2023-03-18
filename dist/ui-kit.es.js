@@ -2714,7 +2714,7 @@ const pa = {
   },
   emits: ["button-click"],
   setup(e, { emit: t }) {
-    const n = e, o = "po-rounded-lg po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400", l = C(() => {
+    const n = e, o = "po-rounded-full po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400", l = C(() => {
       switch (n.size) {
         case "sm":
           return "po-px-2 po-py-1 po-text-xs";
