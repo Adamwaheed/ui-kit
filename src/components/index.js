@@ -57,3 +57,4 @@ export { default as Rufiyaa } from "./Rufiyaa/Rufiyaa.vue";
 export { default as PoHeading } from "./PoHeading/PoHeading.vue";
 export { default as PoMultiSelect } from "./PoMultiSelect/PoMultiSelect.vue";
 export { default as PoTimeline } from "./PoTimeline/PoTimeline.vue";
+export { default as PoTableCheckbox } from "./PoTableCheckbox/PoTableCheckbox.vue";
