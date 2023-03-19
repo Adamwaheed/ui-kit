@@ -25,7 +25,6 @@ export default {
 };
 </script>
 <script setup>
-import { ref, watch, onUpdated } from "vue";
 import { CheckCircleIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({

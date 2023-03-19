@@ -40,7 +40,7 @@
           -->
 					<a
 						href="#"
-						@click.prevent="$emit('button-click', file.label)"
+						@click.prevent="$emit('button-click', file)"
 						class="
 							po-font-medium po-text-mpao-lightblue
 							hover:po-text-indigo-500
