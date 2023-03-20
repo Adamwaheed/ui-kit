@@ -649,6 +649,8 @@ let profileSwitcherData = ref({
 			url: "#self",
 			current: false,
 			isPersonal: true,
+			profilePic:
+				"https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80",
 		},
 		{
 			name: "Penshion Office",
@@ -657,6 +659,7 @@ let profileSwitcherData = ref({
 			url: "#business",
 			current: true,
 			isPersonal: false,
+			userRole: "Adminstrator",
 		},
 		{
 			name: "Garden Office",
@@ -665,6 +668,7 @@ let profileSwitcherData = ref({
 			url: "#business",
 			current: false,
 			isPersonal: false,
+			userRole: "Gardener",
 		},
 		{
 			name: "Production Pvt Ltd",
@@ -673,6 +677,7 @@ let profileSwitcherData = ref({
 			url: "#business",
 			current: false,
 			isPersonal: false,
+			userRole: "Producer",
 		},
 		{
 			name: "Classic Pvt Ltd",
@@ -680,6 +685,7 @@ let profileSwitcherData = ref({
 			url: "#business",
 			current: false,
 			isPersonal: false,
+			userRole: "Classica",
 		},
 	],
 });

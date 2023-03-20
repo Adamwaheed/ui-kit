@@ -61,10 +61,14 @@
 					"
 				>
 					<img
+						v-if="currentUserPicture"
 						class="po-rounded-full po-border po-border-white"
-						src="https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80"
+						:src="currentUserPicture"
 						:alt="currentProfileLabel"
 					/>
+					<span class="po-text-xs po-text-white po-font-semibold" v-else>{{
+						currentProfileLabel
+					}}</span>
 				</div>
 			</div>
 		</PopoverButton>
@@ -103,33 +107,42 @@
 			>
 				<div class="po-pb-5">
 					<img
+						v-if="currentUserPicture"
 						class="
-							po-w-20
-							po-h-20
-							po-mx-auto
-							po-rounded-full
-							po-overflow-hidden
-							po-saturate-50
-							po-opacity-90
+							po-w-20 po-h-20 po-mx-auto po-rounded-full po-overflow-hidden
 						"
-						src="https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80"
+						:src="currentUserPicture"
 						alt=""
 					/>
 					<span
-						class="
-							po-text-base po-text-slate-600 po-font-medium po-block po-mt-4
-						"
-						>Claire Hussain</span
+						v-if="currUserName"
+						class="po-text-base po-text-slate-600 po-font-medium po-block"
+						:class="[{ 'po-mt-4': currentUserPicture }]"
+						>{{ currUserName }}</span
 					>
-					<span class="po-block po-text-sm po-text-slate-400 po-italic">{{
-						currentProfileFullLabel === "Claire Hussain"
-							? "claire@example.com"
-							: `Adminstrator at ${currentProfileFullLabel}`
-					}}</span>
+					<span
+						v-if="currUserName"
+						class="po-block po-text-sm po-text-slate-400 po-italic"
+					>
+						<span v-if="currentProfileFullLabel === currUserName">Self</span>
+						<span v-else
+							>{{ currentProfileRole }} at {{ currentProfileFullLabel }}</span
+						>
+					</span>
 				</div>
 				<div
 					class="
-						po-space-y-2 po-py-2 po-border-t po-border-b po-border-slate-200
+						po-h-[1px]
+						po-w-full
+						po-bg-gradient-to-l
+						po-from-orange-200
+						po-via-blue-300
+						po-to-blue-200
+					"
+				></div>
+				<div
+					class="
+						po-space-y-2 po-py-2
 						-po-mx-5
 						po-px-5 po-max-h-[250px] po-overflow-y-scroll
 					"
@@ -149,12 +162,7 @@
 							po-transition-all
 							po-duration-150
 							po-ease-out
-							hover:po-bg-slate-100
-							hover:po-bg-gradient-to-bl
-							hover:po-from-white
-							hover:po-via-slate-50
-							hover:po-to-slate-100
-							hover:po-shadow-md
+							hover:po-bg-blue-50
 						"
 						:class="[
 							{
@@ -182,16 +190,28 @@
 								]"
 							/>
 						</span>
-						<span class="po-flex po-flex-col po-space-y-1">
-							<span class="po-text-sm po-font-normal">{{ profile.name }}</span>
+						<span class="">
+							<span class="po-block po-text-sm po-font-normal">{{
+								profile.name
+							}}</span>
 							<span
 								v-if="0 !== profile.identifier.length"
-								class="po-text-xs po-text-slate-400"
+								class="po-text-left po-block po-text-xs po-text-slate-400"
 								>{{ profile.identifier }}</span
 							>
 						</span>
 					</a>
 				</div>
+				<div
+					class="
+						po-h-[2px]
+						po-w-full
+						po-bg-gradient-to-l
+						po-from-orange-200
+						po-via-blue-300
+						po-to-blue-200
+					"
+				></div>
 				<!--
                     Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
                     @event button-click
@@ -207,8 +227,8 @@
 							po-p-3
 							po-text-slate-600
 							po-rounded-lg
-							po-bg-white
-							hover:po-bg-slate-50
+							po-bg-slate-50
+							hover:po-bg-blue-50
 							po-transition-all po-duration-150 po-ease-out
 						"
 						role="button"
@@ -228,8 +248,8 @@
 							po-p-3
 							po-text-slate-600
 							po-rounded-lg
-							po-bg-white
-							hover:po-bg-slate-50
+							po-bg-slate-50
+							hover:po-bg-blue-50
 							po-transition-all po-duration-150 po-ease-out
 						"
 						role="button"
@@ -275,6 +295,7 @@ const props = defineProps({
 
 const currentProfileFullLabel = ref("");
 const currentProfileLogo = ref("");
+const currentProfileRole = ref("");
 
 const currentProfileLabel = computed(() => {
 	const currProfile = props.profileSwitcherData.profiles.filter(
@@ -286,6 +307,12 @@ const currentProfileLabel = computed(() => {
 			? currProfile.logo
 			: ""
 		: "";
+
+	currentProfileRole.value = currProfile
+		? currProfile.userRole
+			? currProfile.userRole
+			: "User"
+		: "User";
 	return currProfile
 		? currProfile.name
 				.match(/\b[A-Z]/g)
@@ -293,6 +320,11 @@ const currentProfileLabel = computed(() => {
 				.substr(0, 2)
 		: "";
 });
+
+const currentUserPicture =
+	props?.profileSwitcherData?.profiles?.[0]?.profilePic ?? null;
+
+const currUserName = props?.profileSwitcherData?.profiles?.[0]?.name ?? null;
 
 const emit = defineEmits(["button-click"]);
 </script>
