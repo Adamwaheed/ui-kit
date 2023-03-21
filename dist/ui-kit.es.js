@@ -3901,8 +3901,8 @@ const Es = ["for"], Ps = {
         ])
       ]),
       s("tbody", null, [
-        e.tbody !== null || e.tbody !== null && e.tbody.length !== 0 ? (i(!0), u(I, { key: 0 }, z(e.tbody, (o) => (i(), u("tr", null, [
-          J(t.$slots, "td", Ut(Gt(o)))
+        e.tbody !== null || e.tbody !== null && e.tbody.length !== 0 ? (i(!0), u(I, { key: 0 }, z(e.tbody, (o, l) => (i(), u("tr", null, [
+          J(t.$slots, "td", Ut(Gt({ ...o, index: l, item: o })))
         ]))), 256)) : x("", !0),
         e.tbody == null || e.tbody !== null && e.tbody.length == 0 ? (i(), u("tr", Gr, [
           s("td", {

@@ -1,31 +1,41 @@
 # Table component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
 
-import PoTable from './PoTable.vue';
+import PoTable from "./PoTable.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Content/Table" component={PoTable} />
 
 <Description of={PoTable} />
 
 ### With content
+
 <Canvas withToolbar>
-  <Story id="content-table--with-content" />
+	<Story id="content-table--with-content" />
 </Canvas>
 
 ### Empty
+
 <Canvas withToolbar>
-  <Story id="content-table--empty" />
+	<Story id="content-table--empty" />
 </Canvas>
 
 PoTable uses `data-title=""` attribute to display titles on resposive (mobile) view.
+
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoTable :thead="tableHead" :tbody="tableBody">
         <template #th="{ label }">
         {{ label }}
@@ -40,15 +50,57 @@ PoTable uses `data-title=""` attribute to display titles on resposive (mobile) v
   `}
 />
 
+To get the index of an item in the tbody array, you can add an `index` key to the td object, like this:
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody">
+        <template #th="{ label }">
+        {{ label }}
+        </template>
+        <template #td="{ name, nid, source, dod, index }">
+        <td data-title="name" @click="doSomething(index)">{{ name }}</td>
+        <td data-title="NID">{{ nid }}</td>
+        <td data-title="source">{{ source }}</td>
+        <td data-title="dod">{{ dod }}</td>
+        </template>
+    </PoTable>
+  `}
+/>
+
+To get the full object of an item in the tbody array, you can add an `item` key to the td object, like this:
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody">
+        <template #th="{ label }">
+        {{ label }}
+        </template>
+        <template #td="{ name, nid, source, dod, item }">
+        <td data-title="name" @click="doSomething(item)">{{ name }}</td>
+        <td data-title="NID">{{ nid }}</td>
+        <td data-title="source">{{ source }}</td>
+        <td data-title="dod">{{ dod }}</td>
+        </template>
+    </PoTable>
+  `}
+/>
+
 ### Explanation
 
 <ArgsTable of={PoTable} />
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let tableHead = [
         { label: "Name" },
         { label: "NID" },

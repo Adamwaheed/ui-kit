@@ -190,8 +190,10 @@
 							<template #th="{ label }">
 								{{ label }}
 							</template>
-							<template #td="{ name, nid, source, dod, action }">
-								<td data-title="name">{{ name }}</td>
+							<template #td="{ index, name, nid, source, dod, action, item }">
+								<td data-title="name">
+									{{ name }}---- -- {{ item }} {{ index }}
+								</td>
 								<td data-title="NID">{{ nid }}</td>
 								<td data-title="source">{{ source }}</td>
 								<td data-title="dod">{{ dod }}</td>
@@ -781,6 +783,7 @@ let tableBody = [
 		nid: "A00000",
 		source: "YY Clinic",
 		dod: "2022-11-12",
+		something: "else",
 		action: "text",
 	},
 	{
