@@ -1074,7 +1074,7 @@ const dynamicTableCols = [
 	{ key: "city", label: "City", sortable: false, hidable: true, hidden: false },
 ];
 
-const currUserObject = {
+const currUserObject = ref({
 	id: 62,
 	uuid: "6396f74e-9181-8313-8657-2206f705b597",
 	name: "Jhon I.B. Leesi",
@@ -1128,5 +1128,5 @@ const currUserObject = {
 		},
 	],
 	permissions: [],
-};
+});
 </script>

@@ -2,7 +2,7 @@
 	<Popover v-slot="{ open }">
 		<PopoverButton class="po-flex po-items-center po-outline-none">
 			<span
-				v-if="'' === currentProfileLogo"
+				v-if="!userObject?.transacting_as_organisation?.logo"
 				class="
 					po-hidden
 					lg:po-block
@@ -17,7 +17,7 @@
 				>{{ currentProfileFullLabel }}</span
 			>
 			<span
-				v-if="'' !== currentProfileLogo"
+				v-if="userObject?.transacting_as_organisation?.logo"
 				class="
 					po-px-3
 					po-bg-gradient-to-br
@@ -32,21 +32,27 @@
 					po-text-center
 				"
 			>
-				<img class="po-h-8" :src="currentProfileLogo" alt="" />
+				<img
+					class="po-h-8"
+					:src="userObject?.transacting_as_organisation?.logo"
+					alt=""
+				/>
 			</span>
 			<div
 				:class="[
 					{
 						'po-bg-gradient-to-br po-from-slate-50 po-to-blue-100 po-p-1 po-rounded-r-md':
-							'' !== currentProfileLogo,
+							userObject?.transacting_as_organisation?.logo,
 					},
 				]"
 			>
 				<div
 					:class="[
 						{ 'text-opacity-90': open },
-						{ 'po-w-10 po-h-10': '' === currentProfileLogo },
-						{ 'po-w-8 po-h-8': '' !== currentProfileLogo },
+						{
+							'po-w-10 po-h-10': !userObject?.transacting_as_organisation?.logo,
+						},
+						{ 'po-w-8 po-h-8': userObject?.transacting_as_organisation?.logo },
 					]"
 					class="
 						po-shrink-0
@@ -61,9 +67,9 @@
 					"
 				>
 					<img
-						v-if="currentUserPicture"
+						v-if="userObject?.avatar"
 						class="po-rounded-full po-border po-border-white"
-						:src="currentUserPicture"
+						:src="userObject?.avatar"
 						:alt="currentProfileLabel"
 					/>
 					<span class="po-text-xs po-text-white po-font-semibold" v-else>{{
@@ -115,16 +121,18 @@
 						alt=""
 					/>
 					<span
-						v-if="currUserName"
+						v-if="userObject?.name"
 						class="po-text-base po-text-slate-600 po-font-medium po-block"
 						:class="[{ 'po-mt-4': currentUserPicture }]"
-						>{{ currUserName }}</span
+						>{{ userObject?.name }}</span
 					>
 					<span
-						v-if="currUserName"
+						v-if="userObject?.name"
 						class="po-block po-text-sm po-text-slate-400 po-italic"
 					>
-						<span v-if="currentProfileFullLabel === currUserName">Self</span>
+						<span v-if="currentProfileFullLabel === userObject?.name"
+							>Self</span
+						>
 						<span v-else
 							>{{ currentProfileRole }} at {{ currentProfileFullLabel }}</span
 						>
@@ -148,9 +156,9 @@
 					"
 				>
 					<a
-						v-for="profile in profileSwitcherData.profiles"
+						v-for="(profile, index) in userObject?.organisations"
 						href="#"
-						@click.prevent="$emit('button-click', profile)"
+						@click.prevent="handleProfileClick(profile, index)"
 						class="
 							po-flex
 							po-items-center
@@ -297,10 +305,6 @@ const props = defineProps({
 	},
 });
 
-console.log("pro", props.userObject);
-
-const { userObject } = toRefs(props);
-
 const currentProfileFullLabel = ref("");
 const currentProfileLogo = ref("");
 const currentProfileRole = ref("");
@@ -335,4 +339,10 @@ const currentUserPicture =
 const currUserName = props?.profileSwitcherData?.profiles?.[0]?.name ?? null;
 
 const emit = defineEmits(["button-click"]);
+
+const { userObject } = toRefs(props);
+
+function handleProfileClick(obj) {
+	emit("button-click", obj);
+}
 </script>
