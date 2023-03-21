@@ -285,13 +285,21 @@ import {
 	BriefcaseIcon,
 	ArrowRightOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { computed, ref } from "vue";
+import { computed, ref, toRefs } from "vue";
 const props = defineProps({
 	profileSwitcherData: {
 		type: Object,
 		default: null,
 	},
+	userObject: {
+		type: Object,
+		default: null,
+	},
 });
+
+console.log("pro", props.userObject);
+
+const { userObject } = toRefs(props);
 
 const currentProfileFullLabel = ref("");
 const currentProfileLogo = ref("");

@@ -4,6 +4,7 @@
 			:has-search="true"
 			:app-list="allApps"
 			:profile-switcher-data="profileSwitcherData"
+			:user-object="currUserObject"
 			:notifications="notifications"
 			@profile-switcher-click="handleProfileSwitcherClick"
 			app-name="Pension UI Kit"
@@ -1072,4 +1073,60 @@ const dynamicTableCols = [
 	{ key: "age", label: "Age", sortable: true, hidable: true, hidden: false },
 	{ key: "city", label: "City", sortable: false, hidable: true, hidden: false },
 ];
+
+const currUserObject = {
+	id: 62,
+	uuid: "6396f74e-9181-8313-8657-2206f705b597",
+	name: "Jhon I.B. Leesi",
+	username: "A130920",
+	identity_uuid: "62f754aa-6e64-d874-2898-170121a87af0",
+	identifier: "A130920",
+	entity_id: 83716,
+	avatar:
+		"https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80",
+	created_at: "2022-12-12T14:41:34.000Z",
+	updated_at: "2023-03-20T11:48:38.278Z",
+	deleted_at: null,
+	member_id: 164979,
+	staff_detail: {
+		entity_id: 83716,
+		nic: "A130920",
+		rcn: "095",
+		work_email: null,
+		workplace_id: null,
+		team_id: null,
+		superior_structure_ids: [16],
+		designation: {
+			id: 40,
+			name: "Software Developer",
+			short_name: "dev",
+			structure_id: 24,
+		},
+	},
+	transacting_as: 170725,
+	transacting_as_organisation: {
+		id: 6,
+		entity_id: 170725,
+		name: "Maldives Hajj Corporation LTD",
+		identifier: "20140200471",
+		organisation_uuid: "62f7533b-aaa9-2526-8210-3502a228f03a",
+	},
+	organisations: [
+		{
+			id: 2,
+			entity_id: 171173,
+			name: "Maldives Pension Administration Office",
+			identifier: "20100200015",
+			organisation_uuid: "62f7556c-e994-4011-7794-7502363f6898",
+		},
+		{
+			id: 6,
+			entity_id: 170725,
+			name: "Maldives Hajj Corporation LTD",
+			identifier: "20140200471",
+			organisation_uuid: "62f7533b-aaa9-2526-8210-3502a228f03a",
+		},
+	],
+	permissions: [],
+};
 </script>

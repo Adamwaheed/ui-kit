@@ -61,6 +61,7 @@
 					<PoAppTray :app-list="appList" />
 					<PoProfileSwitcher
 						:profile-switcher-data="profileSwitcherData"
+						:user-object="userObject"
 						@button-click="handleProfileSwitcherClick"
 					/>
 				</div>
@@ -132,6 +133,13 @@ defineProps({
 	 * Profile switcher object
 	 */
 	profileSwitcherData: {
+		type: Object,
+		default: null,
+	},
+	/**
+	 * User object
+	 */
+	userObject: {
 		type: Object,
 		default: null,
 	},
