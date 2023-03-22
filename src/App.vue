@@ -1110,6 +1110,7 @@ const currUserObject = ref({
 		name: "Maldives Hajj Corporation LTD",
 		identifier: "20140200471",
 		organisation_uuid: "62f7533b-aaa9-2526-8210-3502a228f03a",
+		logo: "http://uidocs.test/logo-2.png",
 	},
 	organisations: [
 		{
@@ -1125,6 +1126,7 @@ const currUserObject = ref({
 			name: "Maldives Hajj Corporation LTD",
 			identifier: "20140200471",
 			organisation_uuid: "62f7533b-aaa9-2526-8210-3502a228f03a",
+			logo: "http://uidocs.test/logo-2.png",
 		},
 	],
 	permissions: [],

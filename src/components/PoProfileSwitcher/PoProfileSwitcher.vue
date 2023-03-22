@@ -14,7 +14,7 @@
 					po-max-w-[140px]
 					po-overflow-hidden
 				"
-				>{{ currentProfileFullLabel }}</span
+				>{{ currentProfile.name }}</span
 			>
 			<span
 				v-if="userObject?.transacting_as_organisation?.logo"
@@ -130,11 +130,9 @@
 						v-if="userObject?.name"
 						class="po-block po-text-sm po-text-slate-400 po-italic"
 					>
-						<span v-if="currentProfileFullLabel === userObject?.name"
-							>Self</span
-						>
+						<span v-if="currentProfile.name === userObject?.name">Self</span>
 						<span v-else
-							>{{ currentProfileRole }} at {{ currentProfileFullLabel }}</span
+							>{{ currentProfileRole }} at {{ currentProfile.name }}</span
 						>
 					</span>
 				</div>
@@ -156,7 +154,7 @@
 					"
 				>
 					<a
-						v-for="(profile, index) in userObject?.organisations"
+						v-for="(profile, index) in profilesList"
 						href="#"
 						@click.prevent="handleProfileClick(profile, index)"
 						class="
@@ -203,7 +201,7 @@
 								profile.name
 							}}</span>
 							<span
-								v-if="0 !== profile.identifier.length"
+								v-if="profile.identifier"
 								class="po-text-left po-block po-text-xs po-text-slate-400"
 								>{{ profile.identifier }}</span
 							>
@@ -221,9 +219,9 @@
 					"
 				></div>
 				<!--
-                    Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
-                    @event button-click
-                -->
+						Emits profile object value when profile is clicked, emits 'current-profile' when current profile link is clicked, emits 'logout' when logout button is clicked
+						@event button-click
+				-->
 				<div class="md:po-grid po-grid-cols-2 po-space-x-1 po-pt-2">
 					<a
 						href="#"
@@ -333,6 +331,8 @@ const currentProfileLabel = computed(() => {
 		: "";
 });
 
+// begining of the new
+
 const currentUserPicture =
 	props?.profileSwitcherData?.profiles?.[0]?.profilePic ?? null;
 
@@ -342,7 +342,66 @@ const emit = defineEmits(["button-click"]);
 
 const { userObject } = toRefs(props);
 
-function handleProfileClick(obj) {
+function handleProfileClick(obj, inx) {
 	emit("button-click", obj);
+
+	userObject.value.organisations;
+}
+
+const currentProfile = ref({
+	name: "",
+	initials: "",
+	image: "",
+});
+
+setCurrentProfile();
+
+const profilesList = ref([]);
+
+setProfilesList();
+
+/**
+ * Helpers
+ */
+
+function nameToInisitals(name) {
+	return name
+		? name
+				.match(/\b[A-Z]/g)
+				.join("")
+				.substr(0, 2)
+		: "";
+}
+
+function setCurrentProfile() {
+	let transectingAs =
+		Object.keys(props.userObject.transacting_as_organisation).length > 0
+			? props.userObject.transacting_as_organisation
+			: null;
+	let profileName = transectingAs ? transectingAs.name : props.userObject.name;
+	let profileImage = transectingAs
+		? transectingAs.logo
+			? transectingAs.logo
+			: props.userObject.avatar
+		: "";
+	currentProfile.value = {
+		name: profileName,
+		initials: nameToInisitals(profileName),
+		image: profileImage,
+	};
+}
+
+function setProfilesList() {
+	profilesList.value.push({
+		id: props.userObject.id,
+		entity_id: props.userObject.entity_id,
+		name: props.userObject.name,
+		identifier: null,
+		organisation_uuid: null,
+	});
+
+	if (props.userObject.organisations.length > 0) {
+		props.userObject.organisations.forEach((f) => profilesList.value.push(f));
+	}
 }
 </script>
