@@ -316,11 +316,10 @@
 								<p>{{ inputModel }}</p>
 
 								<PoInputField
-									label="Input Error"
+									label="Input Errors"
 									id="input-id2"
-									:has-error="true"
 									type="text"
-									error-message="Hello error"
+									error-message=""
 								/>
 								<br />
 								<PoInputFile label="File input" />

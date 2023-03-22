@@ -249,10 +249,7 @@ const { errorMessage } = toRefs(props);
 const formHasError = ref(null !== errorMessage.value ? true : false);
 
 watch(errorMessage, (newVal, oldVal) => {
-	if (null !== errorMessage.value) {
-		formHasError.value = true;
-	} else {
-		formHasError.value = false;
-	}
+	formHasError.value =
+		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 </script>
