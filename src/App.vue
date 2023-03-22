@@ -164,11 +164,11 @@
 							/>
 							{{ selectedmultiselectItems }}
 							<PoRadioInput
-								label="Radio"
+								label="Radios"
 								:required="true"
 								:options="radioOptions"
 								v-model="radioOptionSelected"
-								message="Sup error"
+								error-message=""
 							/>
 							{{ radioOptionSelected }}
 						</div>

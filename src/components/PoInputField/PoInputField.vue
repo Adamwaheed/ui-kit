@@ -184,6 +184,8 @@ const formHasError = ref(null !== errorMessage.value ? true : props.hasError);
 watch(errorMessage, (newVal, oldVal) => {
 	if (null !== errorMessage.value) {
 		formHasError.value = true;
+	} else {
+		formHasError.value = false;
 	}
 });
 </script>
