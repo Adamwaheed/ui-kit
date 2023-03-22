@@ -3178,9 +3178,9 @@ const ks = {
     }), J(o, () => {
       t("update:modelValue", o.value);
     });
-    const { errorMessage: n } = Ve(l), a = k(n.value !== null);
+    const { errorMessage: n } = Ve(l), a = k();
     return J(n, (r, p) => {
-      n.value !== null && (a.value = !0);
+      a.value = n.value !== null && n.value !== "";
     }), (r, p) => (i(), M(h(Zn), {
       modelValue: o.value,
       "onUpdate:modelValue": p[0] || (p[0] = (c) => o.value = c),
@@ -4357,9 +4357,9 @@ const js = ["for"], Bs = {
     function l() {
       return t.hasError ? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600" : t.borderColor;
     }
-    const { errorMessage: o } = Ve(t), n = k(o.value !== null ? !0 : t.hasError);
+    const { errorMessage: o } = Ve(t), n = k(o.value !== null);
     return J(o, (a, r) => {
-      o.value !== null && (n.value = !0);
+      n.value = o.value !== null && o.value !== "";
     }), (a, r) => (i(), u("div", {
       class: N(["po-relative", [{ "lg:po-grid lg:po-grid-cols-2": e.display === "horizontal" }]])
     }, [
@@ -4597,7 +4597,7 @@ const js = ["for"], Bs = {
     });
     const { errorMessage: p } = Ve(l), c = k(p.value !== null);
     return J(p, (d, f) => {
-      p.value !== null && (c.value = !0);
+      c.value = p.value !== null && p.value !== "";
     }), (d, f) => (i(), M(h($n), {
       as: "div",
       modelValue: n.value,
