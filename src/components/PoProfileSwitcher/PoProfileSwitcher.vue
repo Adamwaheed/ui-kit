@@ -365,20 +365,15 @@ function setProfilesList() {
 }
 
 function updateCurrentProfile() {
-	for (let index = 0; index < profilesList.value.length; index++) {
-		profilesList.value[index].current = false;
-		if (Object.keys(props.userObject.transacting_as_organisation).length > 0) {
-			if (
-				props.userObject.transacting_as_organisation.entity_id ===
-				profilesList.value[index].entity_id
-			) {
-				profilesList.value[index].current = true;
-			} else {
-				profilesList.value[index].current = false;
-			}
-		} else {
-			profilesList.value[0].current = true;
-		}
+	profilesList.value.forEach((profile) => {
+		profile.current =
+			Object.keys(props.userObject.transacting_as_organisation).length > 0 &&
+			profile.entity_id ===
+				props.userObject.transacting_as_organisation.entity_id;
+	});
+
+	if (Object.keys(props.userObject.transacting_as_organisation).length === 0) {
+		profilesList.value[0].current = true;
 	}
 }
 
