@@ -1148,7 +1148,7 @@ function newHandleProfileSwitcherClick(obj) {
 		}
 	}
 	if (!matchFound) {
-		currUserObject.value.transacting_as_organisation = {};
+		currUserObject.value.transacting_as_organisation = null;
 	}
 }
 </script>

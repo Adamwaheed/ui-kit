@@ -73,7 +73,7 @@
 						:alt="currentProfile.name"
 					/>
 					<span class="po-text-xs po-text-white po-font-semibold" v-else>{{
-						currentProfile.name
+						currentProfile.initials
 					}}</span>
 				</div>
 			</div>
@@ -328,10 +328,11 @@ function nameToInisitals(name) {
 }
 
 function setCurrentProfile() {
-	let transectingAs =
-		Object.keys(props.userObject.transacting_as_organisation).length > 0
+	let transectingAs = props.userObject.transacting_as_organisation
+		? Object.keys(props.userObject.transacting_as_organisation).length > 0
 			? props.userObject.transacting_as_organisation
-			: null;
+			: null
+		: null;
 	let profileName = transectingAs ? transectingAs.name : props.userObject.name;
 	let profileImage = transectingAs
 		? transectingAs.logo
@@ -363,12 +364,16 @@ function setProfilesList() {
 function updateCurrentProfile() {
 	profilesList.value.forEach((profile) => {
 		profile.current =
+			props.userObject.transacting_as_organisation &&
 			Object.keys(props.userObject.transacting_as_organisation).length > 0 &&
 			profile.entity_id ===
 				props.userObject.transacting_as_organisation.entity_id;
 	});
 
-	if (Object.keys(props.userObject.transacting_as_organisation).length === 0) {
+	if (
+		props.userObject.transacting_as_organisation &&
+		Object.keys(props.userObject.transacting_as_organisation).length === 0
+	) {
 		profilesList.value[0].current = true;
 	}
 }
