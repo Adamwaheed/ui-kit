@@ -4,14 +4,11 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<RadioGroupLabel
-			class="
-				po-text-sm
-				po-font-medium
-				po-flex
-				po-items-center
-				po-space-x-1
-				po-text-slate-700
-			"
+			:class="[
+				'po-text-sm po-font-medium po-flex po-items-center po-space-x-1',
+				{ 'po-text-red-500': formHasError },
+				{ 'po-text-slate-700': !formHasError },
+			]"
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span
@@ -78,6 +75,27 @@
 				</div>
 			</RadioGroupOption>
 		</div>
+		<div>
+			<p
+				class="po-mt-2 po-text-sm po-text-slate-500"
+				:id="`${id}-description`"
+				v-if="null !== message"
+			>
+				{{ message }}
+			</p>
+			<p
+				class="
+					po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
+				"
+				:id="`${id}-error`"
+				v-if="formHasError && null !== errorMessage"
+			>
+				<ExclamationTriangleIcon
+					class="po-fill-current po-w-4 po-mt-[0.2rem] po-shrink-0"
+				/>
+				<span>{{ errorMessage }}</span>
+			</p>
+		</div>
 	</RadioGroup>
 </template>
 
@@ -87,7 +105,8 @@ export default {
 };
 </script>
 <script setup>
-import { ref, watch, onUpdated } from "vue";
+import { ref, watch, onUpdated, toRefs } from "vue";
+import { ExclamationTriangleIcon } from "@heroicons/vue/20/solid";
 import {
 	RadioGroup,
 	RadioGroupDescription,
@@ -131,6 +150,20 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * Error message
+	 */
+	errorMessage: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Tip, description, information for the input
+	 */
+	message: {
+		type: String,
+		default: null,
+	},
 });
 
 const selectedOption = ref();
@@ -145,5 +178,15 @@ const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedOption, () => {
 	emit("update:modelValue", selectedOption.value);
+});
+
+const { errorMessage } = toRefs(props);
+
+const formHasError = ref(null !== errorMessage.value ? true : false);
+
+watch(errorMessage, (newVal, oldVal) => {
+	if (null !== errorMessage.value) {
+		formHasError.value = true;
+	}
 });
 </script>

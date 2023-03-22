@@ -168,6 +168,7 @@
 								:required="true"
 								:options="radioOptions"
 								v-model="radioOptionSelected"
+								message="Sup error"
 							/>
 							{{ radioOptionSelected }}
 						</div>
