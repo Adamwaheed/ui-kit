@@ -338,6 +338,7 @@
 									@selected="handleSelectFieldClick"
 									:list="selectFieldList"
 									v-model="selectFieldSelected"
+									error-message="This an error speaking"
 								/>
 								<br />
 								{{ selectFieldList }}

@@ -1,12 +1,12 @@
 # Select Field component
 
 import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
 } from "@storybook/addon-docs";
 
 import PoSelectField from "./PoSelectField.vue";
@@ -18,24 +18,24 @@ import dedent from "ts-dedent";
 <Description of={PoSelectField} />
 
 <Canvas withToolbar>
-  <div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
-    <Story inline={true} id="form-select-field--select-field" />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    &nbsp;
-  </div>
+	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+		<Story inline={true} id="form-select-field--select-field" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		&nbsp;
+	</div>
 </Canvas>
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoSelectField
         label="Select something"
         :list="selectFieldList"
@@ -44,15 +44,17 @@ import dedent from "ts-dedent";
   `}
 />
 
+You can use `error-message` to show an error message. The field will update visually to indicate that it has an erorr. You can use `message` property to display a message to the user.
+
 ### Explanation
 
 <ArgsTable of={PoSelectField} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     const selectFieldSelected = ref(null);
     const selectFieldList = [
         { id: 1, name: 'Koshaaru' },

@@ -5,14 +5,11 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<ComboboxLabel
-			class="
-				po-text-sm
-				po-font-medium
-				po-text-slate-700
-				po-flex
-				po-items-center
-				po-space-x-1
-			"
+			:class="[
+				'po-text-sm po-font-medium po-flex po-items-center po-space-x-1',
+				{ 'po-text-red-500': formHasError },
+				{ 'po-text-slate-700': !formHasError },
+			]"
 		>
 			<span>{{ label }}</span>
 			<span
@@ -114,6 +111,25 @@
 				</ComboboxOption>
 			</ComboboxOptions>
 		</div>
+		<p
+			class="po-mt-2 po-text-sm po-text-slate-500"
+			:id="`${id}-description`"
+			v-if="null !== message"
+		>
+			{{ message }}
+		</p>
+		<p
+			class="
+				po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
+			"
+			:id="`${id}-error`"
+			v-if="formHasError && null !== errorMessage"
+		>
+			<ExclamationTriangleIcon
+				class="po-fill-current po-w-4 po-mt-[0.2rem] po-shrink-0"
+			/>
+			<span>{{ errorMessage }}</span>
+		</p>
 	</Combobox>
 </template>
 
@@ -123,11 +139,12 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, watch, onUpdated } from "vue";
+import { computed, ref, watch, onUpdated, toRefs } from "vue";
 import {
 	CheckIcon,
 	ChevronUpDownIcon,
 	InformationCircleIcon,
+	ExclamationTriangleIcon,
 } from "@heroicons/vue/20/solid";
 import {
 	Combobox,
@@ -181,6 +198,20 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * Error message
+	 */
+	errorMessage: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Tip, description, information for the input
+	 */
+	message: {
+		type: String,
+		default: null,
+	},
 });
 
 const query = ref("");
@@ -211,5 +242,15 @@ const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 watch(selectedItem, () => {
 	emit("update:modelValue", selectedItem.value);
 	emit("selected", selectedItem.value);
+});
+
+const { errorMessage } = toRefs(props);
+
+const formHasError = ref(null !== errorMessage.value ? true : false);
+
+watch(errorMessage, (newVal, oldVal) => {
+	if (null !== errorMessage.value) {
+		formHasError.value = true;
+	}
 });
 </script>
