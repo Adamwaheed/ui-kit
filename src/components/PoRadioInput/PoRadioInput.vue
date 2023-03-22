@@ -187,11 +187,5 @@ const formHasError = ref();
 watch(errorMessage, (newVal, oldVal) => {
 	formHasError.value =
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
-
-	if (null !== errorMessage.value) {
-		formHasError.value = true;
-	} else {
-		formHasError.value = false;
-	}
 });
 </script>
