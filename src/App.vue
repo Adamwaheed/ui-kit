@@ -6,7 +6,7 @@
 			:profile-switcher-data="profileSwitcherData"
 			:user-object="currUserObject"
 			:notifications="notifications"
-			@profile-switcher-click="handleProfileSwitcherClick"
+			@profile-switcher-click="newHandleProfileSwitcherClick"
 			app-name="Pension UI Kit"
 			@query="NewSearch"
 			:current-query="currQuery"
@@ -713,7 +713,7 @@ function handleProfileSwitcherClick(obj) {
 	}
 }
 
-console.log("icon", PlayIcon);
+// console.log("icon", PlayIcon);
 
 let sidebarContent = [
 	{
@@ -1083,7 +1083,7 @@ const currUserObject = ref({
 	identifier: "A130920",
 	entity_id: 83716,
 	avatar:
-		"https://images.unsplash.com/photo-1597248374161-426f0d6d2fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80",
+		"https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80",
 	created_at: "2022-12-12T14:41:34.000Z",
 	updated_at: "2023-03-20T11:48:38.278Z",
 	deleted_at: null,
@@ -1131,4 +1131,25 @@ const currUserObject = ref({
 	],
 	permissions: [],
 });
+function newHandleProfileSwitcherClick(obj) {
+	let matchFound = false;
+	if (currUserObject.value.organisations.length > 0) {
+		for (
+			let index = 0;
+			index < currUserObject.value.organisations.length;
+			index++
+		) {
+			if (
+				currUserObject.value.organisations[index].entity_id === obj.entity_id
+			) {
+				currUserObject.value.transacting_as_organisation = obj;
+				matchFound = true;
+				break;
+			}
+		}
+	}
+	if (!matchFound) {
+		currUserObject.value.transacting_as_organisation = {};
+	}
+}
 </script>

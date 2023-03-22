@@ -70,10 +70,10 @@
 						v-if="userObject?.avatar"
 						class="po-rounded-full po-border po-border-white"
 						:src="userObject?.avatar"
-						:alt="currentProfileLabel"
+						:alt="currentProfile.name"
 					/>
 					<span class="po-text-xs po-text-white po-font-semibold" v-else>{{
-						currentProfileLabel
+						currentProfile.name
 					}}</span>
 				</div>
 			</div>
@@ -113,17 +113,17 @@
 			>
 				<div class="po-pb-5">
 					<img
-						v-if="currentUserPicture"
+						v-if="userObject?.avatar"
 						class="
 							po-w-20 po-h-20 po-mx-auto po-rounded-full po-overflow-hidden
 						"
-						:src="currentUserPicture"
+						:src="userObject?.avatar"
 						alt=""
 					/>
 					<span
 						v-if="userObject?.name"
 						class="po-text-base po-text-slate-600 po-font-medium po-block"
-						:class="[{ 'po-mt-4': currentUserPicture }]"
+						:class="[{ 'po-mt-4': userObject?.avatar }]"
 						>{{ userObject?.name }}</span
 					>
 					<span
@@ -131,9 +131,7 @@
 						class="po-block po-text-sm po-text-slate-400 po-italic"
 					>
 						<span v-if="currentProfile.name === userObject?.name">Self</span>
-						<span v-else
-							>{{ currentProfileRole }} at {{ currentProfile.name }}</span
-						>
+						<span v-else>User at {{ currentProfile.name }}</span>
 					</span>
 				</div>
 				<div
@@ -154,9 +152,9 @@
 					"
 				>
 					<a
-						v-for="(profile, index) in profilesList"
+						v-for="profile in profilesList"
 						href="#"
-						@click.prevent="handleProfileClick(profile, index)"
+						@click.prevent="handleProfileClick(profile)"
 						class="
 							po-flex
 							po-items-center
@@ -291,7 +289,7 @@ import {
 	BriefcaseIcon,
 	ArrowRightOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { computed, ref, toRefs } from "vue";
+import { computed, ref, toRefs, watch } from "vue";
 const props = defineProps({
 	profileSwitcherData: {
 		type: Object,
@@ -303,62 +301,22 @@ const props = defineProps({
 	},
 });
 
-const currentProfileFullLabel = ref("");
-const currentProfileLogo = ref("");
-const currentProfileRole = ref("");
-
-const currentProfileLabel = computed(() => {
-	const currProfile = props.profileSwitcherData.profiles.filter(
-		(profile) => profile.current === true
-	)[0];
-	currentProfileFullLabel.value = currProfile ? currProfile.name : "";
-	currentProfileLogo.value = currProfile
-		? currProfile.logo
-			? currProfile.logo
-			: ""
-		: "";
-
-	currentProfileRole.value = currProfile
-		? currProfile.userRole
-			? currProfile.userRole
-			: "User"
-		: "User";
-	return currProfile
-		? currProfile.name
-				.match(/\b[A-Z]/g)
-				.join("")
-				.substr(0, 2)
-		: "";
-});
+const emit = defineEmits(["button-click"]);
 
 // begining of the new
 
-const currentUserPicture =
-	props?.profileSwitcherData?.profiles?.[0]?.profilePic ?? null;
-
-const currUserName = props?.profileSwitcherData?.profiles?.[0]?.name ?? null;
-
-const emit = defineEmits(["button-click"]);
-
 const { userObject } = toRefs(props);
 
-function handleProfileClick(obj, inx) {
+function handleProfileClick(obj) {
 	emit("button-click", obj);
-
-	userObject.value.organisations;
 }
-
 const currentProfile = ref({
 	name: "",
 	initials: "",
 	image: "",
 });
 
-setCurrentProfile();
-
 const profilesList = ref([]);
-
-setProfilesList();
 
 /**
  * Helpers
@@ -392,6 +350,7 @@ function setCurrentProfile() {
 }
 
 function setProfilesList() {
+	profilesList.value = [];
 	profilesList.value.push({
 		id: props.userObject.id,
 		entity_id: props.userObject.entity_id,
@@ -404,4 +363,32 @@ function setProfilesList() {
 		props.userObject.organisations.forEach((f) => profilesList.value.push(f));
 	}
 }
+
+function updateCurrentProfile() {
+	for (let index = 0; index < profilesList.value.length; index++) {
+		profilesList.value[index].current = false;
+		if (Object.keys(props.userObject.transacting_as_organisation).length > 0) {
+			if (
+				props.userObject.transacting_as_organisation.entity_id ===
+				profilesList.value[index].entity_id
+			) {
+				profilesList.value[index].current = true;
+			} else {
+				profilesList.value[index].current = false;
+			}
+		} else {
+			profilesList.value[0].current = true;
+		}
+	}
+}
+
+setCurrentProfile();
+setProfilesList();
+updateCurrentProfile();
+
+watch(props, (newVal, oldVal) => {
+	setCurrentProfile();
+	setProfilesList();
+	updateCurrentProfile();
+});
 </script>
