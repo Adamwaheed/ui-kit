@@ -291,10 +291,6 @@ import {
 } from "@heroicons/vue/24/outline";
 import { computed, ref, toRefs, watch } from "vue";
 const props = defineProps({
-	profileSwitcherData: {
-		type: Object,
-		default: null,
-	},
 	userObject: {
 		type: Object,
 		default: null,

@@ -3,7 +3,6 @@
 		<PoTopBar
 			:has-search="true"
 			:app-list="allApps"
-			:profile-switcher-data="profileSwitcherData"
 			:user-object="currUserObject"
 			:notifications="notifications"
 			@profile-switcher-click="newHandleProfileSwitcherClick"
