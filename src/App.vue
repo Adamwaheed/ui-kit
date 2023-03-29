@@ -423,6 +423,11 @@
 										</div>
 									</template>
 								</PoDescriptionList>
+
+								<PoCallLog
+									:list="callLog"
+									@button-click="showNoteSlideOverClick"
+								/>
 							</template>
 						</PoCard>
 					</div>
@@ -529,6 +534,7 @@ import {
 	PoTableAction,
 	PoMultiSelect,
 	PoDynamicTable,
+	PoCallLog,
 } from "./components";
 import { ref } from "vue";
 
@@ -1152,4 +1158,18 @@ function newHandleProfileSwitcherClick(obj) {
 		currUserObject.value.transacting_as_organisation = null;
 	}
 }
+
+const callLog = [
+	{
+		subject: "Inheritance claim process",
+		type: "out",
+		topRightLabel: "Category",
+		highlightColor: "po-bg-orange-500",
+		meta: [
+			{
+				status: "Open",
+			},
+		],
+	},
+];
 </script>
