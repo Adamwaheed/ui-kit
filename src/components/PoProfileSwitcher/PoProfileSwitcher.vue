@@ -328,16 +328,16 @@ function nameToInisitals(name) {
 }
 
 function setCurrentProfile() {
-	let transectingAs = props.userObject.transacting_as_organisation
-		? Object.keys(props.userObject.transacting_as_organisation).length > 0
-			? props.userObject.transacting_as_organisation
+	let transectingAs = props.userObject?.transacting_as_organisation
+		? Object.keys(props.userObject?.transacting_as_organisation).length > 0
+			? props.userObject?.transacting_as_organisation
 			: null
 		: null;
-	let profileName = transectingAs ? transectingAs.name : props.userObject.name;
+	let profileName = transectingAs ? transectingAs.name : props.userObject?.name;
 	let profileImage = transectingAs
 		? transectingAs.logo
 			? transectingAs.logo
-			: props.userObject.avatar
+			: props.userObject?.avatar
 		: "";
 	currentProfile.value = {
 		name: profileName,
@@ -349,30 +349,30 @@ function setCurrentProfile() {
 function setProfilesList() {
 	profilesList.value = [];
 	profilesList.value.push({
-		id: props.userObject.id,
-		entity_id: props.userObject.entity_id,
-		name: props.userObject.name,
+		id: props.userObject?.id,
+		entity_id: props.userObject?.entity_id,
+		name: props.userObject?.name,
 		identifier: null,
 		organisation_uuid: null,
 	});
 
-	if (props.userObject.organisations.length > 0) {
-		props.userObject.organisations.forEach((f) => profilesList.value.push(f));
+	if (props.userObject?.organisations?.length > 0) {
+		props.userObject?.organisations?.forEach((f) => profilesList.value.push(f));
 	}
 }
 
 function updateCurrentProfile() {
 	profilesList.value.forEach((profile) => {
 		profile.current =
-			props.userObject.transacting_as_organisation &&
-			Object.keys(props.userObject.transacting_as_organisation).length > 0 &&
+			props.userObject?.transacting_as_organisation &&
+			Object.keys(props.userObject?.transacting_as_organisation).length > 0 &&
 			profile.entity_id ===
-				props.userObject.transacting_as_organisation.entity_id;
+				props.userObject?.transacting_as_organisation?.entity_id;
 	});
 
 	if (
-		props.userObject.transacting_as_organisation &&
-		Object.keys(props.userObject.transacting_as_organisation).length === 0
+		props.userObject?.transacting_as_organisation &&
+		Object.keys(props.userObject?.transacting_as_organisation).length === 0
 	) {
 		profilesList.value[0].current = true;
 	}
