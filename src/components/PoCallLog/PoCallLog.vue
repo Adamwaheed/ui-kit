@@ -16,10 +16,22 @@
 				po-ease-out
 				po-shadow
 				hover:po-shadow-lg
-				po-cursor-pointer po-flex po-item-center po-border-l-4
+				po-cursor-pointer po-flex po-item-center po-border-l-4 po-relative
 			"
 			:class="item.highlightColor"
 		>
+			<span
+				class="
+					po-absolute
+					po-bg-white
+					po-top-4
+					po-right-4
+					po-z-10
+					po-text-xs
+					po-text-slate-600
+				"
+				>{{ item.topRightLabel }}</span
+			>
 			<div
 				class="
 					po-shrink-0
@@ -65,11 +77,11 @@
 					/>
 				</svg>
 			</div>
-			<div class="po-grow po-space-y-2 po-pl-3">
+			<div class="po-grow po-space-y-2 po-pl-3 -po-mb-2">
 				<h3 class="po-text-base po-text-slate-600 po-font-medium">
 					{{ item.subject }}
 				</h3>
-				<div class="po-flex po-space-x-5">
+				<div class="po-flex po-flex-wrap">
 					<!-- <p class="po-text-xs po-space-x-2"> -->
 					<!-- <span class="po-font-medium po-text-slate-500">Status</span>
             <span
@@ -86,7 +98,7 @@
 
 					<p
 						v-for="(it, key) in item.meta"
-						class="po-text-xs po-space-x-2"
+						class="po-text-xs po-space-x-2 po-mr-5 po-mb-2"
 						:key="key"
 					>
 						<span class="po-font-medium po-text-slate-500 po-capitalize">{{

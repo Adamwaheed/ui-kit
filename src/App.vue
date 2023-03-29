@@ -1169,7 +1169,7 @@ const callLog = [
 			{
 				label: "Status",
 				description: "Open",
-				color: "po-text-green-600 po-bg-green-200",
+				color: "po-text-green-600 po-bg-green-100",
 			},
 			{
 				label: "Date",
@@ -1181,6 +1181,7 @@ const callLog = [
 		subject: "Inheritance claim process",
 		type: "viber",
 		topRightLabel: "Category",
+		highlightColor: "po-border-orange-200",
 		meta: [
 			{
 				label: "Status",
@@ -1189,6 +1190,34 @@ const callLog = [
 			{
 				label: "Date",
 				description: "Jun 20, 2023",
+			},
+			{
+				label: "User",
+				description: "Jane Doe",
+			},
+			{
+				label: "Status",
+				description: "Closed",
+			},
+			{
+				label: "Date",
+				description: "Jun 20, 2023",
+			},
+			{
+				label: "User",
+				description: "Jane Doe",
+				color: "po-text-blue-600 po-bg-blue-100",
+			},
+		],
+	},
+	{
+		subject: "Inheritance claim process",
+		type: "Email",
+		topRightLabel: "Category",
+		meta: [
+			{
+				label: "Status",
+				description: "Closed",
 			},
 		],
 	},
