@@ -1167,7 +1167,13 @@ const callLog = [
 		highlightColor: "po-bg-orange-500",
 		meta: [
 			{
-				status: "Open",
+				label: "Status",
+				description: "Open",
+				color: "po-text-green-600 po-bg-green-200",
+			},
+			{
+				label: "Date",
+				description: "Jun 20, 2023",
 			},
 		],
 	},
