@@ -16,8 +16,9 @@
 				po-ease-out
 				po-shadow
 				hover:po-shadow-lg
-				po-cursor-pointer po-flex po-item-center
+				po-cursor-pointer po-flex po-item-center po-border-l-4
 			"
+			:class="item.highlightColor"
 		>
 			<div
 				class="

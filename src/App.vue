@@ -1164,12 +1164,27 @@ const callLog = [
 		subject: "Inheritance claim process",
 		type: "out",
 		topRightLabel: "Category",
-		highlightColor: "po-bg-orange-500",
+		highlightColor: "po-border-orange-500",
 		meta: [
 			{
 				label: "Status",
 				description: "Open",
 				color: "po-text-green-600 po-bg-green-200",
+			},
+			{
+				label: "Date",
+				description: "Jun 20, 2023",
+			},
+		],
+	},
+	{
+		subject: "Inheritance claim process",
+		type: "viber",
+		topRightLabel: "Category",
+		meta: [
+			{
+				label: "Status",
+				description: "Closed",
 			},
 			{
 				label: "Date",
