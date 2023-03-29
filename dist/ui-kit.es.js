@@ -2535,7 +2535,7 @@ const ua = {
         w.current = ((b = l.userObject) == null ? void 0 : b.transacting_as_organisation) && Object.keys((C = l.userObject) == null ? void 0 : C.transacting_as_organisation).length > 0 && w.entity_id === ((V = (m = l.userObject) == null ? void 0 : m.transacting_as_organisation) == null ? void 0 : V.entity_id);
       }), (v = l.userObject) != null && v.transacting_as_organisation && Object.keys((g = l.userObject) == null ? void 0 : g.transacting_as_organisation).length === 0 && (r.value[0].current = !0);
     }
-    return c(), d(), f(), J(l, (v, g) => {
+    return c(), d(), f(), J(l.userObject, (v, g) => {
       c(), d(), f();
     }), (v, g) => (i(), M(h(at), null, {
       default: j(({ open: w }) => [

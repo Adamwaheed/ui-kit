@@ -382,7 +382,7 @@ setCurrentProfile();
 setProfilesList();
 updateCurrentProfile();
 
-watch(props, (newVal, oldVal) => {
+watch(props.userObject, (newVal, oldVal) => {
 	setCurrentProfile();
 	setProfilesList();
 	updateCurrentProfile();
