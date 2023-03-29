@@ -1212,7 +1212,7 @@ const callLog = [
 	},
 	{
 		subject: "Inheritance claim process",
-		type: "Email",
+		type: "email",
 		topRightLabel: "Category",
 		meta: [
 			{
