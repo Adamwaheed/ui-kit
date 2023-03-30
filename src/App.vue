@@ -1176,6 +1176,21 @@ const callLog = [
 				description: "Jun 20, 2023",
 			},
 		],
+		details: [
+			{
+				title: "Sub category",
+				description: "Other",
+			},
+			{
+				title: "Note",
+				description:
+					"Issue resolved and informed to the Member, no other issues reported.",
+			},
+			{
+				title: "Called by",
+				description: "Ismail Geller / PR",
+			},
+		],
 	},
 	{
 		subject: "Inheritance claim process",

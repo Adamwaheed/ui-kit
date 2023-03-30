@@ -5,8 +5,11 @@
             @event button-click
         -->
 		<li
-			v-for="item in list"
-			@click="$emit('button-click', item)"
+			v-for="(item, index) in list"
+			@click="
+				$emit('button-click', item);
+				setActiveIndex(index, item);
+			"
 			class="
 				po-bg-white
 				po-rounded-lg
@@ -81,21 +84,20 @@
 				<h3 class="po-text-base po-text-slate-600 po-font-medium">
 					{{ item.subject }}
 				</h3>
-				<div class="po-flex po-flex-wrap">
-					<!-- <p class="po-text-xs po-space-x-2"> -->
-					<!-- <span class="po-font-medium po-text-slate-500">Status</span>
-            <span
-              :class="[
-                'po-rounded-md po-px-[0.2em] po-capitalize',
-                { 'po-text-green-600 po-bg-green-100': 'open' === item.status },
-                {
-                  'po-text-slate-500 po-bg-slate-100': 'closed' === item.status,
-                },
-              ]"
-              >{{ item.status }}</span
-            >
-          </p> -->
+				<transition
+					enter-active-class="po-transition po-duration-100 po-ease-out"
+					enter-from-class="po-transform po-scale-95 po-opacity-0"
+					enter-to-class="po-transform po-scale-100 po-opacity-100"
+					leave-active-class="po-transition po-duration-75 po-ease-out"
+					leave-from-class="po-transform po-scale-100 po-opacity-100"
+					leave-to-class="po-transform po-scale-95 po-opacity-0"
+				>
+					<div v-if="activeLogIndex === index" class="">
+						<PoDescriptionList :items="item.details" />
+					</div>
+				</transition>
 
+				<div v-if="activeLogIndex !== index" class="po-flex po-flex-wrap">
 					<p
 						v-for="(it, key) in item.meta"
 						class="po-text-xs po-space-x-2 po-mr-5 po-mb-2"
@@ -129,6 +131,10 @@ import {
 	EnvelopeIcon,
 } from "@heroicons/vue/24/outline";
 
+import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
+
+import { ref } from "vue";
+
 defineProps({
 	/**
 	 * List of items
@@ -138,4 +144,12 @@ defineProps({
 		default: null,
 	},
 });
+
+const activeLogIndex = ref(null);
+
+function setActiveIndex(index, item) {
+	if (item.details) {
+		activeLogIndex.value = activeLogIndex.value === index ? null : index;
+	}
+}
 </script>
