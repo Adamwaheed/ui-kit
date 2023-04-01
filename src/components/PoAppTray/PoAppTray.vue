@@ -43,10 +43,18 @@
 					po-text-center
 				"
 			>
-				<div v-for="collection in appList">
+				<div v-for="collection in filterApps">
 					<span
 						v-if="collection.groupName.length > 0"
-						class="po-text-sm po-font-normal po-text-slate-400 po-select-none"
+						class="
+							po-text-sm
+							po-font-normal
+							po-text-slate-400
+							po-select-none
+							po-block
+							po-text-left
+							po-pt-5
+						"
 						>{{ collection.groupName }}</span
 					>
 					<ul class="po-grid po-grid-cols-3 po-gap-2 po-py-2">
@@ -105,7 +113,8 @@ export default {
 <script setup>
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { Squares2X2Icon } from "@heroicons/vue/24/outline";
-defineProps({
+import { ref, computed } from "vue";
+const props = defineProps({
 	/**
 	 * Array of grouped apps. When the group name field is left blank, it will appear as a single list when displayed.
 	 */
@@ -113,5 +122,21 @@ defineProps({
 		type: Array,
 		default: null,
 	},
+});
+
+const groups = ["", "Internal"];
+
+const filterApps = computed(() => {
+	let newAppList = [];
+	groups.forEach((element) => {
+		let filtered = props.appList.filter((x) => x.group == element);
+		if (filtered.length > 0) {
+			newAppList.push({
+				groupName: element,
+				apps: filtered,
+			});
+		}
+	});
+	return newAppList;
 });
 </script>
