@@ -289,7 +289,7 @@ import {
 	BriefcaseIcon,
 	ArrowRightOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { computed, ref, toRefs, watch } from "vue";
+import { computed, ref, toRefs } from "vue";
 const props = defineProps({
 	userObject: {
 		type: Object,
@@ -312,8 +312,6 @@ const currentProfile = ref({
 	image: "",
 });
 
-const profilesList = ref([]);
-
 /**
  * Helpers
  */
@@ -327,7 +325,8 @@ function nameToInisitals(name) {
 		: "";
 }
 
-function setCurrentProfile() {
+const profilesList = computed(() => {
+	let profiles = [];
 	let transectingAs = props.userObject?.transacting_as_organisation
 		? Object.keys(props.userObject?.transacting_as_organisation).length > 0
 			? props.userObject?.transacting_as_organisation
@@ -344,11 +343,9 @@ function setCurrentProfile() {
 		initials: nameToInisitals(profileName),
 		image: profileImage,
 	};
-}
 
-function setProfilesList() {
-	profilesList.value = [];
-	profilesList.value.push({
+	profiles = [];
+	profiles.push({
 		id: props.userObject?.id,
 		entity_id: props.userObject?.entity_id,
 		name: props.userObject?.name,
@@ -357,12 +354,10 @@ function setProfilesList() {
 	});
 
 	if (props.userObject?.organisations?.length > 0) {
-		props.userObject?.organisations?.forEach((f) => profilesList.value.push(f));
+		props.userObject?.organisations?.forEach((f) => profiles.push(f));
 	}
-}
 
-function updateCurrentProfile() {
-	profilesList.value.forEach((profile) => {
+	profiles.forEach((profile) => {
 		profile.current =
 			props.userObject?.transacting_as_organisation &&
 			Object.keys(props.userObject?.transacting_as_organisation).length > 0 &&
@@ -370,21 +365,10 @@ function updateCurrentProfile() {
 				props.userObject?.transacting_as_organisation?.entity_id;
 	});
 
-	if (
-		props.userObject?.transacting_as_organisation &&
-		Object.keys(props.userObject?.transacting_as_organisation).length === 0
-	) {
-		profilesList.value[0].current = true;
+	if (props.userObject?.transacting_as_organisation === null) {
+		profiles[0].current = true;
 	}
-}
 
-setCurrentProfile();
-setProfilesList();
-updateCurrentProfile();
-
-watch(props.userObject, (newVal, oldVal) => {
-	setCurrentProfile();
-	setProfilesList();
-	updateCurrentProfile();
+	return profiles;
 });
 </script>
