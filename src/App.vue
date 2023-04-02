@@ -430,6 +430,7 @@
 									selectFieldLabel="Status"
 									:selectFieldList="callLogSelectFieldList"
 									@button-click="showNoteSlideOverClick"
+									@select-updated="callLogSelectFieldUpdated"
 								/>
 							</template>
 						</PoCard>
@@ -1171,6 +1172,7 @@ function newHandleProfileSwitcherClick(obj) {
 
 const callLog = [
 	{
+		id: 1,
 		subject: "Inheritance claim process",
 		type: "out",
 		topRightLabel: "Category",
@@ -1204,6 +1206,7 @@ const callLog = [
 		],
 	},
 	{
+		id: 2,
 		subject: "Inheritance claim process",
 		type: "viber",
 		topRightLabel: "Category",
@@ -1253,6 +1256,7 @@ const callLog = [
 		],
 	},
 	{
+		id: 3,
 		subject: "Inheritance claim process",
 		type: "email",
 		topRightLabel: "Category",
@@ -1291,6 +1295,10 @@ const callLogSelectFieldList = [
 		name: "Resolved",
 	},
 ];
+
+function callLogSelectFieldUpdated(obj) {
+	console.log("callLogSelectFieldUpdated", obj);
+}
 
 const appsFromApi = ref([]);
 

@@ -25,7 +25,7 @@
 					po-absolute
 					po-bg-white
 					po-top-4
-					po-right-10
+					po-right-4
 					po-z-10
 					po-text-xs
 					po-text-slate-600
@@ -33,31 +33,6 @@
 				"
 				>{{ item.topRightLabel }}</span
 			>
-			<span
-				@click="setActiveIndex(index, item)"
-				role="button"
-				class="
-					po-absolute
-					po-top-3
-					po-right-2
-					po-z-10
-					po-w-6
-					po-h-6
-					po-rounded-lg
-					po-bg-white
-					po-border
-					po-border-slate-300
-					genie-effect
-					po-flex po-items-center po-justify-center
-					hover:po-bg-slate-50
-					po-cursor-pointer
-				"
-				><ChevronDownIcon
-					v-if="activeLogIndex !== index"
-					class="po-w-4 po-stroke-slate-400 po-stroke-2" /><ChevronUpIcon
-					v-else
-					class="po-w-4 po-stroke-slate-400 po-stroke-2"
-			/></span>
 			<div
 				class="
 					po-shrink-0
@@ -103,7 +78,7 @@
 					/>
 				</svg>
 			</div>
-			<div class="po-grow po-space-y-2 po-pl-3 -po-mb-2">
+			<div class="po-grow po-space-y-2 po-pl-3 -po-mb-1">
 				<h3 class="po-text-base po-text-slate-600 po-font-medium">
 					{{ item.subject }}
 				</h3>
@@ -118,14 +93,35 @@
 					<div v-if="activeLogIndex === index" class="">
 						<div
 							v-if="null !== selectFieldList"
-							class="po-border-b po-border-slate-200 po-pb-3"
+							class="
+								po-border-b po-border-slate-200 po-pb-3 po-grid po-grid-cols-2
+							"
 						>
-							<PoSelectField
-								:label="selectFieldLabel"
-								display="horizontal"
-								:list="selectFieldList"
-								v-model="item.selectFieldValue"
-							/>
+							<label
+								:for="`select-field-calllog-${index}`"
+								class="po-text-sm po-text-slate-500"
+								>{{ selectFieldLabel }}</label
+							>
+							<select
+								name=""
+								:id="`select-field-calllog-${index}`"
+								v-model.number="list[index].selectFieldValue"
+								@change="
+									selectFieldUpdated(Number($event.target.value), item.id)
+								"
+								class="
+									po-border-none
+									focus:po-ring-0
+									po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-700
+								"
+							>
+								<option
+									v-for="listItem in selectFieldList"
+									:value="listItem.id"
+								>
+									{{ listItem.name }}
+								</option>
+							</select>
 						</div>
 						<PoDescriptionList :items="item.details" />
 					</div>
@@ -147,6 +143,23 @@
 						>
 					</p>
 				</div>
+				<span
+					role="button"
+					@click="setActiveIndex(index, item)"
+					class="
+						po-block po-bg-slate-50 po-rounded-md po-p-2
+						hover:po-bg-slate-100
+					"
+				>
+					<ChevronDownIcon
+						v-if="activeLogIndex !== index"
+						class="po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
+					/>
+					<ChevronUpIcon
+						v-else
+						class="po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
+					/>
+				</span>
 			</div>
 		</li>
 	</ul>
@@ -171,9 +184,9 @@ import {
 import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
 import PoSelectField from "../PoSelectField/PoSelectField.vue";
 
-import { ref } from "vue";
+import { ref, toRefs } from "vue";
 
-defineProps({
+const props = defineProps({
 	/**
 	 * List of items
 	 */
@@ -191,6 +204,8 @@ defineProps({
 	},
 });
 
+const { list } = toRefs(props);
+
 const activeLogIndex = ref(null);
 
 function setActiveIndex(index, item) {
@@ -199,5 +214,9 @@ function setActiveIndex(index, item) {
 	}
 }
 
-const selectFieldSelected = ref([]);
+const emit = defineEmits(["selectUpdated"]);
+
+function selectFieldUpdated(selectedId, logId) {
+	emit("selectUpdated", { logId: logId, selectedId: selectedId });
+}
 </script>
