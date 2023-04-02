@@ -6,10 +6,7 @@
         -->
 		<li
 			v-for="(item, index) in list"
-			@click="
-				$emit('button-click', item);
-				setActiveIndex(index, item);
-			"
+			@click="$emit('button-click', item)"
 			class="
 				po-bg-white
 				po-rounded-lg
@@ -19,7 +16,7 @@
 				po-ease-out
 				po-shadow
 				hover:po-shadow-lg
-				po-cursor-pointer po-flex po-item-center po-border-l-4 po-relative
+				po-flex po-item-center po-border-l-4 po-relative
 			"
 			:class="item.highlightColor"
 		>
@@ -28,13 +25,39 @@
 					po-absolute
 					po-bg-white
 					po-top-4
-					po-right-4
+					po-right-10
 					po-z-10
 					po-text-xs
 					po-text-slate-600
+					po-font-medium
 				"
 				>{{ item.topRightLabel }}</span
 			>
+			<span
+				@click="setActiveIndex(index, item)"
+				role="button"
+				class="
+					po-absolute
+					po-top-3
+					po-right-2
+					po-z-10
+					po-w-6
+					po-h-6
+					po-rounded-lg
+					po-bg-white
+					po-border
+					po-border-slate-300
+					genie-effect
+					po-flex po-items-center po-justify-center
+					hover:po-bg-slate-50
+					po-cursor-pointer
+				"
+				><ChevronDownIcon
+					v-if="activeLogIndex !== index"
+					class="po-w-4 po-stroke-slate-400 po-stroke-2" /><ChevronUpIcon
+					v-else
+					class="po-w-4 po-stroke-slate-400 po-stroke-2"
+			/></span>
 			<div
 				class="
 					po-shrink-0
@@ -93,6 +116,17 @@
 					leave-to-class="po-transform po-scale-95 po-opacity-0"
 				>
 					<div v-if="activeLogIndex === index" class="">
+						<div
+							v-if="null !== selectFieldList"
+							class="po-border-b po-border-slate-200 po-pb-3"
+						>
+							<PoSelectField
+								:label="selectFieldLabel"
+								display="horizontal"
+								:list="selectFieldList"
+								v-model="item.selectFieldValue"
+							/>
+						</div>
 						<PoDescriptionList :items="item.details" />
 					</div>
 				</transition>
@@ -121,6 +155,7 @@
 <script>
 export default {
 	name: "PoCallLog",
+	components: { ChevronDownIcon, ChevronUpIcon },
 };
 </script>
 <script setup>
@@ -129,9 +164,12 @@ import {
 	PhoneArrowUpRightIcon,
 	ChatBubbleLeftIcon,
 	EnvelopeIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
 } from "@heroicons/vue/24/outline";
 
 import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
+import PoSelectField from "../PoSelectField/PoSelectField.vue";
 
 import { ref } from "vue";
 
@@ -140,6 +178,14 @@ defineProps({
 	 * List of items
 	 */
 	list: {
+		type: Array,
+		default: null,
+	},
+	selectFieldLabel: {
+		type: String,
+		default: "",
+	},
+	selectFieldList: {
 		type: Array,
 		default: null,
 	},
@@ -152,4 +198,6 @@ function setActiveIndex(index, item) {
 		activeLogIndex.value = activeLogIndex.value === index ? null : index;
 	}
 }
+
+const selectFieldSelected = ref([]);
 </script>
