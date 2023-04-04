@@ -1144,7 +1144,7 @@ setTimeout(() => {
 		],
 		permissions: [],
 	};
-}, 200);
+}, 0);
 
 function newHandleProfileSwitcherClick(obj) {
 	setTimeout(() => {

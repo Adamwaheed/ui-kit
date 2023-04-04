@@ -1,5 +1,5 @@
 <template>
-	<Popover v-slot="{ open }">
+	<Popover v-slot="{ open }" :key="profilesList">
 		<PopoverButton class="po-flex po-items-center po-outline-none">
 			<span
 				v-if="!userObject?.transacting_as_organisation?.logo"
@@ -289,7 +289,14 @@ import {
 	BriefcaseIcon,
 	ArrowRightOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { computed, ref, toRefs } from "vue";
+import {
+	computed,
+	ref,
+	onBeforeMount,
+	onMounted,
+	onBeforeUpdate,
+	onUpdated,
+} from "vue";
 const props = defineProps({
 	userObject: {
 		type: Object,
@@ -298,10 +305,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["button-click"]);
-
-// begining of the new
-
-const { userObject } = toRefs(props);
 
 function handleProfileClick(obj) {
 	emit("button-click", obj);
@@ -326,6 +329,7 @@ function nameToInisitals(name) {
 }
 
 const profilesList = computed(() => {
+	console.log("---------------running computed");
 	let profiles = [];
 	let transectingAs = props.userObject?.transacting_as_organisation
 		? Object.keys(props.userObject?.transacting_as_organisation).length > 0
@@ -370,5 +374,18 @@ const profilesList = computed(() => {
 	}
 
 	return profiles;
+});
+
+onBeforeMount(() => {
+	console.log("beforeMount", profilesList.value);
+});
+onMounted(() => {
+	console.log("mounted", profilesList.value);
+});
+onBeforeUpdate(() => {
+	console.log("beforeUpdate", profilesList.value);
+});
+onUpdated(() => {
+	console.log("updated", profilesList.value);
 });
 </script>
