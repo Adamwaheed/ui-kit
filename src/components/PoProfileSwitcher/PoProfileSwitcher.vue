@@ -152,7 +152,7 @@
 					"
 				>
 					<a
-						v-for="profile in profilesList"
+						v-for="(profile, index) in profilesList"
 						href="#"
 						@click.prevent="handleProfileClick(profile)"
 						class="
@@ -177,6 +177,7 @@
 							},
 						]"
 						role="button"
+						:key="index"
 					>
 						<span class="po-w-5">
 							<UserIcon
