@@ -6,7 +6,11 @@
 		>
 			<LoadingDots />
 		</div>
-		<div class="po-grid po-grid-cols-1 lg:po-grid-cols-3 po-gap-3">
+		<div
+			:class="[
+				{ 'po-grid po-grid-cols-1 lg:po-grid-cols-3 po-gap-3': $slots.action },
+			]"
+		>
 			<h3
 				v-if="title.length > 0"
 				class="po-text-base po-font-medium po-text-slate-600"
