@@ -329,7 +329,6 @@ function nameToInisitals(name) {
 }
 
 const profilesList = computed(() => {
-	console.log("---------------running computed");
 	let profiles = [];
 	let transectingAs = props.userObject?.transacting_as_organisation
 		? Object.keys(props.userObject?.transacting_as_organisation).length > 0
@@ -377,15 +376,19 @@ const profilesList = computed(() => {
 });
 
 onBeforeMount(() => {
-	console.log("beforeMount", profilesList.value);
+	// console.log("beforeMount", profilesList.value);
+	let one = profilesList.value;
 });
 onMounted(() => {
-	console.log("mounted", profilesList.value);
+	// console.log("mounted", profilesList.value);
+	let two = profilesList.value;
 });
 onBeforeUpdate(() => {
-	console.log("beforeUpdate", profilesList.value);
+	// console.log("beforeUpdate", profilesList.value);
+	let three = profilesList.value;
 });
 onUpdated(() => {
-	console.log("updated", profilesList.value);
+	// console.log("updated", profilesList.value);
+	let four = profilesList.value;
 });
 </script>

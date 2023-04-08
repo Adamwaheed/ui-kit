@@ -2577,7 +2577,6 @@ const ba = {
     }
     const r = C(() => {
       var v, y, w, g, S, m, V, _, E, A, M, P, N;
-      console.log("---------------running computed");
       let i = [], c = (v = l.userObject) != null && v.transacting_as_organisation && Object.keys((y = l.userObject) == null ? void 0 : y.transacting_as_organisation).length > 0 ? (w = l.userObject) == null ? void 0 : w.transacting_as_organisation : null, d = c ? c.name : (g = l.userObject) == null ? void 0 : g.name, f = c ? c.logo ? c.logo : (S = l.userObject) == null ? void 0 : S.avatar : "";
       return o.value = {
         name: d,
@@ -2595,13 +2594,13 @@ const ba = {
       }), ((N = l.userObject) == null ? void 0 : N.transacting_as_organisation) === null && (i[0].current = !0), i;
     });
     return Vl(() => {
-      console.log("beforeMount", r.value);
+      r.value;
     }), K(() => {
-      console.log("mounted", r.value);
+      r.value;
     }), wl(() => {
-      console.log("beforeUpdate", r.value);
+      r.value;
     }), Ct(() => {
-      console.log("updated", r.value);
+      r.value;
     }), (i, c) => (p(), R(h(st), { key: h(r) }, {
       default: T(({ open: d }) => [
         $(h(Mt), { class: "po-flex po-items-center po-outline-none" }, {
