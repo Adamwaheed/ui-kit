@@ -2673,9 +2673,9 @@ const ha = {
                   ]),
                   Ka,
                   s("div", Wa, [
-                    (i(!0), u(I, null, H(h(r), (V) => (i(), u("a", {
+                    (i(!0), u(I, null, H(h(r), (V, $) => (i(), u("a", {
                       href: "#",
-                      onClick: re(($) => n(V), ["prevent"]),
+                      onClick: re((E) => n(V), ["prevent"]),
                       class: D(["po-flex po-items-center po-space-x-3 po-p-3 po-text-slate-600 po-rounded-lg po-shadow-sm po-transition-all po-duration-150 po-ease-out hover:po-bg-blue-50", [
                         {
                           " po-bg-white": !V.current
@@ -2684,7 +2684,8 @@ const ha = {
                           " po-bg-blue-50 po-shadow-sm": V.current
                         }
                       ]]),
-                      role: "button"
+                      role: "button",
+                      key: $
                     }, [
                       s("span", Za, [
                         V.isPersonal ? (i(), R(h(Wt), {
@@ -2706,7 +2707,7 @@ const ha = {
                         s("span", Qa, b(V.name), 1),
                         V.identifier ? (i(), u("span", Xa, b(V.identifier), 1)) : y("", !0)
                       ])
-                    ], 10, Ya))), 256))
+                    ], 10, Ya))), 128))
                   ]),
                   es,
                   s("div", ts, [
