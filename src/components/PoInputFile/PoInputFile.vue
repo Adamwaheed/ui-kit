@@ -1,140 +1,183 @@
 <template>
-  <div
-    class="po-relative"
-    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
-  >
-    <!-- 
+	<div
+		class="po-relative"
+		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+	>
+		<!-- 
             v-model update
             @event update:modelValue
         -->
-    <span
-      class="
-        po-text-sm po-font-medium po-text-slate-700
-        peer-focus:po-text-mpao-lightblue
-        peer-invalid:po-text-red-500
-        peer-invalid:peer-focus:po-text-red-600
-        po-flex po-items-center po-space-x-1 po-capitalize
-      "
-      ><span>{{ label }}</span>
-      <span
-        v-if="required"
-        class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
-        >&#42;</span
-      ></span
-    >
-    <input
-      :name="`${id}-upload`"
-      :id="`${id}-fileupload`"
-      :value="modelValue"
-      type="file"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="po-sr-only po-peer"
-    />
-    <label
-      :for="`${id}-fileupload`"
-      class="
-        po-mt-1
-        po-block
-        po-w-full
-        po-border
-        po-cursor-pointer
-        po-rounded-md
-        po-border-slate-300
-        po-bg-white
-        peer-focus:po-border-mpao-lightblue
-        invalid:po-border-red-400
-        invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600
-        sm:po-text-sm
-        po-p-2
-      "
-    >
-      <div class="po-flex po-items-center po-space-x-1">
-        <PaperClipIcon class="po-w-4 po-stroke-slate-500" />
-        <span class="po-text-sm">Choose file</span>
-      </div>
-    </label>
+		<span
+			class="
+				po-text-sm po-font-medium po-text-slate-700
+				peer-focus:po-text-mpao-lightblue
+				peer-invalid:po-text-red-500
+				peer-invalid:peer-focus:po-text-red-600
+				po-flex po-items-center po-space-x-1 po-capitalize
+			"
+			><span>{{ label }}</span>
+			<span
+				v-if="required"
+				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
+				>&#42;</span
+			></span
+		>
+		<input
+			:name="`${id}-upload`"
+			:id="`${id}-fileupload`"
+			:value="modelValue"
+			type="file"
+			@input="$emit('update:modelValue', $event.target.value)"
+			class="po-sr-only po-peer"
+		/>
+		<label
+			:for="`${id}-fileupload`"
+			class="
+				po-mt-1
+				po-block
+				po-w-full
+				po-border
+				po-cursor-pointer
+				po-rounded-md
+				po-border-slate-300
+				po-bg-white
+				peer-focus:po-border-mpao-lightblue
+				invalid:po-border-red-400
+				invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600
+				sm:po-text-sm
+				po-p-2
+			"
+		>
+			<div class="po-flex po-items-center po-space-x-1">
+				<PaperClipIcon class="po-w-4 po-stroke-slate-500" />
+				<span class="po-text-sm">Choose file</span>
+			</div>
+		</label>
 
-    <p
-      class="po-mt-2 po-text-sm po-text-slate-500"
-      :id="`${id}-description`"
-      v-if="null !== message"
-    >
-      {{ message }}
-    </p>
-    <p
-      class="po-mt-2 po-text-sm po-text-red-600"
-      :id="`${id}-error`"
-      v-if="null !== errorMessage"
-    >
-      {{ errorMessage }}
-    </p>
-  </div>
+		<div
+			v-if="null !== progressValue"
+			class="
+				po-mt-3
+				po-flex
+				po-w-full
+				po-h-1.5
+				po-bg-gray-100
+				po-rounded-full
+				po-overflow-hidden
+			"
+		>
+			<div
+				class="
+					po-flex
+					po-flex-col
+					po-justify-center
+					po-overflow-hidden
+					po-bg-mpao-lightblue
+				"
+				role="progressbar"
+				:style="progressStyle"
+				:aria-valuenow="progressValue"
+				aria-valuemin="0"
+				aria-valuemax="100"
+			></div>
+		</div>
+
+		<p
+			class="po-mt-2 po-text-sm po-text-slate-500"
+			:id="`${id}-description`"
+			v-if="null !== message"
+		>
+			{{ message }}
+		</p>
+		<p
+			class="po-mt-2 po-text-sm po-text-red-600"
+			:id="`${id}-error`"
+			v-if="null !== errorMessage"
+		>
+			{{ errorMessage }}
+		</p>
+	</div>
 </template>
 
 <script>
 export default {
-  name: "PoInputFile",
+	name: "PoInputFile",
 };
 </script>
 <script setup>
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
+import { computed } from "vue";
 
-defineProps({
-  /**
-   * Model value
-   */
-  modelValue: {
-    type: [String, Number],
-    default: "",
-  },
-  /**
-   * Input label text
-   */
-  label: {
-    type: String,
-    default: "",
-  },
-  /**
-   * Input id text
-   */
-  id: {
-    type: String,
-    default: "",
-  },
-  /**
-   * A tool tip, helper information
-   */
-  info: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Tip, description, information for the input
-   */
-  message: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Error message
-   */
-  errorMessage: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Input display vertifal (default) or horizontal
-   */
-  display: {
-    type: String,
-    default: "vertical",
-  },
-  /**
-   * True or false if required
-   */
-  required: {
-    type: Boolean,
-    default: false,
-  },
+const props = defineProps({
+	/**
+	 * Model value
+	 */
+	modelValue: {
+		type: [String, Number],
+		default: "",
+	},
+	/**
+	 * Input label text
+	 */
+	label: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * Input id text
+	 */
+	id: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * A tool tip, helper information
+	 */
+	info: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Tip, description, information for the input
+	 */
+	message: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Error message
+	 */
+	errorMessage: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Input display vertifal (default) or horizontal
+	 */
+	display: {
+		type: String,
+		default: "vertical",
+	},
+	/**
+	 * True or false if required
+	 */
+	required: {
+		type: Boolean,
+		default: false,
+	},
+	/**
+	 * File upload progress
+	 */
+	progress: {
+		type: Number,
+		default: null,
+	},
+});
+
+const progressStyle = computed(() => {
+	return `width: ${props.progress}%`;
+});
+const progressValue = computed(() => {
+	return props.progress;
 });
 </script>
