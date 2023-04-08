@@ -60,9 +60,6 @@
 			:id="`${id}-error`"
 			v-if="formHasError && null !== errorMessage"
 		>
-			<ExclamationTriangleIcon
-				class="po-fill-current po-w-4 po-mt-[0.2rem] po-shrink-0"
-			/>
 			<span>{{ errorMessage }}</span>
 		</p>
 	</div>
