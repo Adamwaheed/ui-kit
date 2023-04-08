@@ -6293,14 +6293,21 @@ const ic = /* @__PURE__ */ il(nc, [["render", rc]]), pc = {
     /**
      * Heroicon
      */
-    icon: null
+    icon: null,
+    /**
+     * Icon color
+     */
+    iconColor: {
+      type: String,
+      default: "po-stroke-slate-300"
+    }
   },
   setup(e) {
     return (t, l) => (p(), u("div", Xc, [
       e.icon ? (p(), R(ve(e.icon), {
         key: 0,
-        class: "po-w-10 po-h-10 po-stroke-slate-300"
-      })) : x("", !0),
+        class: j(["po-w-10 po-h-10", e.iconColor])
+      }, null, 8, ["class"])) : x("", !0),
       e.label !== "" ? (p(), u("span", ed, b(e.label), 1)) : x("", !0),
       e.description !== "" ? (p(), u("span", td, b(e.description), 1)) : x("", !0),
       J(t.$slots, "action")
