@@ -4,11 +4,14 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<RadioGroupLabel
-			:class="[
-				'po-text-sm po-font-medium po-flex po-items-center po-space-x-1',
-				{ 'po-text-red-500': formHasError },
-				{ 'po-text-slate-700': !formHasError },
-			]"
+			class="
+				po-text-sm
+				po-font-medium
+				po-flex
+				po-items-center
+				po-space-x-1
+				po-text-slate-700
+			"
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span

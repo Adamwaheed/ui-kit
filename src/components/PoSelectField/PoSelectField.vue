@@ -5,11 +5,14 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<ComboboxLabel
-			:class="[
-				'po-text-sm po-font-medium po-flex po-items-center po-space-x-1',
-				{ 'po-text-red-500': formHasError },
-				{ 'po-text-slate-700': !formHasError },
-			]"
+			class="
+				po-text-sm
+				po-font-medium
+				po-flex
+				po-items-center
+				po-space-x-1
+				po-text-slate-700
+			"
 		>
 			<span>{{ label }}</span>
 			<span
