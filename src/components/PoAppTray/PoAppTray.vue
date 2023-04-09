@@ -23,16 +23,14 @@
 					po-z-10
 					po-absolute
 					po-right-0
-					po-top-16
+					po-top-[3.6rem]
 					po-opacity-0
 					po-bg-white
 					po-shadow-lg
-					po-rounded-b-xl
-					po-rounded-t-0
+					po-rounded-xl
 					po-w-[366px]
 					po-p-4
 					po-border
-					po-border-t-0
 					po-border-slate-300
 					po-pt-5
 					po-transition-all
