@@ -194,11 +194,11 @@
 							</template>
 							<template #td="{ index, name, nid, source, dod, action, item }">
 								<td data-title="name">
-									{{ name }}---- -- {{ item }} {{ index }}
+									{{ name }}
 								</td>
 								<td data-title="NID">{{ nid }}</td>
 								<td data-title="source">{{ source }}</td>
-								<td data-title="dod">{{ dod }}</td>
+								<td data-title="dod">{{ formatDate(dod) }}</td>
 								<td data-title="action">
 									<div
 										class="po-flex po-items-center po-space-x-3 po-justify-end"
@@ -540,6 +540,8 @@ import {
 	PoDynamicTable,
 	PoCallLog,
 } from "./components";
+
+import { formatDate } from "./shared/helper";
 import { ref } from "vue";
 
 import {
@@ -569,7 +571,6 @@ import {
 	MapPinIcon,
 	ScissorsIcon,
 } from "@heroicons/vue/20/solid";
-import { findLastIndex } from "lodash";
 
 import { watch } from "vue";
 
@@ -793,7 +794,7 @@ let tableBody = [
 		name: "Jane Gasim",
 		nid: "A00000",
 		source: "YY Clinic",
-		dod: "2022-11-12",
+		dod: "2022-03-12",
 		something: "else",
 		action: "text",
 	},
@@ -801,7 +802,7 @@ let tableBody = [
 		name: "Mariyam Doe",
 		nid: "A00000",
 		source: "Rashu Council",
-		dod: "2022-11-02",
+		dod: "2022 November 10",
 		action: "icon",
 	},
 	{

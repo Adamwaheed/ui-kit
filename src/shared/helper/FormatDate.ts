@@ -1,9 +1,9 @@
 export default function formatDate(dateString: string): string {
 	const date = new Date(dateString);
 	const options: Intl.DateTimeFormatOptions = {
+		day: "2-digit",
+		month: "2-digit",
 		year: "numeric",
-		month: "long",
-		day: "numeric",
 	};
-	return date.toLocaleDateString("en-US", options);
+	return date.toLocaleDateString("en-UK", options).split("/").join("-");
 }
