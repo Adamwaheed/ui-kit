@@ -83,7 +83,7 @@
 		</div>
 
 		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
+			class="po-mt-2 md:po-mt-2 po-text-sm po-text-slate-500"
 			:id="`${id}-description`"
 			v-if="null !== message"
 		>

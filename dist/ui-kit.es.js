@@ -4597,7 +4597,7 @@ const zs = ["for"], Hs = {
       ])) : y("", !0),
       e.message !== null ? (i(), u("p", {
         key: 1,
-        class: "po-mt-2 po-text-sm po-text-slate-500",
+        class: "po-mt-2 md:po-mt-2 po-text-sm po-text-slate-500",
         id: `${e.id}-description`
       }, b(e.message), 9, Bi)) : y("", !0),
       e.errorMessage !== null ? (i(), u("p", {

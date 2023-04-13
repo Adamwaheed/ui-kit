@@ -801,7 +801,7 @@ let tableBody = [
 	{
 		name: "Mariyam Doe",
 		nid: "A00000",
-		source: "Rashu Council",
+		source: "Rashu Councils",
 		dod: "2022 November 10",
 		action: "icon",
 	},
