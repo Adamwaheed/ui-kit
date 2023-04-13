@@ -105,7 +105,7 @@
 					po-duration-100
 					po-ease-linear
 					po-max-h-[calc(100vh-85px)]
-					po-overflow-y-scroll
+					po-overflow-y-auto
 					po-text-center
 				"
 			>
@@ -146,7 +146,7 @@
 					class="
 						po-space-y-2 po-py-2
 						-po-mx-5
-						po-px-5 po-max-h-[250px] po-overflow-y-scroll
+						po-px-5 po-max-h-[250px] po-overflow-y-auto
 					"
 				>
 					<a

@@ -116,7 +116,7 @@
 										class="
 											po-p-5
 											po-max-h-[calc(100vh-230px)]
-											po-overflow-y-scroll
+											po-overflow-y-auto
 											po-min-h-[250px]
 										"
 									>

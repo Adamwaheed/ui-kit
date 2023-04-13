@@ -37,7 +37,7 @@
 										po-flex
 										po-h-full
 										po-flex-col
-										po-overflow-y-scroll
+										po-overflow-y-auto
 										po-bg-white
 										po-shadow-xl
 									"
