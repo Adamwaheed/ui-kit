@@ -170,6 +170,7 @@
 								:options="radioOptions"
 								v-model="radioOptionSelected"
 								error-message=""
+								@selected="handleRadioSelected"
 							/>
 							{{ radioOptionSelected }}
 						</div>
@@ -429,7 +430,6 @@
 									:list="callLog"
 									selectFieldLabel="Status"
 									:selectFieldList="callLogSelectFieldList"
-									@button-click="showNoteSlideOverClick"
 									@select-updated="callLogSelectFieldUpdated"
 								/>
 							</template>
@@ -1427,4 +1427,8 @@ setTimeout(() => {
 		},
 	];
 }, 1000);
+
+function handleRadioSelected(val) {
+	console.log("selected event", val);
+}
 </script>

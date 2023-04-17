@@ -181,6 +181,7 @@ const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedOption, () => {
 	emit("update:modelValue", selectedOption.value);
+	emit("selected", selectedOption.value);
 });
 
 const { errorMessage } = toRefs(props);

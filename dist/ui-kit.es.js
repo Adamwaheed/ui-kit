@@ -3245,7 +3245,7 @@ const Ps = {
     n.value = l.modelValue, Ct(() => {
       n.value = l.modelValue;
     }), Q(n, () => {
-      t("update:modelValue", n.value);
+      t("update:modelValue", n.value), t("selected", n.value);
     });
     const { errorMessage: o } = Ve(l), a = k();
     return Q(o, (r, p) => {
@@ -4610,7 +4610,15 @@ const zs = ["for"], Hs = {
 }), Ri = {
   key: 0,
   class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
-}, Fi = ["title"], zi = { class: "po-relative po-mt-1" }, Hi = ["id"], qi = ["id"], Ui = {
+}, Fi = ["title"], zi = { class: "po-relative po-mt-1" }, Hi = {
+  key: 0,
+  class: "po-mt-2 po-text-sm po-text-slate-500",
+  id: "-description"
+}, qi = {
+  key: 1,
+  class: "po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1",
+  id: "-error"
+}, Ui = {
   name: "PoSelectField"
 }, n0 = /* @__PURE__ */ Object.assign(Ui, {
   props: {
@@ -4766,18 +4774,10 @@ const zs = ["for"], Hs = {
             _: 1
           })) : y("", !0)
         ]),
-        e.message !== null ? (i(), u("p", {
-          key: 0,
-          class: "po-mt-2 po-text-sm po-text-slate-500",
-          id: `${d.id}-description`
-        }, b(e.message), 9, Hi)) : y("", !0),
-        c.value && h(p) !== null ? (i(), u("p", {
-          key: 1,
-          class: "po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1",
-          id: `${d.id}-error`
-        }, [
+        e.message !== null ? (i(), u("p", Hi, b(e.message), 1)) : y("", !0),
+        c.value && h(p) !== null ? (i(), u("p", qi, [
           s("span", null, b(h(p)), 1)
-        ], 8, qi)) : y("", !0)
+        ])) : y("", !0)
       ]),
       _: 1
     }, 8, ["modelValue", "class"]));

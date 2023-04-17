@@ -116,7 +116,7 @@
 		</div>
 		<p
 			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
+			:id="`-description`"
 			v-if="null !== message"
 		>
 			{{ message }}
@@ -125,7 +125,7 @@
 			class="
 				po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
 			"
-			:id="`${id}-error`"
+			:id="`-error`"
 			v-if="formHasError && null !== errorMessage"
 		>
 			<span>{{ errorMessage }}</span>
