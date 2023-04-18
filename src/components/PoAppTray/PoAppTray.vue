@@ -41,11 +41,11 @@
 					po-text-center
 				"
 			>
-				<AppList :list="filterApps" />
+				<AppList :list="filterApps" :open-in-new-tab="openInNewTab" />
 			</PopoverPanel>
 		</transition>
 	</Popover>
-	<AppList v-else :list="filterApps" />
+	<AppList v-else :list="filterApps" :open-in-new-tab="openInNewTab" />
 </template>
 
 <script>
@@ -71,6 +71,10 @@ const props = defineProps({
 	 * if true, it shows just the apps list, no popover menu
 	 */
 	justApps: {
+		type: Boolean,
+		default: false,
+	},
+	openInNewTab: {
 		type: Boolean,
 		default: false,
 	},

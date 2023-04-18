@@ -58,7 +58,7 @@
 						:notifications="notifications"
 						:has-new-notifications="hasNewNotifications"
 					/>
-					<PoAppTray :app-list="appList" />
+					<PoAppTray :app-list="appList" :open-in-new-tab="true" />
 					<PoProfileSwitcher
 						:user-object="userObject"
 						@button-click="handleProfileSwitcherClick"

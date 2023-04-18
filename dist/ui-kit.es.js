@@ -560,7 +560,10 @@ const Wl = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex
               notifications: e.notifications,
               "has-new-notifications": e.hasNewNotifications
             }, null, 8, ["notifications", "has-new-notifications"]),
-            _(h($a), { "app-list": e.appList }, null, 8, ["app-list"]),
+            _(h($a), {
+              "app-list": e.appList,
+              "open-in-new-tab": !0
+            }, null, 8, ["app-list"]),
             _(h(is), {
               "user-object": e.userObject,
               onButtonClick: l
@@ -2350,7 +2353,7 @@ let Xo = pe.RenderStrategy, Ee = q({ props: { as: { type: [Object, String], defa
 const ha = {
   key: 0,
   class: "po-text-sm po-font-normal po-text-slate-400 po-select-none po-block po-text-left po-pt-5"
-}, ba = { class: "po-grid po-grid-cols-3 po-gap-2 po-py-2" }, ga = { class: "po-bg-white hover:po-bg-slate-200 po-rounded-xl po-p-2 po-transition-colors po-duration-150 po-ease-in" }, ya = ["href"], xa = { class: "po-flex po-w-14 po-h-14 po-items-center po-justify-center po-duration-100 po-ease-in-out po-overflow-hidden" }, Va = ["innerHTML"], wa = { class: "po-text-slate-500 po-font-normal po-text-sm po-text-center" }, ao = {
+}, ba = { class: "po-grid po-grid-cols-3 po-gap-2 po-py-2" }, ga = { class: "po-bg-white hover:po-bg-slate-200 po-rounded-xl po-p-2 po-transition-colors po-duration-150 po-ease-in" }, ya = ["href", "target"], xa = { class: "po-flex po-w-14 po-h-14 po-items-center po-justify-center po-duration-100 po-ease-in-out po-overflow-hidden" }, Va = ["innerHTML"], wa = { class: "po-text-slate-500 po-font-normal po-text-sm po-text-center" }, ao = {
   __name: "appList",
   props: {
     /**
@@ -2359,6 +2362,10 @@ const ha = {
     list: {
       type: Array,
       default: null
+    },
+    openInNewTab: {
+      type: Boolean,
+      default: !1
     }
   },
   setup(e) {
@@ -2368,6 +2375,7 @@ const ha = {
         (i(!0), u(I, null, H(n.apps, (o) => (i(), u("li", ga, [
           s("a", {
             href: o.url,
+            target: e.openInNewTab ? "_blank" : "_self",
             class: "po-flex po-flex-col po-group po-justify-center po-items-center"
           }, [
             s("span", xa, [
@@ -2399,6 +2407,10 @@ const ha = {
     justApps: {
       type: Boolean,
       default: !1
+    },
+    openInNewTab: {
+      type: Boolean,
+      default: !1
     }
   },
   setup(e) {
@@ -2414,8 +2426,9 @@ const ha = {
     });
     return (o, a) => e.justApps ? (i(), R(ao, {
       key: 1,
-      list: h(n)
-    }, null, 8, ["list"])) : (i(), R(h(st), { key: 0 }, {
+      list: h(n),
+      "open-in-new-tab": e.openInNewTab
+    }, null, 8, ["list", "open-in-new-tab"])) : (i(), R(h(st), { key: 0 }, {
       default: T(({ open: r }) => [
         _(h(Mt), {
           class: D([r ? "" : "po-text-opacity-90", "po-block po-w-6 po-text-slate-100 genie-effect po-z-50 po-outline-none"])
@@ -2436,7 +2449,10 @@ const ha = {
           default: T(() => [
             _(h(Rt), { class: "po-z-10 po-absolute po-right-0 po-top-[3.6rem] po-opacity-0 po-bg-white po-shadow-lg po-rounded-xl po-w-[366px] po-p-4 po-border po-border-slate-300 po-pt-5 po-transition-all po-duration-100 po-ease-linear po-max-h-[calc(100vh-85px)] po-overflow-y-auto po-text-center" }, {
               default: T(() => [
-                _(ao, { list: h(n) }, null, 8, ["list"])
+                _(ao, {
+                  list: h(n),
+                  "open-in-new-tab": e.openInNewTab
+                }, null, 8, ["list", "open-in-new-tab"])
               ]),
               _: 1
             })

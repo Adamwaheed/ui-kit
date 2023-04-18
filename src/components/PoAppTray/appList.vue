@@ -24,6 +24,7 @@
 			>
 				<a
 					:href="app.url"
+					:target="openInNewTab ? '_blank' : '_self'"
 					class="po-flex po-flex-col po-group po-justify-center po-items-center"
 				>
 					<span
@@ -57,6 +58,10 @@ defineProps({
 	list: {
 		type: Array,
 		default: null,
+	},
+	openInNewTab: {
+		type: Boolean,
+		default: false,
 	},
 });
 </script>
