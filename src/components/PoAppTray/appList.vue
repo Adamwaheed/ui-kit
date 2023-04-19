@@ -13,7 +13,7 @@
 			"
 			>{{ collection.groupName }}</span
 		>
-		<ul class="po-grid po-grid-cols-3 po-gap-2 po-py-2">
+		<ul class="po-grid po-grid-cols-3">
 			<li
 				v-for="app in collection.apps"
 				class="

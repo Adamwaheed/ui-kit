@@ -82,10 +82,7 @@
 								<li v-for="(app, index) in filterApps">
 									<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
 									<button
-										@click="
-											$emit('app-click', app.name);
-											setCurrent(index);
-										"
+										@click="$emit('app-click', app.name)"
 										class="shell-sidebar--item"
 										:class="[{ active: app.current }]"
 										title="Go to feedback"

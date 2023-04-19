@@ -2353,7 +2353,7 @@ let Xo = pe.RenderStrategy, Ee = q({ props: { as: { type: [Object, String], defa
 const ha = {
   key: 0,
   class: "po-text-sm po-font-normal po-text-slate-400 po-select-none po-block po-text-left po-pt-5"
-}, ba = { class: "po-grid po-grid-cols-3 po-gap-2 po-py-2" }, ga = { class: "po-bg-white hover:po-bg-slate-200 po-rounded-xl po-p-2 po-transition-colors po-duration-150 po-ease-in" }, ya = ["href", "target"], xa = { class: "po-flex po-w-14 po-h-14 po-items-center po-justify-center po-duration-100 po-ease-in-out po-overflow-hidden" }, Va = ["innerHTML"], wa = { class: "po-text-slate-500 po-font-normal po-text-sm po-text-center" }, ao = {
+}, ba = { class: "po-grid po-grid-cols-3" }, ga = { class: "po-bg-white hover:po-bg-slate-200 po-rounded-xl po-p-2 po-transition-colors po-duration-150 po-ease-in" }, ya = ["href", "target"], xa = { class: "po-flex po-w-14 po-h-14 po-items-center po-justify-center po-duration-100 po-ease-in-out po-overflow-hidden" }, Va = ["innerHTML"], wa = { class: "po-text-slate-500 po-font-normal po-text-sm po-text-center" }, ao = {
   __name: "appList",
   props: {
     /**
@@ -3710,9 +3710,7 @@ const zs = ["for"], Hs = {
                         s("ul", nr, [
                           (i(!0), u(I, null, H(h(r), (f, v) => (i(), u("li", null, [
                             s("button", {
-                              onClick: (x) => {
-                                p.$emit("app-click", f.name), p.setCurrent(v);
-                              },
+                              onClick: (x) => p.$emit("app-click", f.name),
                               class: D(["shell-sidebar--item", [{ active: f.current }]]),
                               title: "Go to feedback"
                             }, [
