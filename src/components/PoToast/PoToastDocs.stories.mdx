@@ -1,0 +1,75 @@
+# Toast component
+
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
+
+import PoToast from "./PoToast.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Components/Toast" component={PoToast} />
+
+<Description of={PoToast} />
+
+<img src="./stories/toast-preview.png" width="250px" />
+
+You can simply use toast like so:
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoToast message="This is a toast" />
+  `}
+/>
+
+Toast has a few more options. You can show icons for 'Success', 'Danger', and 'Warn' states.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoToast
+			:show="showNotificationOne"
+			action-type="success"
+			message="Successfully Saved!"
+		/>
+    <PoToast
+			:show="showNotificationOne"
+			action-type="danger"
+			message="Call Deleted!"
+		/>
+    <PoToast
+			:show="showNotificationOne"
+			action-type="warn"
+			message="Form Incomplete!"
+		/>
+  `}
+/>
+
+By default, Toast is dismissed in 2000ms. You can set a custom dismiss time by seting `hide-in` property.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+   <PoToast
+			:show="showNotificationOne"
+			message="Hide me in 5000ms"
+			:hide-in="5000"
+		/>
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoToast} />

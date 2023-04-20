@@ -498,6 +498,32 @@
 
 			<PoFooter />
 		</main>
+		<!-- <PoNotification
+			label="Aishath Jackson replied..."
+			text="I submited all that but still"
+			button-label="Respond"
+			:show="showNotificationOne"
+			@button-click="handleNotificationClick('Chat')"
+		/>
+		<PoNotification
+			label="Aishath Jackson replied..."
+			text="I submited all that but still"
+			button-label="Respond"
+			:show="showNotificationOne"
+			@button-click="handleNotificationClick('Chat')"
+		/> -->
+		<PoToast
+			:show="showNotificationOne"
+			message="Successfully Saved!"
+			:hide-in="4000"
+		/>
+		<PoToast
+			:show="showNotificationOne"
+			action-type="success"
+			:hide-in="4000"
+		/>
+		<PoToast :show="showNotificationOne" action-type="danger" :hide-in="4000" />
+		<PoToast :show="showNotificationOne" action-type="warn" :hide-in="4000" />
 	</div>
 </template>
 
@@ -505,7 +531,9 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import {
+	PoToast,
 	PoTopBar,
+	PoNotification,
 	PoSidebarDrawer,
 	PoActionBar,
 	PoCard,
@@ -578,6 +606,7 @@ let searchQuery = ref("");
 let toggleState = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
+let showNotificationOne = ref(false);
 let inputModel = ref("what");
 let currQuery = ref("search this bro");
 const tabs = [
@@ -613,6 +642,10 @@ const tabs = [
 		current: false,
 	},
 ];
+
+setTimeout(() => {
+	showNotificationOne.value = true;
+}, 100);
 
 let allApps = [
 	{
