@@ -7,6 +7,7 @@
 		id="sidebar-drawer-toggle"
 		checked
 		aria-checked="true"
+		ref="sidebarToggle"
 	/>
 	<aside class="shell-sidebar">
 		<div class="po-grow">
@@ -36,7 +37,7 @@
                   -->
 									<button
 										v-if="!item.disabled"
-										@click="$emit('button-click', item.url)"
+										@click="sidebarItemClick('button-click', item.url)"
 										:class="[
 											'shell-sidebar--item',
 											{ active: item.url == currRoute },
@@ -82,7 +83,7 @@
 								<li v-for="(app, index) in filterApps">
 									<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
 									<button
-										@click="$emit('app-click', app.name)"
+										@click="sidebarItemClick('app-click', app.name)"
 										class="shell-sidebar--item"
 										:class="[{ active: app.current }]"
 										title="Go to feedback"
@@ -163,7 +164,7 @@ export default {
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/vue/24/outline";
-import { ref, computed } from "vue";
+import { ref, computed, watchEffect } from "vue";
 import PoButton from "../PoButton/PoButton.vue";
 import PoModal from "../PoModal/PoModal.vue";
 import PoRadioInput from "../PoRadioInput/PoRadioInput.vue";
@@ -247,4 +248,20 @@ const filterApps = computed(() => {
 	}
 	return newAppList;
 });
+
+// Get a reference to the checkbox element using `ref`
+const sidebarToggle = ref(null);
+
+// Define a function to uncheck the checkbox
+function toggleSidebar() {
+	const screenWidth = window.innerWidth;
+	if (screenWidth <= 1024) {
+		sidebarToggle.value.checked = !sidebarToggle.value.checked;
+	}
+}
+
+function sidebarItemClick(emitName, action) {
+	emit(emitName, action);
+	toggleSidebar();
+}
 </script>

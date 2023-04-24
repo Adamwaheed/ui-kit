@@ -110,8 +110,8 @@
 	}
 }
 
-/* md */
-@media (min-width: 768px) {
+/* lg */
+@media (min-width: 1024px) {
 	.shell-sidebar {
 		@apply po-w-[256px] po-left-[-192px] po-p-1 po-border-slate-300 po-fixed;
 	}
