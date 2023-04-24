@@ -1,5 +1,5 @@
 <template>
-	<table class="table-responsive po-w-full">
+	<table class="table-responsive po-w-full" :class="[{ lg: breakAtLg }]">
 		<thead>
 			<tr>
 				<th v-for="th in thead">
@@ -63,6 +63,13 @@ defineProps({
 	emptyMessage: {
 		type: String,
 		default: "We couldn't find any content to display.",
+	},
+	/**
+	 * Adds breakpoint at lg to switch to mobile styles
+	 */
+	breakAtLg: {
+		type: Boolean,
+		default: false,
 	},
 });
 </script>

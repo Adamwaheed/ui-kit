@@ -1,69 +1,92 @@
+@media (max-width: 1024px) {
+	.table-responsive.lg td,
+	.table-responsive.lg th {
+		@apply po-px-5;
+	}
+	.table-responsive.lg thead {
+		@apply po-hidden;
+	}
+	.table-responsive.lg td,
+	.table-responsive.lg tr {
+		@apply po-block;
+	}
+	.table-responsive.lg tr {
+		@apply po-border-b po-border-slate-200;
+	}
+	.table-responsive.lg tr:last-child {
+		@apply po-border-b-0;
+	}
+	.table-responsive.lg td[data-title]:before {
+		@apply po-inline-block po-text-slate-800 po-font-semibold po-w-1/3;
+		content: attr(data-title);
+	}
+}
 @media screen and (max-width: 768px) {
-  .table-responsive td,
-  .table-responsive th {
-    @apply po-px-5;
-  }
-  .table-responsive thead {
-    @apply po-hidden;
-  }
-  .table-responsive td,
-  .table-responsive tr {
-    @apply po-block;
-  }
-  .table-responsive tr {
-    @apply po-border-b po-border-slate-200;
-  }
-  .table-responsive tr:last-child {
-    @apply po-border-b-0;
-  }
-  .table-responsive td[data-title]:before {
-    @apply po-inline-block po-text-slate-800 po-font-semibold po-w-1/3;
-    content: attr(data-title);
-  }
+	.table-responsive:not(.lg) td,
+	.table-responsive:not(.lg) th {
+		@apply po-px-5;
+	}
+	.table-responsive:not(.lg) thead {
+		@apply po-hidden;
+	}
+	.table-responsive:not(.lg) td,
+	.table-responsive:not(.lg) tr {
+		@apply po-block;
+	}
+	.table-responsive:not(.lg) tr {
+		@apply po-border-b po-border-slate-200;
+	}
+	.table-responsive:not(.lg) tr:last-child {
+		@apply po-border-b-0;
+	}
+	.table-responsive:not(.lg) td[data-title]:before {
+		@apply po-inline-block po-text-slate-800 po-font-semibold po-w-1/3;
+		content: attr(data-title);
+	}
 
-  /* .table-responsive td > * {
+	/* .table-responsive td > * {
         @apply flex;
     } */
 }
 
 .table-responsive tr > th:first-child,
 .table-responsive tr > td:first-child {
-  @apply po-pl-5;
+	@apply po-pl-5;
 }
 
 .table-responsive tr > th:last-child,
 .table-responsive tr > td:last-child {
-  @apply po-pr-5;
+	@apply po-pr-5;
 }
 
 .table-responsive th {
-  @apply po-font-bold po-text-sm po-py-4 po-text-slate-600 po-border-b po-text-left;
+	@apply po-font-bold po-text-sm po-py-4 po-text-slate-600 po-border-b po-text-left;
 }
 
 .table-responsive td {
-  @apply po-text-sm po-py-3 po-border-b po-border-slate-200 po-text-slate-500;
+	@apply po-text-sm po-py-3 po-border-b po-border-slate-200 po-text-slate-500;
 }
 
 .table-responsive.comfy th {
-  @apply po-py-5;
+	@apply po-py-5;
 }
 
 .table-responsive.comfy td {
-  @apply po-py-4;
+	@apply po-py-4;
 }
 
 .table-responsive td:not(.normal-case) {
-  @apply po-capitalize;
+	@apply po-capitalize;
 }
 
 .table-responsive tbody tr {
-  @apply po-transition-colors po-duration-200 po-ease-in-out;
+	@apply po-transition-colors po-duration-200 po-ease-in-out;
 }
 
 .table-hover tbody tr:hover {
-  @apply po-cursor-pointer po-bg-slate-50;
+	@apply po-cursor-pointer po-bg-slate-50;
 }
 
 .table-responsive tbody tr:hover td {
-  @apply po-text-slate-700;
+	@apply po-text-slate-700;
 }

@@ -189,7 +189,7 @@
 				<PoCard class="po-mt-5">
 					<template v-slot:content>
 						<PoCardTabs :tabs="tabs" />
-						<PoTable :thead="tableHead" :tbody="tableBody">
+						<PoTable :thead="tableHead" :tbody="tableBody" :break-at-lg="true">
 							<template #th="{ label }">
 								{{ label }}
 							</template>
