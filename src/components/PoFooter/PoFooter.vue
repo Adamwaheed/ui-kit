@@ -9,13 +9,13 @@
 				po-mt-10 po-pb-10
 			"
 		>
-			<div class="po-flex po-items-start po-space-x-5">
+			<div class="sm:po-flex po-items-start sm:po-space-x-5">
 				<img
 					class="po-h-10"
 					src="https://pension.gov.mv/asset/image/enlgish_website_logo.svg"
 					alt="Pension Office logo"
 				/>
-				<div>
+				<div class="po-mt-5 sm:po-mt-0">
 					<p class="-po-mt-1 po-text-xs po-text-slate-500">
 						8th Floor, Allied Building , Chaandhanee Magu, Malé, 20156, Maldives
 					</p>
@@ -23,13 +23,20 @@
 						&copy; {{ new Date().getFullYear() }} Pension Office, All Rights
 						Reserved.
 					</p>
-					<p class="po-mt-1 po-text-xs po-text-slate-500 po-flex po-space-x-4">
+					<p
+						class="
+							po-mt-1 po-text-xs po-text-slate-500 po-flex
+							-po-mb-2
+							po-flex-wrap
+						"
+					>
 						<a
 							href="https://www.pension.gov.mv"
 							target="_blank"
 							class="
 								po-flex po-space-x-1 po-items-center
 								hover:po-text-mpao-lightblue
+								po-mr-4 po-mb-2
 							"
 						>
 							<GlobeAltIcon class="po-w-3 po-h-3 po-fill-current" />
@@ -41,6 +48,7 @@
 							class="
 								po-flex po-space-x-1 po-items-center
 								hover:po-text-mpao-lightblue
+								po-mr-4 po-mb-2
 							"
 						>
 							<EnvelopeIcon class="po-w-3 po-h-3 po-fill-current" />
@@ -52,6 +60,7 @@
 							class="
 								po-flex po-space-x-1 po-items-center
 								hover:po-text-mpao-lightblue
+								po-mr-4 po-mb-2
 							"
 						>
 							<PhoneIcon class="po-w-3 po-h-3 po-fill-current" />
@@ -61,17 +70,26 @@
 				</div>
 			</div>
 			<div class="po-flex lg:po-items-end po-flex-col">
-				<nav class="-po-mt-1 po-text-xs po-text-slate-500 po-flex po-space-x-4">
+				<nav
+					class="
+						-po-mt-1
+						po-text-xs po-text-slate-500 po-flex
+						-po-mb-2
+						po-flex-wrap
+					"
+				>
 					<a
 						href="#"
 						@click.prevent="$emit('button-click', 'changelog-button')"
-						class="hover:po-text-mpao-lightblue"
+						class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
 						>Change logs</a
 					>
-					<a href="" class="hover:po-text-mpao-lightblue"
+					<a href="" class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
 						>Terms &amp; Conditions</a
 					>
-					<a href="" class="hover:po-text-mpao-lightblue">Privacy Policy</a>
+					<a href="" class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
+						>Privacy Policy</a
+					>
 				</nav>
 				<div class="po-flex po-space-x-2 po-mt-3 lg:po-justify-end">
 					<img

@@ -494,6 +494,15 @@
 						</div>
 					</template>
 				</PoCard>
+				<PoCard>
+					<template v-slot:content>
+						<PoTimeline
+							:timeline="locationHistory"
+							:clickable="true"
+							@button-click="handleTimelineClick"
+						/>
+					</template>
+				</PoCard>
 			</PoContentArea>
 
 			<PoFooter />
@@ -533,6 +542,7 @@
 import {
 	PoToast,
 	PoTopBar,
+	PoTimeline,
 	PoNotification,
 	PoSidebarDrawer,
 	PoActionBar,
@@ -642,6 +652,36 @@ const tabs = [
 		current: false,
 	},
 ];
+
+const locationHistory = [
+	{
+		label: "Main Office",
+		date: "2022-09-02 10:20:25",
+		description:
+			"Moved from Velaana Customer Centre to Main Office, Male City, Kaafu",
+		current: true,
+	},
+	{
+		label: "Velaana Customer Centre",
+		date: "10-23-2022",
+		description:
+			"Moved from Vilingili Office to Velaana Customer Centre, Male City, Kaafu",
+	},
+	{
+		label: "Vilingili Office",
+		date: "Apr 17, 2020",
+		description: "Moved from Main Office to Vilingili Office, Vilingili, Kaafu",
+	},
+	{
+		label: "Main Office",
+		date: "Jan 10, 2020",
+		description: "Started working at Main Office, Male City, Kaafu",
+	},
+];
+
+function handleTimelineClick(item) {
+	console.log("handleTimelineClick", item);
+}
 
 setTimeout(() => {
 	showNotificationOne.value = true;

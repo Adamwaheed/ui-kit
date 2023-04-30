@@ -15,7 +15,16 @@
 			<div class="po-w-[2px] po-shrink-0 po-h-12"></div>
 		</div>
 		<div class="po-grow po-pl-5 po-pt-5 po-space-y-3">
-			<div v-for="item in timeline" class="po-px-2 po-pt-2 po-pb-6 po-relative">
+			<!--
+        Emits timeline object when item is clicked
+        @event button-click
+    -->
+			<div
+				v-for="item in timeline"
+				class="po-px-2 po-pt-2 po-pb-6 po-relative po-group"
+				:class="[{ 'po-cursor-pointer': clickable }]"
+				@click="$emit('button-click', item)"
+			>
 				<span
 					class="
 						po-rounded-full
@@ -42,7 +51,10 @@
 				</span>
 				<div>
 					<div class="-po-mt-1 po-flex po-space-x-3 po-items-center">
-						<h4 class="po-text-sm po-text-slate-600 po-font-medium">
+						<h4
+							class="po-text-sm po-text-slate-600 po-font-medium"
+							:class="[{ 'group-hover:po-text-mpao-lightblue': clickable }]"
+						>
 							{{ item.label }}
 						</h4>
 						<span class="po-block po-text-xs po-text-slate-400">{{
@@ -75,5 +87,11 @@ defineProps({
 		type: Array,
 		default: null,
 	},
+	clickable: {
+		type: Boolean,
+		default: false,
+	},
 });
+
+const emit = defineEmits(["button-click"]);
 </script>

@@ -79,6 +79,31 @@ import dedent from "ts-dedent";
   `}
 />
 
+The timeline component emmits the object when an item is clicked. You can use `clickable=true` property to highlight that it's clickable. And use `@button-click` event to handle the click.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTimeline
+      :timeline="locationHistory"
+      :clickable="true"
+      @button-click="handleTimelineClick"
+    />
+    const locationHistory = [
+      {
+        label: "Main Office",
+        date: "Jan 10, 2020",
+        description: "Started working at Main Office, Male City, Kaafu",
+      },
+    ];
+    function handleTimelineClick(item) {
+      console.log("handleTimelineClick", item);
+    }
+  `}
+/>
+
 ### Explanation
 
 <ArgsTable of={PoTimeline} />
