@@ -3,6 +3,7 @@
 		as="div"
 		v-model="selectedItem"
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+		:disabled="disabled"
 	>
 		<ComboboxLabel
 			class="
@@ -40,6 +41,7 @@
 				"
 				@change="query = $event.target.value"
 				:display-value="getSelectedName"
+				:disabled="disabled"
 			/>
 			<ComboboxButton
 				class="
@@ -211,6 +213,13 @@ const props = defineProps({
 	message: {
 		type: String,
 		default: null,
+	},
+	/**
+	 * True or false if disabled
+	 */
+	disabled: {
+		type: Boolean,
+		default: false,
 	},
 });
 

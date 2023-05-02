@@ -4733,6 +4733,13 @@ const qs = ["for"], Us = {
     message: {
       type: String,
       default: null
+    },
+    /**
+     * True or false if disabled
+     */
+    disabled: {
+      type: Boolean,
+      default: !1
     }
   },
   emits: ["selected", "unSelected", "update:modelValue"],
@@ -4758,7 +4765,8 @@ const qs = ["for"], Us = {
       as: "div",
       modelValue: o.value,
       "onUpdate:modelValue": f[1] || (f[1] = (v) => o.value = v),
-      class: L([{ "lg:po-grid lg:po-grid-cols-2": e.display === "horizontal" }])
+      class: L([{ "lg:po-grid lg:po-grid-cols-2": e.display === "horizontal" }]),
+      disabled: e.disabled
     }, {
       default: j(() => [
         _(h(Dn), { class: "po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700" }, {
@@ -4779,8 +4787,9 @@ const qs = ["for"], Us = {
           _(h(An), {
             class: "po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm",
             onChange: f[0] || (f[0] = (v) => n.value = v.target.value),
-            "display-value": r
-          }),
+            "display-value": r,
+            disabled: e.disabled
+          }, null, 8, ["disabled"]),
           _(h(jn), { class: "po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none" }, {
             default: j(() => [
               _(h(Os), {
@@ -4836,7 +4845,7 @@ const qs = ["for"], Us = {
         ])) : x("", !0)
       ]),
       _: 1
-    }, 8, ["modelValue", "class"]));
+    }, 8, ["modelValue", "class", "disabled"]));
   }
 }), Gi = { class: "po-text-sm po-font-medium po-text-slate-700 po-cursor-pointer po-select-none po-flex po-items-center po-space-x-1" }, Ki = {
   key: 0,
