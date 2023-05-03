@@ -101,6 +101,12 @@
 							:class="['po-block po-truncate', selected && 'po-font-semibold']"
 						>
 							{{ item.name }}
+
+							<span
+								v-if="item.subtitle"
+								class="po-block po-text-xs po-opacity-60"
+								>{{ item.subtitle }}</span
+							>
 						</span>
 
 						<span

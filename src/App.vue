@@ -334,6 +334,12 @@
 					</PoCard>
 					<PoCard class="po-mt-5 po-p-5">
 						<template v-slot:content>
+							<PoSelectField
+								label="Select field with two labels"
+								:list="selectFieldListTwo"
+								@selected="handleSelectFieldTwoClick"
+								v-model="selectFieldTwoSelected"
+							/>
 							<div class="items-center space-x-5">
 								<PoSelectField
 									label="App names"
@@ -955,9 +961,19 @@ function handleAlertOkClick() {
 }
 
 const selectFieldList = ref([]);
+const selectFieldListTwo = ref([
+	{ id: 1, name: "Sub category name", subtitle: "Category" },
+	{ id: 2, name: "Running around in circles", subtitle: "Activity" },
+	{ id: 3, name: "Something drinkable", subtitle: "Water" },
+]);
+
+function handleSelectFieldTwoClick(item) {
+	console.log("select field two selected ok", item);
+}
 
 const selectFieldPreSelected = ref(selectFieldList[1]);
 const selectFieldSelected = ref(null);
+const selectFieldTwoSelected = ref(null);
 
 selectFieldSelected.value = 2;
 setTimeout(() => {

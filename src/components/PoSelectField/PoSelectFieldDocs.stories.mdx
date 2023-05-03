@@ -47,10 +47,6 @@ import dedent from "ts-dedent";
 You can use `error-message` to show an error message. The field will update visually to indicate that it has an erorr. You can use `message` property to display a message to the user.
 You can use the `:disabled="true"` prop to disable the field.
 
-### Explanation
-
-<ArgsTable of={PoSelectField} />
-
 <Source
 	language="js"
 	dark
@@ -62,6 +58,46 @@ You can use the `:disabled="true"` prop to disable the field.
         { id: 2, name: 'HelpDesk' },
         { id: 3, name: 'Another' },
     ];
-    selectFieldSelected.value = 2;
   `}
 />
+
+You can have a sub title displayed in the select field:
+
+<Canvas withToolbar>
+	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+		<Story inline={true} id="form-select-field--select-field-two" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		&nbsp;
+	</div>
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+	<PoSelectField
+			label="Select field"
+			:list="selectFieldListTwo"
+			@selected="handleSelectFieldTwoClick"
+			v-model="selectFieldTwoSelected"
+		/>
+		
+    const selectFieldSelected = ref(null);
+    const selectFieldListTwo = ref([
+			{ id: 1, name: "Sub category name", subtitle: "Category" },
+			{ id: 2, name: "Running around in circles", subtitle: "Activity" },
+			{ id: 3, name: "Something drinkable", subtitle: "Water" },
+		]);
+  `}
+/>
+
+### Explanation
+
+<ArgsTable of={PoSelectField} />
