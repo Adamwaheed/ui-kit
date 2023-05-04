@@ -11,7 +11,7 @@
 			po-px-4
 			po-py-6
 			sm:po-p-6
-			po-z-50
+			po-z-[60]
 		"
 	>
 		<div

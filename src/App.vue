@@ -132,6 +132,10 @@
 									<div class="p-5">...</div>
 								</template>
 							</PoModal>
+							<PoButton
+								@click="showNoteSlideover = true"
+								label="Open Slideover"
+							/>
 						</div>
 
 						<br />
@@ -539,6 +543,14 @@
 		/>
 		<PoToast :show="showNotificationOne" action-type="danger" :hide-in="4000" />
 		<PoToast :show="showNotificationOne" action-type="warn" :hide-in="4000" />
+		<PoSlideover
+			:show="showNoteSlideover"
+			@slideover-closed="() => (showNoteSlideover = false)"
+			label="Note"
+			description="Description goes here"
+		>
+			<template v-slot:content> I'm a slideover </template>
+		</PoSlideover>
 	</div>
 </template>
 
@@ -550,6 +562,7 @@ import {
 	PoTopBar,
 	PoTimeline,
 	PoNotification,
+	PoSlideover,
 	PoSidebarDrawer,
 	PoActionBar,
 	PoCard,
@@ -620,6 +633,7 @@ import { watch } from "vue";
 
 let searchQuery = ref("");
 let toggleState = ref(false);
+let showNoteSlideover = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
 let showNotificationOne = ref(false);
