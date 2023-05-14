@@ -71,7 +71,8 @@
 					@pagination-click="handlePaginationClick"
 					@button-click="handlePageTitleClick"
 				/>
-				<PoCard class="po-mt-5 po-p-5">
+				<PoCard class="po-mt-5 po-p-5" title="Hello">
+					<template v-slot:action><PoButton label="Create" /></template>
 					<template v-slot:content>
 						Searching {{ searchQuery }}<br />
 						<div class="po-flex po-space-x-3 po-mt-3">
