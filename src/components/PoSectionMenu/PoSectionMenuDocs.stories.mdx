@@ -1,24 +1,33 @@
 # Section menu component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
 
-import PoSectionMenu from './PoSectionMenu.vue';
+import PoSectionMenu from "./PoSectionMenu.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Section Menu" component={PoSectionMenu} />
 
 <Description of={PoSectionMenu} />
 
+**We nolonger use this. Use PoTabs intead of this. But if there is a good use case and the UX makes sense, you can use it.**
+
 <Canvas withToolbar>
-    <Story id="layout-section-menu--section-menu" />
+	<Story id="layout-section-menu--section-menu" />
 </Canvas>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoSectionMenu
         curr-page-route="/users"
         :menu-items="menuItems"
@@ -32,10 +41,10 @@ import dedent from 'ts-dedent';
 <ArgsTable of={PoSectionMenu} />
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     import { UsersIcon, PuzzlePieceIcon, KeyIcon, RectangleStackIcon, BriefcaseIcon } from '@heroicons/vue/24/outline';
     const menuItems = [
         {
