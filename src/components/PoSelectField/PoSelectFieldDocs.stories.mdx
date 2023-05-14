@@ -18,7 +18,7 @@ import dedent from "ts-dedent";
 <Description of={PoSelectField} />
 
 <Canvas withToolbar>
-	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
 		<Story inline={true} id="form-select-field--select-field" />
 		<br />
 		<br />
@@ -61,10 +61,12 @@ You can use the `:disabled="true"` prop to disable the field.
   `}
 />
 
+#### Subtitles and selected Event
+
 You can have a sub title displayed in the select field:
 
 <Canvas withToolbar>
-	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5 po-rounded-md po-shadow-md">
+	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
 		<Story inline={true} id="form-select-field--select-field-two" />
 		<br />
 		<br />
@@ -76,6 +78,8 @@ You can have a sub title displayed in the select field:
 		&nbsp;
 	</div>
 </Canvas>
+
+Every time a user selects from the dropdown `selected` event is fired.
 
 <Source
 	language="js"
@@ -95,7 +99,12 @@ You can have a sub title displayed in the select field:
 			{ id: 2, name: "Running around in circles", subtitle: "Activity" },
 			{ id: 3, name: "Something drinkable", subtitle: "Water" },
 		]);
-  `}
+
+    function handleSelectFieldTwoClick(val) {
+    	console.log(val)
+    }
+
+`}
 />
 
 ### Explanation

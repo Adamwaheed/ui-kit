@@ -33,7 +33,7 @@ const Template = (args) => ({
 		//👇 The args will now be passed down to the template
 		return { args };
 	},
-	template: '<PoSelectField v-bind="args" />',
+	template: '<PoSelectField v-bind="args" v-model="args.selected" />',
 });
 
 export const SelectField = Template.bind({});
@@ -47,7 +47,7 @@ SelectField.args = {
 		{ id: 2, name: "HelpDesk" },
 		{ id: 3, name: "Another" },
 	],
-	preSelected: { id: 1, name: "Koshaaru" },
+	selected: null,
 };
 SelectFieldTwo.args = {
 	/* 👇 The args you need here will depend on your component */
