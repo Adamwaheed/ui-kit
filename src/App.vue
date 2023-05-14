@@ -260,9 +260,7 @@
 						<br />
 						<PoDescriptionList :items="descriptionListItems" />
 						<span
-							class="
-								po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold
-							"
+							class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold"
 							>Striped</span
 						>
 						<PoDescriptionList
@@ -271,9 +269,7 @@
 							@button-click="handleDescriptionListActionClick"
 						/>
 						<span
-							class="
-								po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold
-							"
+							class="po-text-sm po-text-slate-600 po-block po-my-10 po-font-bold"
 							>Slot</span
 						>
 						<PoDescriptionList>
@@ -976,7 +972,7 @@ function handleAlertOkClick() {
 
 const selectFieldList = ref([]);
 const selectFieldListTwo = ref([
-	{ id: 1, name: "Sub category name", subtitle: "Category" },
+	{ id: "green", name: "Sub category name", subtitle: "Category" },
 	{ id: 2, name: "Running around in circles", subtitle: "Activity" },
 	{ id: 3, name: "Something drinkable", subtitle: "Water" },
 ]);
