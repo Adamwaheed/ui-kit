@@ -56,6 +56,26 @@ import dedent from "ts-dedent";
   `}
 />
 
+### Errors
+
+<Canvas withToolbar>
+	<Story id="form-checkbox--with-error" />
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoCheckbox
+        v-model="checkboxState"
+        label="Can't Check me"
+        id="checkbox-15"
+        error-message="Unable to comply, building in progress."
+    />
+  `}
+/>
+
 ### Explanation
 
 <ArgsTable of={PoCheckbox} />

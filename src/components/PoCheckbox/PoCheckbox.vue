@@ -66,25 +66,11 @@ defineProps({
 		default: "",
 	},
 	/**
-	 * Input type
-	 */
-	type: {
-		type: String,
-		default: "text",
-	},
-	/**
 	 * Input id text
 	 */
 	id: {
 		type: String,
-		default: "",
-	},
-	/**
-	 * A tool tip, helper information
-	 */
-	info: {
-		type: String,
-		default: null,
+		default: "checkbox-0",
 	},
 	/**
 	 * Tip, description, information for the input
