@@ -1,12 +1,12 @@
 # Alert component
 
 import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
 } from "@storybook/addon-docs";
 
 import PoAlert from "./PoAlert.vue";
@@ -17,15 +17,13 @@ import dedent from "ts-dedent";
 
 <Description of={PoAlert} />
 
-<Canvas withToolbar>
-  <Story id="components-alert--alert" />
-</Canvas>
+**Note: Select Alert > Alert from left side menu to see the preview**
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
    <PoAlert
         cancel-btn-label="Dismiss"
         ok-btn-label="Confirm"
@@ -43,10 +41,10 @@ import dedent from "ts-dedent";
 <ArgsTable of={PoAlert} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let showAlert = ref(false);
     function openAlertClick() {
         showAlert.value = true;
