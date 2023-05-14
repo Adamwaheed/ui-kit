@@ -79,7 +79,15 @@ import dedent from "ts-dedent";
   `}
 />
 
+#### clickable
+
 The timeline component emmits the object when an item is clicked. You can use `clickable=true` property to highlight that it's clickable. And use `@button-click` event to handle the click.
+
+You can use `button-click` without `clickable` set to true. But it is recommended to be used together, so that the user will know clicking the item has an action attached to it.
+
+<Canvas withToolbar>
+	<Story inline={true} id="content-timeline--many-clickable" />
+</Canvas>
 
 <Source
 	language="js"
