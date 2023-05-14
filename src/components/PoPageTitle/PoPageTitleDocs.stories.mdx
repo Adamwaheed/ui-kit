@@ -1,12 +1,12 @@
 # Page title component
 
 import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
 } from "@storybook/addon-docs";
 
 import PoPageTitle from "./PoPageTitle.vue";
@@ -17,134 +17,40 @@ import dedent from "ts-dedent";
 
 <Description of={PoPageTitle} />
 
+Make sure to always use `:stand-alone="true"` when using the component.
+
 #### Page title
 
 <Canvas>
-  <Story id="layout-page-title--page-title" />
+	<Story id="layout-page-title--page-title" />
 </Canvas>
 
-#### With Pagination
-
-<Canvas>
-  <Story id="layout-page-title--with-pagination" />
-</Canvas>
-
-#### With Pagination Filter And Download
-
-<Canvas>
-  <Story id="layout-page-title--with-pagination-filter-and-download" />
-</Canvas>
-
-#### With Filter And Download
-
-<Canvas>
-  <Story id="layout-page-title--with-filter-and-download" />
-</Canvas>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoPageTitle label="Page Title" :stand-alone="true" />
+  `}
+/>
 
 #### With Description
 
 <Canvas>
-  <Story id="layout-page-title--with-with-description" />
-</Canvas>
-
-#### With Stats
-
-<Canvas>
-  <Story id="layout-page-title--with-stats" />
+	<Story id="layout-page-title--with-with-description" />
 </Canvas>
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
-    <PoPageTitle label="All Investments" />
-  `}
-/>
-
-<Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
-    <PoPageTitle
-        label="All Investments"
-        description="This is a page description that goes on to explain what is in the page."
-        :stats="stats"
-        :show-pagination="true"
-        :show-filter="true"
-        :show-download="true"
-        :pagination="pagination"
-        @button-click="handlePageTitlteClick"
-        @pagination-click="handlePaginationClick"
-        @stat-click="handeStatClick"
-      >
-      <template v-slot:filters>
-        <PoInputField label="Date from" id="date-from" type="date" />
-        <PoInputField label="Date to" id="date-to" type="date" />
-        <div class="flex items-end pb-[0.05rem]">
-          <PoButton label="Filter" type="submit" />
-        </div>
-      </template>
-      </PoPageTitle>
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoPageTitle label="Page Title" description="This is a page description that goes on to explain what is in the page." :stand-alone="true" />
   `}
 />
 
 ### Explanation
 
+Page title has a lot of option as seen in the args table below. We do not use these anymore. We only use the `label` and `description`.
+
 <ArgsTable of={PoPageTitle} />
-
-\*\*\*\* `pagination-click` Emits 'prev' or 'next' depending on the button clicked
-
-<Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
-    let pagination = {
-        label: 'Page 2 of 20',
-        nextLink: '/users/1',
-        prevLink: '/users/3',
-    }
-    function handlePageTitleClick(item) {
-        switch (item) {
-            case "download":
-            alert('download')
-            break;
-        }
-    }
-    function handlePaginationClick(item) {
-        switch (item) {
-            case "prev":
-                ...
-                break;
-            case "next":
-                ...
-                break;
-        }
-    }
-    let stats = [
-        {
-          value: "32",
-          label: "Active",
-          icon: CheckBadgeIcon,
-          iconColor: "text-green-400",
-        },
-        {
-          value: "1",
-          label: "Draft",
-          icon: TagIcon,
-          iconColor: "text-sky-400",
-        },
-        {
-          value: "5",
-          label: "Terminated",
-          icon: BoltIcon,
-          iconColor: "text-red-400",
-        },
-      ];
-      function handleStatClick(statObj) {
-        ...do something
-      }
-  `}
-/>
