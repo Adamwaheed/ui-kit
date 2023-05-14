@@ -39,6 +39,8 @@ const Template = (args) => ({
 
 export const Basic = Template.bind();
 export const WithMessage = Template.bind();
+export const Disabled = Template.bind();
+export const WithError = Template.bind();
 
 Basic.args = {
 	id: "check-box-basic",
@@ -49,4 +51,16 @@ WithMessage.args = {
 	id: "check-box-with-message",
 	label: "Check me",
 	message: "A short descriptive message",
+};
+
+Disabled.args = {
+	id: "check-box-disabled",
+	label: "Can\t Check me",
+	disabled: true,
+};
+
+WithError.args = {
+	id: "check-box-error",
+	label: "Check me",
+	errorMessage: "Unable to comply, building in progress.",
 };
