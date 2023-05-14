@@ -10,24 +10,14 @@
 				v-bind="$attrs"
 				@input="$emit('update:modelValue', $event.target.checked)"
 				type="checkbox"
-				class="
-					po-h-4 po-w-4 po-rounded po-border-slate-300 po-text-mpao-lightblue
-					focus:po-ring-mpao-lightblue
-				"
+				class="po-h-4 po-w-4 po-rounded po-border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
+				:class="[{ 'po-bg-slate-200': disabled }]"
 			/>
 		</div>
 		<div class="po-ml-3 po-text-sm">
 			<label
 				:for="id"
-				class="
-					po-font-medium
-					po-text-slate-600
-					po-cursor-pointer
-					po-select-none
-					po-flex
-					po-items-center
-					po-space-x-1
-				"
+				class="po-font-medium po-text-slate-600 po-cursor-pointer po-select-none po-flex po-items-center po-space-x-1"
 				><span>{{ label }}</span
 				><span
 					v-if="required"
