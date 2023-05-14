@@ -1,24 +1,35 @@
 # Card Search component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
 
-import PoCardSearch from './PoCardSearch.vue';
+import PoCardSearch from "./PoCardSearch.vue";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
 <Meta title="Layout/Card Search" component={PoCardSearch} />
 
 <Description of={PoCardSearch} />
 
+When you need to use searchbox inside the Card component, you can use CardSearch component. To get the input value from the component, you can use `v-model`.
+
+When using this component, make sure that it is the first child of the PoCard component, meaning, it should be the first thing inside `<template v-slot:content>` in `<PoCard>`. The Card component should not have `title`, `is-loding`, or padding. You should instead use a container element inside the Card component as a sibling to PoCardSearch, which has padding. Make sure to add a padding between PoCardSearch and its next sibling.
+
 <Canvas withToolbar>
-    <Story id="layout-card-search--card-search" />
+	<Story id="layout-card-search--card-search" />
 </Canvas>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoCard class="mt-5">
         <template v-slot:content>
             <PoCardSearch placeholder="Search card.." v-model="searchQuery" />

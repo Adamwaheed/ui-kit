@@ -333,31 +333,34 @@
 							</div>
 						</template>
 					</PoCard>
-					<PoCard class="po-mt-5 po-p-5">
+					<PoCard>
 						<template v-slot:content>
-							<PoSelectField
-								label="Select field with two labels"
-								:list="selectFieldListTwo"
-								@selected="handleSelectFieldTwoClick"
-								v-model="selectFieldTwoSelected"
-							/>
-							<div class="items-center space-x-5">
+							<PoCardSearch placeholder="Search card.." v-model="searchQuery" />
+							<div class="po-mt-5 po-p-5">
 								<PoSelectField
-									label="App names"
-									@selected="handleSelectFieldClick"
-									:list="selectFieldList"
-									v-model="selectFieldSelected"
-									error-message="This an error speaking"
+									label="Select field with two labels"
+									:list="selectFieldListTwo"
+									@selected="handleSelectFieldTwoClick"
+									v-model="selectFieldTwoSelected"
 								/>
-								<br />
-								{{ selectFieldList }}
-								Selected {{ selectFieldSelected }}
+								<div class="items-center space-x-5">
+									<PoSelectField
+										label="App names"
+										@selected="handleSelectFieldClick"
+										:list="selectFieldList"
+										v-model="selectFieldSelected"
+										error-message="This an error speaking"
+									/>
+									<br />
+									{{ selectFieldList }}
+									Selected {{ selectFieldSelected }}
+								</div>
+								<PoLogs :items="logItems" />
+								<PoDownloadFileList
+									:files="downloadableFiles"
+									@button-click="handleDownloadClick"
+								/>
 							</div>
-							<PoLogs :items="logItems" />
-							<PoDownloadFileList
-								:files="downloadableFiles"
-								@button-click="handleDownloadClick"
-							/>
 						</template>
 					</PoCard>
 				</div>
@@ -563,6 +566,7 @@ import {
 	PoSidebarDrawer,
 	PoActionBar,
 	PoCard,
+	PoCardSearch,
 	PoPageTitle,
 	PoTable,
 	PoDescriptionList,
