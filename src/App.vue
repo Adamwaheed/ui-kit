@@ -61,16 +61,7 @@
 					message="Could not complete your request."
 					:error-list="['NID no is required', 'Date of birth is required']"
 				/>
-				<PoPageTitle
-					class="po-mt-5"
-					label="Page title"
-					:show-pagination="true"
-					:show-filter="true"
-					:show-download="true"
-					:pagination="pagination"
-					@pagination-click="handlePaginationClick"
-					@button-click="handlePageTitleClick"
-				/>
+				<PoPageTitle class="po-mt-5" label="Page title" />
 				<PoCard class="po-mt-5 po-p-5" title="Hello">
 					<template v-slot:action><PoButton label="Create" /></template>
 					<template v-slot:content>
