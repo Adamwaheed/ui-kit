@@ -88,6 +88,13 @@
 		>
 			<template v-slot:content>
 				<div>
+					<div class="po-pb-5 po-max-w-xl">
+						<span class="po-text-sm po-text-slate-600"
+							>We're always working to improve our app, and we're excited to
+							share the latest changes with you. We hope you enjoy these new
+							features and improvements</span
+						>
+					</div>
 					<div class="po-flex po-space-x-5">
 						<div
 							v-for="item in statsBlockItems"

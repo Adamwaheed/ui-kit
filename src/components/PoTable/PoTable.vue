@@ -12,19 +12,32 @@
 		</thead>
 		<tbody>
 			<tr
-				v-if="null !== tbody || (null !== tbody && 0 !== tbody.length)"
-				v-for="(td, index) in tbody"
+				v-if="
+					(null !== tableBody && !loading) ||
+					(null !== tableBody && 0 !== tableBody.length && !loading)
+				"
+				v-for="(td, index) in tableBody"
 			>
 				<!-- 
                     @slot Table body items format
                  -->
 				<slot name="td" v-bind="{ ...td, index, item: td }"></slot>
 			</tr>
-			<tr v-if="null == tbody || (null !== tbody && 0 == tbody.length)">
+			<tr
+				v-if="
+					(null == tableBody && !loading) ||
+					(null !== tableBody && 0 == tableBody.length && !loading)
+				"
+			>
 				<td :colspan="thead.length + 1" class="po-text-center">
 					<span class="po-py-10 po-block po-normal-case">{{
 						emptyMessage
 					}}</span>
+				</td>
+			</tr>
+			<tr v-if="loading" v-for="td in tableBody">
+				<td v-for="td in thead" class="po-pr-5 po-py-2">
+					<div class="po-h-3 loading-placeholder po-rounded-full"></div>
 				</td>
 			</tr>
 		</tbody>
@@ -42,7 +55,8 @@ export default {
 };
 </script>
 <script setup>
-defineProps({
+import { ref, toRefs, watch, onMounted } from "vue";
+const props = defineProps({
 	/**
 	 * Table head items array
 	 */
@@ -71,5 +85,35 @@ defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * If set true, displays placeholder loading animation
+	 */
+	isLoading: {
+		type: Boolean,
+		default: false,
+	},
 });
+
+const { isLoading, tbody } = toRefs(props);
+const loading = ref(false);
+const tableBody = ref([]);
+
+watch(isLoading, () => {
+	checkIfLoading();
+});
+
+onMounted(() => {
+	checkIfLoading();
+});
+
+function checkIfLoading() {
+	console.log("---", isLoading.value);
+	loading.value = isLoading.value;
+	tableBody.value = tbody.value;
+
+	if (isLoading.value) {
+		tableBody.value = [{}, {}, {}, {}, {}];
+	}
+	console.log("-tableBody--", tableBody.value);
+}
 </script>

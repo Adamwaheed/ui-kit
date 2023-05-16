@@ -175,13 +175,65 @@
 				<PoPageTitle
 					label="Another title"
 					description="This is a page description that explains how it works. Every element in the page. And a little more."
-					:show-filter="true"
-					:show-download="true"
-					:stats="[
-						{ value: '32', label: 'Employees' },
-						{ value: '10', label: 'Flights' },
-					]"
 				/>
+				<PoCard class="po-mt-5">
+					<template v-slot:content>
+						<PoTable
+							:thead="tableHead"
+							:tbody="tableBody"
+							:break-at-lg="true"
+							:is-loading="true"
+						>
+							<template #th="{ label }">
+								{{ label }}
+							</template>
+							<template #td="{ index, name, nid, source, dod, action, item }">
+								<td data-title="name">
+									{{ name }}
+								</td>
+								<td data-title="NID">{{ nid }}</td>
+								<td data-title="source">{{ source }}</td>
+								<td data-title="dod">{{ formatDate(dod) }}</td>
+								<td data-title="action">
+									<div
+										class="po-flex po-items-center po-space-x-3 po-justify-end"
+										v-if="action === 'text'"
+									>
+										<PoTableAction label="Edit" text-color="po-text-sky-600" />
+										<PoTableAction
+											label="Delete"
+											text-color="po-text-red-600"
+										/>
+										<PoTableAction label="View" text-color="po-text-sky-600" />
+									</div>
+									<div
+										class="po-flex po-items-center po-space-x-3 po-justify-end"
+										v-if="action === 'icon'"
+									>
+										<PoTableAction btn-type="edit" />
+										<PoTableAction btn-type="delete" />
+										<PoTableAction btn-type="view" />
+									</div>
+									<div
+										class="po-flex po-items-center po-space-x-3 po-justify-end"
+										v-if="action === 'both'"
+									>
+										<PoTableAction
+											label="Approve"
+											text-color="po-text-sky-600"
+										/>
+										<PoTableAction
+											label="Reject"
+											text-color="po-text-red-600"
+										/>
+										<PoTableAction btn-type="edit" />
+										<PoTableAction btn-type="view" />
+									</div>
+								</td>
+							</template>
+						</PoTable>
+					</template>
+				</PoCard>
 				<PoCard class="po-mt-5">
 					<template v-slot:content>
 						<PoCardTabs :tabs="tabs" />

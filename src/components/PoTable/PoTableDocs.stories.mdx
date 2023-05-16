@@ -29,6 +29,28 @@ import dedent from "ts-dedent";
 	<Story id="content-table--empty" />
 </Canvas>
 
+## Loading
+
+You can set `is-loading` to true, if you want to show placeholder loading indicators.
+
+<Canvas withToolbar>
+	<Story id="content-table--loading" />
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTable
+      :thead="tableHead"
+      :tbody="tableBody"
+      :is-loading="true"
+    >
+    ...
+  `}
+/>
+
 PoTable uses `data-title=""` attribute to display titles on resposive (mobile) view.
 
 <Source
