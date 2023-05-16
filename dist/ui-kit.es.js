@@ -4396,7 +4396,7 @@ const Os = ["for"], Ps = {
       })
     ]));
   }
-}), Hr = { key: 1 }, qr = ["colspan"], Ur = { class: "po-py-10 po-block po-normal-case" }, Gr = { class: "po-pr-5" }, Wr = /* @__PURE__ */ s("div", { class: "po-h-4 loading-placeholder po-rounded-full" }, null, -1), Kr = [
+}), Hr = { key: 1 }, qr = ["colspan"], Ur = { class: "po-py-10 po-block po-normal-case" }, Gr = { class: "po-pr-5 po-py-2" }, Wr = /* @__PURE__ */ s("div", { class: "po-h-3 loading-placeholder po-rounded-full" }, null, -1), Kr = [
   Wr
 ], Zr = { key: 0 }, Qr = {
   name: "PoTable"
@@ -4462,7 +4462,7 @@ const Os = ["for"], Ps = {
         a.value !== null && !o.value || a.value !== null && a.value.length !== 0 && !o.value ? (r(!0), p(A, { key: 0 }, F(a.value, (f, c) => (r(), p("tr", null, [
           te(u.$slots, "td", jt(Bt({ ...f, index: c, item: f })))
         ]))), 256)) : y("", !0),
-        a.value == null && !o.value || a.value !== null && a.value.length == 0 && o.value ? (r(), p("tr", Hr, [
+        a.value == null && !o.value || a.value !== null && a.value.length == 0 && !o.value ? (r(), p("tr", Hr, [
           s("td", {
             colspan: e.thead.length + 1,
             class: "po-text-center"
