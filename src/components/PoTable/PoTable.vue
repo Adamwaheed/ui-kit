@@ -36,8 +36,13 @@
 				</td>
 			</tr>
 			<tr v-if="loading" v-for="td in tableBody">
-				<td v-for="td in thead" class="po-pr-5 po-py-2">
-					<div class="po-h-3 loading-placeholder po-rounded-full"></div>
+				<td v-for="td in thead" class="po-pr-5">
+					<div class="po-py-1">
+						<div
+							class="po-h-2 loading-placeholder po-rounded-full"
+							:style="{ width: randomWidth() + '%' }"
+						></div>
+					</div>
 				</td>
 			</tr>
 		</tbody>
@@ -55,7 +60,7 @@ export default {
 };
 </script>
 <script setup>
-import { ref, toRefs, watch, onMounted } from "vue";
+import { ref, toRefs, watch, onMounted, computed } from "vue";
 const props = defineProps({
 	/**
 	 * Table head items array
@@ -96,9 +101,12 @@ const props = defineProps({
 
 const { isLoading, tbody } = toRefs(props);
 const loading = ref(false);
-const tableBody = ref([]);
+const tableBody = ref(null);
 
 watch(isLoading, () => {
+	checkIfLoading();
+});
+watch(tbody, () => {
 	checkIfLoading();
 });
 
@@ -107,13 +115,14 @@ onMounted(() => {
 });
 
 function checkIfLoading() {
-	console.log("---", isLoading.value);
 	loading.value = isLoading.value;
 	tableBody.value = tbody.value;
 
 	if (isLoading.value) {
 		tableBody.value = [{}, {}, {}, {}, {}];
 	}
-	console.log("-tableBody--", tableBody.value);
+}
+function randomWidth() {
+	return Math.floor(Math.random() * 41) + 40; // Generates a random number between 60 and 100
 }
 </script>

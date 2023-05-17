@@ -926,30 +926,34 @@ let tableHead = [
 	{ label: "Action" },
 ];
 
-let tableBody = [
-	{
-		name: "Jane Gasim",
-		nid: "A00000",
-		source: "YY Clinic",
-		dod: "2022-03-12",
-		something: "else",
-		action: "text",
-	},
-	{
-		name: "Mariyam Doe",
-		nid: "A00000",
-		source: "Rashu Councils",
-		dod: "2022 November 10",
-		action: "icon",
-	},
-	{
-		name: "Don Hussain",
-		nid: "A00000",
-		source: "Farumathi",
-		dod: "2022-11-02",
-		action: "both",
-	},
-];
+let tableBody = ref([]);
+
+setTimeout(() => {
+	tableBody.value = [
+		{
+			name: "Jane Gasim",
+			nid: "A00000",
+			source: "YY Clinic",
+			dod: "2022-03-12",
+			something: "else",
+			action: "text",
+		},
+		{
+			name: "Mariyam Doe",
+			nid: "A00000",
+			source: "Rashu Councils",
+			dod: "2022 November 10",
+			action: "icon",
+		},
+		{
+			name: "Don Hussain",
+			nid: "A00000",
+			source: "Farumathi",
+			dod: "2022-11-02",
+			action: "both",
+		},
+	];
+}, 2000);
 
 let descriptionListItems = [
 	{

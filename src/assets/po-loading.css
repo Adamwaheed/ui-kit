@@ -103,8 +103,8 @@
 	animation-iteration-count: infinite;
 	animation-name: loadingPlaceholderShimmer;
 	animation-timing-function: linear;
-	background: #f1f5f9;
-	background: linear-gradient(to right, #f1f5f9 8%, #e6f2fc 18%, #f1f5f9 33%);
+	background: #eef2f8;
+	background: linear-gradient(to right, #eef2f8 8%, #dae3ed 18%, #eef2f8 33%);
 	background-size: 800px 104px;
 	position: relative;
 }
