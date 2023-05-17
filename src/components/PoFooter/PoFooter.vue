@@ -52,6 +52,7 @@
 					class="-po-mt-1 po-text-xs po-text-slate-500 po-flex -po-mb-2 po-flex-wrap"
 				>
 					<a
+						v-if="changelog"
 						href="#"
 						@click.prevent="showChangeLogModal = true"
 						class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
@@ -95,49 +96,55 @@
 							features and improvements</span
 						>
 					</div>
-					<div class="po-flex po-space-x-5">
-						<div
-							v-for="item in statsBlockItems"
-							class="po-bg-white po-relative"
+
+					<div class="po-flex po-space-x-2">
+						<span
+							v-for="(logType, index) in changelog"
+							class="po-flex po-items-center po-space-x-1 po-px-4 po-py-3 po-rounded-t-xl po-cursor-pointer"
+							@click="currentChangeLogTab = index"
+							:class="[
+								{ 'po-bg-purple-500/10': currentChangeLogTab === index },
+							]"
 						>
-							<div class="po-flex po-items-start po-space-x-2">
-								<div>
-									<span
-										:class="[
-											'po-inline-flex po-p-2 po-rounded-md',
-											item.bgColor,
-											item.iconColor,
-										]"
+							<span class="po-text-sm po-font-semibold po-slate-800"
+								>{{ logType.label }} Version</span
+							>
+							<span
+								class="po-text-xs po-text-white po-px-1 po-py-0 po-rounded-md po-bg-mpao-lightblue"
+								>{{ logType.latest_version }}</span
+							>
+						</span>
+					</div>
+
+					<div
+						class="po-bg-gradient-to-t po-from-mpao-orange/20 po-via-mpao-lightblue/20 po-to-purple-500/10 -po-mb-5 -po-mx-5 po-p-5 po-pb-10"
+					>
+						<div v-for="(logType, index) in changelog">
+							<!-- <h3 class="po-grow po-text-md po-font-bold po-text-slate-600">
+								{{ logType.label }} Releases
+							</h3> -->
+							<div v-if="currentChangeLogTab === index">
+								<div class="po-space-y-2 po-mt-5">
+									<div
+										class="po-border po-border-slate-200 po-rounded-lg po-p-3 po-bg-white"
+										v-for="item in logType.version_history"
 									>
-										<component :is="item.icon" class="po-w-4 po-h-4" />
-									</span>
-								</div>
-								<div>
-									<div class="po-flex po-items-start po-space-x-1">
-										<span
-											class="po-block po-text-base po-font-light po-text-slate-600"
-											>{{ item.value }}</span
-										>
+										<span class="po-flex po-items-center po-space-x-2">
+											<span class="po-text-mpao-lightblue po-grow po-text-lg">{{
+												item.date
+											}}</span>
+											<span
+												class="po-font-semibold po-shrink-0 po-text-mpao-lightblue po-text-sm po-px-2 po-py-1 po-rounded-xl po-bg-mpao-lightblue/10"
+												>{{ item.version }}</span
+											>
+										</span>
+										<div
+											class="po-mt-3 po-prose-sm po-prose-slate"
+											v-html="item.note"
+										></div>
 									</div>
-									<h4 class="po-text-xs po-tracking-wide po-text-slate-500">
-										{{ item.label }}
-									</h4>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="po-grid po-grid-cols-1 lg:po-grid-cols-2 po-mt-5">
-						<div>
-							<h3 class="po-grow po-text-md po-font-bold po-text-slate-600">
-								UI Releases
-							</h3>
-							<PoTimeline :timeline="uiVersionHistory" />
-						</div>
-						<div>
-							<h3 class="po-grow po-text-md po-font-bold po-text-slate-600">
-								API Releases
-							</h3>
-							<PoTimeline :timeline="apiVersionHistory" />
 						</div>
 					</div>
 				</div>
@@ -159,9 +166,21 @@ import PoModal from "../PoModal/PoModal.vue";
 import PoTimeline from "../PoTimeline/PoTimeline.vue";
 import { CpuChipIcon, CursorArrowRaysIcon } from "@heroicons/vue/24/outline";
 
+defineProps({
+	/**
+	 * Chnagelog
+	 */
+	changelog: {
+		type: Array,
+		default: null,
+	},
+});
+
 const emit = defineEmits(["button-click"]);
 
 const showChangeLogModal = ref(false);
+
+const currentChangeLogTab = ref(0);
 
 const statsBlockItems = [
 	{
