@@ -121,7 +121,15 @@
 								id="investment-notification-status"
 							>
 								<template v-slot:content>
-									<div class="p-5">...</div>
+									<div class="p-5">
+										<br />
+										<PoSelectField
+											label="Select field with two labels"
+											:list="selectFieldListTwo"
+											@selected="handleSelectFieldTwoClick"
+											v-model="selectFieldTwoSelected"
+										/>
+									</div>
 								</template>
 							</PoModal>
 							<PoButton
@@ -148,6 +156,7 @@
 						{{ checkboxState }}
 						<br />
 						<div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
+							<input type="text" @input="handleInputText" />
 							<PoInputField
 								:required="true"
 								label="Input"
@@ -642,7 +651,7 @@ import {
 	PoCallLog,
 } from "./components";
 
-import { formatDate } from "./shared/helper";
+import { formatDate, debounce } from "./shared/helper";
 import { ref } from "vue";
 
 import {
@@ -1582,4 +1591,8 @@ setTimeout(() => {
 function handleRadioSelected(val) {
 	console.log("selected event", val);
 }
+
+const handleInputText = debounce((val) => {
+	console.log("clickidy", val);
+}, 500);
 </script>

@@ -1,9 +1,17 @@
-import { f as l } from "./FormatDate-a57abfa8.mjs";
-const d = async (o, s) => {
-  const a = useCookie("token"), r = {
-    key: o,
+import { f as h } from "./FormatDate-a57abfa8.mjs";
+function i(t, a) {
+  let o;
+  return function(...r) {
+    clearTimeout(o), o = setTimeout(() => {
+      t.apply(this, r);
+    }, a);
+  };
+}
+const d = async (t, a) => {
+  const o = useCookie("token"), r = {
+    key: t,
     async onRequest({ options: e }) {
-      e.headers = e.headers || {}, e.headers["Content-Type"] = "application/json", a.value && (e.headers.Authorization = `Bearer ${a.value}`);
+      e.headers = e.headers || {}, e.headers["Content-Type"] = "application/json", o.value && (e.headers.Authorization = `Bearer ${o.value}`);
     },
     async onRequestError({ error: e }) {
       console.log(e.message);
@@ -11,16 +19,17 @@ const d = async (o, s) => {
     async onResponseError({ response: e }) {
       console.log(e._data.message);
     },
-    ...s
-  }, { data: t, pending: n, error: c, execute: u } = await useFetch(o, r);
+    ...a
+  }, { data: s, pending: n, error: c, execute: u } = await useFetch(t, r);
   return {
-    data: t,
+    data: s,
     pending: n,
     error: c,
     execute: u
   };
 };
 export {
-  l as formatDate,
+  i as debounce,
+  h as formatDate,
   d as useHttp
 };
