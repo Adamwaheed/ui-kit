@@ -6,14 +6,7 @@
 		:disabled="disabled"
 	>
 		<ComboboxLabel
-			class="
-				po-text-sm
-				po-font-medium
-				po-flex
-				po-items-center
-				po-space-x-1
-				po-text-slate-700
-			"
+			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 		>
 			<span>{{ label }}</span>
 			<span
@@ -26,61 +19,26 @@
 			</abbr>
 		</ComboboxLabel>
 		<div class="po-relative po-mt-1">
-			<ComboboxInput
-				class="
-					po-w-full
-					po-rounded-md
-					po-border
-					po-border-slate-300
-					po-bg-white
-					po-py-2
-					po-pl-3
-					po-pr-10
-					focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0
-					sm:po-text-sm
-				"
-				@change="query = $event.target.value"
-				:display-value="getSelectedName"
-				:disabled="disabled"
-			/>
-			<ComboboxButton
-				class="
-					po-absolute
-					po-inset-y-0
-					po-right-0
-					po-flex
-					po-items-center
-					po-rounded-r-md
-					po-px-2
-					focus:po-outline-none
-				"
-			>
-				<ChevronUpDownIcon
-					class="po-h-5 po-w-5 po-text-slate-400"
-					aria-hidden="true"
+			<ComboboxButton as="div">
+				<ComboboxInput
+					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
+					@change="query = $event.target.value"
+					:display-value="getSelectedName"
+					:disabled="disabled"
 				/>
+				<span
+					class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none"
+				>
+					<ChevronUpDownIcon
+						class="po-h-5 po-w-5 po-text-slate-400"
+						aria-hidden="true"
+					/>
+				</span>
 			</ComboboxButton>
 
 			<ComboboxOptions
 				v-if="filteredItems.length > 0"
-				class="
-					po-absolute
-					po-z-10
-					po-mt-1
-					po-max-h-60
-					po-w-full
-					po-overflow-auto
-					po-rounded-md
-					po-bg-white
-					po-py-1
-					po-text-base
-					po-shadow-lg
-					po-ring-1
-					po-ring-black
-					po-ring-opacity-5
-					focus:po-outline-none
-					sm:po-text-sm
-				"
+				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<ComboboxOption
 					v-for="item in filteredItems"
@@ -130,9 +88,7 @@
 			{{ message }}
 		</p>
 		<p
-			class="
-				po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
-			"
+			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
 			:id="`-error`"
 			v-if="formHasError && null !== errorMessage"
 		>
