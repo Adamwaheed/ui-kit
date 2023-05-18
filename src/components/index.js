@@ -59,3 +59,4 @@ export { default as PoMultiSelect } from "./PoMultiSelect/PoMultiSelect.vue";
 export { default as PoTimeline } from "./PoTimeline/PoTimeline.vue";
 export { default as PoTableCheckbox } from "./PoTableCheckbox/PoTableCheckbox.vue";
 export { default as PoToast } from "./PoToast/PoToast.vue";
+export { default as PoSelectApi } from "./PoSelectApi/PoSelectApi.vue";

@@ -45,7 +45,7 @@
 			:apps="appsFromApi"
 			app-code="auth"
 		/>
-		<main class="shell-content">
+		<main class="shell-content" id="shell-content-root">
 			<PoActionBar
 				:items="actionBarItems"
 				:show-back-button="true"
@@ -179,6 +179,19 @@
 							/>
 							{{ radioOptionSelected }}
 						</div>
+						<br />
+						<hr />
+						<br />
+
+						<!-- ****************************************************************************************** -->
+						<!-- NEW COMPONENT ---------------------------------------------------------------------------- -->
+						<!-- ****************************************************************************************** -->
+
+						<PoSelectApi />
+
+						<!-- ****************************************************************************************** -->
+						<!-- NEW COMPONENT ---------------------------------------------------------------------------- -->
+						<!-- ****************************************************************************************** -->
 					</template>
 				</PoCard>
 				<PoPageTitle
@@ -614,6 +627,7 @@ import {
 	PoTopBar,
 	PoTimeline,
 	PoNotification,
+	PoSelectApi,
 	PoSlideover,
 	PoSidebarDrawer,
 	PoActionBar,
