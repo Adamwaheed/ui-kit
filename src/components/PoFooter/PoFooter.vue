@@ -143,6 +143,11 @@
 											v-html="item.note"
 										></div>
 									</div>
+									<span
+										class="po-bg-white po-rounded-md po-px-4 po-py-3 po-block po-text-sm po-text-center po-text-mpao-lightblue hover:po-text-purple-600 po-cursor-pointer"
+										v-if="logType.hasMore"
+										>More</span
+									>
 								</div>
 							</div>
 						</div>
@@ -163,8 +168,6 @@ import { ref } from "vue";
 import { GlobeAltIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/vue/24/solid";
 
 import PoModal from "../PoModal/PoModal.vue";
-import PoTimeline from "../PoTimeline/PoTimeline.vue";
-import { CpuChipIcon, CursorArrowRaysIcon } from "@heroicons/vue/24/outline";
 
 defineProps({
 	/**
@@ -181,65 +184,4 @@ const emit = defineEmits(["button-click"]);
 const showChangeLogModal = ref(false);
 
 const currentChangeLogTab = ref(0);
-
-const statsBlockItems = [
-	{
-		label: "1.0.5 RELEASE",
-		value: "UI Version",
-		bgColor: "po-bg-orange-50",
-		iconColor: "po-text-orange-700",
-		icon: CursorArrowRaysIcon,
-	},
-	{
-		label: "1.2.0",
-		value: "API Version",
-		bgColor: "po-bg-sky-50",
-		iconColor: "po-text-sky-700",
-		icon: CpuChipIcon,
-	},
-];
-
-const uiVersionHistory = [
-	{
-		label: "1.1.0",
-		date: "August 15, 2020",
-		description:
-			"Added new features, including a dark mode and a new search bar.",
-	},
-	{
-		label: "1.0.2",
-		date: "May 15, 2020",
-		description: "Bug fixes and performance improvements.",
-	},
-	{
-		label: "1.0.1",
-		date: "Apr 17, 2020",
-		description: "New feature to allow Payments online",
-	},
-	{
-		label: "1.0.0",
-		date: "Jan 10, 2020",
-		description: "Public release.",
-	},
-];
-
-const apiVersionHistory = [
-	{
-		label: "1.0.2",
-		date: "December 15, 2022",
-		description:
-			"Improved the performance of the application by optimizing the code.",
-	},
-	{
-		label: "1.0.1",
-		date: "November 15, 2022",
-		description:
-			"Added a new feature to allow users to save their favorite pages.",
-	},
-	{
-		label: "1.0.0",
-		date: "October 15, 2022",
-		description: "Initial release of the application.",
-	},
-];
 </script>

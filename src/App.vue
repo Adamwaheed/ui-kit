@@ -1622,6 +1622,7 @@ const changeLog = [
 				note: `<p><strong>Releasing The new Member Portal</strong></p><p>Some of the new features includes:</p><ul><li>Login using emails</li><li>Passcode to emails</li><li>Passcodes to numbers in other countries</li><li>Easily resend passcodes to email / sms</li><li>Change / update contact information</li><li>Enhanced manual &amp; auto member verifications</li><li>Voluntary contributions</li><li>MRPS Account Statement in Dhivehi</li><li>Death Reporting</li><li>Online chat</li><li>Instant document verification using QR code</li><li>Member service staff can print statements for others</li></ul>`,
 			},
 		],
+		hasMore: true,
 	},
 	{
 		label: "API",
@@ -1643,6 +1644,7 @@ const changeLog = [
 				note: `<p><strong>New Features</strong></p><ul><li>Auto calculate for employees terminated and enrolled during the month</li><li>Compare tools to compare calculated pension amounts with salary sheet value for each employee</li><li>SAP ID integration, with bulk update</li><li>Download calculated final amount for the month in CSV format for comparing</li></ul>`,
 			},
 		],
+		hasMore: false,
 	},
 ];
 </script>
