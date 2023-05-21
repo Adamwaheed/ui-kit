@@ -187,11 +187,49 @@
 						<!-- NEW COMPONENT ---------------------------------------------------------------------------- -->
 						<!-- ****************************************************************************************** -->
 
-						<PoSelectApi />
+						<PoSelectApi
+							@search="handleSelectApiSearch"
+							:options="selectApiOptions"
+							:loading="selectApiLoading"
+						>
+							<template #selectedOption="selectedOption">
+								<div
+									class="po-flex po-space-x-2 po-items-center po-cursor-pointer po-px-2"
+								>
+									<img
+										:src="selectedOption.owner.avatar_url"
+										class="po-w-5 po-rounded-full"
+									/>
+									<span class="po-text-sm po-text-slate-600 po-font-semibold">{{
+										selectedOption.full_name
+									}}</span>
+								</div>
+							</template>
+							<template #option="option">
+								<div
+									class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1"
+								>
+									<img :src="option.owner.avatar_url" class="po-w-10" />
+									<span
+										class="po-text-sm po-text-slate-600 po-font-semibold group-hover:po-text-white"
+										>{{ option.full_name }}</span
+									>
+								</div>
+							</template>
+						</PoSelectApi>
 
 						<!-- ****************************************************************************************** -->
 						<!-- NEW COMPONENT ---------------------------------------------------------------------------- -->
 						<!-- ****************************************************************************************** -->
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
 					</template>
 				</PoCard>
 				<PoPageTitle
@@ -1661,4 +1699,20 @@ const changeLog = [
 		hasMore: false,
 	},
 ];
+
+const selectApiOptions = ref([]);
+const selectApiLoading = ref(false);
+
+const handleSelectApiSearch = debounce((query) => {
+	console.log("searching", query, query.length);
+	if (query.length > 3) {
+		selectApiLoading.value = true;
+		fetch(`https://api.github.com/search/repositories?q=${query}`).then(
+			(res) => {
+				res.json().then((json) => (selectApiOptions.value = json.items));
+				selectApiLoading.value = false;
+			}
+		);
+	}
+}, 500);
 </script>
