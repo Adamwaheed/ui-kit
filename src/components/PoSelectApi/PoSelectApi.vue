@@ -46,10 +46,18 @@
 			v-if="showDropdown"
 			class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 		>
-			<template v-if="options && options.length > 0" v-for="option in options">
-				<div @click="handleOptionClick(option)">
-					<slot name="option" v-bind="option">{{ option }}</slot>
-				</div>
+			<template v-if="options && options.length > 0">
+				<template v-for="option in options">
+					<div @click="handleOptionClick(option)">
+						<slot name="option" v-bind="option">{{ option }}</slot>
+					</div>
+				</template>
+				<span
+					role="button"
+					@click="handleMoreClick"
+					class="po-text-sm po-text-semibold po-text-mpao-lightblue po-block po-text-center po-py-2 hover:po-bg-slate-50 po-transition-colors po-duration-150 po-ease-out"
+					>More</span
+				>
 			</template>
 			<template v-else>
 				<span class="po-text-sm po-text-slate-600 po-p-4 po-block"
@@ -111,14 +119,14 @@ const getSelectBoxPosition = computed(() => {
 });
 
 onMounted(() => {
-	console.log(
-		`TadaElement position - top: ${getSelectBoxPosition.value.top}px, left: ${getSelectBoxPosition.value.left}px`
-	);
+	// console.log(
+	// 	`TadaElement position - top: ${getSelectBoxPosition.value.top}px, left: ${getSelectBoxPosition.value.left}px`
+	// );
 });
 
 const searchQuery = ref();
 
-const emit = defineEmits(["search", "selected"]);
+const emit = defineEmits(["search", "selected", "loadmore"]);
 
 function handleInput() {
 	emit("search", searchQuery.value);
@@ -128,9 +136,12 @@ const selectedOption = ref(null);
 
 function handleOptionClick(option) {
 	selectedOption.value = option;
-	console.log("sleected", selectedOption.value);
 	emit("selected", option);
 
 	showDropdown.value = false;
+}
+
+function handleMoreClick() {
+	emit("loadmore", true);
 }
 </script>

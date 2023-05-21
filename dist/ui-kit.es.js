@@ -7413,26 +7413,26 @@ const Bd = ["for"], Nd = { class: "po-capitalize" }, Dd = {
       default: !1
     }
   },
-  emits: ["search", "selected"],
+  emits: ["search", "selected", "loadmore"],
   setup(e, { emit: t }) {
-    const l = $(null), n = $(!1), o = C(() => {
+    const l = $(null), n = $(!1);
+    C(() => {
       if (l.value) {
         const f = document.querySelector(".shell-content--area"), { top: d } = f.getBoundingClientRect(), v = f.scrollTop, { top: k, left: V, width: w } = l.value.getBoundingClientRect();
         return { relativeTop: k - d + v, left: V, width: w };
       }
+    }), H(() => {
     });
-    H(() => {
-      console.log(
-        `TadaElement position - top: ${o.value.top}px, left: ${o.value.left}px`
-      );
-    });
-    const a = $();
-    function i() {
-      t("search", a.value);
+    const o = $();
+    function a() {
+      t("search", o.value);
     }
-    const u = $(null);
-    function c(f) {
-      u.value = f, console.log("sleected", u.value), t("selected", f), n.value = !1;
+    const i = $(null);
+    function u(f) {
+      i.value = f, t("selected", f), n.value = !1;
+    }
+    function c() {
+      t("loadmore", !0);
     }
     return (f, d) => (r(), p("div", d1, [
       f1,
@@ -7442,16 +7442,16 @@ const Bd = ["for"], Nd = { class: "po-capitalize" }, Dd = {
           class: "po-right-0 po-top-4",
           absolute: !0
         })) : b("", !0),
-        u.value !== null ? (r(), p("div", m1, [
+        i.value !== null ? (r(), p("div", m1, [
           s("div", h1, [
-            te(f.$slots, "selectedOption", Ue(Ge(u.value)), () => [
-              ne(h(u.value), 1)
+            te(f.$slots, "selectedOption", Ue(Ge(i.value)), () => [
+              ne(h(i.value), 1)
             ])
           ]),
           s("span", {
             class: "po-shrink-0 po-p-1 po-cursor-pointer",
             onClick: d[0] || (d[0] = (v) => {
-              u.value = null, a.value = "";
+              i.value = null, o.value = "";
             })
           }, [
             S(m(Ke), { class: "po-w-4 po-stroke-2 po-stroke-slate-400" })
@@ -7463,22 +7463,29 @@ const Bd = ["for"], Nd = { class: "po-capitalize" }, Dd = {
           id: "",
           ref_key: "selectBox",
           ref: l,
-          "onUpdate:modelValue": d[1] || (d[1] = (v) => a.value = v),
-          onInput: i,
+          "onUpdate:modelValue": d[1] || (d[1] = (v) => o.value = v),
+          onInput: a,
           onFocus: d[2] || (d[2] = (v) => n.value = !0),
           class: "po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
         }, null, 544), [
-          [ht, a.value]
+          [ht, o.value]
         ])
       ]),
       n.value ? (r(), p("div", b1, [
-        e.options && e.options.length > 0 ? (r(!0), p(N, { key: 0 }, F(e.options, (v) => (r(), p("div", {
-          onClick: (k) => c(v)
-        }, [
-          te(f.$slots, "option", Ue(Ge(v)), () => [
-            ne(h(v), 1)
-          ])
-        ], 8, g1))), 256)) : (r(), p("span", y1, "Please enter a search query"))
+        e.options && e.options.length > 0 ? (r(), p(N, { key: 0 }, [
+          (r(!0), p(N, null, F(e.options, (v) => (r(), p("div", {
+            onClick: (k) => u(v)
+          }, [
+            te(f.$slots, "option", Ue(Ge(v)), () => [
+              ne(h(v), 1)
+            ])
+          ], 8, g1))), 256)),
+          s("span", {
+            role: "button",
+            onClick: c,
+            class: "po-text-sm po-text-semibold po-text-mpao-lightblue po-block po-text-center po-py-2 hover:po-bg-slate-50 po-transition-colors po-duration-150 po-ease-out"
+          }, "More")
+        ], 64)) : (r(), p("span", y1, "Please enter a search query"))
       ])) : b("", !0)
     ]));
   }

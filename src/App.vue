@@ -189,6 +189,7 @@
 
 						<PoSelectApi
 							@search="handleSelectApiSearch"
+							@loadmore="handleSelectApiMoreClick"
 							:options="selectApiOptions"
 							:loading="selectApiLoading"
 						>
@@ -1715,4 +1716,8 @@ const handleSelectApiSearch = debounce((query) => {
 		);
 	}
 }, 500);
+
+function handleSelectApiMoreClick() {
+	console.log("select api more click");
+}
 </script>
