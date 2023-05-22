@@ -192,6 +192,7 @@
 							@loadmore="handleSelectApiMoreClick"
 							:options="selectApiOptions"
 							:loading="selectApiLoading"
+							:show-more-btn="true"
 						>
 							<template #selectedOption="selectedOption">
 								<div

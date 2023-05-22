@@ -53,6 +53,7 @@
 					</div>
 				</template>
 				<span
+					v-if="showMoreBtn"
 					role="button"
 					@click="handleMoreClick"
 					class="po-text-sm po-text-semibold po-text-mpao-lightblue po-block po-text-center po-py-2 hover:po-bg-slate-50 po-transition-colors po-duration-150 po-ease-out"
@@ -97,6 +98,13 @@ const props = defineProps({
 	 * Show loading true/false default false
 	 */
 	loading: {
+		type: Boolean,
+		default: false,
+	},
+	/**
+	 * Show show/hide more button
+	 */
+	showMoreBtn: {
 		type: Boolean,
 		default: false,
 	},
