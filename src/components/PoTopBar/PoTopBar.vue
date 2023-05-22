@@ -2,24 +2,10 @@
 	<!-- notifications -->
 	<div
 		aria-live="assertive"
-		class="
-			po-pointer-events-none
-			po-fixed
-			po-inset-0
-			po-flex
-			po-items-start
-			po-px-4
-			po-py-6
-			sm:po-p-6
-			po-z-[60]
-		"
+		class="po-pointer-events-none po-fixed po-inset-0 po-flex po-items-start po-px-4 po-py-6 sm:po-p-6 po-z-[60]"
 	>
 		<div
-			class="
-				po-flex po-w-full po-flex-col po-items-end po-space-y-4
-				sm:po-items-end
-				po-pt-[55px]
-			"
+			class="po-flex po-w-full po-flex-col po-items-end po-space-y-4 sm:po-items-end po-pt-[55px]"
 			id="po-notifications-alert"
 		></div>
 	</div>
@@ -28,32 +14,14 @@
 			<label
 				for="sidebar-drawer-toggle"
 				role="button"
-				class="
-					genie-effect
-					po-flex
-					po-items-center
-					po-justify-center
-					po-bg-[#2e5266]
-					po-rounded-full
-					po-w-10
-					po-h-10
-					po-select-none
-					po-text-slate-100
-				"
+				class="genie-effect po-flex po-items-center po-justify-center po-bg-[#2e5266] po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 			>
 				<Bars3Icon class="po-w-6 po-fill-current" />
 			</label>
 		</div>
 		<div class="po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4">
 			<div
-				class="
-					po-flex
-					po-relative
-					po-h-16
-					po-items-center
-					po-justify-between
-					po-space-x-12
-				"
+				class="po-flex po-relative po-h-16 po-items-center po-justify-between po-space-x-12"
 			>
 				<PoAppIcon :app-name="appName">
 					<template v-slot:icon>
@@ -85,6 +53,8 @@
 					<PoAppTray :app-list="appList" :open-in-new-tab="true" />
 					<PoProfileSwitcher
 						:user-object="userObject"
+						:avatar="profileAvatar"
+						:logo="profileLogo"
 						@button-click="handleProfileSwitcherClick"
 					/>
 				</div>
@@ -99,6 +69,7 @@ export default {
 };
 </script>
 <script setup>
+import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 
 import {
@@ -109,7 +80,7 @@ import {
 	PoProfileSwitcher,
 } from "../";
 
-defineProps({
+const props = defineProps({
 	/**
 	 * Search Query
 	 */
@@ -160,9 +131,35 @@ defineProps({
 		default: null,
 	},
 	/**
+	 * Avatar
+	 */
+	avatar: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * Organisation logo
+	 */
+	logo: {
+		type: String,
+		default: "",
+	},
+	/**
 	 * App Icon
 	 */
 	appIcon: null,
+});
+
+const profileAvatar = ref("");
+const profileLogo = ref("");
+
+const { avatar, logo } = toRefs(props);
+
+watch(avatar, () => {
+	profileAvatar.value = avatar.value;
+});
+watch(logo, () => {
+	profileLogo.value = logo.value;
 });
 
 const emit = defineEmits(["query", "profileSwitcherClick", "onSearchClear"]);
