@@ -1,0 +1,69 @@
+# ChatLogItem component
+
+import {
+	Story,
+	ArgTypes,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/blocks";
+
+import PoCardTabs from "./PoCardTabs.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Layout/Card Tabs" component={PoCardTabs} />
+
+<Description of={PoCardTabs} />
+
+<Canvas withToolbar>
+	<div className="po-flex po-flex-col po-space-y-5">
+		<Story id="layout-card-tabs--card-tabs" />
+	</div>
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoCardTabs :tabs="tabs" @button-click="handleButtonClick" />
+  `}
+/>
+
+### Explanation
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const tabs = [
+      {
+        name: "Wage Changes",
+        icon: BanknotesIconSolid,
+        iconColor: "po-fill-green-400",
+        href: "#",
+        current: true,
+        count: 20,
+      },
+      {
+        name: "Terminations",
+        icon: ScissorsIcon,
+        iconColor: "po-fill-red-400",
+        href: "#",
+        current: false,
+        count: 999,
+      },
+      ...
+    ];
+
+    function handleButtonClick(tabObj) {
+      ... do something with clicked tab Object
+    }
+
+`}
+/>
+
+<ArgTypes of={PoCardTabs} />
