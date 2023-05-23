@@ -1,0 +1,120 @@
+# Select Field component
+
+import {
+	Story,
+	ArgsTable,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/addon-docs";
+
+import PoSelectApi from "./PoSelectApi.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Form/Select Api" component={PoSelectApi} />
+
+<Description of={PoSelectApi} />
+
+<Canvas withToolbar>
+	<div className="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
+		<Story inline={true} id="form-select-api--select-field" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		&nbsp;
+	</div>
+</Canvas>
+
+This component is very flexible to use.
+It has all the default input bells and whistles like , `errorMessage`, `info`, `message`.
+
+In this example, we are loading data from Github API. You can use the slots to display data as you want. Data can have any structure.
+By default, option click event will return an object. You can set a custom click event like shown below inside option slot.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoSelectApi
+			label="Search from Github API"
+			@search="handleSelectApiSearch"
+			@loadmore="handleSelectApiMoreClick"
+			@selected="handleSelectApiClick"
+			:options="selectApiOptions"
+			:loading="selectApiLoading"
+			:show-more-btn="true"
+		>
+			<template #selectedOption="selectedOption">
+				<div
+					class="po-flex po-space-x-2 po-items-center po-cursor-pointer po-px-2"
+				>
+					<img
+						:src="selectedOption.owner.avatar_url"
+						class="po-w-5 po-rounded-full"
+					/>
+					<span class="po-text-sm po-text-slate-600 po-font-semibold">{{
+						selectedOption.full_name
+					}}</span>
+				</div>
+			</template>
+			<template #option="option">
+				<div
+					class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1"
+					@click="handleSelectApiClickTwo(option.owner.avatar_url)"
+				>
+					<img :src="option.owner.avatar_url" class="po-w-10" />
+					<span
+						class="po-text-sm po-text-slate-600 po-font-semibold group-hover:po-text-white"
+						>{{ option.full_name }}</span
+					>
+				</div>
+			</template>
+		</PoSelectApi>
+  `}
+/>
+
+### Explanation
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    import { debounce } from "@pension/ui-kit/helpers";
+
+    	const selectApiOptions = ref([]);
+    	const selectApiLoading = ref(false);
+
+    	const handleSelectApiSearch = debounce((query) => {
+    			if (query.length > 3) {
+    				selectApiLoading.value = true;
+    				fetch(\`https://api.github.com/search/repositories?q=\${query}\`).then(
+    					(res) => {
+    						res.json().then((json) => (selectApiOptions.value = json.items));
+    						selectApiLoading.value = false;
+    					}
+    				);
+    			}
+    	}, 500);
+
+    	function handleSelectApiMoreClick() {
+    		console.log("select api more click");
+    	}
+    	function handleSelectApiClick(aa) {
+    		console.log("from component", aa);
+    	}
+    	function handleSelectApiClickTwo(aa) {
+    		console.log("from parent", aa);
+    	}
+
+`}
+/>
+
+<ArgsTable of={PoSelectApi} />

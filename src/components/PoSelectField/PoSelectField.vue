@@ -90,7 +90,7 @@
 		<p
 			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
 			:id="`-error`"
-			v-if="formHasError && null !== errorMessage"
+			v-if="null !== errorMessage"
 		>
 			<span>{{ errorMessage }}</span>
 		</p>

@@ -188,8 +188,10 @@
 						<!-- ****************************************************************************************** -->
 
 						<PoSelectApi
+							label="Search from Github API"
 							@search="handleSelectApiSearch"
 							@loadmore="handleSelectApiMoreClick"
+							@selected="handleSelectApiClick"
 							:options="selectApiOptions"
 							:loading="selectApiLoading"
 							:show-more-btn="true"
@@ -210,6 +212,7 @@
 							<template #option="option">
 								<div
 									class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1"
+									@click="handleSelectApiClickTwo(option.owner.avatar_url)"
 								>
 									<img :src="option.owner.avatar_url" class="po-w-10" />
 									<span
@@ -1720,5 +1723,11 @@ const handleSelectApiSearch = debounce((query) => {
 
 function handleSelectApiMoreClick() {
 	console.log("select api more click");
+}
+function handleSelectApiClick(aa) {
+	console.log("from component", aa);
+}
+function handleSelectApiClickTwo(aa) {
+	console.log("from parent", aa);
 }
 </script>
