@@ -1,0 +1,74 @@
+# Multi Select component
+
+import {
+	Story,
+	ArgTypes,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/blocks";
+
+import PoMultiSelect from "./PoMultiSelect.vue";
+
+import dedent from "ts-dedent";
+
+<Meta title="Form/Multiselect" component={PoMultiSelect} />
+
+<Description of={PoMultiSelect} />
+
+<Canvas withToolbar>
+	<div className="po-flex po-flex-col po-space-y-5">
+		<Story id="form-multiselect--mulit-select" />
+		<br />
+		<br />
+		<br />
+	</div>
+</Canvas>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoMultiSelect
+      label="Mutiselect"
+      :items="multiselectItems"
+      v-model="selectedmultiselectItems"
+    />
+  `}
+/>
+
+### Explanation
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    
+    const selectedmultiselectItems = ref([]);
+
+    const multiselectItems = [
+      {
+        id: 1,
+        name: "One",
+      },
+      {
+        id: 2,
+        name: "Two",
+      },
+      {
+        id: 3,
+        name: "Three",
+      },
+      {
+        id: 4,
+        name: "Four",
+      },
+    ];
+
+`}
+/>
+
+<ArgTypes of={PoMultiSelect} />
