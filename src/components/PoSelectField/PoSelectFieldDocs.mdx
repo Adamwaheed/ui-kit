@@ -1,35 +1,24 @@
 # Select Field component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoSelectField from "./PoSelectField.vue";
+import * as PoSelectFieldStories from "./PoSelectField.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Form/Select Field" component={PoSelectField} />
+<Meta of={PoSelectFieldStories} />
 
-<Description of={PoSelectField} />
-
-<Canvas withToolbar>
-	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
-		<Story inline={true} id="form-select-field--select-field" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		&nbsp;
-	</div>
-</Canvas>
+<div className="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
+	<Story of={PoSelectFieldStories.SelectField} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	&nbsp;
+</div>
 
 <Source
 	language="js"
@@ -65,19 +54,17 @@ You can use the `:disabled="true"` prop to disable the field.
 
 You can have a sub title displayed in the select field:
 
-<Canvas withToolbar>
-	<div class="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
-		<Story inline={true} id="form-select-field--select-field-two" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		&nbsp;
-	</div>
-</Canvas>
+<div className="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
+	<Story of={PoSelectFieldStories.SelectFieldTwo} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	&nbsp;
+</div>
 
 Every time a user selects from the dropdown `selected` event is fired.
 
@@ -109,4 +96,4 @@ Every time a user selects from the dropdown `selected` event is fired.
 
 ### Explanation
 
-<ArgsTable of={PoSelectField} />
+<ArgTypes of={PoSelectFieldStories} />
