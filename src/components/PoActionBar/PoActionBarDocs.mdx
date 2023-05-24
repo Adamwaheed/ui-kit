@@ -1,29 +1,18 @@
 # Action bar component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoActionBar from "./PoActionBar.vue";
+import * as PoActionBarStories from "./PoActionBar.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Layout/Action Bar" component={PoActionBar} />
-
 IMPORTANT: The Action bar component was originally designed to be used at the top of a page to control all actions on the page. However, in later versions of the UI Kit, we have moved away from this design and do not recommend using the Action bar for this purpose.
-
-<Description of={PoActionBar} />
 
 ### Action bar
 
-<Canvas withToolbar>
-	<Story id="layout-action-bar--action-bar" />
-</Canvas>
+<Meta of={PoActionBarStories} />
+
+<Story of={PoActionBarStories.ActionBar} />
 
 <Source
 	language="js"
@@ -52,9 +41,7 @@ IMPORTANT: The Action bar component was originally designed to be used at the to
 
 You can pass an optional `highlighted: true` to `items` to highlight the button. This is useful in cases where important action buttons are added to action bar.
 
-<Canvas withToolbar>
-	<Story id="layout-action-bar--with-highlight" />
-</Canvas>
+<Story of={PoActionBarStories.WithHighlight} />
 
 <Source
 	language="js"
@@ -83,9 +70,7 @@ You can pass an optional `highlighted: true` to `items` to highlight the button.
 
 You can pass an optional `danger: true` to `items`. This is useful for delete action and related actions.
 
-<Canvas withToolbar>
-	<Story id="layout-action-bar--with-danger" />
-</Canvas>
+<Story of={PoActionBarStories.WithDanger} />
 
 <Source
 	language="js"
@@ -112,7 +97,7 @@ You can pass an optional `danger: true` to `items`. This is useful for delete ac
 
 ### Explanation
 
-<ArgsTable of={PoActionBar} />
+<ArgTypes of={PoActionBarStories} />
 
 <Source
 	language="js"
