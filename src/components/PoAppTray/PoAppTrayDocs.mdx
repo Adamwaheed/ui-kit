@@ -1,53 +1,50 @@
 # App Tray component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoAppTray from './PoAppTray.vue';
+import * as PoAppTrayStories from "./PoAppTray.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="Shell/App Tray" component={PoAppTray} />
-
-<Description of={PoAppTray} />
+<Meta of={PoAppTrayStories} />
 
 You will not be directly using `<PoAppTray />` component. It is a child component that comes with `<PoTopBar />` component.
-<Canvas>
- <div class="">
-        <Story inline={false} id="shell-app-tray--app-tray" />
-    </div>
-</Canvas>
+
+<div className="po-relative po-bg-mpao-blue po-p-5 po-rounded-md">
+	<Story of={PoAppTrayStories.AppTray} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</div>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoAppTray :app-list="appList" />
   `}
 />
 
-### Explanation
-
-<ArgsTable of={PoAppTray} />
-
-
 Populating App Tray through Top bar.
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoTopBar
       :app-list="allApps"
     >
   `}
 />
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let allApps = [
         {
             groupName: "",
@@ -63,3 +60,7 @@ Populating App Tray through Top bar.
     ];
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoAppTrayStories} />
