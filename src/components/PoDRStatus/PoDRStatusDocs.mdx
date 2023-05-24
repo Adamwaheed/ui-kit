@@ -1,33 +1,22 @@
 # Empty component
 
-import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoDRStatus from "./PoDRStatus.vue";
+import * as PoDRStatusStories from "./PoDRStatus.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="DRS/DRStatus" component={PoDRStatus} />
-
-<Description of={PoDRStatus} />
+<Meta of={PoDRStatusStories} />
 
 ### Wrong Death
 
-<Canvas withToolbar>
-  <Story id="drs-drstatus--wrong-death" />
-</Canvas>
+<Story of={PoDRStatusStories.WrongDeath} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
    <PoDRStatus
     :member="{
         name: 'Mohamed Ashraf Majdhee',
@@ -56,15 +45,13 @@ import dedent from "ts-dedent";
 
 ### Not Dead
 
-<Canvas withToolbar>
-  <Story id="drs-drstatus--not-dead" />
-</Canvas>
+<Story of={PoDRStatusStories.NotDead} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
    <PoDRStatus
     :member="{
         name: 'Mohamed Ashraf Majdhee',
@@ -92,15 +79,13 @@ import dedent from "ts-dedent";
 
 ### Request
 
-<Canvas withToolbar>
-  <Story id="drs-drstatus--request" />
-</Canvas>
+<Story of={PoDRStatusStories.Request} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
    <PoDRStatus
         :member="{
             name: 'Mohamed Ashraf Majdhee',
@@ -122,15 +107,13 @@ import dedent from "ts-dedent";
 
 ### Record
 
-<Canvas withToolbar>
-  <Story id="drs-drstatus--record" />
-</Canvas>
+<Story of={PoDRStatusStories.Record} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoDRStatus
         @dispute-click="handleDisputeClick"
         :member="{
@@ -152,4 +135,4 @@ File dispute button click fires an event: `@dispute-click`
 
 ### Explanation
 
-<ArgsTable of={PoDRStatus} />
+<ArgTypes of={PoDRStatusStories} />
