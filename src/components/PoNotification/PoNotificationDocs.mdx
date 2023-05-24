@@ -1,26 +1,22 @@
 # Notification component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoNotification from './PoNotification.vue';
+import * as PoNotificationStories from "./PoNotification.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-import { ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/outline';
+import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/24/outline";
 
-<Meta title="Components/Notification" component={PoNotification} />
+<Meta of={PoNotificationStories} />
 
-<Description of={PoNotification} />
-
-<Canvas withToolbar>
-    <Story id="components-notification--notification" />
-</Canvas>
+** No preview available for notifications at the moment**
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoNotification
       label="Aishath Jackson replied..."
       text="I submited all that but still"
@@ -35,16 +31,11 @@ import { ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/outline';
   `}
 />
 
-### Explanation
-
-<ArgsTable of={PoNotification} />
-
-
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     const showNotificationOne = ref(false);
     function handleNotificationClick(item) {
       switch (item) {
@@ -55,3 +46,7 @@ import { ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/outline';
     }
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoNotificationStories} />
