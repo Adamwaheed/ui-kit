@@ -2,38 +2,38 @@
 
 import PoInputField from "./PoInputField.vue";
 
-import PoInputFieldDocs from "./PoInputFieldDocs.stories.mdx";
+import PoInputFieldDocs from "./PoInputFieldDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: "Form/Input Field",
-  component: PoInputField,
-  parameters: {
-    docs: {
-      page: PoInputFieldDocs,
-      description: {
-        component: "Form input field.",
-      },
-    },
-    backgrounds: {
-      default: "gray",
-      values: [{ name: "gray", value: "#f8fafc" }],
-    },
-  },
+	/* 👇 The title prop is optional.
+	 * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+	 * to learn how to generate automatic titles
+	 */
+	title: "Form/Input Field",
+	component: PoInputField,
+	parameters: {
+		docs: {
+			page: PoInputFieldDocs,
+			description: {
+				component: "Form input field.",
+			},
+		},
+		backgrounds: {
+			default: "gray",
+			values: [{ name: "gray", value: "#f8fafc" }],
+		},
+	},
 };
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-  components: { PoInputField },
-  setup() {
-    //👇 The args will now be passed down to the template
-    return { args };
-  },
-  template: '<PoInputField v-bind="args" />',
+	components: { PoInputField },
+	setup() {
+		//👇 The args will now be passed down to the template
+		return { args };
+	},
+	template: '<PoInputField v-bind="args" />',
 });
 
 export const Normal = Template.bind({});
@@ -45,57 +45,57 @@ export const DisabledState = Template.bind({});
 export const Horizontal = Template.bind({});
 
 Normal.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Full name",
-  id: "fullname-id",
-  type: "text",
+	/* 👇 The args you need here will depend on your component */
+	label: "Full name",
+	id: "fullname-id",
+	type: "text",
 };
 
 WithInfoTooltip.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "NID",
-  id: "nid-id",
-  type: "text",
-  info: "National ID Card No.",
+	/* 👇 The args you need here will depend on your component */
+	label: "NID",
+	id: "nid-id",
+	type: "text",
+	info: "National ID Card No.",
 };
 
 WithMessage.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Street name",
-  id: "streetname",
-  type: "text",
-  message: "Name of the house, street, village",
+	/* 👇 The args you need here will depend on your component */
+	label: "Street name",
+	id: "streetname",
+	type: "text",
+	message: "Name of the house, street, village",
 };
 
 WithPlaceholder.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Email address",
-  id: "emailaddress",
-  placeholder: "doe@example.com",
-  type: "tel",
+	/* 👇 The args you need here will depend on your component */
+	label: "Email address",
+	id: "emailaddress",
+	placeholder: "doe@example.com",
+	type: "tel",
 };
 
 ErrorState.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Phone number",
-  id: "phonenumber",
-  type: "text",
-  errorMessage: "Phone number is required.",
-  hasError: true,
+	/* 👇 The args you need here will depend on your component */
+	label: "Phone number",
+	id: "phonenumber",
+	type: "text",
+	errorMessage: "Phone number is required.",
+	hasError: true,
 };
 
 DisabledState.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Password",
-  id: "passowrd",
-  type: "password",
-  disabled: true,
+	/* 👇 The args you need here will depend on your component */
+	label: "Password",
+	id: "passowrd",
+	type: "password",
+	disabled: true,
 };
 
 Horizontal.args = {
-  /* 👇 The args you need here will depend on your component */
-  label: "Short name",
-  id: "short-name",
-  display: "horizontal",
-  type: "text",
+	/* 👇 The args you need here will depend on your component */
+	label: "Short name",
+	id: "short-name",
+	display: "horizontal",
+	type: "text",
 };

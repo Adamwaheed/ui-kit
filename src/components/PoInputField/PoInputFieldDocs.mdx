@@ -1,0 +1,154 @@
+# Input field component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoInputFieldStories from "./PoInputField.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoInputFieldStories} />
+
+By default the type is set to `text`. You can use `v-model` bindings in `PoInputField`.
+
+### Normal
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.Normal} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Fullname"
+        id="form-fullname"
+        v-model="form.fullname"
+    />
+  `}
+/>
+
+### With tooltip
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.WithInfoTooltip} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="NID"
+        type="text"
+        id="form-nid"
+        info="National ID card no."
+    />
+  `}
+/>
+
+### With message
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.WithMessage} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Street name"
+        type="text"
+        id="form-streetname"
+        message="Name of the house, street, village"
+    />
+  `}
+/>
+
+### With Placeholder
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.WithPlaceholder} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Email address"
+        type="email"
+        id="form-email"
+        placeholder="doe@example.com"
+    />
+  `}
+/>
+
+### Error
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.ErrorState} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Phone number"
+        type="text"
+        id="form-phone"
+        error-message="Phone number is required"
+        :has-error="true"
+    />
+  `}
+/>
+
+### Disabled
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.DisabledState} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Password"
+        type="password"
+        id="form-password"
+        :disabled="true"
+    />
+  `}
+/>
+
+### Horizontal
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.Horizontal} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Short name"
+        type="text"
+        id="form-shortname"
+        display="horizontal"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoInputFieldStories} />
