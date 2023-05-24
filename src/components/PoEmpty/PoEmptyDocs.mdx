@@ -1,0 +1,29 @@
+# Empty component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoEmptyStories from "./PoEmpty.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoEmptyStories} />
+
+<br />
+<Story of={PoEmptyStories.Empty} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+   <PoEmpty
+        label="Nothing to show"
+        description="No show for sho, Write a helpful message. Maybe suggest something to do when it's empty."
+        :icon="BeakerIcon"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoEmptyStories} />
