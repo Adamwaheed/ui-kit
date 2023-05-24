@@ -9,7 +9,7 @@ import {
 
 import PoCardTabs from "./PoCardTabs.vue";
 
-import PoCardTabsDocs from "./PoCardTabsDocs.stories.mdx";
+import PoCardTabsDocs from "./PoCardTabsDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -37,10 +37,15 @@ export default {
 const Template = (args) => ({
 	components: { PoCardTabs },
 	setup() {
+		function handleButtonClick(clickedTab) {
+			args.tabs.forEach((tab) => {
+				tab.current = tab === clickedTab; // Set 'current' to true for the clicked tab, false for others
+			});
+		}
 		//👇 The args will now be passed down to the template
-		return { args };
+		return { args, handleButtonClick };
 	},
-	template: '<PoCardTabs v-bind="args" />',
+	template: '<PoCardTabs v-bind="args" @button-click="handleButtonClick" />',
 });
 
 export const CardTabs = Template.bind({});

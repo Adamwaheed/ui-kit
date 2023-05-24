@@ -1,27 +1,16 @@
 # ChatLogItem component
 
-import {
-	Story,
-	ArgTypes,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/blocks";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoCardTabs from "./PoCardTabs.vue";
+import * as PoCardTabsStories from "./PoCardTabs.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Layout/Card Tabs" component={PoCardTabs} />
+<Meta of={PoCardTabsStories} />
 
-<Description of={PoCardTabs} />
-
-<Canvas withToolbar>
-	<div className="po-flex po-flex-col po-space-y-5">
-		<Story id="layout-card-tabs--card-tabs" />
-	</div>
-</Canvas>
+<div className="po-flex po-flex-col po-space-y-5">
+	<Story of={PoCardTabsStories.CardTabs} />
+</div>
 
 <Source
 	language="js"
@@ -66,4 +55,4 @@ import dedent from "ts-dedent";
 `}
 />
 
-<ArgTypes of={PoCardTabs} />
+<ArgTypes of={PoCardTabsStories} />
