@@ -8,13 +8,7 @@
             @event update:modelValue
         -->
 		<span
-			class="
-				po-text-sm po-font-medium po-text-slate-700
-				peer-focus:po-text-mpao-lightblue
-				peer-invalid:po-text-red-500
-				peer-invalid:peer-focus:po-text-red-600
-				po-flex po-items-center po-space-x-1 po-capitalize
-			"
+			class="po-text-sm po-font-medium po-text-slate-700 peer-focus:po-text-mpao-lightblue peer-invalid:po-text-red-500 peer-invalid:peer-focus:po-text-red-600 po-flex po-items-center po-space-x-1 po-capitalize"
 			><span>{{ label }}</span>
 			<span
 				v-if="required"
@@ -28,52 +22,26 @@
 			:value="modelValue"
 			type="file"
 			@input="$emit('update:modelValue', $event.target.value)"
+			@change="handleFileChange($event)"
 			class="po-sr-only po-peer"
 		/>
 		<label
 			:for="`${id}-fileupload`"
-			class="
-				po-mt-1
-				po-block
-				po-w-full
-				po-border
-				po-cursor-pointer
-				po-rounded-md
-				po-border-slate-300
-				po-bg-white
-				peer-focus:po-border-mpao-lightblue
-				invalid:po-border-red-400
-				invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600
-				sm:po-text-sm
-				po-p-2
-			"
+			class="po-mt-1 po-block po-w-full po-border po-cursor-pointer po-rounded-md po-border-slate-300 po-bg-white peer-focus:po-border-mpao-lightblue invalid:po-border-red-400 invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm po-p-2"
 		>
 			<div class="po-flex po-items-center po-space-x-1">
 				<PaperClipIcon class="po-w-4 po-stroke-slate-500" />
-				<span class="po-text-sm">Choose file</span>
+				<span v-if="fileName" class="po-text-sm">{{ fileName }}</span>
+				<span v-else class="po-text-sm">Choose file</span>
 			</div>
 		</label>
 
 		<div
 			v-if="null !== progressValue"
-			class="
-				po-mt-3
-				po-flex
-				po-w-full
-				po-h-1.5
-				po-bg-gray-100
-				po-rounded-full
-				po-overflow-hidden
-			"
+			class="po-mt-3 po-flex po-w-full po-h-1.5 po-bg-gray-100 po-rounded-full po-overflow-hidden"
 		>
 			<div
-				class="
-					po-flex
-					po-flex-col
-					po-justify-center
-					po-overflow-hidden
-					po-bg-mpao-lightblue
-				"
+				class="po-flex po-flex-col po-justify-center po-overflow-hidden po-bg-mpao-lightblue"
 				role="progressbar"
 				:style="progressStyle"
 				:aria-valuenow="progressValue"
@@ -106,7 +74,7 @@ export default {
 </script>
 <script setup>
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 const props = defineProps({
 	/**
@@ -180,4 +148,15 @@ const progressStyle = computed(() => {
 const progressValue = computed(() => {
 	return props.progress;
 });
+
+const fileName = ref("");
+
+const handleFileChange = (event) => {
+	const file = event.target.files[0];
+	if (file) {
+		fileName.value = file.name;
+	} else {
+		fileName.value = "";
+	}
+};
 </script>

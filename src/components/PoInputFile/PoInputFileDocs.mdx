@@ -1,0 +1,89 @@
+# Input file component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoInputFileStories from "./PoInputFile.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoInputFileStories} />
+
+You can use `v-model` bindings in `PoInputFile`.
+
+### Normal
+
+<Story of={PoInputFileStories.Normal} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile v-model="fileAttachment" label="Choose file" id="documents" />
+  `}
+/>
+
+### With message
+
+<Story of={PoInputFileStories.WithMessage} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile
+        label="Choose file"
+        message="This is a helpful message."
+        id="documents"
+    />
+  `}
+/>
+
+### With Error
+
+<Story of={PoInputFileStories.ErrorState} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile
+        label="Choose file"
+        errorMessage="Attachment is required."
+        id="documents"
+        required="true"
+    />
+  `}
+/>
+
+### Horizontal
+
+<Story of={PoInputFileStories.Horizontal} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile
+        label="Choose file"
+        id="documents"
+        display="Horizontal"
+    />
+  `}
+/>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const fileAttachment = ref();
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoInputFileStories} />
