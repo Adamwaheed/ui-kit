@@ -1,28 +1,25 @@
 # ChatLogItem component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoChatLogItem from './PoChatLogItem.vue';
+import PoChatLogItem from "./PoChatLogItem.vue";
+import * as PoChatLogItemStories from "./PoChatLogItem.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="Components/Chat Log Item" component={PoChatLogItem} />
+<Meta of={PoChatLogItemStories} />
 
-<Description of={PoChatLogItem} />
-
-<Canvas withToolbar>
-    <div class="po-flex po-flex-col po-space-y-5">
-        <Story id="components-chat-log-item--chat-log-item-first" />
-        <Story id="components-chat-log-item--chat-log-item-second" />
-        <Story id="components-chat-log-item--chat-log-item-multiple-messages" />
-    </div>
-</Canvas>
+<div className="po-flex po-flex-col po-space-y-5">
+	<Story of={PoChatLogItemStories.ChatLogItemFirst} />
+	<Story of={PoChatLogItemStories.ChatLogItemSecond} />
+	<Story of={PoChatLogItemStories.ChatLogItemMultipleMessages} />
+</div>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoChatLogItem
         v-for="item in chatLog"
         :item="item"
@@ -30,15 +27,11 @@ import dedent from 'ts-dedent';
   `}
 />
 
-### Explanation
-
-<ArgsTable of={PoChatLogItem} />
-
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <ul role="list" class="grow py-5 space-y-5 md:max-h-[calc(100vh-350px)] overflow-y-scroll">
         <PoChatLogItem as="li" v-for="item in chatLog" :item="item" />
     </ul>
@@ -118,3 +111,7 @@ import dedent from 'ts-dedent';
     ];
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoChatLogItemStories} />
