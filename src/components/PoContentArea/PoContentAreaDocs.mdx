@@ -1,0 +1,38 @@
+# Content Area component
+
+import { Story, ArgTypes, Source, Canvas, Meta } from "@storybook/blocks";
+
+import * as PoContentAreaStories from "./PoContentArea.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoContentAreaStories} />
+
+Content area component should be the root of every component. It should be the only child of `<template>`, unless you have `<PoActionBar>` in the page. In this case `<PoActionBar>` and `<PoContentArea>` should be siblings. See below.
+
+<Story of={PoContentAreaStories.ContentArea} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoContentArea>...</PoContentArea>
+  `}
+/>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <template>
+       <PoActionBar />
+       <PoContentArea> EVERYTHING GOES HERE </PoContentArea>
+    </template>
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoContentAreaStories} />
