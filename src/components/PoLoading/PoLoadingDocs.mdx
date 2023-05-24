@@ -1,0 +1,41 @@
+# Loading component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoLoadingStories from "./PoLoading.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoLoadingStories} />
+
+### Loading
+
+<Story of={PoLoadingStories.Loading} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoLoading :show="true" />
+  `}
+/>
+
+### With Label
+
+<Story of={PoLoadingStories.WithLabel} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoLoading :show="true" label="Loading" />
+  `}
+/>
+
+Loading has an optional label
+
+### Explanation
+
+<ArgTypes of={PoLoadingStories} />
