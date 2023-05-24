@@ -1,21 +1,12 @@
 # Toast component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoToast from "./PoToast.vue";
+import * as PoToastStories from "./PoToast.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Components/Toast" component={PoToast} />
-
-<Description of={PoToast} />
+<Meta of={PoToastStories} />
 
 <img src="./stories/toast-preview.png" width="250px" />
 
@@ -72,4 +63,4 @@ By default, Toast is dismissed in 2000ms. You can set a custom dismiss time by s
 
 ### Explanation
 
-<ArgsTable of={PoToast} />
+<ArgTypes of={PoToastStories} />

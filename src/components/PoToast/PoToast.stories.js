@@ -2,7 +2,7 @@
 
 import PoToast from "./PoToast.vue";
 
-import PoToastDocs from "./PoToastDocs.stories.mdx";
+import PoToastDocs from "./PoToastDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -10,13 +10,13 @@ export default {
 	 * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "Components/Toggle",
+	title: "Components/Toast",
 	component: PoToast,
 	parameters: {
 		docs: {
 			page: PoToastDocs,
 			description: {
-				component: "Toggle button with label",
+				component: "Toast",
 			},
 		},
 		backgrounds: {
@@ -36,9 +36,9 @@ const Template = (args) => ({
 	template: '<PoToast v-bind="args" />',
 });
 
-export const Toggle = Template.bind({});
+export const Toast = Template.bind({});
 
-Toggle.args = {
+Toast.args = {
 	/* 👇 The args you need here will depend on your component */
 	message: "Toasted",
 	show: true,
