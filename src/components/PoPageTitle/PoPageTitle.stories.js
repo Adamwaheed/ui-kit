@@ -2,7 +2,7 @@
 
 import PoPageTitle from "./PoPageTitle.vue";
 
-import PoPageTitleDocs from "./PoPageTitleDocs.stories.mdx";
+import PoPageTitleDocs from "./PoPageTitleDocs.mdx";
 
 import { CheckBadgeIcon, TagIcon, BoltIcon } from "@heroicons/vue/20/solid";
 
@@ -39,11 +39,13 @@ const Template = (args) => ({
 });
 
 export const PageTitle = Template.bind();
+export const WithWithDescription = Template.bind();
+// ------------- NO LONGER USED ----
 export const WithPagination = Template.bind();
 export const WithPaginationFilterAndDownload = Template.bind();
 export const WithFilterAndDownload = Template.bind();
-export const WithWithDescription = Template.bind();
 export const WithStats = Template.bind();
+// ------------- NO LONGER USED ----
 
 PageTitle.args = {
 	/* 👇 The args you need here will depend on your component */

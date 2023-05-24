@@ -1,29 +1,22 @@
 # Page title component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
 import PoPageTitle from "./PoPageTitle.vue";
 
+import * as PoPageTitleStories from "./PoPageTitle.stories";
+
 import dedent from "ts-dedent";
 
-<Meta title="Layout/Page Title" component={PoPageTitle} />
-
-<Description of={PoPageTitle} />
+<Meta of={PoPageTitleStories} />
 
 Make sure to always use `:stand-alone="true"` when using the component.
 
 #### Page title
 
-<Canvas>
-	<Story id="layout-page-title--page-title" />
-</Canvas>
+<div className="po-p-5 po-border po-border-slate-300 po-rounded-md">
+	<Story of={PoPageTitleStories.PageTitle} />
+</div>
 
 <Source
 	language="js"
@@ -36,9 +29,9 @@ Make sure to always use `:stand-alone="true"` when using the component.
 
 #### With Description
 
-<Canvas>
-	<Story id="layout-page-title--with-with-description" />
-</Canvas>
+<div className="po-p-5 po-border po-border-slate-300 po-rounded-md">
+	<Story of={PoPageTitleStories.WithWithDescription} />
+</div>
 
 <Source
 	language="js"
@@ -53,4 +46,4 @@ Make sure to always use `:stand-alone="true"` when using the component.
 
 Page title has a lot of option as seen in the args table below. We do not use these anymore. We only use the `label` and `description`.
 
-<ArgsTable of={PoPageTitle} />
+<ArgTypes of={PoPageTitle} />
