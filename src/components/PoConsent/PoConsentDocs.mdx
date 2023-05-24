@@ -1,24 +1,21 @@
 # Consent check component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoConsent from './PoConsent.vue';
+import PoConsent from "./PoConsent.vue";
+import * as PoConsentStories from "./PoConsent.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="Form/Consent" component={PoConsent} />
+<Meta of={PoConsentStories} />
 
-<Description of={PoConsent} />
-
-<Canvas withToolbar>
-    <Story id="form-consent--consent" />
-</Canvas>
+<Story of={PoConsentStories.Consent} />
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoConsent
         v-model="hasConcent"
         id="death-report-consent"
@@ -34,13 +31,13 @@ import dedent from 'ts-dedent';
 
 ### Explanation
 
-<ArgsTable of={PoConsent} />
+<ArgTypes of={PoConsentStories} />
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     const hasConcent = ref(false);
     function handleConcentLinkClick(link) {
         console.log('consentlink', link)
