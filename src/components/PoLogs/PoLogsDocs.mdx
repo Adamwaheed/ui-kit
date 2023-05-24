@@ -1,0 +1,68 @@
+# Logs component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/addon-docs";
+
+import * as PoLogsStories from "./PoLogs.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoLogsStories} />
+
+#### Empty
+
+Empty state displays a default message "No logs to display." unless you pass `empty-label="Custom message"` prop.
+
+<Story of={PoLogsStories.Empty} />
+
+#### Full
+
+<Story of={PoLogsStories.Full} />
+
+#### Without Description
+
+<Story of={PoLogsStories.WithoutDescription} />
+
+#### Without By (auhor)
+
+<Story of={PoLogsStories.WithoutBy} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoLogs :items="logItems" empty-label="Nothing to show" />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoLogsStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  const logItems = [
+    {
+      label: 'Remarks',
+      date: 'Dec 29, 2022',
+      by: 'Jane Singhe',
+      description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum'
+    },
+    {
+      label: 'Approved',
+      date: 'Dec 29, 2022',
+      by: 'Suzanne Ali',
+      description: ''
+    },
+    {
+      label: 'Reported',
+      date: 'Dec 28, 2022',
+      by: '',
+      description: ''
+    },
+  ];
+  `}
+/>
