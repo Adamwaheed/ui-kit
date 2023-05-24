@@ -1,45 +1,30 @@
 # Description List component
 
-import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoDescriptionList from "./PoDescriptionList.vue";
+import * as PoDescriptionListStories from "./PoDescriptionList.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Content/Description List" component={PoDescriptionList} />
-
-<Description of={PoDescriptionList} />
+<Meta of={PoDescriptionListStories} />
 
 ### List
 
-<Canvas withToolbar>
-  <Story id="content-description-list--list" />
-</Canvas>
+<Story of={PoDescriptionListStories.List} />
 
 ### With action
 
-<Canvas withToolbar>
-  <Story id="content-description-list--with-action" />
-</Canvas>
+<Story of={PoDescriptionListStories.WithAction} />
 
 ### Striped
 
-<Canvas withToolbar>
-  <Story id="content-description-list--striped" />
-</Canvas>
+<Story of={PoDescriptionListStories.Striped} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoDescriptionList
         :items="descriptionListItems"
         :striped="true"
@@ -51,10 +36,10 @@ import dedent from "ts-dedent";
 ### Adding content via slot
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoDescriptionList>
       <template v-slot:content>
         <div>
@@ -78,13 +63,13 @@ Adding .link class to description item adds a hover effect.
 
 ### Explanation
 
-<ArgsTable of={PoDescriptionList} />
+<ArgTypes of={PoDescriptionListStories} />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let descriptionListItems = [
         {
             title: "Full name",
