@@ -1,0 +1,30 @@
+# App icon component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoAppIconStories from "./PoAppIcon.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoAppIconStories} />
+
+<div className="po-bg-mpao-blue po-p-5">
+	<Story of={PoAppIconStories.AppIcon} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+   <PoAppIcon app-name="Koshaaru">
+        <template v-slot:icon>
+        ...
+        </template>
+    </PoAppIcon>
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoAppIconStories} />
