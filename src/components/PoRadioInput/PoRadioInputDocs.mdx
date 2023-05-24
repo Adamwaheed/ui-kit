@@ -1,0 +1,44 @@
+# Radio input component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoRadioInputStories from "./PoRadioInput.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoRadioInputStories} />
+
+<Story of={PoRadioInputStories.Radio} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoRadioInput
+        :options="radioOptions"
+        v-model="radioOptionSelected"
+    />
+  `}
+/>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const radioOptions = [
+        {
+            id: 1, title: 'Option one'
+        },
+        {
+            id: 2, title: 'Option two'
+        },
+    ];
+    const radioOptionSelected = ref(1); // id
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoRadioInputStories} />
