@@ -1,0 +1,33 @@
+# Toggle component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoToggleStories from "./PoToggle.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoToggleStories} />
+<br />
+<Story of={PoToggleStories.Toggle} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoToggle label="Toggle me" v-model="toggleState" />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoToggleStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const toggleState = ref();
+  `}
+/>
