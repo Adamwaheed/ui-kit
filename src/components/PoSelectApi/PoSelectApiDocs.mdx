@@ -11,25 +11,23 @@ import {
 
 import PoSelectApi from "./PoSelectApi.vue";
 
+import * as PoSelectApiStories from "./PoSelectApi.stories";
+
 import dedent from "ts-dedent";
 
-<Meta title="Form/Select Api" component={PoSelectApi} />
+<Meta of={PoSelectApiStories} />
 
-<Description of={PoSelectApi} />
-
-<Canvas withToolbar>
-	<div className="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
-		<Story inline={true} id="form-select-api--select-field" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		&nbsp;
-	</div>
-</Canvas>
+<div className=" po-bg-white po-p-5">
+	<Story of={PoSelectApiStories.SelectField} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	&nbsp;
+</div>
 
 This component is very flexible to use.
 It has all the default input bells and whistles like , `errorMessage`, `info`, `message`.

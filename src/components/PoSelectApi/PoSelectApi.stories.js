@@ -2,7 +2,7 @@
 
 import PoSelectApi from "./PoSelectApi.vue";
 
-import PoSelectApiDocs from "./PoSelectApiDocs.stories.mdx";
+import PoSelectApiDocs from "./PoSelectApiDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -36,6 +36,8 @@ const Template = (args) => ({
 
 		const selectApiOptions = ref([]);
 		const selectApiLoading = ref(false);
+		let clickFromComponent = ref();
+		let clickFromParent = ref();
 
 		const handleSelectApiSearch = debounce((query) => {
 			console.log("searching", query, query.length);
@@ -53,16 +55,18 @@ const Template = (args) => ({
 		function handleSelectApiMoreClick() {
 			console.log("select api more click");
 		}
-		function handleSelectApiClick(aa) {
-			console.log("from component", aa);
+		function handleSelectApiClick(obj) {
+			clickFromComponent.value = obj;
 		}
-		function handleSelectApiClickTwo(aa) {
-			console.log("from parent", aa);
+		function handleSelectApiClickTwo(val) {
+			clickFromParent.value = val;
 		}
 		return {
 			args,
 			selectApiOptions,
 			selectApiLoading,
+			clickFromComponent,
+			clickFromParent,
 			handleSelectApiSearch,
 			handleSelectApiMoreClick,
 			handleSelectApiClick,
@@ -70,12 +74,11 @@ const Template = (args) => ({
 		};
 	},
 	template:
-		'<PoSelectApi v-bind="args" @search="handleSelectApiSearch" @loadmore="handleSelectApiMoreClick" @selected="handleSelectApiClick" :options="selectApiOptions" :loading="selectApiLoading" :show-more-btn="true" > <template #selectedOption="selectedOption"> <div class="po-flex po-space-x-2 po-items-center po-cursor-pointer po-px-2" > <img :src="selectedOption.owner.avatar_url" class="po-w-5 po-rounded-full" /> <span class="po-text-sm po-text-slate-600 po-font-semibold">{{ selectedOption.full_name }}</span> </div> </template> <template #option="option"> <div class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1" @click="handleSelectApiClickTwo(option.owner.avatar_url)" > <img :src="option.owner.avatar_url" class="po-w-10" /> <span class="po-text-sm po-text-slate-600 po-font-semibold group-hover:po-text-white" >{{ option.full_name }}</span > </div> </template> </PoSelectApi>',
+		'<PoSelectApi label="Search Github API" v-bind="args" @search="handleSelectApiSearch" @loadmore="handleSelectApiMoreClick" @selected="handleSelectApiClick" :options="selectApiOptions" :loading="selectApiLoading" :show-more-btn="true" > <template #selectedOption="selectedOption"> <div class="po-flex po-space-x-2 po-items-center po-cursor-pointer po-px-2" > <img :src="selectedOption.owner.avatar_url" class="po-w-5 po-rounded-full" /> <span class="po-text-sm po-text-slate-600 po-font-semibold">{{ selectedOption.full_name }}</span> </div> </template> <template #option="option"> <div class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1" @click="handleSelectApiClickTwo(option.owner.id)" > <img :src="option.owner.avatar_url" class="po-w-10" /> <span class="po-text-sm po-text-slate-600 po-font-semibold group-hover:po-text-white" >{{ option.full_name }}</span > </div> </template> </PoSelectApi><br /><br /><br/><span v-if="clickFromParent" class="po-text-sm po-text-slate-500">Click event response from parent: {{  clickFromParent }}</span><br /><br/><span v-if="clickFromComponent" class="po-text-sm po-text-slate-500">Click event response from component:<br><textarea rows="6" class="po-w-full po-border-none po-bg-slate-50">{{ clickFromComponent }}</textarea></span>',
 });
 
 export const SelectField = Template.bind({});
 
 SelectField.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Search Github API",
 };
