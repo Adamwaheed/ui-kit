@@ -1,36 +1,32 @@
 # Top bar component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoTopBar from './PoTopBar.vue';
+import * as PoTopBarStories from "./PoTopBar.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="Shell/Top Bar" component={PoTopBar} />
+<Meta of={PoTopBarStories} />
 
-<Description of={PoTopBar} />
-
-<Canvas withToolbar>
 <div>
-<Story id="shell-top-bar--top-bar" />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />.
+	<Story of={PoTopBarStories.TopBar} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />.
 </div>
-</Canvas>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoTopBar
       :has-search="true"
       :app-list="allApps"
@@ -47,23 +43,20 @@ import dedent from 'ts-dedent';
   `}
 />
 
-App icon can either be passed in the slot or as a prop ``appIcon: BugAntIcon`` ``:app-icon="BugAntIcon"``.
-Search box can be disabled by passing false to ``has-search`` `:has-search="false"`
-
-### Explanation
-
-<ArgsTable of={PoTopBar} />
+App icon can either be passed in the slot or as a prop `appIcon: BugAntIcon` `:app-icon="BugAntIcon"`.
+Search box can be disabled by passing false to `has-search` `:has-search="false"`
 
 From `profileSwitcherClick` event you can get:
-* Profile object when a profile is clicked. The object from `profileSwitcherData.profile`.
-* `current-profile` when Profile button is clicked.
-* `logout` when Logout button is clicked.
+
+- Profile object when a profile is clicked. The object from `profileSwitcherData.profile`.
+- `current-profile` when Profile button is clicked.
+- `logout` when Logout button is clicked.
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let allApps = [
     {
         groupName: "",
@@ -139,3 +132,7 @@ From `profileSwitcherClick` event you can get:
     }
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoTopBarStories} />
