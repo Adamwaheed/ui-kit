@@ -1,27 +1,24 @@
 # Section menu component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
 import PoSectionMenu from "./PoSectionMenu.vue";
+import * as PoSectionMenuStories from "./PoSectionMenu.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Layout/Section Menu" component={PoSectionMenu} />
-
-<Description of={PoSectionMenu} />
+<Meta of={PoSectionMenuStories} />
 
 **We nolonger use this. Use PoTabs intead of this. But if there is a good use case and the UX makes sense, you can use it.**
 
-<Canvas withToolbar>
-	<Story id="layout-section-menu--section-menu" />
-</Canvas>
+<div className="po-py-10">
+	<div className="po-grid po-grid-cols-3">
+		<div>
+			<Story of={PoSectionMenuStories.SectionMenu} />
+		</div>
+		<div className="po-col-span-2"></div>
+	</div>
+</div>
 
 <Source
 	language="js"
@@ -38,7 +35,7 @@ import dedent from "ts-dedent";
 
 ### Explanation
 
-<ArgsTable of={PoSectionMenu} />
+<ArgTypes of={PoSectionMenu} />
 
 <Source
 	language="js"
