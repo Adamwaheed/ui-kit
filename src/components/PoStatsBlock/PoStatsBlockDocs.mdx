@@ -1,37 +1,31 @@
 # Stats block component
 
-import { Story, ArgsTable, Description, Source, Canvas, Meta } from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoStatsBlock from './PoStatsBlock.vue';
+import * as PoStatsBlockStories from "./PoStatsBlock.stories";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="Components/Stats Block" component={PoStatsBlock} />
+<Meta of={PoStatsBlockStories} />
 
-<Description of={PoStatsBlock} />
-
-<Canvas withToolbar>
-  <Story id="components-stats-block--stats-block" />
-</Canvas>
+<div className="po-bg-slate-100 po-p-5 po-rounded-md">
+	<Story of={PoStatsBlockStories.StatsBlock} />
+</div>
 
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoStatsBlock :items="statsBlockItems" />
   `}
 />
 
-### Explanation
-
-<ArgsTable of={PoStatsBlock} />
-
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     const statsBlockItems = [
         {
             label: 'Number of Maturities',
@@ -57,3 +51,7 @@ import dedent from 'ts-dedent';
     ];
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoStatsBlockStories} />
