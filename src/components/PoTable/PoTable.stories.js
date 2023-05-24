@@ -3,7 +3,7 @@
 import PoTable from "./PoTable.vue";
 import PoCard from "../PoCard/PoCard.vue";
 
-import PoTableDocs from "./PoTableDocs.stories.mdx";
+import PoTableDocs from "./PoTableDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
