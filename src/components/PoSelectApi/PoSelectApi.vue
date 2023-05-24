@@ -1,6 +1,7 @@
 <template>
 	<div
-		class="po-max-w-sm po-relative"
+		ref="containerRef"
+		class="po-relative"
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<label
@@ -55,7 +56,9 @@
 				/>
 			</div>
 			<div
-				v-if="showDropdown"
+				v-if="
+					(showDropdown && options.length > 0) || (showDropdown && emptyMessage)
+				"
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<template v-if="options && options.length > 0">
@@ -73,8 +76,10 @@
 					>
 				</template>
 				<template v-else>
-					<span class="po-text-sm po-text-slate-600 po-p-4 po-block"
-						>Please enter a search query</span
+					<span
+						class="po-text-sm po-text-slate-600 po-p-4 po-block"
+						v-if="emptyMessage"
+						>{{ emptyMessage }}</span
 					>
 				</template>
 			</div>
@@ -109,7 +114,7 @@ export default {
 </script>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, onBeforeUnmount } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
@@ -185,6 +190,13 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * Shown when user clicks on the input.
+	 */
+	emptyMessage: {
+		type: String,
+		default: null,
+	},
 });
 
 const selectBox = ref(null);
@@ -203,10 +215,28 @@ const getSelectBoxPosition = computed(() => {
 	}
 });
 
+const containerRef = ref(null);
+const dropdownRef = ref(null);
+
+const handleClickOutside = (event) => {
+	if (
+		!containerRef.value.contains(event.target) &&
+		!selectBox.value.contains(event.target)
+	) {
+		// Click occurred outside the container and target elements
+		showDropdown.value = false;
+	}
+};
+
 onMounted(() => {
 	// console.log(
 	// 	`TadaElement position - top: ${getSelectBoxPosition.value.top}px, left: ${getSelectBoxPosition.value.left}px`
 	// );
+
+	document.addEventListener("click", handleClickOutside);
+});
+onBeforeUnmount(() => {
+	document.removeEventListener("click", handleClickOutside);
 });
 
 const searchQuery = ref();

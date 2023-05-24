@@ -195,6 +195,7 @@
 							:options="selectApiOptions"
 							:loading="selectApiLoading"
 							:show-more-btn="true"
+							empty-message="Search for something"
 						>
 							<template #selectedOption="selectedOption">
 								<div
