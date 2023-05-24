@@ -2,28 +2,24 @@
 
 import {
 	Story,
-	ArgsTable,
+	ArgTypes,
 	Description,
 	Source,
 	Canvas,
 	Meta,
-} from "@storybook/addon-docs";
+} from "@storybook/blocks";
 
-import PoCard from "./PoCard.vue";
+import * as PoCardStories from "./PoCard.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Layout/Card" component={PoCard} />
-
-<Description of={PoCard} />
+<Meta of={PoCardStories} />
 
 ### Card
 
-<Canvas withToolbar>
-	<div class="po-p-5 po-bg-slate-100">
-		<Story id="layout-card--basic" />
-	</div>
-</Canvas>
+    <div className="po-p-5 po-bg-slate-100">
+    	<Story of={PoCardStories.Basic} />
+    </div>
 
 <Source
 	language="js"
@@ -40,11 +36,9 @@ import dedent from "ts-dedent";
 
 ### With title
 
-<Canvas withToolbar>
-	<div class="po-p-5 po-bg-slate-100">
-		<Story id="layout-card--with-title" />
-	</div>
-</Canvas>
+    <div className="po-p-5 po-bg-slate-100">
+    	<Story of={PoCardStories.WithTitle} />
+    </div>
 
 <Source
 	language="js"
@@ -63,11 +57,9 @@ import dedent from "ts-dedent";
 
 You should always use Card action with the title. Otherwise it would not be displayed properly.
 
-<Canvas withToolbar>
-	<div class="po-p-5 po-bg-slate-100">
-		<Story id="layout-card--with-title-and-action" />
-	</div>
-</Canvas>
+    <div className="po-p-5 po-bg-slate-100">
+    	<Story of={PoCardStories.WithTitleAndAction} />
+    </div>
 
 <Source
 	language="js"
@@ -87,11 +79,9 @@ You should always use Card action with the title. Otherwise it would not be disp
 
 ### With loading
 
-<Canvas withToolbar>
-	<div class="po-p-5 po-bg-slate-100">
-		<Story id="layout-card--with-loading" />
-	</div>
-</Canvas>
+    <div className="po-p-5 po-bg-slate-100">
+    	<Story of={PoCardStories.WithLoading} />
+    </div>
 
 <Source
 	language="js"
@@ -108,4 +98,4 @@ You should always use Card action with the title. Otherwise it would not be disp
 
 ### Explanation
 
-<ArgsTable of={PoCard} />
+<ArgTypes of={PoCardStories} />

@@ -3,7 +3,7 @@
 import PoCard from "./PoCard.vue";
 import PoButton from "../PoButton/PoButton.vue";
 
-import PoCardDocs from "./PoCardDocs.stories.mdx";
+import PoCardDocs from "./PoCardDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
