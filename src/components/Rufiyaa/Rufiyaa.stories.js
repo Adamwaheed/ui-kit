@@ -2,7 +2,7 @@
 
 import Rufiyaa from "../Rufiyaa/Rufiyaa.vue";
 
-import RufiyaaDocs from "./RufiyaaDocs.stories.mdx";
+import RufiyaaDocs from "./RufiyaaDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {

@@ -1,0 +1,24 @@
+# Rufyiaa component
+
+import { Story, Source, Meta } from "@storybook/blocks";
+
+import * as RufiyaaStories from "./Rufiyaa.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={RufiyaaStories} />
+
+Rufiyaa Symbol.
+
+**We nolonger use Rufiyaa symbol, cos everything is in Rufiyaa anyway. Component can be used to format money though.**
+
+<Story of={RufiyaaStories.Icon} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <Rufiyaa class="w-4" :amount="3000" />
+  `}
+/>
