@@ -3,7 +3,7 @@
 import PoAlert from "./PoAlert.vue";
 import PoButton from "../PoButton/PoButton.vue";
 
-import PoAlertDocs from "./PoAlertDocs.stories.mdx";
+import PoAlertDocs from "./PoAlertDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -28,24 +28,24 @@ export default {
 	},
 };
 
+import { ref } from "vue";
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
 	components: { PoAlert, PoButton },
 	setup() {
+		let showAlert = ref(false);
+
+		function buttonClick() {
+			showAlert.value = true;
+			console.log("cliiik", showAlert.value);
+		}
 		//👇 The args will now be passed down to the template
-		return { args };
+		return { args, showAlert, buttonClick };
 	},
 	template:
-		'<PoAlert v-bind="args" :show-alert="args.show" @alert-closed="() => (args.show = false)" /> <PoButton label="Show Alert" @click="args.show=true" />',
+		'<PoAlert cancel-btn-label="Dismiss" ok-btn-label="Confirm" alert-title="Alert" alert-description="This is a test alert" :show="showAlert" @alert-closed="() => (showAlert = false)" /> <PoButton label="Show Alert" @click="buttonClick" />',
 });
 
 export const Alert = Template.bind();
 
-Alert.args = {
-	/* 👇 The args you need here will depend on your component */
-	show: false,
-	cancelBtnLabel: "Dismiss",
-	okBtnLabel: "Confirm",
-	alertTitle: "I am an alert",
-	alertDescription: "It's an alert! I repeat, an alert!!",
-};
+Alert.args = {};
