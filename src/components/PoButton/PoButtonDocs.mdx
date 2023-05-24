@@ -1,0 +1,168 @@
+# Button component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoButtonStories from "./PoButton.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoButtonStories} />
+<br />
+<Story of={PoButtonStories.Button} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Button" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.SubmitButton} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="submit" label="Submit" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.Link} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="link" label="Link button" to="/home" />
+`}
+/>
+
+<br />
+<Story of={PoButtonStories.Small} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Small" size="sm" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.Medium} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Medium" size="md" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.Large} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Large" size="lg" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.ColorChange} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Cyan" :override-colors="true" class="bg-cyan-600 hover:bg-cyan-700 text-white" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.Danger} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Danger" action-type="danger" />
+  `}
+/>
+<br />
+<Story of={PoButtonStories.Ghost} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="button" label="Ghost" action-type="ghost" />
+  `}
+/>
+
+<br />
+
+Using icons. Default button 'type button' and types link and simple can have custom labels using slots, so you can add icons, etc.
+When overriding button type `simple` colors, you only need to pass `text-.. hover:text-..` You can add `:is-loading="true"` when you want to show loaidng inside the button.
+
+<br />
+<Story of={PoButtonStories.Bolt} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton type="simple" to="/deathreporting/dispute">
+      <template v-slot:label>
+        <span class="po-flex po-items-center po-space-x-1">
+          <BoltIcon class="po-w-4 po-h-4 po-stroke-current" />
+          <span>File a dispute.</span>
+        </span>
+      </template>
+    </PoButton>
+  `}
+/>
+<br />
+<br />
+<Story of={PoButtonStories.Plus} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoButton @button-click="() => (showNewEmploymentModal = true)">
+      <template v-slot:label>
+        <span class="flex items-center space-x-2">
+          <PlusIcon class="-ml-1 w-4 h-4 fill-current" />
+          <span>New Employment</span>
+        </span>
+      </template>
+    </PoButton>
+  `}
+/>
+<br />
+
+### Explanation
+
+<ArgTypes of={PoButtonStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    function handleButtonClick(to) {
+      ...
+    }
+  `}
+/>
