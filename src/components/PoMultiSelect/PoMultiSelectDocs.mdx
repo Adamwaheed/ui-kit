@@ -1,0 +1,67 @@
+# Multi Select component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoMultiSelectStories from "./PoMultiSelect.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoMultiSelectStories} />
+
+You can filter the list by typing a query, choose by selecting an item. You can remove items by clicking the x mark on selected items.
+
+You can also add items to selection by typing in names and hitting enter or by pasiting a list of names seperated by comma and hitting enter like `two, Three, four` in the below example.
+
+<div className="po-flex po-flex-col po-space-y-5">
+	<Story of={PoMultiSelectStories.MulitSelect} />
+	<br />
+	<br />
+	<br />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoMultiSelect
+      label="Mutiselect"
+      :items="multiselectItems"
+      v-model="selectedmultiselectItems"
+    />
+  `}
+/>
+
+### Explanation
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    
+    const selectedmultiselectItems = ref([]);
+
+    const multiselectItems = [
+      {
+        id: 1,
+        name: "One",
+      },
+      {
+        id: 2,
+        name: "Two",
+      },
+      {
+        id: 3,
+        name: "Three",
+      },
+      {
+        id: 4,
+        name: "Four",
+      },
+    ];
+
+`}
+/>
+
+<ArgTypes of={PoMultiSelectStories} />

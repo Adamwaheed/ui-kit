@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import PoMultiSelect from "./PoMultiSelect.vue";
 
-import PoMultiSelectDocs from "./PoMultiSelectDocs.stories.mdx";
+import PoMultiSelectDocs from "./PoMultiSelectDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -32,34 +32,33 @@ const Template = (args) => ({
 	components: { PoMultiSelect },
 	setup() {
 		const selectedmultiselectItems = ref([]);
+		let items = [
+			{
+				id: 1,
+				name: "One",
+			},
+			{
+				id: 2,
+				name: "Two",
+			},
+			{
+				id: 3,
+				name: "Three",
+			},
+			{
+				id: 4,
+				name: "Four",
+			},
+		];
 		//👇 The args will now be passed down to the template
-		return { args, selectedmultiselectItems };
+		return { args, selectedmultiselectItems, items };
 	},
 	template:
-		'<PoMultiSelect v-bind="args" v-model="selectedmultiselectItems" /><br /><br /><span className="po-text-sm po-text-slate-500">Selected Items: {{selectedmultiselectItems}} </span>',
+		'<PoMultiSelect label="Multiselect" :items="items" v-model="selectedmultiselectItems" /><br /><br /><span className="po-text-sm po-text-slate-500">Selected Items: {{selectedmultiselectItems}} </span>',
 });
 
 export const MulitSelect = Template.bind({});
 
 MulitSelect.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Multiselect",
-	items: [
-		{
-			id: 1,
-			name: "One",
-		},
-		{
-			id: 2,
-			name: "Two",
-		},
-		{
-			id: 3,
-			name: "Three",
-		},
-		{
-			id: 4,
-			name: "Four",
-		},
-	],
 };

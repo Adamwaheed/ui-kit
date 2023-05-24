@@ -6996,7 +6996,7 @@ const Nc = ["for"], Dc = { class: "po-capitalize" }, Ac = {
   class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 }, Mc = ["title"], Ic = { class: "po-relative po-mt-1" }, Fc = {
   key: 0,
-  class: "po-shrink-0 po-pr-1 po-flex po-flex-wrap po-w-full po-max-h-44"
+  class: "po-shrink-0 po-pr-1 po-inline-flex po-flex-wrap po-w-full po-max-h-44"
 }, Rc = { class: "po-px-2 po-py-1 po-mb-1 po-mr-1 po-rounded-md po-text-sm po-text-white po-flex po-space-x-2 po-items-center po-bg-mpao-lightblue" }, zc = ["onClick"], Hc = ["id"], qc = {
   key: 0,
   class: "po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"

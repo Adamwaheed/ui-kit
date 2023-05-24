@@ -34,37 +34,16 @@
 				]"
 			>
 				<div
-					class="po-shrink-0 po-pr-1 po-flex po-flex-wrap po-w-full po-max-h-44"
+					class="po-shrink-0 po-pr-1 po-inline-flex po-flex-wrap po-max-h-44"
 					v-if="selectedItems.length > 0"
 				>
 					<span
-						class="
-							po-px-2
-							po-py-1
-							po-mb-1
-							po-mr-1
-							po-rounded-md
-							po-text-sm
-							po-text-white
-							po-flex
-							po-space-x-2
-							po-items-center
-							po-bg-mpao-lightblue
-						"
+						class="po-px-2 po-py-1 po-mb-1 po-mr-1 po-rounded-md po-text-sm po-text-white po-flex po-space-x-2 po-items-center po-bg-mpao-lightblue"
 						v-for="(item, index) in selectedItems"
 						><span>{{ item.name }}</span>
 						<span
 							@click="() => removeItem(index)"
-							class="
-								po-rounded-full
-								po-bg-white
-								po-flex
-								po-items-center
-								po-justify-center
-								po-w-4
-								po-h-4
-								po-cursor-pointer
-							"
+							class="po-rounded-full po-bg-white po-flex po-items-center po-justify-center po-w-4 po-h-4 po-cursor-pointer"
 							><XMarkIcon class="po-w-3 po-fill-mpao-lightblue"
 						/></span>
 					</span>
@@ -78,24 +57,7 @@
 			</div>
 			<ul
 				v-if="showDropdown"
-				class="
-					po-absolute
-					po-z-10
-					po-mt-1
-					po-max-h-60
-					po-w-full
-					po-overflow-auto
-					po-rounded-md
-					po-bg-white
-					po-py-1
-					po-text-base
-					po-shadow-lg
-					po-ring-1
-					po-ring-black
-					po-ring-opacity-5
-					focus:po-outline-none
-					sm:po-text-sm
-				"
+				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<li
 					v-for="item in filteredItems"
@@ -127,9 +89,7 @@
 			{{ message }}
 		</p>
 		<p
-			class="
-				po-mt-2 po-text-sm po-text-red-600 po-flex po-items-center po-space-x-1
-			"
+			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-center po-space-x-1"
 			:id="`${id}-error`"
 			v-if="hasError && null !== errorMessage"
 		>
