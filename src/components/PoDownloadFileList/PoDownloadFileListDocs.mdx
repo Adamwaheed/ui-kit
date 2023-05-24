@@ -1,0 +1,55 @@
+# Download File List component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoDownloadFileListStories from "./PoDownloadFileList.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoDownloadFileListStories} />
+
+#### Empty
+
+<Story of={PoDownloadFileListStories.Empty} />
+
+#### Files
+
+<Story of={PoDownloadFileListStories.Files} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoDownloadFileList
+        :files="downloadableFiles"
+        @button-click="handleDownloadClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoDownloadFileListStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const downloadableFiles = [
+        {
+            label: 'resume_back_end_developer.pdf'
+        },
+        {
+            label: 'another_files.pdf'
+        },
+        {
+            label: 'one_more_file.pdf'
+        },
+    ];
+    function handleDownloadClick(label) {
+    ...
+    }
+  `}
+/>
