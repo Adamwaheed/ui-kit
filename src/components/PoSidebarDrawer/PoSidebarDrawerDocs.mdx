@@ -1,25 +1,14 @@
 # Sidebar drawer component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoSidebarDrawer from "./PoSidebarDrawer.vue";
+import * as PoSidebarDrawerStories from "./PoSidebarDrawer.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Shell/Sidebar Drawer" component={PoSidebarDrawer} />
+<Meta of={PoSidebarDrawerStories} />
 
-<Description of={PoSidebarDrawer} />
-
-<Canvas withToolbar>
-	<Story id="shell-sidebar-drawer--sidebar-drawer" />
-</Canvas>
+<Story of={PoSidebarDrawerStories.SidebarDrawer} />
 
 <Source
 	language="js"
@@ -38,10 +27,6 @@ import dedent from "ts-dedent";
 />
 
 The property `app-code` is the apps code from API. It's used to filter related apps.
-
-### Explanation
-
-<ArgsTable of={PoSidebarDrawer} />
 
 <Source
 	language="js"
@@ -79,3 +64,7 @@ You can optionally pass a `disabled: true`
 ### Feedback button
 
 To add feedback button to sidebar, you can use the prop `:has-feedback="true"` and handle the click using `@button-click`. Button click will give the value `feedback-button`.
+
+### Explanation
+
+<ArgTypes of={PoSidebarDrawerStories} />
