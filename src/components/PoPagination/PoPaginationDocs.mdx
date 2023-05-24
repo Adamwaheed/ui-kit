@@ -1,35 +1,24 @@
 # Pagination component
 
-import {
-  Story,
-  ArgsTable,
-  Description,
-  Source,
-  Canvas,
-  Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoPagination from "./PoPagination.vue";
+import * as PoPaginationStories from "./PoPagination.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Components/Pagination" component={PoPagination} />
-
-<Description of={PoPagination} />
+<Meta of={PoPaginationStories} />
 
 Always display this component on the right side of the page.
 
-<Canvas>
-  <div class="po-flex po-justify-end">
-    <Story id="components-pagination--pagination" />
-  </div>
-</Canvas>
+<div className="po-flex po-justify-end">
+	<Story of={PoPaginationStories.Pagination} />
+</div>
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoPagination
       :totalPages="2"
       :currentPage="1"
@@ -40,10 +29,10 @@ Always display this component on the right side of the page.
 />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let pagination = {
         label: 'Page 2 of 20',
     }
@@ -59,19 +48,19 @@ Always display this component on the right side of the page.
 This way of doing it is no longer reccomended.
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoPagination :pagination="pagination" @button-click="handlePaginationClick" />
   `}
 />
 
 <Source
-  language="js"
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     let pagination = {
         label: 'Page 2 of 20',
     }
@@ -92,4 +81,4 @@ Pagination also lives inside PoPageTitle component.
 
 ### Explanation
 
-<ArgsTable of={PoPagination} />
+<ArgTypes of={PoPaginationStories} />
