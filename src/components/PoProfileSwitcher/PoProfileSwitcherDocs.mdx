@@ -1,0 +1,41 @@
+# Profile Switcher component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoProfileSwitcherStories from "./PoProfileSwitcher.stories";
+
+import dedent from "ts-dedent";
+
+<Meta of={PoProfileSwitcherStories} />
+
+You will never have to use this component directly. It lives inside PoTopBar component.
+
+<div className="po-bg-mpao-blue po-rounded-md po-p-5 po-h-96">
+	<Story of={PoProfileSwitcherStories.ProfileSwitcher} />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoProfileSwitcher :profile-switcher-data="profileSwitcherData" @button-click="handleProfileSwitcherClick" />
+  `}
+/>
+
+`:profile-switcher-data="profileSwitcherData"` should be passed to PoTopBar Component. And you can handle the button-click on PoTopBar `@profile-switcher-click="handleProfileSwitcherClick"`
+
+### Explanation
+
+<ArgTypes of={PoProfileSwitcherStories} />
