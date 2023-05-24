@@ -2,7 +2,7 @@
 
 import PoTimeline from "../PoTimeline/PoTimeline.vue";
 
-import PoTimelineDocs from "./PoTimelineDocs.stories.mdx";
+import PoTimelineDocs from "./PoTimelineDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -30,10 +30,14 @@ export default {
 const Template = (args) => ({
 	components: { PoTimeline },
 	setup() {
+		function buttonClick(val) {
+			alert(JSON.stringify(val));
+		}
 		//👇 The args will now be passed down to the template
-		return { args };
+		return { args, buttonClick };
 	},
-	template: '<div class="po-relative"><PoTimeline v-bind="args" /></div>',
+	template:
+		'<div class="po-relative"><PoTimeline v-bind="args" @button-click="buttonClick" /></div>',
 });
 
 export const Many = Template.bind({});

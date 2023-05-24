@@ -1,27 +1,16 @@
 # Timeline component
 
-import {
-	Story,
-	ArgsTable,
-	Description,
-	Source,
-	Canvas,
-	Meta,
-} from "@storybook/addon-docs";
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
 
-import PoTimeline from "./PoTimeline.vue";
+import * as PoTimelineStories from "./PoTimeline.stories";
 
 import dedent from "ts-dedent";
 
-<Meta title="Content/Timeline" component={PoTimeline} />
-
-<Description of={PoTimeline} />
+<Meta of={PoTimelineStories} />
 
 #### Many
 
-<Canvas withToolbar>
-	<Story inline={true} id="content-timeline--many" />
-</Canvas>
+<Story of={PoTimelineStories.Many} />
 
 <Source
 	language="js"
@@ -59,9 +48,7 @@ import dedent from "ts-dedent";
 
 #### One
 
-<Canvas withToolbar>
-	<Story inline={true} id="content-timeline--one" />
-</Canvas>
+<Story of={PoTimelineStories.One} />
 
 <Source
 	language="js"
@@ -85,9 +72,7 @@ The timeline component emmits the object when an item is clicked. You can use `c
 
 You can use `button-click` without `clickable` set to true. But it is recommended to be used together, so that the user will know clicking the item has an action attached to it.
 
-<Canvas withToolbar>
-	<Story inline={true} id="content-timeline--many-clickable" />
-</Canvas>
+<Story of={PoTimelineStories.ManyClickable} />
 
 <Source
 	language="js"
@@ -114,4 +99,4 @@ You can use `button-click` without `clickable` set to true. But it is recommende
 
 ### Explanation
 
-<ArgsTable of={PoTimeline} />
+<ArgTypes of={PoTimelineStories} />
