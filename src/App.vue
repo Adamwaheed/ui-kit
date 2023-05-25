@@ -1,4 +1,12 @@
 <template>
+	<!-- Full screen loading -->
+	<div
+		v-if="false"
+		class="po-fixed po-top-0 po-right-0 po-bottom-0 po-left-0 po-bg-white po-z-[9999] po-flex po-items-center po-justify-center"
+	>
+		<PoLoading :show="true" />
+	</div>
+	<!-- Full screen loading -->
 	<div class="po-min-h-full po-pt-16">
 		<PoTopBar
 			:has-search="true"

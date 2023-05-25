@@ -30,7 +30,7 @@
 		@apply po-hidden;
 	}
 	.table-responsive:not(.lg) td,
-	.table-responsive:not(.lg) tr {
+	.table-responsive:not(.lg) tr:not(.po-table-details-row) {
 		@apply po-block;
 	}
 	.table-responsive:not(.lg) tr {

@@ -2,27 +2,50 @@
 	<table class="table-responsive po-w-full" :class="[{ lg: breakAtLg }]">
 		<thead>
 			<tr>
+				<th v-if="hasDetailsRow" class="po-w-12"></th>
 				<th v-for="th in thead">
 					<!-- 
-                        @slot Table header items format
-                     -->
+						@slot Table header items format
+					-->
 					<slot name="th" v-bind="th"></slot>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr
+			<template
 				v-if="
 					(null !== tableBody && !loading) ||
 					(null !== tableBody && 0 !== tableBody.length && !loading)
 				"
 				v-for="(td, index) in tableBody"
 			>
-				<!-- 
-                    @slot Table body items format
-                 -->
-				<slot name="td" v-bind="{ ...td, index, item: td }"></slot>
-			</tr>
+				<tr>
+					<td v-if="hasDetailsRow" class="po-w-12">
+						<span @click="td.showDetails = !td.showDetails">
+							<ArrowRightCircleIcon
+								class="po-w-5 po-fill-mpao-lightblue po-origin-center po-transition-transform po-duration-100 po-ease-out po-cursor-pointer"
+								:class="[{ 'po-rotate-90': td.showDetails }]"
+							/>
+						</span>
+					</td>
+					<!-- 
+						@slot Table body items format
+					-->
+					<slot name="td" v-bind="{ ...td, index, item: td }"></slot>
+				</tr>
+				<tr
+					v-if="hasDetailsRow"
+					class="po-table-details-row"
+					:class="[{ 'po-hidden': !td.showDetails }]"
+				>
+					<!-- 
+						@slot Table body details row
+					-->
+					<td :colspan="thead.length + 1">
+						<slot name="details" v-bind="{ item: td }"></slot>
+					</td>
+				</tr>
+			</template>
 			<tr
 				v-if="
 					(null == tableBody && !loading) ||
@@ -57,9 +80,11 @@
 <script>
 export default {
 	name: "PoTable",
+	components: { ArrowRightCircleIcon },
 };
 </script>
 <script setup>
+import { ArrowRightCircleIcon } from "@heroicons/vue/20/solid";
 import { ref, toRefs, watch, onMounted, computed } from "vue";
 const props = defineProps({
 	/**
@@ -97,6 +122,13 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * If set true, displays placeholder loading animation
+	 */
+	hasDetailsRow: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const { isLoading, tbody } = toRefs(props);
@@ -108,10 +140,12 @@ watch(isLoading, () => {
 });
 watch(tbody, () => {
 	checkIfLoading();
+	addShowDetailsToTbody();
 });
 
 onMounted(() => {
 	checkIfLoading();
+	addShowDetailsToTbody();
 });
 
 function checkIfLoading() {
@@ -122,6 +156,15 @@ function checkIfLoading() {
 		tableBody.value = [{}, {}, {}, {}, {}];
 	}
 }
+
+function addShowDetailsToTbody() {
+	if (props.hasDetailsRow) {
+		for (let i = 0; i < props.tbody.length; i++) {
+			props.tbody[i].showDetails = false;
+		}
+	}
+}
+
 function randomWidth() {
 	return Math.floor(Math.random() * 41) + 40; // Generates a random number between 60 and 100
 }
