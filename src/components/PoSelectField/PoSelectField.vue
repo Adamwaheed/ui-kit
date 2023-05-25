@@ -19,10 +19,22 @@
 			</abbr>
 		</ComboboxLabel>
 		<div class="po-relative po-mt-1">
-			<ComboboxButton as="div">
+			<span
+				class="po-absolute po-top-0 sm:po-text-sm po-text-slate-500 po-p-2 po-select-none po-cursor-text"
+				v-if="showPlaceholder && placeholder"
+				@click="onClickFocusInput"
+				>{{ placeholder }}</span
+			>
+			<ComboboxButton as="div" ref="comboboxButton">
 				<ComboboxInput
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					@change="query = $event.target.value"
+					@focus="showPlaceholder = false"
+					@blur="
+						'' === $event.target.value
+							? (showPlaceholder = true)
+							: (showPlaceholder = false)
+					"
 					:display-value="getSelectedName"
 					:disabled="disabled"
 				/>
@@ -103,7 +115,7 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, watch, onUpdated, toRefs } from "vue";
+import { computed, ref, watch, onUpdated, toRefs, onMounted } from "vue";
 import {
 	CheckIcon,
 	ChevronUpDownIcon,
@@ -190,6 +202,13 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * Placeholer
+	 */
+	placeholder: {
+		type: String,
+		default: null,
+	},
 });
 
 const query = ref("");
@@ -208,6 +227,8 @@ function getSelectedName(itemId) {
 	} else if (filteredItems.value) {
 		let itemSelected = filteredItems.value.find((item) => item.id === itemId);
 		return itemSelected?.name;
+	} else if (placeholder) {
+		return placeholder;
 	}
 }
 
@@ -232,4 +253,16 @@ watch(errorMessage, (newVal, oldVal) => {
 	formHasError.value =
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
+
+const showPlaceholder = ref(false);
+
+onMounted(() => {
+	showPlaceholder.value = props.placeholder ? true : false;
+});
+
+let comboboxButton = ref(null);
+
+function onClickFocusInput() {
+	// comboboxButton.value.click();
+}
 </script>

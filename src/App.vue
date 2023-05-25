@@ -160,8 +160,9 @@
 							<PoInputField
 								:required="true"
 								label="Input"
+								placeholder="12/10/2023"
 								id="input-idssss"
-								type="text"
+								type="date"
 							/>
 							<PoMultiSelect
 								label="Mutiselect"
@@ -451,6 +452,7 @@
 									:list="selectFieldListTwo"
 									@selected="handleSelectFieldTwoClick"
 									v-model="selectFieldTwoSelected"
+									placeholder="Hello place"
 								/>
 								<div class="items-center space-x-5">
 									<PoSelectField
