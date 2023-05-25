@@ -94,6 +94,26 @@ Every time a user selects from the dropdown `selected` event is fired.
 `}
 />
 
+### Returning an OBJECT
+
+**_ If you wish for the select field to return the item object when clicked _**
+You can set the `object` prop
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+		<PoSelectField
+			label="Select Object"
+			object
+			@selected="handleSelectFieldClick"
+			:list="selectFieldListThree"
+			v-model="selectFieldThreeSelected"
+		/>
+`}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoSelectFieldStories} />

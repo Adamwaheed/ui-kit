@@ -43,7 +43,7 @@
 				<ComboboxOption
 					v-for="item in filteredItems"
 					:key="item.id"
-					:value="item.id"
+					:value="object ? item : item.id"
 					as="template"
 					v-slot="{ active, selected }"
 				>
@@ -124,7 +124,7 @@ const props = defineProps({
 	 * Model value
 	 */
 	modelValue: {
-		type: [String, Number],
+		type: [String, Number, Object],
 		default: null,
 	},
 	/**
@@ -180,6 +180,13 @@ const props = defineProps({
 	 * True or false if disabled
 	 */
 	disabled: {
+		type: Boolean,
+		default: false,
+	},
+	/**
+	 * True if you want it to return an object when clicked
+	 */
+	object: {
 		type: Boolean,
 		default: false,
 	},

@@ -464,6 +464,17 @@
 									{{ selectFieldList }}
 									Selected {{ selectFieldSelected }}
 								</div>
+								<div class="items-center space-x-5">
+									<PoSelectField
+										label="Select Object"
+										object
+										@selected="handleSelectFieldClick"
+										:list="selectFieldListThree"
+										v-model="selectFieldThreeSelected"
+									/>
+									<br />
+									Selected {{ selectFieldThreeSelected }}
+								</div>
 								<PoLogs :items="logItems" />
 								<PoDownloadFileList
 									:files="downloadableFiles"
@@ -1095,6 +1106,11 @@ const selectFieldListTwo = ref([
 	{ id: 2, name: "Running around in circles", subtitle: "Activity" },
 	{ id: 3, name: "Something drinkable", subtitle: "Water" },
 ]);
+const selectFieldListThree = ref([
+	{ id: 1, name: "Koshaaru" },
+	{ id: 2, name: "HelpDesk" },
+	{ id: 3, name: "Another" },
+]);
 
 function handleSelectFieldTwoClick(item) {
 	console.log("select field two selected ok", item);
@@ -1103,6 +1119,7 @@ function handleSelectFieldTwoClick(item) {
 const selectFieldPreSelected = ref(selectFieldList[1]);
 const selectFieldSelected = ref(null);
 const selectFieldTwoSelected = ref(null);
+const selectFieldThreeSelected = ref(null);
 
 selectFieldSelected.value = 2;
 setTimeout(() => {
