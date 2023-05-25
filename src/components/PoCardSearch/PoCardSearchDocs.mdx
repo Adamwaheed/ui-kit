@@ -6,8 +6,6 @@ import * as PoCardSearchStories from "./PoCardSearch.stories";
 
 import dedent from "ts-dedent";
 
-<Meta of={PoCardSearchStories} />
-
 When you need to use searchbox inside the Card component, you can use CardSearch component. To get the input value from the component, you can use `v-model`.
 
 When using this component, make sure that it is the first child of the PoCard component, meaning, it should be the first thing inside `<template v-slot:content>` in `<PoCard>`. The Card component should not have `title`, `is-loding`, or padding. You should instead use a container element inside the Card component as a sibling to PoCardSearch, which has padding. Make sure to add a padding between PoCardSearch and its next sibling.
