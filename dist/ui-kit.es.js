@@ -5002,6 +5002,8 @@ const $s = ["for"], _s = {
       () => n.value === "" ? l.list : l.list.filter((v) => v.name.toLowerCase().includes(n.value.toLowerCase()))
     );
     function i(v) {
+      if (l.object)
+        return v == null ? void 0 : v.name;
       if (a.value) {
         let c = a.value.find((f) => f.id === v);
         return c == null ? void 0 : c.name;

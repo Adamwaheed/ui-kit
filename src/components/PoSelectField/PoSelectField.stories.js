@@ -70,8 +70,31 @@ const TemplateTwo = (args) => ({
 		'<PoSelectField label="Select something" :list="list" v-model="selected" @selected="selectedEvent" /><br /><br /><span className="po-text-sm po-text-slate-500">Selected Item: {{selected}} </span><br /><span className="po-text-sm po-text-slate-500">Selected Event Value: {{selectedEventVal}} </span>',
 });
 
+const TemplateThree = (args) => ({
+	components: { PoSelectField },
+	setup() {
+		let list = [
+			{ id: 1, name: "Koshaaru" },
+			{ id: 2, name: "HelpDesk" },
+			{ id: 3, name: "Another" },
+		];
+		let selected = ref(null);
+		let selectedEventVal = ref(null);
+
+		function selectedEvent(val) {
+			selectedEventVal.value = val;
+		}
+		//👇 The args will now be passed down to the template
+		return { args, list, selected, selectedEventVal, selectedEvent };
+	},
+	template:
+		'<PoSelectField label="Select something" object :list="list" v-model="selected" @selected="selectedEvent" /><br /><br /><span className="po-text-sm po-text-slate-500">Selected Item: {{selected}} </span><br /><span className="po-text-sm po-text-slate-500">Selected Event Value: {{selectedEventVal}} </span>',
+});
+
 export const SelectField = Template.bind({});
 export const SelectFieldTwo = TemplateTwo.bind({});
+export const SelectFieldThree = TemplateThree.bind({});
 
 SelectField.args = {};
 SelectFieldTwo.args = {};
+SelectFieldThree.args = {};

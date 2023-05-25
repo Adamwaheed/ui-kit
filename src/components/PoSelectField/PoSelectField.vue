@@ -203,7 +203,9 @@ const filteredItems = computed(() =>
 		  })
 );
 function getSelectedName(itemId) {
-	if (filteredItems.value) {
+	if (props.object) {
+		return itemId?.name;
+	} else if (filteredItems.value) {
 		let itemSelected = filteredItems.value.find((item) => item.id === itemId);
 		return itemSelected?.name;
 	}
