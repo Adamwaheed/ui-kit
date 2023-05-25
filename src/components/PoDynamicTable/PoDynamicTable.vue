@@ -3,7 +3,7 @@
 		<div v-for="column in visibleColumns">
 			<input
 				type="checkbox"
-				name=""
+				name="dynamic"
 				v-model="column.hidden"
 				:id="`hide-table-col-${column.label}`"
 			/>

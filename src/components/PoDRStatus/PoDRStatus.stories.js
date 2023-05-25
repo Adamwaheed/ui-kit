@@ -21,7 +21,7 @@ export default {
 		},
 		backgrounds: {
 			default: "gray",
-			values: [{ name: "gray", value: "#fff" }],
+			values: [{ name: "gray", value: "#ccc" }],
 		},
 	},
 };

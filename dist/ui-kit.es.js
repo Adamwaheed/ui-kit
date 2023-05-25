@@ -4529,7 +4529,7 @@ const $s = ["for"], _s = {
       (r(!0), p(j, null, I(l.value, (c) => (r(), p("div", null, [
         Me(s("input", {
           type: "checkbox",
-          name: "",
+          name: "dynamic",
           "onUpdate:modelValue": (f) => c.hidden = f,
           id: `hide-table-col-${c.label}`
         }, null, 8, Gr), [
