@@ -1,0 +1,65 @@
+import { Meta, ColorPalette, ColorItem, Source } from "@storybook/addon-docs";
+
+import dedent from "ts-dedent";
+
+<Meta title="Helper functions" />
+
+UI Kit exposes a few helper functions that you can use in your app.
+
+### Date formating
+
+You can use `formatDate` function to format dates. Since we use a single format of date withing the organisation, this function doesn't offer options to format it differently. It just formats in the standard format.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    import { formatDate } from "@pension/ui-kit/helpers";
+
+    let myDate = formatDate("Jan 24, 2023"); // Output: 24-01-2023
+
+    // Using inside template
+
+    <span>{{ formatDate("Jan 24, 2023") }}</span>
+
+`}
+/>
+
+### Money formating
+
+You can use `formatMoney` function to add comma seperation and two decimal place formating to money amounts.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    import { formatMoney } from "@pension/ui-kit/helpers";
+
+    let myDate = formatMoney("100000"); // Output: 100,000.00
+
+    // Using inside template
+
+    <span>{{ formatMoney("100000") }}</span>
+
+`}
+/>
+
+### Debounce
+
+You can use `debounce` function to add debounce to inputs. I cases where you want to make API calls when user types in a query, using debounce will allow you to make a single API call when the user stops typing.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    import { debounce } from "@pension/ui-kit/helpers";
+
+    const handleInputText = debounce((val) => {
+        ...
+    }, 500);
+
+`}
+/>
