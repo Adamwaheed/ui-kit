@@ -4,12 +4,15 @@
 		<select
 			id="tabs"
 			name="tabs"
-			class="
-				po-block po-w-full po-rounded-md po-border-gray-300
-				focus:po-border-indigo-500 focus:po-ring-indigo-500
-			"
+			class="po-block po-w-full po-rounded-md po-border-gray-300 focus:po-border-indigo-500 focus:po-ring-indigo-500"
+			@change="handleTabSelection"
 		>
-			<option v-for="tab in allTabs" :key="tab.name" :selected="tab.current">
+			<option
+				v-for="(tab, index) in tabs"
+				:key="tab.name"
+				:value="index"
+				:selected="tab.current"
+			>
 				{{ tab.name }}
 			</option>
 		</select>
@@ -43,11 +46,7 @@
 					><span>{{ tab.name }}</span
 					><span
 						v-if="tab.count && tab.count > 0"
-						class="
-							po-absolute po-py-1 po-px-2 po-rounded-full po-text-xs
-							-po-top-3 -po-right-2
-							po-shadow-md po-flex po-items-center po-justify-center
-						"
+						class="po-absolute po-py-1 po-px-2 po-rounded-full po-text-xs -po-top-3 -po-right-2 po-shadow-md po-flex po-items-center po-justify-center"
 						:class="[
 							tab.current
 								? 'po-bg-mpao-orange po-text-white'
@@ -98,4 +97,10 @@ const allTabs = computed(() => {
 		}
 	});
 });
+
+function handleTabSelection(event) {
+	const selectedIndex = event.target.value;
+	const selectedTab = props.tabs[selectedIndex];
+	emit("button-click", selectedTab);
+}
 </script>
