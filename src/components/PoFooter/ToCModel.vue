@@ -15,7 +15,7 @@
 	>
 		<template v-slot:content>
 			<div class="po-prose-sm po-prose-slate po-p-5 po-opacity-8">
-				<h2>Sample Terms and Conditions</h2>
+				<h2 class="po-text-red-500">Sample Terms and Conditions</h2>
 
 				<h3>1. Acceptance of Terms</h3>
 				<p>

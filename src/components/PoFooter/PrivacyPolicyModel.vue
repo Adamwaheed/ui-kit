@@ -15,7 +15,7 @@
 	>
 		<template v-slot:content>
 			<div class="po-prose-sm po-prose-slate po-p-5 po-opacity-80">
-				<h2>Sample Privacy Policy</h2>
+				<h2 class="po-text-red-500">Sample Privacy Policy</h2>
 
 				<h3>1. Information Collection</h3>
 				<p>
