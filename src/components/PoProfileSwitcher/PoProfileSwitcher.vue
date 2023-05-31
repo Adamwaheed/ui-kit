@@ -78,9 +78,7 @@
 					<div
 						class="po-h-[1px] po-w-full po-bg-gradient-to-l po-from-orange-200 po-via-blue-300 po-to-blue-200"
 					></div>
-					<div
-						class="po-space-y-2 po-py-2 -po-mx-5 po-px-5 po-max-h-[250px] po-overflow-y-auto"
-					>
+					<div class="po-space-y-2 po-py-2 po-max-h-[250px] po-overflow-y-auto">
 						<a
 							v-for="(profile, index) in profilesList"
 							href="#"
