@@ -73,12 +73,8 @@
 						:show-btn="null !== changelog"
 						:changelog="changelog"
 					/>
-					<a href="" class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
-						>Terms &amp; Conditions</a
-					>
-					<a href="" class="hover:po-text-mpao-lightblue po-mr-4 po-mb-2"
-						>Privacy Policy</a
-					>
+					<ToCModel />
+					<PrivacyPolicyModel />
 				</nav>
 				<div class="po-flex po-space-x-2 po-mt-3 lg:po-justify-end">
 					<IsoCertificateModel />
@@ -100,6 +96,8 @@ import { GlobeAltIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/vue/24/solid";
 import ChangeLogModel from "./ChangeLogModel.vue";
 import IssaLogo from "./IssaLogo.vue";
 import IsoCertificateModel from "./IsoCertificateModel.vue";
+import ToCModel from "./ToCModel.vue";
+import PrivacyPolicyModel from "./PrivacyPolicyModel.vue";
 
 defineProps({
 	/**

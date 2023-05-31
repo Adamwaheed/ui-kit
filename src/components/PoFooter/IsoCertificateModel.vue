@@ -1,5 +1,9 @@
 <template>
-	<ISOLogo @click.prevent="showCertModal = true" />
+	<ISOLogo
+		@click.prevent="showCertModal = true"
+		class="po-cursor-pointer"
+		role="button"
+	/>
 	<PoModal
 		:show="showCertModal"
 		@modal-closed="showCertModal = false"
