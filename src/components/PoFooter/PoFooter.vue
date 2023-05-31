@@ -77,8 +77,12 @@
 					<PrivacyPolicyModel />
 				</nav>
 				<div class="po-flex po-space-x-2 po-mt-3 lg:po-justify-end">
-					<IsoCertificateModel />
-					<IssaLogo />
+					<CertificateModel
+						:logo="ISOLogo"
+						title="ISO/IEC 27001:2013 Certificate"
+						src=""
+					/>
+					<CertificateModel :logo="IssaLogo" title="issa Certificate" src="" />
 				</div>
 			</div>
 		</section>
@@ -95,7 +99,8 @@ import { GlobeAltIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/vue/24/solid";
 
 import ChangeLogModel from "./ChangeLogModel.vue";
 import IssaLogo from "./IssaLogo.vue";
-import IsoCertificateModel from "./IsoCertificateModel.vue";
+import ISOLogo from "./IsoLogo.vue";
+import CertificateModel from "./CertificateModel.vue";
 import ToCModel from "./ToCModel.vue";
 import PrivacyPolicyModel from "./PrivacyPolicyModel.vue";
 
