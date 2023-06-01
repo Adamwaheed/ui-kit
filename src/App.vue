@@ -139,6 +139,11 @@
 										/>
 									</div>
 								</template>
+								<template v-slot:footer>
+									<div class="po-p-5">
+										<PoButton action-type="ghost" label="Cancel" />
+									</div>
+								</template>
 							</PoModal>
 							<PoButton
 								@click="showNoteSlideover = true"
@@ -164,13 +169,13 @@
 						{{ checkboxState }}
 						<br />
 						<div class="po-mt-5 po-grid po-grid-cols-2 po-gap-5">
-							<input type="text" @input="handleInputText" />
 							<PoInputField
 								:required="true"
 								label="Input"
-								placeholder="12/10/2023"
+								placeholder="I have debounce"
 								id="input-idssss"
-								type="date"
+								type="text"
+								@input="handleInputText"
 							/>
 							<PoMultiSelect
 								label="Mutiselect"

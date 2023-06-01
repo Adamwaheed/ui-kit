@@ -619,7 +619,10 @@ const _l = /* @__PURE__ */ a("div", {
     }
   },
   setup(e) {
-    const t = e, l = S(() => t.appName.match(/\b[A-Z]/g).join(""));
+    const t = e, l = S(() => {
+      let n = t.appName.match(/\b[A-Z]/g).join("");
+      return n.length === 1 ? t.appName.substring(0, 3) : n;
+    });
     return (n, o) => (r(), p("div", jl, [
       a("div", Dl, [
         te(n.$slots, "icon")
@@ -3143,7 +3146,7 @@ const la = {
 }), Xa = /* @__PURE__ */ a("div", { class: "po-fixed po-inset-0 po-bg-gradient-to-br po-from-mpao-orange po-via-mpao-lightblue po-to-mpao-blue po-opacity-60 po-transition-opacity" }, null, -1), es = { class: "po-fixed po-z-10 po-inset-0" }, ts = { class: "po-flex po-justify-center po-items-start po-min-h-screen po-px-4 po-pt-10 po-pb-20 po-text-center sm:po-block po-max-h-screen po-overflow-y-hidden" }, os = /* @__PURE__ */ a("span", {
   class: "po-hidden sm:po-inline-block sm:po-align-middle sm:po-h-screen",
   "aria-hidden": "true"
-}, "​", -1), ls = { class: "po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5" }, ns = { class: "po-grow po-text-md po-font-bold po-text-slate-600" }, as = { class: "po-shrink-0" }, ss = /* @__PURE__ */ a("div", { class: "po-h-[1px] po-w-full po-bg-gradient-to-l po-from-orange-200 po-via-blue-300 po-to-blue-200" }, null, -1), rs = { class: "po-p-5 po-max-h-[calc(100vh-230px)] po-overflow-y-auto po-min-h-[250px]" }, is = {
+}, "​", -1), ls = { class: "po-flex po-items-center po-bg-white po-rounded-t-xl po-p-5" }, ns = { class: "po-grow po-text-md po-font-bold po-text-slate-600" }, as = { class: "po-shrink-0" }, ss = /* @__PURE__ */ a("div", { class: "po-h-[1px] po-w-full po-bg-gradient-to-l po-from-orange-200 po-via-blue-300 po-to-blue-200" }, null, -1), rs = { class: "po-p-5 po-h-[calc(100vh-230px)] po-overflow-y-auto" }, is = {
   key: 0,
   class: "po-bg-slate-50 po-rounded-b-xl"
 }, ps = {
