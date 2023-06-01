@@ -6057,7 +6057,7 @@ const wp = /* @__PURE__ */ st(gp, [["render", xp]]), Vp = { class: "-po-m-5" }, 
      */
     show: {
       type: Boolean,
-      default: !0
+      default: !1
     },
     /**
      * Set width of the slideover. default:max-w-lg
@@ -6085,12 +6085,12 @@ const wp = /* @__PURE__ */ st(gp, [["render", xp]]), Vp = { class: "-po-m-5" }, 
   setup(e, { emit: t }) {
     const l = e, { show: n } = ge(l), o = k(!1);
     K(n, () => {
-      o.value = n.value, console.log("slideover: showing", o.value);
+      o.value = n.value;
     });
     function s() {
       o.value = !1, t("slideover-closed", !0);
     }
-    return console.log("slideover: im alive, showing: ", o.value), (i, u) => (r(), N(m(He), {
+    return (i, u) => (r(), N(m(He), {
       as: "template",
       show: o.value
     }, {

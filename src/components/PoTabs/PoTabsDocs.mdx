@@ -1,0 +1,70 @@
+# Tabs component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoTabsStories from "./PoTabs.stories";
+
+import dedent from "ts-dedent";
+
+This component only takes care of presentation of tab buttons. When implementing you should put this component in a layout and use `<slot>` to switch between pages using the buttons.
+
+<div className="po-bg-slate-100 po-p-5 po-rounded-md">
+	<Story of={PoTabsStories.Tabs} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTabs :tabs="tabs" @button-click="handleTabClick" />
+
+    const tabs = [
+      {
+        name: "Wage Changes",
+        icon: BanknotesIcon,
+        iconColor: "po-fill-green-400",
+        href: "#",
+        current: true,
+        count: 20,
+      },
+      {
+        name: "Terminations",
+        icon: ScissorsIcon,
+        iconColor: "po-fill-red-400",
+        href: "#",
+        current: false,
+        count: 999,
+      },
+      {
+        name: "Location Changes",
+        icon: MapPinIcon,
+        iconColor: "po-fill-orange-400",
+        href: "#",
+        current: false,
+        count: 9,
+      },
+      ...
+    ];
+
+    const router = useRouter();
+
+    function handleTabClick(tabObj) {
+      router.push(tabObj.href);
+    }
+
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTabsStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const toggleState = ref();
+  `}
+/>
