@@ -1,0 +1,40 @@
+# Slideover component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoSlideoverStories from "./PoSlideover.stories";
+
+import dedent from "ts-dedent";
+
+<div className="po-grid po-grid-cols-2 po-gap-5 po-bg-white po-p-5">
+	<Story of={PoSlideoverStories.Slideover} />
+
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const showNoteSlideover = ref(true);
+
+    <PoButton
+      @click="showNoteSlideover = true"
+      label="Open Slideovers"
+    />
+
+    <PoSlideover
+      :show="showNoteSlideover"
+      @slideover-closed="() => (showNoteSlideover = false)"
+      label="Note"
+      description="Description goes here"
+    >
+      <template v-slot:content> I'm a slideover </template>
+    </PoSlideover>
+
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoSlideoverStories} />

@@ -9,15 +9,7 @@
 			>
 				<div class="po-absolute po-inset-0 po-overflow-hidden">
 					<div
-						class="
-							po-pointer-events-none
-							po-fixed
-							po-inset-y-0
-							po-right-0
-							po-flex
-							po-max-w-full
-							po-pl-10
-						"
+						class="po-pointer-events-none po-fixed po-inset-y-0 po-right-0 po-flex po-max-w-full po-pl-10"
 					>
 						<TransitionChild
 							as="template"
@@ -33,14 +25,7 @@
 								class="po-pointer-events-auto po-w-screen"
 							>
 								<div
-									class="
-										po-flex
-										po-h-full
-										po-flex-col
-										po-overflow-y-auto
-										po-bg-white
-										po-shadow-xl
-									"
+									class="po-flex po-h-full po-flex-col po-overflow-y-auto po-bg-white po-shadow-xl"
 								>
 									<div class="po-bg-slate-50 po-py-6 po-px-4 sm:po-px-6">
 										<div class="po-flex po-items-center po-justify-between">
@@ -51,13 +36,7 @@
 											<div class="po-ml-3 po-flex po-h-7 po-items-center">
 												<button
 													type="button"
-													class="
-														po-rounded-md po-text-slate-500
-														hover:po-text-mpao-lightblue
-														focus:po-outline-none
-														focus:po-ring-2
-														focus:po-ring-white
-													"
+													class="po-rounded-md po-text-slate-500 hover:po-text-mpao-lightblue focus:po-outline-none focus:po-ring-2 focus:po-ring-white"
 													@click="closeModal"
 												>
 													<span class="po-sr-only">Close panel</span>
