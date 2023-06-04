@@ -34,7 +34,7 @@
 			:aria-disabled="disabled"
 			v-bind="$attrs"
 			@input="handleInput"
-			@blur="formatInput"
+			@blur="formatInput($event.target.value)"
 			:class="[
 				'po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
 				getBorderColor(),
@@ -179,7 +179,7 @@ watch(errorMessage, (newVal, oldVal) => {
 
 let inputType = "currency" === props.type ? "text" : props.type;
 
-const inputValue = ref(props.modelValue);
+const inputValue = ref(null);
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -194,11 +194,10 @@ const handleInput = (event) => {
 	emit("update:modelValue", outputValue);
 };
 
-const formatInput = (event) => {
-	let val = event.target.value;
+const formatInput = (val) => {
 	let formattedInput = null;
 	if ("currency" === props.type) {
-		formattedInput = formatMoney(cleanInputForModalValue(val));
+		formattedInput = formatMoney(cleanInputForModalValue("" + val));
 	} else {
 		formattedInput = val;
 	}
@@ -219,4 +218,11 @@ const cleanInputForModalValue = (input) => {
 
 	return formattedValue;
 };
+
+// initial page load if modalValue is passed, format it
+if ("currency" === props.type) {
+	formatInput(props.modelValue);
+} else {
+	inputValue.value = props.modelValue;
+}
 </script>

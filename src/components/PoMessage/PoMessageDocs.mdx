@@ -1,0 +1,29 @@
+# Messages component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoMessageStories from "./PoMessage.stories";
+
+import dedent from "ts-dedent";
+
+#### Message
+
+<Story of={PoMessageStories.Message} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoMessage
+      message="There is a pending Designation change already."
+      btn-name="View"
+      btn-action="/emps/drafts/details"
+      @button-click="handleMessageClick"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoMessageStories} />

@@ -26,7 +26,7 @@
 			<span
 				@click="$emit('button-click', tab)"
 				role="button"
-				v-for="tab in tabs"
+				v-for="tab in allTabs"
 				:key="tab.name"
 				:class="[
 					tab.current
@@ -91,9 +91,11 @@ function setIconColor(tabObj) {
 }
 
 const allTabs = computed(() => {
-	return props.tabs.forEach((tab) => {
+	return props.tabs.map((tab) => {
 		if (tab.name === props.currentTab) {
-			tab.current = true;
+			return { ...tab, current: true };
+		} else {
+			return { ...tab, current: false };
 		}
 	});
 });

@@ -788,7 +788,7 @@ let checkboxState = ref(false);
 let showAlert = ref(false);
 let showNotificationOne = ref(false);
 let inputModel = ref("what");
-let inputCurrencyModel = ref(null);
+let inputCurrencyModel = ref(2000);
 let currQuery = ref("search this bro");
 const tabs = [
 	{
