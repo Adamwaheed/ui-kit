@@ -147,6 +147,24 @@ By default the type is set to `text`. You can use `v-model` bindings in `PoInput
   `}
 />
 
+### Horizontal
+
+<div className="po-max-w-sm">
+	<Story of={PoInputFieldStories.Currency} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputField
+        label="Currency"
+        type="currency"
+        id="form-currency"
+    />
+  `}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoInputFieldStories} />

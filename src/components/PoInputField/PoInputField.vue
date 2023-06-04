@@ -9,14 +9,7 @@
          -->
 		<label
 			:for="id"
-			class="
-				po-text-sm
-				po-font-medium
-				po-flex
-				po-items-center
-				po-space-x-1
-				po-text-slate-700
-			"
+			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 		>
 			<span class="po-capitalize">{{ label }}</span>
 			<span
@@ -29,10 +22,10 @@
 			</abbr>
 		</label>
 		<input
-			:type="type"
+			:type="inputType"
 			:name="`${id}-field`"
 			:id="id"
-			:value="modelValue"
+			:value="inputValue"
 			:placeholder="placeholder"
 			:disabled="disabled"
 			:required="required"
@@ -40,7 +33,8 @@
 			:aria-required="required"
 			:aria-disabled="disabled"
 			v-bind="$attrs"
-			@input="$emit('update:modelValue', $event.target.value)"
+			@input="handleInput"
+			@blur="formatInput"
 			:class="[
 				'po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
 				getBorderColor(),
@@ -54,9 +48,7 @@
 			{{ message }}
 		</p>
 		<p
-			class="
-				po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
-			"
+			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
 			:id="`${id}-error`"
 			v-if="formHasError && null !== errorMessage"
 		>
@@ -71,11 +63,10 @@ export default {
 };
 </script>
 <script setup>
-import {
-	InformationCircleIcon,
-	ExclamationTriangleIcon,
-} from "@heroicons/vue/20/solid";
+import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs } from "vue";
+
+import { formatMoney } from "../../shared/helper";
 
 const props = defineProps({
 	/**
@@ -185,4 +176,47 @@ watch(errorMessage, (newVal, oldVal) => {
 	formHasError.value =
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
+
+let inputType = "currency" === props.type ? "text" : props.type;
+
+const inputValue = ref(props.modelValue);
+
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput = (event) => {
+	let val = event.target.value;
+
+	inputValue.value = val;
+
+	let outputValue =
+		"currency" === props.type ? cleanInputForModalValue(val) : val;
+
+	emit("update:modelValue", outputValue);
+};
+
+const formatInput = (event) => {
+	let val = event.target.value;
+	let formattedInput = null;
+	if ("currency" === props.type) {
+		formattedInput = formatMoney(cleanInputForModalValue(val));
+	} else {
+		formattedInput = val;
+	}
+
+	inputValue.value = formattedInput;
+};
+
+const cleanInputForModalValue = (input) => {
+	let formattedValue = input.replace(/,/g, ""); // Remove commas
+
+	const decimalIndex = formattedValue.indexOf(".");
+	if (decimalIndex !== -1) {
+		const decimalPart = formattedValue.substring(decimalIndex + 1);
+		if (decimalPart === "00") {
+			formattedValue = formattedValue.substring(0, decimalIndex); // Remove decimal part if it's "00"
+		}
+	}
+
+	return formattedValue;
+};
 </script>

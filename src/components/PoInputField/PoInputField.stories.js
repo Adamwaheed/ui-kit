@@ -26,14 +26,18 @@ export default {
 	},
 };
 
+import { ref } from "vue";
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
 	components: { PoInputField },
 	setup() {
+		const inputVal = ref("");
 		//👇 The args will now be passed down to the template
-		return { args };
+		return { args, inputVal };
 	},
-	template: '<PoInputField v-bind="args" />',
+	template: `<PoInputField v-bind="args" v-model="inputVal" />
+							<br />
+							<span class="po-text-sm po-text-slate-600">v-model: {{inputVal}}</span>`,
 });
 
 export const Normal = Template.bind({});
@@ -43,6 +47,7 @@ export const WithPlaceholder = Template.bind({});
 export const ErrorState = Template.bind({});
 export const DisabledState = Template.bind({});
 export const Horizontal = Template.bind({});
+export const Currency = Template.bind({});
 
 Normal.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -98,4 +103,9 @@ Horizontal.args = {
 	id: "short-name",
 	display: "horizontal",
 	type: "text",
+};
+Currency.args = {
+	/* 👇 The args you need here will depend on your component */
+	label: "Currency",
+	type: "currency",
 };

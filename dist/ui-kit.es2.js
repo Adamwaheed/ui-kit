@@ -1,43 +1,36 @@
-import { f as p } from "./FormatDate-a57abfa8.mjs";
-function u(e) {
-  const o = typeof e == "string" ? Number(e.replace(/,/g, "")) : e;
-  return isNaN(o) ? null : o.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-}
-function m(e, o) {
-  let r;
-  return function(...n) {
-    clearTimeout(r), r = setTimeout(() => {
-      e.apply(this, n);
-    }, o);
+import { a as p, f as y } from "./FormatMoney-e395bc87.mjs";
+function i(t, a) {
+  let o;
+  return function(...r) {
+    clearTimeout(o), o = setTimeout(() => {
+      t.apply(this, r);
+    }, a);
   };
 }
-const l = async (e, o) => {
-  const r = useCookie("token"), n = {
-    key: e,
-    async onRequest({ options: t }) {
-      t.headers = t.headers || {}, t.headers["Content-Type"] = "application/json", r.value && (t.headers.Authorization = `Bearer ${r.value}`);
+const d = async (t, a) => {
+  const o = useCookie("token"), r = {
+    key: t,
+    async onRequest({ options: e }) {
+      e.headers = e.headers || {}, e.headers["Content-Type"] = "application/json", o.value && (e.headers.Authorization = `Bearer ${o.value}`);
     },
-    async onRequestError({ error: t }) {
-      console.log(t.message);
+    async onRequestError({ error: e }) {
+      console.log(e.message);
     },
-    async onResponseError({ response: t }) {
-      console.log(t._data.message);
+    async onResponseError({ response: e }) {
+      console.log(e._data.message);
     },
-    ...o
-  }, { data: a, pending: s, error: i, execute: c } = await useFetch(e, n);
+    ...a
+  }, { data: s, pending: n, error: c, execute: u } = await useFetch(t, r);
   return {
-    data: a,
-    pending: s,
-    error: i,
-    execute: c
+    data: s,
+    pending: n,
+    error: c,
+    execute: u
   };
 };
 export {
-  m as debounce,
+  i as debounce,
   p as formatDate,
-  u as formatMoney,
-  l as useHttp
+  y as formatMoney,
+  d as useHttp
 };

@@ -439,7 +439,9 @@
 									v-model="inputModel"
 								/>
 
-								<p>{{ inputModel }}</p>
+								<p class="po-mt-2 po-text-sm po-text-slate-600">
+									v-modal: {{ inputModel }}
+								</p>
 
 								<PoInputField
 									label="Input Errors"
@@ -453,6 +455,17 @@
 								<PoTextarea label="Textarea" />
 								<br />
 								<PoMultiSelect label="Mutiselect" />
+								<br />
+								<PoInputField
+									label="Currency Input"
+									id="input-id-currr"
+									type="currency"
+									v-model="inputCurrencyModel"
+								/>
+
+								<p class="po-mt-2 po-text-sm po-text-slate-600">
+									v-modal: {{ inputCurrencyModel }}
+								</p>
 							</div>
 						</template>
 					</PoCard>
@@ -775,6 +788,7 @@ let checkboxState = ref(false);
 let showAlert = ref(false);
 let showNotificationOne = ref(false);
 let inputModel = ref("what");
+let inputCurrencyModel = ref(null);
 let currQuery = ref("search this bro");
 const tabs = [
 	{
