@@ -1,5 +1,5 @@
 .shell-sidebar {
-	@apply po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-50 po-pt-10 sm:po-pt-0;
+	@apply po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-50 po-pt-10 sm:po-pt-0;
 }
 
 .shell-sidebar--toggle:checked ~ .shell-sidebar {
@@ -70,12 +70,18 @@
 	@apply po-p-3 po-rounded-md po-transition-all po-duration-75 po-ease-in-out po-flex po-items-center po-space-x-2 po-cursor-pointer;
 }
 
-.action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger) {
+.action-bar__nav_link:not(.action-bar__nav_highlighted):not(
+		.action-bar__nav_danger
+	) {
 	@apply po-text-slate-600;
 }
 
-.action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger):hover,
-.action-bar__nav_link:not(.action-bar__nav_highlighted):not(.action-bar__nav_danger).active {
+.action-bar__nav_link:not(.action-bar__nav_highlighted):not(
+		.action-bar__nav_danger
+	):hover,
+.action-bar__nav_link:not(.action-bar__nav_highlighted):not(
+		.action-bar__nav_danger
+	).active {
 	@apply po-bg-white po-text-mpao-blue;
 }
 
