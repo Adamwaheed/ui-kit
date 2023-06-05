@@ -65,7 +65,7 @@
 									></div>
 									<!--  -->
 									<div
-										class="po-p-5 po-h-[calc(100vh-230px)] po-overflow-y-auto"
+										class="po-p-5 po-h-[calc(100vh-230px)] po-max-h-[520px] po-overflow-y-auto"
 									>
 										<!-- 
                           Modal body content
