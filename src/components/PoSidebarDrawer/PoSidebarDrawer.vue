@@ -61,7 +61,7 @@
 					</transition>
 				</Disclosure>
 			</div>
-			<div v-if="apps !== null">
+			<div v-if="filterApps.length > 0">
 				<Disclosure v-slot="{ open }" :defaultOpen="true">
 					<DisclosureButton
 						v-if="appsLabel"
@@ -109,10 +109,7 @@
 
 		<ul
 			v-if="hasFeedback"
-			class="
-				shell-sidebar--menu
-				po-shrink-0 po-mb-0 po-border-t po-border-slate-200 po-pt-3
-			"
+			class="shell-sidebar--menu po-shrink-0 po-mb-0 po-border-t po-border-slate-200 po-pt-3"
 		>
 			<li>
 				<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->

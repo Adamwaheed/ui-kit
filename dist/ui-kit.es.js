@@ -3935,7 +3935,7 @@ const Ss = ["for"], Ps = {
               _: 2
             }, 1024)
           ]))), 256)),
-          e.apps !== null ? (r(), p("div", Fs, [
+          m(i).length > 0 ? (r(), p("div", Fs, [
             C(m(Gt), { defaultOpen: !0 }, {
               default: T(({ open: g }) => [
                 e.appsLabel ? (r(), N(m(Zt), {
