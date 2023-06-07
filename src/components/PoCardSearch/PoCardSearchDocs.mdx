@@ -28,6 +28,36 @@ When using this component, make sure that it is the first child of the PoCard co
   `}
 />
 
+#### With Button
+
+<div className="po-p-5 po-bg-slate-100">
+	<Story of={PoCardSearchStories.CardSearchWithBtn} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoCard class="mt-5">
+        <template v-slot:content>
+            <PoCardSearch
+              placeholder="Search card.."
+              v-model="searchQuery"
+              @button-click="handleCardSearchBtnClick"
+              show-btn
+              />
+            ...
+        </template>
+    </PoCard>
+
+    function handleCardSearchBtnClick(query) {
+        console.log(query);
+    }
+
+`}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoCardSearchStories} />

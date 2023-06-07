@@ -475,6 +475,7 @@
 								placeholder="Search card.."
 								v-model="searchQuery"
 								@button-click="handleCardSearchBtnClick"
+								show-btn
 							/>
 							<div class="po-mt-5 po-p-5">
 								<PoSelectField
