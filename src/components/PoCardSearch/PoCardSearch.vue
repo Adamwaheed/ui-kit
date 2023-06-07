@@ -28,6 +28,7 @@
 						@event button-click
 				-->
 				<button
+					v-if="showBtn"
 					class="po-absolute po-right-0 po-text-sm po-rounded-full po-px-3 po-py-2 po-transition-colors po-duration-150 po-ease-out"
 					:class="[
 						{ 'po-bg-mpao-lightblue po-text-white': '' !== modelValue },
@@ -65,6 +66,13 @@ defineProps({
 	placeholder: {
 		type: String,
 		default: "Search",
+	},
+	/**
+	 * Show hide card search button
+	 */
+	showBtn: {
+		type: Boolean,
+		default: false,
 	},
 });
 

@@ -41,4 +41,17 @@ const Template = (args) => ({
 		'<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" /><div class="po-p-5 po-text-sm po-text-slate-500">Query: {{model}}</div></template></PoCard>',
 });
 
+//👇 We create a “template” of how args map to rendering
+const TemplateTwo = (args) => ({
+	components: { PoCardSearch, PoCard },
+	setup() {
+		//👇 The args will now be passed down to the template
+		let model = ref("");
+		return { args, model };
+	},
+	template:
+		'<PoCard><template v-slot:content><PoCardSearch placeholder="Search card.." v-model="model" show-btn /><div class="po-p-5 po-text-sm po-text-slate-500">Query: {{model}}</div></template></PoCard>',
+});
+
 export const CardSearch = Template.bind();
+export const CardSearchWithBtn = TemplateTwo.bind();
