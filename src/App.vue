@@ -471,7 +471,11 @@
 					</PoCard>
 					<PoCard>
 						<template v-slot:content>
-							<PoCardSearch placeholder="Search card.." v-model="searchQuery" />
+							<PoCardSearch
+								placeholder="Search card.."
+								v-model="searchQuery"
+								@button-click="handleCardSearchBtnClick"
+							/>
 							<div class="po-mt-5 po-p-5">
 								<PoSelectField
 									label="Select field with two labels"
@@ -1776,5 +1780,8 @@ function handleSelectApiClick(aa) {
 }
 function handleSelectApiClickTwo(aa) {
 	console.log("from parent", aa);
+}
+function handleCardSearchBtnClick(aa) {
+	console.log("card search btn click", aa);
 }
 </script>
