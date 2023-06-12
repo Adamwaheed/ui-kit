@@ -6739,7 +6739,7 @@ const Lc = /* @__PURE__ */ st(Sc, [["render", Ec]]), Tc = {
 }), Zc = {
   key: 1,
   class: "po-space-y-3"
-}, Kc = ["onClick"], Qc = { class: "po-absolute po-bg-white po-top-4 po-right-4 po-z-10 po-text-xs po-text-slate-600 po-font-medium" }, Yc = { class: "po-shrink-0 po-pr-3 po-flex po-items-center po-border-r po-border-dashed po-border-slate-300" }, Jc = {
+}, Kc = ["onClick"], Qc = { class: "po-absolute po-bg-white po-top-4 po-right-12 po-z-10 po-text-xs po-text-slate-400 po-font-medium po-select-none" }, Yc = { class: "po-shrink-0 po-pr-3 po-flex po-items-center po-border-r po-border-dashed po-border-slate-300" }, Jc = {
   key: 4,
   class: "po-w-5 po-h-5 po-fill-slate-400 po-shrink-0",
   xmlns: "http://www.w3.org/2000/svg",
@@ -6749,7 +6749,7 @@ const Lc = /* @__PURE__ */ st(Sc, [["render", Ec]]), Tc = {
   Xc,
   ed,
   td
-], ld = { class: "po-grow po-space-y-2 po-pl-3 -po-mb-1" }, nd = { class: "po-text-base po-text-slate-600 po-font-medium" }, ad = {
+], ld = { class: "po-grow po-space-y-2 po-px-3 -po-mb-1" }, nd = { class: "po-text-base po-text-slate-500 po-font-medium" }, ad = {
   key: 0,
   class: ""
 }, sd = {
@@ -6798,7 +6798,7 @@ const Lc = /* @__PURE__ */ st(Sc, [["render", Ec]]), Tc = {
     }, null, 8, ["message"])) : (r(), p("ul", Zc, [
       (r(!0), p(B, null, I(m(n), (d, v) => (r(), p("li", {
         onClick: (f) => u.$emit("button-click", d),
-        class: E(["po-bg-white po-rounded-lg po-p-3 po-transition-shadow po-duration-100 po-ease-out po-shadow hover:po-shadow-lg po-flex po-item-center po-border-l-2 po-relative", d.highlightColor])
+        class: E(["po-bg-white po-rounded-lg po-p-3 po-shadow po-flex po-item-center po-border-l-2 po-relative", d.highlightColor])
       }, [
         a("span", Qc, b(d.topRightLabel), 1),
         a("div", Yc, [
@@ -6842,7 +6842,7 @@ const Lc = /* @__PURE__ */ st(Sc, [["render", Ec]]), Tc = {
                     id: `select-field-calllog-${v}`,
                     "onUpdate:modelValue": (f) => m(n)[v].selectFieldValue = f,
                     onChange: (f) => i(Number(f.target.value), d.id),
-                    class: "po-border-none focus:po-ring-0 po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-700"
+                    class: "po-border-none focus:po-ring-0 po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-600"
                   }, [
                     (r(!0), p(B, null, I(e.selectFieldList, (f) => (r(), p("option", {
                       value: f.id
@@ -6873,21 +6873,21 @@ const Lc = /* @__PURE__ */ st(Sc, [["render", Ec]]), Tc = {
                 class: E(["po-text-slate-500 po-px-[0.2em] po-rounded-md", f.color])
               }, b(f.description), 3)
             ]))), 128))
-          ])) : h("", !0),
-          a("span", {
-            role: "button",
-            onClick: (f) => s(v, d),
-            class: "po-block po-bg-slate-50 po-rounded-md po-p-2 hover:po-bg-slate-100"
-          }, [
-            o.value !== v ? (r(), N(m(to), {
-              key: 0,
-              class: "po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
-            })) : (r(), N(m(oo), {
-              key: 1,
-              class: "po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
-            }))
-          ], 8, dd)
-        ])
+          ])) : h("", !0)
+        ]),
+        a("span", {
+          role: "button",
+          onClick: (f) => s(v, d),
+          class: "po-shrink-0 po-px-2 po-flex po-items-center po-border-l po-border-dashed po-border-slate-300 hover:po-bg-slate-50 -po-mr-3 po-transition-colors po-duration-100 po-ease-out"
+        }, [
+          o.value !== v ? (r(), N(m(to), {
+            key: 0,
+            class: "po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+          })) : (r(), N(m(oo), {
+            key: 1,
+            class: "po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+          }))
+        ], 8, dd)
       ], 10, Kc))), 256))
     ]));
   }

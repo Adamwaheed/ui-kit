@@ -8,11 +8,11 @@
 		<li
 			v-for="(item, index) in list"
 			@click="$emit('button-click', item)"
-			class="po-bg-white po-rounded-lg po-p-3 po-transition-shadow po-duration-100 po-ease-out po-shadow hover:po-shadow-lg po-flex po-item-center po-border-l-2 po-relative"
+			class="po-bg-white po-rounded-lg po-p-3 po-shadow po-flex po-item-center po-border-l-2 po-relative"
 			:class="item.highlightColor"
 		>
 			<span
-				class="po-absolute po-bg-white po-top-4 po-right-4 po-z-10 po-text-xs po-text-slate-600 po-font-medium"
+				class="po-absolute po-bg-white po-top-4 po-right-12 po-z-10 po-text-xs po-text-slate-400 po-font-medium po-select-none"
 				>{{ item.topRightLabel }}</span
 			>
 			<div
@@ -52,8 +52,8 @@
 					/>
 				</svg>
 			</div>
-			<div class="po-grow po-space-y-2 po-pl-3 -po-mb-1">
-				<h3 class="po-text-base po-text-slate-600 po-font-medium">
+			<div class="po-grow po-space-y-2 po-px-3 -po-mb-1">
+				<h3 class="po-text-base po-text-slate-500 po-font-medium">
 					{{ item.subject }}
 				</h3>
 				<transition
@@ -81,7 +81,7 @@
 								@change="
 									selectFieldUpdated(Number($event.target.value), item.id)
 								"
-								class="po-border-none focus:po-ring-0 po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-700"
+								class="po-border-none focus:po-ring-0 po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-600"
 							>
 								<option
 									v-for="listItem in selectFieldList"
@@ -111,21 +111,21 @@
 						>
 					</p>
 				</div>
-				<span
-					role="button"
-					@click="setActiveIndex(index, item)"
-					class="po-block po-bg-slate-50 po-rounded-md po-p-2 hover:po-bg-slate-100"
-				>
-					<ChevronDownIcon
-						v-if="activeLogIndex !== index"
-						class="po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
-					/>
-					<ChevronUpIcon
-						v-else
-						class="po-w-4 po-mx-auto po-stroke-slate-400 po-stroke-2"
-					/>
-				</span>
 			</div>
+			<span
+				role="button"
+				@click="setActiveIndex(index, item)"
+				class="po-shrink-0 po-px-2 po-flex po-items-center po-border-l po-border-dashed po-border-slate-300 hover:po-bg-slate-50 -po-mr-3 po-transition-colors po-duration-100 po-ease-out"
+			>
+				<ChevronDownIcon
+					v-if="activeLogIndex !== index"
+					class="po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+				/>
+				<ChevronUpIcon
+					v-else
+					class="po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+				/>
+			</span>
 		</li>
 	</ul>
 </template>
