@@ -6491,9 +6491,9 @@ const gp = /* @__PURE__ */ st(mp, [["render", bp]]), yp = { class: "-po-m-5" }, 
             a("p", {
               class: E([
                 "po-rounded-full po-w-2 po-h-2 border-1 po-border-white po-shrink-0",
-                { "po-bg-mpao-orange": o !== e.items.length - 1 },
+                { "po-bg-orange-400": o !== e.items.length - 1 },
                 ,
-                { "po-bg-slate-400": o == e.items.length - 1 }
+                { "po-bg-slate-300": o == e.items.length - 1 }
               ])
             }, null, 2),
             a("div", ic, [
