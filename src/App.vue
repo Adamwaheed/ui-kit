@@ -430,7 +430,7 @@
 						<template v-slot:content>
 							<div class="space-y-5">
 								<PoInputField
-									label="Input"
+									label="Input this is it"
 									id="input-id"
 									type="text"
 									message="This is an input"
@@ -438,6 +438,7 @@
 									error-message="Hello error"
 									v-model="inputModel"
 								/>
+								<input type="text" name="" id="" v-model="inputModel" />
 
 								<p class="po-mt-2 po-text-sm po-text-slate-600">
 									v-modal: {{ inputModel }}

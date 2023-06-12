@@ -64,7 +64,7 @@ export default {
 </script>
 <script setup>
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
-import { watch, ref, toRefs } from "vue";
+import { watch, ref, toRefs, onUpdated } from "vue";
 
 import { formatMoney } from "../../shared/helper";
 
@@ -177,6 +177,11 @@ watch(errorMessage, (newVal, oldVal) => {
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 
+watch(errorMessage, (newVal, oldVal) => {
+	formHasError.value =
+		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
+});
+
 let inputType = "currency" === props.type ? "text" : props.type;
 
 const inputValue = ref(null);
@@ -193,6 +198,10 @@ const handleInput = (event) => {
 
 	emit("update:modelValue", outputValue);
 };
+
+onUpdated(() => {
+	inputValue.value = props.modelValue;
+});
 
 const formatInput = (val) => {
 	let formattedInput = null;
