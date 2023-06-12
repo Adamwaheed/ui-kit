@@ -1,4 +1,6 @@
 export default function formatDate(dateString: string): string {
+	if ("" === dateString) return "";
+
 	const date = new Date(dateString);
 	const options: Intl.DateTimeFormatOptions = {
 		day: "2-digit",

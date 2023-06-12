@@ -588,15 +588,16 @@
 										</div>
 									</template>
 								</PoDescriptionList>
-
-								<PoCallLog
-									:list="callLog"
-									selectFieldLabel="Status"
-									:selectFieldList="callLogSelectFieldList"
-									@select-updated="callLogSelectFieldUpdated"
-								/>
 							</template>
 						</PoCard>
+						<div class="po-mt-5">
+							<PoCallLog
+								:list="callLog"
+								selectFieldLabel="Status"
+								:selectFieldList="callLogSelectFieldList"
+								@select-updated="callLogSelectFieldUpdated"
+							/>
+						</div>
 					</div>
 				</div>
 				<PoCard class="po-mt-5 po-p-5">

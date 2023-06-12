@@ -1,5 +1,6 @@
 <template>
-	<ul class="po-mt-5 po-bg-slate-50 -po-mx-5 po-px-4 po-py-3 po-space-y-3">
+	<PoMessage v-if="!list || list.length === 0" :message="emptyLogMessage" />
+	<ul v-else class="po-space-y-3">
 		<!--
             Emits the list item object when clicked
             @event button-click
@@ -7,42 +8,15 @@
 		<li
 			v-for="(item, index) in list"
 			@click="$emit('button-click', item)"
-			class="
-				po-bg-white
-				po-rounded-lg
-				po-p-3
-				po-transition-shadow
-				po-duration-100
-				po-ease-out
-				po-shadow
-				hover:po-shadow-lg
-				po-flex po-item-center po-border-l-4 po-relative
-			"
+			class="po-bg-white po-rounded-lg po-p-3 po-transition-shadow po-duration-100 po-ease-out po-shadow hover:po-shadow-lg po-flex po-item-center po-border-l-2 po-relative"
 			:class="item.highlightColor"
 		>
 			<span
-				class="
-					po-absolute
-					po-bg-white
-					po-top-4
-					po-right-4
-					po-z-10
-					po-text-xs
-					po-text-slate-600
-					po-font-medium
-				"
+				class="po-absolute po-bg-white po-top-4 po-right-4 po-z-10 po-text-xs po-text-slate-600 po-font-medium"
 				>{{ item.topRightLabel }}</span
 			>
 			<div
-				class="
-					po-shrink-0
-					po-pr-3
-					po-flex
-					po-items-center
-					po-border-r
-					po-border-dashed
-					po-border-slate-300
-				"
+				class="po-shrink-0 po-pr-3 po-flex po-items-center po-border-r po-border-dashed po-border-slate-300"
 			>
 				<ChatBubbleLeftIcon
 					v-if="'chat' === item.type"
@@ -93,9 +67,7 @@
 					<div v-if="activeLogIndex === index" class="">
 						<div
 							v-if="null !== selectFieldList"
-							class="
-								po-border-b po-border-slate-200 po-pb-3 po-grid po-grid-cols-2
-							"
+							class="po-border-b po-border-slate-200 po-pb-3 po-grid po-grid-cols-2"
 						>
 							<label
 								:for="`select-field-calllog-${index}`"
@@ -109,11 +81,7 @@
 								@change="
 									selectFieldUpdated(Number($event.target.value), item.id)
 								"
-								class="
-									po-border-none
-									focus:po-ring-0
-									po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-700
-								"
+								class="po-border-none focus:po-ring-0 po-bg-slate-100 po-rounded-md po-text-sm po-text-slate-700"
 							>
 								<option
 									v-for="listItem in selectFieldList"
@@ -146,10 +114,7 @@
 				<span
 					role="button"
 					@click="setActiveIndex(index, item)"
-					class="
-						po-block po-bg-slate-50 po-rounded-md po-p-2
-						hover:po-bg-slate-100
-					"
+					class="po-block po-bg-slate-50 po-rounded-md po-p-2 hover:po-bg-slate-100"
 				>
 					<ChevronDownIcon
 						v-if="activeLogIndex !== index"
@@ -183,6 +148,7 @@ import {
 
 import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
 import PoSelectField from "../PoSelectField/PoSelectField.vue";
+import PoMessage from "../PoMessage/PoMessage.vue";
 
 import { ref, toRefs } from "vue";
 
@@ -201,6 +167,11 @@ const props = defineProps({
 	selectFieldList: {
 		type: Array,
 		default: null,
+	},
+	emptyLogMessage: {
+		type: String,
+		default:
+			"No previous calls for this caller. Start logging calls to track their history.",
 	},
 });
 

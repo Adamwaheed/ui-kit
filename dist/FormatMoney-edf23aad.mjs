@@ -1,4 +1,6 @@
 function e(t) {
+  if (t === "")
+    return "";
   const i = new Date(t), n = {
     day: "2-digit",
     month: "2-digit",
