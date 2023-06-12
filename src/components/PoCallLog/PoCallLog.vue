@@ -1,6 +1,6 @@
 <template>
 	<PoMessage v-if="!list || list.length === 0" :message="emptyLogMessage" />
-	<ul v-else class="po-space-y-3">
+	<ul v-else class="po-space-y-2">
 		<!--
             Emits the list item object when clicked
             @event button-click
@@ -8,8 +8,7 @@
 		<li
 			v-for="(item, index) in list"
 			@click="$emit('button-click', item)"
-			class="po-bg-white po-rounded-lg po-p-3 po-shadow po-flex po-item-center po-border-l-2 po-relative"
-			:class="item.highlightColor"
+			class="po-bg-white po-rounded-lg po-p-3 po-shadow po-flex po-item-center po-relative"
 		>
 			<span
 				class="po-absolute po-bg-white po-top-4 po-right-12 po-z-10 po-text-xs po-text-slate-400 po-font-medium po-select-none"
@@ -20,23 +19,43 @@
 			>
 				<ChatBubbleLeftIcon
 					v-if="'chat' === item.type"
-					class="po-w-5 po-h-5 po-stroke-slate-400 po-shrink-0"
+					class="po-w-5 po-h-5 po-shrink-0"
+					:class="[
+						{ 'po-stroke-red-400': item.highlightColor },
+						{ 'po-stroke-sky-400': !item.highlightColor },
+					]"
 				/>
 				<EnvelopeIcon
 					v-if="'email' === item.type"
-					class="po-w-5 po-h-5 po-stroke-slate-400 po-shrink-0"
+					class="po-w-5 po-h-5 po-shrink-0"
+					:class="[
+						{ 'po-stroke-red-400': item.highlightColor },
+						{ 'po-stroke-sky-400': !item.highlightColor },
+					]"
 				/>
 				<PhoneArrowDownLeftIcon
 					v-if="'in' === item.type"
-					class="po-w-5 po-h-5 po-stroke-slate-400 po-shrink-0"
+					class="po-w-5 po-h-5 po-shrink-0"
+					:class="[
+						{ 'po-stroke-red-400': item.highlightColor },
+						{ 'po-stroke-sky-400': !item.highlightColor },
+					]"
 				/>
 				<PhoneArrowUpRightIcon
 					v-if="'out' === item.type"
-					class="po-w-5 po-h-5 po-stroke-slate-400 po-shrink-0"
+					class="po-w-5 po-h-5 po-shrink-0"
+					:class="[
+						{ 'po-stroke-red-400': item.highlightColor },
+						{ 'po-stroke-sky-400': !item.highlightColor },
+					]"
 				/>
 				<svg
 					v-if="'viber' === item.type"
-					class="po-w-5 po-h-5 po-fill-slate-400 po-shrink-0"
+					class="po-w-5 po-h-5 po-shrink-0"
+					:class="[
+						{ 'po-stroke-red-400': item.highlightColor },
+						{ 'po-stroke-sky-400': !item.highlightColor },
+					]"
 					xmlns="http://www.w3.org/2000/svg"
 					xml:space="preserve"
 					viewBox="0 0 226.978 226.978"
@@ -53,7 +72,7 @@
 				</svg>
 			</div>
 			<div class="po-grow po-space-y-2 po-px-3 -po-mb-1">
-				<h3 class="po-text-base po-text-slate-500 po-font-medium">
+				<h3 class="po-text-sm po-text-slate-600">
 					{{ item.subject }}
 				</h3>
 				<transition
@@ -119,11 +138,11 @@
 			>
 				<ChevronDownIcon
 					v-if="activeLogIndex !== index"
-					class="po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+					class="po-w-4 po-h-4 po-stroke-slate-500 po-shrink-0"
 				/>
 				<ChevronUpIcon
 					v-else
-					class="po-w-4 po-h-4 po-stroke-slate-400 po-shrink-0"
+					class="po-w-4 po-h-4 po-stroke-slate-500 po-shrink-0"
 				/>
 			</span>
 		</li>
