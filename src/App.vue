@@ -596,14 +596,6 @@
 								</PoDescriptionList>
 							</template>
 						</PoCard>
-						<div class="po-mt-5">
-							<PoCallLog
-								:list="callLog"
-								selectFieldLabel="Status"
-								:selectFieldList="callLogSelectFieldList"
-								@select-updated="callLogSelectFieldUpdated"
-							/>
-						</div>
 					</div>
 				</div>
 				<PoCard class="po-mt-5 po-p-5">
@@ -757,7 +749,6 @@ import {
 	PoTableAction,
 	PoMultiSelect,
 	PoDynamicTable,
-	PoCallLog,
 } from "./components";
 
 import { formatDate, debounce } from "./shared/helper";
@@ -1445,136 +1436,6 @@ function newHandleProfileSwitcherClick(obj) {
 			currUserObject.value.transacting_as_organisation = null;
 		}
 	}, 200);
-}
-
-const callLog = [
-	{
-		id: 1,
-		subject: "Inheritance claim process",
-		type: "out",
-		topRightLabel: "Category",
-		highlightColor: "po-border-orange-500",
-		selectFieldValue: 1,
-		meta: [
-			{
-				label: "Status",
-				description: "Open",
-				color: "po-text-green-600 po-bg-green-100",
-			},
-			{
-				label: "Date",
-				description: "Jun 20, 2023",
-			},
-		],
-		details: [
-			{
-				title: "Sub category",
-				description: "Other",
-			},
-			{
-				title: "Note",
-				description:
-					"Issue resolved and informed to the Member, no other issues reported.",
-			},
-			{
-				title: "Called by",
-				description: "Ismail Geller / PR",
-			},
-		],
-	},
-	{
-		id: 2,
-		subject: "Inheritance claim process",
-		type: "viber",
-		topRightLabel: "Category",
-		highlightColor: "po-border-orange-200",
-		selectFieldValue: 2,
-		meta: [
-			{
-				label: "Status",
-				description: "Closed",
-			},
-			{
-				label: "Date",
-				description: "Jun 20, 2023",
-			},
-			{
-				label: "User",
-				description: "Jane Doe",
-			},
-			{
-				label: "Status",
-				description: "Closed",
-			},
-			{
-				label: "Date",
-				description: "Jun 20, 2023",
-			},
-			{
-				label: "User",
-				description: "Jane Doe",
-				color: "po-text-blue-600 po-bg-blue-100",
-			},
-		],
-		details: [
-			{
-				title: "Sub category",
-				description: "Other",
-			},
-			{
-				title: "Note",
-				description:
-					"Issue resolved and informed to the Member, no other issues reported.",
-			},
-			{
-				title: "Called by",
-				description: "Ismail Geller / PR",
-			},
-		],
-	},
-	{
-		id: 3,
-		subject: "Inheritance claim process",
-		type: "email",
-		topRightLabel: "Category",
-		selectFieldValue: 1,
-		meta: [
-			{
-				label: "Status",
-				description: "Closed",
-			},
-		],
-		details: [
-			{
-				title: "Sub category",
-				description: "Other",
-			},
-			{
-				title: "Note",
-				description:
-					"Issue resolved and informed to the Member, no other issues reported.",
-			},
-			{
-				title: "Called by",
-				description: "Ismail Geller / PR",
-			},
-		],
-	},
-];
-
-const callLogSelectFieldList = [
-	{
-		id: 1,
-		name: "Open",
-	},
-	{
-		id: 2,
-		name: "Resolved",
-	},
-];
-
-function callLogSelectFieldUpdated(obj) {
-	console.log("callLogSelectFieldUpdated", obj);
 }
 
 const appsFromApi = ref([]);
