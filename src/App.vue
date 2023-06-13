@@ -432,13 +432,18 @@
 								<PoInputField
 									label="Input this is it"
 									id="input-id"
-									type="text"
 									message="This is an input"
 									info="A tooltip"
 									error-message="Hello error"
 									v-model="inputModel"
 								/>
-								<input type="text" name="" id="" v-model="inputModel" />
+								<div
+									class="po-bg-slate-50 po-rounded-md po-p-3 po-text-xs po-text-slate-500"
+								>
+									<input type="text" name="" id="" v-model="inputModel" />
+									<br />
+									Testing two way binding with a normal html input:
+								</div>
 
 								<p class="po-mt-2 po-text-sm po-text-slate-600">
 									v-modal: {{ inputModel }}
@@ -794,9 +799,9 @@ let showNoteSlideover = ref(false);
 let checkboxState = ref(false);
 let showAlert = ref(false);
 let showNotificationOne = ref(false);
-let inputModel = ref("what");
+let inputModel = ref("this is a value");
 let inputCurrencyModel = ref(2000);
-let currQuery = ref("search this bro");
+let currQuery = ref("search this");
 const tabs = [
 	{
 		name: "Wage Changes",

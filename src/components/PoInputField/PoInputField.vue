@@ -199,8 +199,20 @@ const handleInput = (event) => {
 	emit("update:modelValue", outputValue);
 };
 
-onUpdated(() => {
-	inputValue.value = props.modelValue;
+// onUpdated(() => {
+// });
+
+/**
+ * This whole mambo jambo is cos input doesn't update if v-modal changes after page load,
+ * this bug was introduced after props.type === currency was added and how input value handling was changed after that.
+ * So for now this is a walkaround to fix it.
+ */
+watch(props, (newVal, oldVal) => {
+	if ("currency" === props.type && inputValue.value !== oldVal.modelValue) {
+		inputValue.value = formatMoney(props.modelValue);
+	} else {
+		inputValue.value = props.modelValue;
+	}
 });
 
 const formatInput = (val) => {
