@@ -1,0 +1,151 @@
+# Texarea component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoTextareaStories from "./PoTextarea.stories";
+
+import dedent from "ts-dedent";
+
+By default the type is set to `text`. You can use `v-model` bindings in `PoTextarea`.
+
+### Normal
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.Normal} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+    />
+  `}
+/>
+
+### With tooltip
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.WithInfoTooltip} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        info="Long text about long text"
+    />
+  `}
+/>
+
+### With message
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.WithMessage} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        message="Name of the house, street, village"
+    />
+  `}
+/>
+
+### With Placeholder
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.WithPlaceholder} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        placeholder="Long text placeholder"
+    />
+  `}
+/>
+
+### Error
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.ErrorState} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        error-message="Long text is required"
+    />
+  `}
+/>
+
+### Disabled
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.DisabledState} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        :disabled="true"
+    />
+  `}
+/>
+
+### Horizontal
+
+<div className="po-max-w-sm">
+	<Story of={PoTextareaStories.Horizontal} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTextarea
+        label="Long text"
+        id="form-longtext"
+        v-model="form.longtext"
+        display="horizontal"
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTextareaStories} />

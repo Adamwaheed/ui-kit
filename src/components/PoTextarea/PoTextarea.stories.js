@@ -1,8 +1,8 @@
 // YourComponent.stories.js
 
-import PoInputField from "./PoInputField.vue";
+import PoTextarea from "../PoTextarea/PoTextarea.vue";
 
-import PoInputFieldDocs from "./PoInputFieldDocs.mdx";
+import PoTextareaDocs from "./PoTextareaDocs.mdx";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -10,32 +10,31 @@ export default {
 	 * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "Form/Input Field",
-	component: PoInputField,
+	title: "Form/Textarea",
+	component: PoTextarea,
 	parameters: {
 		docs: {
-			page: PoInputFieldDocs,
+			page: PoTextareaDocs,
 			description: {
-				component: "Form input field.",
+				component: "Textarea component",
 			},
 		},
 		backgrounds: {
-			default: "gray",
-			values: [{ name: "gray", value: "#f8fafc" }],
+			default: "white",
+			values: [{ name: "white", value: "#fff" }],
 		},
 	},
 };
-
 import { ref } from "vue";
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-	components: { PoInputField },
+	components: { PoTextarea },
 	setup() {
 		const inputVal = ref("");
 		//👇 The args will now be passed down to the template
 		return { args, inputVal };
 	},
-	template: `<PoInputField v-bind="args" v-model="inputVal" />
+	template: `<PoTextarea v-bind="args" v-model="inputVal" rows="5" />
 							<br />
 							<span class="po-text-sm po-text-slate-600">v-model: {{inputVal}}</span>`,
 });
@@ -47,52 +46,45 @@ export const WithPlaceholder = Template.bind({});
 export const ErrorState = Template.bind({});
 export const DisabledState = Template.bind({});
 export const Horizontal = Template.bind({});
-export const Currency = Template.bind({});
 
 Normal.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Full name",
+	label: "Long text",
 	id: "fullname-id",
-	type: "text",
 };
 
 WithInfoTooltip.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "NID",
+	label: "Long text",
 	id: "nid-id",
-	type: "text",
-	info: "National ID Card No.",
+	info: "Long text of something.",
 };
 
 WithMessage.args = {
 	/* 👇 The args you need here will depend on your component */
 	label: "Street name",
 	id: "streetname",
-	type: "text",
 	message: "Name of the house, street, village",
 };
 
 WithPlaceholder.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Email address",
+	label: "Long text",
 	id: "emailaddress",
-	placeholder: "doe@example.com",
-	type: "tel",
+	placeholder: "Long placeholder",
 };
 
 ErrorState.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Phone number",
+	label: "Long text",
 	id: "phonenumber",
-	type: "text",
-	errorMessage: "Phone number is required.",
+	errorMessage: "Long text is required.",
 };
 
 DisabledState.args = {
 	/* 👇 The args you need here will depend on your component */
-	label: "Password",
+	label: "Long text",
 	id: "passowrd",
-	type: "password",
 	disabled: true,
 };
 
@@ -101,10 +93,4 @@ Horizontal.args = {
 	label: "Short name",
 	id: "short-name",
 	display: "horizontal",
-	type: "text",
-};
-Currency.args = {
-	/* 👇 The args you need here will depend on your component */
-	label: "Currency",
-	type: "currency",
 };
