@@ -1,0 +1,130 @@
+# Table checkbox
+
+import {
+	Story,
+	ArgTypes,
+	Description,
+	Source,
+	Canvas,
+	Meta,
+} from "@storybook/blocks";
+
+import PoTableCheckbox from "./PoTableCheckbox.vue";
+
+import * as PoTableCheckboxStories from "./PoTableCheckbox.stories";
+
+import dedent from "ts-dedent";
+
+<div className=" po-bg-slate-50 po-p-5">
+	<Story of={PoTableCheckboxStories.TableCheckbox} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody">
+      <template #th="{ label }">
+        <span v-if="'Action' !== label && 'Checkbox' !== label">{{
+          label
+        }}</span>
+        <span
+          v-if="('Action' == label) & ('Checkbox' !== label)"
+          class="sr-only"
+          >{{ label }}</span
+        >
+      </template>
+      <template #td="{ item }">
+        <td data-title="id">
+          <PoTableCheckbox
+            :item-id="item.id"
+            :is-checked="checkIfCheckBoxSelected(item.id)"
+            @checkbox-clicked="handleCheckboxClick"
+          />
+        </td>
+        <td data-title="identifier">
+          {{ item.identifier }}
+        </td>
+        <td data-title="name">
+          {{ item.name }}
+        </td>
+
+        <td data-title="salary">{{ formatMoney(item.salary) }}</td>
+        <td data-title="type">{{ item.type }}</td>
+        <td data-title="description">
+          {{ item.description }}
+        </td>
+        <td data-title="amount">{{ formatMoney(item.amount) }}</td>
+        <td>
+          <div class="po-flex po-items-center po-space-x-3 po-justify-end">
+            <PoTableAction
+
+              btn-type="icon"
+              :btn-icon="CheckIcon"
+              icon-color="po-stroke-sky-400"
+            />
+            <PoTableAction
+              btn-type="icon"
+              :btn-icon="XMarkIcon"
+              icon-color="po-stroke-red-400"
+            />
+          </div>
+        </td>
+      </template>
+    </PoTable>
+
+`}
+/>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  let tableHead = [
+			{ label: "Checkbox" },
+			{ label: "Identifier" },
+			{ label: "Name" },
+			{ label: "Salary" },
+			{ label: "Type" },
+			{ label: "Description" },
+			{ label: "Amount" },
+			{ label: "Action" },
+		];
+
+    	let tableBody = [
+    		{
+    			id: 1,
+    			identifier: "A090923",
+    			name: "Rusmus Rasheed",
+    			salary: "20,000",
+    			type: "Deduction",
+    			description: "Late fine",
+    			amount: "516",
+    			action: "/monthlychanges",
+    		},
+      ...
+    	];
+
+    	const selectedRowIds = ref([]);
+
+    	function handleCheckboxClick(id) {
+    		const index = selectedRowIds.value.indexOf(id);
+    		if (index === -1) {
+    			selectedRowIds.value.push(id);
+    		} else {
+    			selectedRowIds.value.splice(index, 1);
+    		}
+    	}
+
+    	function checkIfCheckBoxSelected(id) {
+    		return selectedRowIds.value.includes(id);
+    	}
+
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTableCheckbox} />
