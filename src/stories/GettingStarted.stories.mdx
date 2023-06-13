@@ -1,0 +1,56 @@
+import { Meta, ColorPalette, ColorItem, Source } from "@storybook/addon-docs";
+
+import dedent from "ts-dedent";
+
+<Meta title="Getting Started" />
+
+### Getting started
+
+Below is how you should create pages in `app-template` using `ui-kit`.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  <template>
+    <PoContentArea>
+      <header class="lg:flex lg:items-end">
+        <PoPageTitle
+          class="grow"
+          :stand-alone="true"
+          label="Page Title"
+          description="Page description, should be three lines of text."
+        />
+        <div class="mt-5 lg:mt-0 shrink-0 space-x-2 flex items-center">
+          <!-- Page action buttons should go here -->
+        </div>
+      </header>
+      <div class="space-y-2">
+        <!-- Content goes here. you can change this area -->
+        <PoCard>
+          <template v-slot:content>
+            ...
+          </template>
+        </PoCard>
+        <!-- Content goes here. you can change this area -->
+      </div>
+    </PoContentArea>
+  </template>
+
+  <script setup>
+  import {
+    PoContentArea,
+    PoPageTitle,
+    PoCard,
+  } from "@pension/ui-kit";
+
+  definePageMeta({
+    layout: "main",
+  });
+  </script>
+
+`}
+/>
+
+All pages must have the root component `<PoContentArea />` and in almost all casess should follow this structure.

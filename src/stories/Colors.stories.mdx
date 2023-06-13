@@ -1,32 +1,33 @@
-import { Meta, ColorPalette, ColorItem, Source } from '@storybook/addon-docs';
+import { Meta, ColorPalette, ColorItem, Source } from "@storybook/addon-docs";
 
-import dedent from 'ts-dedent';
+import dedent from "ts-dedent";
 
-<Meta title="UI Colors" />
+<Meta title="Color Scheme" />
 
 # Colors
 
 These Pension Office brand colors are used in addition to the default colors available in tailwind. These are Pension Office brand colors.
 
 <ColorPalette>
-  <ColorItem
-    title="Pension Blue"
-    subtitle="Primary"
-    colors={{ mpaoBlue: '#282f53', mpaoLightblue: '#3f54c0' }}
-  />
-<ColorItem 
-    title="Pension Orange" 
-    subtitle="Secondary (Highlight)" 
-    colors={{ mpaoOrange: '#ec6d25' }} 
-  />
+	<ColorItem
+		title="Pension Blue"
+		subtitle="Primary"
+		colors={{ mpaoBlue: "#282f53", mpaoLightblue: "#3f54c0" }}
+	/>
+	<ColorItem
+		title="Pension Orange"
+		subtitle="Secondary (Highlight)"
+		colors={{ mpaoOrange: "#ec6d25" }}
+	/>
 </ColorPalette>
 
 ### Usage example
+
 <Source
-  language='js'
-  dark
-  format={true}
-  code={dedent`
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <div class="border border-mpao-lightblue ..">
         <p class="text-mpao-blue">...</p>
     </div>
