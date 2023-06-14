@@ -21,6 +21,8 @@ You can simply use toast like so:
 
 Toast has a few more options. You can show icons for 'Success', 'Danger', and 'Warn' states.
 
+Toast has closed event that you can access via `@toast-closed`.
+
 <Source
 	language="js"
 	dark
@@ -30,6 +32,7 @@ Toast has a few more options. You can show icons for 'Success', 'Danger', and 'W
 			:show="showNotificationOne"
 			action-type="success"
 			message="Successfully Saved!"
+			@toast-closed="handleToastClosed"
 		/>
     <PoToast
 			:show="showNotificationOne"
@@ -55,6 +58,30 @@ By default, Toast is dismissed in 2000ms. You can set a custom dismiss time by s
 			:show="showNotificationOne"
 			message="Hide me in 5000ms"
 			:hide-in="5000"
+		/>
+  `}
+/>
+
+Toasts have three size options. By default it's set to `sm`, you can have it in `lg` and `xl` sizes.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+		<PoToast
+			:show="showNotificationOne"
+			message="Deleted,  with a long message displayed to explain the situation"
+			size="lg"
+			action-type="danger"
+			:hide-in="4000"
+		/>
+		<PoToast
+			:show="showNotificationOne"
+			action-type="warn"
+			message="Warning,  with a long message displayed to explain the situation"
+			size="xl"
+			:hide-in="4000"
 		/>
   `}
 />

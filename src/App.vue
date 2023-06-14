@@ -693,8 +693,20 @@
 			action-type="success"
 			:hide-in="4000"
 		/>
-		<PoToast :show="showNotificationOne" action-type="danger" :hide-in="4000" />
-		<PoToast :show="showNotificationOne" action-type="warn" :hide-in="4000" />
+		<PoToast
+			:show="showNotificationOne"
+			message="Deleted,  with a long message displayed to explain the situation"
+			size="lg"
+			action-type="danger"
+			:hide-in="4000"
+		/>
+		<PoToast
+			:show="showNotificationOne"
+			action-type="warn"
+			message="Warning,  with a long message displayed to explain the situation"
+			size="xl"
+			:hide-in="4000"
+		/>
 		<PoSlideover
 			:show="showNoteSlideover"
 			@slideover-closed="() => (showNoteSlideover = false)"

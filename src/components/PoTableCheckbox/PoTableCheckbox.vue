@@ -4,18 +4,11 @@
 		v-if="isChecked"
 		class="po-w-6 po-fill-mpao-lightblue"
 	/>
+	<CheckCircleIcon v-if="disabled" class="po-w-6 po-fill-slate-400" />
 	<span
-		v-if="!isChecked"
+		v-if="!isChecked && !disabled"
 		@click.prevent="() => $emit('checkboxClicked', itemId)"
-		class="
-			po-h-5
-			po-w-5
-			po-rounded-full
-			po-border-2
-			po-ml-[2px]
-			po-block
-			po-border-slate-300
-		"
+		class="po-h-5 po-w-5 po-rounded-full po-border-2 po-ml-[2px] po-block po-border-slate-300"
 	></span>
 </template>
 
@@ -41,6 +34,13 @@ const props = defineProps({
 	isChecked: {
 		type: Boolean,
 		requred: true,
+	},
+	/**
+	 * Disable check... shows a checkmark in disabled state
+	 */
+	disabled: {
+		type: Boolean,
+		default: false,
 	},
 });
 

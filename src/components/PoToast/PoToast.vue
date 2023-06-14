@@ -10,32 +10,18 @@
 		>
 			<div
 				v-if="isShowing"
-				class="
-					po-pointer-events-auto
-					po-w-full
-					po-max-w-[260px]
-					po-overflow-hidden
-					po-rounded-lg
-					po-bg-gray-900
-					po-shadow-lg
-					po-ring-1
-					po-ring-black
-					po-ring-opacity-5
-				"
+				class="po-pointer-events-auto po-w-full po-overflow-hidden po-rounded-lg po-bg-gray-900 po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5"
+				:class="[
+					{ 'po-max-w-[260px]': 'sm' === size },
+					{ 'po-max-w-[360px]': 'lg' === size },
+					{ 'po-max-w-[560px]': 'xl' === size },
+				]"
 			>
 				<div class="po-p-4">
-					<div class="po-flex po-items-center po-space-x-3">
+					<div class="po-flex po-items-start po-space-x-3">
 						<div
 							v-if="'' !== actionType"
-							class="
-								po-inline-flex
-								po-items-center
-								po-justify-center
-								po-flex-shrink-0
-								po-w-8
-								po-h-8
-								po-rounded-lg
-							"
+							class="po-inline-flex po-items-center po-justify-center po-flex-shrink-0 po-w-6 po-h-6 po-rounded-lg"
 							:class="[
 								{
 									'po-bg-mpao-green po-text-green-100':
@@ -49,20 +35,18 @@
 						>
 							<CheckIcon
 								v-if="'success' === actionType"
-								class="po-w-5 po-h-5"
+								class="po-w-4 po-h-4"
 							/>
-							<TrashIcon v-if="'danger' === actionType" class="po-w-5 po-h-5" />
+							<TrashIcon v-if="'danger' === actionType" class="po-w-4 po-h-4" />
 							<ExclamationTriangleIcon
 								v-if="'warn' === actionType"
-								class="po-w-5 po-h-5"
+								class="po-w-4 po-h-4"
 							/>
 
 							<span class="po-sr-only">Action icon</span>
 						</div>
 						<p
-							class="
-								po-w-0 po-flex-1 po-text-sm po-font-medium po-text-gray-400
-							"
+							class="po-w-0 po-flex-1 po-text-sm po-font-medium po-text-gray-400"
 						>
 							{{ displayMessage }}
 						</p>
@@ -70,15 +54,7 @@
 							<button
 								type="button"
 								@click="closeToast"
-								class="
-									po-inline-flex po-rounded-md po-bg-gray-900 po-text-gray-400
-									hover:po-text-gray-300 hover:po-bg-gray-700
-									po-transition-colors po-duration-150 po-ease-out
-									focus:po-outline-none
-									focus:po-ring-2
-									focus:po-ring-indigo-500
-									focus:po-ring-offset-2
-								"
+								class="po-inline-flex po-rounded-md po-bg-gray-900 po-text-gray-400 hover:po-text-gray-300 hover:po-bg-gray-700 po-transition-colors po-duration-150 po-ease-out focus:po-outline-none focus:po-ring-2 focus:po-ring-indigo-500 focus:po-ring-offset-2"
 							>
 								<span class="po-sr-only">Close</span>
 								<XMarkIcon class="po-h-5 po-w-5" aria-hidden="true" />
@@ -134,6 +110,13 @@ const props = defineProps({
 	hideIn: {
 		type: Number,
 		default: 2000,
+	},
+	/**
+	 * Toast size default: sm... other options: lg, xl
+	 */
+	size: {
+		type: String,
+		default: "sm",
 	},
 });
 
