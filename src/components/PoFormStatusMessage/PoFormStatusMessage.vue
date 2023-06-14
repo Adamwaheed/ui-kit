@@ -1,13 +1,13 @@
 <template>
 	<div
 		v-if="isError"
-		class="po-flex po-space-x-3 po-p-5 po-bg-red-50 po-rounded-md po-mt-5"
+		class="po-flex po-space-x-3 po-p-3 po-bg-red-50 po-rounded-md"
 		:class="[
 			{ 'po-items-start': null !== errorList },
 			{ 'po-items-center': null === errorList },
 		]"
 	>
-		<ExclamationTriangleIcon class="po-w-6 po-stroke-red-600" />
+		<ExclamationTriangleIcon class="po-shrink-0 po-w-6 po-stroke-red-600" />
 		<div>
 			<span class="po-text-sm po-text-red-700">{{ message }}</span>
 			<ul
@@ -20,15 +20,7 @@
 	</div>
 	<div
 		v-else
-		class="
-			po-flex
-			po-items-start
-			po-space-x-3
-			po-p-5
-			po-bg-green-50
-			po-rounded-md
-			po-mt-5
-		"
+		class="po-flex po-items-start po-space-x-3 po-p-5 po-bg-green-50 po-rounded-md po-mt-5"
 	>
 		<CheckCircleIcon class="po-w-6 po-stroke-green-600" />
 		<div>

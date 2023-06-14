@@ -7,6 +7,7 @@
 	>
 		<ComboboxLabel
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
+			:id="uniqueID"
 		>
 			<span>{{ label }}</span>
 			<span
@@ -26,6 +27,7 @@
 					@change="query = $event.target.value"
 					:display-value="getSelectedName"
 					:disabled="disabled"
+					:id="uniqueID"
 				/>
 				<span
 					class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none"
@@ -104,12 +106,11 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, watch, onUpdated, toRefs } from "vue";
+import { computed, ref, watch, onUpdated, toRefs, onMounted } from "vue";
 import {
 	CheckIcon,
 	ChevronUpDownIcon,
 	InformationCircleIcon,
-	ExclamationTriangleIcon,
 } from "@heroicons/vue/20/solid";
 import {
 	Combobox,
@@ -132,6 +133,13 @@ const props = defineProps({
 	 * Label text
 	 */
 	label: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * Input id text
+	 */
+	id: {
 		type: String,
 		default: "",
 	},
@@ -241,5 +249,19 @@ const formHasError = ref(null !== errorMessage.value ? true : false);
 watch(errorMessage, (newVal, oldVal) => {
 	formHasError.value =
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
+});
+
+const uniqueID = ref("");
+onMounted(() => {
+	if ("" === props.id) {
+		uniqueID.value =
+			props.label.replace(/\s/g, "") +
+			"-" +
+			Date.now() +
+			"-selectfield-" +
+			Math.floor(Math.random() * 9000);
+	} else {
+		uniqueID.value = props.id;
+	}
 });
 </script>

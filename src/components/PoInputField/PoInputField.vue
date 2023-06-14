@@ -8,7 +8,7 @@
             @event update:modelValue
          -->
 		<label
-			:for="id"
+			:for="uniqueID"
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 		>
 			<span class="po-capitalize">{{ label }}</span>
@@ -23,13 +23,13 @@
 		</label>
 		<input
 			:type="inputType"
-			:name="`${id}-field`"
-			:id="id"
+			:name="`${uniqueID}-field`"
+			:id="uniqueID"
 			:value="inputValue"
 			:placeholder="placeholder"
 			:disabled="disabled"
 			:required="required"
-			:aria-describedby="`${id}-description`"
+			:aria-describedby="`${uniqueID}-description`"
 			:aria-required="required"
 			:aria-disabled="disabled"
 			v-bind="$attrs"
@@ -64,7 +64,7 @@ export default {
 </script>
 <script setup>
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
-import { watch, ref, toRefs, onUpdated } from "vue";
+import { watch, ref, toRefs, onMounted } from "vue";
 
 import { formatMoney } from "../../shared/helper";
 
@@ -246,4 +246,18 @@ if ("currency" === props.type) {
 } else {
 	inputValue.value = props.modelValue;
 }
+
+const uniqueID = ref("");
+onMounted(() => {
+	if ("" === props.id) {
+		uniqueID.value =
+			props.label.replace(/\s/g, "") +
+			"-" +
+			Date.now() +
+			"-inputfield-" +
+			Math.floor(Math.random() * 9000);
+	} else {
+		uniqueID.value = props.id;
+	}
+});
 </script>

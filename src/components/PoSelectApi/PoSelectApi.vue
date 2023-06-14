@@ -5,7 +5,7 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<label
-			for=""
+			:for="uniqueID"
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 		>
 			<span>{{ label }}</span>
@@ -47,7 +47,7 @@
 				<input
 					type="text"
 					name=""
-					id=""
+					:id="uniqueID"
 					ref="selectBox"
 					v-model="searchQuery"
 					@input="handleInput"
@@ -126,6 +126,13 @@ const props = defineProps({
 	options: {
 		type: Array,
 		default: null,
+	},
+	/**
+	 * Input id text
+	 */
+	id: {
+		type: String,
+		default: "",
 	},
 	/**
 	 * Show loading true/false default false
@@ -228,10 +235,21 @@ const handleClickOutside = (event) => {
 	}
 };
 
+const uniqueID = ref("");
 onMounted(() => {
 	// console.log(
 	// 	`TadaElement position - top: ${getSelectBoxPosition.value.top}px, left: ${getSelectBoxPosition.value.left}px`
 	// );
+	if ("" === props.id) {
+		uniqueID.value =
+			props.label.replace(/\s/g, "") +
+			"-" +
+			Date.now() +
+			"-selectapi-" +
+			Math.floor(Math.random() * 9000);
+	} else {
+		uniqueID.value = props.id;
+	}
 
 	document.addEventListener("click", handleClickOutside);
 });
