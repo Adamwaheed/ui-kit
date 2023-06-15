@@ -1,0 +1,57 @@
+# Page title component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import PoPageStats from "./PoPageStats.vue";
+
+import * as PoPageStatsStories from "./PoPageStats.stories";
+
+import dedent from "ts-dedent";
+
+This component is used to display stats on the page header right side of `Page Title` component.
+We use this when the right side empty on pages that doesn't have action button at the top so that It won't be empty.
+
+#### Page Stats
+
+<div className="po-p-5 po-border po-border-slate-300 po-rounded-md">
+	<Story of={PoPageStatsStories.PageStats} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+
+  <PoPageStats :stats="pageStats" :clickable="false" />
+
+const pageStats = [
+{
+value: "32",
+label: "Active",
+icon: CheckBadgeIcon,
+iconColor: "po-text-green-400",
+},
+{
+value: "1",
+label: "Draft",
+icon: TagIcon,
+iconColor: "po-text-sky-400",
+},
+{
+value: "5",
+label: "Terminated",
+icon: BoltIcon,
+iconColor: "po-text-red-400",
+},
+];
+`}
+/>
+
+By default `clickable` true, which shows mouse interactions. Mouse click event is emitted `@stat-click` when a stat item is clicked and has the stat object.
+
+### Explanation
+
+Page title has a lot of option as seen in the args table below. We do not use these anymore. We only use the `label` and `description`.
+
+<ArgTypes of={PoPageStats} />
