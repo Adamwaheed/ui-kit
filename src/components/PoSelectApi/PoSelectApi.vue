@@ -57,12 +57,13 @@
 			</div>
 			<div
 				v-if="
-					(showDropdown && options.length > 0) || (showDropdown && emptyMessage)
+					(showDropdown && loadedOptions.length > 0) ||
+					(showDropdown && emptyMessage)
 				"
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<template v-if="options && options.length > 0">
-					<template v-for="option in options">
+				<template v-if="loadedOptions && loadedOptions.length > 0">
+					<template v-for="option in loadedOptions">
 						<div @click="handleOptionClick(option)">
 							<slot name="option" v-bind="option">{{ option }}</slot>
 						</div>
@@ -114,7 +115,7 @@ export default {
 </script>
 
 <script setup>
-import { computed, onMounted, ref, onBeforeUnmount } from "vue";
+import { computed, onMounted, ref, onBeforeUnmount, watch } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
@@ -208,6 +209,11 @@ const props = defineProps({
 
 const selectBox = ref(null);
 const showDropdown = ref(false);
+const loadedOptions = ref([]);
+
+watch(props, (newVal, oldVal) => {
+	loadedOptions.value = props.options;
+});
 
 // Function to get the position of the element
 const getSelectBoxPosition = computed(() => {
