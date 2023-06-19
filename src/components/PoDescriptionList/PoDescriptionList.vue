@@ -5,6 +5,7 @@
 				'po-description-list',
 				{ 'po-divide-y po-divide-slate-200': !striped },
 				{ striped: striped },
+				{ 'no-col': !columns },
 			]"
 		>
 			<!-- 
@@ -46,7 +47,14 @@ defineProps({
 		type: Array,
 		default: null,
 	},
-	striped: false,
+	striped: {
+		type: Boolean,
+		default: false,
+	},
+	columns: {
+		type: Boolean,
+		default: true,
+	},
 });
 
 const emit = defineEmits(["button-click"]);

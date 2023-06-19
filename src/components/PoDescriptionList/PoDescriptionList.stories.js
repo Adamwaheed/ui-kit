@@ -42,6 +42,7 @@ const Template = (args) => ({
 export const List = Template.bind({});
 export const WithAction = Template.bind({});
 export const Striped = Template.bind({});
+export const NoCol = Template.bind({});
 
 List.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -105,4 +106,27 @@ Striped.args = {
 		},
 	],
 	striped: true,
+};
+NoCol.args = {
+	/* 👇 The args you need here will depend on your component */
+	items: [
+		{
+			title: "Full name",
+			description: "Saleem Ahmed Doe",
+			action: "",
+		},
+		{
+			title: "Address",
+			description: "House of Sal, Medhu St, Malé",
+		},
+		{
+			title: "Dob",
+			description: "1972-02-05",
+		},
+		{
+			title: "Position",
+			description: "Crawler",
+		},
+	],
+	columns: false,
 };

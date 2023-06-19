@@ -16,7 +16,15 @@ import dedent from "ts-dedent";
 
 ### Striped
 
+`striped=true` default is false
+
 <Story of={PoDescriptionListStories.Striped} />
+
+### No columns
+
+`columns=false` default is true
+
+<Story of={PoDescriptionListStories.NoCol} />
 
 <Source
 	language="js"
@@ -25,7 +33,6 @@ import dedent from "ts-dedent";
 	code={dedent`
     <PoDescriptionList
         :items="descriptionListItems"
-        :striped="true"
         @button-click="handleDescriptionListActionClick"
     />
   `}
