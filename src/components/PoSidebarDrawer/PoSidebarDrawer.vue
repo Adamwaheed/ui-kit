@@ -8,6 +8,7 @@
 		checked
 		aria-checked="true"
 		ref="sidebarToggle"
+		@click="handleSidebarToggleClick"
 	/>
 	<aside class="shell-sidebar">
 		<div class="po-grow">
@@ -204,5 +205,9 @@ function toggleSidebar() {
 function sidebarItemClick(emitName, action) {
 	emit(emitName, action);
 	toggleSidebar();
+}
+
+function handleSidebarToggleClick() {
+	// console.log("I'm toggling");
 }
 </script>

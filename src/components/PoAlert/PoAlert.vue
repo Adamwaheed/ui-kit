@@ -50,7 +50,10 @@
 								class="po-border-t po-border-slate-200 po-flex po-divide-x po-divide-slate-200"
 							>
 								<button
-									@click="closeModal"
+									@click="
+										$emit('cancel', true);
+										closeModal();
+									"
 									class="po-text-sm po-bg-white po-text-slate-500 hover:po-bg-slate-50 po-transition-colors po-duration-100 po-ease-out po-font-medium po-py-3 po-px-5 po-w-1/2 focus:po-ring-0"
 								>
 									{{ cancelBtnLabel }}
@@ -61,6 +64,7 @@
                     -->
 								<button
 									@click="
+										$emit('confirm', true);
 										$emit('button-click', 'ok');
 										closeModal();
 									"
@@ -137,7 +141,7 @@ watch(show, () => {
 	isShowing.value = show.value;
 });
 
-const emit = defineEmits(["alert-closed", "button-click"]);
+const emit = defineEmits(["alert-closed", "button-click", "confirm", "cancel"]);
 
 function closeModal() {
 	isShowing.value = false;

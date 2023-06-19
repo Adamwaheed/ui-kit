@@ -19,7 +19,8 @@ import dedent from "ts-dedent";
         ok-btn-label="Confirm"
         alert-title="I am an alert"
         alert-description="It's an alert! I repeat, an alert!!"
-        @button-click="handleAlertOkClick"
+        @confirm="handleConfirm"
+        @cancel="handleCancel"
         :show="showAlert"
         @alert-closed="() => (showAlert = false)"
     />
