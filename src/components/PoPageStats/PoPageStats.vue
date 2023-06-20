@@ -1,7 +1,8 @@
 <template>
 	<div v-if="stats !== null" class="po-flex md:po-justify-end">
 		<div
-			class="po-bg-slate-50 po-shadow-sm po-rounded-xl po-py-5 po-px-2 po-divide-x po-divide-slate-200 po-flex"
+			class="po-bg-slate-50 po-shadow-sm po-rounded-xl po-divide-x po-divide-slate-200 po-flex"
+			:class="padding"
 		>
 			<!--
             Emits stat object when a stat is clicked
@@ -10,7 +11,7 @@
 			<div
 				v-for="stat in stats"
 				class="po-px-4 po-group"
-				:class="{ 'genie-effect po-cursor-pointer': clickable }"
+				:class="{ 'po-cursor-pointer': clickable }"
 				@click="$emit('stat-click', stat)"
 			>
 				<span
@@ -58,6 +59,13 @@ const props = defineProps({
 	clickable: {
 		type: Boolean,
 		default: true,
+	},
+	/**
+	 * Block padding. default: py-5 px-2
+	 */
+	padding: {
+		type: String,
+		default: "po-py-5 po-px-2",
 	},
 });
 
