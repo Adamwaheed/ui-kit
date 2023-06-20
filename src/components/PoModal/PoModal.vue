@@ -24,7 +24,7 @@
 
 					<div class="po-fixed po-z-10 po-inset-0">
 						<div
-							class="po-flex po-justify-center po-items-start po-min-h-screen po-px-4 po-pt-10 po-pb-20 po-text-center sm:po-block po-max-h-screen po-overflow-y-hidden"
+							class="po-flex po-justify-center po-items-start po-min-h-screen sm:po-px-4 sm:po-pt-10 sm:po-pb-20 po-text-center sm:po-block po-max-h-screen po-overflow-y-hidden"
 						>
 							<!-- This element is to trick the browser into centering the modal contents. -->
 							<span
@@ -42,7 +42,7 @@
 								leave-to="po-opacity-0 po-translate-y-4 sm:po-translate-y-0 sm:po-scale-95"
 							>
 								<DialogPanel
-									class="po-relative po-inline-block po-align-bottom po-bg-white po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-top po-w-full"
+									class="po-relative po-inline-block po-align-bottom po-bg-white sm:po-rounded-xl po-text-left po-shadow-xl po-transform po-transition-all sm:po-align-top po-w-full"
 									:class="modalWidth"
 								>
 									<div
@@ -65,7 +65,11 @@
 									></div>
 									<!--  -->
 									<div
-										class="po-p-5 po-max-h-[calc(100vh-230px)] po-overflow-y-auto"
+										class="po-p-5 sm:po-h-auto sm:po-max-h-[calc(100vh-150px)] po-overflow-y-auto"
+										:class="[
+											{ 'po-h-[calc(100vh-143px)]': $slots.footer },
+											{ 'po-h-[calc(100vh-65px)]': !$slots.footer },
+										]"
 									>
 										<!-- 
                           Modal body content
