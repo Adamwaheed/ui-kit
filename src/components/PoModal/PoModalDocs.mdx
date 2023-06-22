@@ -37,6 +37,11 @@ When openBtnLabel is empty, modal open button is not displayed. You can use a cu
 
 Remember to always use @modal-closed event to reset the show prop variable.
 
+You can set custom width for the modal window by setting tailwind style properties to `modal-width=""` default value is `sm:max-w-xl`.
+Similarly you can set a custom fixed height to modal window `modal-height=""` default is auto. Remember, there is an enforced max height on the window so that it doesn't go below the fold of the screen. Best practice is not to have content that scrolls inside the modal window.
+
+Modal Window can be directly linked by passing `?modal=kabab-case-modal-title` in the URL.
+
 ### Explanation
 
 <ArgTypes of={PoModalStories} />

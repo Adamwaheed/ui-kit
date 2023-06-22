@@ -3467,9 +3467,19 @@ const Ya = {
       type: Boolean,
       default: !1
     },
+    /**
+     * Set a custom width to the modal windod
+     */
     modalWidth: {
       type: String,
       default: "sm:po-max-w-xl"
+    },
+    /**
+     * Set a fixed height for the modal. Default is auto. You should use tailwind classes here.
+     */
+    modalHeight: {
+      type: String,
+      default: ""
     }
   },
   emits: ["modal-closed"],
@@ -3481,11 +3491,12 @@ const Ya = {
     function a() {
       o.value = !1, t("modal-closed", !0);
     }
-    return (i, p) => (r(), u("div", null, [
+    const i = l.modalTitle.toLowerCase().replace(/\s+/g, "-"), p = new URLSearchParams(window.location.search);
+    return o.value = p.get("modal") !== void 0 && p.get("modal") === i, (c, d) => (r(), u("div", null, [
       e.openBtnLabel.length > 0 ? (r(), A(g(Mt), {
         key: 0,
         label: e.openBtnLabel,
-        onClick: p[0] || (p[0] = (c) => o.value = !0)
+        onClick: d[0] || (d[0] = (f) => o.value = !0)
       }, null, 8, ["label"])) : h("", !0),
       (r(), A(Ze, { to: "body" }, [
         _(g(ze), {
@@ -3544,15 +3555,20 @@ const Ya = {
                             ]),
                             fs,
                             s("div", {
-                              class: E(["po-p-5 sm:po-h-auto sm:po-max-h-[calc(100vh-150px)] po-overflow-y-auto", [
-                                { "po-h-[calc(100vh-143px)]": i.$slots.footer },
-                                { "po-h-[calc(100vh-65px)]": !i.$slots.footer }
+                              class: E(["po-p-5 po-overflow-y-auto", [
+                                {
+                                  "po-max-h-[calc(100vh-220px)]": c.$slots.footer
+                                },
+                                {
+                                  "po-max-h-[calc(100vh-145px)]": !c.$slots.footer
+                                },
+                                e.modalHeight
                               ]])
                             }, [
-                              te(i.$slots, "content")
+                              te(c.$slots, "content")
                             ], 2),
-                            i.$slots.footer ? (r(), u("div", vs, [
-                              te(i.$slots, "footer")
+                            c.$slots.footer ? (r(), u("div", vs, [
+                              te(c.$slots, "footer")
                             ])) : h("", !0)
                           ]),
                           _: 3

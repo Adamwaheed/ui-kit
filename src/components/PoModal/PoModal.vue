@@ -65,10 +65,15 @@
 									></div>
 									<!--  -->
 									<div
-										class="po-p-5 sm:po-h-auto sm:po-max-h-[calc(100vh-150px)] po-overflow-y-auto"
+										class="po-p-5 po-overflow-y-auto"
 										:class="[
-											{ 'po-h-[calc(100vh-143px)]': $slots.footer },
-											{ 'po-h-[calc(100vh-65px)]': !$slots.footer },
+											{
+												'po-max-h-[calc(100vh-220px)]': $slots.footer,
+											},
+											{
+												'po-max-h-[calc(100vh-145px)]': !$slots.footer,
+											},
+											modalHeight,
 										]"
 									>
 										<!-- 
@@ -136,9 +141,19 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	/**
+	 * Set a custom width to the modal windod
+	 */
 	modalWidth: {
 		type: String,
 		default: "sm:po-max-w-xl",
+	},
+	/**
+	 * Set a fixed height for the modal. Default is auto. You should use tailwind classes here.
+	 */
+	modalHeight: {
+		type: String,
+		default: "",
 	},
 });
 
@@ -155,4 +170,10 @@ function closeModal() {
 	isShowing.value = false;
 	emit("modal-closed", true);
 }
+
+const modalId = props.modalTitle.toLowerCase().replace(/\s+/g, "-");
+const queryParams = new URLSearchParams(window.location.search);
+isShowing.value =
+	queryParams.get("modal") !== undefined &&
+	queryParams.get("modal") === modalId;
 </script>
