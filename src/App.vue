@@ -161,7 +161,6 @@
 						<PoSelectField
 							label="Select Island"
 							:list="islands"
-							@selected="handleSelectFieldIslandClick"
 							v-model="selectIslandSelected"
 						/>
 						<br />

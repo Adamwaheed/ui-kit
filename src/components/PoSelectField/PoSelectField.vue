@@ -47,46 +47,31 @@
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<!-- v-slot="{ active, selected }" -->
-				<ul
+				<RecycleScroller :items="filteredItems" :item-size="32" key-field="id">
+					<!-- <ul
 					v-for="item in filteredItems"
 					:key="item.id"
 					:value="object ? item : item.id"
 					as="template"
-				>
-					<li
-						:class="[
-							'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
-							active
-								? 'po-bg-mpao-lightblue po-text-white'
-								: 'po-text-slate-900',
-						]"
-					>
-						<span
+				> -->
+					<template slot-scope="{ item }">
+						<div
 							:class="[
-								'group-hover:po-text-white po-block po-truncate',
-								selected && 'po-font-semibold',
+								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
 							]"
 						>
-							{{ item.name }}
+							<span :class="['group-hover:po-text-white po-block po-truncate']">
+								{{ item.name }}
 
-							<span
-								v-if="item.subtitle"
-								class="po-block po-text-xs po-opacity-60"
-								>{{ item.subtitle }}</span
-							>
-						</span>
-
-						<span
-							v-if="selected"
-							:class="[
-								'po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-pr-4',
-								active ? 'po-text-white' : 'po-text-mpao-lightblue',
-							]"
-						>
-							<CheckIcon class="po-h-5 po-w-5" aria-hidden="true" />
-						</span>
-					</li>
-				</ul>
+								<span
+									v-if="item.subtitle"
+									class="po-block po-text-xs po-opacity-60"
+									>{{ item.subtitle }}</span
+								>
+							</span>
+						</div>
+					</template>
+				</RecycleScroller>
 			</div>
 		</div>
 		<p
@@ -126,6 +111,9 @@ import {
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
+
+import { RecycleScroller } from "vue-virtual-scroller";
+import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 const props = defineProps({
 	/**
@@ -220,13 +208,18 @@ const showDropdown = ref(false);
 const selectBox = ref(null);
 const containerRef = ref(null);
 
-const filteredItems = computed(() =>
-	query.value === ""
-		? props.list
-		: props.list.filter((item) => {
-				return item.name.toLowerCase().includes(query.value.toLowerCase());
-		  })
-);
+const filteredItems = computed(() => {
+	const queryValue = query.value.toLowerCase();
+
+	if (queryValue === "") {
+		return props.list;
+	}
+
+	return props.list.filter((item) => {
+		return item.name.toLowerCase().includes(queryValue);
+	});
+});
+
 function getSelectedName(itemId) {
 	if (props.object) {
 		return itemId?.name;
