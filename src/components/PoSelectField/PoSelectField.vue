@@ -1,7 +1,10 @@
 <template>
 	<!-- v-model="selectedItem" -->
 	<!-- :disabled="disabled" -->
-	<div :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]">
+	<div
+		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+		ref="containerRef"
+	>
 		<label
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 			:for="uniqueID"
@@ -20,11 +23,13 @@
 			<div role="button" ref="comboboxButton">
 				<input
 					type="text"
+					ref="selectBox"
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:placeholder="placeholder"
 					@change="query = $event.target.value"
 					:display-value="getSelectedName"
 					:disabled="disabled"
+					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
 				<span
@@ -38,7 +43,7 @@
 			</div>
 
 			<div
-				v-if="filteredItems.length > 0"
+				v-if="showDropdown && filteredItems.length > 0"
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<!-- v-slot="{ active, selected }" -->
@@ -50,14 +55,17 @@
 				>
 					<li
 						:class="[
-							'po-relative po-cursor-default po-select-none po-py-2 po-pl-3 po-pr-9',
+							'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
 							active
 								? 'po-bg-mpao-lightblue po-text-white'
 								: 'po-text-slate-900',
 						]"
 					>
 						<span
-							:class="['po-block po-truncate', selected && 'po-font-semibold']"
+							:class="[
+								'group-hover:po-text-white po-block po-truncate',
+								selected && 'po-font-semibold',
+							]"
 						>
 							{{ item.name }}
 
@@ -104,7 +112,15 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref, watch, onUpdated, toRefs, onMounted } from "vue";
+import {
+	computed,
+	ref,
+	watch,
+	onUpdated,
+	toRefs,
+	onMounted,
+	onBeforeUnmount,
+} from "vue";
 import {
 	CheckIcon,
 	ChevronUpDownIcon,
@@ -200,6 +216,9 @@ const props = defineProps({
 
 const query = ref("");
 const selectedItem = ref();
+const showDropdown = ref(false);
+const selectBox = ref(null);
+const containerRef = ref(null);
 
 const filteredItems = computed(() =>
 	query.value === ""
@@ -253,5 +272,21 @@ onMounted(() => {
 	} else {
 		uniqueID.value = props.id;
 	}
+
+	document.addEventListener("click", handleClickOutside);
 });
+
+onBeforeUnmount(() => {
+	document.removeEventListener("click", handleClickOutside);
+});
+
+const handleClickOutside = (event) => {
+	if (
+		!containerRef.value.contains(event.target) &&
+		!selectBox.value.contains(event.target)
+	) {
+		// Click occurred outside the container and target elements
+		showDropdown.value = false;
+	}
+};
 </script>
