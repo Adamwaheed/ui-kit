@@ -161,6 +161,7 @@
 						<PoSelectField
 							label="Select Island"
 							:list="islands"
+							@selected="handleSelectFieldIslandClick"
 							v-model="selectIslandSelected"
 						/>
 						<br />
@@ -461,7 +462,7 @@
 									v-model="selectFieldTwoSelected"
 									placeholder="Hello place"
 								/>
-								{{ selectFieldTwoSelected }}
+								thisL:{{ selectFieldTwoSelected }}
 								<div class="items-center space-x-5">
 									<PoSelectField
 										label="App names"
@@ -471,7 +472,6 @@
 										error-message="This an error speaking"
 									/>
 									<br />
-									{{ selectFieldList }}
 									Selected {{ selectFieldSelected }}
 								</div>
 								<div class="items-center space-x-5">

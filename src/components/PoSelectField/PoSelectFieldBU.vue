@@ -1,13 +1,13 @@
 <template>
-	<!-- v-model="selectedItem" -->
-	<!-- :disabled="disabled" -->
-	<div
+	<Combobox
+		as="div"
+		v-model="selectedItem"
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
-		ref="containerRef"
+		:disabled="disabled"
 	>
-		<label
+		<ComboboxLabel
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
-			:for="uniqueID"
+			:id="uniqueID"
 		>
 			<span>{{ label }}</span>
 			<span
@@ -18,73 +18,70 @@
 			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
 				<InformationCircleIcon class="po-fill-current" />
 			</abbr>
-		</label>
+		</ComboboxLabel>
 		<div class="po-relative po-mt-1">
-			<div role="button" ref="comboboxButton">
-				<input
-					type="text"
-					ref="selectBox"
+			<ComboboxButton as="div" ref="comboboxButton">
+				<ComboboxInput
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:placeholder="placeholder"
 					@change="query = $event.target.value"
-					:value="selectedItem?.name"
+					:display-value="getSelectedName"
 					:disabled="disabled"
-					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
 				<span
 					class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none"
-					role="button"
-					@click="showDropdown = !showDropdown"
 				>
 					<ChevronUpDownIcon
 						class="po-h-5 po-w-5 po-text-slate-400"
 						aria-hidden="true"
 					/>
 				</span>
-			</div>
+			</ComboboxButton>
 
-			<div
-				v-if="showDropdown && filteredItems.length > 0"
-				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+			<ComboboxOptions
+				v-if="filteredItems.length > 0"
+				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<!-- v-slot="{ active, selected }" -->
-				<DynamicScroller
-					:items="filteredItems"
-					:min-item-size="32"
-					key-field="id"
-					class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
-				>
-					<!-- <ul
+				<ComboboxOption
 					v-for="item in filteredItems"
 					:key="item.id"
 					:value="object ? item : item.id"
 					as="template"
-				> -->
-					<template v-slot="{ item, index, active }">
-						<DynamicScrollerItem
-							:item="item"
-							:active="active"
-							:size-dependencies="[item.name, item.subtitle]"
-							@click="handleOptionClick(item)"
-							:data-index="index"
+					v-slot="{ active, selected }"
+				>
+					<li
+						:class="[
+							'po-relative po-cursor-default po-select-none po-py-2 po-pl-3 po-pr-9',
+							active
+								? 'po-bg-mpao-lightblue po-text-white'
+								: 'po-text-slate-900',
+						]"
+					>
+						<span
+							:class="['po-block po-truncate', selected && 'po-font-semibold']"
+						>
+							{{ item.name }}
+
+							<span
+								v-if="item.subtitle"
+								class="po-block po-text-xs po-opacity-60"
+								>{{ item.subtitle }}</span
+							>
+						</span>
+
+						<span
+							v-if="selected"
 							:class="[
-								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
+								'po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-pr-4',
+								active ? 'po-text-white' : 'po-text-mpao-lightblue',
 							]"
 						>
-							<span :class="['group-hover:po-text-white po-block po-truncate']">
-								{{ item?.name ?? "" }}
-
-								<span
-									v-if="item?.subtitle"
-									class="po-block po-text-xs po-opacity-60"
-									>{{ item?.subtitle }}</span
-								>
-							</span>
-						</DynamicScrollerItem>
-					</template>
-				</DynamicScroller>
-			</div>
+							<CheckIcon class="po-h-5 po-w-5" aria-hidden="true" />
+						</span>
+					</li>
+				</ComboboxOption>
+			</ComboboxOptions>
 		</div>
 		<p
 			class="po-mt-2 po-text-sm po-text-slate-500"
@@ -100,7 +97,7 @@
 		>
 			<span>{{ errorMessage }}</span>
 		</p>
-	</div>
+	</Combobox>
 </template>
 
 <script>
@@ -109,23 +106,20 @@ export default {
 };
 </script>
 <script setup>
-import {
-	computed,
-	ref,
-	watch,
-	onUpdated,
-	toRefs,
-	onMounted,
-	onBeforeUnmount,
-} from "vue";
+import { computed, ref, watch, onUpdated, toRefs, onMounted } from "vue";
 import {
 	CheckIcon,
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
-
-import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+import {
+	Combobox,
+	ComboboxButton,
+	ComboboxInput,
+	ComboboxLabel,
+	ComboboxOption,
+	ComboboxOptions,
+} from "@headlessui/vue";
 
 const props = defineProps({
 	/**
@@ -216,22 +210,14 @@ const props = defineProps({
 
 const query = ref("");
 const selectedItem = ref();
-const showDropdown = ref(false);
-const selectBox = ref(null);
-const containerRef = ref(null);
 
-const filteredItems = computed(() => {
-	const queryValue = query.value.toLowerCase();
-
-	if (queryValue === "") {
-		return props.list;
-	}
-
-	return props.list.filter((item) => {
-		return item.name.toLowerCase().includes(queryValue);
-	});
-});
-
+const filteredItems = computed(() =>
+	query.value === ""
+		? props.list
+		: props.list.filter((item) => {
+				return item.name.toLowerCase().includes(query.value.toLowerCase());
+		  })
+);
 function getSelectedName(itemId) {
 	if (props.object) {
 		return itemId?.name;
@@ -245,15 +231,15 @@ function getSelectedName(itemId) {
 
 selectedItem.value = props.modelValue;
 
-// onUpdated(() => {
-// 	selectedItem.value = props.modelValue;
-// });
+onUpdated(() => {
+	selectedItem.value = props.modelValue;
+});
 
 const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedItem, () => {
-	// emit("update:modelValue", selectedItem.value);
-	// emit("selected", selectedItem.value);
+	emit("update:modelValue", selectedItem.value);
+	emit("selected", selectedItem.value);
 });
 
 const { errorMessage } = toRefs(props);
@@ -277,30 +263,5 @@ onMounted(() => {
 	} else {
 		uniqueID.value = props.id;
 	}
-
-	document.addEventListener("click", handleClickOutside);
 });
-
-onBeforeUnmount(() => {
-	document.removeEventListener("click", handleClickOutside);
-});
-
-const handleClickOutside = (event) => {
-	if (
-		!containerRef.value.contains(event.target) &&
-		!selectBox.value.contains(event.target)
-	) {
-		// Click occurred outside the container and target elements
-		showDropdown.value = false;
-	}
-};
-
-function handleOptionClick(option) {
-	selectedItem.value = option;
-
-	emit("selected", props.object ? option : option.id);
-	emit("update:modelValue", props.object ? option : option.id);
-
-	showDropdown.value = false;
-}
 </script>
