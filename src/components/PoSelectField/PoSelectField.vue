@@ -19,7 +19,6 @@
 				<InformationCircleIcon class="po-fill-current" />
 			</abbr>
 		</label>
-		show drop {{ showDropdown }}
 		<div class="po-relative po-mt-1">
 			<div
 				v-if="selectedItem !== null"
