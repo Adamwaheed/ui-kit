@@ -1,13 +1,10 @@
 <template>
-	<Combobox
-		as="div"
-		v-model="selectedItem"
-		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
-		:disabled="disabled"
-	>
-		<ComboboxLabel
+	<!-- v-model="selectedItem" -->
+	<!-- :disabled="disabled" -->
+	<div :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]">
+		<label
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
-			:id="uniqueID"
+			:for="uniqueID"
 		>
 			<span>{{ label }}</span>
 			<span
@@ -18,10 +15,11 @@
 			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
 				<InformationCircleIcon class="po-fill-current" />
 			</abbr>
-		</ComboboxLabel>
+		</label>
 		<div class="po-relative po-mt-1">
-			<ComboboxButton as="div" ref="comboboxButton">
-				<ComboboxInput
+			<div role="button" ref="comboboxButton">
+				<input
+					type="text"
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:placeholder="placeholder"
 					@change="query = $event.target.value"
@@ -37,18 +35,18 @@
 						aria-hidden="true"
 					/>
 				</span>
-			</ComboboxButton>
+			</div>
 
-			<ComboboxOptions
+			<div
 				v-if="filteredItems.length > 0"
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<ComboboxOption
+				<!-- v-slot="{ active, selected }" -->
+				<ul
 					v-for="item in filteredItems"
 					:key="item.id"
 					:value="object ? item : item.id"
 					as="template"
-					v-slot="{ active, selected }"
 				>
 					<li
 						:class="[
@@ -80,8 +78,8 @@
 							<CheckIcon class="po-h-5 po-w-5" aria-hidden="true" />
 						</span>
 					</li>
-				</ComboboxOption>
-			</ComboboxOptions>
+				</ul>
+			</div>
 		</div>
 		<p
 			class="po-mt-2 po-text-sm po-text-slate-500"
@@ -97,7 +95,7 @@
 		>
 			<span>{{ errorMessage }}</span>
 		</p>
-	</Combobox>
+	</div>
 </template>
 
 <script>
@@ -112,14 +110,6 @@ import {
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
-import {
-	Combobox,
-	ComboboxButton,
-	ComboboxInput,
-	ComboboxLabel,
-	ComboboxOption,
-	ComboboxOptions,
-} from "@headlessui/vue";
 
 const props = defineProps({
 	/**

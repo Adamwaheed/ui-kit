@@ -462,6 +462,7 @@
 									v-model="selectFieldTwoSelected"
 									placeholder="Hello place"
 								/>
+								{{ selectFieldTwoSelected }}
 								<div class="items-center space-x-5">
 									<PoSelectField
 										label="App names"
