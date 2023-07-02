@@ -44,34 +44,43 @@
 
 			<div
 				v-if="showDropdown && filteredItems.length > 0"
-				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<!-- v-slot="{ active, selected }" -->
-				<RecycleScroller :items="filteredItems" :item-size="32" key-field="id">
+				<DynamicScroller
+					:items="filteredItems"
+					:min-item-size="32"
+					key-field="id"
+					class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
+				>
 					<!-- <ul
 					v-for="item in filteredItems"
 					:key="item.id"
 					:value="object ? item : item.id"
 					as="template"
 				> -->
-					<template slot-scope="{ item }">
-						<div
+					<template v-slot="{ item, index, active }">
+						<DynamicScrollerItem
+							:item="item"
+							:active="active"
+							:size-dependencies="[item.name, item.subtitle]"
+							:data-index="index"
 							:class="[
 								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
 							]"
 						>
 							<span :class="['group-hover:po-text-white po-block po-truncate']">
-								{{ item.name }}
+								{{ item?.name ?? "" }}
 
 								<span
-									v-if="item.subtitle"
+									v-if="item?.subtitle"
 									class="po-block po-text-xs po-opacity-60"
-									>{{ item.subtitle }}</span
+									>{{ item?.subtitle }}</span
 								>
 							</span>
-						</div>
+						</DynamicScrollerItem>
 					</template>
-				</RecycleScroller>
+				</DynamicScroller>
 			</div>
 		</div>
 		<p
@@ -112,7 +121,7 @@ import {
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
 
-import { RecycleScroller } from "vue-virtual-scroller";
+import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 const props = defineProps({
