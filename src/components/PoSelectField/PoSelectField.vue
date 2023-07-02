@@ -9,7 +9,7 @@
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 			:for="uniqueID"
 		>
-			<span>{{ label }}</span>
+			<span>{{ label }} {{ query }}</span>
 			<span
 				v-if="required"
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
@@ -19,16 +19,37 @@
 				<InformationCircleIcon class="po-fill-current" />
 			</abbr>
 		</label>
+		show drop {{ showDropdown }}
 		<div class="po-relative po-mt-1">
+			<div
+				v-if="selectedItem !== null"
+				@click="
+					this.$refs.selectBox.value = selectedItem?.name;
+					this.$refs.selectBox.focus();
+					clickSelected();
+				"
+				class="po-absolute po-top-0 po-left-0 po-right-0 po-bottom-0 po-overflow-hidden po-bg-white po-rounded-md po-border po-border-slate-300 po-flex po-items-center"
+			>
+				<div class="po-grow po-text-sm po-pl-2">
+					{{ selectedItem.name }}
+				</div>
+				<span
+					class="po-shrink-0 po-z-10 po-px-2 po-py-2 po-cursor-pointer po-bg-white"
+					@click="
+						selectedItem = null;
+						searchQuery = '';
+					"
+					><XMarkIcon class="po-w-4 po-stroke-2 po-stroke-slate-400"
+				/></span>
+			</div>
 			<div role="button" ref="comboboxButton">
 				<input
 					type="text"
 					ref="selectBox"
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:placeholder="placeholder"
-					@change="query = $event.target.value"
-					:value="selectedItem?.name"
 					:disabled="disabled"
+					@input="query = $event.target.value"
 					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
@@ -123,6 +144,8 @@ import {
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
+
+import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
@@ -291,6 +314,7 @@ const handleClickOutside = (event) => {
 		!selectBox.value.contains(event.target)
 	) {
 		// Click occurred outside the container and target elements
+		console.log("waab this");
 		showDropdown.value = false;
 	}
 };
@@ -302,5 +326,11 @@ function handleOptionClick(option) {
 	emit("update:modelValue", props.object ? option : option.id);
 
 	showDropdown.value = false;
+}
+
+function clickSelected() {
+	selectedItem.value = null;
+	showDropdown.value = true;
+	console.log("this shit is really happening", showDropdown.value);
 }
 </script>
