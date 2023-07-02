@@ -314,7 +314,6 @@ const handleClickOutside = (event) => {
 		!selectBox.value.contains(event.target)
 	) {
 		// Click occurred outside the container and target elements
-		console.log("waab this");
 		showDropdown.value = false;
 	}
 };
@@ -331,6 +330,5 @@ function handleOptionClick(option) {
 function clickSelected() {
 	selectedItem.value = null;
 	showDropdown.value = true;
-	console.log("this shit is really happening", showDropdown.value);
 }
 </script>

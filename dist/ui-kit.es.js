@@ -4019,13 +4019,13 @@ const Ta = ["for"], za = {
       document.removeEventListener("click", V);
     });
     const V = (x) => {
-      !p.value.contains(x.target) && !i.value.contains(x.target) && (console.log("waab this"), a.value = !1);
+      !p.value.contains(x.target) && !i.value.contains(x.target) && (a.value = !1);
     };
     function w(x) {
       s.value = x, t("selected", o.object ? x : x.id), t("update:modelValue", o.object ? x : x.id), a.value = !1;
     }
     function y() {
-      s.value = null, a.value = !0, console.log("this shit is really happening", a.value);
+      s.value = null, a.value = !0;
     }
     return (x, g) => (r(), u("div", {
       class: S([{ "lg:po-grid lg:po-grid-cols-2": e.display === "horizontal" }]),
