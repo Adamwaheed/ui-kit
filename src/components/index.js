@@ -61,3 +61,4 @@ export { default as PoToast } from "./PoToast/PoToast.vue";
 export { default as PoSelectApi } from "./PoSelectApi/PoSelectApi.vue";
 export { default as PoMessage } from "./PoMessage/PoMessage.vue";
 export { default as PoPageStats } from "./PoPageStats/PoPageStats.vue";
+export { default as PoTooltip } from "./PoTooltip/PoTooltip.vue";

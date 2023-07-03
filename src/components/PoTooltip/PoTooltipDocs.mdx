@@ -1,0 +1,31 @@
+# PoTooltip component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoTooltipStories from "./PoTooltip.stories";
+
+import dedent from "ts-dedent";
+
+<Story of={PoTooltipStories.Tooltip} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTooltip />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTooltipStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    const toggleState = ref();
+  `}
+/>
