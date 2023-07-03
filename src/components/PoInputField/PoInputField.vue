@@ -250,12 +250,12 @@ if ("currency" === props.type) {
 const uniqueID = ref("");
 onMounted(() => {
 	if ("" === props.id) {
-		uniqueID.value =
-			props.label.replace(/\s/g, "") +
-			"-" +
-			Date.now() +
-			"-inputfield-" +
-			Math.floor(Math.random() * 9000);
+		uniqueID.value = props.id
+			? props.id
+			: `${props.label.replace(
+					/\s/g,
+					""
+			  )}-${Date.now()}-inputfield-${Math.floor(Math.random() * 9000)}`;
 	} else {
 		uniqueID.value = props.id;
 	}

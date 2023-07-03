@@ -1,6 +1,4 @@
 <template>
-	<!-- v-model="selectedItem" -->
-	<!-- :disabled="disabled" -->
 	<div
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 		ref="containerRef"
@@ -20,27 +18,6 @@
 			</abbr>
 		</label>
 		<div class="po-relative po-mt-1">
-			<!-- <div
-				v-if="selectedItem !== null"
-				@click="
-					this.$refs.selectBox.value = selectedItem?.name;
-					this.$refs.selectBox.focus();
-					clickSelected();
-				"
-				class="po-absolute po-top-0 po-left-0 po-right-0 po-bottom-0 po-overflow-hidden po-bg-white po-rounded-md po-border po-border-slate-300 po-flex po-items-center"
-			>
-				<div class="po-grow po-text-sm po-pl-2">
-					{{ selectedItem.name }}
-				</div>
-				<span
-					class="po-shrink-0 po-z-10 po-px-2 po-py-2 po-cursor-pointer po-bg-white"
-					@click="
-						selectedItem = null;
-						searchQuery = '';
-					"
-					><XMarkIcon class="po-w-4 po-stroke-2 po-stroke-slate-400"
-				/></span>
-			</div> -->
 			<div role="button" ref="comboboxButton">
 				<input
 					type="text"
@@ -49,8 +26,12 @@
 					:placeholder="placeholder"
 					:disabled="disabled"
 					v-model="selectedValue"
-					@input="query = selectedValue"
-					@focus="showDropdown = true"
+					@input="query = $event.target.value"
+					@focus="
+						inputFocused = true;
+						showDropdown = true;
+					"
+					@blur="inputFocused = false"
 					:id="uniqueID"
 				/>
 				<span
@@ -69,28 +50,24 @@
 				v-if="showDropdown && filteredItems.length > 0"
 				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<!-- v-slot="{ active, selected }" -->
 				<DynamicScroller
 					:items="filteredItems"
 					:min-item-size="32"
 					key-field="id"
 					class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
 				>
-					<!-- <ul
-					v-for="item in filteredItems"
-					:key="item.id"
-					:value="object ? item : item.id"
-					as="template"
-				> -->
 					<template v-slot="{ item, index, active }">
 						<DynamicScrollerItem
 							:item="item"
 							:active="active"
-							:size-dependencies="[item.name, item.subtitle]"
+							:size-dependencies="[item.name]"
 							@click="handleOptionClick(item)"
 							:data-index="index"
 							:class="[
 								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
+								item.active
+									? 'po-bg-mpao-lightblue po-text-white'
+									: 'po-text-slate-900',
 							]"
 						>
 							<span :class="['group-hover:po-text-white po-block po-truncate']">
@@ -140,15 +117,12 @@ import {
 	onBeforeUnmount,
 } from "vue";
 import {
-	CheckIcon,
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
 
-import { XMarkIcon } from "@heroicons/vue/24/outline";
-
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+// import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 const props = defineProps({
 	/**
@@ -241,6 +215,7 @@ const query = ref("");
 const selectedValue = ref("");
 const selectedItem = ref();
 const showDropdown = ref(false);
+const inputFocused = ref(false);
 const selectBox = ref(null);
 const containerRef = ref(null);
 
@@ -248,12 +223,18 @@ const filteredItems = computed(() => {
 	const queryValue = query.value.toLowerCase();
 
 	if (queryValue === "") {
-		return props.list;
+		return props.list.map((item) => ({
+			...item,
+			active: selectedItem.value === item.id,
+		}));
 	}
 
-	return props.list.filter((item) => {
-		return item.name.toLowerCase().includes(queryValue);
-	});
+	return props.list
+		.filter((item) => item.name.toLowerCase().includes(queryValue))
+		.map((item) => ({
+			...item,
+			active: selectedItem.value === item.id,
+		}));
 });
 
 function getSelectedName(itemId) {
@@ -269,15 +250,15 @@ function getSelectedName(itemId) {
 
 selectedItem.value = props.modelValue;
 
-// onUpdated(() => {
-// 	selectedItem.value = props.modelValue;
-// });
+onUpdated(() => {
+	selectedItem.value = props.modelValue;
+	// selectedValue.value = getSelectedName(props.modelValue);
+});
 
 const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedItem, () => {
-	// emit("update:modelValue", selectedItem.value);
-	// emit("selected", selectedItem.value);
+	selectedValue.value = getSelectedName(selectedItem.value);
 });
 
 const { errorMessage } = toRefs(props);
@@ -292,17 +273,19 @@ watch(errorMessage, (newVal, oldVal) => {
 const uniqueID = ref("");
 onMounted(() => {
 	if ("" === props.id) {
-		uniqueID.value =
-			props.label.replace(/\s/g, "") +
-			"-" +
-			Date.now() +
-			"-selectfield-" +
-			Math.floor(Math.random() * 9000);
+		uniqueID.value = props.id
+			? props.id
+			: `${props.label.replace(
+					/\s/g,
+					""
+			  )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9000)}`;
 	} else {
 		uniqueID.value = props.id;
 	}
 
 	document.addEventListener("click", handleClickOutside);
+
+	selectedValue.value = getSelectedName(props.modelValue);
 });
 
 onBeforeUnmount(() => {
@@ -315,7 +298,7 @@ const handleClickOutside = (event) => {
 		!selectBox.value.contains(event.target)
 	) {
 		// Click occurred outside the container and target elements
-		showDropdown.value = false;
+		showDropdown.value = inputFocused.value ? true : false;
 	}
 };
 
@@ -327,11 +310,6 @@ function handleOptionClick(option) {
 	emit("selected", props.object ? option : option.id);
 	emit("update:modelValue", props.object ? option : option.id);
 
-	showDropdown.value = false;
-}
-
-function clickSelected() {
-	selectedItem.value = null;
-	showDropdown.value = true;
+	showDropdown.value = inputFocused.value ? true : false;
 }
 </script>

@@ -130,8 +130,16 @@
 								class="po-block po-bg-slate-50/50 po-font-mono po-border-dashed po-border po-border-slate-300 po-rounded-md po-p-2 po-text-xs po-text-slate-500 po-mt-3"
 							>
 								prop: object=true <br />
-								v-model: {{ form.selectfieldObject }}<br />
-								@selected: {{ form.selectfieldObjectSelected }}
+
+								v-model:
+								<pre v-if="form.selectfieldObject">{{
+									form.selectfieldObject
+								}}</pre>
+								<br />
+								@selected:
+								<pre v-if="form.selectfieldObjectSelected">{{
+									form.selectfieldObjectSelected
+								}}</pre>
 							</span>
 						</div>
 						<div>
@@ -196,6 +204,28 @@
 								@selected: {{ form.selectfieldChangeSelected }}
 							</span>
 						</div>
+
+						<div>
+							<PoSelectField
+								label="Select val change"
+								:list="selectFieldList"
+								@selected="
+									(val) => {
+										form.selectfieldValueChangeSelected = val;
+									}
+								"
+								v-model="form.selectfieldValueChange"
+							/>
+							<span
+								class="po-block po-bg-slate-50/50 po-font-mono po-border-dashed po-border po-border-slate-300 po-rounded-md po-p-2 po-text-xs po-text-slate-500 po-mt-3"
+							>
+								Selected value:
+								<span v-if="selectFieldListDelay.length > 0">changed</span
+								><span v-else class="po-animate-pulse">changing</span> <br />
+								v-model: {{ form.selectfieldValueChange }}<br />
+								@selected: {{ form.selectfieldValueChangeSelected }}
+							</span>
+						</div>
 					</div>
 				</template>
 			</PoCard>
@@ -254,6 +284,8 @@ const form = ref({
 	selectfieldDelaySelected: null,
 	selectfieldChange: null,
 	selectfieldChangeSelected: null,
+	selectfieldValueChange: 1,
+	selectfieldValueChangeSelected: null,
 	checkboxNormal: false,
 	checkboxDisabled: false,
 	checkboxError: false,
@@ -288,6 +320,8 @@ setTimeout(() => {
 		{ id: 5, name: "New HelpDesk" },
 		{ id: 6, name: "New Another" },
 	];
+
+	form.value.selectfieldValueChange = 2;
 }, 12000);
 
 let islands = [

@@ -6,3 +6,4 @@
 @import "./po-description-list.css";
 @import "./po-loading.css";
 @import "tailwindcss/utilities";
+@import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
