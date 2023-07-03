@@ -775,7 +775,7 @@ import Form from "./pages/Form.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
-	form: Form,
+	"/form": Form,
 };
 
 const currentPath = ref(window.location.hash);
@@ -785,13 +785,11 @@ window.addEventListener("hashchange", () => {
 });
 
 const currentView = computed(() => {
-	console.log("reculc", currentPath.value.slice(1));
 	return routes[currentPath.value.slice(1) || "/"] || NotFound;
 });
 
 function handleSidebarButtonClick(link) {
-	currentPath.value = link;
-	console.log("aa", currentPath.value);
+	window.location.hash = link;
 }
 
 /****
