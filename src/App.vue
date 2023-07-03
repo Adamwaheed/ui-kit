@@ -54,12 +54,13 @@
 			app-code="auth"
 		/>
 		<main class="shell-content" id="shell-content-root">
-			<PoActionBar
+			<!-- <PoActionBar
 				:items="actionBarItems"
 				:show-back-button="true"
 				@button-click="handleActionBarClick"
-			/>
+				/> -->
 			<PoContentArea>
+				<component :is="currentView" />
 				<PoStatsBlock :items="statsBlockItems" />
 				<PoFormStatusMessage
 					message="Thank you! The record has been created successfully!"
@@ -735,7 +736,7 @@ import {
 } from "./components";
 
 import { formatDate, debounce } from "./shared/helper";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 import {
 	PlayIcon,
@@ -766,6 +767,36 @@ import {
 } from "@heroicons/vue/20/solid";
 
 import { watch } from "vue";
+
+/****
+ * ----------- ROUTES
+ */
+import Form from "./pages/Form.vue";
+import NotFound from "./pages/NotFound.vue";
+
+const routes = {
+	form: Form,
+};
+
+const currentPath = ref(window.location.hash);
+
+window.addEventListener("hashchange", () => {
+	currentPath.value = window.location.hash;
+});
+
+const currentView = computed(() => {
+	console.log("reculc", currentPath.value.slice(1));
+	return routes[currentPath.value.slice(1) || "/"] || NotFound;
+});
+
+function handleSidebarButtonClick(link) {
+	currentPath.value = link;
+	console.log("aa", currentPath.value);
+}
+
+/****
+ * ----------- ROUTES
+ */
 
 let searchQuery = ref("");
 let toggleState = ref(false);
@@ -957,7 +988,7 @@ let sidebarContent = [
 			},
 			{
 				label: "Form layouts",
-				url: "/another",
+				url: "/form",
 				icon: Square2StackIcon,
 			},
 			{
@@ -1175,10 +1206,6 @@ let pagination = {
 
 function handlePaginationClick(item) {
 	console.log("pagination click", item);
-}
-
-function handleSidebarButtonClick(link) {
-	console.log("sidebar click ", link);
 }
 
 function handleButtonClick(to) {
