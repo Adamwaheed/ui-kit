@@ -9,7 +9,7 @@
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 			:for="uniqueID"
 		>
-			<span>{{ label }} {{ query }}</span>
+			<span>{{ label }}</span>
 			<span
 				v-if="required"
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
@@ -20,7 +20,7 @@
 			</abbr>
 		</label>
 		<div class="po-relative po-mt-1">
-			<div
+			<!-- <div
 				v-if="selectedItem !== null"
 				@click="
 					this.$refs.selectBox.value = selectedItem?.name;
@@ -40,7 +40,7 @@
 					"
 					><XMarkIcon class="po-w-4 po-stroke-2 po-stroke-slate-400"
 				/></span>
-			</div>
+			</div> -->
 			<div role="button" ref="comboboxButton">
 				<input
 					type="text"
@@ -48,7 +48,8 @@
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:placeholder="placeholder"
 					:disabled="disabled"
-					@input="query = $event.target.value"
+					v-model="selectedValue"
+					@input="query = selectedValue"
 					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
@@ -237,6 +238,7 @@ const props = defineProps({
 });
 
 const query = ref("");
+const selectedValue = ref("");
 const selectedItem = ref();
 const showDropdown = ref(false);
 const selectBox = ref(null);
@@ -319,6 +321,8 @@ const handleClickOutside = (event) => {
 
 function handleOptionClick(option) {
 	selectedItem.value = option;
+	selectedValue.value = option.name;
+	query.value = "";
 
 	emit("selected", props.object ? option : option.id);
 	emit("update:modelValue", props.object ? option : option.id);
