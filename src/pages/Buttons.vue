@@ -4,7 +4,10 @@
 		<template v-slot:content>
 			<div class="po-flex po-items-center po-space-x-5 po-flex-wrap">
 				<PoButton :is-loading="true" type="button" label="Button" />
-				<PoTooltip>
+				<PoTooltip
+					text="Click this button twice for good luck"
+					placement="right"
+				>
 					<PoButton type="button" label="Button" />
 				</PoTooltip>
 				<PoButton type="submit" label="Submit" />

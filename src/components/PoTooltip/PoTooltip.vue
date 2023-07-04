@@ -65,8 +65,6 @@ onUnmounted(() => {
 	}
 });
 
-console.log(instance);
-
 function onMouseOver() {
 	open.value = true;
 }

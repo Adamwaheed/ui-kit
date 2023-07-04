@@ -27,7 +27,7 @@
 				/>
 
 				<div
-					v-if="selectedOption !== null"
+					v-if="selectedOption !== null && showSelected"
 					class="po-absolute po-top-0 po-left-0 po-right-0 po-bottom-0 po-overflow-hidden po-bg-white po-rounded-md po-border po-border-slate-300 po-flex po-items-center"
 				>
 					<div class="po-grow">
@@ -204,6 +204,13 @@ const props = defineProps({
 	emptyMessage: {
 		type: String,
 		default: null,
+	},
+	/**
+	 * By default, selected option is shown, incase you don't want this behavior, you can set this prop to false.
+	 */
+	showSelected: {
+		type: Boolean,
+		default: true,
 	},
 });
 

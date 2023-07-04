@@ -7822,10 +7822,7 @@ function N0(e, t) {
 const I0 = ["for"], R0 = { class: "po-capitalize" }, F0 = {
   key: 0,
   class: "po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
-}, H0 = ["title"], q0 = { class: "po-relative po-mt-1" }, W0 = {
-  key: 0,
-  class: "po-shrink-0 po-pr-1 po-inline-flex po-flex-wrap po-max-h-44"
-}, U0 = { class: "po-px-2 po-py-1 po-mb-1 po-mr-1 po-rounded-md po-text-sm po-text-white po-flex po-space-x-2 po-items-center po-bg-mpao-lightblue" }, G0 = ["onClick"], Z0 = ["id"], K0 = {
+}, H0 = ["title"], q0 = { class: "po-relative po-mt-1" }, W0 = { class: "po-shrink-0 po-pr-1 po-inline-flex po-flex-wrap po-w-full po-gap-1 po-max-h-44" }, U0 = { class: "po-px-2 po-py-1 po-rounded-md po-text-sm po-text-white po-flex po-space-x-2 po-items-center po-bg-mpao-lightblue" }, G0 = ["onClick"], Z0 = ["id"], K0 = {
   key: 0,
   class: "po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 }, Y0 = ["onClick", "value"], X0 = {
@@ -8001,8 +7998,8 @@ const I0 = ["for"], R0 = { class: "po-capitalize" }, F0 = {
             n()
           ])
         }, [
-          s.value.length > 0 ? (u(), c("div", W0, [
-            (u(!0), c(B, null, W(s.value, (h, V) => (u(), c("span", U0, [
+          a("div", W0, [
+            s.value.length > 0 ? (u(!0), c(B, { key: 0 }, W(s.value, (h, V) => (u(), c("span", U0, [
               a("span", null, w(h.name), 1),
               a("span", {
                 onClick: () => r(V),
@@ -8010,15 +8007,15 @@ const I0 = ["for"], R0 = { class: "po-capitalize" }, F0 = {
               }, [
                 O(k(Lo), { class: "po-w-3 po-fill-mpao-lightblue" })
               ], 8, G0)
-            ]))), 256))
-          ])) : $("", !0),
-          ot(a("input", {
-            id: e.id,
-            "onUpdate:modelValue": x[0] || (x[0] = (h) => l.value = h),
-            onFocus: x[1] || (x[1] = () => d.value = !0),
-            class: "po-border-0 po-outline-none po-ring-0 po-grow"
-          }, null, 40, Z0), [
-            [Pt, l.value]
+            ]))), 256)) : $("", !0),
+            ot(a("input", {
+              id: e.id,
+              "onUpdate:modelValue": x[0] || (x[0] = (h) => l.value = h),
+              onFocus: x[1] || (x[1] = () => d.value = !0),
+              class: "po-border-0 po-outline-none po-ring-0 po-grow"
+            }, null, 40, Z0), [
+              [Pt, l.value]
+            ])
           ])
         ], 2),
         d.value ? (u(), c("ul", K0, [
@@ -8380,6 +8377,13 @@ const I0 = ["for"], R0 = { class: "po-capitalize" }, F0 = {
     emptyMessage: {
       type: String,
       default: null
+    },
+    /**
+     * By default, selected option is shown, incase you don't want this behavior, you can set this prop to false.
+     */
+    showSelected: {
+      type: Boolean,
+      default: !0
     }
   },
   emits: ["search", "selected", "loadmore"],
@@ -8440,7 +8444,7 @@ const I0 = ["for"], R0 = { class: "po-capitalize" }, F0 = {
             class: "po-right-0 po-top-4",
             absolute: !0
           })) : $("", !0),
-          v.value !== null ? (u(), c("div", $f, [
+          v.value !== null && e.showSelected ? (u(), c("div", $f, [
             a("div", Vf, [
               Z(g.$slots, "selectedOption", Ye(Xe(v.value)), () => [
                 Q(w(v.value), 1)
@@ -9543,7 +9547,7 @@ const q4 = {
       });
     }), pe(() => {
       s && s.destroy();
-    }), console.log(s);
+    });
     function r() {
       l.value = !0;
     }
