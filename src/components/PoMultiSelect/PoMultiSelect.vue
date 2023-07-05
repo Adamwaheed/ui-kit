@@ -52,7 +52,13 @@
 					<input
 						:id="id"
 						v-model="inputFieldValue"
-						@focus="() => (showDropdown = true)"
+						@focus="
+							() => {
+								showDropdown = true;
+								inputFieldFocused = true;
+							}
+						"
+						@blur="() => (inputFieldFocused = false)"
 						class="po-border-0 po-outline-none po-ring-0 po-grow"
 					/>
 				</div>
@@ -223,6 +229,7 @@ function getBorderColor() {
 
 const inputFieldValue = ref("");
 const selectedItems = ref([]);
+const inputFieldFocused = ref(false);
 
 function removeItem(index) {
 	selectedItems.value.splice(index, 1);
@@ -248,7 +255,11 @@ function addItems(e) {
 		inputFieldValue.value = "";
 	}
 
-	if (e.key === "Backspace" && inputFieldValue.value.length === 0) {
+	if (
+		e.key === "Backspace" &&
+		inputFieldValue.value.length === 0 &&
+		inputFieldFocused.value
+	) {
 		selectedItems.value.pop();
 	}
 	updateSelectedItemIds();
