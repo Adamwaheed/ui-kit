@@ -38,13 +38,14 @@
 				>
 					<template v-if="selectedItems.length > 0">
 						<span
-							class="po-px-2 po-py-1 po-rounded-md po-text-sm po-text-white po-flex po-space-x-2 po-items-center po-bg-mpao-lightblue"
+							class="po-px-2 po-py-1 po-rounded-md po-text-sm po-text-slate-600 po-flex po-space-x-2 po-items-center po-bg-gradient-to-l po-from-slate-50 po-via-cyan-50 po-to-cyan-100/60 po-border po-border-cyan-200"
 							v-for="(item, index) in selectedItems"
 							><span>{{ item.name }}</span>
 							<span
 								@click="() => removeItem(index)"
-								class="po-rounded-full po-bg-white po-flex po-items-center po-justify-center po-w-4 po-h-4 po-cursor-pointer"
-								><XMarkIcon class="po-w-3 po-fill-mpao-lightblue"
+								role="button"
+								class="po-cursor-pointer"
+								><XMarkIcon class="po-w-3 po-stroke-red-600 po-stroke-2"
 							/></span>
 						</span>
 					</template>
@@ -108,14 +109,13 @@ export default {
 </script>
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
-import { XMarkIcon } from "@heroicons/vue/20/solid";
 import {
 	InformationCircleIcon,
 	ExclamationTriangleIcon,
 } from "@heroicons/vue/24/solid";
 
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
-import { CheckIcon } from "@heroicons/vue/24/outline";
+import { CheckIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
 	/**
