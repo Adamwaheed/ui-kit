@@ -3,26 +3,11 @@
 		<ul
 			v-if="files && files.length > 0"
 			role="list"
-			class="
-				po-divide-y
-				po-divide-gray-200
-				po-rounded-md
-				po-border
-				po-border-gray-200
-				po-mt-5
-			"
+			class="po-divide-y po-divide-gray-200 po-rounded-md po-border po-border-gray-200"
 		>
 			<li
 				v-for="file in files"
-				class="
-					po-flex
-					po-items-center
-					po-justify-between
-					po-py-3
-					po-pl-3
-					po-pr-4
-					po-text-sm
-				"
+				class="po-flex po-items-center po-justify-between po-py-3 po-pl-3 po-pr-4 po-text-sm"
 			>
 				<div class="po-flex po-w-0 po-flex-1 po-items-center">
 					<PaperClipIcon
@@ -41,10 +26,7 @@
 					<a
 						href="#"
 						@click.prevent="$emit('button-click', file)"
-						class="
-							po-font-medium po-text-mpao-lightblue
-							hover:po-text-indigo-500
-						"
+						class="po-font-medium po-text-mpao-lightblue hover:po-text-indigo-500"
 						>{{ linkLabel }}</a
 					>
 					<!--
@@ -55,10 +37,7 @@
 						v-if="showViewBtn"
 						href="#"
 						@click.prevent="$emit('view-click', file)"
-						class="
-							po-font-medium po-text-mpao-lightblue
-							hover:po-text-indigo-500
-						"
+						class="po-font-medium po-text-mpao-lightblue hover:po-text-indigo-500"
 						>{{ viewBtnLabel }}</a
 					>
 				</div>
