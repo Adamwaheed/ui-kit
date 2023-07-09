@@ -130,6 +130,53 @@ You can add a detail row that is togglable to table component by setting `:has-d
   `}
 />
 
+## With Sorting
+
+To enable sorting on a colunmn you have to add `sortable:true` to `tableHead` on the column you want to sort, To handle sort column click you can use the event `@column-click`.
+
+Column title click returns the sorted column:
+
+```
+{
+    "label": "Source",
+    "sortable": true,
+    "sorted": true,
+    "sortDirection": "asc"
+}
+```
+
+<Story of={PoTableStories.WithSorting} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody" @column-click="handleColumnClick">
+			<template #th="{ label }"> {{ label }} </template>
+			<template #td="{ item }">
+				<td data-title="name">{{ item.name }}</td>
+				<td data-title="NID">{{ item.nid }}</td>
+				<td data-title="source">{{ item.source }}</td>
+				<td data-title="dod">{{ item.dod }}</td>
+			</template>
+		</PoTable>
+
+    let tableHead = [
+      { label: "Name", sortable: true },
+      { label: "NID" },
+      { label: "Source", sortable: true },
+      { label: "DOD" },
+      { label: "Action" },
+    ];
+
+    function handleColumnClick(col) {
+      console.log(col);
+    }
+
+`}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoTableStories} />

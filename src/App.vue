@@ -184,7 +184,12 @@
 				<PoCard class="po-mt-5">
 					<template v-slot:content>
 						<PoCardTabs :tabs="tabs" />
-						<PoTable :thead="tableHead" :tbody="tableBody" :break-at-lg="true">
+						<PoTable
+							:thead="tableHead"
+							:tbody="tableBody"
+							:break-at-lg="true"
+							@column-click="handleColumnClick"
+						>
 							<template #th="{ label }">
 								{{ label }}
 							</template>
@@ -673,9 +678,9 @@ let actionBarItems = [
 ];
 
 let tableHead = [
-	{ label: "Name" },
+	{ label: "Name", sortable: true },
 	{ label: "NID" },
-	{ label: "Source" },
+	{ label: "Source", sortable: true },
 	{ label: "DOD" },
 	{ label: "Action" },
 ];
@@ -708,6 +713,10 @@ setTimeout(() => {
 		},
 	];
 }, 2000);
+
+function handleColumnClick(col) {
+	console.log(col);
+}
 
 let descriptionListItems = [
 	{

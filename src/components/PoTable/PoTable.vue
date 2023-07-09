@@ -3,11 +3,30 @@
 		<thead>
 			<tr>
 				<th v-if="hasDetailsRow" class="po-w-12"></th>
-				<th v-for="th in thead">
-					<!-- 
-						@slot Table header items format
-					-->
-					<slot name="th" v-bind="th"></slot>
+				<th v-for="th in tableHead" @click="sort(th)">
+					<span class="po-flex po-space-x-1 po-pr-2 po-items-center">
+						<!-- 
+							@slot Table header items format
+						-->
+						<span class="po-grow">
+							<slot name="th" v-bind="th"></slot>
+						</span>
+						<span
+							class="po-shrink-0 po-bg-slate-100 po-rounded-md po-w-4 po-h-4 po-flex po-items-center po-justify-center po-cursor-pointer"
+							role="button"
+							v-if="th.sortable"
+						>
+							<ArrowsUpDownIcon class="po-w-3 po-h-3" v-if="!th.sorted" />
+							<ArrowUpIcon
+								class="po-w-3 po-h-3"
+								v-if="th.sorted && th.sortDirection === 'asc'"
+							/>
+							<ArrowDownIcon
+								class="po-w-3 po-h-3"
+								v-if="th.sorted && th.sortDirection === 'desc'"
+							/>
+						</span>
+					</span>
 				</th>
 			</tr>
 		</thead>
@@ -84,7 +103,12 @@ export default {
 };
 </script>
 <script setup>
-import { ArrowRightCircleIcon } from "@heroicons/vue/20/solid";
+import {
+	ArrowRightCircleIcon,
+	ArrowDownIcon,
+	ArrowsUpDownIcon,
+	ArrowUpIcon,
+} from "@heroicons/vue/20/solid";
 import { ref, toRefs, watch, onMounted, computed } from "vue";
 const props = defineProps({
 	/**
@@ -131,9 +155,11 @@ const props = defineProps({
 	},
 });
 
-const { isLoading, tbody } = toRefs(props);
+const { isLoading, tbody, thead } = toRefs(props);
 const loading = ref(false);
+const tableHead = ref(null);
 const tableBody = ref(null);
+const sortDirection = ref(null);
 
 watch(isLoading, () => {
 	checkIfLoading();
@@ -146,6 +172,7 @@ watch(tbody, () => {
 onMounted(() => {
 	checkIfLoading();
 	addShowDetailsToTbody();
+	tableHead.value = thead.value;
 });
 
 function checkIfLoading() {
@@ -168,4 +195,29 @@ function addShowDetailsToTbody() {
 function randomWidth() {
 	return Math.floor(Math.random() * 41) + 40; // Generates a random number between 60 and 100
 }
+
+const emit = defineEmits(["column-click"]);
+
+const sort = (column) => {
+	if (!column.sortable) return;
+
+	if (column.sorted && sortDirection.value === "asc") {
+		sortDirection.value = "desc";
+	} else {
+		sortDirection.value = "asc";
+	}
+
+	// Set sorted property for all columns, clear for unsorted columns
+	tableHead.value.forEach((col) => {
+		if (col.label === column.label) {
+			col.sorted = true;
+			col.sortDirection = sortDirection.value;
+		} else {
+			col.sorted = false;
+			col.sortDirection = null;
+		}
+	});
+
+	emit("column-click", column);
+};
 </script>

@@ -69,6 +69,7 @@ export const WithContent = Template.bind();
 export const Empty = Template.bind();
 export const Loading = Template.bind();
 export const WithDetails = TemplateDetails.bind();
+export const WithSorting = TemplateDetails.bind();
 
 WithContent.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -152,4 +153,35 @@ WithDetails.args = {
 		},
 	],
 	hasDetailsRow: true,
+};
+
+WithSorting.args = {
+	/* 👇 The args you need here will depend on your component */
+	thead: [
+		{ label: "Name" },
+		{ label: "NID", sortable: true },
+		{ label: "Source", sortable: true },
+		{ label: "DOD" },
+	],
+
+	tbody: [
+		{
+			name: "Jane Gasim",
+			nid: "A00000",
+			source: "YY Clinic",
+			dod: "2022-11-12",
+		},
+		{
+			name: "Mariyam Doe",
+			nid: "A00000",
+			source: "Rashu Council",
+			dod: "2022-11-02",
+		},
+		{
+			name: "Zac Kari",
+			nid: "A00000",
+			source: "Rashu Council",
+			dod: "2022-11-02",
+		},
+	],
 };
