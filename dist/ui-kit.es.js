@@ -5424,7 +5424,7 @@ const Li = ["for"], Ti = {
                 key: 0,
                 class: "po-shrink-0 po-text-mpao-lightblue hover:po-text-mpao-blue po-transition-colors po-duration-100 po-ease-in-out po-px-2 po-cursor-pointer",
                 onClick: (s) => o.$emit("button-click", l.action)
-              }, V(l.action), 9, bp)) : x("", !0)
+              }, V(typeof l.action == "string" ? l.action : l.action.label), 9, bp)) : x("", !0)
             ])
           ]))), 256))
         ])

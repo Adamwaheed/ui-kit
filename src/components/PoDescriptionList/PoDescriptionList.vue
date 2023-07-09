@@ -24,7 +24,11 @@
 							class="po-shrink-0 po-text-mpao-lightblue hover:po-text-mpao-blue po-transition-colors po-duration-100 po-ease-in-out po-px-2 po-cursor-pointer"
 							v-if="undefined !== item.action"
 							@click="$emit('button-click', item.action)"
-							>{{ item.action }}</span
+							>{{
+								typeof item.action === "string"
+									? item.action
+									: item.action.label
+							}}</span
 						>
 					</dd>
 				</div>

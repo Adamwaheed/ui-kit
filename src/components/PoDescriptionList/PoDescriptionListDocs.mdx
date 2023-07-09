@@ -12,6 +12,23 @@ import dedent from "ts-dedent";
 
 ### With action
 
+Action click just returns the string passed `action: "Update",`. If you want to add more functionality, and have it return an object, you can do that by:
+
+```js
+let descriptionListItems = [
+	{
+		title: "Dob",
+		description: "1972-02-05",
+		action: {
+			label: "Update",
+			href: "/callcentre/reports/reportname",
+		},
+	},
+];
+```
+
+Where only the `label` is required, and you can add as many data as you want to `action` object, the click event will return the object.
+
 <Story of={PoDescriptionListStories.WithAction} />
 
 ### Striped
