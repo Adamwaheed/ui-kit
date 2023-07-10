@@ -155,6 +155,12 @@
 											@selected="handleSelectFieldTwoClick"
 											v-model="selectFieldTwoSelected"
 										/>
+										<PoSelectField
+											label="Select field with "
+											:list="selectFieldList"
+											@selected="handleSelectFieldTwoClick"
+											v-model="selectFieldSelected"
+										/>
 									</div>
 								</template>
 								<template v-slot:footer>

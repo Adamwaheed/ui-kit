@@ -31,10 +31,7 @@
 						inputFocused = true;
 						showDropdown = true;
 					"
-					@blur="
-						inputFocused = false;
-						showDropdown = false;
-					"
+					@blur="handleBlur"
 					:id="uniqueID"
 				/>
 				<span
@@ -50,7 +47,8 @@
 			</div>
 
 			<div
-				v-if="showDropdown && filteredItems.length > 0"
+				v-show="showDropdown && filteredItems.length > 0"
+				ref="popper"
 				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<DynamicScroller
@@ -118,11 +116,13 @@ import {
 	toRefs,
 	onMounted,
 	onBeforeUnmount,
+	onUnmounted,
 } from "vue";
 import {
 	ChevronUpDownIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
+import { createPopper } from "@popperjs/core";
 
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
@@ -314,5 +314,40 @@ function handleOptionClick(option) {
 	emit("update:modelValue", props.object ? option : option.id);
 
 	showDropdown.value = inputFocused.value ? true : false;
+}
+
+const popper = ref(null);
+let instance;
+
+onMounted(() => {
+	instance = createPopper(selectBox.value, popper.value, {
+		placement: "bottom-start",
+		strategy: "fixed",
+		modifiers: [
+			{
+				name: "sameWidth",
+				enabled: true,
+				fn: ({ state }) => {
+					state.styles.popper.width = `${state.rects.reference.width}px`;
+				},
+				phase: "beforeWrite",
+				requires: ["computeStyles"],
+			},
+		],
+	});
+});
+
+onUnmounted(() => {
+	if (instance) {
+		instance.destroy();
+	}
+});
+
+function handleBlur() {
+	inputFocused.value = false;
+
+	setTimeout(() => {
+		showDropdown.value = false;
+	}, 100);
 }
 </script>
