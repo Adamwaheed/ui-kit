@@ -56,10 +56,11 @@
 				/>
 			</div>
 			<div
-				v-if="
+				v-show="
 					(showDropdown && loadedOptions.length > 0) ||
 					(showDropdown && emptyMessage)
 				"
+				ref="popper"
 				class="po-absolute po-z-10 po-mt-1 po-max-h-60 po-w-full po-overflow-auto po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
 				<template v-if="loadedOptions && loadedOptions.length > 0">
@@ -115,10 +116,18 @@ export default {
 </script>
 
 <script setup>
-import { computed, onMounted, ref, onBeforeUnmount, watch } from "vue";
+import {
+	computed,
+	onMounted,
+	ref,
+	onBeforeUnmount,
+	watch,
+	onUnmounted,
+} from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
+import { createPopper } from "@popperjs/core";
 
 const props = defineProps({
 	/**
@@ -298,4 +307,31 @@ function handleOptionClick(option) {
 function handleMoreClick() {
 	emit("loadmore", true);
 }
+
+const popper = ref(null);
+let instance;
+
+onMounted(() => {
+	instance = createPopper(selectBox.value, popper.value, {
+		placement: "bottom-start",
+		strategy: "fixed",
+		modifiers: [
+			{
+				name: "sameWidth",
+				enabled: true,
+				fn: ({ state }) => {
+					state.styles.popper.width = `${state.rects.reference.width}px`;
+				},
+				phase: "beforeWrite",
+				requires: ["computeStyles"],
+			},
+		],
+	});
+});
+
+onUnmounted(() => {
+	if (instance) {
+		instance.destroy();
+	}
+});
 </script>
