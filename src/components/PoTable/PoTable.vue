@@ -3,7 +3,7 @@
 		<thead>
 			<tr>
 				<th v-if="hasDetailsRow" class="po-w-12"></th>
-				<th v-for="th in tableHead" @click="sort(th)">
+				<th v-for="(th, index) in tableHead" @click="sort(th, index)">
 					<span class="po-flex po-space-x-1 po-pr-2 po-items-center">
 						<!-- 
 							@slot Table header items format
@@ -12,7 +12,7 @@
 							<slot name="th" v-bind="th"></slot>
 						</span>
 						<span
-							class="po-shrink-0 po-bg-slate-100 po-rounded-md po-w-4 po-h-4 po-flex po-items-center po-justify-center po-cursor-pointer"
+							class="po-shrink-0 po-select-none po-bg-slate-100 po-rounded-md po-w-4 po-h-4 po-flex po-items-center po-justify-center po-cursor-pointer"
 							role="button"
 							v-if="th.sortable"
 						>
@@ -198,7 +198,7 @@ function randomWidth() {
 
 const emit = defineEmits(["column-click"]);
 
-const sort = (column) => {
+const sort = (column, index) => {
 	if (!column.sortable) return;
 
 	if (column.sorted && sortDirection.value === "asc") {
@@ -212,6 +212,7 @@ const sort = (column) => {
 		if (col.label === column.label) {
 			col.sorted = true;
 			col.sortDirection = sortDirection.value;
+			col.index = index;
 		} else {
 			col.sorted = false;
 			col.sortDirection = null;
