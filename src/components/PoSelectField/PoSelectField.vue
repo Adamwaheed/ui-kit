@@ -31,7 +31,10 @@
 						inputFocused = true;
 						showDropdown = true;
 					"
-					@blur="inputFocused = false"
+					@blur="
+						inputFocused = false;
+						showDropdown = false;
+					"
 					:id="uniqueID"
 				/>
 				<span

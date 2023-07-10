@@ -81,7 +81,58 @@
 						<br />
 						<div class="po-flex po-space-x-3 po-mt-3">
 							<PoModal open-btn-label="Open Modal">
-								<template v-slot:content> content </template>
+								<template v-slot:content>
+									<div>
+										<PoSelectApi
+											label="Select API"
+											@search="handleSelectApiSearch"
+											@loadmore="handleSelectApiMoreClick"
+											@selected="handleSelectApiClick"
+											:options="selectApiOptions"
+											:loading="selectApiLoading"
+											:show-more-btn="true"
+											empty-message="Search for something"
+										>
+											<template #selectedOption="selectedOption">
+												<div
+													class="po-flex po-space-x-2 po-items-center po-cursor-pointer po-px-2"
+												>
+													<img
+														:src="selectedOption.owner.avatar_url"
+														class="po-w-5 po-rounded-full"
+													/>
+													<span
+														class="po-text-sm po-text-slate-600 po-font-semibold"
+														>{{ selectedOption.full_name }}</span
+													>
+												</div>
+											</template>
+											<template #option="option">
+												<div
+													class="po-flex po-space-x-2 po-items-center po-cursor-pointer hover:po-bg-mpao-lightblue po-group po-px-2 po-py-1"
+													@click="
+														handleSelectApiParentOptionClick(
+															option.owner.avatar_url
+														)
+													"
+												>
+													<img :src="option.owner.avatar_url" class="po-w-10" />
+													<span
+														class="po-text-sm po-text-slate-600 po-font-semibold group-hover:po-text-white"
+														>{{ option.full_name }}</span
+													>
+												</div>
+											</template>
+										</PoSelectApi>
+
+										<DataPreview>
+											@selected: {{ selectClickedComponentItem }}<br />
+											item click parent slot: {{ selectClickedParentItem
+											}}<br />
+											@loadmore: {{ selectApiMoreClicked }} x clicked<br />
+										</DataPreview>
+									</div>
+								</template>
 							</PoModal>
 
 							<PoButton @click="openAlertClick" label="Open Alert" />
@@ -492,7 +543,10 @@ import {
 	PoCardTabs,
 	PoTableAction,
 	PoDynamicTable,
+	PoSelectApi,
 } from "./components";
+
+import DataPreview from "./pages/dataPreview.vue";
 
 import { formatDate, debounce } from "./shared/helper";
 import { ref, computed } from "vue";
@@ -585,6 +639,35 @@ const tabs = [
 		current: false,
 	},
 ];
+
+const selectApiOptions = ref([]);
+const selectApiLoading = ref(false);
+
+const handleSelectApiSearch = debounce((query) => {
+	if (query.length > 3) {
+		selectApiLoading.value = true;
+		fetch(`https://api.github.com/search/repositories?q=${query}`).then(
+			(res) => {
+				res.json().then((json) => (selectApiOptions.value = json.items));
+				selectApiLoading.value = false;
+			}
+		);
+	}
+}, 500);
+
+const selectApiMoreClicked = ref(0);
+const selectClickedComponentItem = ref(null);
+const selectClickedParentItem = ref(null);
+
+function handleSelectApiMoreClick() {
+	selectApiMoreClicked.value = selectApiMoreClicked.value + 1;
+}
+function handleSelectApiClick(val) {
+	selectClickedComponentItem.value = val.owner;
+}
+function handleSelectApiParentOptionClick(val) {
+	selectClickedParentItem.value = val;
+}
 
 const locationHistory = [
 	{

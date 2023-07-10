@@ -265,6 +265,14 @@ onMounted(() => {
 	}
 
 	document.addEventListener("click", handleClickOutside);
+
+	setTimeout(() => {
+		if (document.activeElement === selectBox.value) {
+			showDropdown.value = true;
+		} else {
+			showDropdown.value = false;
+		}
+	}, 100);
 });
 onBeforeUnmount(() => {
 	document.removeEventListener("click", handleClickOutside);

@@ -4078,7 +4078,9 @@ const li = ["for"], si = {
             onFocus: b[2] || (b[2] = (S) => {
               i.value = !0, r.value = !0;
             }),
-            onBlur: b[3] || (b[3] = (S) => i.value = !1),
+            onBlur: b[3] || (b[3] = (S) => {
+              i.value = !1, r.value = !1;
+            }),
             id: g.value
           }, null, 40, ui), [
             [Et, l.value]
@@ -8437,7 +8439,9 @@ const q0 = ["for"], W0 = { class: "po-capitalize" }, U0 = {
       !r.value.contains(g.target) && !n.value.contains(g.target) && (l.value = !1);
     }, p = _("");
     Y(() => {
-      o.id === "" ? p.value = o.label.replace(/\s/g, "") + "-" + Date.now() + "-selectapi-" + Math.floor(Math.random() * 9e3) : p.value = o.id, document.addEventListener("click", i);
+      o.id === "" ? p.value = o.label.replace(/\s/g, "") + "-" + Date.now() + "-selectapi-" + Math.floor(Math.random() * 9e3) : p.value = o.id, document.addEventListener("click", i), setTimeout(() => {
+        document.activeElement === n.value ? l.value = !0 : l.value = !1;
+      }, 100);
     }), Dt(() => {
       document.removeEventListener("click", i);
     });
