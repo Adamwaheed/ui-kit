@@ -13,9 +13,19 @@ import dedent from "ts-dedent";
 	dark
 	format={true}
 	code={dedent`
-    <PoTooltip />
+    <PoTooltip text="This is a long long tooltip" placement="right"
+			>I have a tip</PoTooltip
+		>
   `}
 />
+
+### Props
+
+`text` | String | Default: "",
+
+`placement` | String | Default: "bottom" | Other options [ 'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end' ]
+
+`strategy` | String | Default: "absolute" | Other options ['absolute' | 'fixed']
 
 ### Explanation
 

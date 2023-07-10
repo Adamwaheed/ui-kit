@@ -1,21 +1,27 @@
 <template>
 	<span>
-		<span
+		<PoTooltip
 			v-if="
 				'icon' === btnType ||
 				'delete' === btnType ||
 				'edit' === btnType ||
 				'view' === btnType
 			"
-			role="button"
-			class="po-w-6 po-h-6 po-rounded-lg po-bg-white genie-effect po-flex po-items-center po-justify-center hover:po-bg-slate-50 po-cursor-pointer"
+			:text="toolTip"
+			placement="bottom"
+			strategy="fixed"
 		>
-			<component
-				:is="currIcon"
-				class="po-w-4 po-stroke-2"
-				:class="currIconColor"
-			/>
-		</span>
+			<span
+				role="button"
+				class="po-w-6 po-h-6 po-rounded-lg po-bg-white genie-effect po-flex po-items-center po-justify-center hover:po-bg-slate-50 po-cursor-pointer"
+			>
+				<component
+					:is="currIcon"
+					class="po-w-4 po-stroke-2"
+					:class="currIconColor"
+				/>
+			</span>
+		</PoTooltip>
 		<span
 			v-else
 			role="button"
@@ -36,6 +42,8 @@ export default {
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 
 import { ref } from "vue";
+
+import { PoTooltip } from "..";
 
 const props = defineProps({
 	/**
@@ -74,13 +82,17 @@ const props = defineProps({
 
 const currIcon = ref();
 const currIconColor = ref();
+const toolTip = ref(props.label);
 
 if ("view" === props.btnType) {
 	currIcon.value = EyeIcon;
+	toolTip.value = "" === props.label ? "View" : props.label;
 } else if ("edit" === props.btnType) {
 	currIcon.value = PencilIcon;
+	toolTip.value = "" === props.label ? "Edit" : props.label;
 } else if ("delete" === props.btnType) {
 	currIcon.value = TrashIcon;
+	toolTip.value = "" === props.label ? "Delete" : props.label;
 } else if ("icon" === props.btnType) {
 	if (props.btnIcon) {
 		currIcon.value = props.btnIcon;

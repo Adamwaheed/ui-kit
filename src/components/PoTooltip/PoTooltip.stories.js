@@ -35,11 +35,13 @@ const Template = (args) => ({
 		//👇 The args will now be passed down to the template
 		return { args, toggleVal };
 	},
-	template: "<PoTooltip></PoTooltip>",
+	template: "<PoTooltip>Hover me</PoTooltip>",
 });
 
 export const Tooltip = Template.bind({});
 
 Tooltip.args = {
 	/* 👇 The args you need here will depend on your component */
+	text: "This is a long long tooltip",
+	placement: "right",
 };
