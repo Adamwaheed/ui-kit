@@ -10,9 +10,12 @@
 		ref="sidebarToggle"
 		@click="handleSidebarToggleClick"
 	/>
-	<aside class="shell-sidebar">
+	<aside class="shell-sidebar" :key="sidebarOpen">
 		<div class="po-grow">
-			<div v-for="group in content">
+			<div
+				v-for="(group, groupIndex) in content"
+				:key="`sidebar-group-${groupIndex}`"
+			>
 				<Disclosure v-slot="{ open }" :defaultOpen="true">
 					<DisclosureButton
 						v-if="group.groupName"
@@ -31,31 +34,38 @@
 					>
 						<DisclosurePanel>
 							<ul class="shell-sidebar--menu">
-								<li v-for="item in group.items">
+								<li v-for="item in group.items" :key="item.label">
 									<!--
                       Emits the button url when it’s clicked
                       @event button-click
                   -->
-									<button
-										v-if="!item.disabled"
-										@click="sidebarItemClick('button-click', item.url)"
-										:class="[
-											'shell-sidebar--item',
-											{ active: item.url == currRoute },
-										]"
-										:title="`Go to ${item.label}`"
-									>
-										<span class="shell-sidebar--icon">
-											<component
-												:is="item.icon"
-												class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
-											/>
-										</span>
-										<span
-											class="shell-sidebar--label po-font-medium po-text-left"
-											>{{ item.label }}</span
+									<span>
+										<PoTooltip
+											:text="genToolTip(item.label)"
+											placement="right"
+											strategy="fixed"
 										>
-									</button>
+											<button
+												v-if="!item.disabled"
+												@click="sidebarItemClick('button-click', item.url)"
+												:class="[
+													'shell-sidebar--item',
+													{ active: item.url == currRoute },
+												]"
+											>
+												<span class="shell-sidebar--icon">
+													<component
+														:is="item.icon"
+														class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
+													/>
+												</span>
+												<span
+													class="shell-sidebar--label po-font-medium po-text-left"
+													>{{ item.label }}</span
+												>
+											</button>
+										</PoTooltip>
+									</span>
 								</li>
 							</ul>
 						</DisclosurePanel>
@@ -83,23 +93,29 @@
 							<ul class="shell-sidebar--menu sidebar-apps po-shrink-0 po-mb-0">
 								<li v-for="(app, index) in filterApps">
 									<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
-									<button
-										@click="sidebarItemClick('app-click', app.name)"
-										class="shell-sidebar--item"
-										:class="[{ active: app.current }]"
-										title="Go to feedback"
+									<PoTooltip
+										:text="genToolTip(app.name)"
+										placement="right"
+										strategy="fixed"
 									>
-										<span class="shell-sidebar--icon">
-											<span
-												v-html="app.icon"
-												class="po-text-slate-600 po-w-5"
-											></span>
-										</span>
-										<span
-											class="shell-sidebar--label po-font-medium po-text-left"
-											>{{ app.name }}</span
+										<button
+											@click="sidebarItemClick('app-click', app.name)"
+											class="shell-sidebar--item"
+											:class="[{ active: app.current }]"
+											title="Go to feedback"
 										>
-									</button>
+											<span class="shell-sidebar--icon">
+												<span
+													v-html="app.icon"
+													class="po-text-slate-600 po-w-5"
+												></span>
+											</span>
+											<span
+												class="shell-sidebar--label po-font-medium po-text-left"
+												>{{ app.name }}</span
+											>
+										</button>
+									</PoTooltip>
 								</li>
 							</ul>
 						</DisclosurePanel>
@@ -107,7 +123,6 @@
 				</Disclosure>
 			</div>
 		</div>
-
 		<ul
 			v-if="hasFeedback"
 			class="shell-sidebar--menu po-shrink-0 po-mb-0 po-border-t po-border-slate-200 po-pt-3"
@@ -127,8 +142,9 @@ export default {
 </script>
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import FeedbackForm from "./feedbackForm.vue";
+import { PoTooltip } from "..";
 
 const props = defineProps({
 	/**
@@ -193,14 +209,20 @@ const filterApps = computed(() => {
 
 // Get a reference to the checkbox element using `ref`
 const sidebarToggle = ref(null);
+const sidebarOpen = ref(null);
 
 // Define a function to uncheck the checkbox
 function toggleSidebar() {
 	const screenWidth = window.innerWidth;
 	if (screenWidth <= 1024) {
 		sidebarToggle.value.checked = !sidebarToggle.value.checked;
+		sidebarOpen.value = sidebarToggle.value.checked;
 	}
 }
+
+onMounted(() => {
+	sidebarOpen.value = sidebarToggle.value.checked;
+});
 
 function sidebarItemClick(emitName, action) {
 	emit(emitName, action);
@@ -209,5 +231,10 @@ function sidebarItemClick(emitName, action) {
 
 function handleSidebarToggleClick() {
 	// console.log("I'm toggling");
+	sidebarOpen.value = sidebarToggle.value.checked;
+}
+
+function genToolTip(tip) {
+	return !sidebarOpen.value ? tip : "";
 }
 </script>

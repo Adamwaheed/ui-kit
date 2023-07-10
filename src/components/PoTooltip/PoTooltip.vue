@@ -2,14 +2,16 @@
 	<span ref="trigger" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
 		<slot>Tooltip</slot>
 
-		<div
-			v-if="text"
-			ref="popper"
-			class="po-bg-slate-700 po-text-xs po-transition-opacity po-duration-100 po-ease-linear po-text-slate-50 po-rounded-md po-px-2 po-py-1 po-shadow-md"
-			:class="[{ 'po-opacity-0': !open }, { 'po-opacity-100': open }]"
-		>
-			{{ text }}
-		</div>
+		<Teleport to="body">
+			<div
+				v-show="text"
+				ref="popper"
+				class="po-bg-slate-700 po-text-xs po-z-50 po-transition-opacity po-duration-100 po-ease-linear po-text-slate-50 po-rounded-md po-px-2 po-py-1 po-shadow-md"
+				:class="[{ 'po-opacity-0': !open }, { 'po-opacity-100': open }]"
+			>
+				{{ text }}
+			</div>
+		</Teleport>
 	</span>
 </template>
 
