@@ -404,6 +404,15 @@
 					</template>
 				</PoCard>
 			</div>
+			<div>
+				<PoCard class="po-p-5" title="PoUpload">
+					<template v-slot:content>
+						<div class="po-pt-5 po-space-y-5">
+							<PoUpload label="Upload files" />
+						</div>
+					</template>
+				</PoCard>
+			</div>
 		</div>
 	</div>
 </template>
@@ -420,6 +429,7 @@ import {
 	PoMultiSelect,
 	PoRadioInput,
 	PoToggle,
+	PoUpload,
 } from "../components";
 import { debounce } from "../shared/helper";
 import DataPreview from "./dataPreview.vue";
