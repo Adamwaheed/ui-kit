@@ -230,25 +230,17 @@ function nameToInisitals(name) {
 }
 
 const profilesList = computed(() => {
-	let profiles = [];
-	let transectingAs = props.userObject?.transacting_as_organisation
-		? Object.keys(props.userObject?.transacting_as_organisation).length > 0
-			? props.userObject?.transacting_as_organisation
-			: null
-		: null;
-	let profileName = transectingAs ? transectingAs.name : props.userObject?.name;
-	let profileImage = transectingAs
-		? transectingAs.logo
-			? transectingAs.logo
-			: props.userObject?.avatar
-		: "";
+	const profiles = [];
+	const transactingAs = props.userObject?.transacting_as_organisation;
+	const profileName = transactingAs?.name || props.userObject?.name;
+	const profileImage = transactingAs?.logo || props.userObject?.avatar;
+
 	currentProfile.value = {
 		name: profileName,
 		initials: nameToInisitals(profileName),
 		image: profileImage,
 	};
 
-	profiles = [];
 	profiles.push({
 		id: props.userObject?.id,
 		entity_id: props.userObject?.entity_id,
@@ -258,15 +250,14 @@ const profilesList = computed(() => {
 	});
 
 	if (props.userObject?.organisations?.length > 0) {
-		props.userObject?.organisations?.forEach((f) => profiles.push(f));
+		profiles.push(...props.userObject.organisations);
 	}
 
 	profiles.forEach((profile) => {
 		profile.current =
-			props.userObject?.transacting_as_organisation &&
-			Object.keys(props.userObject?.transacting_as_organisation).length > 0 &&
-			profile.entity_id ===
-				props.userObject?.transacting_as_organisation?.entity_id;
+			transactingAs &&
+			Object.keys(transactingAs).length > 0 &&
+			profile.entity_id === transactingAs.entity_id;
 	});
 
 	if (props.userObject?.transacting_as_organisation === null) {
