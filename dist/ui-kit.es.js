@@ -4932,12 +4932,7 @@ const du = ["for"], fu = {
       m.value = y.value !== null && y.value !== "";
     });
     const g = C("");
-    Z(() => {
-      o.id === "" ? g.value = o.id ? o.id : `${o.label.replace(
-        /\s/g,
-        ""
-      )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9e3)}` : g.value = o.id, document.addEventListener("click", x), n.value = h(o.modelValue);
-    }), At(() => {
+    At(() => {
       document.removeEventListener("click", x);
     });
     const x = (_) => {
@@ -4949,8 +4944,11 @@ const du = ["for"], fu = {
     const k = C(null);
     let V;
     Z(() => {
-      V = qo(p.value, k.value, {
-        placement: "bottom-start",
+      o.id === "" ? g.value = o.id ? o.id : `${o.label.replace(
+        /\s/g,
+        ""
+      )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9e3)}` : g.value = o.id, document.addEventListener("click", x), n.value = h(o.modelValue), V = qo(p.value, k.value, {
+        placement: "bottom-end",
         strategy: "fixed",
         modifiers: [
           {
@@ -9434,7 +9432,7 @@ const Xf = ["for"], Qf = { class: "po-capitalize" }, Jf = {
     let x;
     return Z(() => {
       x = qo(l.value, g.value, {
-        placement: "bottom-start",
+        placement: "bottom-end",
         strategy: "fixed",
         modifiers: [
           {

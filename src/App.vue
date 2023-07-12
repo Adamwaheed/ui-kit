@@ -505,7 +505,14 @@
 			label="Note"
 			description="Description goes here"
 		>
-			<template v-slot:content> I'm a slideover </template>
+			<template v-slot:content>
+				I'm a slideover <br />
+				<PoSelectField
+					label="Select field with two labels"
+					:list="selectFieldListTwo"
+					@selected="handleSelectFieldTwoClick"
+					v-model="selectFieldTwoSelected"
+			/></template>
 		</PoSlideover>
 	</div>
 </template>

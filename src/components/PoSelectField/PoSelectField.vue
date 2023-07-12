@@ -274,22 +274,6 @@ watch(errorMessage, (newVal, oldVal) => {
 });
 
 const uniqueID = ref("");
-onMounted(() => {
-	if ("" === props.id) {
-		uniqueID.value = props.id
-			? props.id
-			: `${props.label.replace(
-					/\s/g,
-					""
-			  )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9000)}`;
-	} else {
-		uniqueID.value = props.id;
-	}
-
-	document.addEventListener("click", handleClickOutside);
-
-	selectedValue.value = getSelectedName(props.modelValue);
-});
 
 onBeforeUnmount(() => {
 	document.removeEventListener("click", handleClickOutside);
@@ -320,8 +304,23 @@ const popper = ref(null);
 let instance;
 
 onMounted(() => {
+	if ("" === props.id) {
+		uniqueID.value = props.id
+			? props.id
+			: `${props.label.replace(
+					/\s/g,
+					""
+			  )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9000)}`;
+	} else {
+		uniqueID.value = props.id;
+	}
+
+	document.addEventListener("click", handleClickOutside);
+
+	selectedValue.value = getSelectedName(props.modelValue);
+
 	instance = createPopper(selectBox.value, popper.value, {
-		placement: "bottom-start",
+		placement: "bottom-end",
 		strategy: "fixed",
 		modifiers: [
 			{

@@ -313,7 +313,7 @@ let instance;
 
 onMounted(() => {
 	instance = createPopper(selectBox.value, popper.value, {
-		placement: "bottom-start",
+		placement: "bottom-end",
 		strategy: "fixed",
 		modifiers: [
 			{
