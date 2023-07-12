@@ -72,7 +72,7 @@
 					</transition>
 				</Disclosure>
 			</div>
-			<div v-if="filterApps.length > 0">
+			<div v-if="filterApps?.length > 0">
 				<Disclosure v-slot="{ open }" :defaultOpen="true">
 					<DisclosureButton
 						v-if="appsLabel"
@@ -221,7 +221,7 @@ function toggleSidebar() {
 }
 
 onMounted(() => {
-	sidebarOpen.value = sidebarToggle.value.checked;
+	sidebarOpen.value = sidebarToggle.value?.checked;
 });
 
 function sidebarItemClick(emitName, action) {
