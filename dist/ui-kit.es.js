@@ -9144,7 +9144,7 @@ const Xf = ["for"], Qf = { class: "po-capitalize" }, Jf = {
       e.isChecked ? (i(), j(w(fl), {
         key: 0,
         onClick: l[0] || (l[0] = re(() => o.$emit("checkboxClicked", e.itemId), ["prevent"])),
-        class: "po-w-6 po-fill-mpao-lightblue"
+        class: "po-w-6 po-fill-mpao-lightblue po-cursor-pointer"
       })) : x("", !0),
       e.disabled ? (i(), j(w(fl), {
         key: 1,
@@ -9153,7 +9153,7 @@ const Xf = ["for"], Qf = { class: "po-capitalize" }, Jf = {
       !e.isChecked && !e.disabled ? (i(), c("span", {
         key: 2,
         onClick: l[1] || (l[1] = re(() => o.$emit("checkboxClicked", e.itemId), ["prevent"])),
-        class: "po-h-5 po-w-5 po-rounded-full po-border-2 po-ml-[2px] po-block po-border-slate-300"
+        class: "po-h-5 po-w-5 po-rounded-full po-border-2 po-ml-[2px] po-block po-border-slate-300 po-cursor-pointer"
       })) : x("", !0)
     ], 64));
   }
@@ -9724,7 +9724,7 @@ const Xf = ["for"], Qf = { class: "po-capitalize" }, Jf = {
      */
     payload: {
       type: Object,
-      default: {}
+      default: () => ({})
     },
     /**
      * Model value

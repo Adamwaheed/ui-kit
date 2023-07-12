@@ -4,7 +4,7 @@ import PoTableAction from "./PoTableAction.vue";
 
 import PoTableActionDocs from "./PoTableActionDocs.mdx";
 
-import { CheckIcon } from "@heroicons/vue/24/outline";
+import { RocketLaunchIcon } from "@heroicons/vue/24/outline";
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -43,13 +43,12 @@ const TemplateCustom = (args) => ({
 	components: { PoTableAction },
 	setup() {
 		//👇 The args will now be passed down to the template
-		return { args, CheckIcon };
+		return { args, RocketLaunchIcon };
 	},
 	template: `<PoTableAction
-                    
                     btn-type="icon"
-                    :btn-icon="CheckIcon"
-                    label="Approve"
+                    :btn-icon="RocketLaunchIcon"
+                    label="Launch"
                     icon-color="po-stroke-sky-400"
                   />`,
 });

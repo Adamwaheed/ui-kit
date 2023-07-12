@@ -2,13 +2,13 @@
 	<CheckCircleIcon
 		@click.prevent="() => $emit('checkboxClicked', itemId)"
 		v-if="isChecked"
-		class="po-w-6 po-fill-mpao-lightblue"
+		class="po-w-6 po-fill-mpao-lightblue po-cursor-pointer"
 	/>
 	<CheckCircleIcon v-if="disabled" class="po-w-6 po-fill-slate-400" />
 	<span
 		v-if="!isChecked && !disabled"
 		@click.prevent="() => $emit('checkboxClicked', itemId)"
-		class="po-h-5 po-w-5 po-rounded-full po-border-2 po-ml-[2px] po-block po-border-slate-300"
+		class="po-h-5 po-w-5 po-rounded-full po-border-2 po-ml-[2px] po-block po-border-slate-300 po-cursor-pointer"
 	></span>
 </template>
 

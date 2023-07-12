@@ -95,6 +95,7 @@ const Template = (args) => ({
 				name: "Emily Johnson",
 				salary: "18,000",
 				type: "Deduction",
+				disabled: true,
 				description: "Absent",
 				amount: "1500",
 				action: "/monthlychanges",
@@ -155,6 +156,7 @@ const Template = (args) => ({
                 <PoTableCheckbox
                   :item-id="item.id"
                   :is-checked="checkIfCheckBoxSelected(item.id)"
+									:disabled="item.disabled"
                   @checkbox-clicked="handleCheckboxClick"
                 />
               </td>
@@ -172,17 +174,19 @@ const Template = (args) => ({
               </td>
               <td data-title="amount">{{ formatMoney(item.amount) }}</td>
               <td>
-                <div class="po-flex po-items-center po-space-x-3 po-justify-end">
+                <div v-if="!item.disabled" class="po-flex po-items-center po-space-x-3 po-justify-end">
                   <PoTableAction
                     
                     btn-type="icon"
                     :btn-icon="CheckIcon"
                     icon-color="po-stroke-sky-400"
+										label="Approve"
                   />
                   <PoTableAction
                     btn-type="icon"
                     :btn-icon="XMarkIcon"
                     icon-color="po-stroke-red-400"
+										label="Reject"
                   />
                 </div>
               </td>
