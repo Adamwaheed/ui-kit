@@ -99,7 +99,7 @@ const props = defineProps({
 	 */
 	payload: {
 		type: Object,
-		default: {},
+		default: () => ({}),
 	},
 
 	/**

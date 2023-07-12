@@ -1,0 +1,91 @@
+# Table action component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoTableActionStories from "./PoTableAction.stories";
+
+import dedent from "ts-dedent";
+
+This component is manly used for table action buttons, but can be used anywhere else that makes sense.
+
+### Pro tip
+
+When using PoTableAction in tables wrap it like this, so that you can display multiple action buttons in a row with a consistant pattern that is used in other apps.
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  <div class="flex items-center space-x-3 justify-end">
+    <PoTableAction ... />
+    <PoTableAction ... />
+  </div>
+
+`}
+/>
+
+### Text button
+
+<div className="po-p-5 po-flex po-items-center po-space-x-3">
+	<Story of={PoTableActionStories.Text} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+
+`}
+/>
+
+### Icon Buttons
+
+These are the built in Icon buttons, for Edit, Delete, and View actions.
+
+<div className="po-p-5 po-flex po-items-center po-space-x-3">
+	<Story of={PoTableActionStories.IconEdit} />
+	<Story of={PoTableActionStories.IconDelete} />
+	<Story of={PoTableActionStories.IconView} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  <div class="flex items-center space-x-3 justify-end">
+    <PoTableAction btn-type="edit" />
+    <PoTableAction btn-type="delete" />
+    <PoTableAction btn-type="view" />
+  </div>
+`}
+/>
+
+### Custom Icon Buttons
+
+You can use custom icons for table action. PoTableAction only accepts HeroIcons at the moment. HeroIcons 24 Outline looks best.
+When using custom buttons use `btn-type="icon"` and pass the icon to `:btn-icon="XMarkIcon"`. Remember to also set a Label to the button to use as a tooltip `label="Cancel" and set an icon color using tailwind stroke color coded `icon-color="stroke-red-400"`.
+
+<div className="po-p-5 po-flex po-items-center po-space-x-3">
+	<Story of={PoTableActionStories.IconCustom} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+  <PoTableAction
+    btn-type="icon"
+    :btn-icon="CheckIcon"
+    label="Approve"
+    icon-color="stroke-sky-400"
+  />
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTableActionStories} />
