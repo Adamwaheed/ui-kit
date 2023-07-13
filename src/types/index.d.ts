@@ -1,5 +1,5 @@
 import { DefineComponent } from "vue";
-import { Props as PoTooltipProps } from "~/components/PoTooltip/PoTooltip.vue";
+import { Props as PoTooltipProps } from "../components/PoTooltip/PoTooltip.vue";
 // Import other component type definitions here
 
 declare module "vue" {
