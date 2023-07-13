@@ -21,7 +21,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineProps } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import type { Instance, Placement, PositioningStrategy } from "@popperjs/core";
 import { createPopper } from "@popperjs/core";
 
