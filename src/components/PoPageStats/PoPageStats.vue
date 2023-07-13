@@ -39,12 +39,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoPageStats",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
 	/**
 	 * Page stats

@@ -96,13 +96,13 @@
 	</table>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTable",
 	components: { ArrowRightCircleIcon },
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import {
 	ArrowRightCircleIcon,
 	ArrowDownIcon,

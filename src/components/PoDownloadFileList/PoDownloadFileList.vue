@@ -49,12 +49,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoDownloadFileList",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({

@@ -67,12 +67,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoInputFile",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { computed, ref } from "vue";
 

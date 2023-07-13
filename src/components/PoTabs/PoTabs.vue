@@ -60,12 +60,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTabs",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 const props = defineProps({
 	/**

@@ -4,9 +4,9 @@
 	</section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoContentArea",
 };
 </script>
-<script setup></script>
+<script setup lang="ts"></script>

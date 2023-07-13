@@ -4,14 +4,7 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<RadioGroupLabel
-			class="
-				po-text-sm
-				po-font-medium
-				po-flex
-				po-items-center
-				po-space-x-1
-				po-text-slate-700
-			"
+			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span
@@ -35,16 +28,7 @@
 					]"
 				>
 					<span
-						class="
-							po-w-5
-							po-h-5
-							po-rounded-full
-							po-border
-							po-mr-2
-							po-flex
-							po-items-center
-							po-justify-center
-						"
+						class="po-w-5 po-h-5 po-rounded-full po-border po-mr-2 po-flex po-items-center po-justify-center"
 						:class="[
 							active ? '' : '',
 							checked ? 'po-border-mpao-lightblue' : 'po-border-slate-400',
@@ -68,9 +52,7 @@
 							<RadioGroupDescription
 								v-if="option.description"
 								as="span"
-								class="
-									po-mt-1 po-flex po-items-center po-text-sm po-text-gray-500
-								"
+								class="po-mt-1 po-flex po-items-center po-text-sm po-text-gray-500"
 								>{{ option.description }}</RadioGroupDescription
 							>
 						</span>
@@ -87,9 +69,7 @@
 				{{ message }}
 			</p>
 			<p
-				class="
-					po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
-				"
+				class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
 				:id="`${id}-error`"
 				v-if="formHasError && null !== errorMessage"
 			>
@@ -102,12 +82,12 @@
 	</RadioGroup>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoRadioInput",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, watch, onUpdated, toRefs } from "vue";
 import { ExclamationTriangleIcon } from "@heroicons/vue/20/solid";
 import {

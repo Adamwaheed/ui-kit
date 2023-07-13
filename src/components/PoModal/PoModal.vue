@@ -102,12 +102,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoModal",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, toRefs, watch } from "vue";
 import {
 	Dialog,

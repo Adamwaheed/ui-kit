@@ -37,12 +37,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoDescriptionList",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 defineProps({
 	/**
 	 * Items to display in the list.

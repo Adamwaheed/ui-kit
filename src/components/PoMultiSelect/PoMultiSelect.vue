@@ -107,13 +107,13 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoMultiSelect",
 	components: { CheckIcon },
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import {
 	InformationCircleIcon,

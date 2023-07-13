@@ -89,12 +89,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoFooter",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { GlobeAltIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/vue/24/solid";
 
 import ChangeLogModel from "./ChangeLogModel.vue";

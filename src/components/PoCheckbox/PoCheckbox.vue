@@ -44,12 +44,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoCheckbox",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 defineProps({
 	/**
 	 * Model value

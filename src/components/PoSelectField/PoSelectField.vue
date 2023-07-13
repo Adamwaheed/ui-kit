@@ -102,12 +102,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSelectField",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import {
 	computed,
 	ref,

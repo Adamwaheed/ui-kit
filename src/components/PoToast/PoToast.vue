@@ -67,13 +67,13 @@
 	</Teleport>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoToast",
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import { ref, toRefs, watch, computed } from "vue";
 import {
 	XMarkIcon,

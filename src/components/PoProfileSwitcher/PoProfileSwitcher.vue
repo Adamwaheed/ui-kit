@@ -168,12 +168,12 @@
 	</Popover>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoProfileSwitcher",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import {
 	UserIcon,

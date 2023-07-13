@@ -81,12 +81,12 @@
 		</p>
 	</div>
 </template>
-<script>
+<script lang="ts">
 export default {
 	name: "PoUpload",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { watch, ref, toRefs } from "vue";

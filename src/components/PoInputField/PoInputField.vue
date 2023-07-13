@@ -57,12 +57,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoInputField",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs, onMounted } from "vue";
 

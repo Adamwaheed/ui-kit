@@ -1,14 +1,6 @@
 <template>
 	<div
-		class="
-			po-mt-5
-			po-flex
-			po-flex-col
-			po-items-center
-			po-justify-center
-			po-px-5
-			po-py-8
-		"
+		class="po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-py-8"
 	>
 		<div
 			class="po-space-y-2 po-flex po-items-center po-flex-col po-justify-center"
@@ -27,14 +19,7 @@
 			>
 			<span
 				v-if="description !== ''"
-				class="
-					po-text-sm
-					po-text-slate-500
-					po-text-center
-					po-max-w-lg
-					po-block
-					po-mx-auto
-				"
+				class="po-text-sm po-text-slate-500 po-text-center po-max-w-lg po-block po-mx-auto"
 				>{{ description }}</span
 			>
 		</div>
@@ -47,12 +32,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoEmpty",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 defineProps({
 	/**
 	 * State label

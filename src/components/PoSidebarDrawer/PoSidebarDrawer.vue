@@ -135,16 +135,16 @@
 	</aside>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSidebarDrawer",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ref, computed, onMounted } from "vue";
 import FeedbackForm from "./feedbackForm.vue";
-import { PoTooltip } from "..";
+import { PoTooltip } from "../";
 
 const props = defineProps({
 	/**

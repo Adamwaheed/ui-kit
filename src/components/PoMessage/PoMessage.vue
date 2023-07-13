@@ -13,12 +13,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoMessage",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
 	/**
 	 * Message type. Default: info

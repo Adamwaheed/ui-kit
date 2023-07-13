@@ -1,170 +1,142 @@
 <template>
-  <div
-    class="po-relative"
-    :class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
-  >
-    <label
-      :for="id"
-      class="
-        po-text-sm
-        po-font-medium
-        po-text-slate-700
-        po-flex
-        po-items-center
-        po-space-x-1
-      "
-    >
-      <span>{{ label }}</span>
-      <span
-        v-if="required"
-        class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
-        >&#42;</span
-      >
-      <abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-        <InformationCircleIcon />
-      </abbr>
-    </label>
-    <!-- 
+	<div
+		class="po-relative"
+		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+	>
+		<label
+			:for="id"
+			class="po-text-sm po-font-medium po-text-slate-700 po-flex po-items-center po-space-x-1"
+		>
+			<span>{{ label }}</span>
+			<span
+				v-if="required"
+				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
+				>&#42;</span
+			>
+			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
+				<InformationCircleIcon />
+			</abbr>
+		</label>
+		<!-- 
               v-model update
               @event update:modelValue
            -->
-    <textarea
-      :name="`${id}-field`"
-      :id="id"
-      :value="modelValue"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :required="required"
-      :aria-describedby="`${id}-description`"
-      :aria-required="required"
-      :aria-disabled="disabled"
-      v-bind="$attrs"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="
-        po-mt-1
-        po-peer
-        po-px-3
-        po-py-2
-        po-block
-        po-w-full
-        po-transition-colors
-        po-duration-100
-        po-ease-in-out
-        po-rounded-md
-        po-border-slate-300
-        po-bg-white
-        focus:po-border-mpao-lightblue focus:po-ring-0
-        invalid:po-border-red-400 invalid:po-focus:border-red-600
-        invalid:focus:po-ring-red-600
-        sm:po-text-sm
-        disabled:po-bg-slate-50 disabled:po-border-slate-300
-        disabled:focus:po-border-slate-300
-        disabled:hover:po-border-slate-300
-        disabled:po-cursor-default
-      "
-    ></textarea>
-    <p
-      class="po-mt-2 po-text-sm po-text-slate-500"
-      :id="`${id}-description`"
-      v-if="null !== message"
-    >
-      {{ message }}
-    </p>
-    <p
-      class="po-mt-2 po-text-sm po-text-red-600"
-      :id="`${id}-error`"
-      v-if="null !== errorMessage"
-    >
-      {{ errorMessage }}
-    </p>
-  </div>
+		<textarea
+			:name="`${id}-field`"
+			:id="id"
+			:value="modelValue"
+			:placeholder="placeholder"
+			:disabled="disabled"
+			:required="required"
+			:aria-describedby="`${id}-description`"
+			:aria-required="required"
+			:aria-disabled="disabled"
+			v-bind="$attrs"
+			@input="$emit('update:modelValue', $event.target.value)"
+			class="po-mt-1 po-peer po-px-3 po-py-2 po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-border-slate-300 po-bg-white focus:po-border-mpao-lightblue focus:po-ring-0 invalid:po-border-red-400 invalid:po-focus:border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default"
+		></textarea>
+		<p
+			class="po-mt-2 po-text-sm po-text-slate-500"
+			:id="`${id}-description`"
+			v-if="null !== message"
+		>
+			{{ message }}
+		</p>
+		<p
+			class="po-mt-2 po-text-sm po-text-red-600"
+			:id="`${id}-error`"
+			v-if="null !== errorMessage"
+		>
+			{{ errorMessage }}
+		</p>
+	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: "PoTextarea",
+	name: "PoTextarea",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/24/solid";
 
 defineProps({
-  /**
-   * Model value
-   */
-  modelValue: {
-    type: [String, Number],
-    default: "",
-  },
-  /**
-   * Input label text
-   */
-  label: {
-    type: String,
-    default: "",
-  },
-  /**
-   * Input type
-   */
-  type: {
-    type: String,
-    default: "text",
-  },
-  /**
-   * Input id text
-   */
-  id: {
-    type: String,
-    default: "",
-  },
-  /**
-   * A tool tip, helper information
-   */
-  info: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Tip, description, information for the input
-   */
-  message: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Error message
-   */
-  errorMessage: {
-    type: String,
-    default: null,
-  },
-  /**
-   * True or false if required
-   */
-  required: {
-    type: Boolean,
-    default: false,
-  },
-  /**
-   * True or false if disabled
-   */
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  /**
-   * True or false if required
-   */
-  placeholder: {
-    type: String,
-    default: null,
-  },
-  /**
-   * Input display vertifal (default) or horizontal
-   */
-  display: {
-    type: String,
-    default: "vertical",
-  },
+	/**
+	 * Model value
+	 */
+	modelValue: {
+		type: [String, Number],
+		default: "",
+	},
+	/**
+	 * Input label text
+	 */
+	label: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * Input type
+	 */
+	type: {
+		type: String,
+		default: "text",
+	},
+	/**
+	 * Input id text
+	 */
+	id: {
+		type: String,
+		default: "",
+	},
+	/**
+	 * A tool tip, helper information
+	 */
+	info: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Tip, description, information for the input
+	 */
+	message: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Error message
+	 */
+	errorMessage: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * True or false if required
+	 */
+	required: {
+		type: Boolean,
+		default: false,
+	},
+	/**
+	 * True or false if disabled
+	 */
+	disabled: {
+		type: Boolean,
+		default: false,
+	},
+	/**
+	 * True or false if required
+	 */
+	placeholder: {
+		type: String,
+		default: null,
+	},
+	/**
+	 * Input display vertifal (default) or horizontal
+	 */
+	display: {
+		type: String,
+		default: "vertical",
+	},
 });
 </script>

@@ -13,28 +13,39 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoAppIcon",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
-const props = defineProps({
+interface Props {
+	appName: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Name of the app
 	 */
-	appName: {
-		type: String,
-		default: "App Name",
-	},
+	appName: "App Name",
 });
 
 const appShortName = computed(() => {
-	let shortName = props.appName.match(/\b[A-Z]/g).join("");
+	if (!props.appName) {
+		return "";
+	}
+
+	const matchResult = props.appName.match(/\b[A-Z]/g);
+	if (!matchResult) {
+		return "";
+	}
+
+	let shortName = matchResult.join("");
 	if (shortName.length === 1) {
 		return props.appName.substring(0, 3);
 	}
+
 	return shortName;
 });
 </script>

@@ -49,15 +49,7 @@
 		v-if="'simple' == type && !isLoading"
 		href="#"
 		@click.prevent="$emit('button-click', to)"
-		class="
-			po-text-sm
-			po-transition-colors
-			po-duration-100
-			po-ease-in-out
-			po-inline-flex
-			po-items-center
-			po-space-x-1
-		"
+		class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
 		:class="[
 			{ 'po-text-mpao-lightblue hover:po-text-mpao-blue': !overrideColors },
 		]"
@@ -66,12 +58,12 @@
 	</a>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoButton",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 

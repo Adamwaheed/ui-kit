@@ -46,13 +46,13 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoDynamicTable",
 	components: { ArrowsUpDownIcon, ArrowUpIcon, ArrowDownIcon },
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import {
 	ArrowDownIcon,
 	ArrowsUpDownIcon,

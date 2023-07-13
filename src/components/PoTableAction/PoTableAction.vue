@@ -32,13 +32,13 @@
 	</span>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTableAction",
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 
 import { ref } from "vue";

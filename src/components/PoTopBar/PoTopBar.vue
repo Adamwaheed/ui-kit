@@ -63,12 +63,12 @@
 	</nav>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTopBar",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 

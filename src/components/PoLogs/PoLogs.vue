@@ -43,12 +43,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoLogs",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
 	/**
 	 * list of items

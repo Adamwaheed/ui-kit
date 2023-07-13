@@ -16,12 +16,12 @@
 	</span>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "Rufiyaa",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 defineProps({
 	/**
 	 * Rufiyaa symbol width in tailwind w-[x] default w-3

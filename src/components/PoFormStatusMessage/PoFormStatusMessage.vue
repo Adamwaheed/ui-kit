@@ -29,13 +29,13 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoFormStatusMessage",
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import {
 	ExclamationTriangleIcon,
 	CheckCircleIcon,

@@ -16,12 +16,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSearchBar",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 

@@ -61,6 +61,5 @@
 	},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"
-	},
-	"types": "src/types/index.d.ts"
+	}
 }

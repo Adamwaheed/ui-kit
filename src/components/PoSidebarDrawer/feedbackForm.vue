@@ -40,7 +40,7 @@
 		</template>
 	</PoModal>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import PoButton from "../PoButton/PoButton.vue";
 import PoSelectField from "../PoSelectField/PoSelectField.vue";
