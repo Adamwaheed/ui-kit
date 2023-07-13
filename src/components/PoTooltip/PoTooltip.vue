@@ -15,56 +15,57 @@
 	</span>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTooltip",
 };
 </script>
-<script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, defineProps } from "vue";
+import type { Instance, Placement, PositioningStrategy } from "@popperjs/core";
 import { createPopper } from "@popperjs/core";
 
-const props = defineProps({
+interface Props {
+	text: string;
+	placement?: Placement | undefined;
+	strategy?: PositioningStrategy | undefined;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Text
 	 */
-	text: {
-		type: String,
-		default: "",
-	},
+	text: "",
 	/**
 	 * Placement
 	 * Default: bottom. | 'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'
 	 */
-	placement: {
-		type: String,
-		default: "bottom",
-	},
+	placement: "bottom",
 	/**
 	 * Popper strategy
 	 * Default: absolute. 'absolute' | 'fixed'
 	 */
-	strategy: {
-		type: String,
-		default: "absolute",
-	},
+	strategy: "absolute",
 });
 
-const trigger = ref(null);
-const popper = ref(null);
+const trigger = ref<HTMLElement | null>(null);
+const popper = ref<HTMLElement | null>(null);
 const open = ref(false);
-let instance;
+let instance: Instance | null = null;
 
 onMounted(() => {
-	instance = createPopper(trigger.value, popper.value, {
-		placement: props.placement,
-		strategy: props.strategy,
-	});
+	if (trigger.value && popper.value) {
+		instance = createPopper(trigger.value, popper.value, {
+			placement: props.placement,
+			strategy: props.strategy,
+		});
+	}
 });
 
 onUnmounted(() => {
 	if (instance) {
 		instance.destroy();
+		instance = null;
 	}
 });
 

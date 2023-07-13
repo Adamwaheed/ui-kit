@@ -9644,42 +9644,23 @@ const Xf = ["for"], Qf = { class: "po-capitalize" }, Jf = {
   }
 }), G4 = {
   name: "PoTooltip"
-}, go = /* @__PURE__ */ Object.assign(G4, {
+}, go = /* @__PURE__ */ J({
+  ...G4,
   props: {
-    /**
-     * Text
-     */
-    text: {
-      type: String,
-      default: ""
-    },
-    /**
-     * Placement
-     * Default: bottom. | 'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'
-     */
-    placement: {
-      type: String,
-      default: "bottom"
-    },
-    /**
-     * Popper strategy
-     * Default: absolute. 'absolute' | 'fixed'
-     */
-    strategy: {
-      type: String,
-      default: "absolute"
-    }
+    text: { default: "" },
+    placement: { default: "bottom" },
+    strategy: { default: "absolute" }
   },
   setup(e) {
     const t = e, o = C(null), l = C(null), n = C(!1);
-    let s;
+    let s = null;
     U(() => {
-      s = qo(o.value, l.value, {
+      o.value && l.value && (s = qo(o.value, l.value, {
         placement: t.placement,
         strategy: t.strategy
-      });
+      }));
     }), se(() => {
-      s && s.destroy();
+      s && (s.destroy(), s = null);
     });
     function r() {
       n.value = !0;
