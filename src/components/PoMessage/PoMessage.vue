@@ -19,35 +19,30 @@ export default {
 };
 </script>
 <script setup lang="ts">
-const props = defineProps({
+interface Props {
+	msgType?: string;
+	message: string;
+	btnName?: string;
+	btnAction?: string | object;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Message type. Default: info
 	 */
-	msgType: {
-		type: String,
-		default: "info",
-	},
+	msgType: "info",
 	/**
 	 * The message body
 	 */
-	message: {
-		type: String,
-		default: "",
-	},
+	message: "",
 	/**
 	 * Name of the link
 	 */
-	btnName: {
-		type: String,
-		default: "",
-	},
+	btnName: "",
 	/**
 	 * URL of the link. This can be a string or an object. Emitted when button is clicked
 	 */
-	btnAction: {
-		type: [String, Object],
-		default: "",
-	},
+	btnAction: "",
 });
 
 const emit = defineEmits(["button-click"]);

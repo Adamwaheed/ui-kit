@@ -26,7 +26,7 @@
 					:placeholder="placeholder"
 					:disabled="disabled"
 					v-model="selectedValue"
-					@input="query = $event.target.value"
+					@input="handleInput"
 					@focus="
 						inputFocused = true;
 						showDropdown = true;
@@ -123,95 +123,81 @@ import {
 	InformationCircleIcon,
 } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
+import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
+import type { FormEventHandler } from "react";
 
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+interface Item {
+	id: string | number;
+	name: string;
+	[index: number]: any;
+}
 
-const props = defineProps({
+interface Props {
+	modelValue?: string | number | object | null;
+	label?: string;
+	id?: string;
+	info?: string | null;
+	list?: Item[] | null;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	errorMessage?: string | null;
+	message?: string | null;
+	disabled?: boolean;
+	object?: boolean;
+	placeholder?: string | undefined;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number, Object],
-		default: null,
-	},
+	modelValue: null,
 	/**
 	 * Label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * List of options
 	 */
-	list: {
-		type: Array,
-		default: null,
-	},
+	list: null,
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True if you want it to return an object when clicked
 	 */
-	object: {
-		type: Boolean,
-		default: false,
-	},
+	object: false,
 	/**
 	 * Placeholer
 	 */
-	placeholder: {
-		type: String,
-		default: null,
-	},
+	placeholder: undefined,
 });
 
 const query = ref("");
@@ -219,35 +205,39 @@ const selectedValue = ref("");
 const selectedItem = ref();
 const showDropdown = ref(false);
 const inputFocused = ref(false);
-const selectBox = ref(null);
+const selectBox = ref();
 const containerRef = ref(null);
 
 const filteredItems = computed(() => {
 	const queryValue = query.value.toLowerCase();
 
 	if (queryValue === "") {
-		return props.list.map((item) => ({
-			...item,
-			active: selectedItem.value === item.id,
-		}));
+		return (
+			props.list?.map((item: Item) => ({
+				...item,
+				active: selectedItem.value === item.id,
+			})) ?? []
+		);
 	}
 
-	return props.list
-		.filter((item) => item.name.toLowerCase().includes(queryValue))
-		.map((item) => ({
-			...item,
-			active: selectedItem.value === item.id,
-		}));
+	return (
+		props.list
+			?.filter((item: Item) => item.name.toLowerCase().includes(queryValue))
+			.map((item: Item) => ({
+				...item,
+				active: selectedItem.value === item.id,
+			})) ?? []
+	);
 });
 
-function getSelectedName(itemId) {
+function getSelectedName(itemId: any) {
 	if (props.object) {
 		return itemId?.name;
 	} else if (filteredItems.value) {
 		let itemSelected = filteredItems.value.find((item) => item.id === itemId);
 		return itemSelected?.name;
-	} else if (placeholder) {
-		return placeholder;
+	} else if (props.placeholder) {
+		return props.placeholder;
 	}
 }
 
@@ -275,21 +265,11 @@ watch(errorMessage, (newVal, oldVal) => {
 
 const uniqueID = ref("");
 
-onBeforeUnmount(() => {
-	document.removeEventListener("click", handleClickOutside);
+useDetectOutsideClick(containerRef, () => {
+	showDropdown.value = inputFocused.value ? true : false;
 });
 
-const handleClickOutside = (event) => {
-	if (
-		!containerRef.value.contains(event.target) &&
-		!selectBox.value.contains(event.target)
-	) {
-		// Click occurred outside the container and target elements
-		showDropdown.value = inputFocused.value ? true : false;
-	}
-};
-
-function handleOptionClick(option) {
+function handleOptionClick(option: Item) {
 	selectedItem.value = option;
 	selectedValue.value = option.name;
 	query.value = "";
@@ -300,8 +280,8 @@ function handleOptionClick(option) {
 	showDropdown.value = inputFocused.value ? true : false;
 }
 
-const popper = ref(null);
-let instance;
+const popper = ref();
+let instance: any;
 
 onMounted(() => {
 	if ("" === props.id) {
@@ -314,8 +294,6 @@ onMounted(() => {
 	} else {
 		uniqueID.value = props.id;
 	}
-
-	document.addEventListener("click", handleClickOutside);
 
 	selectedValue.value = getSelectedName(props.modelValue);
 
@@ -349,4 +327,10 @@ function handleBlur() {
 		showDropdown.value = false;
 	}, 100);
 }
+
+const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+	let val = (event.target as HTMLInputElement).value;
+
+	query.value = val;
+};
 </script>

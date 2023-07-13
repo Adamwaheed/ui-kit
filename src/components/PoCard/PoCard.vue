@@ -39,20 +39,19 @@ export default {
 <script setup lang="ts">
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
-defineProps({
+interface Props {
+	title?: string;
+	isLoading?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Card title
 	 */
-	title: {
-		type: String,
-		default: "",
-	},
+	title: "",
 	/**
 	 * Show card loading
 	 */
-	isLoading: {
-		type: Boolean,
-		default: false,
-	},
+	isLoading: false,
 });
 </script>

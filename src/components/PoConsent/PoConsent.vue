@@ -39,31 +39,34 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+interface Link {
+	url: string;
+	label: string;
+}
+
+interface Props {
+	modelValue: boolean;
+	label: string;
+	id?: string;
+	links?: Link[] | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: Boolean,
-		default: false,
-	},
+	modelValue: false,
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "consent-checkbox",
-	},
-	links: {
-		type: Array,
-		default: null,
-	},
+	id: "consent-checkbox",
+	/**
+	 * Array of links
+	 */
+	links: null,
 });
 </script>

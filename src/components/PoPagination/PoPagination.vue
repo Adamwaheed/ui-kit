@@ -33,28 +33,31 @@ export default {
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 import { computed } from "vue";
 
-const props = defineProps({
+interface Pagination {
+	label?: string;
+	nextLink?: string;
+	prevLink?: string;
+}
+
+interface Props {
+	pagination: Pagination | null;
+	totalPages?: string | number | null;
+	currentPage?: string | number | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Pagination Object { label: 'Page 1 of 2' } ... NO LONGER RECOMMENDED
 	 */
-	pagination: {
-		type: Object,
-		default: null,
-	},
+	pagination: null,
 	/**
 	 * Total number of pages
 	 */
-	totalPages: {
-		type: [String, Number],
-		default: null,
-	},
+	totalPages: null,
 	/**
 	 * Current page
 	 */
-	currentPage: {
-		type: [String, Number],
-		default: null,
-	},
+	currentPage: null,
 });
 
 const emit = defineEmits(["button-click", "next-click", "prev-click"]);

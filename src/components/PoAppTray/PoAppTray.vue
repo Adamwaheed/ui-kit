@@ -39,8 +39,8 @@ import type { AppCollection } from "./AppCollection";
 
 interface Props {
 	appList: Array<any> | null;
-	justApps: boolean;
-	openInNewTab: boolean;
+	justApps?: boolean;
+	openInNewTab?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {

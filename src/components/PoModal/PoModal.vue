@@ -119,42 +119,35 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 import { PoButton } from "../../components";
 
-const props = defineProps({
+interface Props {
+	openBtnLabel?: string;
+	modalTitle?: string;
+	show?: boolean;
+	modalWidth?: string;
+	modalHeight?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Modal open button label
 	 */
-	openBtnLabel: {
-		type: String,
-		default: "",
-	},
+	openBtnLabel: "",
 	/**
 	 * Modal Title
 	 */
-	modalTitle: {
-		type: String,
-		default: "Modal windows",
-	},
+	modalTitle: "Modal windows",
 	/**
 	 * Pass model Open/Close to the component
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 	/**
 	 * Set a custom width to the modal windod
 	 */
-	modalWidth: {
-		type: String,
-		default: "sm:po-max-w-xl",
-	},
+	modalWidth: "sm:po-max-w-xl",
 	/**
 	 * Set a fixed height for the modal. Default is auto. You should use tailwind classes here.
 	 */
-	modalHeight: {
-		type: String,
-		default: "",
-	},
+	modalHeight: "",
 });
 
 const { show } = toRefs(props);

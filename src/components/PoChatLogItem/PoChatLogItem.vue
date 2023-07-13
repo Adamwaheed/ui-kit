@@ -111,13 +111,14 @@ export default {
 };
 </script>
 <script setup lang="ts">
-const props = defineProps({
+interface Props {
+	item: object | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	item: {
-		type: Object,
-		default: null,
-	},
+	item: null,
 });
 </script>

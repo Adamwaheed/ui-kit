@@ -12,20 +12,19 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+interface Props {
+	text: string;
+	type?: string;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Heading text
 	 */
-	text: {
-		type: String,
-		default: "",
-	},
+	text: "",
 	/**
 	 * Heading type h1 h2 h3, default h3
 	 */
-	type: {
-		type: String,
-		default: "h3",
-	},
+	type: "h3",
 });
 </script>

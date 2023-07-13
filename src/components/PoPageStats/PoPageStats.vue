@@ -45,33 +45,41 @@ export default {
 };
 </script>
 <script setup lang="ts">
-const props = defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Stat {
+	icon?: HeroIcon;
+	value?: string;
+	label?: string;
+	iconColor?: string;
+}
+
+interface Props {
+	stats?: Stat[] | null;
+	clickable?: boolean | null;
+	padding?: string;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Page stats
 	 */
-	stats: {
-		type: Array,
-		default: null,
-	},
+	stats: null,
 	/**
 	 * True or false if it's clickable
 	 */
-	clickable: {
-		type: Boolean,
-		default: true,
-	},
+	clickable: true,
 	/**
 	 * Block padding. default: py-5 px-2
 	 */
-	padding: {
-		type: String,
-		default: "po-py-5 po-px-2",
-	},
+	padding: "po-py-5 po-px-2",
 });
 
 const emit = defineEmits(["stat-click"]);
 
-function statIconColor(stat) {
+function statIconColor(stat: Stat) {
 	return stat.iconColor ? stat.iconColor : "po-slate-600";
 }
 </script>

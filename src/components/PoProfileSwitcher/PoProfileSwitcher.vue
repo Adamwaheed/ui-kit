@@ -1,5 +1,5 @@
 <template>
-	<Popover v-slot="{ open }" :key="profilesList">
+	<Popover v-slot="{ open }">
 		<div>
 			<PopoverButton class="po-flex po-items-center po-outline-none">
 				<span
@@ -190,24 +190,26 @@ import {
 	watch,
 	toRefs,
 } from "vue";
-const props = defineProps({
-	userObject: {
-		type: [Object, String],
-		default: null,
-	},
-	avatar: {
-		type: String,
-		default: "",
-	},
-	logo: {
-		type: String,
-		default: "",
-	},
+
+interface UserObject {
+	[key: string]: any;
+}
+
+interface Props {
+	userObject: UserObject | null;
+	avatar?: string;
+	logo?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	userObject: null,
+	avatar: "",
+	logo: "",
 });
 
 const emit = defineEmits(["button-click"]);
 
-function handleProfileClick(obj) {
+function handleProfileClick(obj: object) {
 	emit("button-click", obj);
 }
 const currentProfile = ref({
@@ -220,12 +222,12 @@ const currentProfile = ref({
  * Helpers
  */
 
-function nameToInisitals(name) {
+function nameToInisitals(name: string | null): string {
 	return name
 		? name
 				.match(/\b[A-Z]/g)
-				.join("")
-				.substr(0, 2)
+				?.join("")
+				?.substring(0, 2) ?? ""
 		: "";
 }
 
@@ -250,7 +252,7 @@ const profilesList = computed(() => {
 	});
 
 	if (props.userObject?.organisations?.length > 0) {
-		profiles.push(...props.userObject.organisations);
+		profiles.push(...props.userObject?.organisations);
 	}
 
 	profiles.forEach((profile) => {
@@ -267,8 +269,8 @@ const profilesList = computed(() => {
 	return profiles;
 });
 
-const userAvatar = ref(null);
-const orgLogo = ref(null);
+const userAvatar = ref<string | null>(null);
+const orgLogo = ref<string | null>(null);
 
 const { avatar, logo } = toRefs(props);
 

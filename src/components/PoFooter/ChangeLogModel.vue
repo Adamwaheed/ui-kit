@@ -84,19 +84,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import PoModal from "../PoModal/PoModal.vue";
+import type { LogType } from "./LogType";
 
-defineProps({
+interface Props {
+	changelog?: LogType[] | null;
+	showBtn?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Chnagelog
 	 */
-	changelog: {
-		type: Array,
-		default: null,
-	},
-	showBtn: {
-		type: Boolean,
-		default: false,
-	},
+	changelog: null,
+	showBtn: false,
 });
 
 const showChangeLogModal = ref(false);

@@ -87,112 +87,89 @@ export default {
 };
 </script>
 <script setup lang="ts">
+// @ts-nocheck
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { watch, ref, toRefs } from "vue";
-
+import type { ChangeEvent } from "react";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
-const props = defineProps({
+interface Props {
+	payload?: object;
+	url?: string;
+	modelValue?: string | number;
+	label?: string;
+	display?: "vertical" | "horizontal";
+	id?: string;
+	info?: string | null;
+	message?: string | null;
+	errorMessage?: string | null;
+	hasError?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	placeholder?: string | undefined;
+	borderColor?: string;
+	inputLabel?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	payload: {
-		type: Object,
-		default: () => ({}),
-	},
+	payload: () => ({}),
 
 	/**
 	 * Model value
 	 */
-	url: {
-		type: [String],
-		default: "",
-	},
+	url: "",
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		default: "",
-	},
+	modelValue: "",
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "fileupload",
-	},
+	id: "fileupload",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * True or False has error.. NO LONGER HAVE TO USE THIS. JUST PASS AN errorMessage.
 	 */
-	hasError: {
-		type: Boolean,
-		default: false,
-	},
+	hasError: false,
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True or false if required
 	 */
-	borderColor: {
-		type: String,
-		default: "border-slate-300 focus:border-mpao-lightblue",
-	},
+	borderColor: "border-slate-300 focus:border-mpao-lightblue",
 	/**
 	 * True or false if disabled
 	 */
-	inputLabel: {
-		type: String,
-		default: "Choose File",
-	},
+	inputLabel: "Choose File",
 });
 
 const { errorMessage } = toRefs(props);
@@ -233,7 +210,7 @@ const emit = defineEmits([
  * // Usage of the function in a file input form
  * <input type="file" onChange={handleFileSelect} />
  */
-function handleFileSelect(event) {
+function handleFileSelect(event: ChangeEvent<HTMLInputElement>) {
 	// Set the file button status to 'uploading'
 	fileButtonStatus.value = "uploading";
 
@@ -248,13 +225,13 @@ function handleFileSelect(event) {
 		},
 		body: createFormData(event),
 	}).then(
-		function (response) {
+		function (response: any) {
 			// If the response status is not 201, set 'fetchError' to the response status
 			if (response.status != 201) {
 				this.fetchError = response.status;
 			} else {
 				// If the response status is 201, parse the response data as JSON
-				response.json().then(function (data) {}.bind(this));
+				response.json().then(function (data: any) {}.bind(this));
 			}
 			// Reset the file button status and emit an 'uploaded' event with the response data
 			fileButtonStatus.value = "initial";

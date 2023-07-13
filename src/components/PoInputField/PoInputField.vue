@@ -65,101 +65,78 @@ export default {
 <script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs, onMounted } from "vue";
+import type { FormEventHandler } from "react";
+import formatMoney from "../../shared/helper/FormatMoney";
 
-import { formatMoney } from "../../shared/helper";
+interface Props {
+	modelValue?: string | number;
+	label?: string;
+	type?: string;
+	display?: "vertical" | "horizontal";
+	id?: string;
+	info?: string | null;
+	message?: string | null;
+	errorMessage?: string | null;
+	hasError?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	placeholder?: string | undefined;
+	borderColor?: string;
+}
 
-const props = defineProps({
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		default: "",
-	},
+	modelValue: "",
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input type
 	 */
-	type: {
-		type: String,
-		default: "text",
-	},
+	type: "text",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * True or False has error.. NO LONGER HAVE TO USE THIS. JUST PASS AN errorMessage.
 	 */
-	hasError: {
-		type: Boolean,
-		default: false,
-	},
+	hasError: false,
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True or false if required
 	 */
-	placeholder: {
-		type: String,
-		default: null,
-	},
+	placeholder: undefined,
 	/**
 	 * True or false if required
 	 */
-	borderColor: {
-		type: String,
-		default: "po-border-slate-300 focus:po-border-mpao-lightblue",
-	},
+	borderColor: "po-border-slate-300 focus:po-border-mpao-lightblue",
 });
 
 function getBorderColor() {
@@ -184,12 +161,12 @@ watch(errorMessage, (newVal, oldVal) => {
 
 let inputType = "currency" === props.type ? "text" : props.type;
 
-const inputValue = ref(null);
+const inputValue = ref<string | number | undefined>(undefined);
 
 const emit = defineEmits(["update:modelValue"]);
 
-const handleInput = (event) => {
-	let val = event.target.value;
+const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+	let val = (event.target as HTMLInputElement).value;
 
 	inputValue.value = val;
 
@@ -209,16 +186,16 @@ const handleInput = (event) => {
  */
 watch(props, (newVal, oldVal) => {
 	if ("currency" === props.type && inputValue.value !== oldVal.modelValue) {
-		inputValue.value = formatMoney(props.modelValue);
+		inputValue.value = "" + formatMoney(props.modelValue);
 	} else {
 		inputValue.value = props.modelValue;
 	}
 });
 
-const formatInput = (val) => {
-	let formattedInput = null;
+const formatInput = (val: string | number) => {
+	let formattedInput: string | number = "";
 	if ("currency" === props.type) {
-		formattedInput = formatMoney(cleanInputForModalValue("" + val));
+		formattedInput = "" + formatMoney(cleanInputForModalValue("" + val));
 	} else {
 		formattedInput = val;
 	}
@@ -226,7 +203,7 @@ const formatInput = (val) => {
 	inputValue.value = formattedInput;
 };
 
-const cleanInputForModalValue = (input) => {
+const cleanInputForModalValue = (input: string) => {
 	let formattedValue = input.replace(/,/g, ""); // Remove commas
 
 	const decimalIndex = formattedValue.indexOf(".");

@@ -76,21 +76,22 @@ export default {
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { BellIcon } from "@heroicons/vue/24/outline";
-defineProps({
+import type { Notification } from "./Notification";
+
+interface Props {
+	notifications: Notification[] | null;
+	hasNewNotifications: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * List of notifications to display
 	 */
-	notifications: {
-		type: Array,
-		default: null,
-	},
+	notifications: null,
 	/**
 	 * True or False if there is/are a new notification/s
 	 */
-	hasNewNotifications: {
-		type: Boolean,
-		default: false,
-	},
+	hasNewNotifications: false,
 });
 
 const emit = defineEmits(["button-click"]);

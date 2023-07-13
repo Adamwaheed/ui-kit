@@ -72,7 +72,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { computed, ref, toRefs, watch, onMounted, onBeforeUnmount } from "vue";
+import { ref, toRefs, watch, onMounted, onBeforeUnmount } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
 import {
@@ -84,21 +84,20 @@ import {
 
 const query = ref("");
 
-const props = defineProps({
+interface Props {
+	show?: boolean;
+	showContent?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Pass model Open/Close to the component
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 	/**
 	 * Show / hide content
 	 */
-	showContent: {
-		type: Boolean,
-		default: false,
-	},
+	showContent: false,
 });
 
 const { show } = toRefs(props);
@@ -112,7 +111,7 @@ watch(show, () => {
 	}, 100);
 });
 
-function keyupHandler(event) {
+function keyupHandler(event: KeyboardEvent) {
 	if (event.ctrlKey && event.key === "b") {
 		isShowing.value = true;
 	}

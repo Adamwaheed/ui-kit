@@ -22,31 +22,28 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+interface Props {
+	symbolWidth?: string;
+	symbolFillColor?: string;
+	amount?: number | string | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Rufiyaa symbol width in tailwind w-[x] default w-3
 	 */
-	symbolWidth: {
-		type: String,
-		default: "po-w-3",
-	},
+	symbolWidth: "po-w-3",
 	/**
 	 * Rufiyaa symbol fill-color
 	 */
-	symbolFillColor: {
-		type: String,
-		default: "po-fill-current",
-	},
+	symbolFillColor: "po-fill-current",
 	/**
 	 * Amount
 	 */
-	amount: {
-		type: [Number, String],
-		default: null,
-	},
+	amount: null,
 });
 
-function formatNumber(num) {
+function formatNumber(num: number | string) {
 	const parsedNum =
 		typeof num === "string" ? parseFloat(num.replace(/,/g, "")) : num;
 	if (isNaN(parsedNum)) return "";

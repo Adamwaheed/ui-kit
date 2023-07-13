@@ -52,28 +52,25 @@ export default {
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-defineProps({
+interface Props {
+	modelValue: string | number;
+	placeholder?: string;
+	showBtn?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		default: "",
-	},
+	modelValue: "",
 	/**
 	 * Placeholder, screen reader label
 	 */
-	placeholder: {
-		type: String,
-		default: "Search",
-	},
+	placeholder: "Search",
 	/**
 	 * Show hide card search button
 	 */
-	showBtn: {
-		type: Boolean,
-		default: false,
-	},
+	showBtn: false,
 });
 
 const emit = defineEmits(["update:modelValue", "button-click"]);

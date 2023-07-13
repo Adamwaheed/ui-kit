@@ -80,32 +80,45 @@ export default {
 </script>
 <script setup lang="ts">
 import { BoltIcon, ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
-import { baseCompile } from "@vue/compiler-core";
 import PoButton from "../PoButton/PoButton.vue";
 import PoDescriptionList from "../PoDescriptionList/PoDescriptionList.vue";
 
-defineProps({
+interface Member {
+	name: string;
+	identifier: string;
+	dob: string;
+}
+interface Record {
+	institution: string;
+	date_of_death: string;
+}
+interface Request {
+	type_id: string | any;
+	type: string | any;
+	state: string | any;
+	dispute_type: string | any;
+	date_of_death: string | any;
+}
+
+interface Props {
+	member?: Member | null;
+	record?: Record | null;
+	request?: Request | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Member Object { name, identifier, dob }
 	 */
-	member: {
-		type: Object,
-		default: null,
-	},
+	member: null,
 	/**
 	 * Record Object { id, institution, date_of_death }
 	 */
-	record: {
-		type: Object,
-		default: null,
-	},
+	record: null,
 	/**
 	 * Request Object { id, type, state, dispute_type, institution, date_of_death }
 	 */
-	request: {
-		type: Object,
-		default: null,
-	},
+	request: null,
 });
 
 const emit = defineEmits(["dispute-click"]);

@@ -32,7 +32,7 @@
 			:aria-required="required"
 			:aria-disabled="disabled"
 			v-bind="$attrs"
-			@input="$emit('update:modelValue', $event.target.value)"
+			@input="handleInput"
 			class="po-mt-1 po-peer po-px-3 po-py-2 po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-border-slate-300 po-bg-white focus:po-border-mpao-lightblue focus:po-ring-0 invalid:po-border-red-400 invalid:po-focus:border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default"
 		></textarea>
 		<p
@@ -59,84 +59,69 @@ export default {
 </script>
 <script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/24/solid";
+import type { FormEventHandler } from "react";
 
-defineProps({
+interface Props {
+	modelValue?: string | number;
+	label?: string;
+	id?: string;
+	info?: string | null;
+	message?: string | null;
+	errorMessage?: string | null;
+	required?: boolean;
+	disabled?: boolean;
+	placeholder?: string | undefined;
+	display?: "vertical" | "horizontal";
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		default: "",
-	},
+	modelValue: "",
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
-	/**
-	 * Input type
-	 */
-	type: {
-		type: String,
-		default: "text",
-	},
+	label: "",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True or false if required
 	 */
-	placeholder: {
-		type: String,
-		default: null,
-	},
+	placeholder: undefined,
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 });
+
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput: FormEventHandler<HTMLTextAreaElement> = (event) => {
+	let val = (event.target as HTMLTextAreaElement).value;
+
+	emit("update:modelValue", val);
+};
 </script>

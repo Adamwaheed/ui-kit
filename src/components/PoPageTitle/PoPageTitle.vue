@@ -143,77 +143,86 @@ import PoPagination from "../PoPagination/PoPagination.vue";
 
 import { ref } from "vue";
 
-const props = defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Stat {
+	icon?: HeroIcon;
+	value?: string;
+	label?: string;
+	iconColor?: string;
+}
+
+interface Pagination {
+	label?: string;
+	nextLink?: string;
+	prevLink?: string;
+}
+
+interface Stat {
+	icon?: HeroIcon;
+	value?: string;
+	label?: string;
+	iconColor?: string;
+}
+
+interface Props {
+	label?: string;
+	description?: string;
+	stats?: Stat[] | null;
+	showPagination?: boolean;
+	showFilter?: boolean;
+	showDownload?: boolean;
+	pagination?: Pagination | null;
+	filterOn?: boolean;
+	standAlone?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Page title
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Page description
 	 */
-	description: {
-		type: String,
-		default: "",
-	},
+	description: "",
 	/**
 	 * Page stats
 	 */
-	stats: {
-		type: Array,
-		default: null,
-	},
+	stats: null,
 	/**
 	 * True or False show pagination
 	 */
-	showPagination: {
-		type: Boolean,
-		default: false,
-	},
+	showPagination: false,
 	/**
 	 * True or False show filter button
 	 */
-	showFilter: {
-		type: Boolean,
-		default: false,
-	},
+	showFilter: false,
 	/**
 	 * True or False show download button
 	 */
-	showDownload: {
-		type: Boolean,
-		default: false,
-	},
+	showDownload: false,
 	/**
 	 * Pagination Object { label: 'Page 1 of 2', nextLink: './next', prevLink: './prev' }
 	 */
-	pagination: {
-		type: Object,
-		default: null,
-	},
+	pagination: null,
 	/**
 	 * Turn on and off filters ... show on load
 	 */
-	filterOn: {
-		type: Boolean,
-		default: false,
-	},
+	filterOn: false,
 	/**
 	 *
 	 */
-	standAlone: {
-		type: Boolean,
-		default: false,
-	},
+	standAlone: false,
 });
 
 const emit = defineEmits(["button-click", "pagination-click", "stat-click"]);
 
 const filterOn = props.filterOn ? ref(true) : ref(false);
 
-function handlePaginationClick(item) {
+function handlePaginationClick(item: string) {
 	/**
 	 * @event pagination-click
 	 * Emits 'prev' or 'next' depending on the button clicked
@@ -221,7 +230,7 @@ function handlePaginationClick(item) {
 	emit("pagination-click", item);
 }
 
-function statIconColor(stat) {
+function statIconColor(stat: Stat) {
 	return stat.iconColor ? stat.iconColor : "po-slate-600";
 }
 </script>

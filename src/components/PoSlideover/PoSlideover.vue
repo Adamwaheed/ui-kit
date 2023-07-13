@@ -96,49 +96,40 @@ import {
 } from "@headlessui/vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
-const props = defineProps({
+interface Props {
+	label?: string | null;
+	description?: string | null;
+	show?: boolean;
+	maxWidth?: string;
+	bgColor?: string;
+	screenOpacity?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Slideover label/title
 	 */
-	label: {
-		type: String,
-		default: null,
-	},
+	label: null,
 	/**
 	 * Slideover description. Optional
 	 */
-	description: {
-		type: String,
-		default: null,
-	},
+	description: null,
 	/**
 	 * Pass model Open/Close to the component
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 	/**
 	 * Set width of the slideover. default:max-w-lg
 	 */
-	maxWidth: {
-		type: String,
-		default: "po-max-w-lg",
-	},
+	maxWidth: "po-max-w-lg",
 	/**
 	 * Add custom backgorund color to panel
 	 */
-	bgColor: {
-		type: String,
-		default: "",
-	},
+	bgColor: "",
 	/**
 	 * screen opcaity. default is bg-opacity-10
 	 */
-	screenOpacity: {
-		type: String,
-		default: "po-bg-opacity-10",
-	},
+	screenOpacity: "po-bg-opacity-10",
 });
 
 const { show } = toRefs(props);

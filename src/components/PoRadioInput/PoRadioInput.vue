@@ -61,16 +61,11 @@
 			</RadioGroupOption>
 		</div>
 		<div>
-			<p
-				class="po-mt-2 po-text-sm po-text-slate-500"
-				:id="`${id}-description`"
-				v-if="null !== message"
-			>
+			<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
 				{{ message }}
 			</p>
 			<p
 				class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-				:id="`${id}-error`"
 				v-if="formHasError && null !== errorMessage"
 			>
 				<ExclamationTriangleIcon
@@ -97,56 +92,51 @@ import {
 	RadioGroupOption,
 } from "@headlessui/vue";
 
-const props = defineProps({
+interface Option {
+	id: string | number;
+	title: string;
+	description?: string;
+}
+
+interface Props {
+	modelValue: string | number | null;
+	options: Option[] | null;
+	label?: string;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	errorMessage?: string | null;
+	message?: string | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		requred: true,
-	},
+	modelValue: null,
 	/**
 	 * List of options for raido
 	 */
-	options: {
-		type: Array,
-		default: null,
-	},
+	options: null,
 	/**
 	 * Label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 });
 
 const selectedOption = ref();

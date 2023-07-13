@@ -39,28 +39,25 @@ export default {
 import { ref } from "vue";
 import { Switch, SwitchGroup, SwitchLabel } from "@headlessui/vue";
 
-const props = defineProps({
+interface Props {
+	modelValue?: boolean;
+	label?: string;
+	required?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: Boolean,
-		default: false,
-	},
+	modelValue: false,
 	/**
 	 * Label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 });
 
 const enabled = ref(props.modelValue);

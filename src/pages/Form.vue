@@ -417,7 +417,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import {
 	PoPageTitle,
@@ -431,7 +431,7 @@ import {
 	PoToggle,
 	PoUpload,
 } from "../components";
-import { debounce } from "../shared/helper";
+import debounce from "../shared/helper/Debounce";
 import DataPreview from "./dataPreview.vue";
 
 import islands from "./islandsList.js";
@@ -472,7 +472,7 @@ const selectFieldListSubtitles = ref([
 	{ id: 3, name: "Something drinkable", subtitle: "Water" },
 ]);
 
-const selectFieldListDelay = ref([]);
+const selectFieldListDelay = ref<object[]>([]);
 const selectFieldListChange = ref([
 	{ id: 1, name: "Koshaaru" },
 	{ id: 2, name: "HelpDesk" },
@@ -516,10 +516,10 @@ const selectClickedParentItem = ref(null);
 function handleSelectApiMoreClick() {
 	selectApiMoreClicked.value = selectApiMoreClicked.value + 1;
 }
-function handleSelectApiClick(val) {
+function handleSelectApiClick(val: any) {
 	selectClickedComponentItem.value = val.owner;
 }
-function handleSelectApiParentOptionClick(val) {
+function handleSelectApiParentOptionClick(val: any) {
 	selectClickedParentItem.value = val;
 }
 

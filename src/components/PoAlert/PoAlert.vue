@@ -97,9 +97,9 @@ import {
 } from "@headlessui/vue";
 
 interface Props {
-	cancelBtnLabel: string;
-	okBtnLabel: string;
-	alertTitle: string;
+	cancelBtnLabel?: string;
+	okBtnLabel?: string;
+	alertTitle?: string;
 	alertDescription: string;
 	show: boolean;
 }

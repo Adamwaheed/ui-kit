@@ -52,7 +52,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
 
 interface Props {
 	items: Array<string> | null;
-	showBackButton: boolean;
+	showBackButton?: boolean;
 	currPageRoute: string;
 }
 

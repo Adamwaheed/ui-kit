@@ -47,20 +47,32 @@ export default {
 };
 </script>
 <script setup lang="ts">
-const props = defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Item {
+	bgColor: string;
+	iconColor: string;
+	icon: HeroIcon;
+	value: string;
+	diff?: string;
+	label: string;
+}
+
+interface Props {
+	items: Item[] | null;
+	numberOfCols?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Items
 	 */
-	items: {
-		type: Array,
-		default: null,
-	},
+	items: null,
 	/**
 	 * tailwind grid cols default: grid-cols-1 lg:grid-cols-3
 	 */
-	numberOfCols: {
-		type: String,
-		default: "po-grid-cols-1 lg:po-grid-cols-3",
-	},
+	numberOfCols: "po-grid-cols-1 lg:po-grid-cols-3",
 });
 </script>

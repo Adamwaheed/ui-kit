@@ -82,42 +82,35 @@ import {
 	ExclamationTriangleIcon,
 } from "@heroicons/vue/20/solid";
 
-const props = defineProps({
+interface Props {
+	show?: boolean;
+	actionType?: "success" | "danger" | "warn" | "";
+	message?: string;
+	hideIn?: number;
+	size?: "sm" | "lg" | "xl";
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Pass model Open/Close to the component
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 	/**
 	 * Toast action types. Default ''. Options 'success', 'danger', 'warn'
 	 */
-	actionType: {
-		type: String,
-		default: "",
-	},
+	actionType: "",
 	/**
 	 * Toast message. Default '', keeping it empty and setting an actionType will show default messages for the action type. Keep this short like Saved Successfully!
 	 */
-	message: {
-		type: String,
-		default: "",
-	},
+	message: "",
 	/**
 	 * Number of miliseconds to hide the toast in. By default it's 2000
 	 */
-	hideIn: {
-		type: Number,
-		default: 2000,
-	},
+	hideIn: 2000,
 	/**
 	 * Toast size default: sm... other options: lg, xl
 	 */
-	size: {
-		type: String,
-		default: "sm",
-	},
+	size: "sm",
 });
 
 const { show } = toRefs(props);

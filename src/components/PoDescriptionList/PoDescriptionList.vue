@@ -43,22 +43,30 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+interface ActionObject {
+	label: string;
+	[key: string]: any;
+}
+
+interface Item {
+	title: string;
+	description: string;
+	action?: string | ActionObject;
+}
+
+interface Props {
+	items?: Item[] | null;
+	striped?: boolean;
+	columns?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Items to display in the list.
 	 */
-	items: {
-		type: Array,
-		default: null,
-	},
-	striped: {
-		type: Boolean,
-		default: false,
-	},
-	columns: {
-		type: Boolean,
-		default: true,
-	},
+	items: null,
+	striped: false,
+	columns: true,
 });
 
 const emit = defineEmits(["button-click"]);

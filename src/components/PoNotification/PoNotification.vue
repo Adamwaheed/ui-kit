@@ -73,35 +73,30 @@ export default {
 import { ref, toRefs, watch } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 
-const props = defineProps({
+interface Props {
+	show?: boolean;
+	label?: string;
+	text?: string;
+	buttonLabel?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Show hide notification
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 	/**
 	 * Notification label
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Notification text
 	 */
-	text: {
-		type: String,
-		default: "",
-	},
+	text: "",
 	/**
 	 * Notification text
 	 */
-	buttonLabel: {
-		type: String,
-		default: "Ok",
-	},
+	buttonLabel: "Ok",
 });
 
 const emit = defineEmits(["button-click"]);

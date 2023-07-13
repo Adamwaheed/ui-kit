@@ -64,20 +64,26 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { formatDate } from "../../shared/helper";
+import formatDate from "../../shared/helper/FormatDate";
 
-defineProps({
+interface Timeline {
+	current: boolean;
+	label: string;
+	date: string;
+	description?: string;
+}
+
+interface Props {
+	timeline: Timeline[] | null;
+	clickable?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * array of timeline items [{current:Boolean, label:String, date:String, description:String}]
 	 */
-	timeline: {
-		type: Array,
-		default: null,
-	},
-	clickable: {
-		type: Boolean,
-		default: false,
-	},
+	timeline: null,
+	clickable: false,
 });
 
 const emit = defineEmits(["button-click"]);

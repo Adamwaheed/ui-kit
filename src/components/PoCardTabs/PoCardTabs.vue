@@ -35,19 +35,33 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Tab {
+	name: string;
+	icon: HeroIcon;
+	iconColor: string;
+	href?: string;
+	current?: boolean;
+	count?: number;
+}
+
+interface Props {
+	tabs: Tab[] | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Page title
 	 */
-	tabs: {
-		type: Array,
-		default: null,
-	},
+	tabs: null,
 });
 
 const emit = defineEmits(["button-click"]);
 
-function setIconColor(tabObj) {
+function setIconColor(tabObj: Tab) {
 	return tabObj.iconColor ? tabObj.iconColor : "po-fill-current";
 }
 </script>

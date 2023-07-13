@@ -103,15 +103,17 @@ import ISOLogo from "./IsoLogo.vue";
 import CertificateModel from "./CertificateModel.vue";
 import ToCModel from "./ToCModel.vue";
 import PrivacyPolicyModel from "./PrivacyPolicyModel.vue";
+import type { LogType } from "./LogType";
 
-defineProps({
+interface Props {
+	changelog: LogType[] | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Chnagelog
 	 */
-	changelog: {
-		type: Array,
-		default: null,
-	},
+	changelog: null,
 });
 
 const emit = defineEmits(["button-click"]);

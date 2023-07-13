@@ -20,28 +20,25 @@ export default {
 <script setup lang="ts">
 import { CheckCircleIcon } from "@heroicons/vue/20/solid";
 
-const props = defineProps({
+interface Props {
+	itemId: number | null;
+	isChecked: boolean;
+	disabled?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value this is a Boolean of checked/unchecked state
 	 */
-	itemId: {
-		type: Number,
-		requred: true,
-	},
+	itemId: null,
 	/**
 	 * Model value this is a Boolean of checked/unchecked state
 	 */
-	isChecked: {
-		type: Boolean,
-		requred: true,
-	},
+	isChecked: true,
 	/**
 	 * Disable check... shows a checkmark in disabled state
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 });
 
 const emit = defineEmits(["checkboxClicked"]);

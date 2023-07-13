@@ -41,27 +41,24 @@ import {
 	CheckCircleIcon,
 } from "@heroicons/vue/24/outline";
 
-const props = defineProps({
+interface Props {
+	isError?: boolean;
+	message?: string;
+	errorList?: string[] | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * If it's an error message, by default it's a success message
 	 */
-	isError: {
-		type: Boolean,
-		default: false,
-	},
+	isError: false,
 	/**
 	 * The message to display
 	 */
-	message: {
-		type: String,
-		default: "This is a form status",
-	},
+	message: "This is a form status",
 	/**
 	 * A list of errors
 	 */
-	errorList: {
-		type: Array,
-		default: null,
-	},
+	errorList: null,
 });
 </script>

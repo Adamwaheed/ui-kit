@@ -38,21 +38,25 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+interface Props {
+	label?: string;
+	description?: string;
+	icon?: HeroIcon | null;
+	iconColor?: string;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * State label
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * State description
 	 */
-	description: {
-		type: String,
-		default: "",
-	},
+	description: "",
 	/**
 	 * Heroicon
 	 */
@@ -60,9 +64,6 @@ defineProps({
 	/**
 	 * Icon color
 	 */
-	iconColor: {
-		type: String,
-		default: "po-stroke-slate-300",
-	},
+	iconColor: "po-stroke-slate-300",
 });
 </script>

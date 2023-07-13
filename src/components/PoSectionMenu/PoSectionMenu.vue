@@ -35,20 +35,29 @@ export default {
 };
 </script>
 <script setup lang="ts">
-defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Item {
+	link: string;
+	label: string;
+	icon: HeroIcon;
+}
+
+interface Props {
+	currPageRoute?: string;
+	menuItems: Item[] | null;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Current route name to highlight
 	 */
-	currPageRoute: {
-		type: String,
-		default: "",
-	},
+	currPageRoute: "",
 	/**
 	 * list of menu items
 	 */
-	menuItems: {
-		type: Array,
-		default: null,
-	},
+	menuItems: null,
 });
 </script>

@@ -57,42 +57,40 @@ export default {
 <script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 
-const props = defineProps({
+interface FileObject {
+	label: string;
+	[key: string]: any;
+}
+
+interface Props {
+	files: FileObject[] | null;
+	linkLabel?: string;
+	emptyLabel?: string;
+	showViewBtn?: boolean;
+	viewBtnLabel?: string;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * List of files
 	 */
-	files: {
-		type: Object,
-		default: null,
-	},
+	files: null,
 	/**
 	 * Label of the download link, by default it is "Download"
 	 */
-	linkLabel: {
-		type: String,
-		default: "Download",
-	},
+	linkLabel: "Download",
 	/**
 	 * list of items
 	 */
-	emptyLabel: {
-		type: String,
-		default: "No files to download.",
-	},
+	emptyLabel: "No files to download.",
 	/**
 	 * show view btn
 	 */
-	showViewBtn: {
-		type: Boolean,
-		default: false,
-	},
+	showViewBtn: false,
 	/**
 	 * Label of the view btn link, by default it is "View"
 	 */
-	viewBtnLabel: {
-		type: String,
-		default: "View",
-	},
+	viewBtnLabel: "View",
 });
 
 const emit = defineEmits(["button-click", "view-click"]);

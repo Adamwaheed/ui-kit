@@ -14,7 +14,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { PoCard, PoEmpty } from "../components";
 import { BeakerIcon } from "@heroicons/vue/24/outline";
 </script>

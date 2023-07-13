@@ -32,14 +32,13 @@ export default {
 <script setup lang="ts">
 import AnimatedLogo from "./AnimatedLogo.vue";
 
-const props = defineProps({
-	show: {
-		type: Boolean,
-		default: false,
-	},
-	label: {
-		type: String,
-		default: "",
-	},
+interface Props {
+	show?: boolean;
+	label?: string;
+}
+
+withDefaults(defineProps<Props>(), {
+	show: false,
+	label: "",
 });
 </script>

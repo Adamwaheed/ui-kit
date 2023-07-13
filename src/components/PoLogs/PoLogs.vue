@@ -49,20 +49,26 @@ export default {
 };
 </script>
 <script setup lang="ts">
-const props = defineProps({
+interface Item {
+	label?: string;
+	date?: string;
+	by?: string;
+	description?: string;
+}
+
+interface Props {
+	items: Item[] | null;
+	emptyLabel?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * list of items
 	 */
-	items: {
-		type: Array,
-		default: null,
-	},
+	items: null,
 	/**
 	 * list of items
 	 */
-	emptyLabel: {
-		type: String,
-		default: "No logs to display.",
-	},
+	emptyLabel: "No logs to display.",
 });
 </script>

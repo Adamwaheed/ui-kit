@@ -45,39 +45,39 @@ import { ref } from "vue";
 
 import { PoTooltip } from "..";
 
-const props = defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Props {
+	btnIcon?: HeroIcon | null;
+	btnType?: "text" | "icon" | "view" | "edit" | "delete";
+	label?: string;
+	textColor?: string;
+	iconColor?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Heroicon outline 24. Not needed for 'text', 'view', 'edit', or 'delete' types.
 	 */
-	btnIcon: Function,
+	btnIcon: null,
 	/**
 	 * Button type. By default it's set to 'text'. You can have 'text', 'icon', 'view', 'edit', or 'delete' types.
 	 */
-	btnType: {
-		type: String,
-		default: "text",
-	},
+	btnType: "text",
 	/**
 	 * For text buttons a label is needed. Not needed for 'icon', 'view', 'edit', or 'delete' types.
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Label color for text icons. Not needed for 'icon', 'view', 'edit', or 'delete' types.
 	 */
-	textColor: {
-		type: String,
-		default: "po-slate-500",
-	},
+	textColor: "po-slate-500",
 	/**
 	 * Icon stroke color. Not needed for 'text', 'view', 'edit', or 'delete' types.
 	 */
-	iconColor: {
-		type: String,
-		default: "po-stroke-slate-500",
-	},
+	iconColor: "po-stroke-slate-500",
 });
 
 const currIcon = ref();
