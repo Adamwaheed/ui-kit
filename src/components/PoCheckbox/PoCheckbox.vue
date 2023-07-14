@@ -44,61 +44,50 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoCheckbox",
 };
 </script>
-<script setup>
-defineProps({
+<script setup lang="ts">
+interface Props {
+	modelValue: boolean;
+	label?: string;
+	id?: string;
+	message?: string | null;
+	errorMessage?: string | null;
+	disabled?: boolean;
+	required?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: Boolean,
-		default: false,
-	},
+	modelValue: false,
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "checkbox-0",
-	},
+	id: "checkbox-0",
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 });
 </script>

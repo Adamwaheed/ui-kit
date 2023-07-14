@@ -4,14 +4,7 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<RadioGroupLabel
-			class="
-				po-text-sm
-				po-font-medium
-				po-flex
-				po-items-center
-				po-space-x-1
-				po-text-slate-700
-			"
+			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span
@@ -35,16 +28,7 @@
 					]"
 				>
 					<span
-						class="
-							po-w-5
-							po-h-5
-							po-rounded-full
-							po-border
-							po-mr-2
-							po-flex
-							po-items-center
-							po-justify-center
-						"
+						class="po-w-5 po-h-5 po-rounded-full po-border po-mr-2 po-flex po-items-center po-justify-center"
 						:class="[
 							active ? '' : '',
 							checked ? 'po-border-mpao-lightblue' : 'po-border-slate-400',
@@ -68,9 +52,7 @@
 							<RadioGroupDescription
 								v-if="option.description"
 								as="span"
-								class="
-									po-mt-1 po-flex po-items-center po-text-sm po-text-gray-500
-								"
+								class="po-mt-1 po-flex po-items-center po-text-sm po-text-gray-500"
 								>{{ option.description }}</RadioGroupDescription
 							>
 						</span>
@@ -79,18 +61,11 @@
 			</RadioGroupOption>
 		</div>
 		<div>
-			<p
-				class="po-mt-2 po-text-sm po-text-slate-500"
-				:id="`${id}-description`"
-				v-if="null !== message"
-			>
+			<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
 				{{ message }}
 			</p>
 			<p
-				class="
-					po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1
-				"
-				:id="`${id}-error`"
+				class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
 				v-if="formHasError && null !== errorMessage"
 			>
 				<ExclamationTriangleIcon
@@ -102,12 +77,12 @@
 	</RadioGroup>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoRadioInput",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, watch, onUpdated, toRefs } from "vue";
 import { ExclamationTriangleIcon } from "@heroicons/vue/20/solid";
 import {
@@ -117,56 +92,51 @@ import {
 	RadioGroupOption,
 } from "@headlessui/vue";
 
-const props = defineProps({
+interface Option {
+	id: string | number;
+	title: string;
+	description?: string;
+}
+
+interface Props {
+	modelValue: string | number | null;
+	options: Option[] | null;
+	label?: string;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	errorMessage?: string | null;
+	message?: string | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		requred: true,
-	},
+	modelValue: null,
 	/**
 	 * List of options for raido
 	 */
-	options: {
-		type: Array,
-		default: null,
-	},
+	options: null,
 	/**
 	 * Label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 });
 
 const selectedOption = ref();

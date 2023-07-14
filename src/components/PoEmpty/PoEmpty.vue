@@ -1,14 +1,6 @@
 <template>
 	<div
-		class="
-			po-mt-5
-			po-flex
-			po-flex-col
-			po-items-center
-			po-justify-center
-			po-px-5
-			po-py-8
-		"
+		class="po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-py-8"
 	>
 		<div
 			class="po-space-y-2 po-flex po-items-center po-flex-col po-justify-center"
@@ -27,14 +19,7 @@
 			>
 			<span
 				v-if="description !== ''"
-				class="
-					po-text-sm
-					po-text-slate-500
-					po-text-center
-					po-max-w-lg
-					po-block
-					po-mx-auto
-				"
+				class="po-text-sm po-text-slate-500 po-text-center po-max-w-lg po-block po-mx-auto"
 				>{{ description }}</span
 			>
 		</div>
@@ -47,27 +32,31 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoEmpty",
 };
 </script>
-<script setup>
-defineProps({
+<script setup lang="ts">
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+interface Props {
+	label?: string;
+	description?: string;
+	icon?: HeroIcon | null;
+	iconColor?: string;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * State label
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * State description
 	 */
-	description: {
-		type: String,
-		default: "",
-	},
+	description: "",
 	/**
 	 * Heroicon
 	 */
@@ -75,9 +64,6 @@ defineProps({
 	/**
 	 * Icon color
 	 */
-	iconColor: {
-		type: String,
-		default: "po-stroke-slate-300",
-	},
+	iconColor: "po-stroke-slate-300",
 });
 </script>

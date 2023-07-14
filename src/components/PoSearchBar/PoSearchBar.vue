@@ -16,36 +16,34 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSearchBar",
 };
 </script>
-<script setup>
-import { ref, onMounted, onUnmounted, watch } from "vue";
+<script setup lang="ts">
+import { ref, watch } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-const props = defineProps({
+interface Props {
+	placeholder?: string;
+	currentQuery?: string;
+}
+withDefaults(defineProps<Props>(), {
 	/**
 	 * Placeholder text
 	 */
-	placeholder: {
-		type: String,
-		default: "Search",
-	},
+	placeholder: "Search",
 	/**
 	 * Search Query
 	 */
-	currentQuery: {
-		type: String,
-		default: "",
-	},
+	currentQuery: "",
 });
 
 const emit = defineEmits(["query", "onClear"]);
 let query = ref("");
 
-const searchOnEnter = (e) => {
+const searchOnEnter = (e: KeyboardEvent) => {
 	// if (e.key === "Enter"  && 0 < query.value.length) {
 	emit("query", query.value);
 	// }

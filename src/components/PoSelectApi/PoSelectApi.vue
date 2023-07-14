@@ -51,7 +51,11 @@
 					ref="selectBox"
 					v-model="searchQuery"
 					@input="handleInput"
-					@focus="showDropdown = true"
+					@focus="
+						inputFocused = true;
+						showDropdown = true;
+					"
+					@blur="handleBlur"
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 				/>
 			</div>
@@ -108,14 +112,14 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSelectApi",
 	components: { XMarkIcon },
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import {
 	computed,
 	onMounted,
@@ -128,134 +132,115 @@ import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
+import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 
-const props = defineProps({
+interface Props {
+	options: Array<any>;
+	id?: string;
+	loading?: boolean;
+	showMoreBtn?: boolean;
+	label?: string;
+	info?: string | null;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	errorMessage?: string | null;
+	message?: string | null;
+	disabled?: boolean;
+	emptyMessage?: string | null;
+	showSelected?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Options list
 	 */
-	options: {
-		type: Array,
-		default: null,
-	},
+	options: () => [],
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * Show loading true/false default false
 	 */
-	loading: {
-		type: Boolean,
-		default: false,
-	},
+	loading: false,
 	/**
 	 * Show show/hide more button
 	 */
-	showMoreBtn: {
-		type: Boolean,
-		default: false,
-	},
+	showMoreBtn: false,
 	/**
 	 * Label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * Shown when user clicks on the input.
 	 */
-	emptyMessage: {
-		type: String,
-		default: null,
-	},
+	emptyMessage: null,
 	/**
 	 * By default, selected option is shown, incase you don't want this behavior, you can set this prop to false.
 	 */
-	showSelected: {
-		type: Boolean,
-		default: true,
-	},
+	showSelected: true,
 });
 
-const selectBox = ref(null);
+const selectBox = ref();
 const showDropdown = ref(false);
-const loadedOptions = ref([]);
+const inputFocused = ref(false);
+const loadedOptions = ref<any[]>([]);
 
 watch(props, (newVal, oldVal) => {
 	loadedOptions.value = props.options;
 });
 
 // Function to get the position of the element
-const getSelectBoxPosition = computed(() => {
-	if (selectBox.value) {
-		const container = document.querySelector(".shell-content--area");
-		const { top: containerTop } = container.getBoundingClientRect();
-		const scrollTop = container.scrollTop;
+// const getSelectBoxPosition = computed(() => {
+// 	if (selectBox.value) {
+// 		const container = document.querySelector(".shell-content--area");
+// 		const { top: containerTop } = container?.getBoundingClientRect();
+// 		const scrollTop = container?.scrollTop;
 
-		const { top, left, width } = selectBox.value.getBoundingClientRect();
-		const relativeTop = top - containerTop + scrollTop;
-		return { relativeTop, left, width };
-	}
-});
+// 		const { top, left, width } = selectBox.value.getBoundingClientRect();
+// 		const relativeTop = top - containerTop + scrollTop;
+// 		return { relativeTop, left, width };
+// 	}
+// });
 
 const containerRef = ref(null);
 const dropdownRef = ref(null);
 
-const handleClickOutside = (event) => {
-	if (
-		!containerRef.value.contains(event.target) &&
-		!selectBox.value.contains(event.target)
-	) {
-		// Click occurred outside the container and target elements
+useDetectOutsideClick(containerRef, () => {
+	showDropdown.value = inputFocused.value ? true : false;
+});
+
+function handleBlur() {
+	inputFocused.value = false;
+
+	setTimeout(() => {
 		showDropdown.value = false;
-	}
-};
+	}, 100);
+}
 
 const uniqueID = ref("");
 onMounted(() => {
@@ -273,18 +258,13 @@ onMounted(() => {
 		uniqueID.value = props.id;
 	}
 
-	document.addEventListener("click", handleClickOutside);
-
-	setTimeout(() => {
-		if (document.activeElement === selectBox.value) {
-			showDropdown.value = true;
-		} else {
-			showDropdown.value = false;
-		}
-	}, 100);
-});
-onBeforeUnmount(() => {
-	document.removeEventListener("click", handleClickOutside);
+	// setTimeout(() => {
+	// 	if (document.activeElement === selectBox.value) {
+	// 		showDropdown.value = true;
+	// 	} else {
+	// 		showDropdown.value = false;
+	// 	}
+	// }, 100);
 });
 
 const searchQuery = ref();
@@ -297,19 +277,19 @@ function handleInput() {
 
 const selectedOption = ref(null);
 
-function handleOptionClick(option) {
+function handleOptionClick(option: any) {
 	selectedOption.value = option;
 	emit("selected", option);
 
-	showDropdown.value = false;
+	showDropdown.value = inputFocused.value ? true : false;
 }
 
 function handleMoreClick() {
 	emit("loadmore", true);
 }
 
-const popper = ref(null);
-let instance;
+const popper = ref();
+let instance: any;
 
 onMounted(() => {
 	instance = createPopper(selectBox.value, popper.value, {

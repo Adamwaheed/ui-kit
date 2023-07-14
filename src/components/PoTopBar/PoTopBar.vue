@@ -63,14 +63,16 @@
 	</nav>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTopBar",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
+
+import type { Notification } from "../PoNotificationHub/Notification";
 
 import {
 	PoAppIcon,
@@ -80,70 +82,70 @@ import {
 	PoProfileSwitcher,
 } from "../";
 
-const props = defineProps({
+interface UserObject {
+	[key: string]: any;
+}
+
+interface App {
+	name: string;
+	url: string;
+	icon: string;
+	group: string;
+	code: string;
+	related: string[];
+	current: boolean;
+}
+
+interface Props {
+	currentQuery?: string;
+	appName?: string;
+	hasSearch?: boolean;
+	appList?: App[] | null;
+	notifications?: Notification[] | null;
+	hasNewNotifications?: boolean;
+	userObject?: UserObject | null;
+	avatar?: string;
+	logo?: string;
+	appIcon?: any;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Search Query
 	 */
-	currentQuery: {
-		type: String,
-		default: "",
-	},
+	currentQuery: "",
 	/**
 	 * Name of the app
 	 */
-	appName: {
-		type: String,
-		default: "Pension App",
-	},
+	appName: "Pension App",
 	/**
 	 * If topbar has
 	 */
-	hasSearch: {
-		type: Boolean,
-		default: true,
-	},
+	hasSearch: true,
 	/**
 	 * List of apps for app tray
 	 */
-	appList: {
-		type: Array,
-		default: null,
-	},
+	appList: null,
 	/**
 	 * List of notifications for notifications hub
 	 */
-	notifications: {
-		type: Array,
-		default: null,
-	},
+	notifications: null,
 	/**
 	 * Toggle new notification indicator
 	 */
-	hasNewNotifications: {
-		type: Boolean,
-		default: false,
-	},
+	hasNewNotifications: false,
 	/**
 	 * User object
 	 */
-	userObject: {
-		type: Object,
-		default: null,
-	},
+	userObject: null,
 	/**
 	 * Avatar
 	 */
-	avatar: {
-		type: String,
-		default: "",
-	},
+	avatar: "",
 	/**
 	 * Organisation logo
 	 */
-	logo: {
-		type: String,
-		default: "",
-	},
+	logo: "",
 	/**
 	 * App Icon
 	 */
@@ -164,15 +166,15 @@ watch(logo, () => {
 
 const emit = defineEmits(["query", "profileSwitcherClick", "onSearchClear"]);
 
-function handleProfileSwitcherClick(item) {
+function handleProfileSwitcherClick(item: object) {
 	emit("profileSwitcherClick", item);
 }
 
-function PassQueryToParent(value) {
+function PassQueryToParent(value: string) {
 	const newVal = value;
 	emit("query", newVal);
 }
-function PassSearchClearToParent(value) {
+function PassSearchClearToParent(value: boolean) {
 	const newVal = value;
 	emit("onSearchClear", newVal);
 }

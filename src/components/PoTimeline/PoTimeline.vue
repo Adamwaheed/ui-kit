@@ -3,14 +3,7 @@
 		<div class="po-shrink-0 po-flex po-flex-col">
 			<div class="po-w-[2px] po-shrink-0 po-h-10"></div>
 			<div
-				class="
-					po-bg-gradient-to-t
-					po-from-orange-400
-					po-via-red-300
-					po-to-blue-500
-					po-w-[2px]
-					po-grow
-				"
+				class="po-bg-gradient-to-t po-from-orange-400 po-via-red-300 po-to-blue-500 po-w-[2px] po-grow"
 			></div>
 			<div class="po-w-[2px] po-shrink-0 po-h-12"></div>
 		</div>
@@ -26,13 +19,7 @@
 				@click="$emit('button-click', item)"
 			>
 				<span
-					class="
-						po-rounded-full
-						po-absolute
-						po-flex
-						po-items-center
-						po-justify-center
-					"
+					class="po-rounded-full po-absolute po-flex po-items-center po-justify-center"
 					:class="[
 						{ 'po-w-4 po-h-4 -po-left-[1.8rem] po-bg-blue-400': item.current },
 						{
@@ -70,27 +57,33 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTimeline",
 };
 </script>
 
-<script setup>
-import { formatDate } from "../../shared/helper";
+<script setup lang="ts">
+import formatDate from "../../shared/helper/FormatDate";
 
-defineProps({
+interface Timeline {
+	current: boolean;
+	label: string;
+	date: string;
+	description?: string;
+}
+
+interface Props {
+	timeline: Timeline[] | null;
+	clickable?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
 	/**
 	 * array of timeline items [{current:Boolean, label:String, date:String, description:String}]
 	 */
-	timeline: {
-		type: Array,
-		default: null,
-	},
-	clickable: {
-		type: Boolean,
-		default: false,
-	},
+	timeline: null,
+	clickable: false,
 });
 
 const emit = defineEmits(["button-click"]);

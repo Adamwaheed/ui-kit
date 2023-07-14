@@ -81,12 +81,12 @@
 	</TransitionRoot>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoAlert",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, toRefs, watch } from "vue";
 import {
 	Dialog,
@@ -96,42 +96,35 @@ import {
 	TransitionRoot,
 } from "@headlessui/vue";
 
-const props = defineProps({
+interface Props {
+	cancelBtnLabel?: string;
+	okBtnLabel?: string;
+	alertTitle?: string;
+	alertDescription: string;
+	show: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Alert cancel button label
 	 */
-	cancelBtnLabel: {
-		type: String,
-		default: "Cancel",
-	},
+	cancelBtnLabel: "Cancel",
 	/**
 	 * Alert ok button label
 	 */
-	okBtnLabel: {
-		type: String,
-		default: "Ok",
-	},
+	okBtnLabel: "Ok",
 	/**
 	 * Alert Title
 	 */
-	alertTitle: {
-		type: String,
-		default: "",
-	},
+	alertTitle: "",
 	/**
 	 * Alert description text
 	 */
-	alertDescription: {
-		type: String,
-		default: "",
-	},
+	alertDescription: "",
 	/**
 	 * Pass model Open/Close to the component
 	 */
-	show: {
-		type: Boolean,
-		default: false,
-	},
+	show: false,
 });
 
 const { show } = toRefs(props);

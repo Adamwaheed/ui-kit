@@ -22,18 +22,17 @@
 	</div>
 </template>
 
-<script setup>
-defineProps({
+<script setup lang="ts">
+interface Props {
+	dotColor?: string;
+	absolute?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * dot colors
 	 */
-	dotColor: {
-		type: String,
-		default: "po-bg-mpao-lightblue",
-	},
-	absolute: {
-		type: Boolean,
-		default: false,
-	},
+	dotColor: "po-bg-mpao-lightblue",
+	absolute: false,
 });
 </script>

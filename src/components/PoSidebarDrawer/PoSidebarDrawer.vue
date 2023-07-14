@@ -10,7 +10,7 @@
 		ref="sidebarToggle"
 		@click="handleSidebarToggleClick"
 	/>
-	<aside class="shell-sidebar" :key="sidebarOpen">
+	<aside class="shell-sidebar" :key="sideBarKey">
 		<div class="po-grow">
 			<div
 				v-for="(group, groupIndex) in content"
@@ -135,86 +135,107 @@
 	</aside>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoSidebarDrawer",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ref, computed, onMounted } from "vue";
 import FeedbackForm from "./feedbackForm.vue";
-import { PoTooltip } from "..";
+import { PoTooltip } from "../";
 
-const props = defineProps({
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface SidebarContentItem {
+	label: string;
+	url: string;
+	icon: HeroIcon;
+	disabled?: boolean;
+}
+
+interface SidebarContentGroup {
+	groupName: string;
+	items: SidebarContentItem[];
+}
+
+interface App {
+	name: string;
+	url: string;
+	icon: string;
+	group: string;
+	code: string;
+	related: string[];
+	current: boolean;
+}
+
+interface Props {
+	content: SidebarContentGroup[] | null;
+	currRoute?: string;
+	hasFeedback?: boolean;
+	appsLabel?: string;
+	apps?: App[] | null;
+	appCode?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Array of  sidebar menu items
 	 */
-	content: {
-		type: Array,
-		default: null,
-	},
+	content: null,
 	/**
 	 * Current route path
 	 */
-	currRoute: {
-		type: String,
-		default: "/",
-	},
+	currRoute: "/",
 	/**
 	 * Show/hide feedback button
 	 */
-	hasFeedback: {
-		type: Boolean,
-		default: false,
-	},
+	hasFeedback: false,
 	/**
 	 * Related apps label. default Related apps
 	 */
-	appsLabel: {
-		type: String,
-		default: "Related apps",
-	},
+	appsLabel: "Related apps",
 	/**
 	 * List of related apps
 	 */
-	apps: {
-		type: Array,
-		default: null,
-	},
+	apps: null,
 	/**
 	 * App API code
 	 */
-	appCode: {
-		type: String,
-		default: "",
-	},
+	appCode: "",
 });
 
 const emit = defineEmits(["button-click", "app-click"]);
 
 const filterApps = computed(() => {
-	let newAppList = [];
-	const currentAppObj = props.apps.filter((x) => x.code == props.appCode)[0];
+	let newAppList: App[] = [];
+	const currentAppObj = props.apps?.filter((x) => x.code == props.appCode)[0];
 	if (currentAppObj) {
-		let related = props.apps.filter((x) =>
+		let related = props.apps?.filter((x) =>
 			currentAppObj.related.includes(x.code)
 		);
-		related.forEach((x) => {
+		related?.forEach((x) => {
 			newAppList.push(x);
 		});
 	}
 	return newAppList;
 });
 
+const sideBarKey = computed(() => {
+	return `sidebar-is-${sidebarOpen.value}`;
+});
+
 // Get a reference to the checkbox element using `ref`
-const sidebarToggle = ref(null);
-const sidebarOpen = ref(null);
+const sidebarToggle = ref<HTMLInputElement | null>(null);
+const sidebarOpen = ref<boolean | undefined>();
 
 // Define a function to uncheck the checkbox
 function toggleSidebar() {
 	const screenWidth = window.innerWidth;
-	if (screenWidth <= 1024) {
+	if (screenWidth <= 1024 && sidebarToggle.value) {
 		sidebarToggle.value.checked = !sidebarToggle.value.checked;
 		sidebarOpen.value = sidebarToggle.value.checked;
 	}
@@ -224,17 +245,22 @@ onMounted(() => {
 	sidebarOpen.value = sidebarToggle.value?.checked;
 });
 
-function sidebarItemClick(emitName, action) {
+function sidebarItemClick(
+	emitName: "button-click" | "app-click",
+	action: string
+) {
 	emit(emitName, action);
 	toggleSidebar();
 }
 
 function handleSidebarToggleClick() {
 	// console.log("I'm toggling");
-	sidebarOpen.value = sidebarToggle.value.checked;
+	if (sidebarToggle.value) {
+		sidebarOpen.value = sidebarToggle.value.checked;
+	}
 }
 
-function genToolTip(tip) {
+function genToolTip(tip: string) {
 	return !sidebarOpen.value ? tip : "";
 }
 </script>

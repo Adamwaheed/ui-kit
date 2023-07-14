@@ -345,13 +345,7 @@
 				</PoCard>
 				<PoCard title="Dynamic Table" class="po-p-5">
 					<template v-slot:content>
-						<div class="-po-mx-5 po-mt-5">
-							<PoDynamicTable
-								class=""
-								:data="dynamicTableData"
-								:columns="dynamicTableCols"
-							></PoDynamicTable>
-						</div>
+						<div class="-po-mx-5 po-mt-5"></div>
 					</template>
 				</PoCard>
 				<div class="po-grid po-grid-cols-2 po-gap-5">
@@ -517,7 +511,8 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+// @ts-nocheck
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import {
@@ -555,13 +550,13 @@ import {
 	PoEmpty,
 	PoCardTabs,
 	PoTableAction,
-	PoDynamicTable,
 	PoSelectApi,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";
 
-import { formatDate, debounce } from "./shared/helper";
+import formatDate from "./shared/helper/FormatDate";
+import debounce from "./shared/helper/Debounce";
 import { ref, computed } from "vue";
 
 import {

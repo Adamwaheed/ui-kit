@@ -21,7 +21,7 @@
 			:id="`${id}-fileupload`"
 			:value="modelValue"
 			type="file"
-			@input="$emit('update:modelValue', $event.target.value)"
+			@input="handleInput"
 			@change="handleFileChange($event)"
 			class="po-sr-only po-peer"
 		/>
@@ -36,7 +36,7 @@
 			</div>
 		</label>
 
-		<div
+		<!-- <div
 			v-if="null !== progressValue"
 			class="po-mt-3 po-flex po-w-full po-h-1.5 po-bg-gray-100 po-rounded-full po-overflow-hidden"
 		>
@@ -45,10 +45,10 @@
 				role="progressbar"
 				:style="progressStyle"
 				:aria-valuenow="progressValue"
-				aria-valuemin="0"
-				aria-valuemax="100"
+				:aria-valuemin="0"
+				:aria-valuemax="100"
 			></div>
-		</div>
+		</div> -->
 
 		<p
 			class="po-mt-2 po-text-sm po-text-slate-500"
@@ -67,79 +67,65 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoInputFile",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { computed, ref } from "vue";
+import type { FormEventHandler } from "react";
 
-const props = defineProps({
+interface Props {
+	modelValue?: string | number;
+	label?: string;
+	id?: string;
+	info?: string | null;
+	message?: string | null;
+	errorMessage?: string | null;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	progress?: number | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: [String, Number],
-		default: "",
-	},
+	modelValue: "",
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
+	label: "",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
-	 * Input display vertifal (default) or horizontal
+	 * Input display vertical (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * File upload progress
 	 */
-	progress: {
-		type: Number,
-		default: null,
-	},
+	progress: null,
 });
 
 const progressStyle = computed(() => {
@@ -151,12 +137,16 @@ const progressValue = computed(() => {
 
 const fileName = ref("");
 
-const handleFileChange = (event) => {
-	const file = event.target.files[0];
-	if (file) {
-		fileName.value = file.name;
-	} else {
-		fileName.value = "";
-	}
+const handleFileChange: FormEventHandler<HTMLInputElement> = (event) => {
+	const file = (event.target as HTMLInputElement)?.files?.[0];
+	fileName.value = file ? file.name : "";
+};
+
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+	let val = (event.target as HTMLInputElement).value;
+
+	emit("update:modelValue", val);
 };
 </script>

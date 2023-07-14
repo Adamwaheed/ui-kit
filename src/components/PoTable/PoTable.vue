@@ -60,9 +60,11 @@
 					<!-- 
 						@slot Table body details row
 					-->
-					<td :colspan="thead.length + 1">
-						<slot name="details" v-bind="{ item: td }"></slot>
-					</td>
+					<template v-if="thead">
+						<td :colspan="thead.length + 1">
+							<slot name="details" v-bind="{ item: td }"></slot>
+						</td>
+					</template>
 				</tr>
 			</template>
 			<tr
@@ -71,11 +73,13 @@
 					(null !== tableBody && 0 == tableBody.length && !loading)
 				"
 			>
-				<td :colspan="thead.length + 1" class="po-text-center">
-					<span class="po-py-10 po-block po-normal-case">{{
-						emptyMessage
-					}}</span>
-				</td>
+				<template v-if="thead">
+					<td :colspan="thead.length + 1" class="po-text-center">
+						<span class="po-py-10 po-block po-normal-case">{{
+							emptyMessage
+						}}</span>
+					</td>
+				</template>
 			</tr>
 			<tr v-if="loading" v-for="td in tableBody">
 				<td v-for="td in thead" class="po-pr-5">
@@ -96,70 +100,70 @@
 	</table>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoTable",
 	components: { ArrowRightCircleIcon },
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import {
 	ArrowRightCircleIcon,
 	ArrowDownIcon,
 	ArrowsUpDownIcon,
 	ArrowUpIcon,
 } from "@heroicons/vue/20/solid";
-import { ref, toRefs, watch, onMounted, computed } from "vue";
-const props = defineProps({
+import { ref, toRefs, watch, onMounted } from "vue";
+
+interface THead {
+	label: string;
+	sortable?: boolean;
+	sorted?: boolean;
+	sortDirection?: string | null;
+	index?: number;
+}
+
+interface Props {
+	thead: THead[] | null;
+	tbody: Array<any> | null;
+	emptyMessage?: string;
+	breakAtLg?: boolean;
+	isLoading?: boolean;
+	hasDetailsRow?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Table head items array
 	 */
-	thead: {
-		type: Array,
-		default: null,
-	},
+	thead: null,
 	/**
 	 * Table body items array
 	 */
-	tbody: {
-		type: Array,
-		default: null,
-	},
+	tbody: null,
 	/**
 	 * Message to display when the table is empty
 	 */
-	emptyMessage: {
-		type: String,
-		default: "We couldn't find any content to display.",
-	},
+	emptyMessage: "We couldn't find any content to display.",
 	/**
 	 * Adds breakpoint at lg to switch to mobile styles
 	 */
-	breakAtLg: {
-		type: Boolean,
-		default: false,
-	},
+	breakAtLg: false,
 	/**
 	 * If set true, displays placeholder loading animation
 	 */
-	isLoading: {
-		type: Boolean,
-		default: false,
-	},
+	isLoading: false,
 	/**
 	 * If set true, displays placeholder loading animation
 	 */
-	hasDetailsRow: {
-		type: Boolean,
-		default: false,
-	},
+	hasDetailsRow: false,
 });
 
 const { isLoading, tbody, thead } = toRefs(props);
 const loading = ref(false);
-const tableHead = ref(null);
-const tableBody = ref(null);
-const sortDirection = ref(null);
+const tableHead = ref<THead[] | null>(null);
+const tableBody = ref<Array<any> | null>(null);
+const sortDirection = ref<string | null>(null);
 
 watch(isLoading, () => {
 	checkIfLoading();
@@ -185,7 +189,7 @@ function checkIfLoading() {
 }
 
 function addShowDetailsToTbody() {
-	if (props.hasDetailsRow) {
+	if (props.hasDetailsRow && props.tbody) {
 		for (let i = 0; i < props.tbody.length; i++) {
 			props.tbody[i].showDetails = false;
 		}
@@ -198,7 +202,7 @@ function randomWidth() {
 
 const emit = defineEmits(["column-click"]);
 
-const sort = (column, index) => {
+const sort = (column: THead, index: number) => {
 	if (!column.sortable) return;
 
 	if (column.sorted && sortDirection.value === "asc") {
@@ -208,7 +212,7 @@ const sort = (column, index) => {
 	}
 
 	// Set sorted property for all columns, clear for unsorted columns
-	tableHead.value.forEach((col) => {
+	tableHead.value?.forEach((col) => {
 		if (col.label === column.label) {
 			col.sorted = true;
 			col.sortDirection = sortDirection.value;

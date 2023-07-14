@@ -107,13 +107,13 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoMultiSelect",
 	components: { CheckIcon },
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import {
 	InformationCircleIcon,
@@ -123,102 +123,84 @@ import {
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import { CheckIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 
-const props = defineProps({
+interface SelectedArray {
+	id: string | number;
+	name: string;
+	[index: number]: any;
+}
+
+interface ItemsArray {
+	id: string | number;
+	name: string;
+	[index: number]: any;
+}
+
+interface Props {
+	modelValue?: SelectedArray[] | null;
+	label?: string;
+	display?: "vertical" | "horizontal";
+	id?: string;
+	info?: string | null;
+	message?: string | null;
+	errorMessage?: string | null;
+	hasError?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	placeholder?: string | null;
+	borderColor?: string;
+	items: ItemsArray[] | null;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
-	modelValue: {
-		type: Array,
-		default: null,
-	},
+	modelValue: null,
 	/**
 	 * Input label text
 	 */
-	label: {
-		type: String,
-		default: "",
-	},
-	/**
-	 * Input type
-	 */
-	type: {
-		type: String,
-		default: "text",
-	},
+	label: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
-	display: {
-		type: String,
-		default: "vertical",
-	},
+	display: "vertical",
 	/**
 	 * Input id text
 	 */
-	id: {
-		type: String,
-		default: "",
-	},
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
-	info: {
-		type: String,
-		default: null,
-	},
+	info: null,
 	/**
 	 * Tip, description, information for the input
 	 */
-	message: {
-		type: String,
-		default: null,
-	},
+	message: null,
 	/**
 	 * Error message
 	 */
-	errorMessage: {
-		type: String,
-		default: null,
-	},
+	errorMessage: null,
 	/**
 	 * True or False has error
 	 */
-	hasError: {
-		type: Boolean,
-		default: false,
-	},
+	hasError: false,
 	/**
 	 * True or false if required
 	 */
-	required: {
-		type: Boolean,
-		default: false,
-	},
+	required: false,
 	/**
 	 * True or false if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * True or false if required
 	 */
-	placeholder: {
-		type: String,
-		default: null,
-	},
+	placeholder: null,
 	/**
 	 * True or false if required
 	 */
-	borderColor: {
-		type: String,
-		default: "po-border-slate-300 focus:po-border-mpao-lightblue",
-	},
-	items: {
-		type: Array,
-		default: null,
-	},
+	borderColor: "po-border-slate-300 focus:po-border-mpao-lightblue",
+	items: null,
 });
 
 function getBorderColor() {
@@ -228,22 +210,22 @@ function getBorderColor() {
 }
 
 const inputFieldValue = ref("");
-const selectedItems = ref([]);
+const selectedItems = ref<SelectedArray[]>([]);
 const inputFieldFocused = ref(false);
 
-function removeItem(index) {
+function removeItem(index: number) {
 	selectedItems.value.splice(index, 1);
 	updateSelectedItemIds();
 }
 
-function addItems(e) {
+function addItems(e: KeyboardEvent) {
 	let names = inputFieldValue.value.split(","); // Split the string by comma
 
 	if (e.key === "Enter" && 0 < inputFieldValue.value.length) {
 		e.preventDefault();
 		names.forEach((name) => {
 			// Loop through each name
-			let match = props.items.find(
+			let match = props.items?.find(
 				(obj) => obj.name.toLowerCase() === name.trim().toLowerCase()
 			); // Search for a match in the array
 
@@ -265,7 +247,7 @@ function addItems(e) {
 	updateSelectedItemIds();
 }
 
-const selectedItemIds = ref([]);
+const selectedItemIds = ref<(string | number)[]>([]);
 
 function updateSelectedItemIds() {
 	selectedItemIds.value = selectedItems.value.map((item) => item.id);
@@ -283,7 +265,7 @@ const showDropdown = ref(false);
 const filteredItems = computed(() =>
 	inputFieldValue.value === ""
 		? props.items
-		: props.items.filter((item) => {
+		: props.items?.filter((item) => {
 				return item.name
 					.toLowerCase()
 					.includes(inputFieldValue.value.toLowerCase());
@@ -296,7 +278,7 @@ useDetectOutsideClick(multiSelectComponentRef, () => {
 	showDropdown.value = false;
 });
 
-function clickItemOnDropDown(item) {
+function clickItemOnDropDown(item: ItemsArray) {
 	selectedItems.value.push(item);
 	inputFieldValue.value = "";
 	updateSelectedItemIds();

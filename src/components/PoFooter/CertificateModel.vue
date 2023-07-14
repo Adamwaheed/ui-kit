@@ -20,19 +20,20 @@
 	</PoModal>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
+import type { DefineComponent } from "vue";
 import PoModal from "../PoModal/PoModal.vue";
 
-defineProps({
-	src: {
-		type: String,
-		default: "",
-	},
-	title: {
-		type: String,
-		default: "",
-	},
+interface Props {
+	src?: string;
+	title?: string;
+	logo?: DefineComponent<{}, {}, any> | null;
+}
+
+withDefaults(defineProps<Props>(), {
+	src: "",
+	title: "",
 	logo: null,
 });
 

@@ -49,15 +49,7 @@
 		v-if="'simple' == type && !isLoading"
 		href="#"
 		@click.prevent="$emit('button-click', to)"
-		class="
-			po-text-sm
-			po-transition-colors
-			po-duration-100
-			po-ease-in-out
-			po-inline-flex
-			po-items-center
-			po-space-x-1
-		"
+		class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
 		:class="[
 			{ 'po-text-mpao-lightblue hover:po-text-mpao-blue': !overrideColors },
 		]"
@@ -66,76 +58,63 @@
 	</a>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoButton",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
-const buttonClassess =
-	"po-rounded-full po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
+interface Props {
+	type?: "button" | "submit" | "link";
+	actionType?: "default" | "danger" | "ghost" | "success";
+	label?: string;
+	disabled?: boolean;
+	to?: string;
+	overrideColors?: boolean;
+	size?: "sm" | "md" | "lg";
+	isLoading?: boolean;
+}
 
-const props = defineProps({
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Type of button. It can be 'button', 'submit', or 'link'.
 	 */
-	type: {
-		type: String,
-		default: "button",
-	},
+	type: "button",
 	/**
 	 * Action type of button. It can be 'default', 'danger', or 'ghost'.
 	 */
-	actionType: {
-		type: String,
-		default: "default",
-	},
+	actionType: "default",
 	/**
 	 * Label of the button
 	 */
-	label: {
-		type: String,
-		default: "Button",
-	},
+	label: "Button",
 	/**
 	 * True or False if disabled
 	 */
-	disabled: {
-		type: Boolean,
-		default: false,
-	},
+	disabled: false,
 	/**
 	 * Route for links
 	 */
-	to: {
-		type: String,
-		default: "#",
-	},
+	to: "#",
 	/**
 	 * Override colors. Mark this true and add tailwind bg-color, hover:bg-color and text-color classes to component
 	 */
-	overrideColors: {
-		type: Boolean,
-		default: false,
-	},
+	overrideColors: false,
 	/**
 	 * Button has three sizes. sm, md, and lg
 	 */
-	size: {
-		type: String,
-		default: "md",
-	},
+	size: "md",
 	/**
 	 * Button is loading
 	 */
-	isLoading: {
-		type: Boolean,
-		default: false,
-	},
+	isLoading: false,
 });
+
+const buttonClassess =
+	"po-rounded-full po-transition-colors po-border po-duration-100 po-ease-in-out po-cursor-pointer disabled:po-bg-slate-400 disabled:po-border-slate-400 disabled:po-cursor-default disabled:po-hover:bg-slate-400";
 
 const emit = defineEmits(["button-click"]);
 

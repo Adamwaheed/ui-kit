@@ -53,16 +53,16 @@
 	</PoCard>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { PoPageTitle, PoCard, PoButton, PoTooltip } from "../components";
 
 import { PhoneIcon, BoltIcon } from "@heroicons/vue/24/outline";
 
-function handleButtonClick(to) {
+function handleButtonClick(to: string) {
 	alert(to);
 }
 
-function handleDialClick(to) {
+function handleDialClick(to: string) {
 	alert(to);
 }
 </script>

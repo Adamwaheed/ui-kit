@@ -43,26 +43,32 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 	name: "PoLogs",
 };
 </script>
-<script setup>
-const props = defineProps({
+<script setup lang="ts">
+interface Item {
+	label?: string;
+	date?: string;
+	by?: string;
+	description?: string;
+}
+
+interface Props {
+	items: Item[] | null;
+	emptyLabel?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * list of items
 	 */
-	items: {
-		type: Array,
-		default: null,
-	},
+	items: null,
 	/**
 	 * list of items
 	 */
-	emptyLabel: {
-		type: String,
-		default: "No logs to display.",
-	},
+	emptyLabel: "No logs to display.",
 });
 </script>
