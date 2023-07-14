@@ -7,6 +7,7 @@
 	"license": "MIT",
 	"main": "./dist/ui-kit.umd.js",
 	"module": "./dist/ui-kit.es.js",
+	"types": "types/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/ui-kit.es.js",
@@ -29,6 +30,7 @@
 		"@heroicons/vue": "^2.0.18",
 		"@popperjs/core": "^2.11.8",
 		"@tailwindcss/typography": "^0.5.9",
+		"@types/vue": "^2.0.0",
 		"@vue/tsconfig": "^0.4.0",
 		"axios": "^1.2.2",
 		"vue": "^3.2.45",
