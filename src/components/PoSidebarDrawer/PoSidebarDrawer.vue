@@ -10,7 +10,7 @@
 		ref="sidebarToggle"
 		@click="handleSidebarToggleClick"
 	/>
-	<aside class="shell-sidebar">
+	<aside class="shell-sidebar" :key="sideBarKey">
 		<div class="po-grow">
 			<div
 				v-for="(group, groupIndex) in content"
@@ -222,6 +222,10 @@ const filterApps = computed(() => {
 		});
 	}
 	return newAppList;
+});
+
+const sideBarKey = computed(() => {
+	return `sidebar-is-${sidebarOpen.value}`;
 });
 
 // Get a reference to the checkbox element using `ref`
