@@ -50,8 +50,19 @@ export default {
 <script setup lang="ts">
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
 
+type HeroIcon = (
+	props: JSX.IntrinsicAttributes & { [key: string]: any }
+) => JSX.Element;
+
+interface Item {
+	label: string;
+	highlighted?: boolean;
+	danger?: boolean;
+	icon: HeroIcon;
+}
+
 interface Props {
-	items: Array<string> | null;
+	items: Item[] | null;
 	showBackButton?: boolean;
 	currPageRoute: string;
 }
