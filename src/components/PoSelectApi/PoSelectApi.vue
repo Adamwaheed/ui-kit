@@ -51,7 +51,11 @@
 					ref="selectBox"
 					v-model="searchQuery"
 					@input="handleInput"
-					@focus="showDropdown = true"
+					@focus="
+						inputFocused = true;
+						showDropdown = true;
+					"
+					@blur="handleBlur"
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 				/>
 			</div>
@@ -203,6 +207,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const selectBox = ref();
 const showDropdown = ref(false);
+const inputFocused = ref(false);
 const loadedOptions = ref<any[]>([]);
 
 watch(props, (newVal, oldVal) => {
@@ -226,8 +231,16 @@ const containerRef = ref(null);
 const dropdownRef = ref(null);
 
 useDetectOutsideClick(containerRef, () => {
-	showDropdown.value = false;
+	showDropdown.value = inputFocused.value ? true : false;
 });
+
+function handleBlur() {
+	inputFocused.value = false;
+
+	setTimeout(() => {
+		showDropdown.value = false;
+	}, 100);
+}
 
 const uniqueID = ref("");
 onMounted(() => {
@@ -245,13 +258,13 @@ onMounted(() => {
 		uniqueID.value = props.id;
 	}
 
-	setTimeout(() => {
-		if (document.activeElement === selectBox.value) {
-			showDropdown.value = true;
-		} else {
-			showDropdown.value = false;
-		}
-	}, 100);
+	// setTimeout(() => {
+	// 	if (document.activeElement === selectBox.value) {
+	// 		showDropdown.value = true;
+	// 	} else {
+	// 		showDropdown.value = false;
+	// 	}
+	// }, 100);
 });
 
 const searchQuery = ref();
@@ -268,7 +281,7 @@ function handleOptionClick(option: any) {
 	selectedOption.value = option;
 	emit("selected", option);
 
-	showDropdown.value = false;
+	showDropdown.value = inputFocused.value ? true : false;
 }
 
 function handleMoreClick() {
