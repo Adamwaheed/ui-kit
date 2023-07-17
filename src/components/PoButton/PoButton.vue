@@ -68,7 +68,7 @@ import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 
 interface Props {
-	type?: "button" | "submit" | "link";
+	type?: "button" | "submit" | "link" | "simple";
 	actionType?: "default" | "danger" | "ghost" | "success";
 	label?: string;
 	disabled?: boolean;
