@@ -9,7 +9,7 @@ import PoSidebarDrawer from "../src/components/PoSidebarDrawer/PoSidebarDrawer.v
 import PoActionBar from "../src/components/PoActionBar/PoActionBar.vue";
 import PoCard from "../src/components/PoCard/PoCard.vue";
 import PoCardSearch from "../src/components/PoCardSearch/PoCardSearch.vue";
-import PoPageTitle from "../src/components/PoPageTitle/PoPageTitle.vue";
+import { Props as PoPageTitleProps } from "./PoPageTitle";
 import PoPagination from "../src/components/PoPagination/PoPagination.vue";
 import PoTable from "../src/components/PoTable/PoTable.vue";
 import PoDescriptionList from "../src/components/PoDescriptionList/PoDescriptionList.vue";
@@ -54,3 +54,4 @@ import PoTooltip from "../src/components/PoTooltip/PoTooltip.vue";
 import PoUpload from "../src/components/PoUpload/PoUpload.vue";
 
 export const PoTopBar: DefineComponent<PoTopBarProps>;
+export const PoPageTitle: DefineComponent<PoPageTitleProps>;

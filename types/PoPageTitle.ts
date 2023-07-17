@@ -1,23 +1,16 @@
 import type { HeroIcon } from "./HeroIcon";
 
-interface Stat {
+export interface Stat {
 	icon?: HeroIcon;
 	value?: string;
 	label?: string;
 	iconColor?: string;
 }
 
-interface Pagination {
+export interface Pagination {
 	label?: string;
 	nextLink?: string;
 	prevLink?: string;
-}
-
-interface Stat {
-	icon?: HeroIcon;
-	value?: string;
-	label?: string;
-	iconColor?: string;
 }
 
 export interface Props {

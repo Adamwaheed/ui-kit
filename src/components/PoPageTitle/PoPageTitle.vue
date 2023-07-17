@@ -143,7 +143,7 @@ import PoPagination from "../PoPagination/PoPagination.vue";
 
 import { ref } from "vue";
 
-import type { Props } from "../../../types/PoPageTitle";
+import type { Props, Stat } from "../../../types/PoPageTitle";
 
 interface PoPageTitleProps extends Props {
 	dark?: boolean;
