@@ -82,6 +82,9 @@ interface Props {
 	disabled?: boolean;
 	placeholder?: string | undefined;
 	borderColor?: string;
+	modelModifiers?: {
+		[key: string]: boolean;
+	};
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -137,6 +140,8 @@ const props = withDefaults(defineProps<Props>(), {
 	 * True or false if required
 	 */
 	borderColor: "po-border-slate-300 focus:po-border-mpao-lightblue",
+
+	modelModifiers: () => ({}),
 });
 
 function getBorderColor() {
@@ -172,6 +177,8 @@ const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
 
 	let outputValue =
 		"currency" === props.type ? cleanInputForModalValue(val) : val;
+
+	console.log(props.modelModifiers);
 
 	emit("update:modelValue", outputValue);
 };

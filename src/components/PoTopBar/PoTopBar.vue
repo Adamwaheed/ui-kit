@@ -72,7 +72,7 @@ export default {
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 
-import type { Notification } from "../PoNotificationHub/Notification";
+import type { Props } from "../../../types/PoTopBar";
 
 import {
 	PoAppIcon,
@@ -82,34 +82,11 @@ import {
 	PoProfileSwitcher,
 } from "../";
 
-interface UserObject {
-	[key: string]: any;
+interface PoTopBarProps extends Props {
+	dark?: boolean;
 }
 
-interface App {
-	name: string;
-	url: string;
-	icon: string;
-	group: string;
-	code: string;
-	related: string[];
-	current: boolean;
-}
-
-interface Props {
-	currentQuery?: string;
-	appName?: string;
-	hasSearch?: boolean;
-	appList?: App[] | null;
-	notifications?: Notification[] | null;
-	hasNewNotifications?: boolean;
-	userObject?: UserObject | null;
-	avatar?: string;
-	logo?: string;
-	appIcon?: any;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<PoTopBarProps>(), {
 	/**
 	 * Search Query
 	 */

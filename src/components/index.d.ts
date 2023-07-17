@@ -54,61 +54,58 @@ import { PoTooltip } from "./PoTooltip/PoTooltip.vue";
 import { PoUpload } from "./PoUpload/PoUpload.vue";
 
 declare module "./index" {
-	const component: DefineComponent<{}, {}, any> & {
-		PoTopBar: typeof PoTopBar;
-		PoAppIcon: typeof PoAppIcon;
-		PoSearchBar: typeof PoSearchBar;
-		PoAppTray: typeof PoAppTray;
-		PoNotificationHub: typeof PoNotificationHub;
-		PoProfileSwitcher: typeof PoProfileSwitcher;
-		PoSidebarDrawer: typeof PoSidebarDrawer;
-		PoActionBar: typeof PoActionBar;
-		PoCard: typeof PoCard;
-		PoCardSearch: typeof PoCardSearch;
-		PoPageTitle: typeof PoPageTitle;
-		PoPagination: typeof PoPagination;
-		PoTable: typeof PoTable;
-		PoDescriptionList: typeof PoDescriptionList;
-		PoInputField: typeof PoInputField;
-		PoInputFile: typeof PoInputFile;
-		PoSelectField: typeof PoSelectField;
-		PoButton: typeof PoButton;
-		PoModal: typeof PoModal;
-		PoToggle: typeof PoToggle;
-		PoSectionMenu: typeof PoSectionMenu;
-		PoCheckbox: typeof PoCheckbox;
-		PoTextarea: typeof PoTextarea;
-		PoFooter: typeof PoFooter;
-		PoFormStatusMessage: typeof PoFormStatusMessage;
-		PoRadioInput: typeof PoRadioInput;
-		PoStatsBlock: typeof PoStatsBlock;
-		PoChatLogItem: typeof PoChatLogItem;
-		PoNotification: typeof PoNotification;
-		PoSlideover: typeof PoSlideover;
-		PoCommandPalette: typeof PoCommandPalette;
-		PoAlert: typeof PoAlert;
-		PoLogs: typeof PoLogs;
-		PoDownloadFileList: typeof PoDownloadFileList;
-		PoContentArea: typeof PoContentArea;
-		PoLoading: typeof PoLoading;
-		PoConsent: typeof PoConsent;
-		PoCardTabs: typeof PoCardTabs;
-		PoTabs: typeof PoTabs;
-		PoEmpty: typeof PoEmpty;
-		PoDRStatus: typeof PoDRStatus;
-		PoTableAction: typeof PoTableAction;
-		Rufiyaa: typeof Rufiyaa;
-		PoHeading: typeof PoHeading;
-		PoMultiSelect: typeof PoMultiSelect;
-		PoTimeline: typeof PoTimeline;
-		PoTableCheckbox: typeof PoTableCheckbox;
-		PoToast: typeof PoToast;
-		PoSelectApi: typeof PoSelectApi;
-		PoMessage: typeof PoMessage;
-		PoPageStats: typeof PoPageStats;
-		PoTooltip: typeof PoTooltip;
-		PoUpload: typeof PoUpload;
+	export {
+		PoTopBar,
+		PoAppIcon,
+		PoSearchBar,
+		PoAppTray,
+		PoNotificationHub,
+		PoProfileSwitcher,
+		PoSidebarDrawer,
+		PoActionBar,
+		PoCard,
+		PoCardSearch,
+		PoPageTitle,
+		PoPagination,
+		PoTable,
+		PoDescriptionList,
+		PoInputField,
+		PoInputFile,
+		PoSelectField,
+		PoButton,
+		PoModal,
+		PoToggle,
+		PoSectionMenu,
+		PoCheckbox,
+		PoTextarea,
+		PoFooter,
+		PoFormStatusMessage,
+		PoRadioInput,
+		PoStatsBlock,
+		PoChatLogItem,
+		PoNotification,
+		PoSlideover,
+		PoCommandPalette,
+		PoAlert,
+		PoLogs,
+		PoDownloadFileList,
+		PoContentArea,
+		PoLoading,
+		PoConsent,
+		PoCardTabs,
+		PoTabs,
+		PoEmpty,
+		PoDRStatus,
+		PoTableAction,
+		PoHeading,
+		PoMultiSelect,
+		PoTimeline,
+		PoTableCheckbox,
+		PoToast,
+		PoSelectApi,
+		PoMessage,
+		PoPageStats,
+		PoTooltip,
+		PoUpload,
 	};
-
-	export default component;
 }

@@ -76,7 +76,7 @@ export default {
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { BellIcon } from "@heroicons/vue/24/outline";
-import type { Notification } from "./Notification";
+import type { Notification } from "../../../types/Notification";
 
 interface Props {
 	notifications: Notification[] | null;
