@@ -72,7 +72,22 @@ export default {
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 
-import type { Props } from "../../../types/PoTopBar";
+import type { UserObject } from "../../../types/UserObject";
+import type { Notification } from "../../../types/Notification";
+import type { AppListItem } from "../../../types/AppListItem";
+
+interface Props {
+	currentQuery?: string;
+	appName?: string;
+	hasSearch?: boolean;
+	appList?: AppListItem[] | null;
+	notifications?: Notification[] | null;
+	hasNewNotifications?: boolean;
+	userObject?: UserObject | null;
+	avatar?: string;
+	logo?: string;
+	appIcon?: any;
+}
 
 import {
 	PoAppIcon,
@@ -82,11 +97,7 @@ import {
 	PoProfileSwitcher,
 } from "../";
 
-interface PoTopBarProps extends Props {
-	dark?: boolean;
-}
-
-const props = withDefaults(defineProps<PoTopBarProps>(), {
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Search Query
 	 */

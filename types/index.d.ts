@@ -55,3 +55,4 @@ import PoUpload from "../src/components/PoUpload/PoUpload.vue";
 
 export const PoTopBar: DefineComponent<PoTopBarProps>;
 export const PoPageTitle: DefineComponent<PoPageTitleProps>;
+export * from "../src/components/PoButton/PoButton";

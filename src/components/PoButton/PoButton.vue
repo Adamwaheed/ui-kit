@@ -66,16 +66,10 @@ export default {
 <script setup lang="ts">
 import { computed } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
+import type { PoButtonProps } from "./PoButton";
 
-interface Props {
-	type?: "button" | "submit" | "link" | "simple";
-	actionType?: "default" | "danger" | "ghost" | "success";
-	label?: string;
-	disabled?: boolean;
-	to?: string;
-	overrideColors?: boolean;
-	size?: "sm" | "md" | "lg";
-	isLoading?: boolean;
+interface Props extends PoButtonProps {
+	dark?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
