@@ -72,9 +72,11 @@ export default {
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 
-import type { UserObject } from "../../../types/UserObject";
-import type { Notification } from "../../../types/Notification";
-import type { AppListItem } from "../../../types/AppListItem";
+import type {
+	UserObject,
+	Notification,
+	AppListItem,
+} from "../../../types/Types";
 
 interface Props {
 	currentQuery?: string;

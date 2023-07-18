@@ -143,13 +143,21 @@ import PoPagination from "../PoPagination/PoPagination.vue";
 
 import { ref } from "vue";
 
-import type { Props, Stat } from "../../../types/PoPageTitle";
+import type { Stat, Pagination } from "../../../types/Types";
 
-interface PoPageTitleProps extends Props {
-	dark?: boolean;
+interface Props {
+	label?: string;
+	description?: string;
+	stats?: Stat[] | null;
+	showPagination?: boolean;
+	showFilter?: boolean;
+	showDownload?: boolean;
+	pagination?: Pagination | null;
+	filterOn?: boolean;
+	standAlone?: boolean;
 }
 
-const props = withDefaults(defineProps<PoPageTitleProps>(), {
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Page title
 	 */
