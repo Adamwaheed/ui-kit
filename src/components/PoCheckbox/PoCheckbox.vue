@@ -90,4 +90,6 @@ withDefaults(defineProps<Props>(), {
 	 */
 	required: false,
 });
+
+const emit = defineEmits("update:modelValue");
 </script>

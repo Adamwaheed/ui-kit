@@ -6100,45 +6100,46 @@ const Dp = ["for"], Ip = {
     disabled: { type: Boolean, default: !1 },
     required: { type: Boolean, default: !1 }
   },
-  setup(e) {
-    return (t, o) => (p(), d("div", null, [
+  emits: "update:modelValue",
+  setup(e, { emit: t }) {
+    return (o, l) => (p(), d("div", null, [
       r("div", Hd, [
         r("div", qd, [
           r("input", xe({
-            name: `${t.id}-field`,
-            id: t.id,
-            checked: t.modelValue,
-            disabled: t.disabled,
-            "aria-describedby": `${t.id}-description`
-          }, t.$attrs, {
-            onInput: o[0] || (o[0] = (l) => t.$emit("update:modelValue", l.target.checked)),
+            name: `${o.id}-field`,
+            id: o.id,
+            checked: o.modelValue,
+            disabled: o.disabled,
+            "aria-describedby": `${o.id}-description`
+          }, o.$attrs, {
+            onInput: l[0] || (l[0] = (s) => o.$emit("update:modelValue", s.target.checked)),
             type: "checkbox",
-            class: ["po-h-4 po-w-4 po-rounded po-border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue", [{ "po-bg-slate-200": t.disabled }]]
+            class: ["po-h-4 po-w-4 po-rounded po-border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue", [{ "po-bg-slate-200": o.disabled }]]
           }), null, 16, Wd)
         ]),
         r("div", Ud, [
           r("label", {
-            for: t.id,
+            for: o.id,
             class: "po-font-medium po-text-slate-600 po-cursor-pointer po-select-none po-flex po-items-center po-space-x-1"
           }, [
-            r("span", null, V(t.label), 1),
-            t.required ? (p(), d("span", Zd, "*")) : _("", !0)
+            r("span", null, V(o.label), 1),
+            o.required ? (p(), d("span", Zd, "*")) : _("", !0)
           ], 8, Gd),
-          t.message ? (p(), d("span", {
+          o.message ? (p(), d("span", {
             key: 0,
-            id: `${t.id}-description`,
+            id: `${o.id}-description`,
             class: "po-text-slate-500 po-cursor-default"
           }, [
-            r("span", Yd, V(t.label), 1),
-            J(" " + V(t.message), 1)
+            r("span", Yd, V(o.label), 1),
+            J(" " + V(o.message), 1)
           ], 8, Kd)) : _("", !0)
         ])
       ]),
-      t.errorMessage !== null ? (p(), d("p", {
+      o.errorMessage !== null ? (p(), d("p", {
         key: 0,
         class: "po-mt-2 po-text-sm po-text-red-600",
-        id: `${t.id}-error`
-      }, V(t.errorMessage), 9, Xd)) : _("", !0)
+        id: `${o.id}-error`
+      }, V(o.errorMessage), 9, Xd)) : _("", !0)
     ]));
   }
 }), Jd = /* @__PURE__ */ r("div", { class: "po-pb-5 po-max-w-xl" }, [
