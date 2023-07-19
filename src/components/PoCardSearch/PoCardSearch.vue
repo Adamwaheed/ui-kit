@@ -19,7 +19,7 @@
 					id="desktop-search-field"
 					:placeholder="placeholder"
 					:value="modelValue"
-					@input="$emit('update:modelValue', $event.target.value)"
+					@input="handleInput"
 					class="po-h-full po-w-full po-border-transparent po-py-2 po-pl-8 po-pr-3 po-text-sm po-text-slate-700 po-placeholder-slate-500 focus:po-border-transparent focus:po-placeholder-slate-400 focus:po-outline-none focus:po-ring-0"
 					type="search"
 				/>
@@ -74,4 +74,10 @@ withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits(["update:modelValue", "button-click"]);
+
+const handleInput: (event: Event) => void = (event) => {
+	let val = (event.target as HTMLInputElement).value;
+
+	emit("update:modelValue", val);
+};
 </script>

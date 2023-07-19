@@ -34,7 +34,7 @@
 			:aria-disabled="disabled"
 			v-bind="$attrs"
 			@input="handleInput"
-			@blur="formatInput($event.target.value)"
+			@blur="handleBlur"
 			:class="[
 				'po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
 				getBorderColor(),
@@ -65,7 +65,6 @@ export default {
 <script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs, onMounted } from "vue";
-import type { FormEventHandler } from "react";
 import formatMoney from "../../shared/helper/FormatMoney";
 
 interface Props {
@@ -170,7 +169,7 @@ const inputValue = ref<string | number | undefined>(undefined);
 
 const emit = defineEmits(["update:modelValue"]);
 
-const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+const handleInput: (event: Event) => void = (event) => {
 	let val = (event.target as HTMLInputElement).value;
 
 	inputValue.value = val;
@@ -181,6 +180,10 @@ const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
 	console.log(props.modelModifiers);
 
 	emit("update:modelValue", outputValue);
+};
+
+const handleBlur: (event: FocusEvent) => void = (event) => {
+	formatInput((event.target as HTMLInputElement).value);
 };
 
 // onUpdated(() => {

@@ -82,4 +82,6 @@ withDefaults(defineProps<Props>(), {
 	 */
 	currPageRoute: "",
 });
+
+const emit = defineEmits(["button-click"]);
 </script>

@@ -55,9 +55,13 @@ import PoUpload from "../src/components/PoUpload/PoUpload.vue";
 
 export const PoTopBar: DefineComponent<PoTopBarProps>;
 export const PoPageTitle: DefineComponent<PoPageTitleProps>;
+export * from "../src/components/PoActionBar/PoActionBar";
 export * from "../src/components/PoAlert/PoAlert";
+export * from "../src/components/PoAppIcon/PoAppIcon";
+export * from "../src/components/PoAppTray/PoAppTray";
 export * from "../src/components/PoButton/PoButton";
 export * from "../src/components/PoCard/PoCard";
+export * from "../src/components/PoCardSearch/PoCardSearch";
 export * from "../src/components/PoCardTabs/PoCardTabs";
 export * from "../src/components/PoCheckbox/PoCheckbox";
 export * from "../src/components/PoDescriptionList/PoDescriptionList";

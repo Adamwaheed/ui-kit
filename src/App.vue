@@ -356,7 +356,10 @@
 								v-model="searchQuery"
 								show-btn
 							/>
-							<div class="po-mt-5 po-p-5">
+							<span class="po-text-sm po-text-slate-500 po-block po-p-5"
+								>Search query: {{ searchQuery }}</span
+							>
+							<div class="po-p-5">
 								<PoLogs :items="logItems" />
 								<PoDownloadFileList
 									:files="downloadableFiles"

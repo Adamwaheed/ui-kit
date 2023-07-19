@@ -52,6 +52,9 @@ const props = withDefaults(defineProps<Props>(), {
 	 * if true, it shows just the apps list, no popover menu
 	 */
 	justApps: false,
+	/**
+	 * When clicked the app will open in a new tab
+	 */
 	openInNewTab: false,
 });
 
