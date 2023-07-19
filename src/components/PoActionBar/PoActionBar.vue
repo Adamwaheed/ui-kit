@@ -49,10 +49,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
-
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
+import type { HeroIcon } from "../../../types/Types";
 
 interface Item {
 	label: string;

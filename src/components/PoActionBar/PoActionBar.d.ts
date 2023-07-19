@@ -1,6 +1,6 @@
 import { DefineComponent } from "vue";
 
-import { HeroIcon } from "../../../types/Types";
+import type { HeroIcon } from "../../../types/Types";
 
 interface Item {
 	label: string;

@@ -7286,29 +7286,34 @@ const z0 = /* @__PURE__ */ Ut(L0, [["render", B0]]), M0 = {
     id: { default: "consent-checkbox" },
     links: { default: null }
   },
-  setup(e) {
-    return (t, o) => (p(), d("div", R0, [
+  emits: ["update:modelValue"],
+  setup(e, { emit: t }) {
+    const o = (l) => {
+      let s = l.target.checked;
+      t("update:modelValue", s);
+    };
+    return (l, s) => (p(), d("div", R0, [
       r("input", xe({
         type: "checkbox",
-        name: `${t.id}-field`,
-        id: t.id,
-        checked: t.modelValue,
-        "aria-describedby": `${t.id}-description`
-      }, t.$attrs, {
-        onInput: o[0] || (o[0] = (l) => t.$emit("update:modelValue", l.target.checked)),
+        name: `${l.id}-field`,
+        id: l.id,
+        checked: l.modelValue,
+        "aria-describedby": `${l.id}-description`
+      }, l.$attrs, {
+        onInput: o,
         class: "po-shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
       }), null, 16, F0),
       r("div", N0, [
         r("label", {
           class: "po-block po-select-none po-text-sm po-text-slate-600 po-cursor-pointer",
-          for: t.id
-        }, V(t.label), 9, H0),
+          for: l.id
+        }, V(l.label), 9, H0),
         r("div", q0, [
-          (p(!0), d(I, null, U(t.links, (l) => (p(), d("a", {
-            href: l.url,
-            onClick: re((s) => t.$emit("button-click", l.url), ["prevent"]),
+          (p(!0), d(I, null, U(l.links, (n) => (p(), d("a", {
+            href: n.url,
+            onClick: re((a) => l.$emit("button-click", n.url), ["prevent"]),
             class: "po-text-sm po-text-mpao-lightblue hover:po-text-mpao-blue"
-          }, V(l.label), 9, W0))), 256))
+          }, V(n.label), 9, W0))), 256))
         ])
       ])
     ]));
@@ -7442,7 +7447,7 @@ const z0 = /* @__PURE__ */ Ut(L0, [["render", B0]]), M0 = {
   props: {
     label: { default: "" },
     description: { default: "" },
-    icon: { type: [Function, null], default: null },
+    icon: { default: null },
     iconColor: { default: "po-stroke-slate-300" }
   },
   setup(e) {

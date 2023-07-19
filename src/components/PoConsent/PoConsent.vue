@@ -7,7 +7,7 @@
 			:checked="modelValue"
 			:aria-describedby="`${id}-description`"
 			v-bind="$attrs"
-			@input="$emit('update:modelValue', $event.target.checked)"
+			@input="handleInput"
 			class="po-shrink-0 po-h-4 po-w-4 po-rounded border-slate-300 po-text-mpao-lightblue focus:po-ring-mpao-lightblue"
 		/>
 		<div class="po-grow -po-mt-[0.26rem]">
@@ -69,4 +69,12 @@ const props = withDefaults(defineProps<Props>(), {
 	 */
 	links: null,
 });
+
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput: (event: Event) => void = (event) => {
+	let val = (event.target as HTMLInputElement).checked;
+
+	emit("update:modelValue", val);
+};
 </script>
