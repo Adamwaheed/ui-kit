@@ -14,7 +14,7 @@ export default {
 <script setup lang="ts">
 interface Props {
 	text: string;
-	type?: string;
+	type?: "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 withDefaults(defineProps<Props>(), {

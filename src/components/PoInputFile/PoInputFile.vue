@@ -75,7 +75,6 @@ export default {
 <script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { computed, ref } from "vue";
-import type { FormEventHandler } from "react";
 
 interface Props {
 	modelValue?: string | number;
@@ -137,14 +136,14 @@ const progressValue = computed(() => {
 
 const fileName = ref("");
 
-const handleFileChange: FormEventHandler<HTMLInputElement> = (event) => {
+const handleFileChange: (event: Event) => void = (event) => {
 	const file = (event.target as HTMLInputElement)?.files?.[0];
 	fileName.value = file ? file.name : "";
 };
 
 const emit = defineEmits(["update:modelValue"]);
 
-const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+const handleInput: (event: Event) => void = (event) => {
 	let val = (event.target as HTMLInputElement).value;
 
 	emit("update:modelValue", val);

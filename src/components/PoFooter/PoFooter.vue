@@ -103,7 +103,7 @@ import ISOLogo from "./IsoLogo.vue";
 import CertificateModel from "./CertificateModel.vue";
 import ToCModel from "./ToCModel.vue";
 import PrivacyPolicyModel from "./PrivacyPolicyModel.vue";
-import type { LogType } from "./LogType";
+import type { LogType } from "../../../types/LogType";
 
 interface Props {
 	changelog: LogType[] | null;

@@ -5,3 +5,4 @@ export * from "./UserObject";
 export * from "./Stat";
 export * from "./Pagination";
 export * from "./Tab";
+export * from "./LogType";

@@ -61,7 +61,7 @@ interface Props {
 	emptyLabel?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
 	/**
 	 * list of items
 	 */
