@@ -78,6 +78,14 @@ import type {
 	AppListItem,
 } from "../../../types/Types";
 
+import {
+	PoAppIcon,
+	PoSearchBar,
+	PoAppTray,
+	PoNotificationHub,
+	PoProfileSwitcher,
+} from "../";
+
 interface Props {
 	currentQuery?: string;
 	appName?: string;
@@ -90,14 +98,6 @@ interface Props {
 	logo?: string;
 	appIcon?: any;
 }
-
-import {
-	PoAppIcon,
-	PoSearchBar,
-	PoAppTray,
-	PoNotificationHub,
-	PoProfileSwitcher,
-} from "../";
 
 const props = withDefaults(defineProps<Props>(), {
 	/**

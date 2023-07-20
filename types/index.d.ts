@@ -1,6 +1,5 @@
 import { DefineComponent } from "vue";
 
-export const PoTopBar: DefineComponent<PoTopBarProps>;
 export * from "../src/components/PoActionBar/PoActionBar";
 export * from "../src/components/PoAlert/PoAlert";
 export * from "../src/components/PoAppIcon/PoAppIcon";
@@ -44,3 +43,8 @@ export * from "../src/components/PoTabs/PoTabs";
 export * from "../src/components/PoTextarea/PoTextarea";
 export * from "../src/components/PoTimeline/PoTimeline";
 export * from "../src/components/PoToast/PoToast";
+export * from "../src/components/PoToggle/PoToggle";
+export * from "../src/components/PoTooltip/PoTooltip";
+export * from "../src/components/PoTopBar/PoTopBar";
+export * from "../src/components/PoUpload/PoUpload";
+export * from "../src/components/Rufiyaa/Rufiyaa";
