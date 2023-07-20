@@ -59,7 +59,6 @@ export default {
 </script>
 <script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/24/solid";
-import type { FormEventHandler } from "react";
 
 interface Props {
 	modelValue?: string | number;
@@ -119,8 +118,8 @@ withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(["update:modelValue"]);
 
-const handleInput: FormEventHandler<HTMLTextAreaElement> = (event) => {
-	let val = (event.target as HTMLTextAreaElement).value;
+const handleInput: (event: Event) => void = (event) => {
+	let val = (event.target as HTMLInputElement).value;
 
 	emit("update:modelValue", val);
 };

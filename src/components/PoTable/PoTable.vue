@@ -103,7 +103,6 @@
 <script lang="ts">
 export default {
 	name: "PoTable",
-	components: { ArrowRightCircleIcon },
 };
 </script>
 <script setup lang="ts">

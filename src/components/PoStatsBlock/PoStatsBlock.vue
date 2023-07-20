@@ -47,9 +47,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
+import type { HeroIcon } from "../../../types/HeroIcon";
 
 interface Item {
 	bgColor: string;

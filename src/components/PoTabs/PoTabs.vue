@@ -67,20 +67,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { computed } from "vue";
-import type { ChangeEvent } from "react";
-
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
-
-interface Tab {
-	name: string;
-	icon: HeroIcon;
-	iconColor: string;
-	href?: string;
-	current?: boolean;
-	count?: number;
-}
+import type { Tab } from "../../../types/Tab";
 
 interface Props {
 	tabs: Tab[] | null;
@@ -114,11 +101,11 @@ const allTabs = computed(() => {
 	});
 });
 
-function handleTabSelection(event: ChangeEvent<HTMLSelectElement>) {
-	const selectedIndex = Number(event.target.value);
+const handleTabSelection: (event: Event) => void = (event) => {
+	const selectedIndex = Number((event.target as HTMLInputElement).value);
 	if (props.tabs) {
 		const selectedTab = props.tabs[selectedIndex];
 		emit("button-click", selectedTab);
 	}
-}
+};
 </script>

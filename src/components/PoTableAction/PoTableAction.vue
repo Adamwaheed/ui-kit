@@ -40,14 +40,9 @@ export default {
 
 <script setup lang="ts">
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
-
 import { ref } from "vue";
-
 import { PoTooltip } from "..";
-
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
+import type { HeroIcon } from "../../../types/HeroIcon";
 
 interface Props {
 	btnIcon?: HeroIcon | null;
