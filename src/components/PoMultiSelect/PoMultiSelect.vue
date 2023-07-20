@@ -110,7 +110,6 @@
 <script lang="ts">
 export default {
 	name: "PoMultiSelect",
-	components: { CheckIcon },
 };
 </script>
 <script setup lang="ts">

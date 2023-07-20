@@ -32,12 +32,7 @@ export default {
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 import { computed } from "vue";
-
-interface Pagination {
-	label?: string;
-	nextLink?: string;
-	prevLink?: string;
-}
+import type { Pagination } from "../../../types/Pagination";
 
 interface Props {
 	pagination: Pagination | null;

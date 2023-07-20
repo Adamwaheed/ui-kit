@@ -1,7 +1,6 @@
 import { DefineComponent } from "vue";
 
 export const PoTopBar: DefineComponent<PoTopBarProps>;
-export const PoPageTitle: DefineComponent<PoPageTitleProps>;
 export * from "../src/components/PoActionBar/PoActionBar";
 export * from "../src/components/PoAlert/PoAlert";
 export * from "../src/components/PoAppIcon/PoAppIcon";
@@ -23,4 +22,11 @@ export * from "../src/components/PoInputFile/PoInputFile";
 export * from "../src/components/PoLoading/PoLoading";
 export * from "../src/components/PoLogs/PoLogs";
 export * from "../src/components/PoMessage/PoMessage";
+export * from "../src/components/PoModal/PoModal";
+export * from "../src/components/PoMultiSelect/PoMultiSelect";
+export * from "../src/components/PoNotification/PoNotification";
+export * from "../src/components/PoNotificationHub/PoNotificationHub";
+export * from "../src/components/PoPageStats/PoPageStats";
+export * from "../src/components/PoPageTitle/PoPageTitle";
+export * from "../src/components/PoPagination/PoPagination";
 export * from "../src/components/PoSelectField/PoSelectField";
