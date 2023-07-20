@@ -115,19 +115,11 @@
 <script lang="ts">
 export default {
 	name: "PoSelectApi",
-	components: { XMarkIcon },
 };
 </script>
 
 <script setup lang="ts">
-import {
-	computed,
-	onMounted,
-	ref,
-	onBeforeUnmount,
-	watch,
-	onUnmounted,
-} from "vue";
+import { onMounted, ref, watch, onUnmounted } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
@@ -228,7 +220,6 @@ watch(props, (newVal, oldVal) => {
 // });
 
 const containerRef = ref(null);
-const dropdownRef = ref(null);
 
 useDetectOutsideClick(containerRef, () => {
 	showDropdown.value = inputFocused.value ? true : false;

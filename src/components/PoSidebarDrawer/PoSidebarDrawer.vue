@@ -145,10 +145,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ref, computed, onMounted } from "vue";
 import FeedbackForm from "./feedbackForm.vue";
 import { PoTooltip } from "../";
-
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
+import type { HeroIcon, AppListItem } from "../../../types/Types";
 
 interface SidebarContentItem {
 	label: string;
@@ -162,22 +159,12 @@ interface SidebarContentGroup {
 	items: SidebarContentItem[];
 }
 
-interface App {
-	name: string;
-	url: string;
-	icon: string;
-	group: string;
-	code: string;
-	related: string[];
-	current: boolean;
-}
-
 interface Props {
 	content: SidebarContentGroup[] | null;
 	currRoute?: string;
 	hasFeedback?: boolean;
 	appsLabel?: string;
-	apps?: App[] | null;
+	apps?: AppListItem[] | null;
 	appCode?: string;
 }
 

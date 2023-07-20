@@ -190,10 +190,7 @@ import {
 	watch,
 	toRefs,
 } from "vue";
-
-interface UserObject {
-	[key: string]: any;
-}
+import type { UserObject } from "../../../types/UserObject";
 
 interface Props {
 	userObject: UserObject | null;

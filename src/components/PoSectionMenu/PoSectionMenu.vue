@@ -35,9 +35,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-type HeroIcon = (
-	props: JSX.IntrinsicAttributes & { [key: string]: any }
-) => JSX.Element;
+import type { HeroIcon } from "../../../types/HeroIcon";
 
 interface Item {
 	link: string;
@@ -60,4 +58,6 @@ withDefaults(defineProps<Props>(), {
 	 */
 	menuItems: null,
 });
+
+const emit = defineEmits(["link-click"]);
 </script>
