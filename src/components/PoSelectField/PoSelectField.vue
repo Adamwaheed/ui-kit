@@ -115,7 +115,6 @@ import {
 	onUpdated,
 	toRefs,
 	onMounted,
-	onBeforeUnmount,
 	onUnmounted,
 } from "vue";
 import {
@@ -124,7 +123,6 @@ import {
 } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
-import type { FormEventHandler } from "react";
 
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
@@ -328,7 +326,7 @@ function handleBlur() {
 	}, 100);
 }
 
-const handleInput: FormEventHandler<HTMLInputElement> = (event) => {
+const handleInput: (event: Event) => void = (event) => {
 	let val = (event.target as HTMLInputElement).value;
 
 	query.value = val;
