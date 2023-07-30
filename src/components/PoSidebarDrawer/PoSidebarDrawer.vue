@@ -145,6 +145,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ref, computed, onMounted } from "vue";
 import FeedbackForm from "./feedbackForm.vue";
 import { PoTooltip } from "../";
+import useEventBus from "../../composables/useEventBus";
 import type { HeroIcon, AppListItem } from "../../../types/Types";
 
 interface SidebarContentItem {
@@ -244,6 +245,9 @@ function handleSidebarToggleClick() {
 	// console.log("I'm toggling");
 	if (sidebarToggle.value) {
 		sidebarOpen.value = sidebarToggle.value.checked;
+
+		// emit sidebar open event for all components to listen
+		useEventBus.emit("sidebarOpen", sidebarOpen.value);
 	}
 }
 

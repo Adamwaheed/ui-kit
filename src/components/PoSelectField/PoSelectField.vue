@@ -57,6 +57,7 @@
 						:min-item-size="32"
 						key-field="id"
 						class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
+						@resize="onResize"
 						@update="onUpdate"
 					>
 						<template v-slot="{ item, index, active }">
@@ -152,7 +153,7 @@ import {
 } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
-
+import useEventBus from "../../composables/useEventBus";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 interface Item {
@@ -386,4 +387,19 @@ function onUpdate(
 	updateParts.value.visibleStartIdx = visibleStartIndex;
 	updateParts.value.visibleEndIdx = visibleEndIndex;
 }
+
+function onResize() {
+	if (popperInstance) {
+		popperInstance.update();
+	}
+}
+// Listen to sidebar toggle event
+
+useEventBus.on("sidebarOpen", (val) => {
+	setTimeout(() => {
+		if (popperInstance) {
+			popperInstance.update();
+		}
+	}, 320);
+});
 </script>
