@@ -208,6 +208,7 @@
 							<PoSelectField
 								label="Select large list"
 								:list="islands"
+								dynamicScroll
 								@selected="
 									(val) => {
 										form.selectfieldLargeSelected = val;

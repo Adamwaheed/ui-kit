@@ -3,6 +3,8 @@ import { DefineComponent } from "vue";
 interface Item {
 	id: string | number;
 	name: string;
+	active?: boolean;
+	subtitle?: string;
 	[index: number]: any;
 }
 
@@ -19,6 +21,7 @@ export declare const PoSelectField: DefineComponent<
 		message?: string | null;
 		disabled?: boolean;
 		object?: boolean;
+		dynamicScroll?: boolean;
 		placeholder?: string | undefined;
 	},
 	{},

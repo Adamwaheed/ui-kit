@@ -51,19 +51,48 @@
 				ref="popper"
 				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<DynamicScroller
-					:items="filteredItems"
-					:min-item-size="32"
-					key-field="id"
-					class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
-				>
-					<template v-slot="{ item, index, active }">
-						<DynamicScrollerItem
-							:item="item"
-							:active="active"
-							:size-dependencies="[item.name]"
+				<template v-if="dynamicScroll">
+					<DynamicScroller
+						:items="filteredItems"
+						:min-item-size="32"
+						key-field="id"
+						class="scroller po-max-h-60 po-h-full po-overflow-y-auto"
+						@update="onUpdate"
+					>
+						<template v-slot="{ item, index, active }">
+							<DynamicScrollerItem
+								:item="item"
+								:active="active"
+								:size-dependencies="[item.name]"
+								@click="handleOptionClick(item)"
+								:data-index="index"
+								:class="[
+									'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
+									item.active
+										? 'po-bg-mpao-lightblue po-text-white'
+										: 'po-text-slate-900',
+								]"
+							>
+								<span
+									:class="['group-hover:po-text-white po-block po-truncate']"
+								>
+									{{ item?.name ?? "" }}
+
+									<span
+										v-if="item?.subtitle"
+										class="po-block po-text-xs po-opacity-60"
+										>{{ item?.subtitle }}</span
+									>
+								</span>
+							</DynamicScrollerItem>
+						</template>
+					</DynamicScroller>
+				</template>
+				<template v-else>
+					<ul class="scroller po-max-h-60 po-h-full po-overflow-y-auto">
+						<li
+							v-for="item in filteredItems"
 							@click="handleOptionClick(item)"
-							:data-index="index"
 							:class="[
 								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
 								item.active
@@ -80,9 +109,9 @@
 									>{{ item?.subtitle }}</span
 								>
 							</span>
-						</DynamicScrollerItem>
-					</template>
-				</DynamicScroller>
+						</li>
+					</ul>
+				</template>
 			</div>
 		</div>
 		<p
@@ -129,6 +158,8 @@ import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 interface Item {
 	id: string | number;
 	name: string;
+	active?: boolean;
+	subtitle?: string;
 	[index: number]: any;
 }
 
@@ -144,6 +175,7 @@ interface Props {
 	message?: string | null;
 	disabled?: boolean;
 	object?: boolean;
+	dynamicScroll?: boolean;
 	placeholder?: string | undefined;
 }
 
@@ -193,6 +225,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 */
 	object: false,
 	/**
+	 * True if you want to enable dynamic scroll. Use for very long lists
+	 */
+	dynamicScroll: false,
+	/**
 	 * Placeholer
 	 */
 	placeholder: undefined,
@@ -206,7 +242,14 @@ const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
 
-const filteredItems = computed(() => {
+const updateParts = ref({
+	viewStartIdx: 0,
+	viewEndIdx: 0,
+	visibleStartIdx: 0,
+	visibleEndIdx: 0,
+});
+
+const filteredItems = computed<Item[]>(() => {
 	const queryValue = query.value.toLowerCase();
 
 	if (queryValue === "") {
@@ -279,7 +322,7 @@ function handleOptionClick(option: Item) {
 }
 
 const popper = ref();
-let instance: any;
+let popperInstance: any;
 
 onMounted(() => {
 	if ("" === props.id) {
@@ -295,7 +338,7 @@ onMounted(() => {
 
 	selectedValue.value = getSelectedName(props.modelValue);
 
-	instance = createPopper(selectBox.value, popper.value, {
+	popperInstance = createPopper(selectBox.value, popper.value, {
 		placement: "bottom-end",
 		strategy: "fixed",
 		modifiers: [
@@ -313,8 +356,8 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-	if (instance) {
-		instance.destroy();
+	if (popperInstance) {
+		popperInstance.destroy();
 	}
 });
 
@@ -331,4 +374,16 @@ const handleInput: (event: Event) => void = (event) => {
 
 	query.value = val;
 };
+
+function onUpdate(
+	viewStartIndex: number,
+	viewEndIndex: number,
+	visibleStartIndex: number,
+	visibleEndIndex: number
+) {
+	updateParts.value.viewStartIdx = viewStartIndex;
+	updateParts.value.viewEndIdx = viewEndIndex;
+	updateParts.value.visibleStartIdx = visibleStartIndex;
+	updateParts.value.visibleEndIdx = visibleEndIndex;
+}
 </script>

@@ -126,6 +126,25 @@ You can set the `object` prop
 
 P.S. You can set placeholder on select.
 
+### Dynamic Scroll
+
+For larg lists like list of Islands, you can enable dynamic scroll by `dynamicScroll` property to the component like this:
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+		<PoSelectField
+			label="Select Island"
+			dynamicScroll
+			@selected="handleSelectFieldClick"
+			:list="selectFieldListThree"
+			v-model="selectFieldThreeSelected"
+		/>
+`}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoSelectFieldStories} />
