@@ -150,7 +150,7 @@
 								label="Select Field Label"
 								:list="selectFieldList"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldNormalSelected = val;
 									}
 								"
@@ -166,7 +166,7 @@
 								label="Select with subtitle"
 								:list="selectFieldListSubtitles"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldSubtitleSelected = val;
 									}
 								"
@@ -184,7 +184,7 @@
 								object
 								:list="selectFieldList"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldObjectSelected = val;
 									}
 								"
@@ -210,7 +210,7 @@
 								:list="islands"
 								dynamicScroll
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldLargeSelected = val;
 									}
 								"
@@ -228,7 +228,7 @@
 								label="Data after pageload"
 								:list="selectFieldListDelay"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldDelaySelected = val;
 									}
 								"
@@ -247,7 +247,7 @@
 								label="Data change"
 								:list="selectFieldListChange"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldChangeSelected = val;
 									}
 								"
@@ -267,7 +267,7 @@
 								label="Select val change"
 								:list="selectFieldList"
 								@selected="
-									(val) => {
+									(val:any) => {
 										form.selectfieldValueChangeSelected = val;
 									}
 								"
@@ -555,7 +555,7 @@ const radioOptions = [
 ];
 
 const inputDebouncedValue = ref();
-const handleInputText = debounce((val) => {
+const handleInputText = debounce((val: any) => {
 	console.log("deb", val);
 	inputDebouncedValue.value = val;
 }, 500);

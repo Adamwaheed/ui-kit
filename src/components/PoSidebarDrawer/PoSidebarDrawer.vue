@@ -199,7 +199,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(["button-click", "app-click"]);
 
 const filterApps = computed(() => {
-	let newAppList: App[] = [];
+	let newAppList: AppListItem[] = [];
 	const currentAppObj = props.apps?.filter((x) => x.code == props.appCode)[0];
 	if (currentAppObj) {
 		let related = props.apps?.filter((x) =>

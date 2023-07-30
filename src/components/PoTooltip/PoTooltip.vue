@@ -24,6 +24,7 @@ export default {
 import { ref, onMounted, onUnmounted } from "vue";
 import type { Instance, Placement, PositioningStrategy } from "@popperjs/core";
 import { createPopper } from "@popperjs/core";
+import useEventBus from "../../composables/useEventBus";
 
 interface Props {
 	text: string;
@@ -51,11 +52,11 @@ const props = withDefaults(defineProps<Props>(), {
 const trigger = ref<HTMLElement | null>(null);
 const popper = ref<HTMLElement | null>(null);
 const open = ref(false);
-let instance: Instance | null = null;
+let popperInstance: Instance | null = null;
 
 onMounted(() => {
 	if (trigger.value && popper.value) {
-		instance = createPopper(trigger.value, popper.value, {
+		popperInstance = createPopper(trigger.value, popper.value, {
 			placement: props.placement,
 			strategy: props.strategy,
 		});
@@ -63,9 +64,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-	if (instance) {
-		instance.destroy();
-		instance = null;
+	if (popperInstance) {
+		popperInstance.destroy();
+		popperInstance = null;
 	}
 });
 
@@ -76,4 +77,12 @@ function onMouseOver() {
 function onMouseLeave() {
 	open.value = false;
 }
+
+useEventBus.on("sidebarOpen", (val) => {
+	setTimeout(() => {
+		if (popperInstance) {
+			popperInstance.update();
+		}
+	}, 320);
+});
 </script>
