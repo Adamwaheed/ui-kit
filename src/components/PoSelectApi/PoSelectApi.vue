@@ -37,7 +37,7 @@
 					</div>
 					<span
 						class="po-shrink-0 po-p-1 po-cursor-pointer"
-						@click="
+						@mousedown.stop="
 							selectedOption = null;
 							searchQuery = '';
 						"
@@ -69,14 +69,14 @@
 			>
 				<template v-if="loadedOptions && loadedOptions.length > 0">
 					<template v-for="option in loadedOptions">
-						<div @click="handleOptionClick(option)">
+						<div @mousedown.stop="handleOptionClick(option)">
 							<slot name="option" v-bind="option">{{ option }}</slot>
 						</div>
 					</template>
 					<span
 						v-if="showMoreBtn"
 						role="button"
-						@click="handleMoreClick"
+						@mousedown.stop="handleMoreClick"
 						class="po-text-sm po-text-semibold po-text-mpao-lightblue po-block po-text-center po-py-2 hover:po-bg-slate-50 po-transition-colors po-duration-150 po-ease-out"
 						>More</span
 					>
