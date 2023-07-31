@@ -37,7 +37,7 @@
 				<span
 					class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none"
 					role="button"
-					@click="showDropdown = !showDropdown"
+					@mousedown.stop="showDropdown = !showDropdown"
 				>
 					<ChevronUpDownIcon
 						class="po-h-5 po-w-5 po-text-slate-400"
@@ -65,7 +65,7 @@
 								:item="item"
 								:active="active"
 								:size-dependencies="[item.name]"
-								@click="handleOptionClick(item)"
+								@mousedown.stop="handleOptionClick(item)"
 								:data-index="index"
 								:class="[
 									'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
@@ -93,7 +93,7 @@
 					<ul class="scroller po-max-h-60 po-h-full po-overflow-y-auto">
 						<li
 							v-for="item in filteredItems"
-							@click="handleOptionClick(item)"
+							@mousedown.stop="handleOptionClick(item)"
 							:class="[
 								'po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue',
 								item.active
