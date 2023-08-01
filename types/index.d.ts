@@ -10,6 +10,7 @@ export * from "../src/components/PoCardSearch/PoCardSearch";
 export * from "../src/components/PoCardTabs/PoCardTabs";
 export * from "../src/components/PoCheckbox/PoCheckbox";
 export * from "../src/components/PoConsent/PoConsent";
+export * from "../src/components/PoContentArea/PoContentArea";
 export * from "../src/components/PoDescriptionList/PoDescriptionList";
 export * from "../src/components/PoDownloadFileList/PoDownloadFileList";
 export * from "../src/components/PoEmpty/PoEmpty";
