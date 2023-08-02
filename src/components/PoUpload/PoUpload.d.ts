@@ -2,8 +2,9 @@ import { DefineComponent } from "vue";
 
 export declare const PoUpload: DefineComponent<
 	{
+		token: string;
+		url: string;
 		payload?: object;
-		url?: string;
 		modelValue?: string | number;
 		label?: string;
 		display?: "vertical" | "horizontal";
@@ -16,7 +17,8 @@ export declare const PoUpload: DefineComponent<
 		disabled?: boolean;
 		placeholder?: string | undefined;
 		borderColor?: string;
-		inputLabel?: string;
+		dragAreaText?: string;
+		dragOverText?: string;
 	},
 	{},
 	{},

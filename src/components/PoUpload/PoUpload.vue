@@ -61,10 +61,8 @@
 				v-if="fileButtonStatus === 'initial'"
 				class="po-text-sm po-grow po-text-slate-500 lg:po-min-h-[40px] po-flex po-items-center"
 			>
-				<span v-if="isDragging">Drop your PDF document here!.</span>
-				<span v-else
-					>Drag and drop the PDF document that you want to sign.</span
-				></span
+				<span v-if="isDragging">{{ dragOverText }}</span>
+				<span v-else>{{ dragAreaText }}</span></span
 			>
 			<label
 				v-if="fileButtonStatus === 'initial'"
@@ -130,7 +128,8 @@ interface Props {
 	disabled?: boolean;
 	placeholder?: string | undefined;
 	borderColor?: string;
-	inputLabel?: string;
+	dragAreaText?: string;
+	dragOverText?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -148,7 +147,8 @@ const props = withDefaults(defineProps<Props>(), {
 	required: false,
 	disabled: false,
 	borderColor: "border-slate-300 focus:border-mpao-lightblue",
-	inputLabel: "Choose File",
+	dragAreaText: "Drag and drop files to upload",
+	dragOverText: "Drop files here to upload",
 });
 
 const { errorMessage } = toRefs(props);
