@@ -409,7 +409,11 @@
 				<PoCard class="po-p-5" title="PoUpload">
 					<template v-slot:content>
 						<div class="po-pt-5 po-space-y-5">
-							<PoUpload label="Upload files" />
+							<PoUpload
+								label="Upload files"
+								token="tooooken"
+								url="https://api-url"
+							/>
 						</div>
 					</template>
 				</PoCard>
