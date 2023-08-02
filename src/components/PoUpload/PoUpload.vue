@@ -22,34 +22,7 @@
 				<InformationCircleIcon class="po-fill-current" />
 			</abbr>
 		</label>
-		<label
-			:for="id"
-			:class="[
-				'po-border po-block po-p-2 po-text-sm po-text-slate-600 po-cursor-pointer po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
-				getBorderColor(),
-			]"
-		>
-			<span
-				v-if="fileButtonStatus === 'initial'"
-				class="po-flex po-items-center po-space-x-2"
-			>
-				<PaperClipIcon class="po-w-4 po-stroke-slate-500" />
-				<span>{{ inputLabel }}</span>
-			</span>
-			<span
-				v-if="fileButtonStatus === 'uploading'"
-				class="po-flex po-items-center po-space-x-2"
-			>
-				<PaperClipIcon class="po-w-4 po-stroke-slate-500" />
-				<div class="po-grow po-text-sm po-text-slate-600">
-					<span>Uploading... </span>
-					<span>({{ chosenFiles.length }})</span>
-				</div>
-				<div class="po-shrink-0 po-relative po-top-[3px]">
-					<LoadingDots />
-				</div>
-			</span>
-		</label>
+
 		<input
 			type="file"
 			:name="`${id}-upload-field`"
@@ -61,10 +34,57 @@
 			:aria-required="required"
 			:aria-disabled="disabled"
 			v-bind="$attrs"
-			@change="handleFileSelect"
+			ref="fileInput"
 			class="po-hidden"
-			multiple
+			@change="onFileChange"
 		/>
+		<div
+			class="po-border po-border-dashed po-rounded-md po-p-3 po-flex po-items-center po-space-x-4 po-transition-colors po-duration-150 po-ease-out"
+			:class="[
+				{ 'po-border-slate-400/60': !isDragging },
+				{ 'po-border-mpao-lightblue': isDragging },
+			]"
+			@dragover="onDragOver"
+			@dragleave="onDragLeave"
+			@drop="onDrop"
+		>
+			<span
+				class="po-w-8 po-h-8 po-shrink-0 po-flex po-items-center po-justify-center po-rounded-md"
+				:class="[
+					{ 'po-bg-slate-100 po-text-slate-500': !isDragging },
+					{ 'po-bg-blue-50 po-text-blue-500': isDragging },
+				]"
+			>
+				<DocumentPlusIcon class="po-w-5 po-stroke-current" />
+			</span>
+			<span
+				v-if="fileButtonStatus === 'initial'"
+				class="po-text-sm po-grow po-text-slate-500 lg:po-min-h-[40px] po-flex po-items-center"
+			>
+				<span v-if="isDragging">Drop your PDF document here!.</span>
+				<span v-else
+					>Drag and drop the PDF document that you want to sign.</span
+				></span
+			>
+			<label
+				v-if="fileButtonStatus === 'initial'"
+				for="fileInput"
+				class="po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-shrink-0 po-text-sm po-text-mpao-lightblue po-font-meidum hover:po-text-purple-600 po-px-3 po-py-1"
+				>Upload file</label
+			>
+			<span
+				v-if="fileButtonStatus === 'uploading'"
+				class="po-text-sm po-grow po-text-slate-500 lg:po-min-h-[40px] po-flex po-items-center"
+			>
+				<span>Uploading...</span>
+			</span>
+			<div
+				v-if="fileButtonStatus === 'uploading'"
+				class="po-shrink-0 po-relative po-top-[3px]"
+			>
+				<LoadingDots />
+			</div>
+		</div>
 		<p
 			class="po-mt-2 po-text-sm po-text-slate-500"
 			:id="`${id}-description`"
@@ -90,7 +110,7 @@ export default {
 import { toRefs, ref, watch } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import {
-	PaperClipIcon,
+	DocumentPlusIcon,
 	InformationCircleIcon,
 } from "@heroicons/vue/24/outline";
 
@@ -150,7 +170,41 @@ const emit = defineEmits([
 	"uploaded",
 ]);
 
-function handleFileSelect(event: Event): void {
+function getBorderColor(): string {
+	return props.hasError
+		? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
+		: props.borderColor;
+}
+
+const isDragging = ref(false);
+
+const onDragOver = (event: DragEvent) => {
+	event.preventDefault();
+	isDragging.value = true;
+};
+
+const onDragLeave = () => {
+	isDragging.value = false;
+};
+
+const onDrop = (event: DragEvent) => {
+	event.preventDefault();
+	isDragging.value = false;
+	const files = event.dataTransfer?.files;
+	if (files && files.length > 0) {
+		handleFileSelect(files);
+	}
+};
+
+const onFileChange = (event: Event) => {
+	const inputElement = event.target as HTMLInputElement;
+	const files = inputElement.files;
+	if (files && files.length > 0) {
+		handleFileSelect(files);
+	}
+};
+
+function handleFileSelect(files: FileList): void {
 	fileButtonStatus.value = "uploading";
 
 	fetch(`${getApiEndpoint()}`, {
@@ -158,7 +212,7 @@ function handleFileSelect(event: Event): void {
 		headers: {
 			Authorization: `Bearer ${props?.token}`,
 		},
-		body: createFormData(event),
+		body: createFormData(files),
 	}).then((response: any) => {
 		if (response.status !== 201) {
 			// this.fetchError = response.status;
@@ -172,17 +226,13 @@ function handleFileSelect(event: Event): void {
 	});
 }
 
-function createFormData(event: Event): FormData {
+function createFormData(files: FileList): FormData {
 	let formData = new FormData();
 
-	const inputElement = event.target as HTMLInputElement;
-
-	if (inputElement?.files) {
-		for (const file of inputElement?.files) {
-			formData.append("files", file);
-		}
-		formData.append("payload", JSON.stringify(props.payload));
+	for (const file of files) {
+		formData.append("files", file);
 	}
+	formData.append("payload", JSON.stringify(props.payload));
 
 	return formData;
 }
@@ -195,11 +245,5 @@ function getApiEndpoint(): string {
 	// } else {
 	//   return `${useRuntimeConfig().public.api}/${url}`;
 	// }
-}
-
-function getBorderColor(): string {
-	return props.hasError
-		? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
-		: props.borderColor;
 }
 </script>
