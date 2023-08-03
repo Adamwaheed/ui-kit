@@ -9,7 +9,7 @@
            -->
 		<label
 			:disabled="true"
-			:for="`${id}-upload-field`"
+			:for="uniqueID"
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700 po-mb-1"
 		>
 			<span class="po-capitalize">{{ label }}</span>
@@ -25,12 +25,12 @@
 
 		<input
 			type="file"
-			:name="`${id}-upload-field`"
-			:id="id"
+			:name="uniqueID"
+			:id="uniqueID"
 			:value="modelValue"
 			:disabled="disabled"
 			:required="required"
-			:aria-describedby="`${id}-description`"
+			:aria-describedby="uniqueID"
 			:aria-required="required"
 			:aria-disabled="disabled"
 			v-bind="$attrs"
@@ -66,7 +66,7 @@
 			>
 			<label
 				v-if="fileButtonStatus === 'initial'"
-				for="fileInput"
+				:for="uniqueID"
 				class="po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-shrink-0 po-text-sm po-text-mpao-lightblue po-font-meidum hover:po-text-purple-600 po-px-3 po-py-1"
 				>Upload file</label
 			>
@@ -105,7 +105,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { toRefs, ref, watch } from "vue";
+import { toRefs, ref, watch, onMounted } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import {
 	DocumentPlusIcon,
@@ -160,7 +160,8 @@ watch(errorMessage, (newVal, oldVal) => {
 		!!errorMessage.value && errorMessage.value !== "" ? true : false;
 });
 
-const chosenFiles = ref([]);
+const uniqueID = ref("");
+
 const fileButtonStatus = ref("initial");
 
 const emit = defineEmits([
@@ -175,6 +176,19 @@ function getBorderColor(): string {
 		? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
 		: props.borderColor;
 }
+
+onMounted(() => {
+	if ("" === props.id) {
+		uniqueID.value = props.id
+			? props.id
+			: `${props.label.replace(
+					/\s/g,
+					""
+			  )}-${Date.now()}-upload-field-${Math.floor(Math.random() * 9000)}`;
+	} else {
+		uniqueID.value = props.id;
+	}
+});
 
 const isDragging = ref(false);
 
