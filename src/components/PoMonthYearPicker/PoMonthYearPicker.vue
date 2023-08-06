@@ -38,7 +38,7 @@
 					role="button"
 					@mousedown.stop="showDropdown = !showDropdown"
 				>
-					<ChevronUpDownIcon
+					<CalendarIcon
 						class="po-h-5 po-w-5 po-text-slate-400"
 						aria-hidden="true"
 					/>
@@ -48,28 +48,55 @@
 			<div
 				v-show="showDropdown"
 				ref="popper"
-				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-max-w-[290px] po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
 			>
-				<div class="po-grid po-grid-cols-3 po-p-2">
+				<div
+					class="po-flex po-items-center po-justify-between po-w-full po-px-2 po-pb-1"
+				>
+					<span
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+						role="button"
+					>
+						<ChevronLeftIcon class="po-w-4 po-stroke-slate-500 po-stroke-2" />
+					</span>
+					<span
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-text-sm po-slate-600"
+						role="button"
+					>
+						2023
+					</span>
+					<span
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+						role="button"
+					>
+						<ChevronRightIcon class="po-w-4 po-stroke-slate-500 po-stroke-2" />
+					</span>
+				</div>
+				<div
+					class="po-h-[1px] po-w-full po-bg-gradient-to-l po-from-orange-200 po-via-blue-300 po-to-blue-200"
+				></div>
+				<div class="po-grid po-grid-cols-3 po-p-1">
 					<div class="" v-for="month in months">
 						<span
-							class="po-block po-px-2 po-py-3 po-rounded-md po-text-center po-cursor-pointer hover:po-bg-slate-100 po-transition-colors po-duration-150 po-ease-out"
+							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+							:class="[
+								{ 'po-text-slate-600 hover:po-bg-slate-100': !month.selected },
+								{
+									'po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
+										month.selected,
+								},
+							]"
 							>{{ month.name }}</span
 						>
 					</div>
 				</div>
 			</div>
 		</div>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`-description`"
-			v-if="null !== message"
-		>
+		<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
 			{{ message }}
 		</p>
 		<p
 			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			:id="`-error`"
 			v-if="null !== errorMessage"
 		>
 			<span>{{ errorMessage }}</span>
@@ -92,14 +119,12 @@ import {
 	onMounted,
 	onUnmounted,
 } from "vue";
-import {
-	ChevronUpDownIcon,
-	InformationCircleIcon,
-} from "@heroicons/vue/20/solid";
+import { CalendarIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 interface Props {
@@ -161,7 +186,7 @@ const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
 
-const months = [
+const months = ref([
 	{ number: 1, name: "Jan" },
 	{ number: 2, name: "Feb" },
 	{ number: 3, name: "Mar" },
@@ -169,12 +194,12 @@ const months = [
 	{ number: 5, name: "May" },
 	{ number: 6, name: "Jun" },
 	{ number: 7, name: "Jul" },
-	{ number: 8, name: "Aug" },
+	{ number: 8, name: "Aug", selected: true },
 	{ number: 9, name: "Sep" },
 	{ number: 10, name: "Oct" },
 	{ number: 11, name: "Nov" },
 	{ number: 12, name: "Dec" },
-];
+]);
 
 const updateParts = ref({
 	viewStartIdx: 0,

@@ -42,10 +42,10 @@ export default {
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 import { PoTooltip } from "..";
-import type { HeroIcon } from "../../../types/HeroIcon";
+import type { FunctionalComponent } from "../../../types/HeroIcon";
 
 interface Props {
-	btnIcon?: HeroIcon | null;
+	btnIcon?: FunctionalComponent | null;
 	btnType?: "text" | "icon" | "view" | "edit" | "delete";
 	label?: string;
 	textColor?: string;

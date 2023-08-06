@@ -1,9 +1,9 @@
 import { DefineComponent } from "vue";
-import type { HeroIcon } from "../../../types/HeroIcon";
+import type { FunctionalComponent } from "../../../types/HeroIcon";
 
 export declare const PoTableAction: DefineComponent<
 	{
-		btnIcon?: HeroIcon | null;
+		btnIcon?: FunctionalComponent | null;
 		btnType?: "text" | "icon" | "view" | "edit" | "delete";
 		label?: string;
 		textColor?: string;
