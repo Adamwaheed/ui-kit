@@ -18,6 +18,7 @@ import { PoInputFile } from "./PoInputFile/PoInputFile.vue";
 import { PoSelectField } from "./PoSelectField/PoSelectField.vue";
 import { PoButton } from "./PoButton/PoButton.vue";
 import { PoModal } from "./PoModal/PoModal.vue";
+import { PoMonthPicker } from "./PoMonthPicker/PoMonthPicker.vue";
 import { PoToggle } from "./PoToggle/PoToggle.vue";
 import { PoSectionMenu } from "./PoSectionMenu/PoSectionMenu.vue";
 import { PoCheckbox } from "./PoCheckbox/PoCheckbox.vue";
@@ -74,6 +75,7 @@ declare module "./index" {
 		PoSelectField,
 		PoButton,
 		PoModal,
+		PoMonthPicker,
 		PoToggle,
 		PoSectionMenu,
 		PoCheckbox,
