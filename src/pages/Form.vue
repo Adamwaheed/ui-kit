@@ -419,10 +419,10 @@
 				</PoCard>
 			</div>
 			<div>
-				<PoCard class="po-p-5" title="PoMonthPicker">
+				<PoCard class="po-p-5" title="PoMonthYearPicker">
 					<template v-slot:content>
 						<div class="po-pt-5 po-space-y-5">
-							<PoMonthPicker label="Pick month" />
+							<PoMonthYearPicker label="Pick month" />
 						</div>
 					</template>
 				</PoCard>
@@ -444,7 +444,7 @@ import {
 	PoRadioInput,
 	PoToggle,
 	PoUpload,
-	PoMonthPicker,
+	PoMonthYearPicker,
 } from "../components";
 import debounce from "../shared/helper/Debounce";
 import DataPreview from "./dataPreview.vue";

@@ -28,7 +28,7 @@ export { default as PoInputFile } from "./PoInputFile/PoInputFile.vue";
 export { default as PoSelectField } from "./PoSelectField/PoSelectField.vue";
 export { default as PoButton } from "./PoButton/PoButton.vue";
 export { default as PoModal } from "./PoModal/PoModal.vue";
-export { default as PoMonthPicker } from "./PoMonthPicker/PoMonthPicker.vue";
+export { default as PoMonthYearPicker } from "./PoMonthYearPicker/PoMonthYearPicker.vue";
 export { default as PoToggle } from "./PoToggle/PoToggle.vue";
 export { default as PoSectionMenu } from "./PoSectionMenu/PoSectionMenu.vue";
 export { default as PoCheckbox } from "./PoCheckbox/PoCheckbox.vue";

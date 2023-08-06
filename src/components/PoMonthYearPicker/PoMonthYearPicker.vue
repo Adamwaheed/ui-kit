@@ -1,0 +1,294 @@
+<template>
+	<div
+		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
+		ref="containerRef"
+	>
+		<label
+			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
+			:for="uniqueID"
+		>
+			<span>{{ label }}</span>
+			<span
+				v-if="required"
+				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
+				>&#42;</span
+			>
+			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
+				<InformationCircleIcon class="po-fill-current" />
+			</abbr>
+		</label>
+		<div class="po-relative po-mt-1">
+			<div role="button" ref="comboboxButton">
+				<input
+					type="text"
+					ref="selectBox"
+					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
+					:disabled="disabled"
+					v-model="selectedValue"
+					@input="handleInput"
+					@focus="
+						inputFocused = true;
+						showDropdown = true;
+					"
+					@blur="handleBlur"
+					:id="uniqueID"
+				/>
+				<span
+					class="po-absolute po-inset-y-0 po-right-0 po-flex po-items-center po-rounded-r-md po-px-2 focus:po-outline-none"
+					role="button"
+					@mousedown.stop="showDropdown = !showDropdown"
+				>
+					<ChevronUpDownIcon
+						class="po-h-5 po-w-5 po-text-slate-400"
+						aria-hidden="true"
+					/>
+				</span>
+			</div>
+
+			<div
+				v-show="showDropdown"
+				ref="popper"
+				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+			>
+				<div class="po-grid po-grid-cols-3 po-p-2">
+					<div class="" v-for="month in months">
+						<span
+							class="po-block po-px-2 po-py-3 po-rounded-md po-text-center po-cursor-pointer hover:po-bg-slate-100 po-transition-colors po-duration-150 po-ease-out"
+							>{{ month.name }}</span
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p
+			class="po-mt-2 po-text-sm po-text-slate-500"
+			:id="`-description`"
+			v-if="null !== message"
+		>
+			{{ message }}
+		</p>
+		<p
+			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
+			:id="`-error`"
+			v-if="null !== errorMessage"
+		>
+			<span>{{ errorMessage }}</span>
+		</p>
+	</div>
+</template>
+
+<script lang="ts">
+export default {
+	name: "PoMonthYearPicker",
+};
+</script>
+<script setup lang="ts">
+import {
+	computed,
+	ref,
+	watch,
+	onUpdated,
+	toRefs,
+	onMounted,
+	onUnmounted,
+} from "vue";
+import {
+	ChevronUpDownIcon,
+	InformationCircleIcon,
+} from "@heroicons/vue/20/solid";
+import { createPopper } from "@popperjs/core";
+import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
+import useEventBus from "../../composables/useEventBus";
+import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
+// import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+
+interface Props {
+	modelValue?: string | number | object | null;
+	label?: string;
+	id?: string;
+	info?: string | null;
+	display?: "vertical" | "horizontal";
+	required?: boolean;
+	errorMessage?: string | null;
+	message?: string | null;
+	disabled?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	/**
+	 * Model value
+	 */
+	modelValue: null,
+	/**
+	 * Label text
+	 */
+	label: "",
+	/**
+	 * Input id text
+	 */
+	id: "",
+	/**
+	 * A tool tip, helper information
+	 */
+	info: null,
+	/**
+	 * Input display vertifal (default) or horizontal
+	 */
+	display: "vertical",
+	/**
+	 * True or false if required
+	 */
+	required: false,
+	/**
+	 * Error message
+	 */
+	errorMessage: null,
+	/**
+	 * Tip, description, information for the input
+	 */
+	message: null,
+	/**
+	 * True or false if disabled
+	 */
+	disabled: false,
+});
+
+const query = ref("");
+const selectedValue = ref("");
+const selectedItem = ref();
+const showDropdown = ref(false);
+const inputFocused = ref(false);
+const selectBox = ref();
+const containerRef = ref(null);
+
+const months = [
+	{ number: 1, name: "Jan" },
+	{ number: 2, name: "Feb" },
+	{ number: 3, name: "Mar" },
+	{ number: 4, name: "Apr" },
+	{ number: 5, name: "May" },
+	{ number: 6, name: "Jun" },
+	{ number: 7, name: "Jul" },
+	{ number: 8, name: "Aug" },
+	{ number: 9, name: "Sep" },
+	{ number: 10, name: "Oct" },
+	{ number: 11, name: "Nov" },
+	{ number: 12, name: "Dec" },
+];
+
+const updateParts = ref({
+	viewStartIdx: 0,
+	viewEndIdx: 0,
+	visibleStartIdx: 0,
+	visibleEndIdx: 0,
+});
+
+selectedItem.value = props.modelValue;
+
+onUpdated(() => {
+	selectedItem.value = props.modelValue;
+	// selectedValue.value = getSelectedName(props.modelValue);
+});
+
+const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
+
+watch(selectedItem, () => {
+	// selectedValue.value = getSelectedName(selectedItem.value);
+});
+
+const { errorMessage } = toRefs(props);
+
+const formHasError = ref(null !== errorMessage.value ? true : false);
+
+watch(errorMessage, (newVal, oldVal) => {
+	formHasError.value =
+		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
+});
+
+const uniqueID = ref("");
+
+useDetectOutsideClick(containerRef, () => {
+	showDropdown.value = inputFocused.value ? true : false;
+});
+
+const popper = ref();
+let popperInstance: any;
+
+onMounted(() => {
+	if ("" === props.id) {
+		uniqueID.value = props.id
+			? props.id
+			: `${props.label.replace(
+					/\s/g,
+					""
+			  )}-${Date.now()}-month-picker-${Math.floor(Math.random() * 9000)}`;
+	} else {
+		uniqueID.value = props.id;
+	}
+
+	// selectedValue.value = getSelectedName(props.modelValue);
+
+	popperInstance = createPopper(selectBox.value, popper.value, {
+		placement: "bottom-end",
+		strategy: "fixed",
+		modifiers: [
+			{
+				name: "sameWidth",
+				enabled: true,
+				fn: ({ state }) => {
+					state.styles.popper.width = `${state.rects.reference.width}px`;
+				},
+				phase: "beforeWrite",
+				requires: ["computeStyles"],
+			},
+		],
+	});
+});
+
+onUnmounted(() => {
+	if (popperInstance) {
+		popperInstance.destroy();
+	}
+});
+
+function handleBlur() {
+	inputFocused.value = false;
+
+	setTimeout(() => {
+		showDropdown.value = false;
+	}, 100);
+}
+
+const handleInput: (event: Event) => void = (event) => {
+	let val = (event.target as HTMLInputElement).value;
+
+	query.value = val;
+};
+
+function onUpdate(
+	viewStartIndex: number,
+	viewEndIndex: number,
+	visibleStartIndex: number,
+	visibleEndIndex: number
+) {
+	updateParts.value.viewStartIdx = viewStartIndex;
+	updateParts.value.viewEndIdx = viewEndIndex;
+	updateParts.value.visibleStartIdx = visibleStartIndex;
+	updateParts.value.visibleEndIdx = visibleEndIndex;
+}
+
+function onResize() {
+	if (popperInstance) {
+		popperInstance.update();
+	}
+}
+// Listen to sidebar toggle event
+
+useEventBus.on("sidebarOpen", (val) => {
+	setTimeout(() => {
+		if (popperInstance) {
+			popperInstance.update();
+		}
+	}, 320);
+});
+</script>

@@ -23,7 +23,7 @@ export * from "../src/components/PoLoading/PoLoading";
 export * from "../src/components/PoLogs/PoLogs";
 export * from "../src/components/PoMessage/PoMessage";
 export * from "../src/components/PoModal/PoModal";
-export * from "../src/components/PoMonthPicker/PoMonthPicker";
+export * from "../src/components/PoMonthYearPicker/PoMonthYearPicker";
 export * from "../src/components/PoMultiSelect/PoMultiSelect";
 export * from "../src/components/PoNotification/PoNotification";
 export * from "../src/components/PoNotificationHub/PoNotificationHub";
