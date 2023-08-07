@@ -422,7 +422,11 @@
 				<PoCard class="po-p-5" title="PoMonthYearPicker">
 					<template v-slot:content>
 						<div class="po-pt-5 po-space-y-5">
-							<PoMonthYearPicker label="Pick month" />
+							<PoMonthYearPicker
+								label="Pick month"
+								minDate="27-04-2022"
+								maxDate="10-05-2025"
+							/>
 						</div>
 					</template>
 				</PoCard>

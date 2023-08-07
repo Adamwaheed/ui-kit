@@ -49,6 +49,8 @@
 				v-show="showDropdown"
 				ref="popper"
 				class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-md po-max-w-[290px] po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+				@resize="onResize"
+				@update="onUpdate"
 			>
 				<div
 					class="po-flex po-items-center po-justify-between po-w-full po-px-2 po-pb-1"
@@ -80,10 +82,14 @@
 						<span
 							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
 							:class="[
-								{ 'po-text-slate-600 hover:po-bg-slate-100': !month.selected },
+								{
+									'po-text-slate-600 hover:po-bg-slate-100': !isSelectedMonth(
+										month.number
+									),
+								},
 								{
 									'po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
-										month.selected,
+										isSelectedMonth(month.number),
 								},
 							]"
 							>{{ month.name }}</span
@@ -130,6 +136,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 interface Props {
 	modelValue?: string | number | object | null;
@@ -157,11 +164,11 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Minimum date user should be able to select, default 10 years to past
 	 */
-	minDate: dayjs().subtract(10, "year").format("YYYY/MM/DD"),
+	minDate: dayjs().subtract(10, "year").format("DD-MM-YYYY"),
 	/**
 	 * Maximum date user should be able to select, default 10 years in the future
 	 */
-	maxDate: dayjs().add(10, "year").format("YYYY/MM/DD"),
+	maxDate: dayjs().add(10, "year").format("DD-MM-YYYY"),
 	/**
 	 * Input id text
 	 */
@@ -195,6 +202,7 @@ const props = withDefaults(defineProps<Props>(), {
 // set default timezone to Maldives
 dayjs.extend(utc);
 dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Indian/Maldives");
 
 const query = ref("");
@@ -205,33 +213,41 @@ const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
 
-const currentYear = dayjs().year();
+const selectedYear = ref(dayjs().year());
+const selectedMonth = ref(dayjs().month());
+
+const isMinYear = computed(() => {
+	return selectedYear.value === dayjs(props.minDate, "DD-MM-YYYY").year();
+});
+const isMaxYear = computed(() => {
+	return selectedYear.value === dayjs(props.maxDate, "DD-MM-YYYY").year();
+});
 
 const years = computed(() => {
-	const startYear = dayjs(props.minDate).year();
-	const endYear = dayjs(props.maxDate).year();
+	const startYear = dayjs(props.minDate, "DD-MM-YYYY").year();
+	const endYear = dayjs(props.maxDate, "DD-MM-YYYY").year();
+	console.log(`startYear ${startYear} endYear ${endYear}`);
 	return Array.from(
 		{ length: endYear - startYear + 1 },
 		(_, index) => startYear + index
 	);
 });
 
-console.log("hello years", currentYear, years.value);
+const months = computed(() => {
+	return Array.from({ length: 12 }, (_, index) => ({
+		number: index + 1,
+		name: dayjs().month(index).format("MMM"),
+		disabled:
+			(isMinYear.value &&
+				index + 1 < dayjs(props.minDate, "DD-MM-YYYY").month() + 1) ||
+			(isMaxYear.value &&
+				index + 1 > dayjs(props.maxDate, "DD-MM-YYYY").month() + 1),
+	}));
+});
 
-const months = ref([
-	{ number: 1, name: "Jan" },
-	{ number: 2, name: "Feb" },
-	{ number: 3, name: "Mar" },
-	{ number: 4, name: "Apr" },
-	{ number: 5, name: "May" },
-	{ number: 6, name: "Jun" },
-	{ number: 7, name: "Jul" },
-	{ number: 8, name: "Aug", selected: true },
-	{ number: 9, name: "Sep" },
-	{ number: 10, name: "Oct" },
-	{ number: 11, name: "Nov" },
-	{ number: 12, name: "Dec" },
-]);
+function isSelectedMonth(month: number) {
+	return selectedMonth.value + 1 === month;
+}
 
 const updateParts = ref({
 	viewStartIdx: 0,
