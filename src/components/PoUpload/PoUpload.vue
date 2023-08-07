@@ -228,13 +228,13 @@ function handleFileSelect(files: FileList): void {
 		},
 		body: createFormData(files),
 	}).then((response: any) => {
-		if (response.status !== 201) {
-			// this.fetchError = response.status;
-		} else {
-			response.json().then((data: any) => {
-				// Handle the data
-			});
-		}
+		// if (response.status !== 201) {
+		// 	// this.fetchError = response.status;
+		// } else {
+		// 	response.json().then((data: any) => {
+		// 		// Handle the data
+		// 	});
+		// }
 		fileButtonStatus.value = "initial";
 		emit("uploaded", response);
 	});

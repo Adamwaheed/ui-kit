@@ -127,9 +127,15 @@ import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
 interface Props {
 	modelValue?: string | number | object | null;
 	label?: string;
+	minDate?: string | null;
+	maxDate?: string | null;
 	id?: string;
 	info?: string | null;
 	display?: "vertical" | "horizontal";
@@ -148,6 +154,14 @@ const props = withDefaults(defineProps<Props>(), {
 	 * Label text
 	 */
 	label: "",
+	/**
+	 * Minimum date user should be able to select, default 10 years to past
+	 */
+	minDate: dayjs().subtract(10, "year").format("YYYY/MM/DD"),
+	/**
+	 * Maximum date user should be able to select, default 10 years in the future
+	 */
+	maxDate: dayjs().add(10, "year").format("YYYY/MM/DD"),
 	/**
 	 * Input id text
 	 */
@@ -178,6 +192,11 @@ const props = withDefaults(defineProps<Props>(), {
 	disabled: false,
 });
 
+// set default timezone to Maldives
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Indian/Maldives");
+
 const query = ref("");
 const selectedValue = ref("");
 const selectedItem = ref();
@@ -185,6 +204,19 @@ const showDropdown = ref(false);
 const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
+
+const currentYear = dayjs().year();
+
+const years = computed(() => {
+	const startYear = dayjs(props.minDate).year();
+	const endYear = dayjs(props.maxDate).year();
+	return Array.from(
+		{ length: endYear - startYear + 1 },
+		(_, index) => startYear + index
+	);
+});
+
+console.log("hello years", currentYear, years.value);
 
 const months = ref([
 	{ number: 1, name: "Jan" },
