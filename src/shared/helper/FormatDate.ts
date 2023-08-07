@@ -1,11 +1,12 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 export default function formatDate(dateString: string): string {
 	if ("" === dateString) return "";
 
-	const date = new Date(dateString);
-	const options: Intl.DateTimeFormatOptions = {
-		day: "2-digit",
-		month: "2-digit",
-		year: "numeric",
-	};
-	return date.toLocaleDateString("en-UK", options).split("/").join("-");
+	const date = dayjs(dateString).tz("Indian/Maldives");
+	return date.format("DD-MM-YYYY");
 }
