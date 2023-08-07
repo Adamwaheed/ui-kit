@@ -52,20 +52,22 @@
 					class="po-flex po-items-center po-justify-between po-w-full po-px-2 po-pb-1"
 				>
 					<span
-						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-select-none"
 						role="button"
+						@click="handlePrevYearClick"
 					>
 						<ChevronLeftIcon class="po-w-4 po-stroke-slate-500 po-stroke-2" />
 					</span>
 					<span
-						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-text-sm po-slate-600"
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-text-sm po-slate-600 po-select-none"
 						role="button"
 					>
-						2023
+						{{ selectedYear }}
 					</span>
 					<span
-						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+						class="po-p-2 po-rounded-md hover:po-bg-slate-100 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out po-select-none"
 						role="button"
+						@click="handleNextYearClick"
 					>
 						<ChevronRightIcon class="po-w-4 po-stroke-slate-500 po-stroke-2" />
 					</span>
@@ -81,7 +83,7 @@
 							:class="[
 								{
 									'po-cursor-pointer po-text-slate-600 hover:po-bg-slate-100':
-										!isSelectedMonth(month.number) && !month.disabled,
+										!isSelectedMonth(month) && !month.disabled,
 								},
 								{
 									'po-cursor-default po-select-none po-text-slate-400':
@@ -89,7 +91,7 @@
 								},
 								{
 									'po-cursor-pointer po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
-										isSelectedMonth(month.number),
+										isSelectedMonth(month),
 								},
 							]"
 							>{{ month.name }}</span
@@ -285,7 +287,6 @@ const isMaxYear = computed(() => {
 const years = computed(() => {
 	const startYear = dayjs(props.minDate, "DD-MM-YYYY").year();
 	const endYear = dayjs(props.maxDate, "DD-MM-YYYY").year();
-	console.log(`startYear ${startYear} endYear ${endYear}`);
 	return Array.from(
 		{ length: endYear - startYear + 1 },
 		(_, index) => startYear + index
@@ -308,15 +309,19 @@ const months = computed<PickerMonth[]>(() => {
 	}));
 });
 
-console.log(`---months`, months.value);
-
-function isSelectedMonth(month: number) {
-	return selectedMonth.value === month;
+function isSelectedMonth(month: PickerMonth) {
+	return selectedValue.value === month.value;
 }
-// i have `props.minDate` and `props.maxDate`
-function nextYear() {
-	if (selectedYear.value === dayjs(props.minDate, "DD-MM-YYYY").year()) {
-		selectedYear.value = dayjs(selectedYear.value, "DD-MM-YYYY")
+function handleNextYearClick() {
+	if (selectedYear.value !== dayjs(props.maxDate, "DD-MM-YYYY").year()) {
+		selectedYear.value = dayjs(`01-01-${selectedYear.value}`, "DD-MM-YYYY")
+			.add(1, "year")
+			.year();
+	}
+}
+function handlePrevYearClick() {
+	if (selectedYear.value !== dayjs(props.minDate, "DD-MM-YYYY").year()) {
+		selectedYear.value = dayjs(`01-01-${selectedYear.value}`, "DD-MM-YYYY")
 			.subtract(1, "year")
 			.year();
 	}
