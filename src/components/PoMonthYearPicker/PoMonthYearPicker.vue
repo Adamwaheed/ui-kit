@@ -78,24 +78,29 @@
 				<div class="po-grid po-grid-cols-3 po-p-1">
 					<div class="" v-for="month in months">
 						<span
-							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-transition-colors po-duration-150 po-ease-out"
+							class="po-flex po-items-center po-justify-center po-py-2 po-px-2 po-group"
+							:class="[{ 'po-cursor-pointer': !month.disabled }]"
 							@click="handleMonthClick(month)"
-							:class="[
-								{
-									'po-cursor-pointer po-text-slate-600 hover:po-bg-slate-100':
-										!isSelectedMonth(month) && !month.disabled,
-								},
-								{
-									'po-cursor-default po-select-none po-text-slate-400':
-										month.disabled,
-								},
-								{
-									'po-cursor-pointer po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
-										isSelectedMonth(month),
-								},
-							]"
-							>{{ month.name }}</span
 						>
+							<span
+								class="po-px-4 po-text-sm po-py-1 po-rounded-full po-text-center po-transition-colors po-duration-150 po-ease-out"
+								:class="[
+									{
+										' po-text-slate-600 group-hover:po-bg-slate-100':
+											!isSelectedMonth(month) && !month.disabled,
+									},
+									{
+										'po-cursor-default po-select-none po-text-slate-400':
+											month.disabled,
+									},
+									{
+										' po-text-white po-bg-mpao-lightblue group-hover:po-bg-purple-600':
+											isSelectedMonth(month),
+									},
+								]"
+								>{{ month.name }}</span
+							>
+						</span>
 					</div>
 				</div>
 			</div>
