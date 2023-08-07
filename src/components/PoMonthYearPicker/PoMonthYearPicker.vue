@@ -26,11 +26,7 @@
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:disabled="disabled"
 					v-model="selectedValue"
-					@focus="
-						inputFocused = true;
-						showDropdown = true;
-					"
-					@blur="handleBlur"
+					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
 				<span
@@ -80,16 +76,19 @@
 				<div class="po-grid po-grid-cols-3 po-p-1">
 					<div class="" v-for="month in months">
 						<span
-							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-transition-colors po-duration-150 po-ease-out"
 							@click="handleMonthClick(month)"
 							:class="[
 								{
-									'po-text-slate-600 hover:po-bg-slate-100': !isSelectedMonth(
-										month.number
-									),
+									'po-cursor-pointer po-text-slate-600 hover:po-bg-slate-100':
+										!isSelectedMonth(month.number) && !month.disabled,
 								},
 								{
-									'po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
+									'po-cursor-default po-select-none po-text-slate-400':
+										month.disabled,
+								},
+								{
+									'po-cursor-pointer po-text-white po-bg-mpao-lightblue hover:po-bg-purple-600':
 										isSelectedMonth(month.number),
 								},
 							]"
@@ -217,7 +216,6 @@ const emit = defineEmits(["selected", "update:modelValue"]);
 const query = ref("");
 const selectedValue = ref<string | null>("");
 const showDropdown = ref(false);
-const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
 const selectedYear = ref(dayjs().year());
@@ -325,6 +323,8 @@ function nextYear() {
 }
 
 function handleMonthClick(month: PickerMonth) {
+	if (month.disabled) return;
+
 	selectedValue.value = month.value;
 	selectedMonth.value = month.number;
 	selectedYear.value = month.year;
@@ -344,14 +344,6 @@ watch(errorMessage, (newVal, oldVal) => {
 	formHasError.value =
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
-
-function handleBlur() {
-	inputFocused.value = false;
-
-	setTimeout(() => {
-		showDropdown.value = false;
-	}, 100);
-}
 
 function onUpdate(
 	viewStartIndex: number,
@@ -373,7 +365,7 @@ function onResize() {
 
 // outsideclick detection
 useDetectOutsideClick(containerRef, () => {
-	showDropdown.value = inputFocused.value ? true : false;
+	showDropdown.value = false;
 });
 
 // Listen to sidebar toggle event
