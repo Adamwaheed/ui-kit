@@ -103,12 +103,6 @@
 		<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
 			{{ message }}
 		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			v-if="null !== errorMessage"
-		>
-			<span>{{ errorMessage }}</span>
-		</p>
 	</div>
 </template>
 
@@ -118,15 +112,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import {
-	computed,
-	ref,
-	watch,
-	onUpdated,
-	toRefs,
-	onMounted,
-	onUnmounted,
-} from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import { CalendarIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
@@ -147,7 +133,6 @@ interface Props {
 	info?: string | null;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
-	errorMessage?: string | null;
 	message?: string | null;
 	disabled?: boolean;
 }
@@ -215,7 +200,6 @@ dayjs.tz.setDefault("Indian/Maldives");
 
 const emit = defineEmits(["selected", "update:modelValue"]);
 
-const query = ref("");
 const selectedValue = ref<string | null>("");
 const showDropdown = ref(false);
 const selectBox = ref();
@@ -253,8 +237,6 @@ onMounted(() => {
 		uniqueID.value = props.id;
 	}
 
-	// selectedValue.value = getSelectedName(props.modelValue);
-
 	popperInstance = createPopper(selectBox.value, popper.value, {
 		placement: "bottom-end",
 		strategy: "fixed",
@@ -270,11 +252,6 @@ onMounted(() => {
 			},
 		],
 	});
-});
-
-onUpdated(() => {
-	// selectedValue.value = props.modelValue;
-	// selectedValue.value = getSelectedName(props.modelValue);
 });
 
 const isMinYear = computed(() => {
@@ -337,37 +314,6 @@ function handleMonthClick(month: PickerMonth) {
 	emit("update:modelValue", month.value);
 }
 
-// watch(selectedItem, () => {
-// 	// selectedValue.value = getSelectedName(selectedItem.value);
-// });
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref(null !== errorMessage.value ? true : false);
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
-});
-
-function onUpdate(
-	viewStartIndex: number,
-	viewEndIndex: number,
-	visibleStartIndex: number,
-	visibleEndIndex: number
-) {
-	updateParts.value.viewStartIdx = viewStartIndex;
-	updateParts.value.viewEndIdx = viewEndIndex;
-	updateParts.value.visibleStartIdx = visibleStartIndex;
-	updateParts.value.visibleEndIdx = visibleEndIndex;
-}
-
-function onResize() {
-	if (popperInstance) {
-		popperInstance.update();
-	}
-}
-
 // outsideclick detection
 useDetectOutsideClick(containerRef, () => {
 	showDropdown.value = false;
@@ -387,4 +333,24 @@ onUnmounted(() => {
 		popperInstance.destroy();
 	}
 });
+
+/*** PopperJs related */
+function onUpdate(
+	viewStartIndex: number,
+	viewEndIndex: number,
+	visibleStartIndex: number,
+	visibleEndIndex: number
+) {
+	updateParts.value.viewStartIdx = viewStartIndex;
+	updateParts.value.viewEndIdx = viewEndIndex;
+	updateParts.value.visibleStartIdx = visibleStartIndex;
+	updateParts.value.visibleEndIdx = visibleEndIndex;
+}
+
+function onResize() {
+	if (popperInstance) {
+		popperInstance.update();
+	}
+}
+/*** PopperJs related */
 </script>
