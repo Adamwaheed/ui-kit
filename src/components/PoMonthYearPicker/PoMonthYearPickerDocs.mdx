@@ -1,0 +1,63 @@
+# Month Year Picker component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoMonthYearPickerStories from "./PoMonthYearPicker.stories";
+
+import dedent from "ts-dedent";
+
+You can use `v-model` bindings in `PoMonthYearPicker`.
+
+### Normal
+
+<Story of={PoMonthYearPickerStories.Normal} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoMonthYearPicker v-model="modalValue" label="Contribution Month" />
+  `}
+/>
+
+### Horizontal
+
+<Story of={PoMonthYearPickerStories.Horizontal} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile
+        label="Choose file"
+        id="documents"
+        display="Horizontal"
+    />
+  `}
+/>
+
+### Min Date and Max Date
+
+You can set either a Minimum date that users can pick or a maximum date, or both. If you don't set a `minDate` or `maxDate` it takes +- 10 years from the current year as maximum and minimum.
+
+<Story of={PoMonthYearPickerStories.MinMax} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoInputFile
+        label="Contribution Month"
+        minDate="27-02-2023"
+        maxDate="01-10-2024"
+        v-model="modalValue" 
+    />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoMonthYearPickerStories} />

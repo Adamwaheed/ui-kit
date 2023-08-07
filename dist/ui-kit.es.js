@@ -6258,7 +6258,7 @@ const Xd = Vo, Qd = ["for"], Jd = {
     message: { default: null },
     disabled: { type: Boolean, default: !1 }
   },
-  emits: ["selected", "update:modelValue"],
+  emits: ["update:modelValue"],
   setup(e, { emit: t }) {
     const o = e;
     ae.extend(Js), ae.extend(en), ae.extend(Xd), ae.tz.setDefault("Indian/Maldives");

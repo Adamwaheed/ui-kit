@@ -203,7 +203,7 @@ dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Indian/Maldives");
 
-const emit = defineEmits(["selected", "update:modelValue"]);
+const emit = defineEmits(["update:modelValue"]);
 
 const selectedValue = ref<string | null>("");
 const showDropdown = ref(false);
