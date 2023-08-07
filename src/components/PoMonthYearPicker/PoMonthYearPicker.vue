@@ -22,10 +22,10 @@
 				<input
 					type="text"
 					ref="selectBox"
+					readonly
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:disabled="disabled"
 					v-model="selectedValue"
-					@input="handleInput"
 					@focus="
 						inputFocused = true;
 						showDropdown = true;
@@ -81,6 +81,7 @@
 					<div class="" v-for="month in months">
 						<span
 							class="po-block po-px-2 po-text-sm po-py-4 po-rounded-md po-text-center po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+							@click="handleMonthClick(month)"
 							:class="[
 								{
 									'po-text-slate-600 hover:po-bg-slate-100': !isSelectedMonth(
@@ -129,9 +130,7 @@ import { CalendarIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
-import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
-// import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -139,7 +138,7 @@ import timezone from "dayjs/plugin/timezone";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 interface Props {
-	modelValue?: string | number | object | null;
+	modelValue?: string | null;
 	label?: string;
 	minDate?: string | null;
 	maxDate?: string | null;
@@ -150,6 +149,14 @@ interface Props {
 	errorMessage?: string | null;
 	message?: string | null;
 	disabled?: boolean;
+}
+
+interface PickerMonth {
+	number: number;
+	year: number;
+	value: string;
+	name: string;
+	disabled: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -205,50 +212,18 @@ dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Indian/Maldives");
 
+const emit = defineEmits(["selected", "update:modelValue"]);
+
 const query = ref("");
-const selectedValue = ref("");
-const selectedItem = ref();
+const selectedValue = ref<string | null>("");
 const showDropdown = ref(false);
 const inputFocused = ref(false);
 const selectBox = ref();
 const containerRef = ref(null);
-
 const selectedYear = ref(dayjs().year());
 const selectedMonth = ref(dayjs().month());
-
-const isMinYear = computed(() => {
-	return selectedYear.value === dayjs(props.minDate, "DD-MM-YYYY").year();
-});
-const isMaxYear = computed(() => {
-	return selectedYear.value === dayjs(props.maxDate, "DD-MM-YYYY").year();
-});
-
-const years = computed(() => {
-	const startYear = dayjs(props.minDate, "DD-MM-YYYY").year();
-	const endYear = dayjs(props.maxDate, "DD-MM-YYYY").year();
-	console.log(`startYear ${startYear} endYear ${endYear}`);
-	return Array.from(
-		{ length: endYear - startYear + 1 },
-		(_, index) => startYear + index
-	);
-});
-
-const months = computed(() => {
-	return Array.from({ length: 12 }, (_, index) => ({
-		number: index + 1,
-		name: dayjs().month(index).format("MMM"),
-		disabled:
-			(isMinYear.value &&
-				index + 1 < dayjs(props.minDate, "DD-MM-YYYY").month() + 1) ||
-			(isMaxYear.value &&
-				index + 1 > dayjs(props.maxDate, "DD-MM-YYYY").month() + 1),
-	}));
-});
-
-function isSelectedMonth(month: number) {
-	return selectedMonth.value + 1 === month;
-}
-
+const uniqueID = ref("");
+const popper = ref();
 const updateParts = ref({
 	viewStartIdx: 0,
 	viewEndIdx: 0,
@@ -256,38 +231,17 @@ const updateParts = ref({
 	visibleEndIdx: 0,
 });
 
-selectedItem.value = props.modelValue;
-
-onUpdated(() => {
-	selectedItem.value = props.modelValue;
-	// selectedValue.value = getSelectedName(props.modelValue);
-});
-
-const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
-
-watch(selectedItem, () => {
-	// selectedValue.value = getSelectedName(selectedItem.value);
-});
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref(null !== errorMessage.value ? true : false);
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
-});
-
-const uniqueID = ref("");
-
-useDetectOutsideClick(containerRef, () => {
-	showDropdown.value = inputFocused.value ? true : false;
-});
-
-const popper = ref();
 let popperInstance: any;
 
 onMounted(() => {
+	if (props.modelValue) {
+		const initialDate = dayjs(`02-${props.modelValue + 1}`, "DD-MM-YYYY");
+
+		selectedValue.value = props.modelValue;
+		selectedMonth.value = initialDate.month() + 1;
+		selectedYear.value = initialDate.year();
+	}
+
 	if ("" === props.id) {
 		uniqueID.value = props.id
 			? props.id
@@ -318,10 +272,76 @@ onMounted(() => {
 	});
 });
 
-onUnmounted(() => {
-	if (popperInstance) {
-		popperInstance.destroy();
+onUpdated(() => {
+	// selectedValue.value = props.modelValue;
+	// selectedValue.value = getSelectedName(props.modelValue);
+});
+
+const isMinYear = computed(() => {
+	return selectedYear.value === dayjs(props.minDate, "DD-MM-YYYY").year();
+});
+const isMaxYear = computed(() => {
+	return selectedYear.value === dayjs(props.maxDate, "DD-MM-YYYY").year();
+});
+
+const years = computed(() => {
+	const startYear = dayjs(props.minDate, "DD-MM-YYYY").year();
+	const endYear = dayjs(props.maxDate, "DD-MM-YYYY").year();
+	console.log(`startYear ${startYear} endYear ${endYear}`);
+	return Array.from(
+		{ length: endYear - startYear + 1 },
+		(_, index) => startYear + index
+	);
+});
+
+const months = computed<PickerMonth[]>(() => {
+	return Array.from({ length: 12 }, (_, index) => ({
+		number: index + 1,
+		year: selectedYear.value,
+		value: `${dayjs(`${index + 1}-23-2023`).format("MM")}-${
+			selectedYear.value
+		}`,
+		name: dayjs().month(index).format("MMM"),
+		disabled:
+			(isMinYear.value &&
+				index + 1 < dayjs(props.minDate, "DD-MM-YYYY").month() + 1) ||
+			(isMaxYear.value &&
+				index + 1 > dayjs(props.maxDate, "DD-MM-YYYY").month() + 1),
+	}));
+});
+
+console.log(`---months`, months.value);
+
+function isSelectedMonth(month: number) {
+	return selectedMonth.value === month;
+}
+// i have `props.minDate` and `props.maxDate`
+function nextYear() {
+	if (selectedYear.value === dayjs(props.minDate, "DD-MM-YYYY").year()) {
+		selectedYear.value = dayjs(selectedYear.value, "DD-MM-YYYY")
+			.subtract(1, "year")
+			.year();
 	}
+}
+
+function handleMonthClick(month: PickerMonth) {
+	console.log(month.value);
+	selectedValue.value = month.value;
+	selectedMonth.value = month.number;
+	selectedYear.value = month.year;
+}
+
+// watch(selectedItem, () => {
+// 	// selectedValue.value = getSelectedName(selectedItem.value);
+// });
+
+const { errorMessage } = toRefs(props);
+
+const formHasError = ref(null !== errorMessage.value ? true : false);
+
+watch(errorMessage, (newVal, oldVal) => {
+	formHasError.value =
+		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 
 function handleBlur() {
@@ -331,12 +351,6 @@ function handleBlur() {
 		showDropdown.value = false;
 	}, 100);
 }
-
-const handleInput: (event: Event) => void = (event) => {
-	let val = (event.target as HTMLInputElement).value;
-
-	query.value = val;
-};
 
 function onUpdate(
 	viewStartIndex: number,
@@ -355,13 +369,24 @@ function onResize() {
 		popperInstance.update();
 	}
 }
-// Listen to sidebar toggle event
 
+// outsideclick detection
+useDetectOutsideClick(containerRef, () => {
+	showDropdown.value = inputFocused.value ? true : false;
+});
+
+// Listen to sidebar toggle event
 useEventBus.on("sidebarOpen", (val) => {
 	setTimeout(() => {
 		if (popperInstance) {
 			popperInstance.update();
 		}
 	}, 320);
+});
+
+onUnmounted(() => {
+	if (popperInstance) {
+		popperInstance.destroy();
+	}
 });
 </script>

@@ -426,6 +426,7 @@
 								label="Pick month"
 								minDate="27-04-2022"
 								maxDate="10-05-2025"
+								v-model="form.monthyear"
 							/>
 						</div>
 					</template>
@@ -478,6 +479,7 @@ const form = ref({
 	multiSelect: [],
 	radioInputNormal: 1,
 	toggleInputNormal: false,
+	monthyear: "05-2023",
 });
 
 const selectFieldList = [
