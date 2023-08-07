@@ -428,6 +428,7 @@
 								maxDate="10-05-2025"
 								v-model="form.monthyear"
 							/>
+							<DataPreview> v-model: {{ form.monthyear }}<br /> </DataPreview>
 						</div>
 					</template>
 				</PoCard>

@@ -325,10 +325,11 @@ function nextYear() {
 }
 
 function handleMonthClick(month: PickerMonth) {
-	console.log(month.value);
 	selectedValue.value = month.value;
 	selectedMonth.value = month.number;
 	selectedYear.value = month.year;
+
+	emit("update:modelValue", month.value);
 }
 
 // watch(selectedItem, () => {
