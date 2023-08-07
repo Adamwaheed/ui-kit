@@ -1,0 +1,33 @@
+# Month Year Picker component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoUploadStories from "./PoUpload.stories";
+
+import dedent from "ts-dedent";
+
+You should pass the auth token to `token`.. this is your `useCookie("auth_token")`.
+
+`url` is the full url for the upload API endpoint including https `${useRuntimeConfig().public.api}/${url}`.
+
+When upload is complete the `@uploaded` event returns the raw response from API so you can do response.json();.
+
+<Story of={PoUploadStories.Upload} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoUpload
+        label="Choose Document"
+        token="token"
+        url="https://full-api-url"
+        @uploaded="handleUploadComplete"
+      />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoUploadStories} />
