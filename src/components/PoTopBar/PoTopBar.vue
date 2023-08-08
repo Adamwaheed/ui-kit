@@ -37,7 +37,9 @@
 					@onClear="PassSearchClearToParent"
 					:current-query="currentQuery"
 					:show-tray="showSearchTray"
-				/>
+				>
+					<slot name="searchTray"></slot>
+				</PoSearchBar>
 
 				<div class="po-flex po-items-center po-space-x-3">
 					<span

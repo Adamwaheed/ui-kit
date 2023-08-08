@@ -35,7 +35,7 @@
 			@resize="onResize"
 			@update="onUpdate"
 		>
-			drop
+			<slot></slot>
 		</div>
 	</div>
 </template>

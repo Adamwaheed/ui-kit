@@ -447,7 +447,12 @@ const yn = /* @__PURE__ */ r("div", {
               onOnClear: f,
               "current-query": h.currentQuery,
               "show-tray": h.showSearchTray
-            }, null, 8, ["current-query", "show-tray"])) : $("", !0),
+            }, {
+              default: I(() => [
+                X(h.$slots, "searchTray")
+              ]),
+              _: 3
+            }, 8, ["current-query", "show-tray"])) : $("", !0),
             r("div", kn, [
               h.hasSearch ? (p(), d("span", Cn, [
                 S(k(Oo), { class: "po-stroke-current" })
@@ -1522,7 +1527,9 @@ const Mt = Ra(), Fa = ["placeholder", "onKeyup"], Ha = { class: "po-absolute po-
         class: "po-absolute po-z-10 po-mt-1 po-w-full po-rounded-b-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm",
         onResize: _,
         onUpdate: g
-      }, " drop ", 544), [
+      }, [
+        X(b.$slots, "default")
+      ], 544), [
         [Vt, l.value && b.showTray]
       ])
     ], 512));
