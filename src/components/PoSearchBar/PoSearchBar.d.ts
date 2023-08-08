@@ -4,6 +4,7 @@ export declare const PoSearchBar: DefineComponent<
 	{
 		placeholder?: string;
 		currentQuery?: string;
+		showTray?: boolean;
 	},
 	{},
 	{},

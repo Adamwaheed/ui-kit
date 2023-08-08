@@ -90,6 +90,7 @@ interface Props {
 	currentQuery?: string;
 	appName?: string;
 	hasSearch?: boolean;
+	showSearchTray?: boolean;
 	appList?: AppListItem[] | null;
 	notifications?: Notification[] | null;
 	hasNewNotifications?: boolean;
@@ -112,6 +113,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * If topbar has
 	 */
 	hasSearch: true,
+	/**
+	 * Show/hide search tray. Default: false
+	 */
+	showSearchTray: false,
 	/**
 	 * List of apps for app tray
 	 */

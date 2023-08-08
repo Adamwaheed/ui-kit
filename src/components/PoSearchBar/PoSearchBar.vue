@@ -28,6 +28,7 @@ import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 interface Props {
 	placeholder?: string;
 	currentQuery?: string;
+	showTray?: boolean;
 }
 withDefaults(defineProps<Props>(), {
 	/**
@@ -38,6 +39,10 @@ withDefaults(defineProps<Props>(), {
 	 * Search Query
 	 */
 	currentQuery: "",
+	/**
+	 * Show search tray. default is false
+	 */
+	showTray: false,
 });
 
 const emit = defineEmits(["query", "onClear"]);

@@ -1,5 +1,3 @@
-import { DefineComponent } from "vue";
-
 export * from "../src/components/PoActionBar/PoActionBar";
 export * from "../src/components/PoAlert/PoAlert";
 export * from "../src/components/PoAppIcon/PoAppIcon";

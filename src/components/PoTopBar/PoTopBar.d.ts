@@ -10,6 +10,7 @@ export declare const PoTopBar: DefineComponent<
 		currentQuery?: string;
 		appName?: string;
 		hasSearch?: boolean;
+		showSearchTray?: boolean;
 		appList?: AppListItem[] | null;
 		notifications?: Notification[] | null;
 		hasNewNotifications?: boolean;
