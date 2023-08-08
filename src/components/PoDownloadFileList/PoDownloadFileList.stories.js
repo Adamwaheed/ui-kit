@@ -39,6 +39,7 @@ const Template = (args) => ({
 
 export const Empty = Template.bind({});
 export const Files = Template.bind({});
+export const TwoButtons = Template.bind({});
 
 Empty.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -54,6 +55,18 @@ Files.args = {
 		},
 		{
 			label: "one_more_file.pdf",
+		},
+	],
+};
+
+TwoButtons.args = {
+	/* 👇 The args you need here will depend on your component */
+	showViewBtn: true,
+	viewBtnLabel: "View",
+	linkLabel: "Download",
+	files: [
+		{
+			label: "resume_back_end_developer.pdf",
 		},
 	],
 };

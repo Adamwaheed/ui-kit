@@ -26,6 +26,32 @@ import dedent from "ts-dedent";
   `}
 />
 
+#### Buttons
+
+This component has two buttons that you can use.
+
+The default button has the `Download` label which you can change by setting `linkLabel="New Label"` and it fires `@button-click` on click.
+
+The other button can be shown by setting `showViewBtn=true`, you can set it's label `viewBtnLabel="View"` and it fires `@view-click` on click.
+
+<Story of={PoDownloadFileListStories.TwoButtons} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoDownloadFileList
+        :files="downloadableFiles"
+        showViewBtn
+        viewBtnLabel="View"
+        linkLabel="Remove"
+        @button-click="handleRemoveClick"
+        @view-click="handleViewClick"
+    />
+  `}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoDownloadFileListStories} />
