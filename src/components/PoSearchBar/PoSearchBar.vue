@@ -3,6 +3,22 @@
 		class="po-flex-grow po-hidden po-relative md:po-block"
 		ref="containerRef"
 	>
+		<span
+			class="po-absolute po-top-[5px] po-right-[5px] po-text-xs po-rounded-lg po-px-4 po-py-2 po-cursor-pointer po-transition-colors po-duration-150 po-ease-out"
+			:class="[
+				{
+					'po-text-slate-200 po-bg-slate-500/60 hover:po-bg-slate-500':
+						!showTray || !showDropdown,
+				},
+				{
+					'po-text-slate-400 po-bg-slate-200/60 hover:po-bg-slate-200':
+						showTray && showDropdown,
+				},
+				{ 'po-hidden': query === '' },
+			]"
+			@click="handleClickSearchButton"
+			>Search</span
+		>
 		<input
 			v-model="query"
 			type="text"
@@ -93,6 +109,10 @@ const searchOnEnter = (e: KeyboardEvent) => {
 	emit("query", query.value);
 	// }
 };
+
+function handleClickSearchButton() {
+	emit("query", query.value);
+}
 
 onMounted(() => {
 	//   document.addEventListener("keydown", searchOnEnter);

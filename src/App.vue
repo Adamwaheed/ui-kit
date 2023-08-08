@@ -36,6 +36,11 @@
 					/>
 				</svg>
 			</template>
+			<template v-slot:searchTray>
+				<div class="po-p-5 po-text-slate-500 po-text-sm">
+					Let the searches begin
+				</div>
+			</template>
 		</PoTopBar>
 	</div>
 	<PoLoading :show="false" label="" />
