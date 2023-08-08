@@ -36,6 +36,7 @@
 					@query="PassQueryToParent"
 					@onClear="PassSearchClearToParent"
 					:current-query="currentQuery"
+					:show-tray="showSearchTray"
 				/>
 
 				<div class="po-flex po-items-center po-space-x-3">

@@ -1,17 +1,41 @@
 <template>
-	<div class="po-flex-grow po-hidden po-relative md:po-block">
+	<div
+		class="po-flex-grow po-hidden po-relative md:po-block"
+		ref="containerRef"
+	>
 		<input
 			v-model="query"
 			type="text"
+			ref="mainSearchBox"
 			id="main-search"
 			:placeholder="placeholder"
 			@keyup.enter="searchOnEnter"
-			class="peer/search po-bg-transparent po-border po-border-transparent po-text-slate-100 po-text-sm po-rounded-md po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none focus:po-border-slate-400 hover:po-border-slate-600"
+			@focus="showDropdown = true"
+			class="peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-slate-600"
+			:class="[
+				{
+					'po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100':
+						!showTray || !showDropdown,
+				},
+				{
+					'po-rounded-t-md po-border-2 focus:po-border-white po-bg-white po-text-slate-600':
+						showTray && showDropdown,
+				},
+			]"
 		/>
 		<div
 			class="po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-pointer-events-none po-transition-all po-ease-linear po-duration-100 po-text-slate-400 po-origin-center peer-hover/search:po-scale-105 peer-focus/search:po-text-slate-100"
 		>
 			<MagnifyingGlassIcon class="po-w-5 po-h-5 po-stroke-current" />
+		</div>
+		<div
+			v-show="showDropdown && showTray"
+			ref="popper"
+			class="po-absolute po-z-10 po-mt-1 po-w-full po-rounded-b-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm"
+			@resize="onResize"
+			@update="onUpdate"
+		>
+			drop
 		</div>
 	</div>
 </template>
@@ -22,15 +46,18 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+import { createPopper } from "@popperjs/core";
+import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
+import useEventBus from "../../composables/useEventBus";
 
 interface Props {
 	placeholder?: string;
 	currentQuery?: string;
 	showTray?: boolean;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Placeholder text
 	 */
@@ -45,8 +72,21 @@ withDefaults(defineProps<Props>(), {
 	showTray: false,
 });
 
-const emit = defineEmits(["query", "onClear"]);
+const showDropdown = ref(false);
+const containerRef = ref(null);
+const mainSearchBox = ref();
+const popper = ref();
+const updateParts = ref({
+	viewStartIdx: 0,
+	viewEndIdx: 0,
+	visibleStartIdx: 0,
+	visibleEndIdx: 0,
+});
+
 let query = ref("");
+let popperInstance: any;
+
+const emit = defineEmits(["query", "onClear"]);
 
 const searchOnEnter = (e: KeyboardEvent) => {
 	// if (e.key === "Enter"  && 0 < query.value.length) {
@@ -54,18 +94,80 @@ const searchOnEnter = (e: KeyboardEvent) => {
 	// }
 };
 
-// onMounted(() => {
-//   document.addEventListener("keydown", searchOnEnter);
-//   query.value = props.currentQuery;
-// });
+onMounted(() => {
+	//   document.addEventListener("keydown", searchOnEnter);
+	//   query.value = props.currentQuery;
 
-// onUnmounted(() => {
-//   document.removeEventListener("keydown", searchOnEnter);
-// });
+	// cos of popper renderring in a different position
+	// we add a delay
+	if (props.showTray) {
+		setTimeout(() => {
+			popperInstance = createPopper(mainSearchBox.value, popper.value, {
+				placement: "bottom-end",
+				strategy: "fixed",
+				modifiers: [
+					{
+						name: "sameWidth",
+						enabled: true,
+						fn: ({ state }) => {
+							state.styles.popper.width = `${state.rects.reference.width}px`;
+						},
+						phase: "beforeWrite",
+						requires: ["computeStyles"],
+					},
+				],
+			});
+		}, 320);
+	}
+});
 
 watch(query, async (newQuestion, oldQuestion) => {
 	if ("" === newQuestion) {
 		emit("onClear", true);
 	}
 });
+
+// outsideclick detection
+useDetectOutsideClick(containerRef, () => {
+	if (props.showTray) {
+		showDropdown.value = false;
+	}
+});
+
+// Listen to sidebar toggle event
+useEventBus.on("sidebarOpen", (val) => {
+	setTimeout(() => {
+		if (popperInstance && props.showTray) {
+			popperInstance.update();
+		}
+	}, 320);
+});
+
+onUnmounted(() => {
+	//   document.removeEventListener("keydown", searchOnEnter);
+
+	if (popperInstance && props.showTray) {
+		popperInstance.destroy();
+	}
+});
+
+/*** PopperJs related */
+function onUpdate(
+	viewStartIndex: number,
+	viewEndIndex: number,
+	visibleStartIndex: number,
+	visibleEndIndex: number
+) {
+	updateParts.value.viewStartIdx = viewStartIndex;
+	updateParts.value.viewEndIdx = viewEndIndex;
+	updateParts.value.visibleStartIdx = visibleStartIndex;
+	updateParts.value.visibleEndIdx = visibleEndIndex;
+}
+
+function onResize() {
+	if (popperInstance) {
+		popperInstance.update();
+	}
+}
+/*** PopperJs related */
 </script>

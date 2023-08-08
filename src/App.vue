@@ -10,6 +10,7 @@
 	<div class="po-min-h-full po-pt-16">
 		<PoTopBar
 			:has-search="true"
+			:show-search-tray="true"
 			:app-list="appsFromApi"
 			:user-object="currUserObject"
 			:notifications="notifications"
