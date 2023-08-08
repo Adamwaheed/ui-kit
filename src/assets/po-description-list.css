@@ -1,11 +1,11 @@
-.po-description-list:not(.no-col) div {
+.po-description-list:not(.no-col) > div {
 	@apply po-grid po-grid-cols-1 sm:po-grid-cols-3 xl:po-grid-cols-4 sm:po-gap-5 po-py-3 po-relative;
 }
-.po-description-list.striped div {
+.po-description-list.striped > div {
 	@apply even:po-bg-slate-50 po-px-2;
 }
 
-.po-description-list.no-col div {
+.po-description-list.no-col > div {
 	@apply po-py-3 po-relative;
 }
 

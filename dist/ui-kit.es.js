@@ -1540,7 +1540,7 @@ const Mt = Ra(), Fa = ["placeholder", "onKeyup"], Ha = { class: "po-absolute po-
       Pe(r("div", {
         ref_key: "popper",
         ref: a,
-        class: "po-absolute po-z-10 po-mt-1 po-w-full po-rounded-b-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm",
+        class: "po-absolute po-z-[51] po-mt-1 po-w-full po-rounded-b-md po-bg-white po-py-1 po-text-base po-shadow-lg po-ring-1 po-ring-black po-ring-opacity-5 focus:po-outline-none sm:po-text-sm",
         onResize: g,
         onUpdate: _
       }, [
