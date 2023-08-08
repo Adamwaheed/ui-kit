@@ -1522,6 +1522,7 @@ const Mt = Ra(), Fa = ["placeholder", "onKeyup"], Ha = { class: "po-absolute po-
         placeholder: b.placeholder,
         onKeyup: js(h, ["enter"]),
         onFocus: c[1] || (c[1] = (v) => l.value = !0),
+        autocomplete: "off",
         class: L(["peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-slate-600", [
           {
             "po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100": !b.showTray || !l.value

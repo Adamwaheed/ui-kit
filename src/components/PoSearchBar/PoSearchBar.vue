@@ -27,6 +27,7 @@
 			:placeholder="placeholder"
 			@keyup.enter="searchOnEnter"
 			@focus="showDropdown = true"
+			autocomplete="off"
 			class="peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-slate-600"
 			:class="[
 				{
