@@ -29,7 +29,7 @@
 							},
 							{ 'po-w-8 po-h-8': orgLogo },
 						]"
-						class="po-shrink-0 po-select-none po-rounded-full po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"
+						class="po-shrink-0 po-select-none po-rounded-full po-bg-white/10 po-flex po-items-center po-justify-center genie-effect po-z-50"
 					>
 						<img
 							v-if="userAvatar"

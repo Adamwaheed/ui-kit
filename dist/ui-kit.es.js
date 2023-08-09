@@ -384,7 +384,7 @@ const yn = /* @__PURE__ */ r("div", {
 ], -1), wn = { class: "po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex" }, _n = { class: "po-shrink-0 po-px-3 po-pt-3" }, $n = {
   for: "sidebar-drawer-toggle",
   role: "button",
-  class: "genie-effect po-flex po-items-center po-justify-center po-bg-[#2e5266] po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
+  class: "genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 }, xn = { class: "po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4" }, Vn = { class: "po-flex po-relative po-h-16 po-items-center po-justify-between po-space-x-12" }, kn = { class: "po-flex po-items-center po-space-x-3" }, Cn = {
   key: 0,
   class: "po-block po-w-6 po-text-slate-100 md:po-hidden",
@@ -3314,7 +3314,7 @@ const Hr = {
                       "po-w-10 po-h-10": !u.value
                     },
                     { "po-w-8 po-h-8": u.value }
-                  ], "po-shrink-0 po-select-none po-rounded-full po-bg-[#2e5266] po-flex po-items-center po-justify-center genie-effect po-z-50"])
+                  ], "po-shrink-0 po-select-none po-rounded-full po-bg-white/10 po-flex po-items-center po-justify-center genie-effect po-z-50"])
                 }, [
                   i.value ? (p(), d("img", {
                     key: 0,

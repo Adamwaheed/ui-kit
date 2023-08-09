@@ -14,7 +14,7 @@
 			<label
 				for="sidebar-drawer-toggle"
 				role="button"
-				class="genie-effect po-flex po-items-center po-justify-center po-bg-[#2e5266] po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
+				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 			>
 				<Bars3Icon class="po-w-6 po-fill-current" />
 			</label>
