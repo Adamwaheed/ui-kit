@@ -59,7 +59,7 @@
 			:apps="appsFromApi"
 			app-code="auth"
 		/>
-		<main class="shell-content" id="shell-content-root">
+		<PoMain>
 			<!-- <PoActionBar
 				:items="actionBarItems"
 				:show-back-button="true"
@@ -463,7 +463,7 @@
 			</PoContentArea>
 
 			<PoFooter :changelog="changeLog" />
-		</main>
+		</PoMain>
 		<!-- <PoNotification
 			label="Aishath Jackson replied..."
 			text="I submited all that but still"
@@ -560,6 +560,7 @@ import {
 	PoCardTabs,
 	PoTableAction,
 	PoSelectApi,
+	PoMain,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";

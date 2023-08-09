@@ -19,6 +19,7 @@ export * from "../src/components/PoInputField/PoInputField";
 export * from "../src/components/PoInputFile/PoInputFile";
 export * from "../src/components/PoLoading/PoLoading";
 export * from "../src/components/PoLogs/PoLogs";
+export * from "../src/components/PoMain/PoMain";
 export * from "../src/components/PoMessage/PoMessage";
 export * from "../src/components/PoModal/PoModal";
 export * from "../src/components/PoMonthYearPicker/PoMonthYearPicker";

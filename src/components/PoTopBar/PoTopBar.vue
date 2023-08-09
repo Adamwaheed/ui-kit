@@ -18,6 +18,14 @@
 			>
 				<Bars3Icon class="po-w-6 po-fill-current" />
 			</label>
+			<!-- <button
+				for="sidebar-drawer-toggle"
+				role="button"
+				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
+				@click="toggleSidebar"
+			>
+				<Bars3Icon class="po-w-6 po-fill-current" />
+			</button> -->
 		</div>
 		<div class="po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4">
 			<div
@@ -74,6 +82,7 @@ export default {
 <script setup lang="ts">
 import { watch, ref, toRefs } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
+import useEventBus from "../../composables/useEventBus";
 
 import type {
 	UserObject,
@@ -152,6 +161,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const profileAvatar = ref("");
 const profileLogo = ref("");
+const isSidebarOpen = ref<boolean>(true);
 
 const { avatar, logo } = toRefs(props);
 
@@ -175,5 +185,12 @@ function PassQueryToParent(value: string) {
 function PassSearchClearToParent(value: boolean) {
 	const newVal = value;
 	emit("onSearchClear", newVal);
+}
+
+function toggleSidebar() {
+	console.log("haps");
+	isSidebarOpen.value = !isSidebarOpen.value;
+	// emit sidebar open event for all components to listen
+	useEventBus.emit("sidebarOpen", isSidebarOpen.value);
 }
 </script>
