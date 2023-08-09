@@ -1523,9 +1523,9 @@ const Mt = Rn(), Fn = ["placeholder", "onKeyup"], Hn = {
         onKeyup: js(h, ["enter"]),
         onFocus: c[1] || (c[1] = (v) => l.value = !0),
         autocomplete: "off",
-        class: L(["peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-slate-600", [
+        class: L(["peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-white/40", [
           {
-            "po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100": !b.showTray || !l.value
+            "po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100 po-placeholder-white/60": !b.showTray || !l.value
           },
           {
             "po-rounded-t-md po-border-2 focus:po-border-white po-bg-white po-text-slate-600": b.showTray && l.value

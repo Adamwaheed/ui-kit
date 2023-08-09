@@ -28,10 +28,10 @@
 			@keyup.enter="searchOnEnter"
 			@focus="showDropdown = true"
 			autocomplete="off"
-			class="peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-slate-600"
+			class="peer/search po-border-transparent po-text-sm po-ring-0 po-outline-none focus:po-outline-none focus:po-ring-0 po-transition-colors po-ease-linear po-duration-100 po-block po-w-full po-pl-10 po-p-2.5 po-appearance-none hover:po-border-white/40"
 			:class="[
 				{
-					'po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100':
+					'po-rounded-md po-border focus:po-border-slate-400 po-bg-transparent po-text-slate-100 po-placeholder-white/60':
 						!showTray || !showDropdown,
 				},
 				{
