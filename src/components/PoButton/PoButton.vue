@@ -51,7 +51,7 @@
 		@click.prevent="$emit('button-click', to)"
 		class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
 		:class="[
-			{ 'po-text-mpao-lightblue hover:po-text-mpao-blue': !overrideColors },
+			{ 'po-text-mpao-lightblue hover:po-text-mpao-midblue': !overrideColors },
 		]"
 	>
 		<slot name="label">{{ label }}</slot>
@@ -137,7 +137,7 @@ const buttonColor = computed(() => {
 	} else {
 		switch (props.actionType) {
 			case "default":
-				return "po-bg-mpao-lightblue hover:po-bg-mpao-blue focus:po-bg-mpao-blue po-text-slate-50 po-border-mpao-lightblue hover:po-border-mpao-blue focus:border-mpao-blue";
+				return "po-bg-mpao-lightblue hover:po-bg-mpao-midblue focus:po-bg-mpao-midblue po-text-slate-50 po-border-mpao-lightblue hover:po-border-mpao-midblue focus:border-mpao-midblue";
 				break;
 			case "danger":
 				return "po-bg-mpao-red hover:po-bg-rose-600 focus:po-bg-mpao-red po-text-white po-border-mpao-red hover:po-border-rose-600 focus:po-border-rose-600";

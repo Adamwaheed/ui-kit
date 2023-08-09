@@ -42,7 +42,9 @@ module.exports = {
 					blue: "#242d59",
 					green: "#4fac76",
 					red: "#eb5757",
-					lightblue: "#3f54c0",
+					lightblue: "#416ADC",
+					// lightblue: "#3f54c0",
+					midblue: "#004EBB", // for hover
 				},
 			},
 		},
