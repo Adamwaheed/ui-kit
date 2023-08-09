@@ -41,7 +41,17 @@
 			]"
 		/>
 		<div
-			class="po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-pointer-events-none po-transition-all po-ease-linear po-duration-100 po-text-slate-400 po-origin-center peer-hover/search:po-scale-105 peer-focus/search:po-text-slate-100"
+			class="po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-pointer-events-none po-transition-all po-ease-linear po-duration-100 po-origin-center peer-hover/search:po-scale-105"
+			:class="[
+				{
+					'po-text-white/50 peer-focus/search:po-text-white/50':
+						!showTray || !showDropdown,
+				},
+				{
+					'po-text-black/30 peer-focus/search:po-text-black/30':
+						showTray && showDropdown,
+				},
+			]"
 		>
 			<MagnifyingGlassIcon class="po-w-5 po-h-5 po-stroke-current" />
 		</div>
