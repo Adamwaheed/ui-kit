@@ -1,9 +1,9 @@
 <template>
-	<div class="min-h-full pt-16"><slot></slot></div>
+	<div class="h-full max-w-full"><slot></slot></div>
 </template>
 
 <script lang="ts">
 export default {
-	name: "PoHead",
+	name: "PoWrap",
 };
 </script>

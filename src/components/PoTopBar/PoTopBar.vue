@@ -9,7 +9,9 @@
 			id="po-notifications-alert"
 		></div>
 	</div>
-	<nav class="po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex">
+	<nav
+		class="po-bg-mpao-blue po-fixed po-top-0 po-left-0 po-right-0 po-w-full po-z-50 po-flex"
+	>
 		<div class="po-shrink-0 po-px-3 po-pt-3">
 			<!-- <label
 				for="sidebar-drawer-toggle"
