@@ -1,137 +1,8 @@
 <template>
-	<input
-		type="checkbox"
-		name=""
-		class="po-hidden shell-sidebar--toggle"
-		role="none"
-		id="sidebar-drawer-toggle"
-		checked
-		aria-checked="true"
-		ref="sidebarToggle"
-		@click="handleSidebarToggleClick"
-	/>
-	<aside class="shell-sidebar" :key="sideBarKey">
-		<div class="po-grow">
-			<div
-				v-for="(group, groupIndex) in content"
-				:key="`sidebar-group-${groupIndex}`"
-			>
-				<Disclosure v-slot="{ open }" :defaultOpen="true">
-					<DisclosureButton
-						v-if="group.groupName"
-						:class="open ? '' : 'po-mb-3'"
-						class="shell-sidebar--section po-w-full po-text-left"
-					>
-						{{ group.groupName }}
-					</DisclosureButton>
-					<transition
-						enter-active-class="po-transition po-duration-100 po-ease-out"
-						enter-from-class="po-transform po-scale-95 po-opacity-0"
-						enter-to-class="po-transform po-scale-100 po-opacity-100"
-						leave-active-class="po-transition po-duration-75 po-ease-out"
-						leave-from-class="po-transform po-scale-100 po-opacity-100"
-						leave-to-class="po-transform po-scale-95 po-opacity-0"
-					>
-						<DisclosurePanel>
-							<ul class="shell-sidebar--menu">
-								<li v-for="item in group.items" :key="item.label">
-									<!--
-                      Emits the button url when it’s clicked
-                      @event button-click
-                  -->
-									<span>
-										<PoTooltip
-											:text="genToolTip(item.label)"
-											placement="right"
-											strategy="fixed"
-										>
-											<button
-												v-if="!item.disabled"
-												@click="sidebarItemClick('button-click', item.url)"
-												:class="[
-													'shell-sidebar--item',
-													{ active: item.url == currRoute },
-												]"
-											>
-												<span class="shell-sidebar--icon">
-													<component
-														:is="item.icon"
-														class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
-													/>
-												</span>
-												<span
-													class="shell-sidebar--label po-font-medium po-text-left"
-													>{{ item.label }}</span
-												>
-											</button>
-										</PoTooltip>
-									</span>
-								</li>
-							</ul>
-						</DisclosurePanel>
-					</transition>
-				</Disclosure>
-			</div>
-			<div v-if="filterApps?.length > 0">
-				<Disclosure v-slot="{ open }" :defaultOpen="true">
-					<DisclosureButton
-						v-if="appsLabel"
-						:class="open ? '' : 'po-mb-3'"
-						class="shell-sidebar--section po-w-full po-text-left"
-					>
-						{{ appsLabel }}
-					</DisclosureButton>
-					<transition
-						enter-active-class="po-transition po-duration-100 po-ease-out"
-						enter-from-class="po-transform po-scale-95 po-opacity-0"
-						enter-to-class="po-transform po-scale-100 po-opacity-100"
-						leave-active-class="po-transition po-duration-75 po-ease-out"
-						leave-from-class="po-transform po-scale-100 po-opacity-100"
-						leave-to-class="po-transform po-scale-95 po-opacity-0"
-					>
-						<DisclosurePanel>
-							<ul class="shell-sidebar--menu sidebar-apps po-shrink-0 po-mb-0">
-								<li v-for="(app, index) in filterApps">
-									<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
-									<PoTooltip
-										:text="genToolTip(app.name)"
-										placement="right"
-										strategy="fixed"
-									>
-										<button
-											@click="sidebarItemClick('app-click', app.name)"
-											class="shell-sidebar--item"
-											:class="[{ active: app.current }]"
-											title="Go to feedback"
-										>
-											<span class="shell-sidebar--icon">
-												<span
-													v-html="app.icon"
-													class="po-text-slate-600 po-w-5"
-												></span>
-											</span>
-											<span
-												class="shell-sidebar--label po-font-medium po-text-left"
-												>{{ app.name }}</span
-											>
-										</button>
-									</PoTooltip>
-								</li>
-							</ul>
-						</DisclosurePanel>
-					</transition>
-				</Disclosure>
-			</div>
-		</div>
-		<ul
-			v-if="hasFeedback"
-			class="shell-sidebar--menu po-shrink-0 po-mb-0 po-border-t po-border-slate-200 po-pt-3"
-		>
-			<li>
-				<!-- <button @click="$emit('button-click', 'feedback-button')" class="shell-sidebar--item" title="Go to feedback"> -->
-				<FeedbackForm />
-			</li>
-		</ul>
+	<aside
+		class="po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-pt-10 sm:po-pt-0"
+	>
+		...
 	</aside>
 </template>
 
@@ -218,19 +89,19 @@ const sideBarKey = computed(() => {
 
 // Get a reference to the checkbox element using `ref`
 const sidebarToggle = ref<HTMLInputElement | null>(null);
-const sidebarOpen = ref<boolean | undefined>();
+const sidebarOpen = ref<boolean | undefined>(undefined);
 
 // Define a function to uncheck the checkbox
 function toggleSidebar() {
 	const screenWidth = window.innerWidth;
 	if (screenWidth <= 1024 && sidebarToggle.value) {
-		sidebarToggle.value.checked = !sidebarToggle.value.checked;
-		sidebarOpen.value = sidebarToggle.value.checked;
+		// sidebarToggle.value.checked = !sidebarToggle.value.checked;
+		// sidebarOpen.value = sidebarToggle.value.checked;
 	}
 }
 
 onMounted(() => {
-	sidebarOpen.value = sidebarToggle.value?.checked;
+	// sidebarOpen.value = sidebarToggle.value?.checked;
 });
 
 function sidebarItemClick(
@@ -246,10 +117,19 @@ function handleSidebarToggleClick() {
 	if (sidebarToggle.value) {
 		sidebarOpen.value = sidebarToggle.value.checked;
 
-		// emit sidebar open event for all components to listen
-		useEventBus.emit("sidebarOpen", sidebarOpen.value);
+		// // emit sidebar open event for all components to listen
+		// useEventBus.emit("sidebarOpen", sidebarOpen.value);
 	}
 }
+
+useEventBus.on("sidebarOpen", (val) => {
+	if (typeof val === "boolean") {
+		setTimeout(() => {
+			console.log("this also haps", val);
+			sidebarOpen.value = val;
+		}, 320);
+	}
+});
 
 function genToolTip(tip: string) {
 	return !sidebarOpen.value ? tip : "";

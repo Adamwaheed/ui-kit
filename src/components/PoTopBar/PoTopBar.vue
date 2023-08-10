@@ -11,21 +11,21 @@
 	</div>
 	<nav class="po-bg-mpao-blue po-fixed po-top-0 po-w-full po-z-50 po-flex">
 		<div class="po-shrink-0 po-px-3 po-pt-3">
-			<label
+			<!-- <label
 				for="sidebar-drawer-toggle"
 				role="button"
 				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 			>
 				<Bars3Icon class="po-w-6 po-fill-current" />
-			</label>
-			<!-- <button
+			</label> -->
+			<button
 				for="sidebar-drawer-toggle"
 				role="button"
 				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 				@click="toggleSidebar"
 			>
 				<Bars3Icon class="po-w-6 po-fill-current" />
-			</button> -->
+			</button>
 		</div>
 		<div class="po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4">
 			<div
