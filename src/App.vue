@@ -7,7 +7,7 @@
 		<PoLoading :show="true" />
 	</div>
 	<!-- Full screen loading -->
-	<div class="po-min-h-full po-pt-16">
+	<PoHead>
 		<PoTopBar
 			:has-search="true"
 			:show-search-tray="true"
@@ -42,7 +42,7 @@
 				</div>
 			</template>
 		</PoTopBar>
-	</div>
+	</PoHead>
 	<PoLoading :show="false" label="" />
 	<PoAlert
 		:show="showAlert"
@@ -51,7 +51,7 @@
 		@button-click="handleAlertOkClick"
 	/>
 	<PoCommandPalette />
-	<div class="po-h-full po-max-w-full">
+	<PoBody>
 		<PoSidebarDrawer
 			:content="sidebarContent"
 			@button-click="handleSidebarButtonClick"
@@ -517,7 +517,7 @@
 					v-model="selectFieldTwoSelected"
 			/></template>
 		</PoSlideover>
-	</div>
+	</PoBody>
 </template>
 
 <script setup lang="ts">
@@ -561,6 +561,8 @@ import {
 	PoTableAction,
 	PoSelectApi,
 	PoMain,
+	PoHead,
+	PoBody,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";

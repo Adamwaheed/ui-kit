@@ -1,6 +1,7 @@
 <template>
 	<aside
-		class="po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-w-full po-absolute po-left-0 po-top-16 po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-pt-10 sm:po-pt-0"
+		class="po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-fixed"
+		:class="[{ 'po-w-[256px]': sidebarOpen }, { 'po-w-[64px]': !sidebarOpen }]"
 	>
 		...
 	</aside>
@@ -89,7 +90,7 @@ const sideBarKey = computed(() => {
 
 // Get a reference to the checkbox element using `ref`
 const sidebarToggle = ref<HTMLInputElement | null>(null);
-const sidebarOpen = ref<boolean | undefined>(undefined);
+const sidebarOpen = ref<boolean | undefined>(true);
 
 // Define a function to uncheck the checkbox
 function toggleSidebar() {
@@ -112,22 +113,9 @@ function sidebarItemClick(
 	toggleSidebar();
 }
 
-function handleSidebarToggleClick() {
-	// console.log("I'm toggling");
-	if (sidebarToggle.value) {
-		sidebarOpen.value = sidebarToggle.value.checked;
-
-		// // emit sidebar open event for all components to listen
-		// useEventBus.emit("sidebarOpen", sidebarOpen.value);
-	}
-}
-
 useEventBus.on("sidebarOpen", (val) => {
 	if (typeof val === "boolean") {
-		setTimeout(() => {
-			console.log("this also haps", val);
-			sidebarOpen.value = val;
-		}, 320);
+		sidebarOpen.value = val;
 	}
 });
 

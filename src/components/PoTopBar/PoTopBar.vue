@@ -188,7 +188,6 @@ function PassSearchClearToParent(value: boolean) {
 }
 
 function toggleSidebar() {
-	console.log("haps");
 	isSidebarOpen.value = !isSidebarOpen.value;
 	// emit sidebar open event for all components to listen
 	useEventBus.emit("sidebarOpen", isSidebarOpen.value);
