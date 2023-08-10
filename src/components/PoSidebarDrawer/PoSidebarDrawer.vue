@@ -1,6 +1,6 @@
 <template>
 	<aside
-		class="po-flex po-flex-col po-px-3 po-h-[calc(100vh-64px)] po-bg-white po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-fixed"
+		class="po-flex po-flex-col po-px-3 po-pt-[78px] po-min-h-screen po-bg-white po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-fixed"
 		:class="[{ 'po-w-[256px]': sidebarOpen }, { 'po-w-[64px]': !sidebarOpen }]"
 	>
 		...

@@ -1,9 +1,9 @@
 <template>
 	<main
-		class="po-h-[calc(100vh-64px)] po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-pt-8 po-flex po-flex-col"
+		class="po-min-h-screen po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-pt-[78px] po-flex po-flex-col"
 		:class="[
-			{ 'po-pl-[256px]': sidebarOpen },
-			{ 'po-pl-[64px]': !sidebarOpen },
+			{ 'po-pl-[250px]': sidebarOpen },
+			{ 'po-pl-[58px]': !sidebarOpen },
 		]"
 		id="shell-content-root"
 	>
