@@ -2,8 +2,8 @@
 	<main
 		class="po-min-h-screen po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-pt-[78px] po-flex po-flex-col"
 		:class="[
-			{ 'po-pl-[250px]': sidebarOpen },
-			{ 'po-pl-[58px]': !sidebarOpen },
+			{ 'lg:po-pl-[250px]': sidebarOpen },
+			{ 'lg:po-pl-[58px]': !sidebarOpen },
 		]"
 		id="shell-content-root"
 	>
