@@ -18,8 +18,12 @@
 				<Disclosure v-slot="{ open }" :defaultOpen="true">
 					<DisclosureButton
 						v-if="group.groupName"
-						:class="open ? '' : 'po-mb-3'"
-						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-ml-2 po-block po-w-full po-text-left"
+						:class="[
+							{ 'po-mb-3': open === '' },
+							{ 'po-ml-0 po-text-center': hideSidebarItemLabel },
+							{ 'po-ml-2 po-text-left': !hideSidebarItemLabel },
+						]"
+						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-block po-w-full"
 					>
 						{{
 							showSidebarGroupLabel
@@ -51,7 +55,7 @@
 											<button
 												v-if="!item.disabled"
 												@click="sidebarItemClick('button-click', item.url)"
-												class="po-flex po-items-center po-w-full po-group po-space-x-4 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
+												class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
 												:class="[
 													{
 														'po-text-mpao-lightblue po-bg-slate-100 hover:po-bg-slate-100/50':
@@ -101,8 +105,12 @@
 				<Disclosure v-slot="{ open }" :defaultOpen="true">
 					<DisclosureButton
 						v-if="appsLabel"
-						:class="open ? '' : 'po-mb-3'"
-						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-ml-2 po-block po-w-full po-text-left"
+						:class="[
+							{ 'po-mb-3': open === '' },
+							{ 'po-ml-0 po-text-center': hideSidebarItemLabel },
+							{ 'po-ml-2 po-text-left': !hideSidebarItemLabel },
+						]"
+						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-block po-w-full"
 					>
 						{{ showSidebarGroupLabel ? appsLabel : appsLabel.slice(0, 2) }}
 					</DisclosureButton>
@@ -129,7 +137,7 @@
 										>
 											<button
 												@click="sidebarItemClick('app-click', app.name)"
-												class="po-flex po-items-center po-w-full po-group po-space-x-4 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
+												class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
 												:class="[
 													{
 														'po-text-mpao-lightblue po-bg-slate-100 hover:po-bg-slate-100/50':
@@ -302,6 +310,7 @@ onBeforeUnmount(() => {
 	window.removeEventListener("resize", handleResize);
 });
 
+// emitted from topbar component
 useEventBus.on("sidebarOpen", (val) => {
 	if (typeof val === "boolean") {
 		sidebarOpen.value = val;

@@ -1,7 +1,7 @@
 <template>
 	<button
 		@click.prevent="() => (showFeedbackModal = true)"
-		class="po-flex po-items-center po-w-full po-group po-space-x-4 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0 po-text-slate-600 hover:po-text-mpao-lightblue hover:po-bg-slate-100"
+		class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0 po-text-slate-600 hover:po-text-mpao-lightblue hover:po-bg-slate-100"
 		title="Go to feedback"
 	>
 		<span class="po-w-5 po-h-5">

@@ -1,6 +1,6 @@
 <template>
 	<main
-		class="po-min-h-screen po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-pt-[78px] po-flex po-flex-col po-w-full"
+		class="po-min-h-screen po-overflow-y-auto po-transition-all po-duration-300 po-ease-in-out po-pt-[92px] po-flex po-flex-col po-w-full"
 		:class="[
 			{ 'lg:po-pl-[250px]': sidebarOpen },
 			{ 'lg:po-pl-[58px]': !sidebarOpen },
@@ -22,6 +22,7 @@ import useEventBus from "../../composables/useEventBus";
 
 const sidebarOpen = ref<boolean | undefined>(true);
 
+// emitted from topbar component
 useEventBus.on("sidebarOpen", (val) => {
 	if (typeof val === "boolean") {
 		sidebarOpen.value = val;
