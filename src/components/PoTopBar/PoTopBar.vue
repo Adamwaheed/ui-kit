@@ -72,7 +72,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { watch, ref, toRefs } from "vue";
+import { watch, ref, toRefs, onMounted } from "vue";
 import { MagnifyingGlassIcon, Bars3Icon } from "@heroicons/vue/24/outline";
 import useEventBus from "../../composables/useEventBus";
 
@@ -166,6 +166,16 @@ watch(logo, () => {
 
 const emit = defineEmits(["query", "profileSwitcherClick", "onSearchClear"]);
 
+onMounted(() => {
+	const storedValue = localStorage.getItem("isSidebarOpen");
+	if (storedValue !== null) {
+		isSidebarOpen.value = JSON.parse(storedValue);
+
+		// emit sidebar open event for all components to listen
+		useEventBus.emit("sidebarOpen", isSidebarOpen.value);
+	}
+});
+
 function handleProfileSwitcherClick(item: object) {
 	emit("profileSwitcherClick", item);
 }
@@ -183,5 +193,7 @@ function toggleSidebar() {
 	isSidebarOpen.value = !isSidebarOpen.value;
 	// emit sidebar open event for all components to listen
 	useEventBus.emit("sidebarOpen", isSidebarOpen.value);
+
+	localStorage.setItem("isSidebarOpen", JSON.stringify(isSidebarOpen.value));
 }
 </script>
