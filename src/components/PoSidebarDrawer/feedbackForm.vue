@@ -1,15 +1,23 @@
 <template>
 	<button
 		@click.prevent="() => (showFeedbackModal = true)"
-		class="shell-sidebar--item"
+		class="po-flex po-items-center po-w-full po-group po-space-x-4 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0 po-text-slate-600 hover:po-text-mpao-lightblue hover:po-bg-slate-100"
 		title="Go to feedback"
 	>
-		<span class="shell-sidebar--icon">
+		<span class="po-w-5 po-h-5">
 			<ChatBubbleBottomCenterIcon
-				class="po-stroke-current po-w-5 po-h-5 po-stroke-2"
+				class="po-stroke-current group-hover:po-stroke-mpao-orange po-w-5 po-h-5 po-stroke-2"
 			/>
 		</span>
-		<span class="shell-sidebar--label po-font-medium">Feedback</span>
+		<span
+			class="po-text-sm po-leading-none po-font-medium po-shrink-0 po-text-left po-transition-opacity po-duration-150 po-ease-out"
+			:class="[
+				{ 'po-opacity-1': sidebarOpen },
+				{ 'po-opacity-0': !sidebarOpen },
+				{ 'po-hidden': hideSidebarItemLabel },
+			]"
+			>Feedback</span
+		>
 	</button>
 	<PoModal
 		:show="showFeedbackModal"
@@ -47,6 +55,22 @@ import PoSelectField from "../PoSelectField/PoSelectField.vue";
 import PoModal from "../PoModal/PoModal.vue";
 import PoTextarea from "../PoTextarea/PoTextarea.vue";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/vue/24/outline";
+
+interface Props {
+	sidebarOpen?: boolean;
+	hideSidebarItemLabel?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	/**
+	 * Sidebar State
+	 */
+	sidebarOpen: true,
+	/**
+	 * hideSidebarItemLabel State
+	 */
+	hideSidebarItemLabel: false,
+});
 
 const showFeedbackModal = ref(false);
 
