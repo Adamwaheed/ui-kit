@@ -25,7 +25,7 @@
 					readonly
 					class="po-w-full po-rounded-md po-border po-border-slate-300 po-bg-white po-py-2 po-pl-3 po-pr-10 focus:po-border-mpao-lightblue focus:po-outline-none focus:po-ring-0 sm:po-text-sm"
 					:disabled="disabled"
-					v-model="selectedValue"
+					v-model="displaySelectedValue"
 					@focus="showDropdown = true"
 					:id="uniqueID"
 				/>
@@ -136,6 +136,7 @@ interface Props {
 	maxDate?: string | null;
 	id?: string;
 	info?: string | null;
+	displayFormat?: string | undefined;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
 	message?: string | null;
@@ -175,6 +176,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * A tool tip, helper information
 	 */
 	info: null,
+	/**
+	 * Format to display selected value. Default MM-YYYY
+	 */
+	displayFormat: "MM-YYYY",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
@@ -264,6 +269,13 @@ const isMinYear = computed(() => {
 });
 const isMaxYear = computed(() => {
 	return selectedYear.value === dayjs(props.maxDate, "DD-MM-YYYY").year();
+});
+
+const displaySelectedValue = computed(() => {
+	if (selectedValue.value === "") return;
+	return dayjs(`02-${selectedValue.value}`, "DD-MM-YYYY").format(
+		props.displayFormat
+	);
 });
 
 const years = computed(() => {

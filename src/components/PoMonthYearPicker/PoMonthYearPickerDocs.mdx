@@ -57,6 +57,29 @@ You can set either a Minimum date that users can pick or a maximum date, or both
   `}
 />
 
+### Display Format
+
+You can change the display format of the date by passing `display-format=""` prop.
+
+Refer to dayjs formating documentation. https://day.js.org/docs/en/display/format
+
+Remember this input only returns month and year, so you can only use formating for month and year.
+
+<Story of={PoMonthYearPickerStories.DisplayFormat} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoMonthYearPicker
+        label="Contribution Month"
+        display-format="MMMM YY"
+        v-model="modalValue" 
+    />
+  `}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoMonthYearPickerStories} />

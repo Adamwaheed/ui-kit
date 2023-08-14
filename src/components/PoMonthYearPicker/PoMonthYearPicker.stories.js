@@ -40,6 +40,7 @@ const Template = (args) => ({
 export const Normal = Template.bind({});
 export const Horizontal = Template.bind({});
 export const MinMax = Template.bind({});
+export const DisplayFormat = Template.bind({});
 
 Normal.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -56,4 +57,10 @@ MinMax.args = {
 	label: "Contribution Month",
 	minDate: "27-02-2023",
 	maxDate: "01-10-2024",
+};
+
+DisplayFormat.args = {
+	/* 👇 The args you need here will depend on your component */
+	label: "Contribution Month",
+	displayFormat: "MMMM YY",
 };

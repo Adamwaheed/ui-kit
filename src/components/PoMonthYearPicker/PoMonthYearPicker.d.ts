@@ -8,6 +8,7 @@ export declare const PoMonthYearPicker: DefineComponent<
 		maxDate?: string | null;
 		id?: string;
 		info?: string | null;
+		displayFormat?: string | undefined;
 		display?: "vertical" | "horizontal";
 		required?: boolean;
 		message?: string | null;
