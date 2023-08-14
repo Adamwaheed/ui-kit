@@ -1,6 +1,6 @@
 <template>
 	<aside
-		class="po-flex po-flex-col po-px-3 po-pt-[78px] po-min-h-screen po-bg-white po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-fixed"
+		class="po-flex po-flex-col po-px-3 po-pt-[78px] po-top-0 po-bottom-0 po-bg-white po-overflow-y-auto po-overflow-x-hidden po-transition-all po-duration-300 po-ease-in-out po-border-r po-border-slate-50 po-z-[49] po-fixed"
 		:class="[
 			{ 'po-w-[256px]': sidebarOpen && !isMobile },
 			{ 'po-w-[64px]': !sidebarOpen && !isMobile },
@@ -267,13 +267,7 @@ const showSidebarGroupLabel = ref<boolean>(true);
 const emit = defineEmits(["button-click", "app-click"]);
 
 const handleResize = () => {
-	screenWidth.value = window.innerWidth;
-
-	if (screenWidth.value <= 1024) {
-		isMobile.value = true;
-	} else {
-		isMobile.value = false;
-	}
+	checkIfIsMobile();
 };
 
 const filterApps = computed(() => {
@@ -292,6 +286,8 @@ const filterApps = computed(() => {
 
 onMounted(() => {
 	window.addEventListener("resize", handleResize);
+
+	checkIfIsMobile();
 });
 
 function sidebarItemClick(
@@ -299,11 +295,26 @@ function sidebarItemClick(
 	action: string
 ) {
 	emit(emitName, action);
+
+	if (isMobile.value) {
+		useEventBus.emit("sidebarOpen", false);
+	}
 	// toggleSidebar();
 }
 
 function genToolTip(tip: string) {
 	return !sidebarOpen.value ? tip : "";
+}
+
+function checkIfIsMobile() {
+	screenWidth.value = window.innerWidth;
+
+	if (screenWidth.value <= 1024) {
+		isMobile.value = true;
+		useEventBus.emit("sidebarOpen", false);
+	} else {
+		isMobile.value = false;
+	}
 }
 
 onBeforeUnmount(() => {

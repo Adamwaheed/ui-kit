@@ -196,4 +196,11 @@ function toggleSidebar() {
 
 	localStorage.setItem("isSidebarOpen", JSON.stringify(isSidebarOpen.value));
 }
+
+// emitted from sidebar and other places
+useEventBus.on("sidebarOpen", (val) => {
+	if (typeof val === "boolean") {
+		isSidebarOpen.value = val;
+	}
+});
 </script>
