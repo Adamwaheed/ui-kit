@@ -45,6 +45,11 @@ Normal.args = {
 	/* 👇 The args you need here will depend on your component */
 	label: "Contribution Month",
 };
+Horizontal.args = {
+	/* 👇 The args you need here will depend on your component */
+	label: "Contribution Month",
+	display: "horizontal",
+};
 
 MinMax.args = {
 	/* 👇 The args you need here will depend on your component */

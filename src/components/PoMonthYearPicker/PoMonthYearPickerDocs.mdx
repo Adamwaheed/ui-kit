@@ -30,9 +30,8 @@ You can use `v-model` bindings in `PoMonthYearPicker`.
 	dark
 	format={true}
 	code={dedent`
-    <PoInputFile
-        label="Choose file"
-        id="documents"
+    <PoMonthYearPicker
+        label="Contribution Month"
         display="Horizontal"
     />
   `}
@@ -49,7 +48,7 @@ You can set either a Minimum date that users can pick or a maximum date, or both
 	dark
 	format={true}
 	code={dedent`
-    <PoInputFile
+    <PoMonthYearPicker
         label="Contribution Month"
         minDate="27-02-2023"
         maxDate="01-10-2024"
