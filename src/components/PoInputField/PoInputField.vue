@@ -158,11 +158,6 @@ watch(errorMessage, (newVal, oldVal) => {
 		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
-});
-
 let inputType = "currency" === props.type ? "text" : props.type;
 
 const inputValue = ref<string | number | undefined>(undefined);

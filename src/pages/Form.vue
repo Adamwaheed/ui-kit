@@ -427,6 +427,8 @@
 								minDate="27-04-2022"
 								maxDate="10-05-2025"
 								v-model="form.monthyear"
+								:error-message="monthPickerErr"
+								info="Hellow woma"
 							/>
 							<DataPreview> v-model: {{ form.monthyear }}<br /> </DataPreview>
 						</div>
@@ -500,6 +502,17 @@ const selectFieldListChange = ref([
 	{ id: 2, name: "HelpDesk" },
 	{ id: 3, name: "Another" },
 ]);
+
+const monthPickerErr = ref("");
+setTimeout(() => {
+	monthPickerErr.value = "Hello world of errors";
+}, 2000);
+setTimeout(() => {
+	monthPickerErr.value = "The next error";
+}, 4000);
+setTimeout(() => {
+	monthPickerErr.value = "";
+}, 6000);
 
 setTimeout(() => {
 	selectFieldListDelay.value = [

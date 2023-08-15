@@ -108,6 +108,13 @@
 		<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
 			{{ message }}
 		</p>
+		<p
+			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
+			:id="`${id}-error`"
+			v-if="shouldShowError"
+		>
+			<span>{{ errorMessage }}</span>
+		</p>
 	</div>
 </template>
 
@@ -117,7 +124,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from "vue";
+import { computed, ref, onMounted, onUnmounted, watch, toRefs } from "vue";
 import { CalendarIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
@@ -140,6 +147,7 @@ interface Props {
 	display?: "vertical" | "horizontal";
 	required?: boolean;
 	message?: string | null;
+	errorMessage?: string | null;
 	disabled?: boolean;
 }
 
@@ -224,6 +232,14 @@ const updateParts = ref({
 	visibleStartIdx: 0,
 	visibleEndIdx: 0,
 });
+
+// showing error messages
+const propsRef = toRefs(props);
+const errorMessage = propsRef.errorMessage;
+
+const shouldShowError = computed(
+	() => !!errorMessage.value && errorMessage.value.trim() !== ""
+);
 
 let popperInstance: any;
 

@@ -12,6 +12,7 @@ export declare const PoMonthYearPicker: DefineComponent<
 		display?: "vertical" | "horizontal";
 		required?: boolean;
 		message?: string | null;
+		errorMessage?: string | null;
 		disabled?: boolean;
 	},
 	{},
