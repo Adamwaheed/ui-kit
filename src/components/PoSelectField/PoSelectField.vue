@@ -27,10 +27,7 @@
 					:disabled="disabled"
 					v-model="selectedValue"
 					@input="handleInput"
-					@focus="
-						inputFocused = true;
-						showDropdown = true;
-					"
+					@focus="handleFocus"
 					@blur="handleBlur"
 					:id="uniqueID"
 				/>
@@ -355,6 +352,14 @@ onMounted(() => {
 		],
 	});
 });
+
+function handleFocus() {
+	inputFocused.value = true;
+	showDropdown.value = true;
+	if (popperInstance) {
+		popperInstance.update();
+	}
+}
 
 onUnmounted(() => {
 	if (popperInstance) {

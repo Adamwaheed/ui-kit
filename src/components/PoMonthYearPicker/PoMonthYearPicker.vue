@@ -177,7 +177,7 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * Format to display selected value. Default MM-YYYY
 	 */

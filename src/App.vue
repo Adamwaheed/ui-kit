@@ -458,6 +458,50 @@
 						/>
 					</template>
 				</PoCard>
+				<PoCard class="po-p-5">
+					<template v-slot:content>
+						<PoFilter :filters="filters">
+							<div>
+								<PoSelectField
+									label="Type"
+									v-model="filters.type"
+									:list="[
+										{
+											id: 1,
+											name: 'Approved',
+										},
+										{
+											id: 2,
+											name: 'Cancelled',
+										},
+										{
+											id: 3,
+											name: 'Draft',
+										},
+										{
+											id: 4,
+											name: 'Adjustment',
+										},
+									]"
+								/>
+							</div>
+							<div>
+								<PoInputField
+									v-model="filters.fromDate"
+									label="Date from"
+									type="date"
+								/>
+							</div>
+							<div>
+								<PoInputField
+									v-model="filters.toDate"
+									label="Date to"
+									type="date"
+								/>
+							</div>
+						</PoFilter>
+					</template>
+				</PoCard>
 			</PoContentArea>
 
 			<PoFooter :changelog="changeLog" />
@@ -560,6 +604,7 @@ import {
 	PoSelectApi,
 	PoMain,
 	PoWrap,
+	PoFilter,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";
@@ -599,6 +644,12 @@ const routes = {
 	"/form": Form,
 	"/buttons": Buttons,
 };
+
+const filters = ref({
+	type: "",
+	fromDate: "",
+	toDate: "",
+});
 
 const currentPath = ref(window.location.hash);
 

@@ -12,6 +12,7 @@ export * from "../src/components/PoContentArea/PoContentArea";
 export * from "../src/components/PoDescriptionList/PoDescriptionList";
 export * from "../src/components/PoDownloadFileList/PoDownloadFileList";
 export * from "../src/components/PoEmpty/PoEmpty";
+export * from "../src/components/PoFilter/PoFilter";
 export * from "../src/components/PoFooter/PoFooter";
 export * from "../src/components/PoFormStatusMessage/PoFormStatusMessage";
 export * from "../src/components/PoHeading/PoHeading";

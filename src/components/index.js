@@ -65,3 +65,4 @@ export { default as PoPageStats } from "./PoPageStats/PoPageStats.vue";
 export { default as PoTooltip } from "./PoTooltip/PoTooltip.vue";
 export { default as PoUpload } from "./PoUpload/PoUpload.vue";
 export { default as PoWrap } from "./PoWrap/PoWrap.vue";
+export { default as PoFilter } from "./PoFilter/PoFilter.vue";

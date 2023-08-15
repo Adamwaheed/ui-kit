@@ -172,7 +172,7 @@ const handleInput: (event: Event) => void = (event) => {
 	let outputValue =
 		"currency" === props.type ? cleanInputForModalValue(val) : val;
 
-	console.log(props.modelModifiers);
+	// console.log(props.modelModifiers);
 
 	emit("update:modelValue", outputValue);
 };
