@@ -13,9 +13,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<div class="po-relative po-mt-1">
 			<div role="button" ref="comboboxButton">
@@ -105,16 +103,8 @@
 				</div>
 			</div>
 		</div>
-		<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			:id="`${id}-error`"
-			v-if="shouldShowError"
-		>
-			<span>{{ errorMessage }}</span>
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -125,7 +115,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, watch, toRefs } from "vue";
-import { CalendarIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
+import { CalendarIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
@@ -136,13 +126,17 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
+
 interface Props {
 	modelValue?: string | null;
 	label?: string;
 	minDate?: string | null;
 	maxDate?: string | null;
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	displayFormat?: string | undefined;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
@@ -232,14 +226,6 @@ const updateParts = ref({
 	visibleStartIdx: 0,
 	visibleEndIdx: 0,
 });
-
-// showing error messages
-const propsRef = toRefs(props);
-const errorMessage = propsRef.errorMessage;
-
-const shouldShowError = computed(
-	() => !!errorMessage.value && errorMessage.value.trim() !== ""
-);
 
 let popperInstance: any;
 
