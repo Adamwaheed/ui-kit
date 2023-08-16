@@ -5,8 +5,10 @@ export const useUniqueId = () => {
 	const uniqueId = ref("");
 
 	const generateUniqueId = () => {
-		const randomNumber = Math.floor(Math.random() * 100000);
-		const newUniqueId = `pid_${randomNumber}`;
+		// since we will be using these unique IDs in the UI for giving unique ids to elements
+		// on the page, mostly form inputs, this doen't have to be too complex.
+		const randomNumber = Math.random().toString(36).slice(2, 11);
+		const newUniqueId = `poid_${randomNumber}`;
 
 		uniqueId.value = newUniqueId;
 	};
