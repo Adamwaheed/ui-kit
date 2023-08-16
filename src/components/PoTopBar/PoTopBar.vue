@@ -21,20 +21,8 @@
 					class="po-flex po-flex-col po-justify-center po-items-center po-w-5 po-h-5 po-space-y-[3px]"
 				>
 					<span
-						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
-						:class="[
-							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },
-							{ 'po-w-[3px] po-h-[3px]': isSidebarOpen },
-						]"
-					></span>
-					<span
-						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
-						:class="[
-							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },
-							{ 'po-w-[3px] po-h-[3px]': isSidebarOpen },
-						]"
-					></span>
-					<span
+						v-for="index in 3"
+						:key="index"
 						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
 						:class="[
 							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },

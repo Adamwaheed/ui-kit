@@ -40,62 +40,20 @@
 						leave-to-class="po-transform po-scale-95 po-opacity-0"
 					>
 						<DisclosurePanel>
+							<!--
+									Emits the button url when it’s clicked
+									@event button-click
+							-->
 							<ul class="po-mt-2 po-mb-5">
-								<li v-for="item in group.items" :key="item.label">
-									<!--
-                      Emits the button url when it’s clicked
-                      @event button-click
-                  -->
-									<span>
-										<PoTooltip
-											:text="genToolTip(item.label)"
-											placement="right"
-											strategy="fixed"
-										>
-											<button
-												v-if="!item.disabled"
-												@click="sidebarItemClick('button-click', item.url)"
-												class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
-												:class="[
-													{
-														'po-text-mpao-lightblue po-bg-slate-100 hover:po-bg-slate-100/50':
-															item.url == currRoute,
-													},
-													{
-														'po-text-slate-600 hover:po-text-mpao-lightblue hover:po-bg-slate-100':
-															item.url !== currRoute,
-													},
-													{ 'po-justify-center': hideSidebarItemLabel },
-												]"
-											>
-												<span class="po-w-5 po-h-5">
-													<component
-														:is="item.icon"
-														class="po-w-5 po-h-5 po-stroke-2"
-														:class="[
-															{
-																'po-stroke-current group-hover:po-stroke-mpao-orange':
-																	item.url !== currRoute,
-															},
-															{
-																'po-stroke-mpao-orange': item.url == currRoute,
-															},
-														]"
-													/>
-												</span>
-												<span
-													class="po-text-sm po-leading-none po-font-medium po-shrink-0 po-text-left po-transition-opacity po-duration-150 po-ease-out"
-													:class="[
-														{ 'po-opacity-1': sidebarOpen },
-														{ 'po-opacity-0': !sidebarOpen },
-														{ 'po-hidden': hideSidebarItemLabel },
-													]"
-													>{{ item.label }}</span
-												>
-											</button>
-										</PoTooltip>
-									</span>
-								</li>
+								<template v-for="item in group.items" :key="item.label">
+									<SdebarItem
+										:item="item"
+										:sidebarOpen="sidebarOpen"
+										:hideSidebarItemLabel="hideSidebarItemLabel"
+										:currRoute="currRoute"
+										@item-click="sidebarItemClick"
+									/>
+								</template>
 							</ul>
 						</DisclosurePanel>
 					</transition>
@@ -123,52 +81,21 @@
 						leave-to-class="po-transform po-scale-95 po-opacity-0"
 					>
 						<DisclosurePanel>
+							<!--
+									Emits the button url when it’s clicked
+									@event button-click
+							-->
 							<ul class="po-mt-2 po-mb-5">
-								<li v-for="app in filterApps">
-									<!--
-                      Emits the button url when it’s clicked
-                      @event button-click
-                  -->
-									<span>
-										<PoTooltip
-											:text="genToolTip(app.name)"
-											placement="right"
-											strategy="fixed"
-										>
-											<button
-												@click="sidebarItemClick('app-click', app.name)"
-												class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-colors po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
-												:class="[
-													{
-														'po-text-mpao-lightblue po-bg-slate-100 hover:po-bg-slate-100/50':
-															app.current,
-													},
-													{
-														'po-text-slate-600 hover:po-text-mpao-lightblue hover:po-bg-slate-100':
-															!app.current,
-													},
-													{ 'po-justify-center': hideSidebarItemLabel },
-												]"
-											>
-												<span class="po-w-4 po-shrink-0">
-													<span
-														v-html="app.icon"
-														class="po-text-slate-600 po-w-5"
-													></span>
-												</span>
-												<span
-													class="po-text-sm po-leading-none po-font-medium po-shrink-0 po-text-left po-transition-opacity po-duration-150 po-ease-out"
-													:class="[
-														{ 'po-opacity-1': sidebarOpen },
-														{ 'po-opacity-0': !sidebarOpen },
-														{ 'po-hidden': hideSidebarItemLabel },
-													]"
-													>{{ app.name }}</span
-												>
-											</button>
-										</PoTooltip>
-									</span>
-								</li>
+								<template v-for="item in filterApps" :key="item.name">
+									<SdebarItem
+										:item="item"
+										:sidebarOpen="sidebarOpen"
+										:hideSidebarItemLabel="hideSidebarItemLabel"
+										:currRoute="currRoute"
+										type="app"
+										@item-click="sidebarItemClick"
+									/>
+								</template>
 							</ul>
 						</DisclosurePanel>
 					</transition>
@@ -208,6 +135,7 @@ import { PoTooltip } from "../";
 import useEventBus from "../../composables/useEventBus";
 import type { HeroIcon, AppListItem } from "../../../types/Types";
 import FeedbackForm from "./feedbackForm.vue";
+import SdebarItem from "./sidebarItem.vue";
 
 interface SidebarContentItem {
 	label: string;
@@ -290,16 +218,17 @@ onMounted(() => {
 	checkIfIsMobile();
 });
 
-function sidebarItemClick(
-	emitName: "button-click" | "app-click",
-	action: string
-) {
-	emit(emitName, action);
+interface sidebarItemClickObject {
+	actionType: "button-click" | "app-click";
+	action: string;
+}
+
+function sidebarItemClick({ actionType, action }: sidebarItemClickObject) {
+	emit(actionType, action);
 
 	if (isMobile.value) {
 		useEventBus.emit("sidebarOpen", false);
 	}
-	// toggleSidebar();
 }
 
 function genToolTip(tip: string) {
