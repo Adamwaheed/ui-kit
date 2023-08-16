@@ -17,8 +17,8 @@
 			></span
 		>
 		<input
-			:name="`${id}-upload`"
-			:id="`${id}-fileupload`"
+			:name="`${uniqueID}-upload`"
+			:id="uniqueID"
 			:value="modelValue"
 			type="file"
 			@input="handleInput"
@@ -26,7 +26,7 @@
 			class="po-sr-only po-peer"
 		/>
 		<label
-			:for="`${id}-fileupload`"
+			:for="uniqueID"
 			class="po-mt-1 po-block po-w-full po-border po-cursor-pointer po-rounded-md po-border-slate-300 po-bg-white peer-focus:po-border-mpao-lightblue invalid:po-border-red-400 invalid:focus:po-border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm po-p-2"
 		>
 			<div class="po-flex po-items-center po-space-x-1">
@@ -62,10 +62,11 @@ export default {
 </script>
 <script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 
 import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
 import FormMessage from "../PoInputField/FormMessage.vue";
+import { useUniqueId } from "../../composables/useUniqueId";
 
 interface Props {
 	modelValue?: string | number;
@@ -139,4 +140,14 @@ const handleInput: (event: Event) => void = (event) => {
 
 	emit("update:modelValue", val);
 };
+
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
+onMounted(() => {
+	// if there is no id set, create a unique random id
+	if ("" === props.id) {
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
+	}
+});
 </script>

@@ -5,13 +5,18 @@
 	>
 		<RadioGroupLabel
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700"
+			:for="uniqueID"
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span
 			><FormInfo :info="info"
 		/></RadioGroupLabel>
 
-		<div v-if="null !== options" class="po-mt-1 po-flex -po-mb-3 po-flex-wrap">
+		<div
+			v-if="null !== options"
+			class="po-mt-1 po-flex -po-mb-3 po-flex-wrap"
+			:id="uniqueID"
+		>
 			<RadioGroupOption
 				as="template"
 				v-for="option in options"
@@ -73,8 +78,8 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { ref, watch, onUpdated, toRefs } from "vue";
-import { ExclamationTriangleIcon } from "@heroicons/vue/20/solid";
+import { ref, watch, onUpdated, onMounted } from "vue";
+import { useUniqueId } from "../../composables/useUniqueId";
 import {
 	RadioGroup,
 	RadioGroupDescription,
@@ -96,6 +101,7 @@ interface Props {
 	modelValue: string | number | null;
 	options: Option[] | null;
 	label?: string;
+	id?: string;
 	info?: string | undefined;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
@@ -116,6 +122,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * Label text
 	 */
 	label: "",
+	/**
+	 * Input id text
+	 */
+	id: "",
 	/**
 	 * A tool tip, helper information
 	 */
@@ -141,6 +151,16 @@ const props = withDefaults(defineProps<Props>(), {
 const selectedOption = ref();
 
 selectedOption.value = props.modelValue;
+
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
+onMounted(() => {
+	// if there is no id set, create a unique random id
+	if ("" === props.id) {
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
+	}
+});
 
 onUpdated(() => {
 	selectedOption.value = props.modelValue;

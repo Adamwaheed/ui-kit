@@ -119,6 +119,7 @@ import { CalendarIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
+import { useUniqueId } from "../../composables/useUniqueId";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 
 import dayjs from "dayjs";
@@ -218,7 +219,8 @@ const selectBox = ref();
 const containerRef = ref(null);
 const selectedYear = ref(dayjs().year());
 const selectedMonth = ref(dayjs().month());
-const uniqueID = ref("");
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
 const popper = ref();
 const updateParts = ref({
 	viewStartIdx: 0,
@@ -238,15 +240,10 @@ onMounted(() => {
 		selectedYear.value = initialDate.year();
 	}
 
+	// if there is no id set, create a unique random id
 	if ("" === props.id) {
-		uniqueID.value = props.id
-			? props.id
-			: `${props.label.replace(
-					/\s/g,
-					""
-			  )}-${Date.now()}-month-picker-${Math.floor(Math.random() * 9000)}`;
-	} else {
-		uniqueID.value = props.id;
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
 	}
 
 	popperInstance = createPopper(selectBox.value, popper.value, {

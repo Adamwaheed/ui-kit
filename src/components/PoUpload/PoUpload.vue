@@ -8,8 +8,8 @@
               @event update:modelValue
            -->
 		<label
-			:disabled="true"
-			:for="uniqueID"
+			disabled
+			:for="`${uniqueID}-wheel`"
 			class="po-text-sm po-font-medium po-flex po-items-center po-space-x-1 po-text-slate-700 po-mb-1"
 		>
 			<span class="po-capitalize">{{ label }}</span>
@@ -91,12 +91,10 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { toRefs, ref, watch, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
-import {
-	DocumentPlusIcon,
-	InformationCircleIcon,
-} from "@heroicons/vue/24/outline";
+import { DocumentPlusIcon } from "@heroicons/vue/24/outline";
+import { useUniqueId } from "../../composables/useUniqueId";
 
 import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
 import FormMessage from "../PoInputField/FormMessage.vue";
@@ -129,7 +127,7 @@ const props = withDefaults(defineProps<Props>(), {
 	modelValue: "",
 	label: "",
 	display: "vertical",
-	id: "fileupload",
+	id: "",
 	info: "",
 	message: null,
 	errorMessage: null,
@@ -141,8 +139,6 @@ const props = withDefaults(defineProps<Props>(), {
 	dragOverText: "Drop files here to upload",
 });
 
-const uniqueID = ref("");
-
 const fileButtonStatus = ref("initial");
 
 const emit = defineEmits([
@@ -152,22 +148,13 @@ const emit = defineEmits([
 	"uploaded",
 ]);
 
-function getBorderColor(): string {
-	return props.hasError
-		? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
-		: props.borderColor;
-}
-
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
 onMounted(() => {
+	// if there is no id set, create a unique random id
 	if ("" === props.id) {
-		uniqueID.value = props.id
-			? props.id
-			: `${props.label.replace(
-					/\s/g,
-					""
-			  )}-${Date.now()}-upload-field-${Math.floor(Math.random() * 9000)}`;
-	} else {
-		uniqueID.value = props.id;
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
 	}
 });
 

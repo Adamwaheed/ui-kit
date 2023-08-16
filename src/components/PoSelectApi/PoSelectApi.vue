@@ -14,9 +14,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<div class="po-relative po-mt-1">
 			<div>
@@ -89,20 +87,8 @@
 					>
 				</template>
 			</div>
-			<p
-				class="po-mt-2 po-text-sm po-text-slate-500"
-				:id="`-description`"
-				v-if="null !== message"
-			>
-				{{ message }}
-			</p>
-			<p
-				class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-				:id="`-error`"
-				v-if="null !== errorMessage"
-			>
-				<span>{{ errorMessage }}</span>
-			</p>
+			<FormMessage :message="message" />
+			<FormErrorMessage :error-message="errorMessage" />
 			<!-- :style="{
 			top: getSelectBoxPosition?.relativeTop + 'px',
 			left: getSelectBoxPosition?.left + 'px',
@@ -125,6 +111,11 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
+import { useUniqueId } from "../../composables/useUniqueId";
+
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
 
 interface Props {
 	options: Array<any>;
@@ -132,7 +123,7 @@ interface Props {
 	loading?: boolean;
 	showMoreBtn?: boolean;
 	label?: string;
-	info?: string | null;
+	info?: string | undefined;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
 	errorMessage?: string | null;
@@ -166,7 +157,7 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
@@ -233,20 +224,17 @@ function handleBlur() {
 	}, 100);
 }
 
-const uniqueID = ref("");
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
 onMounted(() => {
 	// console.log(
 	// 	`TadaElement position - top: ${getSelectBoxPosition.value.top}px, left: ${getSelectBoxPosition.value.left}px`
 	// );
+
+	// if there is no id set, create a unique random id
 	if ("" === props.id) {
-		uniqueID.value =
-			props.label.replace(/\s/g, "") +
-			"-" +
-			Date.now() +
-			"-selectapi-" +
-			Math.floor(Math.random() * 9000);
-	} else {
-		uniqueID.value = props.id;
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
 	}
 
 	// setTimeout(() => {

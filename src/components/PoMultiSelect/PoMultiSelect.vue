@@ -9,7 +9,7 @@
             @event update:modelValue
          -->
 		<label
-			:for="id"
+			:for="uniqueID"
 			:class="[
 				'po-text-sm po-font-medium po-flex po-items-center po-space-x-1',
 				{ 'po-text-red-500': hasError },
@@ -48,7 +48,7 @@
 						</span>
 					</template>
 					<input
-						:id="id"
+						:id="uniqueID"
 						v-model="inputFieldValue"
 						@focus="
 							() => {
@@ -99,13 +99,10 @@ export default {
 </script>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
-import {
-	InformationCircleIcon,
-	ExclamationTriangleIcon,
-} from "@heroicons/vue/24/solid";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
-import { XMarkIcon } from "@heroicons/vue/24/outline";
+import { useUniqueId } from "../../composables/useUniqueId";
 
 import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
 import FormMessage from "../PoInputField/FormMessage.vue";
@@ -241,7 +238,15 @@ function updateSelectedItemIds() {
 	selectedItemIds.value = selectedItems.value.map((item) => item.id);
 }
 
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
 onMounted(() => {
+	// if there is no id set, create a unique random id
+	if ("" === props.id) {
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
+	}
+
 	document.addEventListener("keydown", addItems);
 });
 

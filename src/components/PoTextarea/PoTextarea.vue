@@ -4,7 +4,7 @@
 		:class="[{ 'lg:po-grid lg:po-grid-cols-2': 'horizontal' === display }]"
 	>
 		<label
-			:for="id"
+			:for="uniqueID"
 			class="po-text-sm po-font-medium po-text-slate-700 po-flex po-items-center po-space-x-1"
 		>
 			<span>{{ label }}</span>
@@ -20,8 +20,8 @@
               @event update:modelValue
            -->
 		<textarea
-			:name="`${id}-field`"
-			:id="id"
+			:name="`${uniqueID}-field`"
+			:id="uniqueID"
 			:value="modelValue"
 			:placeholder="placeholder"
 			:disabled="disabled"
@@ -44,7 +44,8 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { InformationCircleIcon } from "@heroicons/vue/24/solid";
+import { onMounted, ref } from "vue";
+import { useUniqueId } from "../../composables/useUniqueId";
 
 import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
 import FormMessage from "../PoInputField/FormMessage.vue";
@@ -63,7 +64,7 @@ interface Props {
 	display?: "vertical" | "horizontal";
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * Model value
 	 */
@@ -113,4 +114,14 @@ const handleInput: (event: Event) => void = (event) => {
 
 	emit("update:modelValue", val);
 };
+
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
+onMounted(() => {
+	// if there is no id set, create a unique random id
+	if ("" === props.id) {
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
+	}
+});
 </script>

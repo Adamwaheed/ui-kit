@@ -11,6 +11,7 @@ export declare const PoRadioInput: DefineComponent<
 		modelValue: string | number | null;
 		options: Option[] | null;
 		label?: string;
+		id?: string;
 		info?: string | undefined;
 		display?: "vertical" | "horizontal";
 		required?: boolean;

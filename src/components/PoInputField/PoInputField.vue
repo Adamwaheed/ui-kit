@@ -52,6 +52,7 @@ export default {
 import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs, onMounted } from "vue";
 import formatMoney from "../../shared/helper/FormatMoney";
+import { useUniqueId } from "../../composables/useUniqueId";
 
 import FormErrorMessage from "./FormErrorMessage.vue";
 import FormMessage from "./FormMessage.vue";
@@ -210,17 +211,13 @@ if ("currency" === props.type) {
 	inputValue.value = props.modelValue;
 }
 
-const uniqueID = ref("");
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
 onMounted(() => {
+	// if there is no id set, create a unique random id
 	if ("" === props.id) {
-		uniqueID.value = props.id
-			? props.id
-			: `${props.label.replace(
-					/\s/g,
-					""
-			  )}-${Date.now()}-inputfield-${Math.floor(Math.random() * 9000)}`;
-	} else {
-		uniqueID.value = props.id;
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
 	}
 });
 </script>

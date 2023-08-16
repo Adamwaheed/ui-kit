@@ -121,22 +121,12 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import {
-	computed,
-	ref,
-	watch,
-	onUpdated,
-	toRefs,
-	onMounted,
-	onUnmounted,
-} from "vue";
-import {
-	ChevronUpDownIcon,
-	InformationCircleIcon,
-} from "@heroicons/vue/20/solid";
+import { computed, ref, watch, onUpdated, onMounted, onUnmounted } from "vue";
+import { ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
+import { useUniqueId } from "../../composables/useUniqueId";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
@@ -284,8 +274,6 @@ watch(selectedItem, () => {
 	selectedValue.value = getSelectedName(selectedItem.value);
 });
 
-const uniqueID = ref("");
-
 useDetectOutsideClick(containerRef, () => {
 	showDropdown.value = inputFocused.value ? true : false;
 });
@@ -304,16 +292,14 @@ function handleOptionClick(option: Item) {
 const popper = ref();
 let popperInstance: any;
 
+const { uniqueId, generateUniqueId } = useUniqueId();
+const uniqueID = ref<string>(props.id);
+
 onMounted(() => {
+	// if there is no id set, create a unique random id
 	if ("" === props.id) {
-		uniqueID.value = props.id
-			? props.id
-			: `${props.label.replace(
-					/\s/g,
-					""
-			  )}-${Date.now()}-selectfield-${Math.floor(Math.random() * 9000)}`;
-	} else {
-		uniqueID.value = props.id;
+		generateUniqueId();
+		uniqueID.value = uniqueId.value;
 	}
 
 	selectedValue.value = getSelectedName(props.modelValue);

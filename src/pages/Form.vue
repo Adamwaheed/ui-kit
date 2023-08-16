@@ -407,7 +407,7 @@
 				</PoCard>
 			</div>
 			<div>
-				<PoCard class="po-p-5" title="PoUpload">
+				<PoCard class="po-p-5" title="PoUpload, PoInputFile">
 					<template v-slot:content>
 						<div class="po-pt-5 po-space-y-5">
 							<PoUpload
@@ -415,6 +415,7 @@
 								token="tooooken"
 								url="https://api-url"
 							/>
+							<PoInputFile label="File Input" message="Use PoUpload instead" />
 						</div>
 					</template>
 				</PoCard>
@@ -437,6 +438,16 @@
 					</template>
 				</PoCard>
 			</div>
+
+			<div>
+				<PoCard class="po-p-5" title="PoTextarea">
+					<template v-slot:content>
+						<div class="po-pt-5 po-space-y-5">
+							<PoTextarea label="Write it out" />
+						</div>
+					</template>
+				</PoCard>
+			</div>
 		</div>
 	</div>
 </template>
@@ -455,6 +466,8 @@ import {
 	PoToggle,
 	PoUpload,
 	PoMonthYearPicker,
+	PoInputFile,
+	PoTextarea,
 } from "../components";
 import debounce from "../shared/helper/Debounce";
 import DataPreview from "./dataPreview.vue";
