@@ -13,7 +13,7 @@
 			<button
 				for="sidebar-drawer-toggle"
 				role="button"
-				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
+				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/5 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 				@click="toggleSidebar"
 			>
 				<!-- <Bars3Icon class="po-w-6 po-fill-current" /> -->
@@ -21,24 +21,24 @@
 					class="po-flex po-flex-col po-justify-center po-items-center po-w-5 po-h-5 po-space-y-[3px]"
 				>
 					<span
-						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
 						:class="[
-							{ 'po-w-5': !isSidebarOpen },
-							{ 'po-w-[3px]': isSidebarOpen },
+							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },
+							{ 'po-w-[3px] po-h-[3px]': isSidebarOpen },
 						]"
 					></span>
 					<span
-						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
 						:class="[
-							{ 'po-w-5': !isSidebarOpen },
-							{ 'po-w-[3px]': isSidebarOpen },
+							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },
+							{ 'po-w-[3px] po-h-[3px]': isSidebarOpen },
 						]"
 					></span>
 					<span
-						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						class="po-block po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
 						:class="[
-							{ 'po-w-5': !isSidebarOpen },
-							{ 'po-w-[3px]': isSidebarOpen },
+							{ 'po-w-5 po-h-[2px]': !isSidebarOpen },
+							{ 'po-w-[3px] po-h-[3px]': isSidebarOpen },
 						]"
 					></span>
 				</span>
