@@ -4,14 +4,14 @@
 	>
 		<slot></slot>
 		<div class="po-flex po-items-end">
-			<PoButton label="Filter" @button-click="handleButtonClick" />
+			<PoButton :label="btnLabel" @button-click="handleButtonClick" />
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
 export default {
-	name: "PoFooter",
+	name: "PoFilter",
 };
 </script>
 <script setup lang="ts">
@@ -19,24 +19,33 @@ import { ref, watch } from "vue";
 import { PoButton } from "..";
 
 interface Props {
-	filters: {} | null;
+	filters: Record<string, any> | null;
+	btnLabel?: string | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	/**
-	 * Chnagelog
+	 * Changelog
 	 */
 	filters: null,
+	/**
+	 * Filter Button label
+	 */
+	btnLabel: "Filter",
 });
 
 const slotProps = ref(props.filters);
+
+const emit = defineEmits(["button-click"]);
 
 function handleButtonClick() {
 	const queryParams = new URLSearchParams();
 
 	// Loop through the properties of slotProps.value and add them to the URLSearchParams
 	for (const key in slotProps.value) {
-		queryParams.append(key, slotProps.value[key]);
+		if (Object.prototype.hasOwnProperty.call(slotProps.value, key)) {
+			queryParams.append(key, String(slotProps.value[key]));
+		}
 	}
 
 	// Get the current URL and append the query parameters
@@ -45,5 +54,7 @@ function handleButtonClick() {
 
 	// Update the URL in the browser without triggering a page reload
 	history.pushState({}, "", newURL);
+
+	emit("button-click", slotProps.value);
 }
 </script>

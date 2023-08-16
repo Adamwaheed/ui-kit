@@ -460,7 +460,10 @@
 				</PoCard>
 				<PoCard class="po-p-5">
 					<template v-slot:content>
-						<PoFilter :filters="filters">
+						<PoFilter
+							:filters="filters"
+							@button-click="handleFilterButtonClick"
+						>
 							<div>
 								<PoSelectField
 									label="Type"
@@ -650,6 +653,10 @@ const filters = ref({
 	fromDate: "",
 	toDate: "",
 });
+
+function handleFilterButtonClick(obj) {
+	console.log("filter click", obj);
+}
 
 const currentPath = ref(window.location.hash);
 

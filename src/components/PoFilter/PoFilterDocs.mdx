@@ -1,0 +1,74 @@
+# PoFilter component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoFilterStories from "./PoFilter.stories";
+
+import dedent from "ts-dedent";
+
+This component sets filters as URL Query params on the browser. And on filter button click it emits the event `@button-click`.
+
+You can change Filter Button Label by setting `btn-label="New Label"`.
+
+<br />
+<Story of={PoFilterStories.Filter} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+<PoFilter :filters="filters" @button-click="handleFilterButtonClick">
+  <div>
+    <PoSelectField
+      label="Type"
+      v-model="filters.type"
+      :list="[
+        {
+          id: 1,
+          name: 'Approved',
+        },
+        {
+          id: 2,
+          name: 'Cancelled',
+        },
+        {
+          id: 3,
+          name: 'Draft',
+        },
+        {
+          id: 4,
+          name: 'Adjustment',
+        },
+      ]"
+    />
+  </div>
+  <div>
+    <PoInputField
+      v-model="filters.fromDate"
+      label="Date from"
+      type="date"
+    />
+  </div>
+  <div>
+    <PoInputField
+      v-model="filters.toDate"
+      label="Date to"
+      type="date"
+    />
+  </div>
+</PoFilter>
+const filters = ref({
+    type: "",
+    fromDate: "",
+    toDate: "",
+});
+function handleFilterButtonClick(obj) {
+	console.log("filter click", obj);
+}
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoFilterStories} />

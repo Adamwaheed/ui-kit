@@ -16,7 +16,32 @@
 				class="genie-effect po-flex po-items-center po-justify-center po-bg-white/10 po-rounded-full po-w-10 po-h-10 po-select-none po-text-slate-100"
 				@click="toggleSidebar"
 			>
-				<Bars3Icon class="po-w-6 po-fill-current" />
+				<!-- <Bars3Icon class="po-w-6 po-fill-current" /> -->
+				<span
+					class="po-flex po-flex-col po-justify-center po-items-center po-w-5 po-h-5 po-space-y-[3px]"
+				>
+					<span
+						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						:class="[
+							{ 'po-w-5': !isSidebarOpen },
+							{ 'po-w-[3px]': isSidebarOpen },
+						]"
+					></span>
+					<span
+						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						:class="[
+							{ 'po-w-5': !isSidebarOpen },
+							{ 'po-w-[3px]': isSidebarOpen },
+						]"
+					></span>
+					<span
+						class="po-block po-h-[2px] po-rounded-full po-bg-slate-100 po-transition-all po-duration-150 po-ease-in-out"
+						:class="[
+							{ 'po-w-5': !isSidebarOpen },
+							{ 'po-w-[3px]': isSidebarOpen },
+						]"
+					></span>
+				</span>
 			</button>
 		</div>
 		<div class="po-mx-auto po-max-w-full po-pr-4 po-grow sm:po-pr-4">
