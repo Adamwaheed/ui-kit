@@ -32,6 +32,8 @@
 							{
 								'po-w-4': type !== 'tab',
 							},
+							{ 'po-animate-fadeOut': !hideSidebarItemLabel && !sidebarOpen },
+							{ 'po-animate-fadeIn': hideSidebarItemLabel },
 						]"
 					>
 						<template v-if="type === 'app'">
@@ -40,7 +42,6 @@
 						<template v-else>
 							<component
 								:is="item.icon"
-								class="po-stroke-2"
 								:class="[
 									{
 										'po-stroke-current group-hover:po-stroke-mpao-orange':
@@ -50,7 +51,7 @@
 										'po-stroke-mpao-orange': item.url == currRoute,
 									},
 									{
-										'po-w-5 po-h-5': type === 'tab',
+										'po-w-5 po-h-5 po-stroke-2': type === 'tab',
 									},
 									{
 										'po-w-4': type !== 'tab',

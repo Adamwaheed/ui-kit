@@ -47,6 +47,20 @@ module.exports = {
 					midblue: "#004EBB", // for hover
 				},
 			},
+			keyframes: {
+				fadeIn: {
+					from: { opacity: 0, transform: "translate3d(0, 100%, 0)" },
+					to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+				},
+				fadeOut: {
+					from: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+					to: { opacity: 0, transform: "translate3d(-100%, 0, 0)" },
+				},
+			},
+			animation: {
+				fadeIn: "fadeIn 320ms",
+				fadeOut: "fadeOut 320ms",
+			},
 		},
 	},
 	variants: {

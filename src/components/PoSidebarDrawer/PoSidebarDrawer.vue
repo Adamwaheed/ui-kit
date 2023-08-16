@@ -22,6 +22,8 @@
 							{ 'po-mb-3': open === '' },
 							{ 'po-ml-0 po-text-center': hideSidebarItemLabel },
 							{ 'po-ml-2 po-text-left': !hideSidebarItemLabel },
+							{ 'po-animate-fadeOut': !hideSidebarItemLabel && !sidebarOpen },
+							{ 'po-animate-fadeIn': hideSidebarItemLabel },
 						]"
 						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-block po-w-full"
 					>
@@ -67,6 +69,8 @@
 							{ 'po-mb-3': open === '' },
 							{ 'po-ml-0 po-text-center': hideSidebarItemLabel },
 							{ 'po-ml-2 po-text-left': !hideSidebarItemLabel },
+							{ 'po-animate-fadeOut': !hideSidebarItemLabel && !sidebarOpen },
+							{ 'po-animate-fadeIn': hideSidebarItemLabel },
 						]"
 						class="po-uppercase po-select-none po-text-xs po-font-semibold po-text-slate-400 po-block po-w-full"
 					>
