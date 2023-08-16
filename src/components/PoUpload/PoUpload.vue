@@ -18,9 +18,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 
 		<input
@@ -83,20 +81,8 @@
 				<LoadingDots />
 			</div>
 		</div>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			:id="`${id}-error`"
-			v-if="formHasError && null !== errorMessage"
-		>
-			<span>{{ errorMessage }}</span>
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 <script lang="ts">
@@ -112,6 +98,10 @@ import {
 	InformationCircleIcon,
 } from "@heroicons/vue/24/outline";
 
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
+
 interface Props {
 	token: string;
 	url: string;
@@ -120,7 +110,7 @@ interface Props {
 	label?: string;
 	display?: "vertical" | "horizontal";
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	message?: string | null;
 	errorMessage?: string | null;
 	hasError?: boolean;
@@ -140,7 +130,7 @@ const props = withDefaults(defineProps<Props>(), {
 	label: "",
 	display: "vertical",
 	id: "fileupload",
-	info: null,
+	info: "",
 	message: null,
 	errorMessage: null,
 	hasError: false,
@@ -149,15 +139,6 @@ const props = withDefaults(defineProps<Props>(), {
 	borderColor: "border-slate-300 focus:border-mpao-lightblue",
 	dragAreaText: "Drag and drop files to upload",
 	dragOverText: "Drop files here to upload",
-});
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref(!!errorMessage.value);
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		!!errorMessage.value && errorMessage.value !== "" ? true : false;
 });
 
 const uniqueID = ref("");

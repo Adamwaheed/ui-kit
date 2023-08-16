@@ -17,9 +17,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<input
 			:type="inputType"
@@ -40,20 +38,8 @@
 				getBorderColor(),
 			]"
 		/>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			:id="`${id}-error`"
-			v-if="formHasError && null !== errorMessage"
-		>
-			<span>{{ errorMessage }}</span>
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -67,13 +53,17 @@ import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { watch, ref, toRefs, onMounted } from "vue";
 import formatMoney from "../../shared/helper/FormatMoney";
 
+import FormErrorMessage from "./FormErrorMessage.vue";
+import FormMessage from "./FormMessage.vue";
+import FormInfo from "./FormInfo.vue";
+
 interface Props {
 	modelValue?: string | number;
 	label?: string;
 	type?: string;
 	display?: "vertical" | "horizontal";
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	message?: string | null;
 	errorMessage?: string | null;
 	hasError?: boolean;
@@ -110,7 +100,7 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * Tip, description, information for the input
 	 */
@@ -148,15 +138,6 @@ function getBorderColor() {
 		? "po-border-red-400 focus:po-border-red-600 focus:po-ring-red-600"
 		: props.borderColor;
 }
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref(null !== errorMessage.value ? true : false);
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
-});
 
 let inputType = "currency" === props.type ? "text" : props.type;
 

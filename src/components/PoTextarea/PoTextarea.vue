@@ -13,9 +13,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<!-- 
               v-model update
@@ -35,20 +33,8 @@
 			@input="handleInput"
 			class="po-mt-1 po-peer po-px-3 po-py-2 po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-border-slate-300 po-bg-white focus:po-border-mpao-lightblue focus:po-ring-0 invalid:po-border-red-400 invalid:po-focus:border-red-600 invalid:focus:po-ring-red-600 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default"
 		></textarea>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600"
-			:id="`${id}-error`"
-			v-if="null !== errorMessage"
-		>
-			{{ errorMessage }}
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -60,11 +46,15 @@ export default {
 <script setup lang="ts">
 import { InformationCircleIcon } from "@heroicons/vue/24/solid";
 
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
+
 interface Props {
 	modelValue?: string | number;
 	label?: string;
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	message?: string | null;
 	errorMessage?: string | null;
 	required?: boolean;
@@ -89,7 +79,7 @@ withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * Tip, description, information for the input
 	 */

@@ -22,9 +22,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<div class="po-relative po-mt-1">
 			<div
@@ -89,21 +87,8 @@
 				</li>
 			</ul>
 		</div>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-center po-space-x-1"
-			:id="`${id}-error`"
-			v-if="hasError && null !== errorMessage"
-		>
-			<ExclamationTriangleIcon class="po-fill-current po-w-4" />
-			<span>{{ errorMessage }}</span>
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -120,7 +105,11 @@ import {
 } from "@heroicons/vue/24/solid";
 
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
-import { CheckIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
+
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
 
 interface SelectedArray {
 	id: string | number;
@@ -139,7 +128,7 @@ interface Props {
 	label?: string;
 	display?: "vertical" | "horizontal";
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	message?: string | null;
 	errorMessage?: string | null;
 	hasError?: boolean;
@@ -170,7 +159,7 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * Tip, description, information for the input
 	 */

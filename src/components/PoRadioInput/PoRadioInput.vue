@@ -8,8 +8,8 @@
 			><span>{{ label }}</span>
 			<span v-if="required" class="po-text-lg po-text-red-400 po-font-semibold"
 				>&#42;</span
-			></RadioGroupLabel
-		>
+			><FormInfo :info="info"
+		/></RadioGroupLabel>
 
 		<div v-if="null !== options" class="po-mt-1 po-flex -po-mb-3 po-flex-wrap">
 			<RadioGroupOption
@@ -61,18 +61,8 @@
 			</RadioGroupOption>
 		</div>
 		<div>
-			<p class="po-mt-2 po-text-sm po-text-slate-500" v-if="null !== message">
-				{{ message }}
-			</p>
-			<p
-				class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-				v-if="formHasError && null !== errorMessage"
-			>
-				<ExclamationTriangleIcon
-					class="po-fill-current po-w-4 po-mt-[0.2rem] po-shrink-0"
-				/>
-				<span>{{ errorMessage }}</span>
-			</p>
+			<FormMessage :message="message" />
+			<FormErrorMessage :error-message="errorMessage" />
 		</div>
 	</RadioGroup>
 </template>
@@ -92,6 +82,10 @@ import {
 	RadioGroupOption,
 } from "@headlessui/vue";
 
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
+
 interface Option {
 	id: string | number;
 	title: string;
@@ -102,6 +96,7 @@ interface Props {
 	modelValue: string | number | null;
 	options: Option[] | null;
 	label?: string;
+	info?: string | undefined;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
 	errorMessage?: string | null;
@@ -121,6 +116,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * Label text
 	 */
 	label: "",
+	/**
+	 * A tool tip, helper information
+	 */
+	info: "",
 	/**
 	 * Input display vertifal (default) or horizontal
 	 */
@@ -152,14 +151,5 @@ const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 watch(selectedOption, () => {
 	emit("update:modelValue", selectedOption.value);
 	emit("selected", selectedOption.value);
-});
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref();
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 </script>

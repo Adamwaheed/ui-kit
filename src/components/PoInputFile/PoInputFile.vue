@@ -50,20 +50,8 @@
 			></div>
 		</div> -->
 
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`${id}-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600"
-			:id="`${id}-error`"
-			v-if="null !== errorMessage"
-		>
-			{{ errorMessage }}
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -75,6 +63,9 @@ export default {
 <script setup lang="ts">
 import { PaperClipIcon } from "@heroicons/vue/24/outline";
 import { computed, ref } from "vue";
+
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
 
 interface Props {
 	modelValue?: string | number;

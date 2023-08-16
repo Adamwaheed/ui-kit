@@ -13,9 +13,7 @@
 				class="po-text-lg po-leading-[0] po-text-red-400 po-font-semibold"
 				>&#42;</span
 			>
-			<abbr v-if="null !== info" :title="info" class="po-w-4 po-text-slate-500">
-				<InformationCircleIcon class="po-fill-current" />
-			</abbr>
+			<FormInfo :info="info" />
 		</label>
 		<div class="po-relative po-mt-1">
 			<div role="button" ref="comboboxButton">
@@ -112,20 +110,8 @@
 				</template>
 			</div>
 		</div>
-		<p
-			class="po-mt-2 po-text-sm po-text-slate-500"
-			:id="`-description`"
-			v-if="null !== message"
-		>
-			{{ message }}
-		</p>
-		<p
-			class="po-mt-2 po-text-sm po-text-red-600 po-flex po-items-start po-space-x-1"
-			:id="`-error`"
-			v-if="null !== errorMessage"
-		>
-			<span>{{ errorMessage }}</span>
-		</p>
+		<FormMessage :message="message" />
+		<FormErrorMessage :error-message="errorMessage" />
 	</div>
 </template>
 
@@ -153,6 +139,11 @@ import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import useEventBus from "../../composables/useEventBus";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 // import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+
+import FormErrorMessage from "../PoInputField/FormErrorMessage.vue";
+import FormMessage from "../PoInputField/FormMessage.vue";
+import FormInfo from "../PoInputField/FormInfo.vue";
+
 interface Item {
 	id: string | number;
 	name: string;
@@ -165,7 +156,7 @@ interface Props {
 	modelValue?: string | number | object | null;
 	label?: string;
 	id?: string;
-	info?: string | null;
+	info?: string | undefined;
 	list?: Item[] | null;
 	display?: "vertical" | "horizontal";
 	required?: boolean;
@@ -193,7 +184,7 @@ const props = withDefaults(defineProps<Props>(), {
 	/**
 	 * A tool tip, helper information
 	 */
-	info: null,
+	info: "",
 	/**
 	 * List of options
 	 */
@@ -291,15 +282,6 @@ const emit = defineEmits(["selected", "unSelected", "update:modelValue"]);
 
 watch(selectedItem, () => {
 	selectedValue.value = getSelectedName(selectedItem.value);
-});
-
-const { errorMessage } = toRefs(props);
-
-const formHasError = ref(null !== errorMessage.value ? true : false);
-
-watch(errorMessage, (newVal, oldVal) => {
-	formHasError.value =
-		null !== errorMessage.value && "" !== errorMessage.value ? true : false;
 });
 
 const uniqueID = ref("");

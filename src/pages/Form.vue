@@ -388,6 +388,7 @@
 					<template v-slot:content>
 						<div class="po-pt-5 po-space-y-5">
 							<PoRadioInput
+								label="Choose"
 								:options="radioOptions"
 								v-model="form.radioInputNormal"
 							/>
