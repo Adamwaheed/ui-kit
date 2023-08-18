@@ -26,9 +26,12 @@
 				<div class="po-flex po-space-x-2">
 					<span
 						v-for="(logType, index) in changelog"
-						class="po-flex po-items-center po-space-x-1 po-px-4 po-py-3 po-rounded-t-xl po-cursor-pointer"
+						class="po-flex po-items-center po-space-x-1 po-px-4 po-py-3 po-rounded-t-xl po-cursor-pointer po-border-b"
 						@click="currentChangeLogTab = index"
-						:class="[{ 'po-bg-purple-500/10': currentChangeLogTab === index }]"
+						:class="[
+							{ 'po-border-mpao-lightblue': currentChangeLogTab === index },
+							{ 'po-border-white': currentChangeLogTab !== index },
+						]"
 					>
 						<span class="po-text-sm po-font-semibold po-slate-800"
 							>{{ logType.label }} Version</span
@@ -41,34 +44,34 @@
 				</div>
 
 				<div
-					class="po-bg-gradient-to-t po-from-mpao-orange/20 po-via-mpao-lightblue/20 po-to-purple-500/10 -po-mb-5 -po-mx-5 po-p-5 po-pb-10"
+					class="-po-mb-5 -po-mx-5 po-p-5 po-pb-10 po-border-t po-border-slate-300 po-bg-slate-50"
 				>
 					<div v-for="(logType, index) in changelog">
 						<!-- <h3 class="po-grow po-text-md po-font-bold po-text-slate-600">
 								{{ logType.label }} Releases
 							</h3> -->
 						<div v-if="currentChangeLogTab === index">
-							<div class="po-space-y-2 po-mt-5">
+							<div class="po-space-y-2">
 								<div
 									class="po-border po-border-slate-200 po-rounded-lg po-p-3 po-bg-white"
 									v-for="item in logType.version_history"
 								>
 									<span class="po-flex po-items-center po-space-x-2">
-										<span class="po-text-mpao-lightblue po-grow po-text-lg">{{
+										<span class="po-text-slate-600 po-grow po-text-base">{{
 											item.date
 										}}</span>
 										<span
-											class="po-font-semibold po-shrink-0 po-text-mpao-lightblue po-text-sm po-px-2 po-py-1 po-rounded-xl po-bg-mpao-lightblue/10"
+											class="po-font-semibold po-shrink-0 po-text-mpao-lightblue po-text-xs po-px-1 po-rounded-xl po-bg-mpao-lightblue/10"
 											>{{ item.version }}</span
 										>
 									</span>
 									<div
-										class="po-mt-3 po-prose-sm po-prose-slate"
+										class="po-mt-3 po-prose-sm po-prose-slate prose-ul:po-list-disc prose-p:po-mb-2 prose-ul:po-mt-1 prose-p:po-mt-2"
 										v-html="item.note"
 									></div>
 								</div>
 								<span
-									class="po-bg-white po-rounded-md po-px-4 po-py-3 po-block po-text-sm po-text-center po-text-mpao-lightblue hover:po-text-purple-600 po-cursor-pointer"
+									class="po-bg-white po-border po-border-slate-200 po-rounded-md po-px-4 po-py-3 po-block po-text-sm po-text-center po-text-mpao-lightblue hover:po-text-purple-600 po-cursor-pointer"
 									v-if="logType.hasMore"
 									>More</span
 								>
@@ -84,7 +87,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import PoModal from "../PoModal/PoModal.vue";
-import type { LogType } from "./LogType";
+import type { LogType } from "../../../types/LogType";
 
 interface Props {
 	changelog?: LogType[] | null;
