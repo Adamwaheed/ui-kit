@@ -37,7 +37,7 @@
 							>{{ logType.label }} Version</span
 						>
 						<span
-							class="po-text-xs po-text-white po-px-1 po-py-0 po-rounded-md po-bg-mpao-lightblue"
+							class="po-text-sm po-font-semibold po-pl-1 po-text-mpao-lightblue"
 							>{{ logType.latest_version }}</span
 						>
 					</span>
@@ -52,21 +52,26 @@
 							</h3> -->
 						<div v-if="currentChangeLogTab === index">
 							<div class="po-space-y-2">
-								<div
-									class="po-border po-border-slate-200 po-rounded-lg po-p-3 po-bg-white"
-									v-for="item in logType.version_history"
-								>
+								<div class="po-pb-4" v-for="item in logType.version_history">
 									<span class="po-flex po-items-center po-space-x-2">
-										<span class="po-text-slate-600 po-grow po-text-base">{{
-											item.date
-										}}</span>
+										<span class="po-shrink-0">
+											<BoltIcon class="po-w-5 po-fill-sky-500" />
+										</span>
 										<span
-											class="po-font-semibold po-shrink-0 po-text-mpao-lightblue po-text-xs po-px-1 po-rounded-xl po-bg-mpao-lightblue/10"
+											class="po-shrink-0 po-text-xs po-flex po-items-center po-space-x-1 po-text-slate-600"
+										>
+											<span class="po-shrink-0">Updated on</span>
+											<CalendarDaysIcon class="po-w-4 po-fill-current" />
+											<span class="po-font-medium">{{ item.date }}.</span>
+											<span class="po-shrink-0">Version</span>
+										</span>
+										<span
+											class="po-font-semibold po-shrink-0 po-text-xs po-px-1 po-rounded-xl po-bg-white"
 											>{{ item.version }}</span
 										>
 									</span>
 									<div
-										class="po-mt-3 po-prose-sm po-prose-slate prose-ul:po-list-disc prose-p:po-mb-2 prose-ul:po-mt-1 prose-p:po-mt-2"
+										class="po-mt-2 po-ml-2 po-prose-sm po-prose-slate prose-p:po-text-slate-600 prose-ul:po-text-slate-600 prose-ul:po-list-disc prose-p:po-mb-2 prose-ul:po-mt-1 prose-p:po-mt-2 po-rounded-xl po-p-3 po-bg-white"
 										v-html="item.note"
 									></div>
 								</div>
@@ -88,6 +93,7 @@
 import { ref } from "vue";
 import PoModal from "../PoModal/PoModal.vue";
 import type { LogType } from "../../../types/LogType";
+import { BoltIcon, CalendarDaysIcon } from "@heroicons/vue/20/solid";
 
 interface Props {
 	changelog?: LogType[] | null;

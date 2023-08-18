@@ -1323,14 +1323,14 @@ const changeLog = [
 				note: `<p>Portal is Released to Public</p>`,
 			},
 			{
-				date: "12-05-2023",
-				version: "API 0.2.1",
-				note: `<strong>New Features</strong><p>Enforced to update the contact information of the Employer</p><p>Mandatory information can be updated in profile page, and not further action can be taken until contact details are updated</p>`,
-			},
-			{
 				date: "30-08-2022",
 				version: "API 0.2.0",
 				note: `<p><strong>New Features</strong></p><ul><li>Auto calculate for employees terminated and enrolled during the month</li><li>Compare tools to compare calculated pension amounts with salary sheet value for each employee</li><li>SAP ID integration, with bulk update</li><li>Download calculated final amount for the month in CSV format for comparing</li></ul>`,
+			},
+			{
+				date: "12-05-2023",
+				version: "API 0.2.1",
+				note: `<strong>New Features</strong><p>Enforced to update the contact information of the Employer</p><p>Mandatory information can be updated in profile page, and not further action can be taken until contact details are updated</p>`,
 			},
 		],
 		hasMore: false,
