@@ -14,7 +14,7 @@
 		id="change-log-modal"
 	>
 		<template v-slot:content>
-			<div class="po-prose-sm po-prose-slate po-p-5 po-opacity-8">
+			<PoliciesBody>
 				<h2 class="po-text-red-500">Sample Terms and Conditions</h2>
 
 				<h3>1. Acceptance of Terms</h3>
@@ -68,7 +68,7 @@
 					conditions, please contact us at
 					<a href="mailto:info@pension.gov.mv">info@pension.gov.mv</a>.
 				</p>
-			</div>
+			</PoliciesBody>
 		</template>
 	</PoModal>
 </template>
@@ -76,6 +76,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import PoModal from "../PoModal/PoModal.vue";
+import PoliciesBody from "./policiesBody.vue";
 
 const showPolicyModal = ref(false);
 </script>
