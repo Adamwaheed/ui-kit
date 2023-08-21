@@ -1,20 +1,24 @@
 <template>
 	<div
-		class="po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-py-8"
+		class="po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-pt-8 po-pb-12"
 	>
 		<div
-			class="po-space-y-2 po-flex po-items-center po-flex-col po-justify-center"
+			class="po-space-y-1 po-flex po-items-center po-flex-col po-justify-center"
 			:class="[{ 'po-mb-5': $slots.action }]"
 		>
-			<component
-				v-if="icon"
-				:is="icon"
-				class="po-w-10 po-h-10"
-				:class="iconColor"
-			/>
+			<span
+				class="po-w-16 po-h-16 po-flex po-items-center po-justify-center po-rounded-full po-bg-blue-50"
+			>
+				<component
+					v-if="icon"
+					:is="icon"
+					class="po-w-8 po-h-8"
+					:class="iconColor"
+				/>
+			</span>
 			<span
 				v-if="label !== ''"
-				class="po-text-base po-font-medium po-text-slate-600 po-text-center"
+				class="po-text-base po-pt-2 po-font-medium po-text-slate-600 po-text-center"
 				>{{ label }}</span
 			>
 			<span
@@ -62,6 +66,6 @@ withDefaults(defineProps<Props>(), {
 	/**
 	 * Icon color
 	 */
-	iconColor: "po-stroke-slate-300",
+	iconColor: "po-stroke-blue-400",
 });
 </script>

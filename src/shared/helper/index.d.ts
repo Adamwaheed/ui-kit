@@ -1,5 +1,5 @@
 declare module "./index" {
-	export function formatDate(date: string): string;
+	export function formatDate(date: string, format?: string): string;
 
 	export function formatMoney(amount: string | number): string | null;
 

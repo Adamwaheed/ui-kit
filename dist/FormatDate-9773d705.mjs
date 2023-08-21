@@ -1,6 +1,6 @@
 function st(y) {
-  const j = typeof y == "string" ? Number(y.replace(/,/g, "")) : y;
-  return isNaN(j) ? null : j.toLocaleString("en-US", {
+  const W = typeof y == "string" ? Number(y.replace(/,/g, "")) : y;
+  return isNaN(W) ? null : W.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
@@ -13,17 +13,17 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
     B = y;
   }
 };
-(function(y, j) {
-  (function(k, b) {
+(function(y, W) {
+  (function(C, b) {
     y.exports = b();
   })(K, function() {
-    var k = 1e3, b = 6e4, J = 36e5, A = "millisecond", M = "second", w = "minute", f = "hour", z = "day", L = "week", x = "month", $ = "quarter", m = "year", l = "date", r = "Invalid Date", c = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, O = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, v = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(s) {
+    var C = 1e3, b = 6e4, J = 36e5, A = "millisecond", M = "second", w = "minute", f = "hour", z = "day", L = "week", x = "month", $ = "quarter", m = "year", l = "date", r = "Invalid Date", c = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, O = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, v = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(s) {
       var n = ["th", "st", "nd", "rd"], t = s % 100;
       return "[" + s + (n[(t - 20) % 10] || n[t] || n[0]) + "]";
     } }, g = function(s, n, t) {
       var i = String(s);
       return !i || i.length >= n ? s : "" + Array(n + 1 - i.length).join(t) + s;
-    }, C = { s: g, z: function(s) {
+    }, U = { s: g, z: function(s) {
       var n = -s.utcOffset(), t = Math.abs(n), i = Math.floor(t / 60), e = t % 60;
       return (n <= 0 ? "+" : "-") + g(i, 2, "0") + ":" + g(e, 2, "0");
     }, m: function s(n, t) {
@@ -41,7 +41,7 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
     Y[p] = v;
     var _ = function(s) {
       return s instanceof I;
-    }, U = function s(n, t, i) {
+    }, N = function s(n, t, i) {
       var e;
       if (!n)
         return p;
@@ -61,13 +61,13 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
         return s.clone();
       var t = typeof n == "object" ? n : {};
       return t.date = s, t.args = arguments, new I(t);
-    }, o = C;
-    o.l = U, o.i = _, o.w = function(s, n) {
+    }, o = U;
+    o.l = N, o.i = _, o.w = function(s, n) {
       return h(s, { locale: n.$L, utc: n.$u, x: n.$x, $offset: n.$offset });
     };
     var I = function() {
       function s(t) {
-        this.$L = U(t.locale, null, !0), this.parse(t);
+        this.$L = N(t.locale, null, !0), this.parse(t);
       }
       var n = s.prototype;
       return n.parse = function(t) {
@@ -109,20 +109,20 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
       }, n.valueOf = function() {
         return this.$d.getTime();
       }, n.startOf = function(t, i) {
-        var e = this, u = !!o.u(i) || i, a = o.p(t), d = function(F, H) {
-          var Z = o.w(e.$u ? Date.UTC(e.$y, H, F) : new Date(e.$y, H, F), e);
+        var e = this, u = !!o.u(i) || i, a = o.p(t), d = function(j, H) {
+          var Z = o.w(e.$u ? Date.UTC(e.$y, H, j) : new Date(e.$y, H, j), e);
           return u ? Z : Z.endOf(z);
-        }, D = function(F, H) {
-          return o.w(e.toDate()[F].apply(e.toDate("s"), (u ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(H)), e);
-        }, S = this.$W, T = this.$M, N = this.$D, E = "set" + (this.$u ? "UTC" : "");
+        }, D = function(j, H) {
+          return o.w(e.toDate()[j].apply(e.toDate("s"), (u ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(H)), e);
+        }, S = this.$W, T = this.$M, k = this.$D, E = "set" + (this.$u ? "UTC" : "");
         switch (a) {
           case m:
             return u ? d(1, 0) : d(31, 11);
           case x:
             return u ? d(1, T) : d(0, T + 1);
           case L:
-            var W = this.$locale().weekStart || 0, V = (S < W ? S + 7 : S) - W;
-            return d(u ? N - V : N + (6 - V), T);
+            var F = this.$locale().weekStart || 0, V = (S < F ? S + 7 : S) - F;
+            return d(u ? k - V : k + (6 - V), T);
           case z:
           case l:
             return D(E + "Hours", 0);
@@ -153,8 +153,8 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
         var e, u = this;
         t = Number(t);
         var a = o.p(i), d = function(T) {
-          var N = h(u);
-          return o.w(N.date(N.date() + Math.round(T * t)), u);
+          var k = h(u);
+          return o.w(k.date(k.date() + Math.round(T * t)), u);
         };
         if (a === x)
           return this.set(x, this.$M + t);
@@ -164,7 +164,7 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
           return d(1);
         if (a === L)
           return d(7);
-        var D = (e = {}, e[w] = b, e[f] = J, e[M] = k, e)[a] || 1, S = this.$d.getTime() + t * D;
+        var D = (e = {}, e[w] = b, e[f] = J, e[M] = C, e)[a] || 1, S = this.$d.getTime() + t * D;
         return o.w(S, this);
       }, n.subtract = function(t, i) {
         return this.add(-1 * t, i);
@@ -172,11 +172,11 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
         var i = this, e = this.$locale();
         if (!this.isValid())
           return e.invalidDate || r;
-        var u = t || "YYYY-MM-DDTHH:mm:ssZ", a = o.z(this), d = this.$H, D = this.$m, S = this.$M, T = e.weekdays, N = e.months, E = e.meridiem, W = function(H, Z, P, q) {
+        var u = t || "YYYY-MM-DDTHH:mm:ssZ", a = o.z(this), d = this.$H, D = this.$m, S = this.$M, T = e.weekdays, k = e.months, E = e.meridiem, F = function(H, Z, P, q) {
           return H && (H[Z] || H(i, u)) || P[Z].slice(0, q);
         }, V = function(H) {
           return o.s(d % 12 || 12, H, "0");
-        }, F = E || function(H, Z, P) {
+        }, j = E || function(H, Z, P) {
           var q = H < 12 ? "AM" : "PM";
           return P ? q.toLowerCase() : q;
         };
@@ -192,9 +192,9 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
               case "MM":
                 return o.s(S + 1, 2, "0");
               case "MMM":
-                return W(e.monthsShort, S, N, 3);
+                return F(e.monthsShort, S, k, 3);
               case "MMMM":
-                return W(N, S);
+                return F(k, S);
               case "D":
                 return i.$D;
               case "DD":
@@ -202,9 +202,9 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
               case "d":
                 return String(i.$W);
               case "dd":
-                return W(e.weekdaysMin, i.$W, T, 2);
+                return F(e.weekdaysMin, i.$W, T, 2);
               case "ddd":
-                return W(e.weekdaysShort, i.$W, T, 3);
+                return F(e.weekdaysShort, i.$W, T, 3);
               case "dddd":
                 return T[i.$W];
               case "H":
@@ -216,9 +216,9 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
               case "hh":
                 return V(2);
               case "a":
-                return F(d, D, !0);
+                return j(d, D, !0);
               case "A":
-                return F(d, D, !1);
+                return j(d, D, !1);
               case "m":
                 return String(D);
               case "mm":
@@ -238,18 +238,18 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
       }, n.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, n.diff = function(t, i, e) {
-        var u, a = this, d = o.p(i), D = h(t), S = (D.utcOffset() - this.utcOffset()) * b, T = this - D, N = function() {
+        var u, a = this, d = o.p(i), D = h(t), S = (D.utcOffset() - this.utcOffset()) * b, T = this - D, k = function() {
           return o.m(a, D);
         };
         switch (d) {
           case m:
-            u = N() / 12;
+            u = k() / 12;
             break;
           case x:
-            u = N();
+            u = k();
             break;
           case $:
-            u = N() / 3;
+            u = k() / 3;
             break;
           case L:
             u = (T - S) / 6048e5;
@@ -264,7 +264,7 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
             u = T / b;
             break;
           case M:
-            u = T / k;
+            u = T / C;
             break;
           default:
             u = T;
@@ -277,7 +277,7 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
       }, n.locale = function(t, i) {
         if (!t)
           return this.$L;
-        var e = this.clone(), u = U(t, i, !0);
+        var e = this.clone(), u = N(t, i, !0);
         return u && (e.$L = u), e;
       }, n.clone = function() {
         return o.w(this.$d, this);
@@ -297,7 +297,7 @@ var K = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
       };
     }), h.extend = function(s, n) {
       return s.$i || (s(n, I, h), s.$i = !0), h;
-    }, h.locale = U, h.isDayjs = _, h.unix = function(s) {
+    }, h.locale = N, h.isDayjs = _, h.unix = function(s) {
       return h(1e3 * s);
     }, h.en = Y[p], h.Ls = Y, h.p = {}, h;
   });
@@ -311,11 +311,11 @@ var G = {}, et = {
     G = y;
   }
 };
-(function(y, j) {
-  (function(k, b) {
+(function(y, W) {
+  (function(C, b) {
     y.exports = b();
   })(K, function() {
-    var k = "minute", b = /[+-]\d\d(?::?\d\d)?/g, J = /([+-]|\d\d)/g;
+    var C = "minute", b = /[+-]\d\d(?::?\d\d)?/g, J = /([+-]|\d\d)/g;
     return function(A, M, w) {
       var f = M.prototype;
       w.utc = function(r) {
@@ -323,7 +323,7 @@ var G = {}, et = {
         return new M(c);
       }, f.utc = function(r) {
         var c = w(this.toDate(), { locale: this.$L, utc: !0 });
-        return r ? c.add(this.utcOffset(), k) : c;
+        return r ? c.add(this.utcOffset(), C) : c;
       }, f.local = function() {
         return w(this.toDate(), { locale: this.$L, utc: !1 });
       };
@@ -349,16 +349,16 @@ var G = {}, et = {
           var Y = p.match(b);
           if (!Y)
             return null;
-          var _ = ("" + Y[0]).match(J) || ["-", 0, 0], U = _[0], h = 60 * +_[1] + +_[2];
-          return h === 0 ? 0 : U === "+" ? h : -h;
+          var _ = ("" + Y[0]).match(J) || ["-", 0, 0], N = _[0], h = 60 * +_[1] + +_[2];
+          return h === 0 ? 0 : N === "+" ? h : -h;
         }(r), r === null))
           return this;
         var v = Math.abs(r) <= 16 ? 60 * r : r, g = this;
         if (c)
           return g.$offset = v, g.$u = r === 0, g;
         if (r !== 0) {
-          var C = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
-          (g = this.local().add(v + C, k)).$offset = v, g.$x.$localOffset = C;
+          var U = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
+          (g = this.local().add(v + U, C)).$offset = v, g.$x.$localOffset = U;
         } else
           g = this.utc();
         return g;
@@ -400,27 +400,27 @@ var Q = {}, rt = {
     Q = y;
   }
 };
-(function(y, j) {
-  (function(k, b) {
+(function(y, W) {
+  (function(C, b) {
     y.exports = b();
   })(K, function() {
-    var k = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, b = {};
+    var C = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, b = {};
     return function(J, A, M) {
       var w, f = function($, m, l) {
         l === void 0 && (l = {});
         var r = new Date($), c = function(O, v) {
           v === void 0 && (v = {});
-          var g = v.timeZoneName || "short", C = O + "|" + g, p = b[C];
-          return p || (p = new Intl.DateTimeFormat("en-US", { hour12: !1, timeZone: O, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: g }), b[C] = p), p;
+          var g = v.timeZoneName || "short", U = O + "|" + g, p = b[U];
+          return p || (p = new Intl.DateTimeFormat("en-US", { hour12: !1, timeZone: O, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: g }), b[U] = p), p;
         }(m, l);
         return c.formatToParts(r);
       }, z = function($, m) {
         for (var l = f($, m), r = [], c = 0; c < l.length; c += 1) {
-          var O = l[c], v = O.type, g = O.value, C = k[v];
-          C >= 0 && (r[C] = parseInt(g, 10));
+          var O = l[c], v = O.type, g = O.value, U = C[v];
+          U >= 0 && (r[U] = parseInt(g, 10));
         }
-        var p = r[3], Y = p === 24 ? 0 : p, _ = r[0] + "-" + r[1] + "-" + r[2] + " " + Y + ":" + r[4] + ":" + r[5] + ":000", U = +$;
-        return (M.utc(_).valueOf() - (U -= U % 1e3)) / 6e4;
+        var p = r[3], Y = p === 24 ? 0 : p, _ = r[0] + "-" + r[1] + "-" + r[2] + " " + Y + ":" + r[4] + ":" + r[5] + ":000", N = +$;
+        return (M.utc(_).valueOf() - (N -= N % 1e3)) / 6e4;
       }, L = A.prototype;
       L.tz = function($, m) {
         $ === void 0 && ($ = w);
@@ -446,13 +446,13 @@ var Q = {}, rt = {
         var r = l && m, c = l || m || w, O = z(+M(), c);
         if (typeof $ != "string")
           return M($).tz(c);
-        var v = function(Y, _, U) {
-          var h = Y - 60 * _ * 1e3, o = z(h, U);
+        var v = function(Y, _, N) {
+          var h = Y - 60 * _ * 1e3, o = z(h, N);
           if (_ === o)
             return [h, _];
-          var I = z(h -= 60 * (o - _) * 1e3, U);
+          var I = z(h -= 60 * (o - _) * 1e3, N);
           return o === I ? [h, o] : [Y - 60 * Math.min(o, I) * 1e3, Math.max(o, I)];
-        }(M.utc($, r).valueOf(), O, c), g = v[0], C = v[1], p = M(g).utcOffset(C);
+        }(M.utc($, r).valueOf(), O, c), g = v[0], U = v[1], p = M(g).utcOffset(U);
         return p.$x.$timezone = c, p;
       }, M.tz.guess = function() {
         return Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -465,8 +465,8 @@ var Q = {}, rt = {
 const it = Q;
 R.extend(nt);
 R.extend(it);
-function ut(y) {
-  return y === "" ? "" : R(y).tz("Indian/Maldives").format("DD-MM-YYYY");
+function ut(y, W = "DD-MM-YYYY") {
+  return y === "" ? "" : R(y).tz("Indian/Maldives").format(W);
 }
 export {
   ut as a,
