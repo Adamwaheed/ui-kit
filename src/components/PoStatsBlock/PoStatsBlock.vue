@@ -2,7 +2,7 @@
 	<div :class="['po-grid po-gap-5', numberOfCols]">
 		<div
 			v-for="item in items"
-			class="po-bg-white po-relative po-group po-rounded-xl focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500"
+			class="po-bg-white po-relative po-group po-rounded-xl po-border po-border-slate-200 focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500"
 		>
 			<span
 				class="po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear"

@@ -7219,7 +7219,7 @@ const Al = /* @__PURE__ */ Rt(Fc, [["render", Nc]]), qc = /* @__PURE__ */ r("h2"
       _: 1
     }, 8, ["modelValue", "class"]));
   }
-}), s0 = { class: "po-bg-white po-relative po-group po-rounded-xl focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500" }, l0 = { class: "po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear" }, a0 = { class: "po-flex po-items-start po-space-x-2" }, n0 = { class: "po-flex po-items-start po-space-x-1" }, r0 = { class: "po-block po-text-2xl po-font-light po-text-slate-600" }, i0 = {
+}), s0 = { class: "po-bg-white po-relative po-group po-rounded-xl po-border po-border-slate-200 focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500" }, l0 = { class: "po-block po-p-4 po-transition-colors po-duration-75 po-ease-linear" }, a0 = { class: "po-flex po-items-start po-space-x-2" }, n0 = { class: "po-flex po-items-start po-space-x-1" }, r0 = { class: "po-block po-text-2xl po-font-light po-text-slate-600" }, i0 = {
   key: 0,
   class: "po-text-sm po-text-green-500 po-font-medium po-pt-1"
 }, p0 = { class: "po-text-sm po-tracking-wide po-text-slate-500" }, u0 = {
