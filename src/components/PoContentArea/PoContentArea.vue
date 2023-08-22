@@ -1,10 +1,6 @@
 <template>
 	<section
 		class="shell-content--area po-px-3 lg:po-px-5 po-pb-10 po-space-y-5 po-grow po-max-w-[1500px]"
-		:class="[
-			{ 'po-max-w-[1370px]': sidebarOpen },
-			{ 'po-max-w-[1500px]': !sidebarOpen },
-		]"
 	>
 		<slot></slot>
 	</section>
