@@ -214,6 +214,8 @@ function toggleSidebar() {
 useEventBus.on("sidebarOpen", (val) => {
 	if (typeof val === "boolean") {
 		isSidebarOpen.value = val;
+
+		localStorage.setItem("isSidebarOpen", JSON.stringify(isSidebarOpen.value));
 	}
 });
 </script>
