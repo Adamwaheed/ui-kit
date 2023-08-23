@@ -5,7 +5,7 @@
 			class="po-text-sm po-font-normal po-text-slate-400 po-select-none po-block po-text-left po-pt-5"
 			>{{ collection.groupName }}</span
 		>
-		<ul class="po-grid po-grid-cols-3">
+		<ul class="po-grid" :class="[gridCols]">
 			<li
 				v-for="app in collection.apps"
 				class="po-bg-white hover:po-bg-slate-200 po-rounded-xl po-p-2 po-transition-colors po-duration-150 po-ease-in"
@@ -30,12 +30,12 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { defineProps } from "vue";
 import type { AppCollection } from "./AppCollection";
 
 interface Props {
 	list: AppCollection[];
 	openInNewTab: boolean;
+	gridCols?: string;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -44,5 +44,6 @@ withDefaults(defineProps<Props>(), {
 	 */
 	list: () => [],
 	openInNewTab: false,
+	gridCols: "po-grid-cols-3",
 });
 </script>
