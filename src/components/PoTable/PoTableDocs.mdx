@@ -46,11 +46,13 @@ PoTable uses `data-title=""` attribute to display titles on resposive (mobile) v
           <span v-if="'Action' !== label">{{ label }}</span>
           <span v-if="'Action' == label" class="sr-only">{{ label }}</span>
         </template>
-        <template #td="{ name, nid, source, dod }">
-        <td data-title="name">{{ name }}</td>
-        <td data-title="NID">{{ nid }}</td>
-        <td data-title="source">{{ source }}</td>
-        <td data-title="dod">{{ dod }}</td>
+        <template #td="{ item }">
+          <template v-for="(value, key) in item">
+            <td v-if="key !== 'action'" :data-title="key">
+              {{ value }}
+            </td>
+            <td v-else><div class="flex items-center space-x-3 justify-end">action</div></td>
+          </template>
         </template>
     </PoTable>
   `}

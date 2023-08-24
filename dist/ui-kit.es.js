@@ -9039,10 +9039,10 @@ const W5 = /* @__PURE__ */ jt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
       ])
     ]));
   }
-}), G2 = { class: "po-grow po-flex po-items-end po-space-x-2" }, K2 = /* @__PURE__ */ r("label", {
+}), G2 = { class: "po-grow po-flex po-items-end po-space-x-2" }, K2 = { class: "po-grow po-w-full po-max-w-lg lg:po-max-w-xs" }, X2 = /* @__PURE__ */ r("label", {
   for: "search",
   class: "po-sr-only"
-}, "Search", -1), X2 = { class: "po-grow po-w-full po-max-w-lg lg:po-max-w-xs" }, Q2 = { class: "po-relative po-group" }, J2 = { class: "po-pointer-events-none po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-z-10 po-top-[5px]" }, e5 = { class: "po-shrink-0" }, t5 = {
+}, "Search", -1), Q2 = { class: "po-relative po-group" }, J2 = { class: "po-pointer-events-none po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-z-10 po-top-[5px]" }, e5 = { class: "po-shrink-0" }, t5 = {
   name: "PoSearch"
 }, G5 = /* @__PURE__ */ T({
   ...t5,
@@ -9060,8 +9060,8 @@ const W5 = /* @__PURE__ */ jt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
     return Z(() => {
       l(), a.value = s.value;
     }), (n, i) => (p(), d("div", G2, [
-      K2,
-      r("div", X2, [
+      r("div", K2, [
+        X2,
         r("div", Q2, [
           r("div", J2, [
             V(O(Gt), {

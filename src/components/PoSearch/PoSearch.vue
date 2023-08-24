@@ -1,7 +1,7 @@
 <template>
 	<div class="po-grow po-flex po-items-end po-space-x-2">
-		<label for="search" class="po-sr-only">Search</label>
 		<div class="po-grow po-w-full po-max-w-lg lg:po-max-w-xs">
+			<label for="search" class="po-sr-only">Search</label>
 			<div class="po-relative po-group">
 				<div
 					class="po-pointer-events-none po-absolute po-inset-y-0 po-left-0 po-flex po-items-center po-pl-3 po-z-10 po-top-[5px]"
