@@ -118,6 +118,10 @@ const isShowing = ref(false);
 
 watch(show, () => {
 	isShowing.value = show.value;
+
+	setTimeout(() => {
+		closeToast();
+	}, props.hideIn);
 });
 
 const emit = defineEmits(["toast-closed"]);
@@ -126,10 +130,6 @@ function closeToast() {
 	isShowing.value = false;
 	emit("toast-closed", true);
 }
-
-setTimeout(() => {
-	closeToast();
-}, props.hideIn);
 
 const displayMessage = computed(() => {
 	if ("" === props.message && "" !== props.actionType) {

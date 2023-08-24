@@ -8491,14 +8491,13 @@ const zf = /* @__PURE__ */ jt(Mf, [["render", If]]), Bf = {
   setup(e, { emit: t }) {
     const o = e, { show: s } = Ee(o), l = $(!1);
     te(s, () => {
-      l.value = s.value;
+      l.value = s.value, setTimeout(() => {
+        a();
+      }, o.hideIn);
     });
     function a() {
       l.value = !1, t("toast-closed", !0);
     }
-    setTimeout(() => {
-      a();
-    }, o.hideIn);
     const n = z(() => o.message === "" && o.actionType !== "" ? o.actionType === "success" ? "Saved Successfully!" : o.actionType === "danger" ? "Item deleted!" : o.actionType === "warn" ? "Attention needed!" : "Wrong action" : o.message);
     return (i, u) => (p(), H(Lt, { to: "#po-notifications-alert" }, [
       V(Ze, {
