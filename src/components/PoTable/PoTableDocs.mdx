@@ -43,7 +43,8 @@ PoTable uses `data-title=""` attribute to display titles on resposive (mobile) v
 	code={dedent`
     <PoTable :thead="tableHead" :tbody="tableBody">
         <template #th="{ label }">
-        {{ label }}
+          <span v-if="'Action' !== label">{{ label }}</span>
+          <span v-if="'Action' == label" class="sr-only">{{ label }}</span>
         </template>
         <template #td="{ name, nid, source, dod }">
         <td data-title="name">{{ name }}</td>
