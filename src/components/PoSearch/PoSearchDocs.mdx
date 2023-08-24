@@ -1,0 +1,31 @@
+# Card Search component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoSearchStories from "./PoSearch.stories";
+
+import dedent from "ts-dedent";
+
+For filters and other places, this searchbox can be used. To get the input value from the component, you can use `v-model`.
+
+<div className="po-p-5 po-bg-slate-100">
+	<Story of={PoSearchStories.Search} />
+</div>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoCard class="mt-5">
+        <template v-slot:content>
+            <PoSearch placeholder="Search.." v-model="searchQuery" />
+            ...
+        </template>
+    </PoCard>
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoSearchStories} />

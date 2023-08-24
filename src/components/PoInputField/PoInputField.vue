@@ -36,6 +36,7 @@
 			:class="[
 				'po-mt-1 peer po-block po-w-full po-transition-colors po-duration-100 po-ease-in-out po-rounded-md po-bg-white focus:po-ring-0 sm:po-text-sm disabled:po-bg-slate-50 disabled:po-border-slate-300 disabled:focus:po-border-slate-300 disabled:hover:po-border-slate-300 disabled:po-cursor-default',
 				getBorderColor(),
+				styleClasses,
 			]"
 		/>
 		<FormMessage :message="message" />
@@ -72,6 +73,7 @@ interface Props {
 	disabled?: boolean;
 	placeholder?: string | undefined;
 	borderColor?: string;
+	styleClasses?: string;
 	modelModifiers?: {
 		[key: string]: boolean;
 	};
@@ -130,6 +132,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * True or false if required
 	 */
 	borderColor: "po-border-slate-300 focus:po-border-mpao-lightblue",
+	/**
+	 * If you want to add more classes to the internal <input> use this
+	 */
+	styleClasses: "",
 
 	modelModifiers: () => ({}),
 });

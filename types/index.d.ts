@@ -32,6 +32,7 @@ export * from "../src/components/PoPageTitle/PoPageTitle";
 export * from "../src/components/PoPagination/PoPagination";
 export * from "../src/components/PoProfileSwitcher/PoProfileSwitcher";
 export * from "../src/components/PoRadioInput/PoRadioInput";
+export * from "../src/components/PoSearch/PoSearch";
 export * from "../src/components/PoSearchBar/PoSearchBar";
 export * from "../src/components/PoSectionMenu/PoSectionMenu";
 export * from "../src/components/PoSelectApi/PoSelectApi";

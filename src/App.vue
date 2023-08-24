@@ -372,6 +372,18 @@
 							</div>
 						</template>
 					</PoCard>
+					<PoCard class="po-p-5">
+						<template v-slot:content>
+							<PoSearch
+								placeholder="Search card.."
+								v-model="searchQuery"
+								show-btn
+							/>
+							<span class="po-text-sm po-text-slate-500 po-block po-p-5"
+								>Search query: {{ searchQuery }}</span
+							>
+						</template>
+					</PoCard>
 				</div>
 				<PoCard class="po-mt-5 po-p-5">
 					<template v-slot:content>
@@ -461,6 +473,7 @@
 				<PoCard class="po-p-5">
 					<template v-slot:content>
 						<PoFilter
+							:add-to-url="false"
 							:filters="filters"
 							@button-click="handleFilterButtonClick"
 						>
@@ -608,6 +621,7 @@ import {
 	PoMain,
 	PoWrap,
 	PoFilter,
+	PoSearch,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";
