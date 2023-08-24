@@ -26,7 +26,7 @@
 				-->
 		<div class="po-shrink-0">
 			<PoButton
-				action-type="ghost"
+				:action-type="'' === modelValue ? 'ghost' : 'default'"
 				@click.prevent="$emit('button-click', modelValue)"
 			>
 				<template v-slot:label>

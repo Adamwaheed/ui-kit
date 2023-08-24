@@ -9080,7 +9080,7 @@ const Z5 = /* @__PURE__ */ jt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
       ]),
       r("div", e5, [
         V(P(At), {
-          "action-type": "ghost",
+          "action-type": n.modelValue === "" ? "ghost" : "default",
           onClick: i[0] || (i[0] = ee((u) => n.$emit("button-click", n.modelValue), ["prevent"]))
         }, {
           label: B(() => [
@@ -9090,7 +9090,7 @@ const Z5 = /* @__PURE__ */ jt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
             ])
           ]),
           _: 1
-        })
+        }, 8, ["action-type"])
       ])
     ]));
   }
