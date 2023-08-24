@@ -26,9 +26,16 @@
 				-->
 		<div class="po-shrink-0">
 			<PoButton
-				label="Search"
+				action-type="ghost"
 				@click.prevent="$emit('button-click', modelValue)"
-			/>
+			>
+				<template v-slot:label>
+					<span class="po-flex po-items-center po-space-x-2">
+						<FunnelIcon class="-po-ml-1 po-w-4 po-h-4 po-stroke-current" />
+						<span>{{ btnLabel }}</span>
+					</span>
+				</template>
+			</PoButton>
 		</div>
 	</div>
 </template>
@@ -40,13 +47,14 @@ export default {
 </script>
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+import { MagnifyingGlassIcon, FunnelIcon } from "@heroicons/vue/24/outline";
 import { useUniqueId } from "../../composables/useUniqueId";
 import { PoButton, PoInputField } from "../index";
 
 interface Props {
 	modelValue: string | number;
 	placeholder?: string;
+	btnLabel?: string;
 	showBtn?: boolean;
 }
 
@@ -59,6 +67,10 @@ withDefaults(defineProps<Props>(), {
 	 * Placeholder, screen reader label
 	 */
 	placeholder: "Search",
+	/**
+	 * Button Label
+	 */
+	btnLabel: "Search",
 	/**
 	 * Show hide card search button
 	 */

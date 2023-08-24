@@ -4,6 +4,7 @@ export declare const PoSearch: DefineComponent<
 	{
 		modelValue: string | number;
 		placeholder?: string;
+		btnLabel?: string;
 		showBtn?: boolean;
 	},
 	{},
