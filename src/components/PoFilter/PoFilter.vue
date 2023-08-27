@@ -4,7 +4,11 @@
 	>
 		<slot></slot>
 		<div class="po-flex po-items-end">
-			<PoButton :label="btnLabel" @button-click="handleButtonClick" />
+			<PoButton
+				:label="btnLabel"
+				@button-click="handleButtonClick"
+				:disabled="btnDisabled"
+			/>
 		</div>
 	</div>
 </template>
@@ -22,6 +26,7 @@ interface Props {
 	filters: Record<string, any> | null;
 	btnLabel?: string | undefined;
 	addToUrl?: boolean | undefined;
+	btnDisabled?: boolean | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -37,6 +42,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * turn off adding filters to url
 	 */
 	addToUrl: true,
+	/**
+	 * disabled filter button
+	 */
+	btnDisabled: false,
 });
 
 const slotProps = ref(props.filters);
@@ -45,18 +54,28 @@ const emit = defineEmits(["button-click"]);
 
 function handleButtonClick() {
 	if (props.addToUrl) {
-		const queryParams = new URLSearchParams();
+		const queryParams = new URLSearchParams(window.location.search);
 
-		// Loop through the properties of slotProps.value and add them to the URLSearchParams
+		// Loop through the properties of slotProps.value and update them in the URLSearchParams
 		for (const key in slotProps.value) {
 			if (Object.prototype.hasOwnProperty.call(slotProps.value, key)) {
-				queryParams.append(key, String(slotProps.value[key]));
+				const value = String(slotProps.value[key]);
+
+				// Check if the value is not empty before adding it to query parameters
+				if (value.trim() !== "") {
+					queryParams.set(key, value);
+				} else {
+					// If the value is empty, remove it from the query parameters
+					queryParams.delete(key);
+				}
 			}
 		}
 
-		// Get the current URL and append the query parameters
-		const currentURL = window.location.href;
-		const newURL = `${currentURL}?${queryParams.toString()}`;
+		// Get the current URL without query parameters
+		const baseUrl = window.location.href.split("?")[0];
+
+		// Create a new URL with the updated query parameters
+		const newURL = `${baseUrl}?${queryParams.toString()}`;
 
 		// Update the URL in the browser without triggering a page reload
 		history.pushState({}, "", newURL);

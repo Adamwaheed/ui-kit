@@ -9016,17 +9016,21 @@ const K5 = /* @__PURE__ */ Rt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
   props: {
     filters: { default: null },
     btnLabel: { default: "Filter" },
-    addToUrl: { type: Boolean, default: !0 }
+    addToUrl: { type: Boolean, default: !0 },
+    btnDisabled: { type: Boolean, default: !1 }
   },
   emits: ["button-click"],
   setup(e, { emit: t }) {
     const o = e, s = $(o.filters);
     function l() {
       if (o.addToUrl) {
-        const a = new URLSearchParams();
+        const a = new URLSearchParams(window.location.search);
         for (const u in s.value)
-          Object.prototype.hasOwnProperty.call(s.value, u) && a.append(u, String(s.value[u]));
-        const i = `${window.location.href}?${a.toString()}`;
+          if (Object.prototype.hasOwnProperty.call(s.value, u)) {
+            const c = String(s.value[u]);
+            c.trim() !== "" ? a.set(u, c) : a.delete(u);
+          }
+        const i = `${window.location.href.split("?")[0]}?${a.toString()}`;
         history.pushState({}, "", i);
       }
       t("button-click", s.value);
@@ -9036,8 +9040,9 @@ const K5 = /* @__PURE__ */ Rt(H2, [["render", U2]]), Y2 = { class: "po-grid po-g
       r("div", W2, [
         V(P(At), {
           label: a.btnLabel,
-          onButtonClick: l
-        }, null, 8, ["label"])
+          onButtonClick: l,
+          disabled: a.btnDisabled
+        }, null, 8, ["label", "disabled"])
       ])
     ]));
   }
