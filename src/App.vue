@@ -473,7 +473,8 @@
 				<PoCard class="po-p-5">
 					<template v-slot:content>
 						<PoFilter
-							:add-to-url="false"
+							:add-to-url="true"
+							:has-clear="true"
 							:filters="filters"
 							@button-click="handleFilterButtonClick"
 						>

@@ -4,11 +4,16 @@
 	>
 		<slot></slot>
 		<div class="po-flex po-items-end">
-			<PoButton
-				:label="btnLabel"
-				@button-click="handleButtonClick"
-				:disabled="btnDisabled"
-			/>
+			<template v-if="!isFiltered">
+				<PoButton
+					:label="btnLabel"
+					@button-click="handleButtonClick"
+					:disabled="btnDisabled"
+				/>
+			</template>
+			<template v-else>
+				<PoButton label="Clear" @button-click="clearQueryParameters" />
+			</template>
 		</div>
 	</div>
 </template>
@@ -27,6 +32,7 @@ interface Props {
 	btnLabel?: string | undefined;
 	addToUrl?: boolean | undefined;
 	btnDisabled?: boolean | undefined;
+	hasClear?: boolean | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -46,9 +52,15 @@ const props = withDefaults(defineProps<Props>(), {
 	 * disabled filter button
 	 */
 	btnDisabled: false,
+	/**
+	 * enable clear button
+	 */
+	hasClear: false,
 });
 
 const slotProps = ref(props.filters);
+
+const isFiltered = ref(false);
 
 const emit = defineEmits(["button-click"]);
 
@@ -79,8 +91,20 @@ function handleButtonClick() {
 
 		// Update the URL in the browser without triggering a page reload
 		history.pushState({}, "", newURL);
+
+		isFiltered.value = props.hasClear ? true : false;
 	}
 
 	emit("button-click", slotProps.value);
+}
+
+function clearQueryParameters() {
+	// Get the current URL without query parameters
+	const baseUrl = window.location.href.split("?")[0];
+
+	// Update the URL in the browser to remove all query parameters
+	history.pushState({}, "", baseUrl);
+
+	isFiltered.value = false;
 }
 </script>

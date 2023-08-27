@@ -6,6 +6,7 @@ export declare const PoFilter: DefineComponent<
 		btnLabel?: string | undefined;
 		addToUrl?: boolean | undefined;
 		btnDisabled?: boolean | undefined;
+		hasClear?: boolean | undefined;
 	},
 	{},
 	{},
