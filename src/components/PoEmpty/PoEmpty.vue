@@ -7,6 +7,7 @@
 			:class="[{ 'po-mb-5': $slots.action }]"
 		>
 			<span
+				v-if="icon"
 				class="po-w-16 po-h-16 po-flex po-items-center po-justify-center po-rounded-full po-bg-blue-50"
 			>
 				<component

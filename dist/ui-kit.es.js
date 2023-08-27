@@ -8072,11 +8072,14 @@ const zf = /* @__PURE__ */ jt(Mf, [["render", If]]), Bf = {
       ])
     ], 64));
   }
-}), a4 = { class: "po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-pt-8 po-pb-12" }, n4 = { class: "po-w-16 po-h-16 po-flex po-items-center po-justify-center po-rounded-full po-bg-blue-50" }, r4 = {
+}), a4 = { class: "po-mt-5 po-flex po-flex-col po-items-center po-justify-center po-px-5 po-pt-8 po-pb-12" }, n4 = {
   key: 0,
+  class: "po-w-16 po-h-16 po-flex po-items-center po-justify-center po-rounded-full po-bg-blue-50"
+}, r4 = {
+  key: 1,
   class: "po-text-base po-pt-2 po-font-medium po-text-slate-600 po-text-center"
 }, i4 = {
-  key: 1,
+  key: 2,
   class: "po-text-sm po-text-slate-500 po-text-center po-max-w-lg po-block po-mx-auto"
 }, p4 = {
   name: "PoEmpty"
@@ -8093,12 +8096,12 @@ const zf = /* @__PURE__ */ jt(Mf, [["render", If]]), Bf = {
       r("div", {
         class: L(["po-space-y-1 po-flex po-items-center po-flex-col po-justify-center", [{ "po-mb-5": t.$slots.action }]])
       }, [
-        r("span", n4, [
+        t.icon ? (p(), d("span", n4, [
           t.icon ? (p(), H(he(t.icon), {
             key: 0,
             class: L(["po-w-8 po-h-8", t.iconColor])
           }, null, 8, ["class"])) : k("", !0)
-        ]),
+        ])) : k("", !0),
         t.label !== "" ? (p(), d("span", r4, C(t.label), 1)) : k("", !0),
         t.description !== "" ? (p(), d("span", i4, C(t.description), 1)) : k("", !0)
       ], 2),

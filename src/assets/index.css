@@ -7,3 +7,21 @@
 @import "./po-loading.css";
 @import "tailwindcss/utilities";
 @import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+
+/* :root,
+html {
+	filter: invert(90%);
+}
+
+figure {
+	filter: invert(90%);
+}
+
+img,
+video,
+embed,
+svg,
+nav,
+[style*="background-image"] {
+	filter: invert(100%);
+} */
