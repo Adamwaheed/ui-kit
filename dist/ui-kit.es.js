@@ -8808,13 +8808,15 @@ const zf = /* @__PURE__ */ Rt(Mf, [["render", If]]), Bf = {
     strategy: { default: "absolute" }
   },
   setup(e) {
-    const t = e, o = $(null), s = $(null), l = $(!1);
+    const t = e, o = $(), s = $(), l = $(!1);
     let a = null;
     Z(() => {
-      o.value && s.value && (a = Dt(o.value, s.value, {
-        placement: t.placement,
-        strategy: t.strategy
-      }));
+      o.value && s.value && setTimeout(() => {
+        a = Dt(o.value, s.value, {
+          placement: t.placement,
+          strategy: t.strategy
+        });
+      }, 320);
     }), re(() => {
       a && (a.destroy(), a = null);
     });

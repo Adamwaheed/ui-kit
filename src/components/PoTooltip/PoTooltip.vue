@@ -49,17 +49,19 @@ const props = withDefaults(defineProps<Props>(), {
 	strategy: "absolute",
 });
 
-const trigger = ref<HTMLElement | null>(null);
-const popper = ref<HTMLElement | null>(null);
+const trigger = ref();
+const popper = ref();
 const open = ref(false);
 let popperInstance: Instance | null = null;
 
 onMounted(() => {
 	if (trigger.value && popper.value) {
-		popperInstance = createPopper(trigger.value, popper.value, {
-			placement: props.placement,
-			strategy: props.strategy,
-		});
+		setTimeout(() => {
+			popperInstance = createPopper(trigger.value, popper.value, {
+				placement: props.placement,
+				strategy: props.strategy,
+			});
+		}, 320);
 	}
 });
 
