@@ -67,3 +67,4 @@ export { default as PoUpload } from "./PoUpload/PoUpload.vue";
 export { default as PoWrap } from "./PoWrap/PoWrap.vue";
 export { default as PoFilter } from "./PoFilter/PoFilter.vue";
 export { default as PoSearch } from "./PoSearch/PoSearch.vue";
+export { default as PoAvatar } from "./PoAvatar/PoAvatar.vue";

@@ -2,6 +2,7 @@ export * from "../src/components/PoActionBar/PoActionBar";
 export * from "../src/components/PoAlert/PoAlert";
 export * from "../src/components/PoAppIcon/PoAppIcon";
 export * from "../src/components/PoAppTray/PoAppTray";
+export * from "../src/components/PoAvatar/PoAvatar";
 export * from "../src/components/PoButton/PoButton";
 export * from "../src/components/PoCard/PoCard";
 export * from "../src/components/PoCardSearch/PoCardSearch";

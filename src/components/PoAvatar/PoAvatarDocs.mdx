@@ -1,0 +1,119 @@
+# Avatar component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoAvatarStories from "./PoAvatar.stories";
+
+import dedent from "ts-dedent";
+
+#### Default
+
+By default PoAvatar loads small size.
+
+<Story of={PoAvatarStories.Avatar} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" />
+  `}
+/>
+
+#### ExtraSmall
+
+<Story of={PoAvatarStories.AvatarExtraSmall} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" name="Jhon Doe" avatarSize="xs" />
+  `}
+/>
+
+#### Small
+
+<Story of={PoAvatarStories.AvatarSmall} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" name="Jhon Doe" avatarSize="sm" />
+  `}
+/>
+
+#### Medium
+
+<Story of={PoAvatarStories.AvatarMedium} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" name="Jhon Doe" avatarSize="md" />
+  `}
+/>
+
+#### Large
+
+<Story of={PoAvatarStories.AvatarLarge} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" name="Jhon Doe" avatarSize="lg" />
+  `}
+/>
+
+#### ExtraLarge
+
+<Story of={PoAvatarStories.AvatarExtraLarge} />
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar src="/path/to/avatar.jpg" name="Jhon Doe" avatarSize="xl" />
+  `}
+/>
+
+#### No Image is passed
+
+<div className="po-flex po-space-x-2 po-items-end">
+	<Story of={PoAvatarStories.AvatarNoImageExtraSmall} />
+	<Story of={PoAvatarStories.AvatarNoImage} />
+	<Story of={PoAvatarStories.AvatarNoImageMedium} />
+</div>
+<br />
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoAvatar name="Jhon Doe" avatarSize="xl" />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoAvatarStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    function handleButtonClick(to) {
+      ...
+    }
+  `}
+/>
