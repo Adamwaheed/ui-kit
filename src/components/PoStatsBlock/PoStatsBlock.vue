@@ -1,5 +1,5 @@
 <template>
-	<div :class="['po-grid po-gap-5', numberOfCols]">
+	<div :class="['po-grid', numberOfCols]">
 		<div
 			v-for="item in items"
 			class="po-bg-white po-relative po-group po-rounded-xl po-border po-border-slate-200 focus-within:po-ring-2 focus-within:po-ring-inset focus-within:po-ring-indigo-500"
@@ -69,8 +69,8 @@ const props = withDefaults(defineProps<Props>(), {
 	 */
 	items: null,
 	/**
-	 * tailwind grid cols default: grid-cols-1 lg:grid-cols-3
+	 * tailwind grid cols default: po-gap-5 grid-cols-1 lg:grid-cols-3
 	 */
-	numberOfCols: "po-grid-cols-1 lg:po-grid-cols-3",
+	numberOfCols: "po-gap-5 po-grid-cols-1 lg:po-grid-cols-3",
 });
 </script>

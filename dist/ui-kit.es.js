@@ -7240,11 +7240,11 @@ const jl = /* @__PURE__ */ Rt(Fc, [["render", Nc]]), qc = /* @__PURE__ */ r("h2"
   ...u0,
   props: {
     items: { default: null },
-    numberOfCols: { default: "po-grid-cols-1 lg:po-grid-cols-3" }
+    numberOfCols: { default: "po-gap-5 po-grid-cols-1 lg:po-grid-cols-3" }
   },
   setup(e) {
     return (t, o) => (p(), d("div", {
-      class: L(["po-grid po-gap-5", t.numberOfCols])
+      class: L(["po-grid", t.numberOfCols])
     }, [
       (p(!0), d(F, null, K(t.items, (s) => (p(), d("div", s0, [
         r("span", l0, [
