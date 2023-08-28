@@ -9197,7 +9197,7 @@ const lv = /* @__PURE__ */ Ht(K2, [["render", J2]]), e5 = { class: "po-grid po-g
       var v, y;
       const c = ((y = (v = t.name) == null ? void 0 : v.match(/\b[A-Z]/g)) == null ? void 0 : y.join("")) || "";
       return c.length === 1 ? t.name.substring(0, 2) : c;
-    }), s = z(() => t.avatarSize === "xs" ? "po-h-6 po-w-6 po-text-xs" : t.avatarSize === "sm" ? "po-h-8 po-w-8 po-text-sm" : t.avatarSize === "md" ? "po-h-10 po-w-10 po-font-medium" : t.avatarSize === "lg" ? "po-h-12 po-w-12 po-text-lg" : t.avatarSize === "xl" ? "po-h-14 po-w-14 po-text-xl" : null), l = [
+    }), s = z(() => t.avatarSize === "xs" ? "po-h-6 po-w-6 po-text-xs" : t.avatarSize === "sm" ? "po-h-8 po-w-8 po-text-sm" : t.avatarSize === "md" ? "po-h-10 po-w-10 po-font-medium" : t.avatarSize === "lg" ? "po-h-12 po-w-12 po-text-lg" : t.avatarSize === "xl" ? "po-h-14 po-w-14 po-text-xl" : t.avatarSize === "2xl" ? "po-h-24 po-w-24 po-text-xl" : null), l = [
       "po-bg-green-500",
       "po-bg-yellow-500",
       "po-bg-teal-500",

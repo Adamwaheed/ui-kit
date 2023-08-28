@@ -31,7 +31,7 @@ import { computed, watch, ref, toRefs, onMounted } from "vue";
 interface Props {
 	src?: string;
 	name?: string;
-	avatarSize?: "xs" | "sm" | "md" | "lg" | "xl";
+	avatarSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 	bgColor?: string;
 	isLoading?: boolean;
 }
@@ -72,6 +72,8 @@ const imgSize = computed(() => {
 		return "po-h-12 po-w-12 po-text-lg";
 	} else if (props.avatarSize === "xl") {
 		return "po-h-14 po-w-14 po-text-xl";
+	} else if (props.avatarSize === "2xl") {
+		return "po-h-24 po-w-24 po-text-xl";
 	} else {
 		return null;
 	}
