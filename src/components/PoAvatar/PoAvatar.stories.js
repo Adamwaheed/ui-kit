@@ -46,6 +46,7 @@ export const AvatarNoImage = Template.bind();
 export const AvatarNoImageExtraSmall = Template.bind();
 export const AvatarNoImageMedium = Template.bind();
 export const AvatarLoading = Template.bind();
+export const AvatarTwoExtraLarge = Template.bind();
 
 Avatar.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -76,6 +77,12 @@ AvatarLarge.args = {
 	src: "https://i.pravatar.cc/150?img=33",
 	name: "Jhon Hatric",
 	avatarSize: "lg",
+};
+AvatarTwoExtraLarge.args = {
+	/* 👇 The args you need here will depend on your component */
+	src: "https://i.pravatar.cc/150?img=35",
+	name: "Jhon Hatric",
+	avatarSize: "2xl",
 };
 AvatarExtraLarge.args = {
 	/* 👇 The args you need here will depend on your component */
