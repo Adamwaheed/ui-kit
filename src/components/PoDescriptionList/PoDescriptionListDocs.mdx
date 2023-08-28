@@ -37,6 +37,18 @@ Where only the `label` is required, and you can add as many data as you want to 
 
 <Story of={PoDescriptionListStories.Striped} />
 
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoDescriptionList
+        :items="descriptionListItems"
+        :striped="true"
+    />
+  `}
+/>
+
 ### No columns
 
 `columns=false` default is true
@@ -50,7 +62,25 @@ Where only the `label` is required, and you can add as many data as you want to 
 	code={dedent`
     <PoDescriptionList
         :items="descriptionListItems"
-        @button-click="handleDescriptionListActionClick"
+        :columns="false"
+    />
+  `}
+/>
+
+### Loading
+
+`is-loading=true` default is true
+
+<Story of={PoDescriptionListStories.Loading} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoDescriptionList
+        :items="descriptionListItems"
+        :is-loading="true"
     />
   `}
 />

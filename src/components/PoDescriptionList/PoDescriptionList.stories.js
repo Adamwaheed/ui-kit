@@ -35,14 +35,14 @@ const Template = (args) => ({
 		//👇 The args will now be passed down to the template
 		return { args };
 	},
-	template:
-		'<PoCard class="po-mt-5 po-p-5"> <template v-slot:content> <PoDescriptionList v-bind="args" /></template></PoCard>',
+	template: '<PoDescriptionList v-bind="args" />',
 });
 
 export const List = Template.bind({});
 export const WithAction = Template.bind({});
 export const Striped = Template.bind({});
 export const NoCol = Template.bind({});
+export const Loading = Template.bind({});
 
 List.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -129,4 +129,27 @@ NoCol.args = {
 		},
 	],
 	columns: false,
+};
+Loading.args = {
+	/* 👇 The args you need here will depend on your component */
+	items: [
+		{
+			title: "Full name",
+			description: "Saleem Ahmed Doe",
+			action: "",
+		},
+		{
+			title: "Address",
+			description: "House of Sal, Medhu St, Malé",
+		},
+		{
+			title: "Dob",
+			description: "1972-02-05",
+		},
+		{
+			title: "Position",
+			description: "Crawler",
+		},
+	],
+	isLoading: true,
 };

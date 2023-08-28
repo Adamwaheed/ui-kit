@@ -108,7 +108,7 @@ By default PoAvatar loads small size.
 Set `:is-loading="true"`
 
 <div className="po-flex po-space-x-2 po-items-end">
-	<Story of={PoAvatarStories.isLoading} />
+	<Story of={PoAvatarStories.AvatarLoading} />
 </div>
 <br />
 <Source
@@ -116,7 +116,7 @@ Set `:is-loading="true"`
 	dark
 	format={true}
 	code={dedent`
-    <PoAvatar name="Jhon Doe" avatarSize="xl" />
+    <PoAvatar name="Jhon Doe" avatarSize="xl" :is-loading="true" />
   `}
 />
 

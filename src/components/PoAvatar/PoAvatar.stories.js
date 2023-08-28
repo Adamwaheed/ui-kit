@@ -101,6 +101,6 @@ AvatarNoImageExtraSmall.args = {
 AvatarLoading.args = {
 	/* 👇 The args you need here will depend on your component */
 	name: "Furathama Person",
-	avatarSize: "xs",
+	avatarSize: "md",
 	isLoading: true,
 };
