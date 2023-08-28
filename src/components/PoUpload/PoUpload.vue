@@ -37,7 +37,7 @@
 			@change="onFileChange"
 		/>
 		<div
-			class="po-border po-border-dashed po-rounded-md po-p-3 po-flex po-items-center po-space-x-4 po-transition-colors po-duration-150 po-ease-out"
+			class="po-bg-white po-border po-border-dashed po-rounded-md po-p-3 po-flex po-items-center po-space-x-4 po-transition-colors po-duration-150 po-ease-out"
 			:class="[
 				{ 'po-border-slate-400/60': !isDragging },
 				{ 'po-border-mpao-lightblue': isDragging },

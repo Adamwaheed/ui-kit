@@ -50,8 +50,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { InformationCircleIcon } from "@heroicons/vue/20/solid";
-import { watch, ref, toRefs, onMounted } from "vue";
+import { watch, ref, computed, onMounted } from "vue";
 import formatMoney from "../../shared/helper/FormatMoney";
 import { useUniqueId } from "../../composables/useUniqueId";
 
@@ -177,12 +176,26 @@ const handleBlur: (event: FocusEvent) => void = (event) => {
  * this bug was introduced after props.type === currency was added and how input value handling was changed after that.
  * So for now this is a walkaround to fix it.
  */
-watch(props, (newVal, oldVal) => {
-	if ("currency" === props.type && inputValue.value !== oldVal.modelValue) {
-		inputValue.value = "" + formatMoney(props.modelValue);
+// watch(props, (newVal, oldVal) => {
+// 	if ("currency" === props.type && inputValue.value !== oldVal.modelValue) {
+// 		inputValue.value = "" + formatMoney(props.modelValue);
+// 	} else {
+// 		inputValue.value = props.modelValue;
+// 	}
+// });
+
+// fixed --- above commented code should be removed
+const updateInputValue = computed(() => {
+	if ("currency" === props.type && inputValue.value !== props.modelValue) {
+		return "" + formatMoney(props.modelValue);
 	} else {
-		inputValue.value = props.modelValue;
+		return props.modelValue;
 	}
+});
+
+// Watch for changes in props.modelValue and update inputValue accordingly
+watch(updateInputValue, (newVal) => {
+	inputValue.value = newVal;
 });
 
 const formatInput = (val: string | number) => {
