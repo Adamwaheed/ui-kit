@@ -1,18 +1,8 @@
 <template>
-	<span
-		v-if="isLoading"
-		:class="[buttonClassess, buttonSize]"
-		class="po-bg-slate-200 hover:po-bg-slate-200 focus:po-bg-slate-200"
-	>
-		<LoadingDots
-			dot-color="po-bg-slate-500"
-			class="po-relative -po-bottom-[0.2rem]"
-		/>
-	</span>
 	<button
-		v-if="'button' == type && !isLoading"
+		v-if="'button' == type"
 		@click.prevent="$emit('button-click', to)"
-		:class="[buttonClassess, buttonSize, buttonColor]"
+		:class="[buttonClassess, buttonSize, buttonColor, 'po-relative']"
 		:disabled="disabled"
 		:aria-disabled="disabled"
 		v-bind="$attrs"
@@ -22,40 +12,81 @@
         @slot label
         -->
 		<slot name="label">{{ label }}</slot>
+		<span
+			v-if="isLoading"
+			class="po-absolute po-bg-slate-200 -po-top-[1px] -po-right-[1px] -po-bottom-[1px] -po-left-[1px] po-rounded-md po-flex po-items-center po-justify-center"
+		>
+			<LoadingDots
+				dot-color="po-bg-slate-500"
+				class="po-relative -po-bottom-[0.2rem]"
+			/>
+		</span>
 	</button>
-	<input
-		v-if="'submit' == type && !isLoading"
-		type="submit"
-		:class="[buttonClassess, buttonSize, buttonColor]"
-		:value="label"
-		:disabled="disabled"
-		:aria-disabled="disabled"
-		v-bind="$attrs"
-	/>
+	<span v-if="'submit' == type" class="po-relative">
+		<input
+			type="submit"
+			:class="[buttonClassess, buttonSize, buttonColor]"
+			:value="label"
+			:disabled="disabled"
+			:aria-disabled="disabled"
+			v-bind="$attrs"
+		/>
+		<span
+			v-if="isLoading"
+			class="po-absolute po-bg-slate-200 -po-top-[1px] -po-right-[1px] -po-bottom-[1px] -po-left-[1px] po-rounded-md po-flex po-items-center po-justify-center"
+		>
+			<LoadingDots
+				dot-color="po-bg-slate-500"
+				class="po-relative -po-bottom-[0.2rem]"
+			/>
+		</span>
+	</span>
 	<!--
         Emits to value when type is link or simple. emits action when type is button (default)
         @event button-click
     -->
 	<a
-		v-if="'link' == type && !isLoading"
+		v-if="'link' == type"
 		href="#"
 		@click.prevent="$emit('button-click', to)"
-		:class="[buttonClassess, buttonSize, buttonColor]"
+		:class="[buttonClassess, buttonSize, buttonColor, 'po-relative']"
 		v-bind="$attrs"
 	>
 		<slot name="label">{{ label }}</slot>
+		<span
+			v-if="isLoading"
+			class="po-absolute po-bg-slate-200 -po-top-[1px] -po-right-[1px] -po-bottom-[1px] -po-left-[1px] po-rounded-md po-flex po-items-center po-justify-center"
+		>
+			<LoadingDots
+				dot-color="po-bg-slate-500"
+				class="po-relative -po-bottom-[0.2rem]"
+			/>
+		</span>
 	</a>
-	<a
-		v-if="'simple' == type && !isLoading"
-		href="#"
-		@click.prevent="$emit('button-click', to)"
-		class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
-		:class="[
-			{ 'po-text-mpao-lightblue hover:po-text-mpao-midblue': !overrideColors },
-		]"
-	>
-		<slot name="label">{{ label }}</slot>
-	</a>
+
+	<span v-if="'simple' == type" class="po-relative">
+		<a
+			href="#"
+			@click.prevent="$emit('button-click', to)"
+			class="po-text-sm po-transition-colors po-duration-100 po-ease-in-out po-inline-flex po-items-center po-space-x-1"
+			:class="[
+				{
+					'po-text-mpao-lightblue hover:po-text-mpao-midblue': !overrideColors,
+				},
+			]"
+		>
+			<slot name="label">{{ label }}</slot>
+		</a>
+		<span
+			v-if="isLoading"
+			class="po-absolute po-bg-slate-200 -po-top-[1px] -po-right-[1px] -po-bottom-[1px] -po-left-[1px] po-rounded-md po-flex po-items-center po-justify-center"
+		>
+			<LoadingDots
+				dot-color="po-bg-slate-500"
+				class="po-relative -po-bottom-[0.2rem]"
+			/>
+		</span>
+	</span>
 </template>
 
 <script lang="ts">

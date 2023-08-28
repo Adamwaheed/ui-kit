@@ -36,7 +36,12 @@
 						</span>
 					</template>
 				</PoButton>
-				<PoButton type="simple" label="I am a button" to="/home" />
+				<PoButton
+					type="simple"
+					:is-loading="isSearchLoading"
+					label="I am a button"
+					to="/home"
+				/>
 				<PoButton type="simple" to="/home" @button-click="handleButtonClick">
 					<template v-slot:label>
 						<span class="po-flex po-items-center po-space-x-1">
@@ -54,6 +59,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { PoPageTitle, PoCard, PoButton, PoTooltip } from "../components";
 
 import { PhoneIcon, BoltIcon } from "@heroicons/vue/24/outline";
@@ -65,4 +71,13 @@ function handleButtonClick(to: string) {
 function handleDialClick(to: string) {
 	alert(to);
 }
+
+const isSearchLoading = ref(false);
+
+setTimeout(() => {
+	isSearchLoading.value = true;
+}, 2000);
+setTimeout(() => {
+	isSearchLoading.value = false;
+}, 4000);
 </script>
