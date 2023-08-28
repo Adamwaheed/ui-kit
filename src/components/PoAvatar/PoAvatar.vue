@@ -1,16 +1,23 @@
 <template>
-	<span
-		v-if="src"
-		class="po-inline-flex po-rounded-full po-bg-cover po-bg-center"
-		:class="[imgSize]"
-		:style="`background-image:url(${src})`"
-	></span>
+	<template v-if="!loading">
+		<span
+			v-if="src"
+			class="po-inline-flex po-rounded-full po-bg-cover po-bg-center"
+			:class="[imgSize]"
+			:style="`background-image:url(${src})`"
+		></span>
+		<span
+			v-else
+			class="po-inline-flex po-items-center po-justify-center po-rounded-full"
+			:class="[imgSize, randomColorClass]"
+			><span class="po-font-semibold po-text-white">{{ shortName }}</span></span
+		>
+	</template>
 	<span
 		v-else
-		class="po-inline-flex po-items-center po-justify-center po-rounded-full"
-		:class="[imgSize, randomColorClass]"
-		><span class="po-font-semibold po-text-white">{{ shortName }}</span></span
-	>
+		class="po-block loading-placeholder po-rounded-full"
+		:class="[imgSize]"
+	></span>
 </template>
 
 <script lang="ts">
@@ -19,13 +26,14 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, watch, ref, toRefs, onMounted } from "vue";
 
 interface Props {
 	src?: string;
 	name?: string;
 	avatarSize?: "xs" | "sm" | "md" | "lg" | "xl";
 	bgColor?: string;
+	isLoading?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -41,6 +49,10 @@ const props = withDefaults(defineProps<Props>(), {
 	 * Width of the avatar
 	 */
 	avatarSize: "sm",
+	/**
+	 * If set true, displays placeholder loading animation
+	 */
+	isLoading: false,
 });
 
 const shortName = computed(() => {
@@ -80,4 +92,19 @@ const randomColorClass = computed(() => {
 	const randomIndex = Math.floor(Math.random() * colorClasses.length);
 	return colorClasses[randomIndex];
 });
+
+const { isLoading } = toRefs(props);
+const loading = ref(false);
+
+watch(isLoading, () => {
+	checkIfLoading();
+});
+
+onMounted(() => {
+	checkIfLoading();
+});
+
+function checkIfLoading() {
+	loading.value = isLoading.value;
+}
 </script>

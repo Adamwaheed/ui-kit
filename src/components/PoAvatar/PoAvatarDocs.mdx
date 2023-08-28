@@ -103,17 +103,23 @@ By default PoAvatar loads small size.
   `}
 />
 
-### Explanation
+#### isLoading
 
-<ArgTypes of={PoAvatarStories} />
+Set `:is-loading="true"`
 
+<div className="po-flex po-space-x-2 po-items-end">
+	<Story of={PoAvatarStories.isLoading} />
+</div>
+<br />
 <Source
 	language="js"
 	dark
 	format={true}
 	code={dedent`
-    function handleButtonClick(to) {
-      ...
-    }
+    <PoAvatar name="Jhon Doe" avatarSize="xl" />
   `}
 />
+
+### Explanation
+
+<ArgTypes of={PoAvatarStories} />

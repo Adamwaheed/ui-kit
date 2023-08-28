@@ -45,6 +45,7 @@ export const AvatarExtraLarge = Template.bind();
 export const AvatarNoImage = Template.bind();
 export const AvatarNoImageExtraSmall = Template.bind();
 export const AvatarNoImageMedium = Template.bind();
+export const AvatarLoading = Template.bind();
 
 Avatar.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -96,4 +97,10 @@ AvatarNoImageExtraSmall.args = {
 	/* 👇 The args you need here will depend on your component */
 	name: "Furathama Person",
 	avatarSize: "xs",
+};
+AvatarLoading.args = {
+	/* 👇 The args you need here will depend on your component */
+	name: "Furathama Person",
+	avatarSize: "xs",
+	isLoading: true,
 };

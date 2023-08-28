@@ -15,6 +15,8 @@ export declare const PoDescriptionList: DefineComponent<
 		items?: Item[] | null;
 		striped?: boolean;
 		columns?: boolean;
+		itemsCount?: boolean | undefined;
+		isLoading?: boolean;
 	},
 	{},
 	{},

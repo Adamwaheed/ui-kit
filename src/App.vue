@@ -374,14 +374,26 @@
 					</PoCard>
 					<PoCard class="po-p-5">
 						<template v-slot:content>
-							<PoSearch
-								placeholder="Search card.."
-								v-model="searchQuery"
-								show-btn
-							/>
+							<PoSearch placeholder="Search.." v-model="searchQuery" show-btn />
 							<span class="po-text-sm po-text-slate-500 po-block po-p-5"
 								>Search query: {{ searchQuery }}</span
 							>
+
+							<div class="po-flex po-gap-5 po-flex-wrap">
+								<PoAvatar
+									name="Hussain Fr"
+									:is-loading="true"
+									avatar-size="xs"
+								/>
+								<PoAvatar name="Hussain Fr" :is-loading="true" />
+								<PoAvatar name="Nussain Or" avatar-size="md" />
+								<PoAvatar name="Hussain Fr" avatar-size="lg" />
+								<PoAvatar
+									name="Hussain Fr"
+									:is-loading="true"
+									avatar-size="xl"
+								/>
+							</div>
 						</template>
 					</PoCard>
 				</div>
@@ -623,6 +635,7 @@ import {
 	PoWrap,
 	PoFilter,
 	PoSearch,
+	PoAvatar,
 } from "./components";
 
 import DataPreview from "./pages/dataPreview.vue";
