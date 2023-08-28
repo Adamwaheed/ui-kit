@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { computed, watch, ref, toRefs, onMounted } from "vue";
+import { watch, ref, toRefs, onMounted } from "vue";
 
 interface ActionObject {
 	label: string;
