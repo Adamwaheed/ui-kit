@@ -35,10 +35,7 @@
 					</div>
 					<span
 						class="po-shrink-0 po-p-1 po-cursor-pointer"
-						@mousedown.stop="
-							selectedOption = null;
-							searchQuery = '';
-						"
+						@mousedown.stop="handleClearSelect()"
 						><XMarkIcon class="po-w-4 po-stroke-2 po-stroke-slate-400"
 					/></span>
 				</div>
@@ -108,7 +105,6 @@ export default {
 import { onMounted, ref, watch, onUnmounted } from "vue";
 import LoadingDots from "../PoLoading/LoadingDots.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
-import { InformationCircleIcon } from "@heroicons/vue/20/solid";
 import { createPopper } from "@popperjs/core";
 import useDetectOutsideClick from "../../composables/useDetectOutsideClick";
 import { useUniqueId } from "../../composables/useUniqueId";
@@ -248,7 +244,7 @@ onMounted(() => {
 
 const searchQuery = ref();
 
-const emit = defineEmits(["search", "selected", "loadmore"]);
+const emit = defineEmits(["search", "selected", "loadmore", "onClear"]);
 
 function handleInput() {
 	emit("search", searchQuery.value);
@@ -265,6 +261,11 @@ function handleOptionClick(option: any) {
 
 function handleMoreClick() {
 	emit("loadmore", true);
+}
+function handleClearSelect() {
+	selectedOption.value = null;
+	searchQuery.value = "";
+	emit("onClear", true);
 }
 
 const popper = ref();

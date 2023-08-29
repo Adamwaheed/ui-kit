@@ -43,6 +43,7 @@ By default, option click event will return an object. You can set a custom click
 			@search="handleSelectApiSearch"
 			@loadmore="handleSelectApiMoreClick"
 			@selected="handleSelectApiClick"
+			@onClear="handleSelectedOnClear"
 			:options="selectApiOptions"
 			:loading="selectApiLoading"
 			:show-more-btn="true"
@@ -108,6 +109,9 @@ By default, option click event will return an object. You can set a custom click
     		console.log("from component", aa);
     	}
     	function handleSelectApiClickTwo(aa) {
+    		console.log("from parent", aa);
+    	}
+    	function handleSelectedOnClear(aa) {
     		console.log("from parent", aa);
     	}
 

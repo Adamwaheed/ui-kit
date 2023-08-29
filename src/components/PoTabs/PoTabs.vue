@@ -22,7 +22,7 @@
         Emits tab object when tab is clicked
         @event button-click
     -->
-		<nav class="po-flex po-space-x-4 po-pt-2" aria-label="Tabs">
+		<nav class="po-flex po-gap-3 po-pt-2 po-flex-wrap" aria-label="Tabs">
 			<span
 				@click="$emit('button-click', tab)"
 				role="button"
