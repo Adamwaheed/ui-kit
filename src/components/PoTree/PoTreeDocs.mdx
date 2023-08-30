@@ -1,0 +1,82 @@
+# Tree component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoTreeStories from "./PoTree.stories";
+
+import dedent from "ts-dedent";
+
+Use this component to create trees. All the buttons are optional and button click events emit the node object.
+
+<Story of={PoTreeStories.Tree} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoTree
+      v-for="node of treeItems"
+      :node="node"
+      show-view-btn
+      show-add-btn
+      show-edit-btn
+      show-delete-btn
+      @view-click="(clickNode) => console.log('view Click', clickNode)"
+      @add-click="(clickNode) => console.log('add Click', clickNode)"
+      @edit-click="(clickNode) => console.log('edit Click', clickNode)"
+      @delete-click="
+        (clickNode) => console.log('delete Click', clickNode)
+      "
+    />
+`}
+/>
+
+### Explanation
+
+<ArgTypes of={PoTreeStories} />
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    let treeItems = [
+      {
+        name: "Tea Room",
+        children: [
+          {
+            name: "Seating Area",
+            children: [
+              {
+                name: "Behind TV",
+                children: [
+                  {
+                    name: "Under the power cable",
+                  },
+                ],
+              },
+              {
+                name: "Cupboard",
+              },
+            ],
+          },
+          {
+            name: "Kitchen Area",
+            children: [
+              {
+                name: "Cupboard",
+              },
+              {
+                name: "Table",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Another Rroom",
+      },
+    ];
+  `}
+/>
