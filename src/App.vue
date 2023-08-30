@@ -535,13 +535,14 @@
 
 			<PoFooter :changelog="changeLog" />
 		</PoMain>
-		<!-- <PoNotification
+		<PoNotification
 			label="Aishath Jackson replied..."
 			text="I submited all that but still"
 			button-label="Respond"
 			:show="showNotificationOne"
 			@button-click="handleNotificationClick('Chat')"
 		/>
+		<!-- 
 		<PoNotification
 			label="Aishath Jackson replied..."
 			text="I submited all that but still"
