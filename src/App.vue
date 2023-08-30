@@ -531,17 +531,35 @@
 						</PoFilter>
 					</template>
 				</PoCard>
+				<PoCard class="po-p-5">
+					<template v-slot:content>
+						<PoTree
+							v-for="node of treeItems"
+							:node="node"
+							show-view-btn
+							show-add-btn
+							show-edit-btn
+							show-delete-btn
+							@view-click="(clickNode) => console.log('view Click', clickNode)"
+							@add-click="(clickNode) => console.log('add Click', clickNode)"
+							@edit-click="(clickNode) => console.log('edit Click', clickNode)"
+							@delete-click="
+								(clickNode) => console.log('delete Click', clickNode)
+							"
+						/>
+					</template>
+				</PoCard>
 			</PoContentArea>
 
 			<PoFooter :changelog="changeLog" />
 		</PoMain>
-		<PoNotification
+		<!-- <PoNotification
 			label="Aishath Jackson replied..."
 			text="I submited all that but still"
 			button-label="Respond"
 			:show="showNotificationOne"
 			@button-click="handleNotificationClick('Chat')"
-		/>
+		/> -->
 		<!-- 
 		<PoNotification
 			label="Aishath Jackson replied..."
@@ -604,6 +622,7 @@ import {
 	PoSlideover,
 	PoSidebarDrawer,
 	PoActionBar,
+	PoTree,
 	PoTooltip,
 	PoCard,
 	PoCardSearch,
@@ -1363,6 +1382,44 @@ const changeLog = [
 			},
 		],
 		hasMore: false,
+	},
+];
+
+let treeItems = [
+	{
+		name: "Tea Room",
+		children: [
+			{
+				name: "Seating Area",
+				children: [
+					{
+						name: "Behind TV",
+						children: [
+							{
+								name: "Under the power cable",
+							},
+						],
+					},
+					{
+						name: "Cupboard",
+					},
+				],
+			},
+			{
+				name: "Kitchen Area",
+				children: [
+					{
+						name: "Cupboard",
+					},
+					{
+						name: "Table",
+					},
+				],
+			},
+		],
+	},
+	{
+		name: "Another Rroom",
 	},
 ];
 </script>
