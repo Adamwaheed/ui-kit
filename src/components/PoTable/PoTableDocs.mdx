@@ -25,12 +25,22 @@ You can set `is-loading` to true, if you want to show placeholder loading indica
 	dark
 	format={true}
 	code={dedent`
+    <PoTable :thead="tableHead" :tbody="tableBody" />
+  `}
+/>
+
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
     <PoTable
       :thead="tableHead"
       :tbody="tableBody"
       :is-loading="true"
     >
     ...
+    </PoTable>
   `}
 />
 

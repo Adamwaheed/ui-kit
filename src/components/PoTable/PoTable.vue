@@ -9,7 +9,12 @@
 							@slot Table header items format
 						-->
 						<span class="po-grow">
-							<slot name="th" v-bind="th"></slot>
+							<slot name="th" v-bind="th">
+								<span v-if="'Action' !== th.label">{{ th.label }}</span>
+								<span v-if="'Action' == th.label" class="sr-only">{{
+									th.label
+								}}</span>
+							</slot>
 						</span>
 						<span
 							class="po-shrink-0 po-select-none po-bg-slate-100 po-rounded-md po-w-4 po-h-4 po-flex po-items-center po-justify-center po-cursor-pointer"
@@ -50,7 +55,18 @@
 					<!-- 
 						@slot Table body items format
 					-->
-					<slot name="td" v-bind="{ ...td, index, item: td }"></slot>
+					<slot name="td" v-bind="{ ...td, index, item: td }">
+						<template v-for="(value, key) in td">
+							<td v-if="isString(key) && key !== 'action'" :data-title="key">
+								{{ value }}
+							</td>
+							<td v-else>
+								<div class="flex items-center space-x-3 justify-end">
+									action
+								</div>
+							</td>
+						</template>
+					</slot>
 				</tr>
 				<tr
 					v-if="hasDetailsRow"
@@ -223,5 +239,9 @@ const sort = (column: THead, index: number) => {
 	});
 
 	emit("column-click", column);
+};
+
+const isString = (key: unknown): key is string => {
+	return typeof key === "string";
 };
 </script>
