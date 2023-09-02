@@ -1,0 +1,67 @@
+# StatusPill component
+
+import { Story, ArgTypes, Source, Meta } from "@storybook/blocks";
+
+import * as PoStatusPillStories from "./PoStatusPill.stories";
+
+import dedent from "ts-dedent";
+
+## Green
+
+<div className="po-flex">
+	<Story of={PoStatusPillStories.Green} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoStatusPill :icon="CheckBadgeIcon" label="Active" color="green" />
+  `}
+/>
+
+## Blue
+
+<div className="po-flex">
+	<Story of={PoStatusPillStories.Blue} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoStatusPill :icon="TagIcon" label="Drafts" color="blue" />
+  `}
+/>
+
+## Red
+
+<div className="po-flex">
+	<Story of={PoStatusPillStories.Red} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoStatusPill :icon="BoltIcon" label="Rejected" color="red" />
+  `}
+/>
+
+## Custom
+
+<div className="po-flex">
+	<Story of={PoStatusPillStories.Custom} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoStatusPill :icon="ScissorsIcon" label="Middle" customIconColor="fill-pink-400"  customBgColor="bg-pink-100" />
+  `}
+/>
+
+### Explanation
+
+<ArgTypes of={PoStatusPillStories} />
