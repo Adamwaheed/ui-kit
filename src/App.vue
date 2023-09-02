@@ -531,24 +531,49 @@
 						</PoFilter>
 					</template>
 				</PoCard>
-				<PoCard class="po-p-5">
-					<template v-slot:content>
-						<PoTree
-							v-for="node of treeItems"
-							:node="node"
-							show-view-btn
-							show-add-btn
-							show-edit-btn
-							show-delete-btn
-							@view-click="(clickNode) => console.log('view Click', clickNode)"
-							@add-click="(clickNode) => console.log('add Click', clickNode)"
-							@edit-click="(clickNode) => console.log('edit Click', clickNode)"
-							@delete-click="
-								(clickNode) => console.log('delete Click', clickNode)
-							"
-						/>
-					</template>
-				</PoCard>
+				<div class="po-grid po-grid-cols-2 po-gap-5">
+					<PoCard class="po-p-5">
+						<template v-slot:content>
+							<PoTree
+								v-for="node of treeItems"
+								:node="node"
+								show-view-btn
+								show-add-btn
+								show-edit-btn
+								show-delete-btn
+								@view-click="
+									(clickNode) => console.log('view Click', clickNode)
+								"
+								@add-click="(clickNode) => console.log('add Click', clickNode)"
+								@edit-click="
+									(clickNode) => console.log('edit Click', clickNode)
+								"
+								@delete-click="
+									(clickNode) => console.log('delete Click', clickNode)
+								"
+							/>
+						</template>
+					</PoCard>
+					<PoCard title="PoStatusPill" class="po-p-5">
+						<template v-slot:content>
+							<div class="po-flex po-items-center po-space-x-2 po-mt-5">
+								<PoStatusPill
+									:icon="CheckBadgeIcon"
+									label="Active"
+									color="green"
+								/>
+								<PoStatusPill :icon="TagIcon" label="Drafts" color="blue" />
+								<PoStatusPill :icon="BoltIcon" label="Rejected" color="red" />
+								<PoStatusPill
+									:icon="ScissorsIcon"
+									label="Middle"
+									customIconColor="po-fill-pink-400"
+									customBgColor="po-bg-pink-100"
+								/>
+							</div>
+						</template>
+					</PoCard>
+				</div>
 			</PoContentArea>
 
 			<PoFooter :changelog="changeLog" />
@@ -622,6 +647,7 @@ import {
 	PoSlideover,
 	PoSidebarDrawer,
 	PoActionBar,
+	PoStatusPill,
 	PoTree,
 	PoTooltip,
 	PoCard,
@@ -682,6 +708,9 @@ import {
 	BriefcaseIcon,
 	MapPinIcon,
 	ScissorsIcon,
+	BoltIcon,
+	CheckBadgeIcon,
+	TagIcon,
 } from "@heroicons/vue/20/solid";
 
 /****

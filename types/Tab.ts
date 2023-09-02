@@ -1,8 +1,8 @@
-import type { HeroIcon } from "./HeroIcon";
+import type { FunctionalComponent } from "./HeroIcon";
 
 export interface Tab {
 	name: string;
-	icon: HeroIcon;
+	icon: FunctionalComponent;
 	iconColor: string;
 	href?: string;
 	current?: boolean;

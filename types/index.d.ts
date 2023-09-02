@@ -40,6 +40,7 @@ export * from "../src/components/PoSelectApi/PoSelectApi";
 export * from "../src/components/PoSelectField/PoSelectField";
 export * from "../src/components/PoSlideover/PoSlideover";
 export * from "../src/components/PoStatsBlock/PoStatsBlock";
+export * from "../src/components/PoStatusPill/PoStatusPill";
 export * from "../src/components/PoTable/PoTable";
 export * from "../src/components/PoTableAction/PoTableAction";
 export * from "../src/components/PoTableCheckbox/PoTableCheckbox";
