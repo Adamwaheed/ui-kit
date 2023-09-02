@@ -58,7 +58,7 @@
 					<slot name="td" v-bind="{ ...td, index, item: td }">
 						<template v-for="(value, key) in td">
 							<td v-if="isString(key) && key !== 'action'" :data-title="key">
-								{{ value }}
+								{{ formatValueIfNeeded(value) }}
 							</td>
 							<td v-else>
 								<div class="flex items-center space-x-3 justify-end">
@@ -128,6 +128,8 @@ import {
 	ArrowsUpDownIcon,
 	ArrowUpIcon,
 } from "@heroicons/vue/20/solid";
+import formatDate from "../../shared/helper/FormatDate";
+import formatMoney from "../../shared/helper/FormatMoney";
 import { ref, toRefs, watch, onMounted } from "vue";
 
 interface THead {
@@ -241,7 +243,28 @@ const sort = (column: THead, index: number) => {
 	emit("column-click", column);
 };
 
+function formatValueIfNeeded(value: string) {
+	if (isValidMoneyValue(value)) {
+		return formatMoney(value);
+	} else if (isDate(value)) {
+		return formatDate(value);
+	} else {
+		return value;
+	}
+}
+
 const isString = (key: unknown): key is string => {
 	return typeof key === "string";
+};
+
+const isDate = (value: string) => {
+	const date = new Date(value);
+	return !isNaN(date.getTime());
+};
+
+const isValidMoneyValue = (value: string) => {
+	// Define a regular expression pattern for valid money values
+	const moneyPattern = /^(\d{1,3}(,\d{3})*(\.\d{2})?|\d+(\.\d{2})?)$/;
+	return moneyPattern.test(value);
 };
 </script>
