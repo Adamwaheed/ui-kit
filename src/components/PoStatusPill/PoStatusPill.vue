@@ -1,12 +1,12 @@
 <template>
 	<span
-		class="po-flex po-rounded-xl po-pl-1 po-cursor-pointer"
+		class="po-inline-flex po-rounded-xl po-pl-1 po-cursor-pointer"
 		:class="currentColorScheme?.bg"
 		aria-role="button"
 	>
 		<component :is="icon" class="po-w-4" :class="currentColorScheme?.icon" />
 		<span
-			class="po-pr-2 po-py-1 po-pl-1 po-text-slate-600 po-text-xs po-font-medium"
+			class="po-pr-2 po-py-1 po-pl-1 po-text-slate-600 po-text-xs po-font-medium po-select-none"
 		>
 			{{ label }}
 		</span>
@@ -21,7 +21,7 @@ export default {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { FunctionalComponent } from "../../../types/Heroicon";
+import type { FunctionalComponent } from "../../../types/HeroIcon";
 interface Props {
 	icon: FunctionalComponent;
 	label: string;

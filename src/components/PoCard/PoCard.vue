@@ -27,7 +27,10 @@
 		<!--
             @slot Content of the card goes here.
         -->
+		<!-- cos initially content slot was default for card, for compatibility reasons we are keeping it -->
 		<slot name="content"></slot>
+		<slot></slot>
+		<!-- cos initially content slot was default for card, for compatibility reasons we are keeping it -->
 	</div>
 </template>
 
