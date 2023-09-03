@@ -1,6 +1,6 @@
 <template>
 	<span ref="trigger" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
-		<slot>Tooltip</slot>
+		<slot></slot>
 
 		<Teleport to="body">
 			<div
