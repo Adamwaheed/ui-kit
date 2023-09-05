@@ -5110,13 +5110,14 @@ const Lp = {
               class: L([
                 "po-relative po-group po-select-none po-py-2 po-pl-3 po-pr-9 po-cursor-pointer hover:po-bg-mpao-lightblue",
                 P.active ? "po-bg-mpao-lightblue po-text-white" : "po-text-slate-900"
-              ])
+              ]),
+              key: `sf-${h.value}-${P.id}`
             }, [
               r("span", Hp, [
                 te(k((P == null ? void 0 : P.name) ?? "") + " ", 1),
                 P != null && P.subtitle ? (p(), d("span", Np, k(P == null ? void 0 : P.subtitle), 1)) : V("", !0)
               ])
-            ], 42, Fp))), 256))
+            ], 42, Fp))), 128))
           ]))
         ], 512), [
           [Tt, a.value && g.value.length > 0]

@@ -95,6 +95,7 @@
 									? 'po-bg-mpao-lightblue po-text-white'
 									: 'po-text-slate-900',
 							]"
+							:key="`sf-${uniqueID}-${item.id}`"
 						>
 							<span :class="['group-hover:po-text-white po-block po-truncate']">
 								{{ item?.name ?? "" }}
