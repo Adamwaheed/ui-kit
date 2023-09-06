@@ -4,6 +4,7 @@ export declare const PoCard: DefineComponent<
 	{
 		title?: string;
 		isLoading?: boolean;
+		titleStyle?: string;
 	},
 	{},
 	{},

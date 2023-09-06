@@ -14,6 +14,7 @@
 			<h3
 				v-if="title.length > 0"
 				class="po-text-base po-font-medium po-text-slate-600"
+				:class="[titleStyle]"
 			>
 				{{ title }}
 			</h3>
@@ -45,6 +46,7 @@ import LoadingDots from "../PoLoading/LoadingDots.vue";
 interface Props {
 	title?: string;
 	isLoading?: boolean;
+	titleStyle?: string;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -56,5 +58,9 @@ withDefaults(defineProps<Props>(), {
 	 * Show card loading
 	 */
 	isLoading: false,
+	/**
+	 * add padding and styles to title
+	 */
+	titleStyle: "",
 });
 </script>
