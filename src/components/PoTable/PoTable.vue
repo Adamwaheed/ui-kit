@@ -245,7 +245,10 @@ const sort = (column: THead, index: number) => {
 
 function formatValueIfNeeded(value: string) {
 	if (isValidMoneyValue(value)) {
-		return formatMoney(value);
+		return value;
+		// removed this cos it wrongly formats other things.
+		// need a better way if using this.
+		// return formatMoney(value);
 	} else if (isDate(value)) {
 		return formatDate(value);
 	} else {
