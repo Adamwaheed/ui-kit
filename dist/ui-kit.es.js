@@ -8074,9 +8074,9 @@ const Qf = /* @__PURE__ */ Ht(Zf, [["render", Xf]]), Jf = {
     ]));
   }
 }), d4 = {
-  class: "po-flex po-bg-slate-50 po-rounded-t-xl po-justify-center lg:po-justify-start po-px-4 po-pt-4 xl:po-pt-2 po-flex-wrap po-overflow-hidden",
+  class: "po-flex po-relative po-bg-slate-200 po-rounded-t-xl po-justify-center lg:po-justify-start po-px-4 po-pt-4 xl:po-pt-3 po-flex-wrap po-overflow-hidden",
   "aria-label": "Tabs"
-}, c4 = ["onClick", "aria-current"], f4 = { key: 0 }, v4 = {
+}, c4 = ["onClick", "aria-current"], f4 = /* @__PURE__ */ r("div", { class: "po-absolute po-bg-sky-200 po-h-[1px] po-bottom-0 po-left-0 po-right-0" }, null, -1), v4 = {
   name: "PoCardTabs"
 }, nv = /* @__PURE__ */ T({
   ...v4,
@@ -8092,11 +8092,10 @@ const Qf = /* @__PURE__ */ Ht(Zf, [["render", Xf]]), Jf = {
       (p(!0), d(H, null, G(s.tabs, (n) => (p(), d("span", {
         role: "button",
         onClick: (a) => s.$emit("button-click", n),
+        class: L(["po-relative po-px-4 po-py-3 po-font-medium po-mr-2 po-mb-4 xl:po-mb-0 po-text-sm po-cursor-pointer hover:po-z-[2] po-rounded-xl xl:po-rounded-b-none genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-flex-shrink-0 po-space-x-2", [
+          n.current ? "po-bg-white po-text-slate-600 po-shadow-lg po-border po-border-b-0 po-border-sky-200 po-z-[1]" : "po-text-slate-600 hover:po-text-mpao-blue bg-slate-50"
+        ]]),
         key: n.name,
-        class: L([
-          n.current ? "po-bg-white po-text-slate-600 po-shadow-lg" : "po-text-slate-600 hover:po-text-mpao-blue",
-          "po-px-4 po-py-3 po-font-medium po-mr-4 po-mb-4 xl:po-mb-0 po-text-sm po-cursor-pointer po-rounded-xl xl:po-rounded-b-none genie-effect hover:po-text-slate-600 hover:po-bg-white hover:po-shadow-md po-flex po-items-center po-flex-shrink-0 po-space-x-2"
-        ]),
         "aria-current": n.current ? "page" : void 0
       }, [
         n.icon ? (p(), F(fe(n.icon), {
@@ -8105,9 +8104,17 @@ const Qf = /* @__PURE__ */ Ht(Zf, [["render", Xf]]), Jf = {
         }, null, 8, ["class"])) : V("", !0),
         r("span", null, [
           te(k(n.name), 1),
-          n.count ? (p(), d("span", f4, " (" + k(n.count) + ")", 1)) : V("", !0)
+          n.count && n.count > 0 ? (p(), d("span", {
+            key: 0,
+            class: L(["po-absolute po-py-1 po-z-[2] po-px-2 po-rounded-full po-text-xs -po-top-2 -po-right-4 po-shadow-md po-flex po-items-center po-justify-center", [
+              n.current ? "po-bg-mpao-orange po-text-white" : "po-bg-slate-400 po-text-white group-hover:po-bg-mpao-orange group-hover:po-text-white"
+            ]])
+          }, [
+            r("span", null, k(n.count), 1)
+          ], 2)) : V("", !0)
         ])
-      ], 10, c4))), 128))
+      ], 10, c4))), 128)),
+      f4
     ]));
   }
 }), h4 = { class: "sm:po-hidden" }, m4 = /* @__PURE__ */ r("label", {
