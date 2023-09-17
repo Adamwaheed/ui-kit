@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="po-bg-blue-300/20 po-border po-border-blue-200 po-p-3 po-mb-5 po-rounded-md po-text-sm sm:po-space-x-2 po-flex po-items-center po-flex-wrap"
+		class="po-bg-blue-300/20 po-border po-border-blue-200 po-p-3 po-rounded-md po-text-sm sm:po-space-x-2 po-flex po-items-center po-flex-wrap"
 	>
 		<span class="po-text-blue-500">{{ message }}</span>
 		<span

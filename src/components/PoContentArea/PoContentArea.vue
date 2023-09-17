@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="shell-content--area po-px-3 lg:po-px-5 po-pb-10 po-space-y-5 po-grow po-max-w-[1500px]"
+		class="po-px-3 lg:po-pl-5 lg:po-pr-3 po-pb-10 po-space-y-5 po-grow po-max-w-[1500px]"
 	>
 		<slot></slot>
 	</section>

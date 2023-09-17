@@ -7987,7 +7987,7 @@ const Fl = /* @__PURE__ */ Ht(s1, [["render", n1]]), a1 = /* @__PURE__ */ r("h2"
       ]))
     ]));
   }
-}), Uf = { class: "shell-content--area po-px-3 lg:po-px-5 po-pb-10 po-space-y-5 po-grow po-max-w-[1500px]" }, Yf = {
+}), Uf = { class: "po-px-3 lg:po-pl-5 lg:po-pr-3 po-pb-10 po-space-y-5 po-grow po-max-w-[1500px]" }, Yf = {
   name: "PoContentArea"
 }, tv = /* @__PURE__ */ T({
   ...Yf,
@@ -8858,7 +8858,7 @@ const Xf = /* @__PURE__ */ Ht(Wf, [["render", Kf]]), Qf = {
       ])
     ], 2));
   }
-}), E2 = { class: "po-bg-blue-300/20 po-border po-border-blue-200 po-p-3 po-mb-5 po-rounded-md po-text-sm sm:po-space-x-2 po-flex po-items-center po-flex-wrap" }, A2 = { class: "po-text-blue-500" }, j2 = {
+}), E2 = { class: "po-bg-blue-300/20 po-border po-border-blue-200 po-p-3 po-rounded-md po-text-sm sm:po-space-x-2 po-flex po-items-center po-flex-wrap" }, A2 = { class: "po-text-blue-500" }, j2 = {
   name: "PoMessage"
 }, hv = /* @__PURE__ */ T({
   ...j2,
