@@ -877,7 +877,7 @@ let sidebarContent = [
 				icon: Square2StackIcon,
 			},
 			{
-				label: "Buttons",
+				label: "Buttons (20)",
 				url: "/buttons",
 				icon: CursorArrowRaysIcon,
 			},

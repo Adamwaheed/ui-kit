@@ -61,14 +61,25 @@
 						</template>
 					</span>
 					<span
-						class="po-text-sm po-leading-none po-font-medium po-shrink-0 po-text-left po-transition-opacity po-duration-150 po-ease-out"
+						class="po-text-sm po-leading-none po-flex po-items-center po-font-medium po-grow po-text-left po-transition-opacity po-duration-150 po-ease-out"
 						:class="[
 							{ 'po-opacity-1': sidebarOpen },
 							{ 'po-opacity-0': !sidebarOpen },
 							{ 'po-hidden': hideSidebarItemLabel },
 						]"
-						>{{ item.name || item.label }}</span
 					>
+						<template v-if="item.name">{{ item.name }}</template>
+						<template v-if="item.label"
+							><span class="po-grow">{{ formatLabel(item.label).label }}</span>
+							<span
+								v-if="formatLabel(item.label).count"
+								class="po-shrink-0 po-relative po-py-1 po-px-2 po-rounded-full po-text-xs po-inline-flex po-items-center po-justify-center po-bg-mpao-orange po-text-white"
+							>
+								<span>{{ formatLabel(item.label).count }}</span></span
+							>
+						</template>
+					</span>
+					<!-- formatLabel -->
 				</button>
 			</PoTooltip>
 		</span>
@@ -121,4 +132,25 @@ function genToolTip(): string {
 	const tip = props.item?.name || props.item?.label || "";
 	return !props.sidebarOpen ? tip : "";
 }
+
+// This seperates label into label and count,
+// in cases where a count is passed like `Approved (2)`
+// if no count is passed it outputs label
+interface SeparatedItem {
+	label: string;
+	count: number;
+}
+
+const formatLabel = (text: string): SeparatedItem => {
+	const regex = /^(.+?)(?:\s+\((\d+)\))?$/;
+	const matches = text.match(regex);
+
+	const label = matches && matches[1] ? matches[1].trim() : "";
+	const count = matches && matches[2] ? parseInt(matches[2], 10) : 0;
+
+	return {
+		label,
+		count,
+	};
+};
 </script>
