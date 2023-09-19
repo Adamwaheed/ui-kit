@@ -73,7 +73,7 @@
 							><span class="po-grow">{{ formatLabel(item.label).label }}</span>
 							<span
 								v-if="formatLabel(item.label).count"
-								class="po-shrink-0 po-relative po-py-1 po-px-2 po-rounded-full po-text-xs po-inline-flex po-items-center po-justify-center po-bg-mpao-orange po-text-white"
+								class="po-shrink-0 po-relative po-py-[1px] po-px-2 po-rounded-full po-text-xs po-inline-flex po-items-center po-justify-center po-bg-mpao-orange po-text-white"
 							>
 								<span>{{ formatLabel(item.label).count }}</span></span
 							>

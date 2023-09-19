@@ -5383,7 +5383,7 @@ const Lp = {
   }
 }), cu = { key: 0 }, fu = ["innerHTML"], vu = { class: "po-grow" }, hu = {
   key: 0,
-  class: "po-shrink-0 po-relative po-py-1 po-px-2 po-rounded-full po-text-xs po-inline-flex po-items-center po-justify-center po-bg-mpao-orange po-text-white"
+  class: "po-shrink-0 po-relative po-py-[1px] po-px-2 po-rounded-full po-text-xs po-inline-flex po-items-center po-justify-center po-bg-mpao-orange po-text-white"
 }, Ds = /* @__PURE__ */ T({
   __name: "sidebarItem",
   props: {
