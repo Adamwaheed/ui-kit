@@ -2,20 +2,20 @@
 	<template v-if="!loading">
 		<span
 			v-if="src"
-			class="po-inline-flex po-rounded-full po-bg-cover po-bg-center"
+			class="po-shrink-0 po-inline-flex po-rounded-full po-bg-cover po-bg-center"
 			:class="[imgSize]"
 			:style="`background-image:url(${src})`"
 		></span>
 		<span
 			v-else
-			class="po-inline-flex po-items-center po-justify-center po-rounded-full"
+			class="po-shrink-0 po-inline-flex po-items-center po-justify-center po-rounded-full"
 			:class="[imgSize, randomColorClass]"
 			><span class="po-font-semibold po-text-white">{{ shortName }}</span></span
 		>
 	</template>
 	<span
 		v-else
-		class="po-block loading-placeholder po-rounded-full"
+		class="po-shrink-0 po-block loading-placeholder po-rounded-full"
 		:class="[imgSize]"
 	></span>
 </template>
