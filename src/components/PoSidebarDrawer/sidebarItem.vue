@@ -8,7 +8,7 @@
 			<PoTooltip :text="genToolTip()" placement="right" strategy="fixed">
 				<button
 					v-if="!item.disabled"
-					@click="sidebarItemClick(item.name || item.url)"
+					@click="sidebarItemClick(item.url || item.name)"
 					class="po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-all po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0"
 					:class="[
 						{
@@ -121,8 +121,9 @@ const emit = defineEmits(["item-click"]);
 
 function sidebarItemClick(action: string | undefined = "") {
 	const { type } = props;
+	// actionType: type === "tab" ? "button-click" : "app-click",
 	emit("item-click", {
-		actionType: type === "tab" ? "button-click" : "app-click",
+		actionType: "button-click",
 		action: action,
 	});
 }

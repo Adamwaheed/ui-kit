@@ -19,6 +19,7 @@
 		<PoSidebarDrawer
 			:content="sidebarContent"
 			@button-click="handleSidebarButtonClick"
+			@app-click="handleSidebarAppClick"
 			:has-feedback="true"
 			:apps="appsFromApi"
 			app-code="auth"
@@ -747,6 +748,10 @@ const currentView = computed(() => {
 
 function handleSidebarButtonClick(link) {
 	window.location.hash = link;
+}
+
+function handleSidebarAppClick(val) {
+	console.log("--app click sidebar", val);
 }
 
 /****

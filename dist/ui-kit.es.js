@@ -1,5 +1,5 @@
 import { openBlock as p, createElementBlock as d, createElementVNode as r, defineComponent as T, ref as V, toRefs as Se, watch as Q, onMounted as Z, Fragment as F, renderList as G, normalizeClass as L, createVNode as C, unref as S, withCtx as E, renderSlot as K, createBlock as H, resolveDynamicComponent as fe, createCommentVNode as x, computed as I, toDisplayString as k, onBeforeUnmount as Do, onUnmounted as re, withDirectives as Oe, isRef as ql, withKeys as Ul, vModelText as Mt, vShow as Tt, cloneVNode as Yl, h as se, inject as de, provide as ve, watchEffect as he, Teleport as Dt, reactive as Wl, shallowRef as Is, nextTick as Bo, toRaw as Ye, Transition as Ze, withModifiers as te, onBeforeMount as Zl, onBeforeUpdate as Gl, onUpdated as Io, mergeProps as Be, createTextVNode as ee, pushScopeId as Kl, popScopeId as Xl, withScopeId as Ql, markRaw as Jl, shallowReactive as en, resolveComponent as zs, resolveDirective as tn, normalizeStyle as ft, toHandlers as on, normalizeProps as dt, guardReactiveProps as ct, createStaticVNode as sn } from "vue";
-import { f as Es, a as ps, c as ln, d as ne, u as nn, t as an } from "./FormatMoney-c08160a5.mjs";
+import { f as Es, a as ps, c as ln, d as ne, u as nn, t as an } from "./FormatMoney-8affc721.mjs";
 function rn(e, t) {
   return p(), d("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -5397,9 +5397,8 @@ const Lp = {
   setup(e, { emit: t }) {
     const o = e;
     function s(a = "") {
-      const { type: i } = o;
       t("item-click", {
-        actionType: i === "tab" ? "button-click" : "app-click",
+        actionType: "button-click",
         action: a
       });
     }
@@ -5425,7 +5424,7 @@ const Lp = {
           default: E(() => [
             a.item.disabled ? x("", !0) : (p(), d("button", {
               key: 0,
-              onClick: i[0] || (i[0] = (u) => s(a.item.name || a.item.url)),
+              onClick: i[0] || (i[0] = (u) => s(a.item.url || a.item.name)),
               class: L(["po-flex po-items-center po-w-full po-group po-space-x-3 po-px-2 po-py-3 po-transition-all po-duration-100 po-ease-in-out po-rounded-lg po-outline-none po-ring-0", [
                 {
                   "po-text-mpao-lightblue po-bg-slate-100 hover:po-bg-slate-100/50": a.item.url == a.currRoute
