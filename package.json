@@ -16,6 +16,10 @@
 		"./helpers": {
 			"import": "./dist/ui-kit.es2.js",
 			"require": "./dist/ui-kit.umd2.js"
+		},
+		"./directives": {
+			"import": "./dist/ui-kit.es3.js",
+			"require": "./dist/ui-kit.umd3.js"
 		}
 	},
 	"scripts": {

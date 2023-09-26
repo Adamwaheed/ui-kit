@@ -1,10 +1,8 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./assets/index.css";
+// directives.ts
+import type { DirectiveBinding, VNode } from "vue";
 
-const app = createApp(App);
-app.directive("hasPermission", {
-	mounted(el, binding, vnode) {
+const hasPermissionDirective = {
+	mounted(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
 		const hasPermission = binding.value;
 
 		if (!hasPermission) {
@@ -15,7 +13,7 @@ app.directive("hasPermission", {
 			}
 		}
 	},
-	updated(el, binding, vnode) {
+	updated(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
 		const hasPermission = binding.value;
 
 		if (!hasPermission) {
@@ -29,9 +27,10 @@ app.directive("hasPermission", {
 			if (!el.parentNode) {
 				const comment = document.createComment(" ");
 				vnode.el?.parentNode?.replaceChild(comment, vnode.el);
-				el.__comment = comment;
+				(el as any).__comment = comment;
 			}
 		}
 	},
-});
-app.mount("#app");
+};
+
+export default hasPermissionDirective;

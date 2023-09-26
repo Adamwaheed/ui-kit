@@ -66,7 +66,7 @@
 				/> -->
 			<PoContentArea>
 				<component :is="currentView" />
-				<PoStatsBlock :items="statsBlockItems" />
+				<PoStatsBlock v-has-permission="false" :items="statsBlockItems" />
 				<PoFormStatusMessage
 					message="Thank you! The record has been created successfully!"
 				/>
@@ -689,6 +689,7 @@ import DataPreview from "./pages/dataPreview.vue";
 
 import formatDate from "./shared/helper/FormatDate";
 import debounce from "./shared/helper/Debounce";
+import hasPermissionDirective from "./shared/directives/HasPermission";
 import { ref, computed } from "vue";
 
 import {
