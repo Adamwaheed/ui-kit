@@ -38,6 +38,7 @@ Toast has closed event that you can access via `@toast-closed`.
 			:show="showNotificationOne"
 			action-type="danger"
 			message="Call Deleted!"
+			@alert-closed="() => (showNotificationOne = false)"
 		/>
     <PoToast
 			:show="showNotificationOne"

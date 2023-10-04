@@ -14,7 +14,11 @@ import dedent from "ts-dedent";
 
 Action click just returns the string passed `action: "Update",`. If you want to add more functionality, and have it return an object, you can do that by:
 
-```js
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
 let descriptionListItems = [
 	{
 		title: "Dob",
@@ -25,7 +29,8 @@ let descriptionListItems = [
 		},
 	},
 ];
-```
+  `}
+/>
 
 Where only the `label` is required, and you can add as many data as you want to `action` object, the click event will return the object.
 
