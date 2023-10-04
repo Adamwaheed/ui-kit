@@ -920,7 +920,7 @@ let actionBarItems = [
 
 let tableHead = [
 	{ label: "Name", sortable: true },
-	{ label: "NID" },
+	{ label: "NID", style: "po-bg-slate-100" },
 	{ label: "Source", sortable: true },
 	{ label: "DOD" },
 	{ label: "Action" },

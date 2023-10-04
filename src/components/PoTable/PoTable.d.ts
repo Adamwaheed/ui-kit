@@ -6,6 +6,7 @@ interface THead {
 	sorted?: boolean;
 	sortDirection?: string | null;
 	index?: number;
+	style?: string;
 }
 
 export declare const PoTable: DefineComponent<

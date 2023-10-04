@@ -3,7 +3,11 @@
 		<thead>
 			<tr>
 				<th v-if="hasDetailsRow" class="po-w-12"></th>
-				<th v-for="(th, index) in tableHead" @click="sort(th, index)">
+				<th
+					v-for="(th, index) in tableHead"
+					@click="sort(th, index)"
+					:class="th.style"
+				>
 					<span class="po-flex po-space-x-1 po-pr-2 po-items-center">
 						<!-- 
 							@slot Table header items format
@@ -138,6 +142,7 @@ interface THead {
 	sorted?: boolean;
 	sortDirection?: string | null;
 	index?: number;
+	style?: string;
 }
 
 interface Props {

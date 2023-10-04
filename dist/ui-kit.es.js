@@ -6045,7 +6045,8 @@ const Lp = {
         r("tr", null, [
           h.hasDetailsRow ? (p(), d("th", pd)) : x("", !0),
           (p(!0), d(F, null, G(i.value, (w, M) => (p(), d("th", {
-            onClick: (z) => y(w, M)
+            onClick: (z) => y(w, M),
+            class: L(w.style)
           }, [
             r("span", dd, [
               r("span", cd, [
@@ -6069,7 +6070,7 @@ const Lp = {
                 })) : x("", !0)
               ])) : x("", !0)
             ])
-          ], 8, ud))), 256))
+          ], 10, ud))), 256))
         ])
       ]),
       r("tbody", null, [
