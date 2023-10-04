@@ -139,59 +139,53 @@ const Template = (args) => ({
 			formatMoney,
 		};
 	},
-	template: `<PoCard class="po-p-5"><template v-slot:content><div class="-po-mx-5">
-  <PoTable :thead="tableHead" :tbody="tableBody">
-            <template #th="{ label }">
-              <span v-if="'Action' !== label && 'Checkbox' !== label">{{
-                label
-              }}</span>
-              <span
-                v-if="('Action' == label) & ('Checkbox' !== label)"
-                class="sr-only"
-                >{{ label }}</span
-              >
-            </template>
-            <template #td="{ item }">
-              <td data-title="id">
-                <PoTableCheckbox
-                  :item-id="item.id"
-                  :is-checked="checkIfCheckBoxSelected(item.id)"
-									:disabled="item.disabled"
-                  @checkbox-clicked="handleCheckboxClick"
-                />
-              </td>
-              <td data-title="identifier">
-                {{ item.identifier }}
-              </td>
-              <td data-title="name">
-                {{ item.name }}
-              </td>
-
-              <td data-title="salary">{{ formatMoney(item.salary) }}</td>
-              <td data-title="type">{{ item.type }}</td>
-              <td data-title="description">
-                {{ item.description }}
-              </td>
-              <td data-title="amount">{{ formatMoney(item.amount) }}</td>
-              <td>
-                <div v-if="!item.disabled" class="po-flex po-items-center po-space-x-3 po-justify-end">
-                  <PoTableAction
-                    
-                    btn-type="icon"
-                    :btn-icon="CheckIcon"
-                    icon-color="po-stroke-sky-400"
-										label="Approve"
-                  />
-                  <PoTableAction
-                    btn-type="icon"
-                    :btn-icon="XMarkIcon"
-                    icon-color="po-stroke-red-400"
-										label="Reject"
-                  />
-                </div>
-              </td>
-            </template>
-          </PoTable><span class="po-block po-text-sm po-text-slate-500 po-mt-5 po-px-5">Selected row Ids: {{selectedRowIds}}</p></div></template></PoCard>`,
+	template: `
+  <PoCard class="po-p-5">
+    <template v-slot:content>
+      <div class="-po-mx-5">
+        <PoTable :thead="tableHead" :tbody="tableBody">
+          <template #th="{ label }">
+            <span v-if="'Action' !== label && 'Checkbox' !== label">
+              {{ label }}
+            </span>
+            <span v-if="('Action' == label) & ('Checkbox' !== label)" class="sr-only">
+              {{ label }}
+            </span>
+          </template>
+          <template #td="{ item }">
+            <td data-title="id">
+              <PoTableCheckbox
+                :item-id="item.id"
+                :is-checked="checkIfCheckBoxSelected(item.id)"
+                :disabled="item.disabled"
+                @checkbox-clicked="handleCheckboxClick"
+              />
+            </td>
+            <td data-title="identifier">
+              {{ item.identifier }}
+            </td>
+            <td data-title="name">
+              {{ item.name }}
+            </td>
+            <td data-title="salary">{{ formatMoney(item.salary) }}</td>
+            <td data-title="type">{{ item.type }}</td>
+            <td data-title="description">
+              {{ item.description }}
+            </td>
+            <td data-title="amount">{{ formatMoney(item.amount) }}</td>
+            <td>
+              <div v-if="!item.disabled" class="po-flex po-items-center po-space-x-3 po-justify-end">
+                <PoTableAction btn-type="icon" :btn-icon="CheckIcon" icon-color="po-stroke-sky-400" label="Approve" />
+                <PoTableAction btn-type="icon" :btn-icon="XMarkIcon" icon-color="po-stroke-red-400" label="Reject" />
+              </div>
+            </td>
+          </template>
+        </PoTable>
+        <span class="po-block po-text-sm po-text-slate-500 po-mt-5 po-px-5">Selected row Ids: {{selectedRowIds}}</span>
+      </div>
+    </template>
+  </PoCard>
+`,
 });
 
 export const TableCheckbox = Template.bind({});
