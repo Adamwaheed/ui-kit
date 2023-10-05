@@ -9424,7 +9424,7 @@ const xv = /* @__PURE__ */ Ht(p5, [["render", c5]]), f5 = { class: "po-grid po-g
     const t = e, o = I(() => {
       if (t.grayscale)
         return {
-          icon: "po-fill-slate-400",
+          icon: "po-fill-mpao-lightblue/50",
           bg: "po-bg-slate-100"
         };
       if (t.customIconColor !== "" && t.customBgColor !== "")

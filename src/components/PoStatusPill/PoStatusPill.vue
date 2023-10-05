@@ -61,7 +61,7 @@ const props = withDefaults(defineProps<Props>(), {
 const currentColorScheme = computed(() => {
 	if (props.grayscale) {
 		return {
-			icon: "po-fill-slate-400",
+			icon: "po-fill-mpao-lightblue/50",
 			bg: "po-bg-slate-100",
 		};
 	}
