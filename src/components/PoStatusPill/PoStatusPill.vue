@@ -28,6 +28,7 @@ interface Props {
 	color?: "green" | "blue" | "red";
 	customIconColor?: string | undefined;
 	customBgColor?: string | undefined;
+	grayscale?: boolean | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -48,12 +49,22 @@ const props = withDefaults(defineProps<Props>(), {
 	 */
 	customIconColor: "",
 	/**
-	 * customBgColor
+	 * Custom background color
 	 */
 	customBgColor: "",
+	/**
+	 * Show grascale version
+	 */
+	grayscale: false,
 });
 
 const currentColorScheme = computed(() => {
+	if (props.grayscale) {
+		return {
+			icon: "po-fill-slate-400",
+			bg: "po-bg-slate-100",
+		};
+	}
 	if (props.customIconColor !== "" && props.customBgColor !== "") {
 		return {
 			icon: props.customIconColor,

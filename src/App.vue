@@ -571,6 +571,13 @@
 									customIconColor="po-fill-pink-400"
 									customBgColor="po-bg-pink-100"
 								/>
+								<PoStatusPill
+									:icon="TagIcon"
+									label="Drafts"
+									color="blue"
+									:grayscale="!statusPillActive"
+									@click="() => (statusPillActive = !statusPillActive)"
+								/>
 							</div>
 						</template>
 					</PoCard>
@@ -732,6 +739,8 @@ const filters = ref({
 	fromDate: "",
 	toDate: "",
 });
+
+const statusPillActive = ref(false);
 
 function handleFilterButtonClick(obj) {
 	console.log("filter click", obj);

@@ -62,6 +62,31 @@ import dedent from "ts-dedent";
   `}
 />
 
+## Grayscale
+
+StatusPill has a grayscale option which will be useful when using it as a filter trigger button. You can use it like so;
+
+<div className="po-flex">
+	<Story of={PoStatusPillStories.Grayscale} />
+</div>
+<Source
+	language="js"
+	dark
+	format={true}
+	code={dedent`
+    <PoStatusPill
+			:icon="BoltIcon"
+			label="Rejected"
+			color="red"
+			:grayscale="!statusPillActive"
+			@click="() => (statusPillActive = !statusPillActive)"
+		/>
+
+    	const statusPillActive = ref(false);
+
+`}
+/>
+
 ### Explanation
 
 <ArgTypes of={PoStatusPillStories} />

@@ -46,6 +46,7 @@ export const Green = Template.bind({});
 export const Blue = Template.bind({});
 export const Red = Template.bind({});
 export const Custom = Template.bind({});
+export const Grayscale = Template.bind({});
 
 Green.args = {
 	/* 👇 The args you need here will depend on your component */
@@ -71,4 +72,12 @@ Custom.args = {
 	label: "Middle",
 	customIconColor: "po-fill-pink-400",
 	customBgColor: "po-bg-pink-100",
+};
+
+Grayscale.args = {
+	/* 👇 The args you need here will depend on your component */
+	icon: BoltIcon,
+	label: "Rejected",
+	color: "red",
+	grayscale: true,
 };

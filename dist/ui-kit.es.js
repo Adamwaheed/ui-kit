@@ -9417,10 +9417,16 @@ const xv = /* @__PURE__ */ Ht(p5, [["render", c5]]), f5 = { class: "po-grid po-g
     label: { default: "" },
     color: { default: "green" },
     customIconColor: { default: "" },
-    customBgColor: { default: "" }
+    customBgColor: { default: "" },
+    grayscale: { type: Boolean, default: !1 }
   },
   setup(e) {
     const t = e, o = I(() => {
+      if (t.grayscale)
+        return {
+          icon: "po-fill-slate-400",
+          bg: "po-bg-slate-100"
+        };
       if (t.customIconColor !== "" && t.customBgColor !== "")
         return {
           icon: t.customIconColor,
