@@ -19,7 +19,6 @@ jobs:
           node-version: 16
       - run: rm -rf node_modules && yarn install --frozen-lockfile
 #       - run: npm test
-
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
