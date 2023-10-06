@@ -33,6 +33,5 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@Adamwaheed'
       - run: rm -rf node_modules && yarn install --frozen-lockfile
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: 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
+      - run: yarn publish public
+
