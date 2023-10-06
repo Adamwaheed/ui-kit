@@ -1,13 +1,8 @@
 module.exports = {
 	content: ["./index.html", "./src/App.vue", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-	prefix: "po-",
 	safelist: [
-		"po-animate-fadeOutDown",
-		//   "bg-blue-600",
-		//   "hover:bg-blue-500",
-		//   "focus:border-blue-700",
-		//   "focus:shadow-outline-blue",
-		//   "active:bg-blue-700",
+		"animate-fadeOutDown",
+
 		//   "bg-orange-600",
 		//   "hover:bg-orange-500",
 		//   "focus:border-orange-700",
